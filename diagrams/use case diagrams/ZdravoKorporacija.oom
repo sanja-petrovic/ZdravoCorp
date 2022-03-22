@@ -5671,7 +5671,7 @@ LABL 0 Arial,8,N</a:FontList>
 </o:UseCaseAssociationSymbol>
 <o:DependencySymbol Id="o198">
 <a:ModificationDate>1647976006</a:ModificationDate>
-<a:Rect>((1362,11824), (12755,13495))</a:Rect>
+<a:Rect>((1362,11824), (12755,13494))</a:Rect>
 <a:ListOfPoints>((12355,12524),(1762,12524))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
