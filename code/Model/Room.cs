@@ -4,55 +4,56 @@ using System.Collections.Generic;
 public class Room
 {
     private String roomId;
-    private String type;
+    private RoomType type;
     private String name;
+    private int level;
+    private int number;
+    private RoomStatus status;
 
-    private List<Equipment> equipment;
-    public string RoomId { get => roomId; set => roomId = value; }
-    public string Type { get => type; set => type = value; }
-    public string Name { get => name; set => name = value; }
-    public List<Equipment> Equipment
+    private List<Equipment> equipmentInRoom;
+
+    public List<Equipment> EquipmentInRoom
     {
         get
         {
-            if (equipment == null)
-                equipment = new List<Equipment>();
-            return equipment;
+            if (equipmentInRoom == null)
+                equipmentInRoom = new List<Equipment>();
+            return equipmentInRoom;
         }
         set
         {
-            RemoveAllEquipment();
+            RemoveAllEquipmentInRoom();
             if (value != null)
             {
                 foreach (Equipment oEquipment in value)
-                    AddEquipment(oEquipment);
+                    AddEquipmentInRoom(oEquipment);
             }
         }
     }
 
-
-
-    public void AddEquipment(Equipment newEquipment)
+    public void AddEquipmentInRoom(Equipment newEquipment)
     {
         if (newEquipment == null)
             return;
-        if (this.equipment == null)
-            this.equipment = new List<Equipment>();
-        if (!this.equipment.Contains(newEquipment))
-            this.equipment.Add(newEquipment);
+        if (this.equipmentInRoom == null)
+            this.equipmentInRoom = new List<Equipment>();
+        if (!this.equipmentInRoom.Contains(newEquipment))
+            this.equipmentInRoom.Add(newEquipment);
     }
-    public void RemoveEquipment(Equipment oldEquipment)
+
+    public void RemoveEquipmentInRoom(Equipment oldEquipment)
     {
         if (oldEquipment == null)
             return;
-        if (this.equipment != null)
-            if (this.equipment.Contains(oldEquipment))
-                this.equipment.Remove(oldEquipment);
+        if (this.equipmentInRoom != null)
+            if (this.equipmentInRoom.Contains(oldEquipment))
+                this.equipmentInRoom.Remove(oldEquipment);
     }
-    public void RemoveAllEquipment()
+
+    public void RemoveAllEquipmentInRoom()
     {
-        if (equipment != null)
-            equipment.Clear();
+        if (equipmentInRoom != null)
+            equipmentInRoom.Clear();
     }
 
 }

@@ -13,7 +13,7 @@ public class PatientService
         throw new NotImplementedException();
     }
 
-    public Patient GetById(string id)
+    public Patient GetById(String id)
     {
         throw new NotImplementedException();
     }

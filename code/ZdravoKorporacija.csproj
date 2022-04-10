@@ -38,6 +38,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\RoomController.cs" />
+    <Compile Include="Data Handler\RoomDataHandler.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\Equipment.cs" />
@@ -45,6 +47,8 @@
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\RegisteredUser.cs" />
     <Compile Include="Data Handler\AppointmentDataHandler.cs" />
+    <Compile Include="Model\RoomStatus.cs" />
+    <Compile Include="Model\RoomType.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Model\MedicalRecord.cs" />
@@ -58,10 +62,12 @@
     <Compile Include="Model\Address.cs" />
     <Compile Include="Repository\PatientRepository.cs" />
     <Compile Include="Data Handler\PatientDataHandler.cs" />
+    <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\RoomService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exception\" />
