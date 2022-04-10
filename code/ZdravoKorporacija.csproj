@@ -1,4 +1,4 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -38,30 +38,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Appointment.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="Equipment.cs" />
-    <Compile Include="Patient.cs" />
-    <Compile Include="Doctor.cs" />
-    <Compile Include="RegisteredUser.cs" />
-    <Compile Include="AppointmentDataHandler.cs" />
-    <Compile Include="AppointmentRepository.cs" />
-    <Compile Include="AppointmentController.cs" />
-    <Compile Include="MedicalRecord.cs" />
-    <Compile Include="Medication.cs" />
-    <Compile Include="Report.cs" />
-    <Compile Include="BloodType.cs" />
-    <Compile Include="AppointmentType.cs" />
-    <Compile Include="Employee.cs" />
-    <Compile Include="UserType.cs" />
-    <Compile Include="Gender.cs" />
-    <Compile Include="Address.cs" />
-    <Compile Include="PatientRepository.cs" />
-    <Compile Include="PatientDataHandler.cs" />
-    <Compile Include="PatientService.cs" />
-    <Compile Include="PatientController.cs" />
-    <Compile Include="AppointmentService.cs" />
+    <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\Equipment.cs" />
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\RegisteredUser.cs" />
+    <Compile Include="Data Handler\AppointmentDataHandler.cs" />
+    <Compile Include="Repository\AppointmentRepository.cs" />
+    <Compile Include="Controller\AppointmentController.cs" />
+    <Compile Include="Model\MedicalRecord.cs" />
+    <Compile Include="Model\Medication.cs" />
+    <Compile Include="Model\Report.cs" />
+    <Compile Include="Model\BloodType.cs" />
+    <Compile Include="Model\AppointmentType.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\UserType.cs" />
+    <Compile Include="Model\Gender.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Repository\PatientRepository.cs" />
+    <Compile Include="Data Handler\PatientDataHandler.cs" />
+    <Compile Include="Service\PatientService.cs" />
+    <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exception\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
