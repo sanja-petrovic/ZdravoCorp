@@ -1,0 +1,69 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E66EB2BA-32DE-4004-8C0B-A60CC8032419}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZdravoKorporacija</RootNamespace>
+    <AssemblyName>ZdravoKorporacija</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Appointment.cs" />
+    <Compile Include="Room.cs" />
+    <Compile Include="Equipment.cs" />
+    <Compile Include="Patient.cs" />
+    <Compile Include="Doctor.cs" />
+    <Compile Include="RegisteredUser.cs" />
+    <Compile Include="AppointmentDataHandler.cs" />
+    <Compile Include="AppointmentRepository.cs" />
+    <Compile Include="AppointmentController.cs" />
+    <Compile Include="MedicalRecord.cs" />
+    <Compile Include="Medication.cs" />
+    <Compile Include="Report.cs" />
+    <Compile Include="BloodType.cs" />
+    <Compile Include="AppointmentType.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="UserType.cs" />
+    <Compile Include="Gender.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="PatientRepository.cs" />
+    <Compile Include="PatientDataHandler.cs" />
+    <Compile Include="PatientService.cs" />
+    <Compile Include="PatientController.cs" />
+    <Compile Include="AppointmentService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
