@@ -11,7 +11,7 @@ public class PatientService
 
     public PatientService() { 
         // init
-        patientRepository = new PatientRepository();
+        this.patientRepository = new PatientRepository();
     }
 
     public List<Patient> GetAll()
