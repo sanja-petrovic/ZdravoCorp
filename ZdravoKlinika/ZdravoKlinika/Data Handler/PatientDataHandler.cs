@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class PatientDataHandler
 {
-    private String fileLocation;
+    private static String fileLocation = "path";
 
     public string FileLocation { get => fileLocation; set => fileLocation = value; }
 
