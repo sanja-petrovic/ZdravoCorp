@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 public class MedicalRecord
 {
-    private Patient patient;
+    private String patientId;
     private List<String> diagnoses;
     private List<String> allergies;
     private List<Appointment> upcomingAppointments;
@@ -11,9 +11,18 @@ public class MedicalRecord
     private List<Medication> pastMedication;
     private List<Report> reports;
 
-    public Patient Patient { get => patient; set => patient = value; }
+    public MedicalRecord(String patient, List<string> diagnoses, List<string> allergies)
+    {
+        this.patientId = patient;
+        this.diagnoses = diagnoses;
+        this.allergies = allergies;
+    }
+
+    public String Patient { get => patientId; set => patientId = value; }
     public List<string> Diagnoses { get => diagnoses; set => diagnoses = value; }
     public List<string> Allergies { get => allergies; set => allergies = value; }
+
+
 
     public List<Medication> CurrentMedication
     {
