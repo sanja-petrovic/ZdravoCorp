@@ -1,9 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 public class AppointmentRepository
 {
     private AppointmentDataHandler appointmentDataHandler;
     private List<Appointment> appointments;
+
+    public AppointmentRepository(AppointmentDataHandler appointmentDataHandler)
+    {
+        this.appointmentDataHandler = appointmentDataHandler;
+        this.appointments = new List<Appointment>();
+    }
+
     public List<Appointment> Appointments
     {
         get
@@ -50,12 +59,21 @@ public class AppointmentRepository
 
     public List<Appointment> GetAll()
     {
-        throw new NotImplementedException();
+        return appointmentDataHandler.Read();
     }
 
-    public List<Appointment> GetAppointmentById(String id)
+    public Appointment GetAppointmentById(String id)
     {
-        throw new NotImplementedException();
+        List<Appointment> appointments = appointmentDataHandler.Read();
+        foreach(Appointment appointment in appointments)
+        {
+            if(appointment.AppointmentId.Equals(id))
+            {
+                return appointment;
+            }
+        }
+
+        return null;
     }
 
     public List<Appointment> GetAppointmentsByPatient(String patientId)
@@ -65,22 +83,42 @@ public class AppointmentRepository
 
     public List<Appointment> GetAppointmentsByDoctor(String doctorId)
     {
-        throw new NotImplementedException();
+        List<Appointment> appointments = appointmentDataHandler.Read();
+        List<Appointment> doctorsAppointments = new List<Appointment>();
+        foreach (Appointment appointment in appointments)
+        {
+            if (appointment.Doctor.Equals(doctorId))
+            {
+                doctorsAppointments.Add(appointment);
+            }
+        }
+
+        return doctorsAppointments;
     }
 
-    public void CreateAppointment(Appointment appointments)
+    public void CreateAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        List<Appointment> appointments = appointmentDataHandler.Read();
+        appointments.Add(appointment);
+        appointmentDataHandler.Write(appointments);
     }
 
-    public void DeleteAppointment(Appointment appointments)
+    public void DeleteAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        List<Appointment> appointments = appointmentDataHandler.Read();
+        appointments = appointments.Where(appt => (appt.AppointmentId).Equals(appointment.AppointmentId)).ToList();
+
+        appointmentDataHandler.Write(appointments);
     }
 
-    public void EditAppointment(Appointment appointments)
+    public void EditAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        List<Appointment> appointments = appointmentDataHandler.Read();
+        appointments = appointments.Where(appt => (appt.AppointmentId).Equals(appointment.AppointmentId)).ToList();
+        appointments.Add(appointment);
+
+        appointmentDataHandler.Write(appointments);
+
     }
 
 }

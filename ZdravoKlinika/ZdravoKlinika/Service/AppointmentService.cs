@@ -4,41 +4,49 @@ public class AppointmentService
 {
     private AppointmentRepository appointmentRepository;
 
+    public AppointmentService(AppointmentRepository appointmentRepository)
+    {
+        this.AppointmentRepository = appointmentRepository;
+    }
+ 
     public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
 
     public List<Appointment> GetAll()
     {
-        throw new NotImplementedException();
+        return this.appointmentRepository.GetAll();
     }
 
     public Appointment GetAppointmentById(String id)
     {
-        throw new NotImplementedException();
+        return this.appointmentRepository.GetAppointmentById(id);
     }
 
     public List<Appointment> GetAppointmentsByPatientId(String id)
     {
-        throw new NotImplementedException();
+        return this.appointmentRepository.GetAppointmentsByPatient(id);
     }
 
     public List<Appointment> GetAppointmentsByDoctorId(String id)
     {
-        throw new NotImplementedException();
+        return this.appointmentRepository.GetAppointmentsByPatient(id);
     }
 
     public void CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        throw new NotImplementedException();
+        Appointment appointment = new Appointment();
+        this.appointmentRepository.CreateAppointment(appointment);
     }
 
     public void DeleteAppointment(String id)
     {
-        throw new NotImplementedException();
+        Appointment appointment = appointmentRepository.GetAppointmentById(id);
+        this.appointmentRepository.DeleteAppointment(appointment);
     }
 
     public void EditAppointment(String apointmentId, DateTime dateTime, String roomId, String patientId, String doctorId, List<String> diagnosis, String doctorsNotes)
     {
-        throw new NotImplementedException();
+        Appointment appointment = new Appointment();
+        this.appointmentRepository.EditAppointment(appointment);
     }
 
 }

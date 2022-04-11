@@ -8,37 +8,37 @@ public class AppointmentController
 
     public List<Appointment> GetAll()
     {
-        throw new NotImplementedException();
+        return this.AppointmentService.GetAll();
     }
 
     public Appointment GetAppointmentById(String id)
     {
-        throw new NotImplementedException();
+        return this.AppointmentService.GetAppointmentById(id);
     }
 
     public List<Appointment> GetAppointmentsByPatientId(String id)
     {
-        throw new NotImplementedException();
+        return this.appointmentService.GetAppointmentsByPatientId(id);
     }
 
     public List<Appointment> GetAppointmentsByDoctorId(String id)
     {
-        throw new NotImplementedException();
+        return this.appointmentService.GetAppointmentsByDoctorId(id);
     }
 
     public void CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        throw new NotImplementedException();
+        this.appointmentService.CreateAppointment(doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
     }
 
     public void DeleteAppointment(String id)
     {
-        throw new NotImplementedException();
+        this.appointmentService.DeleteAppointment(id);
     }
 
     public void EditAppointment(String apointmentId, DateTime dateTime, String roomId, String patientId, String doctorId, List<String> diagnosis, String doctorsNotes)
     {
-        throw new NotImplementedException();
+        this.appointmentService.EditAppointment(apointmentId, dateTime, roomId, patientId, doctorId, diagnosis, doctorsNotes);
     }
 
 }

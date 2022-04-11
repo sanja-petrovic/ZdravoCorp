@@ -1,20 +1,35 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 
 public class AppointmentDataHandler
 {
-    private int fileLocation;
+    private string fileLocation;
 
-    public int FileLocation { get => fileLocation; set => fileLocation = value; }
+    public string FileLocation { get => fileLocation; set => fileLocation = value; }
+
+    public AppointmentDataHandler(string fileLocation)
+    {
+        this.fileLocation = fileLocation;
+    }
 
     public void Write(List<Appointment> appointments)
     {
-        throw new NotImplementedException();
+        var jsonList = JsonSerializer.Serialize(appointments, new JsonSerializerOptions() { WriteIndented = true });
+        File.WriteAllText(fileLocation, jsonList);
     }
 
     public List<Appointment> Read()
     {
-        throw new NotImplementedException();
+        string jsonString = File.ReadAllText(fileLocation);
+        List<Appointment> appointments = JsonSerializer.Deserialize<List<Appointment>>(jsonString);
+        foreach(Appointment a in appointments)
+        {
+            Console.WriteLine(a.AppointmentId);
+        }
+
+        return appointments;
     }
 
 }

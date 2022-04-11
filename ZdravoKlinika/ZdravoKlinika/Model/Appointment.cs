@@ -11,8 +11,22 @@ public class Appointment
     private bool emergency;
     private int duration;
     private Doctor doctor;
+    private Patient patient;
     private Room room;
     private List<Medication> prescriptions;
+
+    public Appointment() { }
+
+    public Appointment(Doctor doctor, Patient patient, Room room, int duration, bool emergency, AppointmentType type)
+    {
+        this.doctor = doctor;
+        this.patient = patient;
+        this.room = room;
+        this.duration = duration;
+        this.emergency = emergency;
+        this.type = type;
+    }
+
 
     public List<Medication> Prescriptions
     {
@@ -42,6 +56,7 @@ public class Appointment
     public int Duration { get => duration; set => duration = value; }
     public Doctor Doctor { get => doctor; set => doctor = value; }
     public Room Room { get => room; set => room = value; }
+    public Patient Patient { get => patient; set => patient = value; }
 
     public void AddPrescriptions(Medication newMedication)
     {
