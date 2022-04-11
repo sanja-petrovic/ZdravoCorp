@@ -23,6 +23,11 @@ public class PatientRepository
             }
         }
     }
+    public PatientRepository() {
+        // init
+        patientsDataHandler = new PatientDataHandler();
+        this.patients = patientsDataHandler.Read();
+    }
 
     public PatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
 

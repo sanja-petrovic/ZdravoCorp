@@ -8,6 +8,12 @@ public class PatientService
 
     public PatientRepository PatientRepository { get => patientRepository; set => patientRepository = value; }
 
+
+    public PatientService() { 
+        // init
+        patientRepository = new PatientRepository();
+    }
+
     public List<Patient> GetAll()
     {
         return patientRepository.GetAll();
