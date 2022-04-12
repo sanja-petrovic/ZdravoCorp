@@ -7,4 +7,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Repository\Data\**" />
+    <EmbeddedResource Remove="Repository\Data\**" />
+    <None Remove="Repository\Data\**" />
+    <Page Remove="Repository\Data\**" />
+  </ItemGroup>
+
 </Project>

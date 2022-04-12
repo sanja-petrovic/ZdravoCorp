@@ -24,5 +24,11 @@ namespace ZdravoKlinika
         {
             InitializeComponent();
         }
+
+        private void Upravnik_Click(object sender, RoutedEventArgs e)
+        {
+            UpravnikWindow upravnikWindow = new UpravnikWindow();
+            upravnikWindow.Show();
+        }
     }
 }
