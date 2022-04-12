@@ -7,29 +7,34 @@ public class RoomController
 
     public RoomService RoomService { get => roomService; set => roomService = value; }
 
+    public RoomController()
+    {
+        this.roomService = new RoomService();
+    }
+
     public List<Room> GetAll()
     {
-        throw new NotImplementedException();
+        return this.roomService.GetAll();
     }
 
     public Room GetById(String id)
     {
-        throw new NotImplementedException();
+        return this.roomService.GetById(id);
     }
 
-    public void CreateRoom(String roomId, String name, RoomType type, RoomStatus status, int level, int number)
+    public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number)
     {
-        throw new NotImplementedException();
+        this.roomService.CreateRoom(name, type, status, level, number);
     }
 
     public void UpdateRoom(String roomId, String name, RoomType type, RoomStatus status, int level, int number)
     {
-        throw new NotImplementedException();
+        this.roomService.UpdateRoom(roomId, name, type, status, level, number);
     }
 
     public void DeleteRoom(String roomId)
     {
-        throw new NotImplementedException();
+        this.roomService.DeleteRoom(roomId);
     }
 
 }

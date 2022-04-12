@@ -12,6 +12,20 @@ public class Room
 
     private List<Equipment> equipmentInRoom;
 
+    public Room(String roomId, String name, RoomType type, int level, int number, RoomStatus status)
+    {
+        this.roomId = roomId;
+        this.name = name;
+        this.type = type;
+        this.level = level;
+        this.number = number;
+        this.status = status;
+    }
+
+    public Room()
+    {
+    }
+
     public List<Equipment> EquipmentInRoom
     {
         get
@@ -30,6 +44,13 @@ public class Room
             }
         }
     }
+
+    public string RoomId { get => roomId; set => roomId = value; }
+    public RoomType Type { get => type; set => type = value; }
+    public string Name { get => name; set => name = value; }
+    public int Level { get => level; set => level = value; }
+    public int Number { get => number; set => number = value; }
+    public RoomStatus Status { get => status; set => status = value; }
 
     public void AddEquipmentInRoom(Equipment newEquipment)
     {

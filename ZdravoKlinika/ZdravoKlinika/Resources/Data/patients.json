@@ -1,0 +1,116 @@
+[
+  {
+    "ParentName": "Mara",
+    "BloodType": 0,
+    "Occupation": "Kuvar",
+    "EmergencyContactName": "Mara",
+    "EmergencyContactPhone": "321321321",
+    "MedicalRecord": {
+      "Patient": "13",
+      "Diagnoses": [
+        "Ima"
+      ],
+      "Allergies": [
+        "Nema"
+      ],
+      "CurrentMedication": [],
+      "PastMedication": [],
+      "Reports": [],
+      "PastAppointments": [],
+      "UpcomingAppointments": []
+    },
+    "UserType": 2,
+    "PersonalId": "13",
+    "Name": "Marko",
+    "Lastname": "Markovic",
+    "DateOfBirth": "1999-07-30T00:00:00",
+    "Gender": 1,
+    "Phone": "123123123",
+    "Email": "marko.mark@zdravo.org",
+    "Password": "password",
+    "ProfilePicture": "Resources/Picture",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "A",
+      "Number": "B",
+      "City": "C",
+      "Country": "D"
+    }
+  },
+  {
+    "ParentName": "Marko",
+    "BloodType": 0,
+    "Occupation": "Kuvar",
+    "EmergencyContactName": "Marko",
+    "EmergencyContactPhone": "321321326",
+    "MedicalRecord": {
+      "Patient": "14",
+      "Diagnoses": [
+        "Ima"
+      ],
+      "Allergies": [
+        "Nema"
+      ],
+      "CurrentMedication": [],
+      "PastMedication": [],
+      "Reports": [],
+      "PastAppointments": [],
+      "UpcomingAppointments": []
+    },
+    "UserType": 2,
+    "PersonalId": "14",
+    "Name": "Mara",
+    "Lastname": "Markovic",
+    "DateOfBirth": "1999-07-30T00:00:00",
+    "Gender": 1,
+    "Phone": "123123124",
+    "Email": "mara.mark@zdravo.org",
+    "Password": "password",
+    "ProfilePicture": "Resources/Picture",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "A",
+      "Number": "B",
+      "City": "C",
+      "Country": "D"
+    }
+  },
+  {
+    "ParentName": "Marko",
+    "BloodType": 2,
+    "Occupation": "Pekar",
+    "EmergencyContactName": "Marko",
+    "EmergencyContactPhone": "321321512",
+    "MedicalRecord": {
+      "Patient": "15",
+      "Diagnoses": [
+        "Ima"
+      ],
+      "Allergies": [
+        "Nema"
+      ],
+      "CurrentMedication": [],
+      "PastMedication": [],
+      "Reports": [],
+      "PastAppointments": [],
+      "UpcomingAppointments": []
+    },
+    "UserType": 2,
+    "PersonalId": "15",
+    "Name": "Mara",
+    "Lastname": "Pekovic",
+    "DateOfBirth": "1999-07-30T00:00:00",
+    "Gender": 0,
+    "Phone": "123123512",
+    "Email": "mara.peko@zdravo.org",
+    "Password": "password",
+    "ProfilePicture": "Resources/Picture",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "A",
+      "Number": "B",
+      "City": "C",
+      "Country": "D"
+    }
+  }
+]

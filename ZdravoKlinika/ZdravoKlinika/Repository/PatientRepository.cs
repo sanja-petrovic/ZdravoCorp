@@ -15,63 +15,97 @@ public class PatientRepository
         }
         set
         {
-            RemoveAllPatient();
+            DeleteAllPatients();
             if (value != null)
             {
                 foreach (Patient oPatient in value)
-                    AddPatient(oPatient);
+                    CreatePatient(oPatient);
             }
         }
+    }
+    public PatientRepository() {
+        // init
+        patientsDataHandler = new PatientDataHandler();
+        this.patients = patientsDataHandler.Read();
     }
 
     public PatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
 
-    public void AddPatient(Patient newPatient)
+    public List<Patient> GetAll()
     {
-        if (newPatient == null)
+        return patients;
+    }
+
+    public Patient? GetById(String id)
+    {
+        foreach (Patient patient in this.patients) 
+        {
+            if (patient.PersonalId.Equals(id)) 
+            {
+                return patient;
+            }
+        }
+        return null;
+    }
+
+    public void CreatePatient(Patient patient)
+    {
+        if (patient == null)
             return;
         if (this.patients == null)
             this.patients = new List<Patient>();
-        if (!this.patients.Contains(newPatient))
-            this.patients.Add(newPatient);
+
+        foreach (Patient pat in patients)
+        {
+            if (pat.PersonalId == patient.PersonalId)
+            {
+                return;
+            }
+        }
+
+        this.patients.Add(patient);
+        PatientsDataHandler.Write(patients);
+        return;
     }
-    public void RemovePatient(Patient oldPatient)
+
+    public void DeletePatient(Patient patient)
     {
-        if (oldPatient == null)
+        if (patient == null)
             return;
         if (this.patients != null)
-            if (this.patients.Contains(oldPatient))
-                this.patients.Remove(oldPatient);
+            if (this.patients.Contains(patient))
+                this.patients.Remove(patient);
+
+        PatientsDataHandler.Write(patients);
+        return;
     }
-    public void RemoveAllPatient()
+    public void DeleteAllPatients()
     {
         if (patients != null)
             patients.Clear();
     }
 
-    public List<Patient> GetAll()
+    public void UpdatePatient(Patient patient)
     {
-        throw new NotImplementedException();
-    }
+        int index = -1;
+        foreach (Patient patientObject in this.patients)
+        {
+            if (patientObject.PersonalId.Equals(patient.PersonalId))
+            {
+                index = patients.IndexOf(patientObject);
+            }
+        }
 
-    public Patient GetById(String id)
-    {
-        throw new NotImplementedException();
-    }
+        if (index == -1)
+        {
+            Console.WriteLine("Error");
+            return;
+        }
 
-    public void CreatePatient(Patient patients)
-    {
-        throw new NotImplementedException();
-    }
+        patients[index] = patient;
+        PatientsDataHandler.Write(patients);
 
-    public void DeletePatient(Patient patients)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void UpdatePatient(Patient patients)
-    {
-        throw new NotImplementedException();
+        return;
     }
 
 }
