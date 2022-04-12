@@ -15,7 +15,6 @@ namespace ZdravoKlinika
     {
         public App()
         {
-            var appointmentRepository = new AppointmentRepository();
         }
     }
 

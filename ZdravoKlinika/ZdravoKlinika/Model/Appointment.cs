@@ -11,18 +11,17 @@ public class Appointment
     private bool emergency;
     private int duration;
     private String doctorId;
-    //private String patientId;
-    private Patient patient;
+    private String patientId;
     private String roomId;
     private List<Medication> prescriptions;
 
     public Appointment() { }
 
-    public Appointment(int appointmentId, String doctorId, Patient patient, String roomId, int duration, bool emergency, AppointmentType type, DateTime dateTime)
+    public Appointment(int appointmentId, String doctorId, String patientId, String roomId, int duration, bool emergency, AppointmentType type, DateTime dateTime)
     {
         this.appointmentId = appointmentId;
         this.doctorId = doctorId;
-        this.patient = patient;
+        this.patientId = patientId;
         this.roomId = roomId;
         this.duration = duration;
         this.emergency = emergency;
@@ -58,7 +57,7 @@ public class Appointment
     public bool Emergency { get => emergency; set => emergency = value; }
     public int Duration { get => duration; set => duration = value; }
     public string DoctorId { get => doctorId; set => doctorId = value; }
-    public Patient Patient { get => patient; set => patient = value; }
+    public String PatientId { get => patientId; set => patientId = value; }
     public string RoomId { get => roomId; set => roomId = value; }
 
     public void AddPrescriptions(Medication newMedication)

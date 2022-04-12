@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,34 +25,49 @@ namespace ZdravoKlinika
         private String patientName;
         private String appointmentType;
         private String emergency;
-        public ObservableCollection<Appointment> Appointments { get; set; } 
         public DoctorWindow()
         { 
             InitializeComponent();
             this.DataContext = this;
             this.appointmentController = new AppointmentController();
-            Appointments = new ObservableCollection<Appointment>(this.appointmentController.GetAll());
+            refresh();
 
+        }
+
+
+        public void refresh()
+        {
+            List<Appointment> appointments = this.appointmentController.GetAll();
+            dataGridDoctorsAppointments.ItemsSource = null;
+            dataGridDoctorsAppointments.ItemsSource = appointments;
         }
 
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             DoctorCreateAppointment doctorCreateAppointment = new DoctorCreateAppointment();
-            doctorCreateAppointment.Show();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-           
 
-            //this.appointmentController.EditAppointment(this.selectedIndex);
+            Appointment selected = dataGridDoctorsAppointments.SelectedItem as Appointment;
+            EditWindow editWindow = new EditWindow(selected);
+            editWindow.Show();
+
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            this.appointmentController.DeleteAppointment(this.selectedIndex + 1);
-            this.Appointments.RemoveAt(this.selectedIndex);
+            Appointment selected = dataGridDoctorsAppointments.SelectedItem as Appointment;
+            this.appointmentController.DeleteAppointment(selected.AppointmentId);
+
+            refresh();
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            refresh();
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

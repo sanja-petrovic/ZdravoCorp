@@ -59,7 +59,7 @@ public class AppointmentRepository
 
     public List<Appointment> GetAll()
     {
-        return this.appointments;
+        return this.appointmentDataHandler.Read();
     }
 
     public Appointment GetAppointmentById(int id)

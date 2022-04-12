@@ -32,7 +32,7 @@ public class AppointmentService
         return this.appointmentRepository.GetAppointmentsByPatient(id);
     }
     
-    public void CreateAppointment(String doctorId, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public Appointment CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         List<Appointment> appointments = this.AppointmentRepository.GetAll();
         int newAppointmentId;
@@ -43,8 +43,10 @@ public class AppointmentService
         {
             newAppointmentId = 1;
         }
-        Appointment appointment = new Appointment(newAppointmentId, doctorId, patient, roomId, duration, emergency, type, dateAndTime);
+        Appointment appointment = new Appointment(newAppointmentId, doctorId, patientId, roomId, duration, emergency, type, dateAndTime);
         this.appointmentRepository.CreateAppointment(appointment);
+
+        return appointment;
     }
 
     public void DeleteAppointment(int id)
@@ -53,15 +55,16 @@ public class AppointmentService
         this.appointmentRepository.DeleteAppointment(appointment);
     }
 
-    public void EditAppointment(int appointmentId, String doctorId, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         Appointment appointment = this.appointmentRepository.GetAppointmentById(appointmentId);
         appointment.DateAndTime = dateAndTime;
         appointment.RoomId = roomId;
-        appointment.Patient = patient;
+        appointment.PatientId = patientId;
         appointment.DoctorId = doctorId;
         appointment.Emergency = emergency;
         this.appointmentRepository.EditAppointment(appointment);
+
     }
 
 }

@@ -30,9 +30,9 @@ public class AppointmentController
         return this.appointmentService.GetAppointmentsByDoctorId(id);
     }
 
-    public void CreateAppointment(String doctorId, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public Appointment CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        this.appointmentService.CreateAppointment(doctorId, patient, dateAndTime, emergency, type, roomId, duration);
+        return this.appointmentService.CreateAppointment(doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
     }
 
     public void DeleteAppointment(int id)
@@ -40,9 +40,9 @@ public class AppointmentController
         this.appointmentService.DeleteAppointment(id);
     }
 
-    public void EditAppointment(int appointmentId, String doctorId, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        this.appointmentService.EditAppointment(appointmentId, doctorId, patient, dateAndTime, emergency, type, roomId, duration);
+        this.appointmentService.EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
     }
 
 }

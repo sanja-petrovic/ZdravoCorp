@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="Lekar" Height="600" Width="800">
     <Grid Margin="0,0,45,-145">
-        <DataGrid x:Name="dataGridDoctorsAppointments" ItemsSource="{Binding Appointments}" SelectionChanged="DataGrid_SelectionChanged" SelectedItem="{Binding Path=SelectedAppointment}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,259,0,0" Width="575"  AutoGenerateColumns="False" SelectedIndex="0">
+        <DataGrid x:Name="dataGridDoctorsAppointments" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged" SelectedItem="{Binding Path=SelectedAppointment}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,259,0,0" Width="575"  AutoGenerateColumns="False" SelectedIndex="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Datum i vreme" Binding="{Binding DateAndTime}"  Width="*"/>
-                <DataGridTextColumn Header="Pacijent" Binding="{Binding Patient}" Width="*"/>
+                <DataGridTextColumn Header="Pacijent" Binding="{Binding PatientId}" Width="*"/>
                 <DataGridTextColumn Header="Tip" Binding="{Binding Type}" Width="*"/>
                 <DataGridTextColumn Header="Hitan slučaj" Binding="{Binding Emergency}" Width="*"/>
                 <DataGridTextColumn Header="Soba" Binding="{Binding RoomId}" Width="*"/>
@@ -20,6 +20,7 @@
         <Button Content="Zakaži" HorizontalAlignment="Left" Margin="405,222,0,0" VerticalAlignment="Top" Click="Create_Click" Width="74" Height="24"/>
         <Button Content="Izmeni" HorizontalAlignment="Left" Margin="497,222,0,0" VerticalAlignment="Top" Click="Edit_Click" Width="74" Height="24"/>
         <Button Content="Otkaži" HorizontalAlignment="Left" Margin="590,222,0,0" VerticalAlignment="Top" Click="Delete_Click" Width="74" Height="24"/>
+        <Button Content="Osveži" HorizontalAlignment="Left" Margin="314,222,0,0" VerticalAlignment="Top" Click="Refresh_Click" Width="74" Height="24"/>
 
     </Grid>
 </Window>
