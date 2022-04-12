@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 public class AppointmentRepository
 {
     private AppointmentDataHandler appointmentDataHandler;
     private List<Appointment> appointments;
+    
 
     public AppointmentRepository()
     {
-        this.appointmentDataHandler = new AppointmentDataHandler("C:\\Users\\sanya\\Desktop\\simsrepo2\\ZdravoCorp\\ZdravoKlinika\\ZdravoKlinika\\Repository\\Data\\appointment.json");
+        this.appointmentDataHandler = new AppointmentDataHandler();
         this.appointments = this.appointmentDataHandler.Read();
     }
 
@@ -77,7 +79,15 @@ public class AppointmentRepository
 
     public List<Appointment> GetAppointmentsByPatient(String patientId)
     {
-        throw new NotImplementedException();
+        List<Appointment> patientAppointments = new List<Appointment>();
+        foreach (Appointment appointment in this.appointments)
+        {
+            if (appointment.PatientId.Equals(patientId))
+            {
+                patientAppointments.Add(appointment);
+            }
+        }
+        return patientAppointments;
     }
 
     public List<Appointment> GetAppointmentsByDoctor(String doctorId)

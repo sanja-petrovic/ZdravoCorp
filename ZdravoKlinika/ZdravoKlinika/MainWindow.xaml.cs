@@ -27,8 +27,24 @@ namespace ZdravoKlinika
 
         private void Doctor_Click(object sender, RoutedEventArgs e)
         {
-            DoctorWindow doctorWindow = new DoctorWindow(); 
-            doctorWindow.Show();    
+            DoctorWindow doctorWindow = new DoctorWindow();
+            doctorWindow.Show();
+        }
+
+        private void managerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void secretaryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void patientButton_Click(object sender, RoutedEventArgs e)
+        {
+            PatientView patientView = new PatientView();
+            patientView.Show();
         }
     }
 }
