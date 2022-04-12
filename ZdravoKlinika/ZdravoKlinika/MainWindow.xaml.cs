@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace ZdravoKlinika
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -45,6 +42,17 @@ namespace ZdravoKlinika
         {
             PatientView patientView = new PatientView();
             patientView.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorManipView view = new DoctorManipView();
+            view.Show();
+        }
+
+        private void patientText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
