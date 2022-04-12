@@ -54,7 +54,7 @@ public class PatientRepository
             return;
         if (this.patients == null)
             this.patients = new List<Patient>();
-      
+
         this.patients.Add(patient);
         PatientsDataHandler.Write(patients);
         return;

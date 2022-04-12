@@ -24,10 +24,11 @@ public class PatientService
         return patientRepository.GetById(id);
     }
 
-    public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String parentName, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> alergies, List<String> diagnosis)
+    public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, Address address, String parentName, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> alergies, List<String> diagnosis)
     {
+        Console.WriteLine("service");
         MedicalRecord record = new MedicalRecord(personalId, alergies, diagnosis);
-        Patient patient = new Patient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, parentName, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
+        Patient patient = new Patient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, parentName, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
         
         patientRepository.CreatePatient(patient);
         //TODO medicalRecord repo write it too!
