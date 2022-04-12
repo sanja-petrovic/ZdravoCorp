@@ -55,6 +55,14 @@ public class PatientRepository
         if (this.patients == null)
             this.patients = new List<Patient>();
 
+        foreach (Patient pat in patients)
+        {
+            if (pat.PersonalId == patient.PersonalId)
+            {
+                return;
+            }
+        }
+
         this.patients.Add(patient);
         PatientsDataHandler.Write(patients);
         return;
