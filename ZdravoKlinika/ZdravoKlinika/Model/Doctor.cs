@@ -6,6 +6,11 @@ public class Doctor : Employee
     private String specialty;
     private String education;
 
+    public Doctor()
+    {
+
+    }
+
     public string Specialty { get => specialty; set => specialty = value; }
     public string Education { get => education; set => education = value; }
 
