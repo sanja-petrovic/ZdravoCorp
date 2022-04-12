@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 public class AppointmentService
 {
     private AppointmentRepository appointmentRepository;
 
-    public AppointmentService(AppointmentRepository appointmentRepository)
+    public AppointmentService()
     {
-        this.AppointmentRepository = appointmentRepository;
+        this.AppointmentRepository = new AppointmentRepository();
     }
  
     public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
@@ -16,7 +17,7 @@ public class AppointmentService
         return this.appointmentRepository.GetAll();
     }
 
-    public Appointment GetAppointmentById(String id)
+    public Appointment GetAppointmentById(int id)
     {
         return this.appointmentRepository.GetAppointmentById(id);
     }
@@ -30,22 +31,36 @@ public class AppointmentService
     {
         return this.appointmentRepository.GetAppointmentsByPatient(id);
     }
-
-    public void CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    
+    public void CreateAppointment(String doctorId, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        Appointment appointment = new Appointment();
+        List<Appointment> appointments = this.AppointmentRepository.GetAll();
+        int newAppointmentId;
+        if(appointments.Count > 0)
+        {
+            newAppointmentId = appointments.Last().AppointmentId + 1;
+        } else
+        {
+            newAppointmentId = 1;
+        }
+        Appointment appointment = new Appointment(newAppointmentId, doctorId, patient, roomId, duration, emergency, type, dateAndTime);
         this.appointmentRepository.CreateAppointment(appointment);
     }
 
-    public void DeleteAppointment(String id)
+    public void DeleteAppointment(int id)
     {
         Appointment appointment = appointmentRepository.GetAppointmentById(id);
         this.appointmentRepository.DeleteAppointment(appointment);
     }
 
-    public void EditAppointment(String apointmentId, DateTime dateTime, String roomId, String patientId, String doctorId, List<String> diagnosis, String doctorsNotes)
+    public void EditAppointment(int appointmentId, String doctorId, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        Appointment appointment = new Appointment();
+        Appointment appointment = this.appointmentRepository.GetAppointmentById(appointmentId);
+        appointment.DateAndTime = dateAndTime;
+        appointment.RoomId = roomId;
+        appointment.Patient = patient;
+        appointment.DoctorId = doctorId;
+        appointment.Emergency = emergency;
         this.appointmentRepository.EditAppointment(appointment);
     }
 

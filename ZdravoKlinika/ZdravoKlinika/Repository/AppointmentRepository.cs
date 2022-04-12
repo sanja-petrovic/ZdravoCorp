@@ -7,10 +7,10 @@ public class AppointmentRepository
     private AppointmentDataHandler appointmentDataHandler;
     private List<Appointment> appointments;
 
-    public AppointmentRepository(AppointmentDataHandler appointmentDataHandler)
+    public AppointmentRepository()
     {
-        this.appointmentDataHandler = appointmentDataHandler;
-        this.appointments = new List<Appointment>();
+        this.appointmentDataHandler = new AppointmentDataHandler("C:\\Users\\sanya\\Desktop\\simsrepo2\\ZdravoCorp\\ZdravoKlinika\\ZdravoKlinika\\Repository\\Data\\appointment.json");
+        this.appointments = this.appointmentDataHandler.Read();
     }
 
     public List<Appointment> Appointments
@@ -59,13 +59,12 @@ public class AppointmentRepository
 
     public List<Appointment> GetAll()
     {
-        return appointmentDataHandler.Read();
+        return this.appointments;
     }
 
-    public Appointment GetAppointmentById(String id)
+    public Appointment GetAppointmentById(int id)
     {
-        List<Appointment> appointments = appointmentDataHandler.Read();
-        foreach(Appointment appointment in appointments)
+        foreach(Appointment appointment in this.appointments)
         {
             if(appointment.AppointmentId.Equals(id))
             {
@@ -83,11 +82,10 @@ public class AppointmentRepository
 
     public List<Appointment> GetAppointmentsByDoctor(String doctorId)
     {
-        List<Appointment> appointments = appointmentDataHandler.Read();
         List<Appointment> doctorsAppointments = new List<Appointment>();
-        foreach (Appointment appointment in appointments)
+        foreach (Appointment appointment in this.appointments)
         {
-            if (appointment.Doctor.Equals(doctorId))
+            if (appointment.DoctorId.Equals(doctorId))
             {
                 doctorsAppointments.Add(appointment);
             }
@@ -98,26 +96,29 @@ public class AppointmentRepository
 
     public void CreateAppointment(Appointment appointment)
     {
-        List<Appointment> appointments = appointmentDataHandler.Read();
-        appointments.Add(appointment);
-        appointmentDataHandler.Write(appointments);
+        this.appointments.Add(appointment);
+        appointmentDataHandler.Write(this.appointments);
     }
 
     public void DeleteAppointment(Appointment appointment)
     {
-        List<Appointment> appointments = appointmentDataHandler.Read();
-        appointments = appointments.Where(appt => (appt.AppointmentId).Equals(appointment.AppointmentId)).ToList();
+        if (appointment == null)
+            return;
+        if (this.appointments != null)
+            if (this.appointments.Contains(appointment))
+                this.appointments.Remove(appointment);
 
         appointmentDataHandler.Write(appointments);
     }
 
     public void EditAppointment(Appointment appointment)
     {
-        List<Appointment> appointments = appointmentDataHandler.Read();
-        appointments = appointments.Where(appt => (appt.AppointmentId).Equals(appointment.AppointmentId)).ToList();
-        appointments.Add(appointment);
-
-        appointmentDataHandler.Write(appointments);
+        if (appointment == null)
+            return;
+        if (this.appointments != null)
+            if (this.appointments.Contains(appointment))
+                this.appointments.Remove(appointment);
+        this.CreateAppointment(appointment);
 
     }
 

@@ -6,12 +6,16 @@ public class AppointmentController
 
     public AppointmentService AppointmentService { get => appointmentService; set => appointmentService = value; }
 
+    public AppointmentController()
+    {
+        this.AppointmentService = new AppointmentService();
+    }
     public List<Appointment> GetAll()
     {
         return this.AppointmentService.GetAll();
     }
 
-    public Appointment GetAppointmentById(String id)
+    public Appointment GetAppointmentById(int id)
     {
         return this.AppointmentService.GetAppointmentById(id);
     }
@@ -26,19 +30,19 @@ public class AppointmentController
         return this.appointmentService.GetAppointmentsByDoctorId(id);
     }
 
-    public void CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public void CreateAppointment(String doctorId, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        this.appointmentService.CreateAppointment(doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
+        this.appointmentService.CreateAppointment(doctorId, patient, dateAndTime, emergency, type, roomId, duration);
     }
 
-    public void DeleteAppointment(String id)
+    public void DeleteAppointment(int id)
     {
         this.appointmentService.DeleteAppointment(id);
     }
 
-    public void EditAppointment(String apointmentId, DateTime dateTime, String roomId, String patientId, String doctorId, List<String> diagnosis, String doctorsNotes)
+    public void EditAppointment(int appointmentId, String doctorId, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        this.appointmentService.EditAppointment(apointmentId, dateTime, roomId, patientId, doctorId, diagnosis, doctorsNotes);
+        this.appointmentService.EditAppointment(appointmentId, doctorId, patient, dateAndTime, emergency, type, roomId, duration);
     }
 
 }

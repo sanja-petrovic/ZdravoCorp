@@ -23,10 +23,10 @@ public class AppointmentDataHandler
     public List<Appointment> Read()
     {
         string jsonString = File.ReadAllText(fileLocation);
-        List<Appointment> appointments = JsonSerializer.Deserialize<List<Appointment>>(jsonString);
-        foreach(Appointment a in appointments)
+        List<Appointment> appointments = new List<Appointment>();
+        if (jsonString != "")
         {
-            Console.WriteLine(a.AppointmentId);
+            appointments = JsonSerializer.Deserialize<List<Appointment>>(jsonString);
         }
 
         return appointments;
