@@ -24,5 +24,17 @@ namespace ZdravoKlinika
         {
             InitializeComponent();
         }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorManipView view = new DoctorManipView();
+            view.Show();
+        }
+
+        private void patientText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
