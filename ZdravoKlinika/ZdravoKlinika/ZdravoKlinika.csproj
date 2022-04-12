@@ -2,16 +2,18 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Repository\Data\**" />
-    <EmbeddedResource Remove="Repository\Data\**" />
-    <None Remove="Repository\Data\**" />
-    <Page Remove="Repository\Data\**" />
+    <Compile Remove="View\Dialogs\**" />
+    <EmbeddedResource Remove="View\Dialogs\**" />
+    <None Remove="View\Dialogs\**" />
+    <Page Remove="View\Dialogs\**" />
   </ItemGroup>
+
 
 </Project>

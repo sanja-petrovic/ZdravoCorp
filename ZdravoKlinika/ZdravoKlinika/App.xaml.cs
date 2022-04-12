@@ -13,5 +13,10 @@ namespace ZdravoKlinika
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+        }
     }
+
+    
 }
