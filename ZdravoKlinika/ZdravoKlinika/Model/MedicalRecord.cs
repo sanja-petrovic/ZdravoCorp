@@ -18,6 +18,8 @@ public class MedicalRecord
         this.allergies = allergies;
     }
 
+    public MedicalRecord() { }
+
     public String Patient { get => patientId; set => patientId = value; }
     public List<string> Diagnoses { get => diagnoses; set => diagnoses = value; }
     public List<string> Allergies { get => allergies; set => allergies = value; }
