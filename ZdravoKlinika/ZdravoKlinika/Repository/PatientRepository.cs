@@ -23,8 +23,7 @@ public class PatientRepository
             }
         }
     }
-    public PatientRepository()
-    {
+    public PatientRepository() {
         // init
         patientsDataHandler = new PatientDataHandler();
         this.patients = patientsDataHandler.Read();
@@ -39,9 +38,9 @@ public class PatientRepository
 
     public Patient? GetById(String id)
     {
-        foreach (Patient patient in this.patients)
+        foreach (Patient patient in this.patients) 
         {
-            if (patient.PersonalId.Equals(id))
+            if (patient.PersonalId.Equals(id)) 
             {
                 return patient;
             }
@@ -55,6 +54,14 @@ public class PatientRepository
             return;
         if (this.patients == null)
             this.patients = new List<Patient>();
+
+        foreach (Patient pat in patients)
+        {
+            if (pat.PersonalId == patient.PersonalId)
+            {
+                return;
+            }
+        }
 
         this.patients.Add(patient);
         PatientsDataHandler.Write(patients);
