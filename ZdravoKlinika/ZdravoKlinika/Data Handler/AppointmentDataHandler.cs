@@ -5,14 +5,9 @@ using System.Text.Json;
 
 public class AppointmentDataHandler
 {
-    private string fileLocation;
+    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Repository" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "appointment.json";
 
     public string FileLocation { get => fileLocation; set => fileLocation = value; }
-
-    public AppointmentDataHandler(string fileLocation)
-    {
-        this.fileLocation = fileLocation;
-    }
 
     public void Write(List<Appointment> appointments)
     {
