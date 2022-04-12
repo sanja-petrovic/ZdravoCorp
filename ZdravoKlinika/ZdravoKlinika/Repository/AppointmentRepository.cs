@@ -66,9 +66,12 @@ public class AppointmentRepository
 
     public Appointment GetAppointmentById(int id)
     {
+
+        this.appointments = this.appointmentDataHandler.Read();
+
         foreach(Appointment appointment in this.appointments)
         {
-            if(appointment.AppointmentId.Equals(id))
+            if(appointment.AppointmentId == id)
             {
                 return appointment;
             }
@@ -112,12 +115,14 @@ public class AppointmentRepository
 
     public void DeleteAppointment(Appointment appointment)
     {
-        if (appointment == null)
+        /*if (appointment == null)
             return;
         if (this.appointments != null)
-            if (this.appointments.Contains(appointment))
-                this.appointments.Remove(appointment);
+            if (this.appointments.Find(appointment))
+                this.appointments.Remove(appointment);*/
 
+        var a = this.appointments.Find(x => x.AppointmentId == appointment.AppointmentId);
+        this.appointments.Remove(a);
         appointmentDataHandler.Write(appointments);
     }
 

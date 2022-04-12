@@ -1,41 +1,54 @@
 [
   {
     "Prescriptions": [],
-    "AppointmentId": 1,
+    "AppointmentId": 5,
+    "DateAndTime": "2022-03-30T09:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": 1,
+    "Emergency": false,
+    "Duration": 14,
+    "DoctorId": "D1",
+    "PatientId": "1211000123456",
+    "RoomId": "314"
+  },
+  {
+    "Prescriptions": [],
+    "AppointmentId": 6,
     "DateAndTime": "2022-04-14T09:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
-    "Type": 0,
+    "Type": 1,
     "Emergency": false,
-    "Duration": 100,
+    "Duration": 5,
     "DoctorId": "D1",
     "PatientId": "1211000123456",
     "RoomId": "227"
   },
   {
     "Prescriptions": [],
-    "AppointmentId": 2,
-    "DateAndTime": "2022-04-22T09:00:00",
+    "AppointmentId": 7,
+    "DateAndTime": "2022-04-14T10:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": 0,
     "Emergency": false,
-    "Duration": 100,
+    "Duration": 6,
     "DoctorId": "D1",
-    "PatientId": "1010001123456",
-    "RoomId": "314"
+    "PatientId": "0101001123456",
+    "RoomId": "227"
   },
   {
     "Prescriptions": [],
-    "AppointmentId": 3,
-    "DateAndTime": "2022-08-17T00:00:00",
+    "AppointmentId": 8,
+    "DateAndTime": "2022-04-16T08:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": 1,
     "Emergency": false,
-    "Duration": 30,
+    "Duration": 342,
     "DoctorId": "D1",
-    "PatientId": "5",
+    "PatientId": "1211000123456",
     "RoomId": "314"
   }
 ]

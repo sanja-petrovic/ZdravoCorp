@@ -13,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-namespace ZdravoKlinika
+namespace ZdravoKlinika.View
 {
     public partial class DoctorWindow : Window
     {
@@ -61,7 +61,6 @@ namespace ZdravoKlinika
         {
             Appointment selected = dataGridDoctorsAppointments.SelectedItem as Appointment;
             this.appointmentController.DeleteAppointment(selected.AppointmentId);
-
             refresh();
         }
 

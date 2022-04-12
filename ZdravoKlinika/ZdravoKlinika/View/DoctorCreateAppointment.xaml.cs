@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ZdravoKlinika
+namespace ZdravoKlinika.View
 {
     public partial class DoctorCreateAppointment : Window
     {

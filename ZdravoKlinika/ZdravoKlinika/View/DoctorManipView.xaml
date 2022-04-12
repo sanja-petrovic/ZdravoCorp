@@ -1,9 +1,9 @@
-﻿<Window x:Class="ZdravoKlinika.DoctorManipView"
+﻿<Window x:Class="ZdravoKlinika.View.DoctorManipView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKlinika"
+        xmlns:local="clr-namespace:ZdravoKlinika.View"
         mc:Ignorable="d"
         Title="DoctorManipView" Height="700" Width="800">
     <Grid>

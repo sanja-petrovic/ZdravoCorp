@@ -11,5 +11,6 @@
         <Button x:Name="patientButton" Content="Pacijent" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" Height="57" Width="224" FontSize="20" Click="patientButton_Click"/>
         <Button x:Name="managerButton" Content="Upravnik" HorizontalAlignment="Center" Margin="0,305,0,0" VerticalAlignment="Top" Height="57" Width="224" FontSize="20" Click="Upravnik_Click"/>
         <Button x:Name="secretaryButton" Content="Sekretar" HorizontalAlignment="Center" Margin="0,411,0,0" VerticalAlignment="Top" Height="57" Width="224" FontSize="20" FontWeight="Normal" Effect="{Binding BorderThickness, ElementName=secretaryButton}" Click="secretaryButton_Click"/>
+        <Button Content="Upravljanje lekarima" HorizontalAlignment="Left" Margin="593,500,0,0" VerticalAlignment="Top" Height="30" Width="157" Click="Doctor_Management_Click" FontSize="16"/>
     </Grid>
 </Window>

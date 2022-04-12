@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ZdravoKlinika
+namespace ZdravoKlinika.View
 {
     /// <summary>
     /// Interaction logic for EditWindow.xaml

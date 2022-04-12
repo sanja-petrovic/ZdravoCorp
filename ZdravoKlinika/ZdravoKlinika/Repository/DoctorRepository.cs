@@ -48,14 +48,6 @@ public class DoctorRepository
         {
             throw new Exception();
         }
-        //var help = doctors.Remove(doctor);
-        /*foreach (Doctor d in doctors)
-        {
-            if (doctor.PersonalId.Equals(d.PersonalId))
-            {
-                doctors.Remove(d);
-            }
-        }*/
         var d = doctors.Find(x => x.PersonalId.Equals(doctor.PersonalId));
         doctors.Remove(d);
         doctorDataHandler.Write(doctors);

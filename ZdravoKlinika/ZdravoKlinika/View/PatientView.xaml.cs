@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ZdravoKlinika
+namespace ZdravoKlinika.View
 {
     /// <summary>
     /// Interaction logic for PatientView.xaml
@@ -61,8 +61,8 @@ namespace ZdravoKlinika
         {
             controller.EditAppointment(
                     Int32.Parse(appointmentIdTextBox.Text),
-                    "5",
                     doctorIdTextBox.Text,
+                    "5",
                     (DateTime)datePicker.SelectedDate,
                     false,
                     AppointmentType.Regular,

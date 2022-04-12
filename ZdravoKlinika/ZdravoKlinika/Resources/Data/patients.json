@@ -1,10 +1,10 @@
 [
   {
-    "ParentName": "Mara",
+    "ParentName": "jksfh",
     "BloodType": 0,
-    "Occupation": "Kuvar",
-    "EmergencyContactName": "Mara",
-    "EmergencyContactPhone": "321321321",
+    "Occupation": "jsdfh",
+    "EmergencyContactName": "fjkh",
+    "EmergencyContactPhone": "dsfkjh",
     "MedicalRecord": {
       "Patient": "13",
       "Diagnoses": [
@@ -21,14 +21,14 @@
     },
     "UserType": 2,
     "PersonalId": "13",
-    "Name": "Marko",
-    "Lastname": "Markovic",
+    "Name": "Pera",
+    "Lastname": "Peric",
     "DateOfBirth": "1999-07-30T00:00:00",
     "Gender": 1,
-    "Phone": "123123123",
-    "Email": "marko.mark@zdravo.org",
-    "Password": "password",
-    "ProfilePicture": "Resources/Picture",
+    "Phone": "32738",
+    "Email": "432897",
+    "Password": "sfjkds",
+    "ProfilePicture": "FSHK",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": {
       "Street": "A",
