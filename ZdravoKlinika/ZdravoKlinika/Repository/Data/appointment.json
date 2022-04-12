@@ -1,0 +1,41 @@
+[
+  {
+    "Prescriptions": [],
+    "AppointmentId": 1,
+    "DateAndTime": "2022-04-14T09:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": 0,
+    "Emergency": false,
+    "Duration": 100,
+    "DoctorId": "D1",
+    "PatientId": "1211000123456",
+    "RoomId": "227"
+  },
+  {
+    "Prescriptions": [],
+    "AppointmentId": 2,
+    "DateAndTime": "2022-04-22T09:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": 0,
+    "Emergency": false,
+    "Duration": 100,
+    "DoctorId": "D1",
+    "PatientId": "1010001123456",
+    "RoomId": "314"
+  },
+  {
+    "Prescriptions": [],
+    "AppointmentId": 3,
+    "DateAndTime": "2022-08-17T00:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": 1,
+    "Emergency": false,
+    "Duration": 30,
+    "DoctorId": "D1",
+    "PatientId": "5",
+    "RoomId": "314"
+  }
+]

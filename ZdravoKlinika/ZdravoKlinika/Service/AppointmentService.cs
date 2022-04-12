@@ -1,44 +1,70 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 public class AppointmentService
 {
     private AppointmentRepository appointmentRepository;
 
+    public AppointmentService()
+    {
+        this.AppointmentRepository = new AppointmentRepository();
+    }
+ 
     public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
 
     public List<Appointment> GetAll()
     {
-        throw new NotImplementedException();
+        return this.appointmentRepository.GetAll();
     }
 
-    public Appointment GetAppointmentById(String id)
+    public Appointment GetAppointmentById(int id)
     {
-        throw new NotImplementedException();
+        return this.appointmentRepository.GetAppointmentById(id);
     }
 
     public List<Appointment> GetAppointmentsByPatientId(String id)
     {
-        throw new NotImplementedException();
+        return this.appointmentRepository.GetAppointmentsByPatient(id);
     }
 
     public List<Appointment> GetAppointmentsByDoctorId(String id)
     {
-        throw new NotImplementedException();
+        return this.appointmentRepository.GetAppointmentsByPatient(id);
+    }
+    
+    public Appointment CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    {
+        List<Appointment> appointments = this.AppointmentRepository.GetAll();
+        int newAppointmentId;
+        if(appointments.Count > 0)
+        {
+            newAppointmentId = appointments.Last().AppointmentId + 1;
+        } else
+        {
+            newAppointmentId = 1;
+        }
+        Appointment appointment = new Appointment(newAppointmentId, doctorId, patientId, roomId, duration, emergency, type, dateAndTime);
+        this.appointmentRepository.CreateAppointment(appointment);
+
+        return appointment;
     }
 
-    public void CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public void DeleteAppointment(int id)
     {
-        throw new NotImplementedException();
+        Appointment appointment = appointmentRepository.GetAppointmentById(id);
+        this.appointmentRepository.DeleteAppointment(appointment);
     }
 
-    public void DeleteAppointment(String id)
+    public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        throw new NotImplementedException();
-    }
+        Appointment appointment = this.appointmentRepository.GetAppointmentById(appointmentId);
+        appointment.DateAndTime = dateAndTime;
+        appointment.RoomId = roomId;
+        appointment.PatientId = patientId;
+        appointment.DoctorId = doctorId;
+        appointment.Emergency = emergency;
+        this.appointmentRepository.EditAppointment(appointment);
 
-    public void EditAppointment(String apointmentId, DateTime dateTime, String roomId, String patientId, String doctorId, List<String> diagnosis, String doctorsNotes)
-    {
-        throw new NotImplementedException();
     }
 
 }

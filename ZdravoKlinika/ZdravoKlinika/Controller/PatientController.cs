@@ -6,8 +6,9 @@ public class PatientController
     private PatientService patientService;
 
     public PatientService PatientService { get => patientService; set => patientService = value; }
-
-    public PatientController() { 
+  
+    public PatientController()
+    {
         this.patientService = new PatientService();
     }
 
@@ -25,6 +26,7 @@ public class PatientController
     {
         Console.WriteLine("cont");
         patientService.CreatePatient(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, parentName, bloodType, occupation, emergencyContactName, emergencyContactPhone, alergies, diagnosis);
+
     }
 
     public void UpdatePatient(String personalId, String name, String lastname, String phone, String email, String password, String profilePicture, String parentName, String occupation, String emergencyContactName, String emergencyContactPhone)
