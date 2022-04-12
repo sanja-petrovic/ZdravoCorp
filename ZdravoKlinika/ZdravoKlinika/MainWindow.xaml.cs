@@ -28,11 +28,6 @@ namespace ZdravoKlinika
             doctorWindow.Show();
         }
 
-        private void managerButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void secretaryButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -53,6 +48,10 @@ namespace ZdravoKlinika
         private void patientText_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        private void Upravnik_Click(object sender, RoutedEventArgs e)
+        {
+            UpravnikWindow upravnikWindow = new UpravnikWindow();
+            upravnikWindow.Show();
         }
     }
 }

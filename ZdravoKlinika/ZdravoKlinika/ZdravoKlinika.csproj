@@ -15,8 +15,5 @@
     <Page Remove="View\Dialogs\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="View\" />
-  </ItemGroup>
 
 </Project>

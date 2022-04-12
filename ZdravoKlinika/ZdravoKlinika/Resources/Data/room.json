@@ -1,0 +1,92 @@
+[
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "1",
+    "Type": 1,
+    "Name": "R1",
+    "Level": 2,
+    "Number": 16,
+    "Status": 1
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "2",
+    "Type": 0,
+    "Name": "R2",
+    "Level": 1,
+    "Number": 5,
+    "Status": 0
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "3",
+    "Type": 1,
+    "Name": "R3",
+    "Level": 2,
+    "Number": 3,
+    "Status": 1
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "4",
+    "Type": 2,
+    "Name": "R4",
+    "Level": 1,
+    "Number": 8,
+    "Status": 2
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "5",
+    "Type": 2,
+    "Name": "R5",
+    "Level": 1,
+    "Number": 11,
+    "Status": 0
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "6",
+    "Type": 2,
+    "Name": "R6",
+    "Level": 2,
+    "Number": 10,
+    "Status": 2
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "7",
+    "Type": 1,
+    "Name": "R7",
+    "Level": 2,
+    "Number": 2,
+    "Status": 1
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "8",
+    "Type": 0,
+    "Name": "R8",
+    "Level": 1,
+    "Number": 1,
+    "Status": 2
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "9",
+    "Type": 1,
+    "Name": "R9",
+    "Level": 1,
+    "Number": 13,
+    "Status": 1
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "10",
+    "Type": 1,
+    "Name": "R10",
+    "Level": 1,
+    "Number": 23,
+    "Status": 2
+  }
+]
