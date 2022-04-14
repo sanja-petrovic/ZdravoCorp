@@ -40,7 +40,7 @@ namespace ZdravoKlinika.View
             if (selectedDate.HasValue)
             {
                 string formatted = selectedDate.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                dateTime = DateTime.Parse(formatted);
+                //dateTime = DateTime.Parse(formatted);
                 dateTime = new DateTime(
                     selectedDate.Value.Year,
                     selectedDate.Value.Month,
