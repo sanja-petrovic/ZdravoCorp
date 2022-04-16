@@ -24,5 +24,10 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
