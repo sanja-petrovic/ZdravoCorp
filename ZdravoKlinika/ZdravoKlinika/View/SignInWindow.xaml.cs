@@ -40,6 +40,7 @@ namespace ZdravoKlinika.View
             {
                 UsernameTB.Clear();
                 clicked = true;
+                UsernameTB.Foreground = Brushes.Black;
             }
         }
 

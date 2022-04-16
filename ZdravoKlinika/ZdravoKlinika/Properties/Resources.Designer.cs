@@ -123,6 +123,56 @@ namespace ZdravoKlinika.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] PlayfairDisplay_Black {
+            get {
+                object obj = ResourceManager.GetObject("PlayfairDisplay-Black", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PlayfairDisplay_Bold {
+            get {
+                object obj = ResourceManager.GetObject("PlayfairDisplay-Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PlayfairDisplay_ExtraBold {
+            get {
+                object obj = ResourceManager.GetObject("PlayfairDisplay-ExtraBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PlayfairDisplay_Medium {
+            get {
+                object obj = ResourceManager.GetObject("PlayfairDisplay-Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PlayfairDisplay_Regular {
+            get {
+                object obj = ResourceManager.GetObject("PlayfairDisplay-Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] undraw_medicine_b1ol {
             get {
                 object obj = ResourceManager.GetObject("undraw_medicine_b1ol", resourceCulture);
