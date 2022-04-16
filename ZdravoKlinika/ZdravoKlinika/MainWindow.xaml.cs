@@ -24,9 +24,6 @@ namespace ZdravoKlinika
 
         private void Doctor_Click(object sender, RoutedEventArgs e)
         {
-            /*View.DoctorWindow doctorWindow = new View.DoctorWindow();
-            doctorWindow.Show();*/
-            View.DoctorScheduleView doctorScheduleView = new View.DoctorScheduleView();
         }
 
         private void secretaryButton_Click(object sender, RoutedEventArgs e)

@@ -63,6 +63,26 @@ namespace ZdravoKlinika.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] _2767146 {
+            get {
+                object obj = ResourceManager.GetObject("2767146", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] _2767194 {
+            get {
+                object obj = ResourceManager.GetObject("2767194", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Lato_Regular {
             get {
                 object obj = ResourceManager.GetObject("Lato-Regular", resourceCulture);
@@ -96,6 +116,16 @@ namespace ZdravoKlinika.Properties {
         internal static byte[] password {
             get {
                 object obj = ResourceManager.GetObject("password", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] undraw_medicine_b1ol {
+            get {
+                object obj = ResourceManager.GetObject("undraw_medicine_b1ol", resourceCulture);
                 return ((byte[])(obj));
             }
         }

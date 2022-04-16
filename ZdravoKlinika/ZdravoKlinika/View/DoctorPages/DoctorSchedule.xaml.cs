@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZdravoKlinika.View
+namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
-    /// Interaction logic for DoctorScheduleView.xaml
+    /// Interaction logic for DoctorSchedule.xaml
     /// </summary>
-    public partial class DoctorScheduleView : UserControl
+    public partial class DoctorSchedule : Page
     {
-        public DoctorScheduleView()
+        public DoctorSchedule()
         {
             InitializeComponent();
         }
