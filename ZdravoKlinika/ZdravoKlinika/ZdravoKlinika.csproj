@@ -9,17 +9,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="undraw_medicine_b1ol.png" />
+    <None Remove="Resources\Images\2767146.png" />
+    <None Remove="Resources\Images\2767194.png" />
+    <None Remove="Resources\Images\hide.png" />
+    <None Remove="Resources\Images\show.png" />
+    <None Remove="Resources\Images\undraw_medicine_b1ol.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\hide.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\2767146.png" />
+    <Resource Include="Resources\Images\2767194.png" />
+    <Resource Include="Resources\Images\show.png" />
+    <Resource Include="Resources\Images\undraw_medicine_b1ol.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="View\Model\" />
     <Folder Include="View\Converter\" />
     <Folder Include="View\Dialogs\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="undraw_medicine_b1ol.png" />
   </ItemGroup>
 
 	<ItemGroup>
