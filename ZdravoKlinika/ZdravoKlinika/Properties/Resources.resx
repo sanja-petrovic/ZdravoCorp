@@ -136,6 +136,21 @@
   <data name="password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fonts\password.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="PlayfairDisplay-Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\PlayfairDisplay-Black.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlayfairDisplay-Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\PlayfairDisplay-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlayfairDisplay-ExtraBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\PlayfairDisplay-ExtraBold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlayfairDisplay-Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\PlayfairDisplay-Medium.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlayfairDisplay-Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\PlayfairDisplay-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="undraw_medicine_b1ol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\undraw_medicine_b1ol.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

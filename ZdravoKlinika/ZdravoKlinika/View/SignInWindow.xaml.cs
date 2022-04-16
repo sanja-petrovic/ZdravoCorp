@@ -40,6 +40,7 @@ namespace ZdravoKlinika.View
             {
                 UsernameTB.Clear();
                 clicked = true;
+                UsernameTB.Foreground = Brushes.Black;
             }
         }
 
@@ -56,6 +57,12 @@ namespace ZdravoKlinika.View
                 PasswordViewControl.Source = new BitmapImage(new Uri(@"/Resources/Images/show.png", UriKind.RelativeOrAbsolute));
                 show = false;
             }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            //https://stackoverflow.com/questions/40529684/how-to-store-login-info-of-a-wpf-application
+            //https://stackoverflow.com/questions/33294471/proper-way-to-save-previous-user-login-info
         }
     }
 }

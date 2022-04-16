@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:ZdravoKlinika"
              StartupUri="View/SignInWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+
+            <Style x:Key="FontTB" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Open Sans" />
+            </Style>
+            <Style x:Key="FontLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="Open Sans" />
+            </Style>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
