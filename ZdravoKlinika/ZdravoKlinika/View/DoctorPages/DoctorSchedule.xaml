@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
       xml:lang="sr-Latn-RS" 
-      mc:Ignorable="d"  Background="#FFF3F2F2" Width="1024" Height="768">
+      mc:Ignorable="d"  Background="#FFF3F2F2" Width="1024" Height="768" Cursor="Arrow">
     <Page.Resources>
 
         <Style x:Key="CalendarCalendarItemStyle1" TargetType="{x:Type CalendarItem}">
@@ -400,6 +400,7 @@
         <SolidColorBrush x:Key="TabItem.Selected.Border" Color="Transparent"/>
         <Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
             <Setter Property="Padding" Value="2"/>
+            <Setter Property="Cursor" Value="Arrow"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Background" Value="{StaticResource TabItem.Selected.Background}"/>
@@ -527,6 +528,7 @@
         <SolidColorBrush x:Key="TabItem.Disabled.Border" Color="#D9D9D9"/>
         <Style x:Key="TabItemStyle1" TargetType="{x:Type TabItem}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Background" Value="{StaticResource TabItem.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource TabItem.Static.Border}"/>
@@ -801,19 +803,18 @@
                 <ImageBrush ImageSource="\Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" Stretch="Fill"></ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <Label Content="Dr {Doktor}" HorizontalAlignment="Left" Margin="72,58,0,0" VerticalAlignment="Top" FontFamily="Open Sans" FontWeight="DemiBold" FontSize="18"/>
-        <Label Content="{}{Title}" Margin="72,82,890,662" Foreground="#FF5F5F5F"/>
+        <!--<TextBlock Text="{Binding DoctorsName}" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="72,58,0,0" VerticalAlignment="Top" FontFamily="Open Sans" FontWeight="DemiBold" FontSize="18" Width="156"/>
+        <TextBlock Text="{Binding DoctorsTitle}" Margin="72,82,804,643" Foreground="#FF5F5F5F"/>-->
+        <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="78,60,0,643" Width="153">
+            <Run  FontFamily="Open Sans" FontWeight="DemiBold" FontSize="16" Text="{Binding DoctorsName}" /> <LineBreak></LineBreak>
+            <Run Text="{Binding DoctorsTitle}"/>
+        </TextBlock>
         <Viewbox Stretch="Uniform" Margin="289,111,359,151">
-            <Calendar Style="{DynamicResource CalendarStyle1}" CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}"/>
+            <Calendar SelectedDatesChanged="CalendarSelectionChanged" Name="Cal" Style="{DynamicResource CalendarStyle1}" CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}"/>
         </Viewbox>
         <Label Content="Mesečni raspored" Margin="285,154,341,554" FontSize="30" FontWeight="SemiBold" FontFamily="OpenSans-Regular"/>
-        <TabControl Style="{DynamicResource TabControlStyle1}" Margin="688,167,57,237">
-            <TabItem Style="{DynamicResource TabItemStyle1}" Header="TabItem">
-                <Grid Background="White" Margin="0,4,4,3"/>
-            </TabItem>
-            <TabItem Header="TabItem" Style="{DynamicResource TabItemStyle1}" Margin="-2,-2,-2,0" >
-                <Grid Background="White" Margin="3,4,3,3"/>
-            </TabItem>
+        <TabControl ItemsSource="{Binding Times}" Name="Tabs" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyle1}" Margin="688,167,57,237">
+            
         </TabControl>
         <Button Style="{StaticResource ResourceKey=fancyButtonStyle2}" OverridesDefaultStyle="False" Focusable="False" Content="Podnesite zahtev za slobodan dan" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="428,542,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Background="White" Click="Button_Click" Padding="7" Width="237" Height="33">
             <Button.Resources>

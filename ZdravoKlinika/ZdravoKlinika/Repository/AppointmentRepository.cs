@@ -96,9 +96,10 @@ public class AppointmentRepository
     public List<Appointment> GetAppointmentsByDoctor(String doctorId)
     {
         List<Appointment> doctorsAppointments = new List<Appointment>();
+        this.appointments = this.appointmentDataHandler.Read();
         foreach (Appointment appointment in this.appointments)
         {
-            if (appointment.DoctorId.Equals(doctorId))
+            if (appointment.DoctorId == doctorId)
             {
                 doctorsAppointments.Add(appointment);
             }
@@ -117,9 +118,13 @@ public class AppointmentRepository
     {
         /*if (appointment == null)
             return;
-        if (this.appointments != null)
-            if (this.appointments.Find(appointment))
-                this.appointments.Remove(appointment);*/
+        if (this.appointments != null) 
+        {
+            if (this.appointments.Find(appointment)) 
+            {
+                this.appointments.Remove(appointment)
+            }
+        };*/
 
         var a = this.appointments.Find(x => x.AppointmentId == appointment.AppointmentId);
         this.appointments.Remove(a);

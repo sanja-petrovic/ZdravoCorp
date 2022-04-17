@@ -4,7 +4,7 @@ using System;
 public class Doctor : Employee
 {
     private String specialty;
-    private String education;
+    //private String education;
 
     public Doctor()
     {
@@ -12,7 +12,7 @@ public class Doctor : Employee
     }
 
     public string Specialty { get => specialty; set => specialty = value; }
-    public string Education { get => education; set => education = value; }
+    //public string Education { get => education; set => education = value; }
 
     public bool IsSpecialist()
     {

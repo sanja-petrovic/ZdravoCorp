@@ -8,20 +8,20 @@
     "Type": 1,
     "Emergency": false,
     "Duration": 14,
-    "DoctorId": "D1",
+    "DoctorId": "456",
     "PatientId": "1211000123456",
     "RoomId": "314"
   },
   {
     "Prescriptions": [],
     "AppointmentId": 6,
-    "DateAndTime": "2022-04-14T09:00:00",
+    "DateAndTime": "2022-04-17T10:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": 1,
     "Emergency": false,
     "Duration": 5,
-    "DoctorId": "D1",
+    "DoctorId": "456",
     "PatientId": "1211000123456",
     "RoomId": "227"
   },
@@ -34,20 +34,20 @@
     "Type": 0,
     "Emergency": false,
     "Duration": 6,
-    "DoctorId": "D1",
+    "DoctorId": "456",
     "PatientId": "0101001123456",
     "RoomId": "227"
   },
   {
     "Prescriptions": [],
     "AppointmentId": 8,
-    "DateAndTime": "2022-04-28T10:00:00",
+    "DateAndTime": "2022-04-17T11:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": 1,
     "Emergency": false,
     "Duration": 342,
-    "DoctorId": "D1",
+    "DoctorId": "456",
     "PatientId": "1211000123456",
     "RoomId": "314"
   }

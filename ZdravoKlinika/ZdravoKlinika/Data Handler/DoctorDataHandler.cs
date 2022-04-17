@@ -11,9 +11,9 @@ using System.Text.Json;
 public class DoctorDataHandler
 {
    
-   private String fileLocation = Directory.GetCurrentDirectory()+ Path.PathSeparator + "doctors.json";
-   
-   public void Write(List<Doctor> doctors)
+   private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "doctors.json";
+
+    public void Write(List<Doctor> doctors)
    {
         var options = new JsonSerializerOptions()
         {

@@ -51,7 +51,7 @@
                                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                                 <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
                                 <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Specialty}"/>
-                                <DataGridTextColumn Header="Education" Binding="{Binding Education}"/>
+                                <DataGridTextColumn Header="Education" Binding="{Binding EducationLevel}"/>
                                 
                             </DataGrid.Columns>
                         </DataGrid>

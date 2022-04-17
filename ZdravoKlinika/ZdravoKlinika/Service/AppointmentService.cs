@@ -29,7 +29,7 @@ public class AppointmentService
 
     public List<Appointment> GetAppointmentsByDoctorId(String id)
     {
-        return this.appointmentRepository.GetAppointmentsByPatient(id);
+        return this.appointmentRepository.GetAppointmentsByDoctor(id);
     }
     
     public Appointment CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
