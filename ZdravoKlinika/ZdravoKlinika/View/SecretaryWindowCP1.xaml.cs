@@ -19,11 +19,11 @@ namespace ZdravoKlinika.View
     /// </summary>
     public partial class SecretaryWindowCP1 : Window
     {
-        private PatientController PatientController;
+        private RegisteredPatientController PatientController;
         public SecretaryWindowCP1()
         {
             InitializeComponent();
-            PatientController = new PatientController();
+            PatientController = new RegisteredPatientController();
             ReadAll();
         }
 

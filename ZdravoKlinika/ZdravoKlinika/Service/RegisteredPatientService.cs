@@ -2,16 +2,16 @@
 using System;
 using System.Collections.Generic;
 
-public class PatientService
+public class RegisteredPatientService
 {
-    private PatientRepository patientRepository;
+    private RegisteredPatientRepository patientRepository;
 
-    public PatientRepository PatientRepository { get => patientRepository; set => patientRepository = value; }
+    public RegisteredPatientRepository PatientRepository { get => patientRepository; set => patientRepository = value; }
 
 
-    public PatientService() { 
+    public RegisteredPatientService() { 
         // init
-        this.patientRepository = new PatientRepository();
+        this.patientRepository = new RegisteredPatientRepository();
     }
 
     public List<RegisteredPatient> GetAll()
