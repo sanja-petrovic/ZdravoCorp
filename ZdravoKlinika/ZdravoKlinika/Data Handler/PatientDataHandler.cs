@@ -6,7 +6,8 @@ using System.Text.Json.Serialization;
 
 public class PatientDataHandler
 {
-    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources"+ Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "patients.json";
+    private static String fileName = "doctors.json";
+    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
 
     public string FileLocation { get => fileLocation; set => fileLocation = value; }
 
