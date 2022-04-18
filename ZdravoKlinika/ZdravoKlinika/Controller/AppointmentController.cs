@@ -30,6 +30,16 @@ public class AppointmentController
         return this.appointmentService.GetAppointmentsByDoctorId(id);
     }
 
+    public Appointment GetAppointmentByDoctorDateTime(String doctorId, DateTime dateTime)
+    {
+        return this.appointmentService.GetAppointmentByDoctorDateTime(doctorId, dateTime);
+    }
+
+    public List<Appointment> GetAppointmentsByDoctorDate(String doctorId, DateTime dateTime)
+    {
+        return this.appointmentService.GetAppointmentsByDoctorDate(doctorId, dateTime);
+    }
+
     public Appointment CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         return this.appointmentService.CreateAppointment(doctorId, patientId, dateAndTime, emergency, type, roomId, duration);

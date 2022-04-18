@@ -108,6 +108,41 @@ public class AppointmentRepository
         return doctorsAppointments;
     }
 
+    public Appointment GetAppointmentByDoctorDateTime(String doctorId, DateTime dateTime)
+    {
+        List<Appointment> appointmentsByDoctor = GetAppointmentsByDoctor(doctorId);
+        if(appointmentsByDoctor.Count != 0)
+        {
+            foreach(Appointment appointment in appointmentsByDoctor)
+            {
+                if(appointment.DateAndTime == dateTime)
+                {
+                    return appointment;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public List<Appointment> GetAppointmentsByDoctorDate(String doctorId, DateTime dateTime)
+    {
+        List<Appointment> appointmentsByDoctor = GetAppointmentsByDoctor(doctorId);
+        List<Appointment> appointments = new List<Appointment>();
+
+        if(appointmentsByDoctor.Count > 0)
+        {
+            foreach(Appointment appointment in appointmentsByDoctor)
+            {
+                if(appointment.DateAndTime.Date.Equals(dateTime.Date))
+                {
+                    appointments.Add(appointment);
+                }
+            }
+        }
+
+        return appointments;
+    }
     public void CreateAppointment(Appointment appointment)
     {
         this.appointments.Add(appointment);
