@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using ZdravoKlinika.Repository;
 
-public class PatientRepository
+public class RegisteredPatientRepository
 {
-    private PatientDataHandler patientsDataHandler;
+    private RegisteredPatientDataHandler patientsDataHandler;
     private MedicalRecordRepository medicalRecordRepository;
     private List<RegisteredPatient> patients;
     public List<RegisteredPatient> Patient
@@ -25,9 +25,9 @@ public class PatientRepository
             }
         }
     }
-    public PatientRepository() {
+    public RegisteredPatientRepository() {
         // init
-        patientsDataHandler = new PatientDataHandler();
+        patientsDataHandler = new RegisteredPatientDataHandler();
         this.patients = patientsDataHandler.Read();
         updateReferences();
     }
@@ -41,7 +41,7 @@ public class PatientRepository
         }
     }
 
-    public PatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
+    public RegisteredPatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
 
     public List<RegisteredPatient> GetAll()
     {
