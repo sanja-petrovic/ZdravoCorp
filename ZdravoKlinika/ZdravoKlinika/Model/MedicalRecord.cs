@@ -21,9 +21,11 @@ public class MedicalRecord
     public List<string> Diagnoses { get => diagnoses; set => diagnoses = value; }
     public List<string> Allergies { get => allergies; set => allergies = value; }
 
-    public static MedicalRecord Parse(String patientId)
+    public static MedicalRecord Parse(String id)
     {
-        return new MedicalRecord(patientId, new List<String>(), new List<String>());
+        MedicalRecord medicalRecord = new MedicalRecord();
+        medicalRecord.MedicalRecordId = id;
+        return medicalRecord;
     }
 
     public List<Medication> CurrentMedication
