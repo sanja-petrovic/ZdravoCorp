@@ -12,12 +12,12 @@ public class PatientController
         this.patientService = new PatientService();
     }
 
-    public List<Patient> GetAll()
+    public List<RegisteredPatient> GetAll()
     {
         return  patientService.GetAll();
     }
 
-    public Patient GetById(String id)
+    public RegisteredPatient GetById(String id)
     {
         return patientService.GetById(id);
     }

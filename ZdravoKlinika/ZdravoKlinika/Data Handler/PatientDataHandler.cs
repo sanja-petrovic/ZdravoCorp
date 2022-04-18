@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class PatientDataHandler
 {
@@ -9,19 +10,25 @@ public class PatientDataHandler
 
     public string FileLocation { get => fileLocation; set => fileLocation = value; }
 
-    public void Write(List<Patient> patients)
+    public void Write(List<RegisteredPatient> patients)
     {
-    
+        
+
         JsonSerializerOptions options = new JsonSerializerOptions();
         options.WriteIndented = true;
+        options.Converters.Add(new MedicalRecordConverter());
+        options.Converters.Add(new JsonStringEnumConverter());
         var json = JsonSerializer.Serialize(patients, options);
         File.WriteAllText(fileLocation, json);
 
     }
 
-    public List<Patient> Read()
+    public List<RegisteredPatient> Read()
     {
-        return JsonSerializer.Deserialize<List<Patient>>(File.ReadAllText(fileLocation));
+        JsonSerializerOptions options = new JsonSerializerOptions();
+        options.Converters.Add(new MedicalRecordConverter());
+        options.Converters.Add(new JsonStringEnumConverter());
+        return JsonSerializer.Deserialize<List<RegisteredPatient>>(File.ReadAllText(fileLocation),options);
     }
 
 }

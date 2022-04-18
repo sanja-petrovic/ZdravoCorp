@@ -60,7 +60,7 @@ namespace ZdravoKlinika.View
 
         private void ReadAll()
         {
-            List<Patient> patients = PatientController.GetAll();
+            List<RegisteredPatient> patients = PatientController.GetAll();
             DataGrid.ItemsSource = null;
             DataGrid.ItemsSource = patients;
         }

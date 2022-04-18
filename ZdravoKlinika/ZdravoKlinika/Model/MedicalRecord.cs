@@ -2,29 +2,29 @@ using System;
 using System.Collections.Generic;
 public class MedicalRecord
 {
-    private String patientId;
+    private String medicalRecordId;
     private List<String> diagnoses;
     private List<String> allergies;
-    private List<Appointment> upcomingAppointments;
-    private List<Appointment> pastAppointments;
     private List<Medication> currentMedication;
     private List<Medication> pastMedication;
     private List<Report> reports;
 
     public MedicalRecord(String patient, List<string> diagnoses, List<string> allergies)
     {
-        this.patientId = patient;
+        this.MedicalRecordId = patient;
         this.diagnoses = diagnoses;
         this.allergies = allergies;
     }
 
     public MedicalRecord() { }
 
-    public String Patient { get => patientId; set => patientId = value; }
     public List<string> Diagnoses { get => diagnoses; set => diagnoses = value; }
     public List<string> Allergies { get => allergies; set => allergies = value; }
 
-
+    public static MedicalRecord Parse(String patientId)
+    {
+        return new MedicalRecord(patientId, new List<String>(), new List<String>());
+    }
 
     public List<Medication> CurrentMedication
     {
@@ -127,6 +127,10 @@ public class MedicalRecord
             }
         }
     }
+
+    public string MedicalRecordId { get => MedicalRecordId1; set => MedicalRecordId1 = value; }
+    public string MedicalRecordId1 { get => medicalRecordId; set => medicalRecordId = value; }
+
     public void AddReports(Report newReport)
     {
         if (newReport == null)
@@ -151,93 +155,4 @@ public class MedicalRecord
         if (reports != null)
             reports.Clear();
     }
-
-    public List<Appointment> PastAppointments
-    {
-        get
-        {
-            if (pastAppointments == null)
-                pastAppointments = new List<Appointment>();
-            return pastAppointments;
-        }
-        set
-        {
-            RemoveAllPastAppointments();
-            if (value != null)
-            {
-                foreach (Appointment oAppointment in value)
-                    AddPastAppointments(oAppointment);
-            }
-        }
-    }
-
-    public void AddPastAppointments(Appointment newAppointment)
-    {
-        if (newAppointment == null)
-            return;
-        if (this.pastAppointments == null)
-            this.pastAppointments = new List<Appointment>();
-        if (!this.pastAppointments.Contains(newAppointment))
-            this.pastAppointments.Add(newAppointment);
-    }
-
-    public void RemovePastAppointments(Appointment oldAppointment)
-    {
-        if (oldAppointment == null)
-            return;
-        if (this.pastAppointments != null)
-            if (this.pastAppointments.Contains(oldAppointment))
-                this.pastAppointments.Remove(oldAppointment);
-    }
-
-    public void RemoveAllPastAppointments()
-    {
-        if (pastAppointments != null)
-            pastAppointments.Clear();
-    }
-
-    public List<Appointment> UpcomingAppointments
-    {
-        get
-        {
-            if (upcomingAppointments == null)
-                upcomingAppointments = new List<Appointment>();
-            return upcomingAppointments;
-        }
-        set
-        {
-            RemoveAllUpcomingAppointments();
-            if (value != null)
-            {
-                foreach (Appointment oAppointment in value)
-                    AddUpcomingAppointments(oAppointment);
-            }
-        }
-    }
-
-    public void AddUpcomingAppointments(Appointment newAppointment)
-    {
-        if (newAppointment == null)
-            return;
-        if (this.upcomingAppointments == null)
-            this.upcomingAppointments = new List<Appointment>();
-        if (!this.upcomingAppointments.Contains(newAppointment))
-            this.upcomingAppointments.Add(newAppointment);
-    }
-
-    public void RemoveUpcomingAppointments(Appointment oldAppointment)
-    {
-        if (oldAppointment == null)
-            return;
-        if (this.upcomingAppointments != null)
-            if (this.upcomingAppointments.Contains(oldAppointment))
-                this.upcomingAppointments.Remove(oldAppointment);
-    }
-
-    public void RemoveAllUpcomingAppointments()
-    {
-        if (upcomingAppointments != null)
-            upcomingAppointments.Clear();
-    }
-
 }

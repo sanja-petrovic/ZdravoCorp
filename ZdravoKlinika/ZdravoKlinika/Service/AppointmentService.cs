@@ -43,6 +43,7 @@ public class AppointmentService
         {
             newAppointmentId = 1;
         }
+        //TODO
         Appointment appointment = new Appointment(newAppointmentId, doctorId, patientId, roomId, duration, emergency, type, dateAndTime);
         this.appointmentRepository.CreateAppointment(appointment);
 

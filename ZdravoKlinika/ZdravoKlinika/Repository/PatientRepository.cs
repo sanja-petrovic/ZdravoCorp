@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Repository;
 
 public class PatientRepository
 {
     private PatientDataHandler patientsDataHandler;
-    private List<Patient> patients;
-    public List<Patient> Patient
+    private MedicalRecordRepository medicalRecordRepository;
+    private List<RegisteredPatient> patients;
+    public List<RegisteredPatient> Patient
     {
         get
         {
             if (patients == null)
-                patients = new List<Patient>();
+                patients = new List<RegisteredPatient>();
             return patients;
         }
         set
@@ -18,7 +20,7 @@ public class PatientRepository
             DeleteAllPatients();
             if (value != null)
             {
-                foreach (Patient oPatient in value)
+                foreach (RegisteredPatient oPatient in value)
                     CreatePatient(oPatient);
             }
         }
@@ -27,18 +29,28 @@ public class PatientRepository
         // init
         patientsDataHandler = new PatientDataHandler();
         this.patients = patientsDataHandler.Read();
+        updateReferences();
+    }
+
+    private void updateReferences()
+    {
+        medicalRecordRepository = new MedicalRecordRepository();
+        foreach (RegisteredPatient pat in patients)
+        {
+            pat.MedicalRecord = medicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId); 
+        }
     }
 
     public PatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
 
-    public List<Patient> GetAll()
+    public List<RegisteredPatient> GetAll()
     {
         return patients;
     }
 
-    public Patient? GetById(String id)
+    public RegisteredPatient? GetById(String id)
     {
-        foreach (Patient patient in this.patients) 
+        foreach (RegisteredPatient patient in this.patients) 
         {
             if (patient.PersonalId.Equals(id)) 
             {
@@ -48,14 +60,14 @@ public class PatientRepository
         return null;
     }
 
-    public void CreatePatient(Patient patient)
+    public void CreatePatient(RegisteredPatient patient)
     {
         if (patient == null)
             return;
         if (this.patients == null)
-            this.patients = new List<Patient>();
+            this.patients = new List<RegisteredPatient>();
 
-        foreach (Patient pat in patients)
+        foreach (RegisteredPatient pat in patients)
         {
             if (pat.PersonalId == patient.PersonalId)
             {
@@ -68,7 +80,7 @@ public class PatientRepository
         return;
     }
 
-    public void DeletePatient(Patient patient)
+    public void DeletePatient(RegisteredPatient patient)
     {
         if (patient == null)
             return;
@@ -85,10 +97,10 @@ public class PatientRepository
             patients.Clear();
     }
 
-    public void UpdatePatient(Patient patient)
+    public void UpdatePatient(RegisteredPatient patient)
     {
         int index = -1;
-        foreach (Patient patientObject in this.patients)
+        foreach (RegisteredPatient patientObject in this.patients)
         {
             if (patientObject.PersonalId.Equals(patient.PersonalId))
             {
