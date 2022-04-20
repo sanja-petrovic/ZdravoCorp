@@ -10,10 +10,8 @@ namespace ZdravoKlinika.View.Model
     internal class ScheduleViewModel : ViewModelBase
     {
         private DateTime selected;
-        private ScheduleTabItem selectedTab;
         public ObservableCollection<ScheduleTabItem> Tabs { get; set; }
         public DateTime Selected { get => selected; set => SetProperty(ref selected, value); }
-        public ScheduleTabItem SelectedTab { get => selectedTab; set => SetProperty(ref selectedTab, value); }
 
         public ScheduleViewModel()
         {
@@ -60,10 +58,6 @@ namespace ZdravoKlinika.View.Model
                 
             }
 
-            if(Tabs.Count > 0)
-            {
-                selectedTab = Tabs[0];
-            }
         }
 
     }

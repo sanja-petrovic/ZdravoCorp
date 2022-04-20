@@ -188,7 +188,7 @@
                                 </Button.Style>
                             </Button>
                         </Grid>
-                        
+
                     </DataTemplate>
                 </Setter.Value>
             </Setter>
@@ -373,8 +373,9 @@
         </Style>
     </UserControl.Resources>
     <Grid Name="TabGrid">
-        <TabControl ItemsSource="{Binding Tabs}"  Name="TabTab" SelectedItem="{Binding SelectedTab}" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyle1}" Margin="688,167,57,237">
-            
-        </TabControl>
+        <TabControl ItemsSource="{Binding Tabs}"  Name="TabTab" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyle1}" Margin="688,167,57,237"/>
+        <TextBlock Visibility="Hidden" Name="HiddenTb" TextWrapping="WrapWithOverflow" Text="Nema zakazanih termina za ovaj dan." Margin="754,349,0,0" FontSize="14" FontWeight="Regular" FontFamily="OpenSans-Regular" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Center" Height="35" Width="147"/>
+
     </Grid>
+
 </UserControl>

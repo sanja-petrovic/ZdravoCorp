@@ -43,7 +43,14 @@ namespace ZdravoKlinika.View.DoctorPages
                 this.selected = value;
                 viewModel.Selected = value;
                 viewModel.infoChange();
-                
+                TabTab.SelectedIndex = 0;
+                if(TabTab.Items.Count == 0)
+                {
+                    HiddenTb.Visibility = Visibility.Visible;
+                } else
+                {
+                    HiddenTb.Visibility = Visibility.Hidden;
+                }
             }
         }
 
