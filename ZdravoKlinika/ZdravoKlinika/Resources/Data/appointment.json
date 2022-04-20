@@ -15,10 +15,10 @@
   {
     "Prescriptions": [],
     "AppointmentId": 6,
-    "DateAndTime": "2022-04-17T10:00:00",
+    "DateAndTime": "2022-04-20T10:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
-    "Type": 1,
+    "Type": 0,
     "Emergency": false,
     "Duration": 5,
     "DoctorId": "456",
@@ -48,7 +48,7 @@
     "Emergency": false,
     "Duration": 342,
     "DoctorId": "456",
-    "PatientId": "1211000123456",
+    "PatientId": "15",
     "RoomId": "314"
   }
 ]

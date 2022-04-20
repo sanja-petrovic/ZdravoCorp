@@ -21,14 +21,15 @@ namespace ZdravoKlinika.View.DoctorPages
     public partial class AppointmentsTabPanel : UserControl
     {
         private DateTime selected;
-        Model.AppointmentsListViewModel viewModel;
+        Model.ScheduleViewModel viewModel;
 
         public AppointmentsTabPanel()
         {
-            viewModel = new Model.AppointmentsListViewModel();
+            selected = DateTime.Today;
+            viewModel = new Model.ScheduleViewModel();
+            viewModel.Selected = selected;
             DataContext = viewModel;
             InitializeComponent();
-            //https://stackoverflow.com/questions/5650812/how-do-i-bind-a-tabcontrol-to-a-collection-of-viewmodels
         }
 
         public DateTime Selected
@@ -40,7 +41,9 @@ namespace ZdravoKlinika.View.DoctorPages
             set
             {
                 this.selected = value;
-                viewModel.DateTime = value;
+                viewModel.Selected = value;
+                viewModel.infoChange();
+                
             }
         }
 

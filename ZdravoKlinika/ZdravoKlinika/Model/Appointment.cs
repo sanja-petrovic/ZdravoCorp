@@ -54,6 +54,19 @@ public class Appointment
     public List<string> Diagnoses { get => diagnoses; set => diagnoses = value; }
     public string DoctorsNotes { get => doctorsNotes; set => doctorsNotes = value; }
     public AppointmentType Type { get => type; set => type = value; }
+
+    public String getTranslatedType()
+    {
+        if(type.Equals(AppointmentType.Regular)) {
+            return "Pregled";
+        } else if(type.Equals(AppointmentType.Surgery))
+        {
+            return "Operacija";
+        } else
+        {
+            return null;
+        }
+    }
     public bool Emergency { get => emergency; set => emergency = value; }
     public int Duration { get => duration; set => duration = value; }
     public string DoctorId { get => doctorId; set => doctorId = value; }

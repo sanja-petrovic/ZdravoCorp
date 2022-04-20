@@ -479,7 +479,6 @@
                 <StaticResource ResourceKey="fancyButtonStyle2"/>
             </Button.Style>
         </Button>
-        <local:AppointmentInfo x:Name="AppointmentInfo"/>
 
     </Grid>
 </Page>

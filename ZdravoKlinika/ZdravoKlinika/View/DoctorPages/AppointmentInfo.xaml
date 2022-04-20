@@ -53,7 +53,7 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Grid Visibility="Hidden" Name="ApptInfo" HorizontalAlignment="Left" Height="309" Margin="696,222,0,0" VerticalAlignment="Top" Width="251" RenderTransformOrigin="0.646,0.344">
+    <Grid Name="ApptInfo" HorizontalAlignment="Left" Height="309" Margin="696,222,0,0" VerticalAlignment="Top" Width="251" RenderTransformOrigin="0.646,0.344">
         <TextBlock HorizontalAlignment="Left" Margin="22,13,0,0" TextWrapping="Wrap" Text="Pacijentovo ime" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="22,37,0,0" TextWrapping="Wrap" Text="{Binding Path=PatientName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
 

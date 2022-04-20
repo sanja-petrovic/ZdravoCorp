@@ -38,7 +38,7 @@
     }
   },
   {
-    "ParentName": "Marko",
+    "ParentName": "Miki",
     "BloodType": 0,
     "Occupation": "Kuvar",
     "EmergencyContactName": "Marko",
@@ -58,8 +58,8 @@
       "UpcomingAppointments": []
     },
     "UserType": 2,
-    "PersonalId": "14",
-    "Name": "Mara",
+    "PersonalId": "1211000123456",
+    "Name": "Milica",
     "Lastname": "Markovic",
     "DateOfBirth": "1999-07-30T00:00:00",
     "Gender": 1,
@@ -84,7 +84,9 @@
     "MedicalRecord": {
       "Patient": "15",
       "Diagnoses": [
-        "Ima"
+        "Diabetes",
+        "Hypertensio",
+        "Celijakija"
       ],
       "Allergies": [
         "Nema"

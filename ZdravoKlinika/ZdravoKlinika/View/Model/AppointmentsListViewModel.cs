@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace ZdravoKlinika.View.Model
 {
@@ -11,6 +12,7 @@ namespace ZdravoKlinika.View.Model
     {
         private DateTime dateTime;
         ObservableCollection<Appointment> appointments;
+        ObservableCollection<String> tabs;
         AppointmentController appointmentController;
         private List<String> times;
 

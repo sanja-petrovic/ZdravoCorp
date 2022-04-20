@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentsListViewModel}"
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.Model" d:DataContext="{d:DesignInstance Type=model:ScheduleViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024">
     <UserControl.Resources>
@@ -35,7 +35,7 @@
             <Setter Property="BorderBrush" Value="{StaticResource TabItem.Selected.Border}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <!--{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}-->
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TabControl}">
@@ -48,7 +48,7 @@
                                 <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
                                 <RowDefinition x:Name="RowDefinition1" Height="*"/>
                             </Grid.RowDefinitions>
-                            <TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" Height="30"/>
+                            <TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" Height="30" />
                             <Border CornerRadius="10" x:Name="contentPanel" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
                                 <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Border>
@@ -100,13 +100,98 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="fancyButtonStyle3" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid RenderTransformOrigin="0.5,0.5" x:Name="RootGrid">
+                            <Ellipse x:Name ="OuterRing" Width ="40" Height ="40" Fill="{TemplateBinding Background}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border Background="{TemplateBinding Background}" BorderBrush="#FF9E98FF" BorderThickness="0">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#FF9E98FF" To="#c0bdff" Duration="0:0:0.2"/>
+                                <!--<ColorAnimation Duration="0:0:0.2" From="White" To="Black" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#c0bdff" To="#FF9E98FF" Duration="0:0:0.2"/>
+                                <!--<ColorAnimation Duration="0:0:0.2" From="Black" To="White" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="TabItemStyle1" TargetType="{x:Type TabItem}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Background" Value="{StaticResource TabItem.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource TabItem.Static.Border}"/>
+            <!--<Setter Property="Header" Value="{Binding Path=Times}"/>-->
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid Name="ApptInfo" HorizontalAlignment="Left" Height="309" Margin="10" VerticalAlignment="Top" Width="251" RenderTransformOrigin="0.646,0.344">
+                            <TextBlock HorizontalAlignment="Left" Margin="22,13,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="22,37,0,0" TextWrapping="Wrap" Text="{Binding Path=PatientName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
 
+                            <TextBlock HorizontalAlignment="Left" Margin="153,13,0,0" TextWrapping="Wrap" Text="JMBG" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="153,37,0,0" TextWrapping="Wrap" Text="{Binding Path=PatientId}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+
+                            <TextBlock HorizontalAlignment="Left" Margin="22,73,0,0" TextWrapping="Wrap" Text="Tip" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="22,97,0,0" TextWrapping="Wrap" Text="{Binding Path=AppointmentType}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+
+                            <TextBlock HorizontalAlignment="Left" Margin="97,73,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="97,97,0,0" TextWrapping="Wrap" Text="{Binding Path=Room}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+
+                            <TextBlock HorizontalAlignment="Left" Margin="153,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14" Height="19"><Run Text="Prošli pregled"/><LineBreak/><Run/></TextBlock>
+                            <TextBlock HorizontalAlignment="Left" Margin="153,97,0,0" TextWrapping="Wrap" Text="{Binding Path=LastDate}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+
+                            <TextBlock HorizontalAlignment="Left" Margin="22,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"><Run Text="Dijagnoze"/><LineBreak/><Run/></TextBlock>
+                            <TextBlock HorizontalAlignment="Left" Margin="22,155,0,0" TextWrapping="Wrap" Text="{Binding Path=Diagnoses}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+
+                            <TextBlock HorizontalAlignment="Left" Margin="22,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"><Run Text="Aktivna terapija"/><LineBreak/><Run/></TextBlock>
+                            <TextBlock HorizontalAlignment="Left" Margin="22,209,0,0" TextWrapping="Wrap" Text="{Binding Path=Prescriptions}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+
+                            <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="22,254,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="148" Height="34">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                                <Button.Style>
+                                    <StaticResource ResourceKey="fancyButtonStyle3"/>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                        
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Margin" Value="0"/>
             <Setter Property="Padding" Value="8,3,8,3"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -118,7 +203,7 @@
                             <Border CornerRadius="10" x:Name="mainBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Margin="0">
                                 <Border CornerRadius="10" x:Name="innerBorder" Background="{StaticResource TabItem.Selected.Background1}" BorderBrush="{StaticResource TabItem.Selected.Border1}" BorderThickness="1,1,1,0" Margin="-1" Opacity="0"/>
                             </Border>
-                            <ContentPresenter x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                            <ContentPresenter x:Name="contentPresenter" Content="{Binding Time}" Focusable="False" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <MultiDataTrigger>
@@ -288,7 +373,7 @@
         </Style>
     </UserControl.Resources>
     <Grid Name="TabGrid">
-        <TabControl ItemsSource="{Binding Path=Times}" Name="Tabs" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyle1}" Margin="688,167,57,237">
+        <TabControl ItemsSource="{Binding Tabs}"  Name="TabTab" SelectedItem="{Binding SelectedTab}" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyle1}" Margin="688,167,57,237">
             
         </TabControl>
     </Grid>

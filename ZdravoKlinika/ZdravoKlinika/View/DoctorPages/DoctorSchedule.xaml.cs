@@ -29,11 +29,9 @@ namespace ZdravoKlinika.View.DoctorPages
 
         public DateTime Selected { get => selected; set => selected = value; }
 
-        public void CalendarSelectionChanged(object sender, RoutedEventArgs e)
-        {
-            this.selected = (DateTime)Cal.SelectedDate;
-            AppointmentsTabPanel appointmentsTabPanel = new AppointmentsTabPanel();
-            appointmentsTabPanel.Selected = this.selected;
+        public void CalendarSelectionChanged(object sender, RoutedEventArgs e) {
+
+            ApptTabPanel.Selected = (DateTime) Cal.SelectedDate;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
