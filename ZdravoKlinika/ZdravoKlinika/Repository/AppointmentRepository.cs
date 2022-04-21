@@ -85,7 +85,7 @@ public class AppointmentRepository
         List<Appointment> patientAppointments = new List<Appointment>();
         foreach (Appointment appointment in this.appointments)
         {
-            if (appointment.PatientId.Equals(patientId))
+          //  if (appointment.PatientId.Equals(patientId))
             {
                 patientAppointments.Add(appointment);
             }
@@ -98,7 +98,7 @@ public class AppointmentRepository
         List<Appointment> doctorsAppointments = new List<Appointment>();
         foreach (Appointment appointment in this.appointments)
         {
-            if (appointment.DoctorId.Equals(doctorId))
+           // if (appointment.DoctorId.Equals(doctorId))
             {
                 doctorsAppointments.Add(appointment);
             }

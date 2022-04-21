@@ -14,11 +14,8 @@ public class DoctorDataHandler
     private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
     public void Write(List<Doctor> doctors)
    {
-        var options = new JsonSerializerOptions()
-        {
-            WriteIndented = true
-        };
-
+        JsonSerializerOptions options = new JsonSerializerOptions();
+        options.WriteIndented = true;
         var jsonList = JsonSerializer.Serialize(doctors, options);
         File.WriteAllText(fileLocation, jsonList);
     }

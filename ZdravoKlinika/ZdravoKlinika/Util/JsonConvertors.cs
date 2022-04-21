@@ -33,4 +33,18 @@ namespace JsonConverters
             JsonSerializerOptions options) =>
                 writer.WriteStringValue(doctor.PersonalId);
     }
+    public class RegisteredPatientConverter : JsonConverter<RegisteredPatient>
+    {
+        public override RegisteredPatient Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) =>
+                RegisteredPatient.Parse(reader.GetString()!);
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            RegisteredPatient patient,
+            JsonSerializerOptions options) =>
+                writer.WriteStringValue(patient.PersonalId);
+    }
 }

@@ -15,5 +15,6 @@ namespace ZdravoKlinika.Model
         public PatientType PatientType { get => patientType; set => patientType = value; }
         public RegisteredPatient RegisteredPatient { get => registeredPatient; set => registeredPatient = value; }
         public GuestPatient GuestPatient { get => guestPatient; set => guestPatient = value; }
+        
     }
 }

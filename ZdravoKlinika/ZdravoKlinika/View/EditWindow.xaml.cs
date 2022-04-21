@@ -69,7 +69,7 @@ namespace ZdravoKlinika.View
             Int32.TryParse(durationTB.Text, out duration);
 
             AppointmentController appointmentController = new AppointmentController();
-            appointmentController.EditAppointment(this.appointment.AppointmentId, this.appointment.DoctorId, patientId, dateTime, false, actualType, room, duration);
+            //appointmentController.EditAppointment(this.appointment.AppointmentId, this.appointment.DoctorId, patientId, dateTime, false, actualType, room, duration);
             Close();
         }
 

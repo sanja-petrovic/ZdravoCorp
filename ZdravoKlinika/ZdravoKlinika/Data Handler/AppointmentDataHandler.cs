@@ -1,7 +1,9 @@
+using JsonConverters;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class AppointmentDataHandler
 {
@@ -12,8 +14,12 @@ public class AppointmentDataHandler
 
     public void Write(List<Appointment> appointments)
     {
-        var jsonList = JsonSerializer.Serialize(appointments, new JsonSerializerOptions() { WriteIndented = true });
-        File.WriteAllText(fileLocation, jsonList);
+        JsonSerializerOptions options = new JsonSerializerOptions();
+        options.WriteIndented = true;
+        options.Converters.Add(new DoctorConverter());
+        options.Converters.Add(new JsonStringEnumConverter());
+        var json = JsonSerializer.Serialize(appointments, options);
+        File.WriteAllText(fileLocation, json);
     }
 
     public List<Appointment> Read()

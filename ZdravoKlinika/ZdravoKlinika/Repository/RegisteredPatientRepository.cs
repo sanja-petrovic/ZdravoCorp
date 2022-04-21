@@ -28,20 +28,23 @@ public class RegisteredPatientRepository
     public RegisteredPatientRepository() {
         // init
         patientsDataHandler = new RegisteredPatientDataHandler();
+        MedicalRecordRepository = new MedicalRecordRepository();
         this.patients = patientsDataHandler.Read();
         updateReferences();
     }
 
     private void updateReferences()
     {
-        medicalRecordRepository = new MedicalRecordRepository();
+       
         foreach (RegisteredPatient pat in patients)
         {
-            pat.MedicalRecord = medicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId); 
+            pat.MedicalRecord = MedicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId); 
         }
     }
 
+
     public RegisteredPatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
+    public MedicalRecordRepository MedicalRecordRepository { get => medicalRecordRepository; set => medicalRecordRepository = value; }
 
     public List<RegisteredPatient> GetAll()
     {
@@ -76,6 +79,8 @@ public class RegisteredPatientRepository
         }
 
         this.patients.Add(patient);
+
+        MedicalRecordRepository.CreateMedicalRecord(patient.MedicalRecord);
         PatientsDataHandler.Write(patients);
         return;
     }
@@ -88,6 +93,7 @@ public class RegisteredPatientRepository
             if (this.patients.Contains(patient))
                 this.patients.Remove(patient);
 
+        MedicalRecordRepository.DeleteMedicalRecord(patient.MedicalRecord);
         PatientsDataHandler.Write(patients);
         return;
     }
@@ -116,7 +122,7 @@ public class RegisteredPatientRepository
 
         patients[index] = patient;
         PatientsDataHandler.Write(patients);
-
+        
         return;
     }
 

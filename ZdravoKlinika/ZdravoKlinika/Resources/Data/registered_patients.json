@@ -1,0 +1,52 @@
+[
+  {
+    "ParentName": "asd",
+    "BloodType": "APositive",
+    "Occupation": "asd",
+    "EmergencyContactName": "asd",
+    "EmergencyContactPhone": "ads",
+    "MedicalRecord": "1234",
+    "UserType": "Patient",
+    "PersonalId": "1234",
+    "Name": "asd",
+    "Lastname": "asd",
+    "DateOfBirth": "2022-04-12T00:00:00",
+    "Gender": "Female",
+    "Phone": "asd",
+    "Email": "asd",
+    "Password": "asd",
+    "ProfilePicture": "asd",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "a",
+      "Number": "b",
+      "City": "c",
+      "Country": "d"
+    }
+  },
+  {
+    "ParentName": "asd",
+    "BloodType": "APositive",
+    "Occupation": "asd",
+    "EmergencyContactName": "asd",
+    "EmergencyContactPhone": "ads",
+    "MedicalRecord": "12345",
+    "UserType": "Patient",
+    "PersonalId": "12345",
+    "Name": "asd",
+    "Lastname": "asd",
+    "DateOfBirth": "2022-04-12T00:00:00",
+    "Gender": "Female",
+    "Phone": "asd",
+    "Email": "asd",
+    "Password": "asd",
+    "ProfilePicture": "asd",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "a",
+      "Number": "b",
+      "City": "c",
+      "Country": "d"
+    }
+  }
+]

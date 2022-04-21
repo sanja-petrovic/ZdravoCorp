@@ -130,8 +130,7 @@ public class MedicalRecord
         }
     }
 
-    public string MedicalRecordId { get => MedicalRecordId1; set => MedicalRecordId1 = value; }
-    public string MedicalRecordId1 { get => medicalRecordId; set => medicalRecordId = value; }
+    public string MedicalRecordId { get => medicalRecordId; set => medicalRecordId = value; }
 
     public void AddReports(Report newReport)
     {

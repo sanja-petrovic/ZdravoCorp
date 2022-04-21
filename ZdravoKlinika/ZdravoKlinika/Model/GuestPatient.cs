@@ -17,5 +17,12 @@ namespace ZdravoKlinika.Model
         public string PersonalId { get => personalId; set => personalId = value; }
         public string Name { get => name; set => name = value; }
         public string Lastname { get => lastname; set => lastname = value; }
+
+        public static GuestPatient Parse(String id)
+        {
+            GuestPatient patient = new GuestPatient();
+            patient.PersonalId = id;
+            return patient;
+        }
     }
 }

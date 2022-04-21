@@ -1,16 +1,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository;
+
 public class AppointmentService
 {
     private AppointmentRepository appointmentRepository;
+    private DoctorRepository doctorRepository;
+    private PatientRepository patientRepositroy;
+    private RoomRepository roomRepository;
 
     public AppointmentService()
     {
         this.AppointmentRepository = new AppointmentRepository();
+        this.DoctorRepository = new DoctorRepository();
+        this.RoomRepository = new RoomRepository();
+        this.PatientRepositroy = new PatientRepository();
     }
  
     public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
+    public DoctorRepository DoctorRepository { get => doctorRepository; set => doctorRepository = value; }
+    public RoomRepository RoomRepository { get => roomRepository; set => roomRepository = value; }
+    public PatientRepository PatientRepositroy { get => patientRepositroy; set => patientRepositroy = value; }
 
     public List<Appointment> GetAll()
     {
@@ -43,8 +55,11 @@ public class AppointmentService
         {
             newAppointmentId = 1;
         }
-        //TODO
-        Appointment appointment = new Appointment(newAppointmentId, doctorId, patientId, roomId, duration, emergency, type, dateAndTime);
+        //TODO temp fix
+        Doctor doc = DoctorRepository.GetById(doctorId);
+        Room room = RoomRepository.GetById(roomId);
+        Patient pat = PatientRepositroy.GetById(patientId);
+        Appointment appointment = new Appointment(newAppointmentId, doc, pat, room, duration, emergency, type, dateAndTime);
         this.appointmentRepository.CreateAppointment(appointment);
 
         return appointment;
@@ -58,12 +73,18 @@ public class AppointmentService
 
     public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        Appointment appointment = this.appointmentRepository.GetAppointmentById(appointmentId);
+        Appointment appointment = this.appointmentRepository.GetAppointmentById(appointmentId); 
+
+        Doctor doc = DoctorRepository.GetById(doctorId);
+        Room room = RoomRepository.GetById(roomId);
+        Patient pat = PatientRepositroy.GetById(patientId);
+
         appointment.DateAndTime = dateAndTime;
-        appointment.RoomId = roomId;
-        appointment.PatientId = patientId;
-        appointment.DoctorId = doctorId;
         appointment.Emergency = emergency;
+        appointment.Patient = pat;
+        appointment.Doctor = doc;
+        appointment.Room = room;
+
         this.appointmentRepository.EditAppointment(appointment);
 
     }

@@ -14,8 +14,8 @@ namespace ZdravoKlinika.Repository
 
         public MedicalRecordRepository()
         {
-            medicalRecordDataHandler = new MedicalRecordDataHandler();
-            medicalRecords = medicalRecordDataHandler.Read();
+            MedicalRecordDataHandler = new MedicalRecordDataHandler();
+            medicalRecords = MedicalRecordDataHandler.Read();
         }
         public List<MedicalRecord> MedicalRecords
         {
@@ -27,7 +27,7 @@ namespace ZdravoKlinika.Repository
             }
             set
             {
-                DeleteAllMedicalRecords();
+                DeleteAllMedicalRecord();
                 if (value != null)
                 {
                     foreach (MedicalRecord oMedicalRecord in value)
@@ -35,6 +35,8 @@ namespace ZdravoKlinika.Repository
                 }
             }
         }
+
+        public MedicalRecordDataHandler MedicalRecordDataHandler { get => medicalRecordDataHandler; set => medicalRecordDataHandler = value; }
 
         public void CreateMedicalRecord(MedicalRecord medicalRecord)
         {
@@ -52,13 +54,24 @@ namespace ZdravoKlinika.Repository
             }
 
             this.medicalRecords.Add(medicalRecord);
-            medicalRecordDataHandler.Write(medicalRecords);
+            MedicalRecordDataHandler.Write(medicalRecords);
             return;
         }
-        public void DeleteAllMedicalRecords()
+        public void DeleteAllMedicalRecord()
         {
             if (medicalRecords != null)
                 medicalRecords.Clear();
+        }
+
+        public void DeleteMedicalRecord(MedicalRecord record)
+        {
+            if (record == null)
+                return;
+            if (this.MedicalRecords != null)
+                if (MedicalRecords.Contains(record))
+                    MedicalRecords.Remove(record);
+            // TODO medication
+            MedicalRecordDataHandler.Write(MedicalRecords);
         }
 
         public MedicalRecord? GetById(String id)

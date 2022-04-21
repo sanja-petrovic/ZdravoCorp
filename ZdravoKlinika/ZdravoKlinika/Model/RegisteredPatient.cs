@@ -34,6 +34,14 @@ public class RegisteredPatient : RegisteredUser
     public RegisteredPatient() { }
 
     public string ParentName { get => parentName; set => parentName = value; }
+
+    public static RegisteredPatient Parse(String id)
+    {
+        RegisteredPatient patient = new RegisteredPatient();
+        patient.PersonalId = id;
+        return patient;
+    }
+
     public BloodType BloodType { get => bloodType; set => bloodType = value; }
     public string Occupation { get => occupation; set => occupation = value; }
     public string EmergencyContactName { get => emergencyContactName; set => emergencyContactName = value; }

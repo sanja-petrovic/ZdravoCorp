@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Model;
 
 public class Appointment
 {
@@ -11,13 +12,13 @@ public class Appointment
     private bool emergency;
     private int duration;
     private Doctor doctor;
-    private RegisteredPatient patient;
+    private Patient patient;
     private Room room;
     private List<Medication> prescriptions;
 
     public Appointment() { }
 
-    public Appointment(int appointmentId, Doctor doctor, RegisteredPatient patient, Room room, int duration, bool emergency, AppointmentType type, DateTime dateTime)
+    public Appointment(int appointmentId, Doctor doctor, Patient patient, Room room, int duration, bool emergency, AppointmentType type, DateTime dateTime)
     {
         this.appointmentId = appointmentId;
         this.doctor = doctor;
@@ -57,7 +58,7 @@ public class Appointment
     public bool Emergency { get => emergency; set => emergency = value; }
     public int Duration { get => duration; set => duration = value; }
     public Doctor Doctor { get => doctor; set => doctor = value; }
-    public RegisteredPatient Patient { get => patient; set => patient = value; }
+    public Patient Patient { get => patient; set => patient = value; }
     public Room Room { get => room; set => room = value; }
 
     public void AddPrescriptions(Medication newMedication)
