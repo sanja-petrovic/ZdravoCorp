@@ -1,8 +1,10 @@
 using System;
 using System.Text.Json.Serialization;
+using ZdravoKlinika.Model;
 
-public class RegisteredPatient : RegisteredUser
+public class RegisteredPatient : RegisteredUser, Patient
 {
+    private PatientType patientType;
     private String parentName;
     private BloodType bloodType;
     private String occupation;
@@ -47,4 +49,15 @@ public class RegisteredPatient : RegisteredUser
     public string EmergencyContactName { get => emergencyContactName; set => emergencyContactName = value; }
     public string EmergencyContactPhone { get => emergencyContactPhone; set => emergencyContactPhone = value; }
     public MedicalRecord MedicalRecord { get => medicalRecord; set => medicalRecord = value; }
+    public PatientType PatientType { get => patientType; set => patientType = value; }
+
+    public PatientType GetPatientType() 
+    {
+        return PatientType;
+    }
+
+    public bool IsPatientById(String id) 
+    {
+        return PersonalId.Equals(id);
+    }
 }

@@ -40,26 +40,25 @@ namespace ZdravoKlinika.Repository
 
         public PatientRepository()
         {
-            PatientDataHandler = new PatientDataHandler();
+            //PatientDataHandler = new PatientDataHandler();
             RegisteredPatientRepository = new RegisteredPatientRepository();
             GuestPatientRepository = new GuestPatientRepository();
-            updateReferences();
-        }
 
-        private void updateReferences()
-        {
-            foreach (Patient pat in patients)
+            List<RegisteredPatient> rpats = RegisteredPatientRepository.GetAll();
+            foreach (RegisteredPatient pat in rpats) 
             {
-                if (pat.PatientType == PatientType.Guest)
+                this.AddPatient(pat);
+            }
+            List<GuestPatient> gpats = GuestPatientRepository.GetAll();
+            if (gpats != null)
+            {
+                foreach (GuestPatient pat in gpats)
                 {
-                    pat.GuestPatient = GuestPatientRepository.GetById(pat.GuestPatient.PersonalId);
-                }
-                else
-                {
-                    pat.RegisteredPatient = RegisteredPatientRepository.GetById(pat.RegisteredPatient.PersonalId);
+                    this.AddPatient(pat);
                 }
             }
         }
+
 
         public void AddPatient(Patient newPatient)
         {
@@ -87,32 +86,23 @@ namespace ZdravoKlinika.Repository
         {
             foreach (Patient patient in Patients)
             {
-                if (patient.PatientType == PatientType.Registered)
-                {
-                    if (patient.RegisteredPatient.PersonalId.Equals(id))
-                        return patient;
-                }
-                else 
-                {
-                    if (patient.GuestPatient.PersonalId.Equals(id))
-                        return patient;
-                }
+                if(patient.IsPatientById(id))
+                    return patient;
             }
             return null;
         }
 
-        public void CreatePatient(String id)
+        public void CreatePatient(String id, PatientType type)
         {
-            Patient pat = new Patient();
-            pat.GuestPatient = GuestPatientRepository.GetById(id);
-            pat.RegisteredPatient = RegisteredPatientRepository.GetById(id);
-            if (pat.RegisteredPatient == null)
-            { 
-                pat.PatientType = PatientType.Guest;
-            }
-            else if (GuestPatientRepository == null) 
+            if (type == PatientType.Registered)
             {
-                pat.PatientType = PatientType.Registered;
+                Patient pat = RegisteredPatientRepository.GetById(id);
+                AddPatient(pat);
+            }
+            else if (type == PatientType.Guest)
+            {
+                Patient pat = GuestPatientRepository.GetById(id);
+                AddPatient(pat);
             }
         }
     }

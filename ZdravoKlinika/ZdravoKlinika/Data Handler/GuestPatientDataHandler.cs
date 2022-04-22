@@ -13,7 +13,7 @@ namespace ZdravoKlinika.Data_Handler
     public class GuestPatientDataHandler
     {
 
-        private static String fileName = "guests_patients.json";
+        private static String fileName = "guest_patients.json";
         private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
 
         public string FileLocation { get => fileLocation; set => fileLocation = value; }

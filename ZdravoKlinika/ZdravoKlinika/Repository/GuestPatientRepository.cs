@@ -62,6 +62,11 @@ namespace ZdravoKlinika.Repository
                 guests.Clear();
         }
 
+        public List<GuestPatient> GetAll() 
+        {
+            return guests;
+        }
+
         public GuestPatient GetById(String id) 
         {
             foreach (GuestPatient guest in Guests)

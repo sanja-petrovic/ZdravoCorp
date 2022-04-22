@@ -9,18 +9,6 @@
     "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
-    "MedicalRecordId": "1234"
-  },
-  {
-    "Diagnoses": [
-      "asdads"
-    ],
-    "Allergies": [
-      "asdads"
-    ],
-    "CurrentMedication": [],
-    "PastMedication": [],
-    "Reports": [],
     "MedicalRecordId": "12345"
   }
 ]

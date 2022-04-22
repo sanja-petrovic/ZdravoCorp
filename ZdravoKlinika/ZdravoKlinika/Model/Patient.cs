@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Model
 {
-    public class Patient
+    public interface Patient
     {
-        private PatientType patientType;
-        private RegisteredPatient registeredPatient;
-        private GuestPatient guestPatient;
+        public PatientType GetPatientType() 
+        {
+            return PatientType.none;
+        }
 
-        public PatientType PatientType { get => patientType; set => patientType = value; }
-        public RegisteredPatient RegisteredPatient { get => registeredPatient; set => registeredPatient = value; }
-        public GuestPatient GuestPatient { get => guestPatient; set => guestPatient = value; }
-        
+        public bool IsPatientById(String id) 
+        {
+            return false;
+        }
+
     }
 }
