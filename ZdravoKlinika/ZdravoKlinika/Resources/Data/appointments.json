@@ -1,54 +1,15 @@
 [
   {
     "Prescriptions": [],
-    "AppointmentId": 5,
-    "DateAndTime": "2022-03-30T09:00:00",
+    "AppointmentId": 1,
+    "DateAndTime": "2022-03-31T11:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
-    "Type": 1,
+    "Type": "Regular",
     "Emergency": false,
-    "Duration": 14,
-    "DoctorId": "D1",
-    "PatientId": "1211000123456",
-    "RoomId": "314"
-  },
-  {
-    "Prescriptions": [],
-    "AppointmentId": 6,
-    "DateAndTime": "2022-04-14T09:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": 1,
-    "Emergency": false,
-    "Duration": 5,
-    "DoctorId": "D1",
-    "PatientId": "1211000123456",
-    "RoomId": "227"
-  },
-  {
-    "Prescriptions": [],
-    "AppointmentId": 7,
-    "DateAndTime": "2022-04-14T10:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": 0,
-    "Emergency": false,
-    "Duration": 6,
-    "DoctorId": "D1",
-    "PatientId": "0101001123456",
-    "RoomId": "227"
-  },
-  {
-    "Prescriptions": [],
-    "AppointmentId": 8,
-    "DateAndTime": "2022-04-28T10:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": 1,
-    "Emergency": false,
-    "Duration": 342,
-    "DoctorId": "D1",
-    "PatientId": "1211000123456",
-    "RoomId": "314"
+    "Duration": 123,
+    "Doctor": "D1",
+    "Patient": "12345,Registered",
+    "Room": "314"
   }
 ]

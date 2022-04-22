@@ -60,4 +60,9 @@ public class RegisteredPatient : RegisteredUser, Patient
     {
         return PersonalId.Equals(id);
     }
+
+    public String GetPatientId()
+    {
+        return PersonalId;
+    }
 }

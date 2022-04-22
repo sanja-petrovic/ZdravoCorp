@@ -18,5 +18,23 @@ namespace ZdravoKlinika.Model
             return false;
         }
 
+        public String GetPatientId()
+        {
+            return null;
+        }
+        public static Patient Parse(String data)
+        {
+            String[] splitData = data.Split(',');
+            if (splitData[1].Equals(PatientType.Registered.ToString()))
+            {
+                return RegisteredPatient.Parse(splitData[0]);
+            }
+            else if (splitData[1].Equals(PatientType.Guest.ToString()))
+            { 
+                return GuestPatient.Parse(splitData[0]);
+            }
+            return null;
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ZdravoKlinika.Model;
 
 namespace JsonConverters 
 {
@@ -46,5 +47,33 @@ namespace JsonConverters
             RegisteredPatient patient,
             JsonSerializerOptions options) =>
                 writer.WriteStringValue(patient.PersonalId);
+    }
+    public class PatientConverter : JsonConverter<Patient>
+    {
+        public override Patient Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) =>
+                Patient.Parse(reader.GetString());
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            Patient patient,
+            JsonSerializerOptions options) =>
+                writer.WriteStringValue(patient.GetPatientId() + "," + patient.GetPatientType());
+    }
+    public class RoomConverter : JsonConverter<Room>
+    {
+        public override Room Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) =>
+                Room.Parse(reader.GetString());
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            Room room,
+            JsonSerializerOptions options) =>
+                writer.WriteStringValue(room.RoomId);
     }
 }

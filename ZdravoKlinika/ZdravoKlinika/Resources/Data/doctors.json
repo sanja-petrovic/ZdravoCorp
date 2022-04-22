@@ -1,0 +1,21 @@
+[
+  {
+    "Specialty": "asd",
+    "Education": "asd",
+    "YearsOfService": 0,
+    "EducationLevel": null,
+    "Working": false,
+    "UserType": 0,
+    "PersonalId": "D1",
+    "Name": "asd",
+    "Lastname": "asd",
+    "DateOfBirth": "2022-03-31T00:00:00",
+    "Gender": 0,
+    "Phone": "asd",
+    "Email": "asd",
+    "Password": "asd",
+    "ProfilePicture": "null",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": null
+  }
+]

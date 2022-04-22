@@ -77,4 +77,11 @@ public class Room
             equipmentInRoom.Clear();
     }
 
+    public static Room Parse(String id)
+    {
+        Room room = new Room();
+        room.roomId = id;
+        return room;
+    }
+
 }

@@ -11,11 +11,9 @@ namespace ZdravoKlinika.Repository
     public class PatientRepository
     {
         private List<Patient> patients;
-        private PatientDataHandler patientDataHandler;
         private RegisteredPatientRepository registeredPatientRepository;
         private GuestPatientRepository guestPatientRepository;
 
-        public PatientDataHandler PatientDataHandler { get => patientDataHandler; set => patientDataHandler = value; }
         public List<Patient> Patients
         {
             get
@@ -40,7 +38,6 @@ namespace ZdravoKlinika.Repository
 
         public PatientRepository()
         {
-            //PatientDataHandler = new PatientDataHandler();
             RegisteredPatientRepository = new RegisteredPatientRepository();
             GuestPatientRepository = new GuestPatientRepository();
 
@@ -104,6 +101,11 @@ namespace ZdravoKlinika.Repository
                 Patient pat = GuestPatientRepository.GetById(id);
                 AddPatient(pat);
             }
+        }
+
+        public List<Patient> GetAll()
+        {
+            return patients;
         }
     }
 }

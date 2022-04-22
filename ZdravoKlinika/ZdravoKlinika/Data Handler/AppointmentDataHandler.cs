@@ -17,6 +17,8 @@ public class AppointmentDataHandler
         JsonSerializerOptions options = new JsonSerializerOptions();
         options.WriteIndented = true;
         options.Converters.Add(new DoctorConverter());
+        options.Converters.Add(new PatientConverter());
+        options.Converters.Add(new RoomConverter());
         options.Converters.Add(new JsonStringEnumConverter());
         var json = JsonSerializer.Serialize(appointments, options);
         File.WriteAllText(fileLocation, json);
@@ -24,15 +26,12 @@ public class AppointmentDataHandler
 
     public List<Appointment> Read()
     {
-        string jsonString = File.ReadAllText(fileLocation);
-        List<Appointment> appointments = new List<Appointment>();
-        if (jsonString != "")
-        {
-            appointments = JsonSerializer.Deserialize<List<Appointment>>(jsonString);
-        }
-
-        return appointments;
-        // return JsonSerializer.Deserialize<List<RegisteredPatient>>(File.ReadAllText(fileLocation),options);
+        JsonSerializerOptions options = new JsonSerializerOptions();
+        options.Converters.Add(new DoctorConverter());
+        options.Converters.Add(new PatientConverter());
+        options.Converters.Add(new RoomConverter());
+        options.Converters.Add(new JsonStringEnumConverter());
+        return JsonSerializer.Deserialize<List<Appointment>>(File.ReadAllText(fileLocation), options);
     }
 
 }

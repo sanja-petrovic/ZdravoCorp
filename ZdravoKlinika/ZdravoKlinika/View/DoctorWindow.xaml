@@ -10,10 +10,10 @@
         <DataGrid x:Name="dataGridDoctorsAppointments" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged" SelectedItem="{Binding Path=SelectedAppointment}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,259,0,0" Width="575"  AutoGenerateColumns="False" SelectedIndex="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Datum i vreme" Binding="{Binding DateAndTime}"  Width="*"/>
-                <DataGridTextColumn Header="Pacijent" Binding="{Binding PatientId}" Width="*"/>
+                <DataGridTextColumn Header="Pacijent" Binding="{Binding Patient.PersonalId}" Width="*"/>
                 <DataGridTextColumn Header="Tip" Binding="{Binding Type}" Width="*"/>
                 <DataGridTextColumn Header="Hitan slučaj" Binding="{Binding Emergency}" Width="*"/>
-                <DataGridTextColumn Header="Soba" Binding="{Binding RoomId}" Width="*"/>
+                <DataGridTextColumn Header="Soba" Binding="{Binding Room.RoomId}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Prikaz termina&#xD;&#xA;" HorizontalAlignment="Left" Margin="90,214,0,0" VerticalAlignment="Top" Height="40" Width="173" FontSize="20"/>

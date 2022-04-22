@@ -37,5 +37,9 @@ namespace ZdravoKlinika.Model
         {
             return PersonalId.Equals(id);
         }
+        public String GetPatientId()
+        {
+            return PersonalId;
+        }
     }
 }
