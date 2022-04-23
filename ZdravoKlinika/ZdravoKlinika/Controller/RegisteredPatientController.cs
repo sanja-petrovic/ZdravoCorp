@@ -1,23 +1,23 @@
 using System;
 using System.Collections.Generic;
 
-public class PatientController
+public class RegisteredPatientController
 {
-    private PatientService patientService;
+    private RegisteredPatientService patientService;
 
-    public PatientService PatientService { get => patientService; set => patientService = value; }
+    public RegisteredPatientService PatientService { get => patientService; set => patientService = value; }
   
-    public PatientController()
+    public RegisteredPatientController()
     {
-        this.patientService = new PatientService();
+        this.patientService = new RegisteredPatientService();
     }
 
-    public List<Patient> GetAll()
+    public List<RegisteredPatient> GetAll()
     {
         return  patientService.GetAll();
     }
 
-    public Patient GetById(String id)
+    public RegisteredPatient GetById(String id)
     {
         return patientService.GetById(id);
     }

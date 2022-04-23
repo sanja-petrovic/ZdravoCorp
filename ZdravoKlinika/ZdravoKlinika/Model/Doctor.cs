@@ -4,7 +4,7 @@ using System;
 public class Doctor : Employee
 {
     private String specialty;
-    private String education;
+    private String education; //TODO delete
 
     public Doctor()
     {
@@ -19,4 +19,10 @@ public class Doctor : Employee
         throw new NotImplementedException();
     }
 
+    public static Doctor Parse(string id)
+    {
+        Doctor doc = new Doctor();
+        doc.PersonalId = id;
+        return doc;
+    }
 }

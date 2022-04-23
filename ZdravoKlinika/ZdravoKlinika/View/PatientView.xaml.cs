@@ -33,9 +33,9 @@ namespace ZdravoKlinika.View
             Appointment app = (Appointment)appointmentTable.SelectedItem;
             if (app != null)
             {
-                doctorIdTextBox.Text = app.DoctorId;
+               // doctorIdTextBox.Text = app.DoctorId;
                 datePicker.SelectedDate = app.DateAndTime;
-                roomIdTextBox.Text = app.RoomId;
+               // roomIdTextBox.Text = app.RoomId;
                 appointmentTypeTextBox.Text = app.Type.ToString();
                 durationTextBox.Text = app.Duration.ToString();
                 appointmentIdTextBox.Text = app.AppointmentId.ToString();

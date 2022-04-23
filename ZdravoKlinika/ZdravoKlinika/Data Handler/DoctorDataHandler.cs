@@ -10,35 +10,19 @@ using System.Text.Json;
 
 public class DoctorDataHandler
 {
-   
-   private String fileLocation = Directory.GetCurrentDirectory()+ Path.PathSeparator + "doctors.json";
-   
-   public void Write(List<Doctor> doctors)
+    private static String fileName = "doctors.json";
+    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
+    public void Write(List<Doctor> doctors)
    {
-        var options = new JsonSerializerOptions()
-        {
-            WriteIndented = true
-        };
-
+        JsonSerializerOptions options = new JsonSerializerOptions();
+        options.WriteIndented = true;
         var jsonList = JsonSerializer.Serialize(doctors, options);
         File.WriteAllText(fileLocation, jsonList);
     }
    
    public List<Doctor> Read()
    {
-        try
-        {
-            var data = File.ReadAllText(fileLocation);
-            List<Doctor> doctors = new List<Doctor>();
-
-            doctors = JsonSerializer.Deserialize<List<Doctor>>(data);
-            return doctors;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("err");
-            return null;
-        }
-   }
+        return JsonSerializer.Deserialize<List<Doctor>>(File.ReadAllText(fileLocation));
+    }
 
 }
