@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class DoctorBasePage : UserControl
     {
+
         public DoctorBasePage()
         {
             Model.DoctorViewModel viewModel = new Model.DoctorViewModel();
@@ -27,6 +29,13 @@ namespace ZdravoKlinika.View.DoctorPages
             viewModel.Specialty = "Dijagnostičar";
             DataContext = viewModel;
             InitializeComponent();
+        }
+
+
+        private void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            /*View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
+            this.Content = doctorSchedule;*/
         }
     }
 }
