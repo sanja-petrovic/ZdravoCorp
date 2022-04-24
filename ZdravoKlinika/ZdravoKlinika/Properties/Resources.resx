@@ -127,6 +127,48 @@
   <data name="Lato-Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fonts\Lato-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="NunitoSans-Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-Black.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-BlackItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-BlackItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-BoldItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-BoldItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-ExtraBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-ExtraBold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-ExtraBoldItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-ExtraBoldItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-ExtraLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-ExtraLight.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-ExtraLightItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-ExtraLightItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-Italic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-Italic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-Light.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-LightItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-LightItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-SemiBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-SemiBold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NunitoSans-SemiBoldItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\NunitoSans-SemiBoldItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="OpenSans-Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fonts\OpenSans-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -136,20 +178,59 @@
   <data name="password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fonts\password.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PlayfairDisplay-Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fonts\PlayfairDisplay-Black.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Poppins-Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-Black.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PlayfairDisplay-Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fonts\PlayfairDisplay-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Poppins-BlackItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-BlackItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PlayfairDisplay-ExtraBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fonts\PlayfairDisplay-ExtraBold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Poppins-Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PlayfairDisplay-Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fonts\PlayfairDisplay-Medium.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Poppins-BoldItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-BoldItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PlayfairDisplay-Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fonts\PlayfairDisplay-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Poppins-ExtraBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-ExtraBold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-ExtraBoldItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-ExtraBoldItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-ExtraLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-ExtraLight.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-ExtraLightItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-ExtraLightItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-Italic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-Italic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-Light.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-LightItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-LightItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-Medium.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-MediumItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-MediumItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-SemiBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-SemiBold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-SemiBoldItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-SemiBoldItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-Thin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-Thin.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins-ThinItalic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fonts\Poppins-ThinItalic.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="undraw_medicine_b1ol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\undraw_medicine_b1ol.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

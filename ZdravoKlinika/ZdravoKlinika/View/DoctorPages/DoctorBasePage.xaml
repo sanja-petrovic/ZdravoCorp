@@ -100,68 +100,12 @@
                 <ImageBrush ImageSource="\Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" Stretch="Fill"></ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <!--<TextBlock Text="{Binding DoctorsName}" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="72,58,0,0" VerticalAlignment="Top" FontFamily="Open Sans" FontWeight="DemiBold" FontSize="18" Width="156"/>
+        <!--<TextBlock Text="{Binding DoctorsName}" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="72,58,0,0" VerticalAlignment="Top" FontFamily="SF Pro Display" FontWeight="DemiBold" FontSize="18" Width="156"/>
         <TextBlock Text="{Binding DoctorsTitle}" Margin="72,82,804,643" Foreground="#FF5F5F5F"/>-->
         <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="78,60,0,643" Width="153">
-            <Run  FontFamily="Open Sans" FontWeight="DemiBold" FontSize="16" Text="{Binding Path=Name}" /> <LineBreak></LineBreak>
+            <Run FontWeight="Bold" FontSize="16" Text="{Binding Path=Name}" /> <LineBreak></LineBreak>
             <Run Text="{Binding Path=Specialty}"/>
         </TextBlock>
-        <Label Content="Osnovno" Margin="270,51,356,657" FontSize="20" FontWeight="SemiBold" FontFamily="OpenSans-Regular"/>
-        <Rectangle HorizontalAlignment="Left" Height="116" Margin="275,83,0,0"  VerticalAlignment="Top" Width="697" Fill="White"  RadiusX="10" RadiusY="10"/>
-        <Ellipse HorizontalAlignment="Left" Height="54" Margin="292,94,0,0" VerticalAlignment="Top" Width="56">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="\Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" Stretch="Fill"></ImageBrush>
-            </Ellipse.Fill>
-        </Ellipse>
-        <TextBlock HorizontalAlignment="Left" Margin="383,95,0,0" TextWrapping="Wrap" Text="Ime roditelja" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12"/>
-        <TextBlock HorizontalAlignment="Left" Margin="383,116,0,0" TextWrapping="Wrap" Text="Jack Geller" VerticalAlignment="Top" FontWeight="Regular" FontSize="10"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="298,149,0,0" TextWrapping="Wrap" Text="Monica Geller" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12" Height="34" Width="44" TextAlignment="Center"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="482,95,0,0" TextWrapping="Wrap" Text="JMBG" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12"/>
-        <TextBlock HorizontalAlignment="Left" Margin="482,116,0,0" TextWrapping="Wrap" Text="2801001123456" VerticalAlignment="Top" FontWeight="Regular" FontSize="10"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="572,95,0,0" TextWrapping="Wrap" Text="Pol" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12"/>
-        <TextBlock HorizontalAlignment="Left" Margin="572,116,0,0" TextWrapping="Wrap" Text="Ženski" VerticalAlignment="Top" FontWeight="Regular" FontSize="10"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="636,95,0,0" TextWrapping="Wrap" Text="Datum rođenja" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12"/>
-        <TextBlock HorizontalAlignment="Left" Margin="636,116,0,0" TextWrapping="Wrap" Text="28.01.2001." VerticalAlignment="Top" FontWeight="Regular" FontSize="10"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="482,139,0,0" TextWrapping="Wrap" Text="Adresa" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12"/>
-        <TextBlock HorizontalAlignment="Left" Margin="482,157,0,0" TextWrapping="Wrap" Text="Miše Dimitrijevića 11/6, Novi Sad" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Height="32" Width="118"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="751,95,0,0" TextWrapping="Wrap" Text="Krvna grupa" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12"/>
-        <TextBlock HorizontalAlignment="Left" Margin="751,114,0,0" TextWrapping="Wrap" Text="A+" VerticalAlignment="Top" FontWeight="Regular" FontSize="10"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="844,95,0,0" TextWrapping="Wrap" Text="Zanimanje" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12"/>
-        <TextBlock HorizontalAlignment="Left" Margin="844,116,0,0" TextWrapping="Wrap" Text="Kuvar" VerticalAlignment="Top" FontWeight="Regular" FontSize="10"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="383,139,0,0" TextWrapping="Wrap" Text="Telefon" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12"/>
-        <TextBlock HorizontalAlignment="Left" Margin="383,159,0,0" TextWrapping="Wrap" Text="0612720344" VerticalAlignment="Top" FontWeight="Regular" FontSize="10"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="751,137,0,0" TextWrapping="Wrap" Text="Kontakt za hitne slučajeve" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12" Width="150"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="614,139,0,0" TextWrapping="Wrap" Text="E-mail adresa" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="12" Width="150"/>
-        <TextBlock HorizontalAlignment="Left" Margin="614,154,0,0" TextWrapping="Wrap" Text="monicageller@gmail.com" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Height="28" Width="115"/>
-        <Rectangle HorizontalAlignment="Left" Height="116" Margin="275,244,0,0"  VerticalAlignment="Top" Width="177" Fill="White"  RadiusX="10" RadiusY="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="116" Margin="275,244,0,0"  VerticalAlignment="Top" Width="211" Fill="White"  RadiusX="10" RadiusY="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="116" Margin="761,243,0,0"  VerticalAlignment="Top" Width="211" Fill="White"  RadiusX="10" RadiusY="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="116" Margin="518,244,0,0"  VerticalAlignment="Top" Width="211" Fill="White"  RadiusX="10" RadiusY="10"/>
-        <Label Content="Dijagnoze" Margin="271,210,355,498" FontSize="20" FontWeight="SemiBold" FontFamily="OpenSans-Regular"/>
-        <Label Content="Lekovi i alergije" Margin="518,210,108,498" FontSize="20" FontWeight="SemiBold" FontFamily="OpenSans-Regular"/>
-        <Label Content="Dokumenti" Margin="761,210,-135,498" FontSize="20" FontWeight="SemiBold" FontFamily="OpenSans-Regular"/>
-        <Button Content="Prepišite" HorizontalAlignment="Left" Margin="674,218,0,0" VerticalAlignment="Top" Width="55"/>
-        <TabControl Margin="275,410,52,34">
-            <TabItem Header="Prošli">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Predstojeći">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-        </TabControl>
-
-
-
 
 
     </Grid>

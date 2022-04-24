@@ -6,11 +6,61 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <Style x:Key="FontTB" TargetType="TextBlock">
-                <Setter Property="FontFamily" Value="Open Sans" />
+            <Style TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Nunito Sans" />
             </Style>
-            <Style x:Key="FontLabel" TargetType="Label">
-                <Setter Property="FontFamily" Value="Open Sans" />
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Nunito Sans ExtraBold" />
+            </Style>
+            <Style TargetType="{x:Type Window}">
+                <Setter Property="FontFamily" Value="Nunito Sans" />
+            </Style>
+
+            <Style x:Key="fancyButtonStyle2" TargetType="Button">
+                
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid RenderTransformOrigin="0.5,0.5" x:Name="RootGrid">
+                                <Ellipse x:Name ="OuterRing" Width ="40" Height ="40" Fill="{TemplateBinding Background}"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Border Background="{TemplateBinding Background}" BorderBrush="#FF9E98FF" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Trigger>
+                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="White" To="#FF9E98FF" Duration="0:0:0.2"/>
+                                    <ColorAnimation Duration="0:0:0.2" From="Black" To="White" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#FF9E98FF" To="White" Duration="0:0:0.2"/>
+                                    <ColorAnimation Duration="0:0:0.2" From="White" To="Black" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Style.Triggers>
             </Style>
 
         </ResourceDictionary>

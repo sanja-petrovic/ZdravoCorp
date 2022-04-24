@@ -175,24 +175,24 @@
         <Canvas>
             <Image  Name="PasswordViewControl" Height="20" Canvas.Left="898" Source="/Resources/Images/show.png" Stretch="Fill" Canvas.Top="430" Width="20" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="ShowPassword"/>
         </Canvas>
-        <CheckBox Style="{DynamicResource CheckBoxStyle}" Content="Ostanite prijavljeni" Margin="684,463,96,289" Checked="CheckBox_Checked" Cursor="Arrow" FontFamily="Open Sans" Foreground="#FF5F5F5F"></CheckBox>
-        <Label Content="Dobrodošli!" HorizontalAlignment="Left" Margin="676,250,0,0" VerticalAlignment="Top" FontFamily="Lato" FontSize="36" FontWeight="Bold" Cursor="Arrow"/>
-        <Label Content="Korisničko ime" HorizontalAlignment="Left" Margin="680,317,0,0" VerticalAlignment="Top" FontFamily="Open Sans" FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
-        <Button  Style="{StaticResource ResourceKey=fancyButtonStyle}"  HorizontalAlignment="Left" Margin="688,496,0,0" VerticalAlignment="Top" FontFamily="Open Sans"  Foreground="White"  Width="240" BorderThickness="0" Padding="4" Height="36" FontSize="20" Click="Button_Click" Content="Prijavite se">
+        <CheckBox Style="{DynamicResource CheckBoxStyle}" Content="Ostanite prijavljeni" Margin="684,463,96,289" Checked="CheckBox_Checked" Cursor="Arrow"  Foreground="#FF5F5F5F"></CheckBox>
+        <Label Content="Dobrodošli!" HorizontalAlignment="Left" Margin="676,250,0,0" VerticalAlignment="Top"  FontSize="36" FontWeight="Bold" Cursor="Arrow"/>
+        <Label Content="Korisničko ime" HorizontalAlignment="Left" Margin="680,317,0,0" VerticalAlignment="Top"  FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
+        <Button  Style="{StaticResource ResourceKey=fancyButtonStyle}"  HorizontalAlignment="Left" Margin="688,496,0,0" VerticalAlignment="Top"   Foreground="White"  Width="240" BorderThickness="0" Padding="4" Height="36" FontSize="20" Click="Button_Click" Content="Prijavite se">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox Name="UsernameTB" Text="Npr. vaseime@zdravo.com" Padding="7" HorizontalAlignment="Left" Margin="684,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="29" FontFamily="Open Sans" BorderBrush="#FFC8C8C8" TextAlignment="Left" FontSize="12" Foreground="Gray" PreviewMouseDown="TextBox_MouseDown" SelectionBrush="#FF6C63FF">
+        <TextBox Name="UsernameTB" Text="Npr. vaseime@zdravo.com" Padding="7" HorizontalAlignment="Left" Margin="684,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="29"  BorderBrush="#FFC8C8C8" TextAlignment="Left" FontSize="12" Foreground="Gray" PreviewMouseDown="TextBox_MouseDown" SelectionBrush="#FF6C63FF">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Content="Šifra" HorizontalAlignment="Left" Margin="680,392,0,0" VerticalAlignment="Top" FontFamily="Open Sans" FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
+        <Label Content="Šifra" HorizontalAlignment="Left" Margin="680,392,0,0" VerticalAlignment="Top"  FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
         <TextBox Name="PasswordTB" Padding="7" HorizontalAlignment="Left" Margin="684,425,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="29" FontFamily="Password" BorderBrush="#FFC8C8C8"  SelectionBrush="#FF6C63FF" Panel.ZIndex="-1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">

@@ -93,6 +93,146 @@ namespace ZdravoKlinika.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] NunitoSans_Black {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-Black", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_BlackItalic {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-BlackItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_Bold {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_BoldItalic {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-BoldItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_ExtraBold {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-ExtraBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_ExtraBoldItalic {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-ExtraBoldItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_ExtraLight {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-ExtraLight", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_ExtraLightItalic {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-ExtraLightItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_Italic {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-Italic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_Light {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_LightItalic {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-LightItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_Regular {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_SemiBold {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-SemiBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NunitoSans_SemiBoldItalic {
+            get {
+                object obj = ResourceManager.GetObject("NunitoSans-SemiBoldItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] OpenSans_Bold {
             get {
                 object obj = ResourceManager.GetObject("OpenSans-Bold", resourceCulture);
@@ -123,9 +263,9 @@ namespace ZdravoKlinika.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayfairDisplay_Black {
+        internal static byte[] Poppins_Black {
             get {
-                object obj = ResourceManager.GetObject("PlayfairDisplay-Black", resourceCulture);
+                object obj = ResourceManager.GetObject("Poppins-Black", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -133,9 +273,9 @@ namespace ZdravoKlinika.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayfairDisplay_Bold {
+        internal static byte[] Poppins_BlackItalic {
             get {
-                object obj = ResourceManager.GetObject("PlayfairDisplay-Bold", resourceCulture);
+                object obj = ResourceManager.GetObject("Poppins-BlackItalic", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -143,9 +283,9 @@ namespace ZdravoKlinika.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayfairDisplay_ExtraBold {
+        internal static byte[] Poppins_Bold {
             get {
-                object obj = ResourceManager.GetObject("PlayfairDisplay-ExtraBold", resourceCulture);
+                object obj = ResourceManager.GetObject("Poppins-Bold", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -153,9 +293,9 @@ namespace ZdravoKlinika.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayfairDisplay_Medium {
+        internal static byte[] Poppins_BoldItalic {
             get {
-                object obj = ResourceManager.GetObject("PlayfairDisplay-Medium", resourceCulture);
+                object obj = ResourceManager.GetObject("Poppins-BoldItalic", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -163,9 +303,139 @@ namespace ZdravoKlinika.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayfairDisplay_Regular {
+        internal static byte[] Poppins_ExtraBold {
             get {
-                object obj = ResourceManager.GetObject("PlayfairDisplay-Regular", resourceCulture);
+                object obj = ResourceManager.GetObject("Poppins-ExtraBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_ExtraBoldItalic {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-ExtraBoldItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_ExtraLight {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-ExtraLight", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_ExtraLightItalic {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-ExtraLightItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_Italic {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-Italic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_Light {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_LightItalic {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-LightItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_Medium {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_MediumItalic {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-MediumItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_SemiBold {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-SemiBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_SemiBoldItalic {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-SemiBoldItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_Thin {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-Thin", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_ThinItalic {
+            get {
+                object obj = ResourceManager.GetObject("Poppins-ThinItalic", resourceCulture);
                 return ((byte[])(obj));
             }
         }
