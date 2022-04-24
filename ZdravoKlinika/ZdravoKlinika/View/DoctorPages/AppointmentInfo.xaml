@@ -55,25 +55,25 @@
     </UserControl.Resources>
     <Grid Name="ApptInfo" HorizontalAlignment="Left" Height="309" Margin="696,222,0,0" VerticalAlignment="Top" Width="251" RenderTransformOrigin="0.646,0.344">
         <TextBlock HorizontalAlignment="Left" Margin="22,13,0,0" TextWrapping="Wrap" Text="Pacijentovo ime" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="22,37,0,0" TextWrapping="Wrap" Text="{Binding Path=PatientName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock Foreground="#555557" HorizontalAlignment="Left" Margin="22,37,0,0" TextWrapping="Wrap" Text="{Binding Path=PatientName}" VerticalAlignment="Top"  FontSize="12"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="153,13,0,0" TextWrapping="Wrap" Text="JMBG" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="153,37,0,0" TextWrapping="Wrap" Text="{Binding Path=PatientId}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="153,37,0,0" TextWrapping="Wrap" Text="{Binding Path=PatientId}" VerticalAlignment="Top"  FontSize="12"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="22,73,0,0" TextWrapping="Wrap" Text="Tip" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="22,97,0,0" TextWrapping="Wrap" Text="{Binding Path=AppointmentType}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock Foreground="#555557"  HorizontalAlignment="Left" Margin="22,97,0,0" TextWrapping="Wrap" Text="{Binding Path=AppointmentType}" VerticalAlignment="Top"  FontSize="12"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="97,73,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="97,97,0,0" TextWrapping="Wrap" Text="{Binding Path=Room}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock Foreground="#555557"  HorizontalAlignment="Left" Margin="97,97,0,0" TextWrapping="Wrap" Text="{Binding Path=Room}" VerticalAlignment="Top"  FontSize="12"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="153,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14" Height="19"><Run Text="Prošli pregled"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="153,97,0,0" TextWrapping="Wrap" Text="{Binding Path=DateOfLatestAppt}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock Foreground="#555557"  HorizontalAlignment="Left" Margin="153,97,0,0" TextWrapping="Wrap" Text="{Binding Path=DateOfLatestAppt}" VerticalAlignment="Top" FontSize="12"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="22,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"><Run Text="Dijagnoze"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="22,155,0,0" TextWrapping="Wrap" Text="{Binding Path=Diagnoses}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="22,155,0,0" TextWrapping="Wrap" Text="{Binding Path=Diagnoses}" VerticalAlignment="Top"  FontSize="12"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="22,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="DemiBold" FontSize="14"><Run Text="Aktivna terapija"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="22,209,0,0" TextWrapping="Wrap" Text="{Binding Path=Prescriptions}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock Foreground="#555557"  HorizontalAlignment="Left" Margin="22,209,0,0" TextWrapping="Wrap" Text="{Binding Path=Prescriptions}" VerticalAlignment="Top" FontSize="12"/>
 
         <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="22,254,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="148" Height="34">
             <Button.Resources>
