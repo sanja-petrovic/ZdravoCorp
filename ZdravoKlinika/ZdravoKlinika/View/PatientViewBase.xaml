@@ -1,0 +1,42 @@
+﻿<Window x:Class="ZdravoKlinika.View.PatientViewBase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.ViewModel"
+        
+        mc:Ignorable="d"
+        Title="Pacijent" Height="650" Width="960">
+    <Window.DataContext>
+        <local:PatientViewModelBase/>
+    </Window.DataContext>
+    <Grid>
+        <Grid x:Name="menuBarGrid" Margin="0,0,0,491" Background="Gray">
+            <Image Margin="39,8,740,17" Source="{Binding Path=LogoImageSource}"/>
+            <Button Content="Profil" HorizontalAlignment="Left" Margin="244,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+            <Button Content="Pregledi" HorizontalAlignment="Left" Margin="349,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+            <Button Content="Terapija" HorizontalAlignment="Left" Margin="454,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+            <Button Content="Vaši utisci" HorizontalAlignment="Left" Margin="559,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+            <Button Content="Odjava" HorizontalAlignment="Left" Margin="664,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+            <ComboBox HorizontalAlignment="Left" Margin="838,67,0,0" VerticalAlignment="Top" Width="80" SelectedIndex="0" Height="25">
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Path=UkFlagImageSource}" />
+                        <TextBlock>EN</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Path=SrbFlagImageSource}" />
+                        <TextBlock>SRB</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox>
+        </Grid>
+
+
+        <Frame x:Name="mainFrame" Margin="0,148,0,60"/>
+
+
+    </Grid>
+</Window>

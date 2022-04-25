@@ -15,5 +15,16 @@
     <Page Remove="View\Dialogs\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\Localisation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 
 </Project>
