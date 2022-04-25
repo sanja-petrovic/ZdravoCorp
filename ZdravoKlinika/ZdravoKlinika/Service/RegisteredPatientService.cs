@@ -2,24 +2,24 @@
 using System;
 using System.Collections.Generic;
 
-public class PatientService
+public class RegisteredPatientService
 {
-    private PatientRepository patientRepository;
+    private RegisteredPatientRepository patientRepository;
 
-    public PatientRepository PatientRepository { get => patientRepository; set => patientRepository = value; }
+    public RegisteredPatientRepository PatientRepository { get => patientRepository; set => patientRepository = value; }
 
 
-    public PatientService() { 
+    public RegisteredPatientService() { 
         // init
-        this.patientRepository = new PatientRepository();
+        this.patientRepository = new RegisteredPatientRepository();
     }
 
-    public List<Patient> GetAll()
+    public List<RegisteredPatient> GetAll()
     {
         return patientRepository.GetAll();
     }
 
-    public Patient GetById(String id)
+    public RegisteredPatient GetById(String id)
     {
         return patientRepository.GetById(id);
     }
@@ -28,7 +28,7 @@ public class PatientService
     {
         Console.WriteLine("service");
         MedicalRecord record = new MedicalRecord(personalId, alergies, diagnosis);
-        Patient patient = new Patient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, parentName, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
+        RegisteredPatient patient = new RegisteredPatient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, parentName, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
         
         patientRepository.CreatePatient(patient);
         //TODO medicalRecord repo write it too!
@@ -36,7 +36,7 @@ public class PatientService
 
     public void UpdatePatient(String personalId, String name, String lastname, String phone, String email, String password, String profilePicture, String parentName, String occupation, String emergencyContactName, String emergencyContactPhone)
     {
-        Patient pat = this.GetById(personalId);
+        RegisteredPatient pat = this.GetById(personalId);
         pat.Name = name;
         pat.Lastname = lastname;
         pat.Phone = phone;

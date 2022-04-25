@@ -19,11 +19,11 @@ namespace ZdravoKlinika.View
     /// </summary>
     public partial class SecretaryWindowCP1 : Window
     {
-        private PatientController PatientController;
+        private RegisteredPatientController PatientController;
         public SecretaryWindowCP1()
         {
             InitializeComponent();
-            PatientController = new PatientController();
+            PatientController = new RegisteredPatientController();
             ReadAll();
         }
 
@@ -60,7 +60,7 @@ namespace ZdravoKlinika.View
 
         private void ReadAll()
         {
-            List<Patient> patients = PatientController.GetAll();
+            List<RegisteredPatient> patients = PatientController.GetAll();
             DataGrid.ItemsSource = null;
             DataGrid.ItemsSource = patients;
         }

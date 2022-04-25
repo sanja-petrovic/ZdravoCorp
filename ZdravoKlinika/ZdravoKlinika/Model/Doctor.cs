@@ -19,4 +19,10 @@ public class Doctor : Employee
         throw new NotImplementedException();
     }
 
+    public static Doctor Parse(string id)
+    {
+        Doctor doc = new Doctor();
+        doc.PersonalId = id;
+        return doc;
+    }
 }
