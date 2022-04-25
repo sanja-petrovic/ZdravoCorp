@@ -449,5 +449,15 @@ namespace ZdravoKlinika.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] zdravoklinika {
+            get {
+                object obj = ResourceManager.GetObject("zdravoklinika", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

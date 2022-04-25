@@ -9,11 +9,30 @@
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:system="clr-namespace:System;assembly=netstandard">
     <UserControl.Resources>
 
-        <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBoxItem}">
-            <Style.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
-                             Color="#FF9E98FF"/>
-            </Style.Resources>
+        <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="SelectedIndex" Value="0"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderThickness="1"
+                        Padding="0"
+                        SnapsToDevicePixels="true">
+                            <ScrollViewer Padding="{TemplateBinding Padding}"
+                                    Focusable="false">
+                                <ItemsPresenter SnapsToDevicePixels=
+                                    "{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style x:Key="FocusVisual1">
             <Setter Property="Control.Template">
@@ -43,7 +62,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="10" Margin="15, 0, 15, 0" SnapsToDevicePixels="true">
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -61,6 +80,8 @@
                                 </MultiTrigger.Conditions>
                                 <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Border}"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="Black"/>
                             </MultiTrigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
@@ -69,6 +90,8 @@
                                 </MultiTrigger.Conditions>
                                 <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Border}"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="Black"/>
                             </MultiTrigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
@@ -82,10 +105,17 @@
 
     </UserControl.Resources>
     <Grid>
-        
 
-        <Rectangle HorizontalAlignment="Left" Height="768" VerticalAlignment="Center" Width="237" Fill="White" Margin="-1,0,0,0" />
-        <ListBox Margin="0,130,786,0" BorderBrush="White" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
+        <Border  Margin="0,0,788,-12"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Rectangle HorizontalAlignment="Left" Height="768" VerticalAlignment="Center" Width="238" Fill="White" Margin="-1,0,0,0" />
+        <ListBox Margin="0,130,786,0" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
             <ListBoxItem Content="Početna stranica" FontSize="14" Padding="50 15 15 15" IsSelected="True"/>
             <ListBoxItem Content="Profil" FontSize="14" Padding="50 15 15 15"/>
             <ListBoxItem Content="Pacijenti" FontSize="14" Padding="50 15 15 15" />
@@ -93,7 +123,6 @@
             <ListBoxItem Content="Mesečni raspored" FontSize="14" Padding="50 15 15 15" MouseDoubleClick="ListBoxItem_MouseDoubleClick"/>
             <ListBoxItem Content="Ocenite aplikaciju" FontSize="14" Padding="50 15 15 15"/>
         </ListBox>
-        <Rectangle HorizontalAlignment="Left" Height="820" Margin="236,0,0,0" Stroke="#F8F9FE" VerticalAlignment="Top" Width="34" Fill="#F8F9FE"/>
         <Image Margin="28,148,980,603" Source="/Resources/Images/home.png" Stretch="Fill"/>
         <Image Margin="28,198,980,555" Source="/Resources/Images/user.png" Stretch="Fill"/>
         <Image Margin="28,247,980,505" Source="/Resources/Images/stethoscope.png" Stretch="Fill"/>
