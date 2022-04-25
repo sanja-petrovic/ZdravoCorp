@@ -26,11 +26,11 @@ namespace ZdravoKlinika.View.Model
             
             AppointmentController controller = new AppointmentController();
             List<Appointment> appointments = controller.GetAppointmentsByDoctorDate("456", Selected);
-            PatientController patientController = new PatientController();
+            RegisteredPatientController patientController = new RegisteredPatientController();
 
             foreach (Appointment appointment in appointments)
             {
-                Patient patient = patientController.GetById(appointment.PatientId);
+                RegisteredPatient patient = patientController.GetById(appointment.Patient.GetPatientId());
                 string diagnoses = "";
                 foreach (String diagnosis in patient.MedicalRecord.Diagnoses)
                 {
@@ -50,11 +50,11 @@ namespace ZdravoKlinika.View.Model
                     }
                 }
                 string lastDate = "Nema";
-                if (patient.MedicalRecord.PastAppointments.Count() > 0)
+                /*if (patient.MedicalRecord.)
                 {
                     lastDate = patient.MedicalRecord.PastAppointments.Last().DateAndTime.ToShortDateString();
-                }
-                Tabs.Add(new ScheduleTabItem { Time = appointment.DateAndTime.ToShortTimeString(), AppointmentType = appointment.getTranslatedType(), PatientId = appointment.PatientId, PatientName = patient.Name + " " + patient.Lastname, Room = appointment.RoomId, Diagnoses = diagnoses, LastDate = lastDate, Prescriptions = prescriptions });
+                }*/
+                Tabs.Add(new ScheduleTabItem { Time = appointment.DateAndTime.ToShortTimeString(), AppointmentType = appointment.getTranslatedType(), PatientId = patient.GetPatientId(), PatientName = patient.Name + " " + patient.Lastname, Room = appointment.Room.Name, Diagnoses = diagnoses, LastDate = lastDate, Prescriptions = prescriptions });
                 
             }
 

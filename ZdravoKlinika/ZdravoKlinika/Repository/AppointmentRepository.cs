@@ -52,6 +52,7 @@ public class AppointmentRepository
 
     private void updateReferences()
     {
+        appointments = appointmentDataHandler.Read();
         List<Doctor> doctors = DoctorRepository.GetAll();
         List<Room> rooms = RoomRepository.GetAll();
         List<Patient> patients = PatientRepository.GetAll();
@@ -59,7 +60,7 @@ public class AppointmentRepository
         {
             foreach (Doctor doc in doctors)
             {
-                foreach (Appointment appointment in Appointments)
+                foreach (Appointment appointment in appointments)
                 {
                     if (appointment.Doctor.PersonalId.Equals(doc.PersonalId)) 
                     {
@@ -70,7 +71,7 @@ public class AppointmentRepository
             }
             foreach (Room room in rooms)
             {
-                foreach (Appointment appointment in Appointments)
+                foreach (Appointment appointment in appointments)
                 {
                     if (appointment.Room.RoomId.Equals(room.RoomId))
                     {
@@ -81,7 +82,7 @@ public class AppointmentRepository
             }
             foreach (Patient pat in patients)
             {
-                foreach (Appointment appointment in Appointments)
+                foreach (Appointment appointment in appointments)
                 {
                     if (appointment.Patient.GetPatientId().Equals(pat.GetPatientId()))
                     {
