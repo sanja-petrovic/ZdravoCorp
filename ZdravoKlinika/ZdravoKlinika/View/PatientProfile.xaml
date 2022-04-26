@@ -11,8 +11,7 @@
         <Grid>
             <Label x:Name="title" Content="Content" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.434,-0.058"/>
             <Label Content="Osnovni Podaci" HorizontalAlignment="Left" Margin="70,70,0,0" VerticalAlignment="Top"/>
-            <Rectangle HorizontalAlignment="Left" Height="189" Margin="70,101,0,0" Stroke="Black" VerticalAlignment="Top" Width="463"/>
-            <Rectangle HorizontalAlignment="Left" Height="189" Margin="70,101,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
+
             <Image HorizontalAlignment="Left" Height="129" Margin="70,101,0,0" VerticalAlignment="Top" Width="118"/>
             <ItemsControl Margin="577,101,50,-28" BorderBrush="Black" BorderThickness="1">
                 <ItemsControl.ItemTemplate>
@@ -29,10 +28,46 @@
                 </ItemsControl.ItemTemplate>
 
             </ItemsControl>
-            <ListBox HorizontalAlignment="Left" Height="127" Margin="70,339,0,0" VerticalAlignment="Top" Width="215" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-            <ListBox HorizontalAlignment="Left" Height="127" Margin="318,339,0,0" VerticalAlignment="Top" Width="215" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-            <Label Content="Alergeni" HorizontalAlignment="Left" Margin="318,298,0,0" VerticalAlignment="Top"/>
-            <Label Content="Istorija bolesti" HorizontalAlignment="Left" Margin="70,298,0,0" VerticalAlignment="Top"/>
+            <ListBox HorizontalAlignment="Left" Height="127" Margin="70,441,0,0" VerticalAlignment="Top" Width="215" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+            <ListBox HorizontalAlignment="Left" Height="127" Margin="318,441,0,0" VerticalAlignment="Top" Width="215" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+            <Label Content="Alergeni" HorizontalAlignment="Left" Margin="318,400,0,0" VerticalAlignment="Top"/>
+            <Label Content="Istorija bolesti" HorizontalAlignment="Left" Margin="70,400,0,0" VerticalAlignment="Top"/>
+            <Label Content="Obavestenja" HorizontalAlignment="Left" Margin="577,70,0,0" VerticalAlignment="Top"/>
+
+            <ScrollViewer HorizontalAlignment="Left" Height="294" Margin="190,101,0,0" VerticalAlignment="Top" Width="343">
+                <Grid>
+                    <Label Content="Ime" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                    <Label Content="Ime roditelja" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
+                    <Label Content="Prezime" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
+                    <Label Content="Datum rodjenja" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,103,0,0"/>
+                    <Label Content="Pol" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,134,0,0"/>
+                    <Label Content="Krvna grupa" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,165,0,0"/>
+                    <Label Content="Zanimanje" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,194,0,0"/>
+                    <Label Content="Kontakt za hitne slucajve" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,225,0,0"/>
+                    <Label Content="Broj za hitne slucajeve" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,256,0,0"/>
+                    <Label Content="E-mail" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,287,0,0"/>
+                    <Label Content="Broj telefona" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,318,0,0"/>
+
+
+                    <Label x:Name="labelName" Content="Label" HorizontalAlignment="Left" Margin="163,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelParent" Content="Label" HorizontalAlignment="Left" Margin="163,41,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelLastName" Content="Label" HorizontalAlignment="Left" Margin="163,72,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelDate" Content="Label" HorizontalAlignment="Left" Margin="163,103,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelGender" Content="Label" HorizontalAlignment="Left" Margin="163,134,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelBlood" Content="Label" HorizontalAlignment="Left" Margin="163,165,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelOcupation" Content="Label" HorizontalAlignment="Left" Margin="163,194,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelEmergancyContact" Content="Label" HorizontalAlignment="Left" Margin="163,225,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelEmergancyNumber" Content="Label" HorizontalAlignment="Left" Margin="163,287,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelPhoneNumber" Content="Label" HorizontalAlignment="Left" Margin="163,318,0,0" VerticalAlignment="Top"/>
+
+                    <Label x:Name="labelEmergancy" Content="Label" HorizontalAlignment="Left" Margin="163,256,0,0" VerticalAlignment="Top"/>
+
+
+
+                </Grid>
+            </ScrollViewer>
+            <Rectangle HorizontalAlignment="Left" Height="294" Margin="70,101,0,0" Stroke="Black" VerticalAlignment="Top" Width="463"/>
+
         </Grid>
     </ScrollViewer>
 </Page>
