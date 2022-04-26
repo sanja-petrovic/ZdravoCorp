@@ -63,61 +63,108 @@
                         </Style.Triggers>
                     </Style>
 
-                    <Style x:Key="fancyButtonStyle3" TargetType="Button">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Grid RenderTransformOrigin="0.5,0.5" x:Name="RootGrid">
-                                        <Ellipse x:Name ="OuterRing" Width ="40" Height ="40" Fill="{TemplateBinding Background}"/>
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        <Border Background="{TemplateBinding Background}" BorderBrush="#FF9E98FF" BorderThickness="0">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </Grid>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Trigger>
-                            <EventTrigger RoutedEvent="Button.MouseEnter">
-                                <EventTrigger.Actions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation 
+            <Style x:Key="fancyButtonStyle3" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid RenderTransformOrigin="0.5,0.5" x:Name="RootGrid">
+                                <Ellipse x:Name ="OuterRing" Width ="40" Height ="40" Fill="{TemplateBinding Background}"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Border Background="{TemplateBinding Background}" BorderBrush="#FF9E98FF" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Trigger>
+                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation 
                   Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
                   From="#FF9E98FF" To="#c0bdff" Duration="0:0:0.2"/>
-                                            <!--<ColorAnimation Duration="0:0:0.2" From="White" To="Black" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger.Actions>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="Button.MouseLeave">
-                                <EventTrigger.Actions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation 
+                                    <!--<ColorAnimation Duration="0:0:0.2" From="White" To="Black" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation 
                   Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
                   From="#c0bdff" To="#FF9E98FF" Duration="0:0:0.2"/>
-                                            <!--<ColorAnimation Duration="0:0:0.2" From="Black" To="White" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
+                                    <!--<ColorAnimation Duration="0:0:0.2" From="Black" To="White" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
 
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger.Actions>
-                            </EventTrigger>
-                        </Style.Triggers>
-                    </Style>
-                    <Style x:Key="Focusual">
-                        <Setter Property="Control.Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                    <SolidColorBrush x:Key="TabItem.Static.Background" Color="#FFE4E2FF"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="fancyButtonStyle4" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid RenderTransformOrigin="0.5,0.5" x:Name="RootGrid">
+                                <Ellipse x:Name ="OuterRing" Width ="40" Height ="40" Fill="{TemplateBinding Background}"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Border Background="{TemplateBinding Background}" BorderBrush="#FF9E98FF" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Trigger>
+                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="White" To="#FFF1F2F9" Duration="0:0:0.2"/>
+                                    <!--<ColorAnimation Duration="0:0:0.2" From="White" To="Black" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#FFF1F2F9" To="White" Duration="0:0:0.2"/>
+                                    <!--<ColorAnimation Duration="0:0:0.2" From="Black" To="White" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="Focusual">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <SolidColorBrush x:Key="TabItem.Static.Background" Color="#FFE4E2FF"/>
                     <SolidColorBrush x:Key="TabItem.Static.Border" Color="Transparent" />
                     <SolidColorBrush x:Key="TabItem.MouseOver.Background" Color="#FF9E98FF"/>
                     <SolidColorBrush x:Key="TabItem.MouseOver.Border" Color="Transparent"/>

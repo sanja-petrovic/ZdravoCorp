@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
         mc:Ignorable="d"
-        Title="Upisivanje pregleda" Height="680" Width="574"
+        Title="Upisivanje pregleda" Height="724" Width="500" d:DesignHeight="724"
 Background="#F8F9FE" ResizeMode="CanMinimize" 
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Window.Resources>
@@ -613,26 +613,26 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
     </Window.Resources>
     <Grid>
         <TabControl  Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="0,24,0,0">
             <TabItem Header="Anamneza">
-                <Grid>
-                    <TextBlock HorizontalAlignment="Left" Margin="27,22,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="27,46,0,0" TextWrapping="Wrap" Text="Monica Geller" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="27,62,0,0" TextWrapping="Wrap" Text="2801001123456" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+                <Grid Height="716">
+                    <TextBlock HorizontalAlignment="Left" Margin="38,21,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="38,45,0,0" TextWrapping="Wrap" Text="Monica Geller" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="38,61,0,0" TextWrapping="Wrap" Text="2801001123456" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
 
-                    <TextBlock HorizontalAlignment="Left" Margin="229,22,0,0" TextWrapping="Wrap" Text="Doktor" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="229,46,0,0" TextWrapping="Wrap" Text="Dr Lisa Cuddy" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="121"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="229,62,0,0" TextWrapping="Wrap" Text="endokrinolog" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="165,21,0,0" TextWrapping="Wrap" Text="Doktor" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="165,45,0,0" TextWrapping="Wrap" Text="Dr Lisa Cuddy" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="122"/>
+                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="165,61,0,0" TextWrapping="Wrap" Text="endokrinolog" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
 
-                    <TextBlock HorizontalAlignment="Left" Margin="404,22,0,0" TextWrapping="Wrap" Text="Termin" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="404,46,0,0" TextWrapping="Wrap" Text="04.04.2022. 08:00" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="121"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="404,62,0,0" TextWrapping="Wrap" Text="Soba 325" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="282,21,0,0" TextWrapping="Wrap" Text="Termin" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="282,45,0,0" TextWrapping="Wrap" Text="04.04.2022. 08:00" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="122"/>
+                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="282,61,0,0" TextWrapping="Wrap" Text="Soba 325" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
 
-                    <TextBlock HorizontalAlignment="Left" Margin="27,105,0,0" TextWrapping="Wrap" Text="Dijagnoza" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="26,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="489" Height="57" BorderBrush="#FFAEAEC1">
+                    <TextBlock HorizontalAlignment="Left" Margin="36,104,0,0" TextWrapping="Wrap" Text="Dijagnoza" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="36,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="419" Height="57" BorderBrush="#FFAEAEC1">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -640,45 +640,83 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                         </TextBox.Resources>
                     </TextBox>
 
-                    <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource MedComboBoxStyle}" HorizontalAlignment="Left" Margin="28,222,0,0" VerticalAlignment="Top" Width="179" Text="Izaberite lek" Padding="5">
-                        <ComboBoxItem>Ddsfhj</ComboBoxItem>
-                        <ComboBoxItem>Babsdfkjsd</ComboBoxItem>
-                        <ComboBoxItem>dfsd</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">1434</ComboBoxItem>
+                    <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource MedComboBoxStyle}" HorizontalAlignment="Left" Margin="36,226,0,0" VerticalAlignment="Top" Width="178" Text="Izaberite lek" Padding="5" Height="28">
+                        
                     </ComboBox>
 
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="212,222,0,0" TextWrapping="Wrap" Text="Opišite način upotrebe" VerticalAlignment="Top" Width="207" Height="28" BorderBrush="#FFAEAEC1">
+                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="35,292,0,0" TextWrapping="Wrap" Text="Način upotrebe" VerticalAlignment="Top" Width="426" Height="28" BorderBrush="#FFAEAEC1">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <Image Source="/Resources/Images/add.png" Width="24" Height="24" Margin="491,224,53,353" />
 
-                    <TextBlock HorizontalAlignment="Left" Margin="26,373,0,0" TextWrapping="Wrap" Text="Nalaz i mišljenje doktora" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="26,397,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="489" Height="92" BorderBrush="#FFAEAEC1">
+                    <TextBlock HorizontalAlignment="Left" Margin="38,433,0,0" TextWrapping="Wrap" Text="Nalaz i mišljenje doktora" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" Margin="0,457,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="418" Height="92" BorderBrush="#FFAEAEC1">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="26,267,0,0" TextWrapping="Wrap" Text="Izabrani lekovi će se prikazati ovde." VerticalAlignment="Top" Width="489" Height="92" BorderBrush="#FFAEAEC1">
+                    <TextBox Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="36,356,0,0" TextWrapping="Wrap" Text="Prepisani lekovi će se prikazati ovde." VerticalAlignment="Top" Width="425" Height="68" BorderBrush="#FFAEAEC1">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <TextBlock HorizontalAlignment="Left" Margin="30,198,0,0" TextWrapping="Wrap" Text="Terapija" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="424,222,0,0" TextWrapping="Wrap" Text="Količina" VerticalAlignment="Top" Width="60" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.467,0.43">
+                    <TextBlock HorizontalAlignment="Left" Margin="38,202,0,0" TextWrapping="Wrap" Text="Terapija" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="219,226,0,0" TextWrapping="Wrap" Text="Količina" VerticalAlignment="Top" Width="58" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.467,0.43">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
+                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="188,259,0,0" TextWrapping="Wrap" Text="Učestalost" VerticalAlignment="Top" Width="74" Height="28" BorderBrush="#FFAEAEC1">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource MedComboBoxStyle}" HorizontalAlignment="Left" Margin="362,259,0,0" VerticalAlignment="Top" Width="100" Text="Izaberite lek" Padding="5" Height="28">
+                        <ComboBoxItem Content="dnevno"/>
+                        <ComboBoxItem Content="nedeljno"/>
+                        <ComboBoxItem Content="mesečno"/>
+                    </ComboBox>
+                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="94,259,0,0" TextWrapping="NoWrap" Text="Trajanje (dani)" VerticalAlignment="Top" Width="88" Height="28" BorderBrush="#FFAEAEC1">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <CheckBox Content="Hitno"  Foreground="#555557" HorizontalAlignment="Left" Margin="410,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.585,0.502"/>
+                    <CheckBox Content="Zabrana paralele" Foreground="#555557" HorizontalAlignment="Left" Margin="290,232,0,0" VerticalAlignment="Top"/>
+                    <RadioButton Content="Repetatur" Foreground="#555557" GroupName="Renewable" HorizontalAlignment="Left" Margin="36,332,0,0" VerticalAlignment="Top"/>
+                    <RadioButton Content="Non-repetatur" Foreground="#555557" GroupName="Renewable" HorizontalAlignment="Left" Margin="118,332,0,0" VerticalAlignment="Top"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="280,259,0,0" TextWrapping="Wrap" Text="Jedna doza" VerticalAlignment="Top" Width="78" Height="28" BorderBrush="#FFAEAEC1">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="268,265,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
+                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="38,265,0,0" TextWrapping="Wrap" Text="Doziranje:" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="56"/>
+                    <Button BorderBrush="#555557" BorderThickness="1" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Dodajte" HorizontalAlignment="Left"  Margin="226,328,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="23" Width="78">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <StaticResource ResourceKey="fancyButtonStyle4"/>
+                        </Button.Style>
+                    </Button>
 
 
                 </Grid>
@@ -688,7 +726,8 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
             <TabItem Header="Uput za stacionarno lečenje"></TabItem>
             <TabItem Header="Bolovanje"></TabItem>
 
+
         </TabControl>
-        <Rectangle Fill="#F8F9FE" Height="1" Margin="10,152,10,511"/>
+        <Rectangle Fill="#F8F9FE" Height="1" Margin="11,154,10,553"/>
     </Grid>
 </Window>
