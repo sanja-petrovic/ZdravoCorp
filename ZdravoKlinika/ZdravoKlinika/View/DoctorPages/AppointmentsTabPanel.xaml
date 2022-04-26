@@ -5,103 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.Model" d:DataContext="{d:DesignInstance Type=model:ScheduleViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="768" d:DesignWidth="1024">
+             Height="768" Width="1024">
     <UserControl.Resources>
-        <Style x:Key="Focusual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <SolidColorBrush x:Key="TabItem.Static.Background" Color="#FFE4E2FF"/>
-        <SolidColorBrush x:Key="TabItem.Static.Border" Color="Transparent" />
-        <SolidColorBrush x:Key="TabItem.MouseOver.Background" Color="#FF9E98FF"/>
-        <SolidColorBrush x:Key="TabItem.MouseOver.Border" Color="Transparent"/>
-        <SolidColorBrush x:Key="TabItem.Selected.Background1" Color="#FFFFFF"/>
-        <SolidColorBrush x:Key="TabItem.Selected.Border1" Color="Transparent"/>
-        <SolidColorBrush x:Key="TabItem.Disabled.Background" Color="#F0F0F0"/>
-        <SolidColorBrush x:Key="TabItem.Disabled.Border" Color="#D9D9D9"/>
-        <SolidColorBrush x:Key="TabItem.Selected.Background" Color="#FFFFFF"/>
-        <SolidColorBrush x:Key="TabItem.Selected.Border" Color="Transparent"/>
-        <Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
-            <Setter Property="Padding" Value="2"/>
-            <Setter Property="Cursor" Value="Arrow"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Background" Value="{StaticResource TabItem.Selected.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource TabItem.Selected.Border}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <!--{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}-->
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TabControl}">
-                        <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition x:Name="ColumnDefinition0"/>
-                                <ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
-                                <RowDefinition x:Name="RowDefinition1" Height="*"/>
-                            </Grid.RowDefinitions>
-                            <TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="2,3,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" Height="30" />
-                            <Border CornerRadius="10" x:Name="contentPanel" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
-                                <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="TabStripPlacement" Value="Bottom">
-                                <Setter Property="Grid.Row" TargetName="headerPanel" Value="1"/>
-                                <Setter Property="Grid.Row" TargetName="contentPanel" Value="0"/>
-                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
-                                <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
-                                <Setter Property="Margin" TargetName="headerPanel" Value="2,0,2,2"/>
-                            </Trigger>
-                            <Trigger Property="TabStripPlacement" Value="Left">
-                                <Setter Property="Grid.Row" TargetName="headerPanel" Value="0"/>
-                                <Setter Property="Grid.Row" TargetName="contentPanel" Value="0"/>
-                                <Setter Property="Grid.Column" TargetName="headerPanel" Value="0"/>
-                                <Setter Property="Grid.Column" TargetName="contentPanel" Value="1"/>
-                                <Setter Property="Width" TargetName="ColumnDefinition0" Value="Auto"/>
-                                <Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
-                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
-                                <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
-                                <Setter Property="Margin" TargetName="headerPanel" Value="2,2,0,2"/>
-                            </Trigger>
-                            <Trigger Property="TabStripPlacement" Value="Right">
-                                <Setter Property="Grid.Row" TargetName="headerPanel" Value="0"/>
-                                <Setter Property="Grid.Row" TargetName="contentPanel" Value="0"/>
-                                <Setter Property="Grid.Column" TargetName="headerPanel" Value="1"/>
-                                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"/>
-                                <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
-                                <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
-                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
-                                <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
-                                <Setter Property="Margin" TargetName="headerPanel" Value="0,2,2,2"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
-        <Style x:Key="TabItemStyle1" TargetType="{x:Type TabItem}">
+        <Style x:Key="TabItemStyleApptInfo" TargetType="{x:Type TabItem}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Foreground" Value="#555557"/>
@@ -337,7 +243,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <TabControl ItemsSource="{Binding Tabs}"  Name="TabTab" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyle1}" Margin="688,167,57,237">
+        <TabControl ItemsSource="{Binding Tabs}"  Name="TabTab" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleApptInfo}" Margin="688,167,57,237">
             
         </TabControl>
         <TextBlock Visibility="Hidden" Name="HiddenTb" TextWrapping="WrapWithOverflow" Text="Nema zakazanih termina za ovaj dan." Margin="754,349,0,0" FontSize="14" FontWeight="Regular" FontFamily="OpenSans-Regular" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Center" Height="35" Width="147"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKlinika.View"
         mc:Ignorable="d"
-        Title="Zdravo klinika" Height="768" Width="1024">
+        Title="Zdravo klinika" Height="768" Width="1024" SizeToContent="WidthAndHeight" d:DesignHeight="768" d:DesignWidth="1024">
     <Window.Resources>
         <Style x:Key="fancyButtonStyle" TargetType="Button">
             <Setter Property="Effect">
@@ -200,6 +200,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
+        <Image Margin="190,132,634,538" Source="/Resources/Images/zdravoklinika.png" Stretch="Fill" Width="200"/>
         <Frame Name="MainFrame" Panel.ZIndex="10"/>
 
     </Grid>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
              mc:Ignorable="d" 
-             d:DesignHeight="768" d:DesignWidth="1024">
+             Height="768" Width="1024" Background="#F8F9FE">
     <UserControl.Resources>
 
         <Style x:Key="Focusual">
@@ -291,6 +291,14 @@
     <Grid>
         <local:DoctorBasePage x:Name="Base"/>
         <Label Content="Monica Geller" Margin="271,45,355,663" FontSize="24" FontWeight="Bold"/>
+        <Border  Margin="276,84,53,536"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
         <Rectangle HorizontalAlignment="Left" Height="150" Margin="275,83,0,0"  VerticalAlignment="Top" Width="697" Fill="White"  RadiusX="10" RadiusY="10"/>
         <Ellipse HorizontalAlignment="Left" Height="74" Margin="292,98,0,0" VerticalAlignment="Top" Width="78">
             <Ellipse.Fill>
@@ -320,20 +328,62 @@
 
         <TextBlock HorizontalAlignment="Left" Margin="716,96,0,0" TextWrapping="Wrap" Text="E-mail adresa" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="150"/>
         <TextBlock HorizontalAlignment="Left" Margin="716,123,0,0" TextWrapping="Wrap"  Foreground="#FF5F5F5F" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Height="41" Width="150" Text="monicageller@gmail.com"/>
+
+        <Label Content="Monica Geller" Margin="271,45,355,663" FontSize="24" FontWeight="Bold"/>
+        <Border  Margin="518,278,297,339"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border  Margin="277,278,540,339"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border  Margin="761,278,54,339"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
         <Rectangle HorizontalAlignment="Left" Height="154" Margin="274,276,0,0"  VerticalAlignment="Top" Width="211" Fill="White"  RadiusX="10" RadiusY="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="154" Margin="760,276,0,0"  VerticalAlignment="Top" Width="211" Fill="White"  RadiusX="10" RadiusY="10"/>
+        <Rectangle HorizontalAlignment="Left" Height="154" Margin="760,276,0,0"  VerticalAlignment="Top" Width="212" Fill="White"  RadiusX="10" RadiusY="10"/>
         <Rectangle HorizontalAlignment="Left" Height="154" Margin="517,276,0,0"  VerticalAlignment="Top" Width="211" Fill="White"  RadiusX="10" RadiusY="10"/>
         <Label Content="Dijagnoze" Margin="270,238,356,470" FontSize="24" FontWeight="Bold"/>
         <Label Content="Lekovi" Margin="512,238,400,470" FontSize="24" FontWeight="Bold"/>
-        <Label Content="Dokumenti" Margin="755,242,-129,466" FontSize="24" FontWeight="Bold"/>
-        <Button Content="Prepišite" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,249,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White">
+        <Label Content="Dokumenti" Margin="754,239,-128,469" FontSize="24" FontWeight="Bold"/>
+        <Border  Margin="657,249,297,498"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button Content="Prepišite" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <TabControl Margin="275,449,52,26" Style="{StaticResource ResourceKey=TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyle1}">
+        <Border  Margin="279,483,54,58"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <TabControl Margin="276,449,52,55" Style="{StaticResource ResourceKey=TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyle1}">
             <TabControl.Resources>
                 <Style TargetType="TabPanel">
                     <Setter Property="HorizontalAlignment" Value="Right"/>
@@ -346,7 +396,7 @@
                 <Grid/>
             </TabItem>
         </TabControl>
-        <Label Content="Termini" Margin="274,435,352,273" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Termini" Margin="274,444,352,264" FontSize="24" FontWeight="Bold"/>
 
 
 

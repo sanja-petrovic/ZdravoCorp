@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:system="clr-namespace:System;assembly=netstandard"
-             mc:Ignorable="d" 
-             d:DesignHeight="768" d:DesignWidth="1024">
+             mc:Ignorable="d"
+             Height="768" Width="1024">
     <UserControl.Resources>
         <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -30,6 +30,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
         <Style x:Key="DataGridStyle1" TargetType="{x:Type DataGrid}">
 
             <Setter Property="Background" Value="Transparent"/>
@@ -261,5 +262,23 @@
             </DataGrid>
         </Grid>
         <Rectangle Fill="#F8F9FE" Height="1" Margin="298,172,66,595"/>
+        <Border  Margin="838,76,45,661"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Upišite pregled" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="837,75,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="143" Height="33"  Foreground="#555557" Click="Button_Click" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle2"/>
+            </Button.Style>
+        </Button>
     </Grid>
 </UserControl>

@@ -10,26 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
-    /// Interaction logic for DoctorHomePage.xaml
+    /// Interaction logic for LogAppointmentDialog.xaml
     /// </summary>
-    public partial class DoctorHomePage : UserControl
+    public partial class LogAppointmentDialog : Window
     {
-        public DoctorHomePage()
+        public LogAppointmentDialog()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog();
-            logAppointmentDialog.ShowDialog();
-            logAppointmentDialog.Owner = Application.Current.MainWindow;
         }
     }
 }

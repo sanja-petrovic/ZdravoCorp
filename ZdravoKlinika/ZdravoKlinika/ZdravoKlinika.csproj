@@ -6,19 +6,24 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
-    <ApplicationIcon>Resources\Images\3753097.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Images\zdravoklinikaicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\Images\2767146.png" />
     <None Remove="Resources\Images\2767194.png" />
+    <None Remove="Resources\Images\add %281%29.png" />
+    <None Remove="Resources\Images\add.png" />
     <None Remove="Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" />
+    <None Remove="Resources\Images\bell %281%29.png" />
     <None Remove="Resources\Images\calendar.png" />
     <None Remove="Resources\Images\comment.png" />
     <None Remove="Resources\Images\hide.png" />
     <None Remove="Resources\Images\home.png" />
+    <None Remove="Resources\Images\info %282%29.png" />
     <None Remove="Resources\Images\medicine.png" />
     <None Remove="Resources\Images\pulse.png" />
+    <None Remove="Resources\Images\settings.png" />
     <None Remove="Resources\Images\show %281%29.png" />
     <None Remove="Resources\Images\show.png" />
     <None Remove="Resources\Images\star.png" />
@@ -27,13 +32,19 @@
     <None Remove="Resources\Images\undraw_medicine_b1ol.png" />
     <None Remove="Resources\Images\user.png" />
     <None Remove="Resources\Images\zdravoklinika.png" />
+    <None Remove="Resources\Images\zdravoklinika2.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Images\3753097.ico" />
+    <Content Include="Resources\Images\zdravoklinikaicon.ico" />
+    <Resource Include="Resources\Images\settings.png" />
+    <Resource Include="Resources\Images\add.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\add (1).png" />
+    <Resource Include="Resources\Images\bell (1).png" />
+    <Resource Include="Resources\Images\info (2).png" />
     <Resource Include="Resources\Images\zdravoklinika.png" />
   </ItemGroup>
 
@@ -62,6 +73,7 @@
     <Resource Include="Resources\Images\treatment.png" />
     <Resource Include="Resources\Images\undraw_medicine_b1ol.png" />
     <Resource Include="Resources\Images\user.png" />
+    <Resource Include="Resources\Images\zdravoklinika2.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.Model" d:DataContext="{d:DesignInstance Type=model:DoctorViewModel}"
              mc:Ignorable="d" 
-      Background="#F8F9FE" Width="1024" Height="768" Cursor="Arrow"
+      Background="#F8F9FE" Width="1024" Height="768" Cursor="Arrow" d:DesignWidth="1024" d:DesignHeight="768"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:system="clr-namespace:System;assembly=netstandard">
     <UserControl.Resources>
 
@@ -105,7 +105,15 @@
 
     </UserControl.Resources>
     <Grid>
-
+        <Border  Margin="0,0,-13,730"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Rectangle HorizontalAlignment="Center" Height="40" Fill="White" VerticalAlignment="Top" Width="1024"/>
         <Border  Margin="0,0,788,-12"
             BorderBrush="Black"
             BorderThickness="2"
@@ -115,6 +123,7 @@
             </Border.Effect>
         </Border>
         <Rectangle HorizontalAlignment="Left" Height="768" VerticalAlignment="Center" Width="238" Fill="White" Margin="-1,0,0,0" />
+
         <ListBox Margin="0,130,786,0" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
             <ListBoxItem Content="Početna stranica" FontSize="14" Padding="50 15 15 15" IsSelected="True"/>
             <ListBoxItem Content="Profil" FontSize="14" Padding="50 15 15 15"/>
@@ -129,17 +138,22 @@
         <Image Margin="28,345,980,409" Source="/Resources/Images/calendar.png" Stretch="Fill"/>
         <Image Margin="28,393,980,361" Source="/Resources/Images/star.png" Stretch="Fill"/>
         <Image Margin="28,294,980,457" Source="/Resources/Images/medicine.png" Stretch="Fill"/>
-        <Ellipse HorizontalAlignment="Left" Height="46" Margin="22,60,0,0" VerticalAlignment="Top" Width="44">
+        <Ellipse HorizontalAlignment="Left" Height="46" Margin="16,37,0,0" VerticalAlignment="Top" Width="44">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="\Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" Stretch="Fill"></ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
         <!--<TextBlock Text="{Binding DoctorsName}" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="72,58,0,0" VerticalAlignment="Top" FontFamily="SF Pro Display" FontWeight="DemiBold" FontSize="18" Width="156"/>
         <TextBlock Text="{Binding DoctorsTitle}" Margin="72,82,804,643" Foreground="#FF5F5F5F"/>-->
-        <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="78,60,0,643" Width="153">
+        <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="76,37,0,666" Width="144">
             <Run FontWeight="Bold" FontSize="16" Text="{Binding Path=Name}" /> <LineBreak></LineBreak>
             <Run Text="{Binding Path=Specialty}"/>
         </TextBlock>
+        <Image Margin="870,10,134,738" Source="/Resources/Images/bell (1).png" Stretch="Fill"/>
+        <Image Margin="909,10,95,738" Source="/Resources/Images/info (2).png" Stretch="Fill"/>
+        <Image Margin="946,10,58,738" Source="/Resources/Images/settings.png" Stretch="Fill"/>
+        <Image Margin="254,4,708,732" Source="/Resources/Images/zdravoklinika2.png" Stretch="Fill"/>
+        <Rectangle Fill="#F8F9FE" Height="1" Margin="13,107,801,660"/>
 
     </Grid>
 </UserControl>

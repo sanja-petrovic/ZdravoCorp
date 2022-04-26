@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -21,7 +22,7 @@ namespace ZdravoKlinika.View.DoctorPages
     public partial class AppointmentsTabPanel : UserControl
     {
         private DateTime selected;
-        Model.ScheduleViewModel viewModel;
+        ScheduleViewModel viewModel;
 
         public AppointmentsTabPanel()
         {

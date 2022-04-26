@@ -142,7 +142,9 @@ public class AppointmentRepository
 
     public List<Appointment> GetAppointmentsByPatient(String patientId)
     {
+        
         List<Appointment> patientAppointments = new List<Appointment>();
+        updateReferences();
         foreach (Appointment appointment in this.appointments)
         {
             if (appointment.Patient.IsPatientById(patientId))
@@ -155,8 +157,10 @@ public class AppointmentRepository
 
     public List<Appointment> GetAppointmentsByDoctor(String doctorId)
     {
+        
         List<Appointment> doctorsAppointments = new List<Appointment>();
         this.appointments = this.appointmentDataHandler.Read();
+        updateReferences();
         foreach (Appointment appointment in this.appointments)
         {
             if (appointment.Doctor.PersonalId.Equals(doctorId))
