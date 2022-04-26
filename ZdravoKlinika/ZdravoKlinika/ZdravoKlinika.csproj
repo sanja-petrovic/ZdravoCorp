@@ -15,5 +15,15 @@
     <Page Remove="View\Dialogs\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Images\burger-bar.png" />
+    <None Remove="Resources\Images\dots.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\burger-bar.png" />
+    <Resource Include="Resources\Images\dots.png" />
+  </ItemGroup>
+
 
 </Project>

@@ -30,7 +30,8 @@ namespace ZdravoKlinika
 
         private void secretaryButton_Click(object sender, RoutedEventArgs e)
         {
-            View.SecretaryWindowCP1 secretaryWindow = new View.SecretaryWindowCP1();
+            //View.SecretaryWindowCP1 secretaryWindow = new View.SecretaryWindowCP1();
+            View.Secretary.SecretaryMainWindow secretaryWindow = new View.Secretary.SecretaryMainWindow();
             secretaryWindow.Show();
         }
 
