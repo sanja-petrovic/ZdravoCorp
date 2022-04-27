@@ -76,4 +76,20 @@ namespace JsonConverters
             JsonSerializerOptions options) =>
                 writer.WriteStringValue(room.RoomId);
     }
+
+    public class MedicationConverter : JsonConverter<Medication>
+    {
+        public override Medication Read(
+            ref Utf8JsonReader reader, 
+            Type typeToConvert, 
+            JsonSerializerOptions options) => Medication.Parse(reader.GetString());
+
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            Medication medication,
+            JsonSerializerOptions options) => writer.WriteStringValue(medication.MedicationId);
+        
+
+    }
 }
