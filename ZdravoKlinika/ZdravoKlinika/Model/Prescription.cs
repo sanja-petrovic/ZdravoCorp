@@ -8,6 +8,8 @@ namespace ZdravoKlinika.Model
 {
     internal class Prescription
     {
+        Doctor doctor;
+        RegisteredPatient registeredPatient;
         Medication medication;
         private int amount;
         private int duration;
@@ -18,8 +20,10 @@ namespace ZdravoKlinika.Model
         private bool noAlternatives;
         private bool emergency;
 
-        public Prescription(Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency)
+        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency)
         {
+            this.doctor = doctor;
+            this.registeredPatient = registeredPatient;
             this.medication = medication;
             this.amount = amount;
             this.duration = duration;
@@ -40,5 +44,7 @@ namespace ZdravoKlinika.Model
         public string DoctorsNote { get => doctorsNote; set => doctorsNote = value; }
         public bool NoAlternatives { get => noAlternatives; set => noAlternatives = value; }
         public bool Emergency { get => emergency; set => emergency = value; }
+        public Doctor Doctor { get => doctor; set => doctor = value; }
+        public RegisteredPatient RegisteredPatient { get => registeredPatient; set => registeredPatient = value; }
     }
 }
