@@ -13,18 +13,35 @@ namespace ZdravoKlinika.Repository
 
         private List<Prescription> prescriptions;
         private PrescriptionDataHandler prescriptionDataHandler;
+        private MedicationDataHandler medicationDataHandler;
 
         public PrescriptionRepository()
         {
             prescriptionDataHandler = new PrescriptionDataHandler();
             this.prescriptions = prescriptionDataHandler.Read();
+            this.medicationDataHandler = new MedicationDataHandler();
         }
 
-        public void Prescribe(string medicalRecordId, Medication medication, int amount, string doctorsNote, int duration, int frequency, string repeat, int singleDose)
+        public void updateReferences()
         {
-            Prescription prescription = new Prescription(medication, amount, doctorsNote, duration, frequency, repeat, singleDose);
+            List<Medication> medications = medicationDataHandler.Read();
+            foreach(Medication medication in medications)
+            {
+                foreach(Prescription prescription in this.prescriptions)
+                {
+                    if(prescription.Medication.MedicationId.Equals(medication.MedicationId))
+                    {
+                        prescription.Medication = medication;
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void Prescribe(Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency)
+        {
+            Prescription prescription = new Prescription(medication, amount, duration, frequency, singleDose, repeat, doctorsNote, noAlternatives, emergency);
             MedicalRecordRepository medicalRecordRepository = new MedicalRecordRepository();
-            medicalRecordRepository.GetById(medicalRecordId).CurrentMedication.Add(medication);
         }
         
     }
