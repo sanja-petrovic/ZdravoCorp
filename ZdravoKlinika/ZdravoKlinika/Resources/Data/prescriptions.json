@@ -1,0 +1,17 @@
+[
+  {
+    "DateOfCreation": "2022-03-31T11:00:00",
+    "Doctor": "D1",
+    "RegisteredPatient": "12345",
+    "Medication": "1",
+    "Amount": 1,
+    "Duration": 5,
+    "Frequency": 2,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "Posle obroka",
+    "NoAlternatives": false,
+    "Emergency": false,
+    "Id": 1
+  }
+  ]

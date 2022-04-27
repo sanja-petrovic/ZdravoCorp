@@ -10,12 +10,15 @@ namespace ZdravoKlinika.Repository
     public class MedicalRecordRepository
     {
         private MedicalRecordDataHandler medicalRecordDataHandler;
+        private MedicationRepository medicationRepository;
         private List<MedicalRecord> medicalRecords;
 
         public MedicalRecordRepository()
         {
             MedicalRecordDataHandler = new MedicalRecordDataHandler();
             medicalRecords = MedicalRecordDataHandler.Read();
+            medicationRepository = new MedicationRepository();
+            UpdateReferences();
         }
         public List<MedicalRecord> MedicalRecords
         {
@@ -37,6 +40,23 @@ namespace ZdravoKlinika.Repository
         }
 
         public MedicalRecordDataHandler MedicalRecordDataHandler { get => medicalRecordDataHandler; set => medicalRecordDataHandler = value; }
+
+        public void UpdateReferences()
+        {
+            
+
+            foreach(MedicalRecord medicalRecord in medicalRecords)
+            {
+                for(int i = 0; i < medicalRecord.CurrentMedication.Count; i++)
+                {
+                    medicalRecord.CurrentMedication[i] = medicationRepository.GetById(medicalRecord.CurrentMedication[i].MedicationId);
+                }
+                for(int i = 0; i < medicalRecord.PastMedication.Count; i++)
+                {
+                    medicalRecord.PastMedication[i] = medicationRepository.GetById(medicalRecord.PastMedication[i].MedicationId);
+                }
+            }
+        }
 
         public void CreateMedicalRecord(MedicalRecord medicalRecord)
         {

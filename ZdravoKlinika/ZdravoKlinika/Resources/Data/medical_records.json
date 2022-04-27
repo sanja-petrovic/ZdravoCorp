@@ -6,8 +6,8 @@
     "Allergies": [
       "asdads"
     ],
-    "CurrentMedication": [],
-    "PastMedication": [],
+    "CurrentMedication": [ "1" ],
+    "PastMedication": [ "2" ],
     "Reports": [],
     "MedicalRecordId": "12345"
   }

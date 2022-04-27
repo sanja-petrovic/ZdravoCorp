@@ -18,6 +18,10 @@ namespace ZdravoKlinika.Repository
         {
             medicationDataHandler = new MedicationDataHandler();
             this.medications = medicationDataHandler.Read();
+            foreach(Medication medication in medications)
+            {
+                Console.WriteLine(medication.MedicationId);
+            }
         }
 
         public List<Medication> GetAll()

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Repository;
 
 namespace ZdravoKlinika
 {
@@ -26,6 +27,7 @@ namespace ZdravoKlinika
         {
             View.DoctorWindow doctorWindow = new View.DoctorWindow();
             doctorWindow.Show();
+            MedicalRecordRepository repository = new MedicalRecordRepository();
         }
 
         private void secretaryButton_Click(object sender, RoutedEventArgs e)
