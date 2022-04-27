@@ -95,5 +95,15 @@ namespace ZdravoKlinika.Repository
             MedicalRecordDataHandler.Write(this.medicalRecords);
         }
 
+        public void AddCurrentMedication(String id, Medication medication)
+        {
+            MedicalRecord medicalRecord = this.GetById(id);
+            medicalRecord.AddCurrentMedication(medication);
+            this.DeleteMedicalRecord(medicalRecord);
+            this.medicalRecords.Add(medicalRecord);
+
+            MedicalRecordDataHandler.Write(this.medicalRecords);
+        }
+
     }
 }
