@@ -8,6 +8,7 @@ namespace ZdravoKlinika.Model
 {
     internal class Prescription
     {
+        private DateOnly dateOfCreation;
         Doctor doctor;
         RegisteredPatient registeredPatient;
         Medication medication;
@@ -19,9 +20,11 @@ namespace ZdravoKlinika.Model
         private string doctorsNote;
         private bool noAlternatives;
         private bool emergency;
+        private int id;
 
-        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency)
+        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency, int id)
         {
+            this.DateOfCreation = DateOnly.FromDateTime(DateTime.Now);
             this.doctor = doctor;
             this.registeredPatient = registeredPatient;
             this.medication = medication;
@@ -33,6 +36,7 @@ namespace ZdravoKlinika.Model
             this.doctorsNote = doctorsNote;
             this.noAlternatives = noAlternatives;
             this.emergency = emergency;
+            this.Id = id;
         }
 
         public Medication Medication { get => medication; set => medication = value; }
@@ -46,5 +50,7 @@ namespace ZdravoKlinika.Model
         public bool Emergency { get => emergency; set => emergency = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
         public RegisteredPatient RegisteredPatient { get => registeredPatient; set => registeredPatient = value; }
+        public int Id { get => id; set => id = value; }
+        public DateOnly DateOfCreation { get => dateOfCreation; set => dateOfCreation = value; }
     }
 }

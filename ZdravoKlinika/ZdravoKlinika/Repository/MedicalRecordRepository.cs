@@ -86,5 +86,14 @@ namespace ZdravoKlinika.Repository
             return null;
         }
 
+        public void AddCurrentMedication(MedicalRecord medicalRecord, Medication medication)
+        {
+            medicalRecord.AddCurrentMedication(medication);
+            this.DeleteMedicalRecord(medicalRecord);
+            this.medicalRecords.Add(medicalRecord);
+
+            MedicalRecordDataHandler.Write(this.medicalRecords);
+        }
+
     }
 }

@@ -22,9 +22,17 @@ namespace ZdravoKlinika.Controller
             return this.prescriptionService.GetAll();
         }
 
-        public List<Prescription> GetByMedicalRecord(String medicalRecordId)
+
+        public Prescription GetById(int id)
         {
-            return this.prescriptionService.GetByMedicalRecord();
+            return this.prescriptionService.GetById(id);
+        }
+
+        public void Prescribe(Doctor doctor, RegisteredPatient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency)
+        {
+            
+            this.prescriptionService.Prescribe(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote, noAlternatives, emergency);
+
         }
     }
 }
