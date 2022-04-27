@@ -20,8 +20,11 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class DoctorMedicalRecord : UserControl
     {
+        Model.DoctorMedicalRecordViewModel viewModel;
         public DoctorMedicalRecord()
         {
+            viewModel = new Model.DoctorMedicalRecordViewModel();
+            DataContext = viewModel;
             InitializeComponent();
         }
     }

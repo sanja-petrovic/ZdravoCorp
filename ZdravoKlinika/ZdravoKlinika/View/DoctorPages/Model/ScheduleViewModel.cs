@@ -12,6 +12,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private DateTime selected;
         public ObservableCollection<ScheduleTabItem> Tabs { get; set; }
         public DateTime Selected { get => selected; set => SetProperty(ref selected, value); }
+        
 
         public ScheduleViewModel()
         {

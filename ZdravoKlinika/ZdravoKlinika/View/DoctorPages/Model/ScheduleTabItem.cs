@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
-    internal class ScheduleTabItem : ViewModelBase
+    public class ScheduleTabItem : ViewModelBase
     {
         private string time;
         private string patientId;
@@ -26,9 +27,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Prescriptions { get => prescriptions; set => SetProperty(ref prescriptions, value); }
         public string AppointmentType { get => appointmentType; set => SetProperty(ref appointmentType, value); }
 
+        ICommand _clickCommand;
+
         public ScheduleTabItem()
         {
 
         }
+
+
     }
 }
