@@ -20,6 +20,9 @@ namespace ZdravoKlinika.Data_Handler
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.WriteIndented = true;
+            options.Converters.Add(new MedicationConverter());
+            options.Converters.Add(new DoctorConverter());
+            options.Converters.Add(new RegisteredPatientConverter());
             var json = JsonSerializer.Serialize(prescriptions, options);
             File.WriteAllText(fileLocation, json);
 

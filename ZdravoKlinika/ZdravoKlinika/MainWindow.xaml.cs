@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
+using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
 
 namespace ZdravoKlinika
@@ -27,7 +29,11 @@ namespace ZdravoKlinika
         {
             View.DoctorWindow doctorWindow = new View.DoctorWindow();
             doctorWindow.Show();
-            MedicalRecordRepository repository = new MedicalRecordRepository();
+            PrescriptionController prescriptionController = new PrescriptionController();
+            MedicationController medicationController = new MedicationController();
+            RegisteredPatientController registeredPatientController = new RegisteredPatientController();
+
+            prescriptionController.Prescribe(new Doctor(), registeredPatientController.GetById("12345"), new Medication(), 1, 7, 1, "2tbl", "dnevno", "Ujutru pre dorucka", true, true);
         }
 
         private void secretaryButton_Click(object sender, RoutedEventArgs e)

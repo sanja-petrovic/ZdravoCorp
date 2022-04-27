@@ -1,8 +1,5 @@
 [
   {
-    "DateOfCreation": "2022-03-31T11:00:00",
-    "Doctor": "D1",
-    "RegisteredPatient": "12345",
     "Medication": "1",
     "Amount": 1,
     "Duration": 5,
@@ -12,6 +9,24 @@
     "DoctorsNote": "Posle obroka",
     "NoAlternatives": false,
     "Emergency": false,
-    "Id": 1
+    "Doctor": "D1",
+    "RegisteredPatient": "12345",
+    "Id": 1,
+    "DateOfCreation": "2022-03-31T11:00:00"
+  },
+  {
+    "Medication": "3",
+    "Amount": 1,
+    "Duration": 7,
+    "Frequency": 1,
+    "SingleDose": "2tbl",
+    "Repeat": "dnevno",
+    "DoctorsNote": "Ujutru pre dorucka",
+    "NoAlternatives": true,
+    "Emergency": true,
+    "Doctor": "D1",
+    "RegisteredPatient": "12345",
+    "Id": 2,
+    "DateOfCreation": "2022-04-27T21:31:48.7518731+02:00"
   }
-  ]
+]

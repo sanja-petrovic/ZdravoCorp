@@ -25,6 +25,7 @@ namespace ZdravoKlinika.Data_Handler
         public List<Medication> Read()
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
+            
             return JsonSerializer.Deserialize<List<Medication>>(File.ReadAllText(fileLocation), options);
         }
     }

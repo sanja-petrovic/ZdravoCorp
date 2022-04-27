@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using ZdravoKlinika.Model;
@@ -89,7 +90,6 @@ namespace JsonConverters
             Utf8JsonWriter writer,
             Medication medication,
             JsonSerializerOptions options) => writer.WriteStringValue(medication.MedicationId);
-        
-
     }
+
 }
