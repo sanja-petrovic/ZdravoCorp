@@ -13,18 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZdravoKlinika.ViewModel
+namespace ZdravoKlinika.View
 {
     /// <summary>
-    /// Interaction logic for PatientProfile.xaml
+    /// Interaction logic for PatientEditView.xaml
     /// </summary>
-    public partial class PatientProfile : Page
+    public partial class PatientEditView : Page
     {
-        private PatientProfileViewModel viewModel = new PatientProfileViewModel("12345");
-        public PatientProfile()
-        { 
+        public PatientEditView()
+        {
             InitializeComponent();
-            this.DataContext = viewModel;
+            priorityComboBox.Items.Add("Vreme");
+            priorityComboBox.Items.Add("Doktor");
+            priorityComboBox.SelectedIndex = 0;
         }
     }
 }

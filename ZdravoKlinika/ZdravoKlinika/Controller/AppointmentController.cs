@@ -29,6 +29,10 @@ public class AppointmentController
     {
         return this.appointmentService.GetAppointmentsByDoctorId(id);
     }
+    public List<Appointment> GetAppointmentsByPatientIdForDate(String id,DateTime date)
+    {
+        return this.appointmentService.GetAppointmentsByPatientIdForDate(id, date);
+    }
 
     public Appointment CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {

@@ -25,6 +25,17 @@ namespace ZdravoKlinika.View
             InitializeComponent();
             this.DataContext = viewModel;
             mainFrame.Navigate(viewModel.ProfilePage);
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(viewModel.ProfilePage);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(viewModel.PatientApointmentView);
         }
     }
 }

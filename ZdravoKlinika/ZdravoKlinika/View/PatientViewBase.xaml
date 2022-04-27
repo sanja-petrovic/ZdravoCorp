@@ -13,8 +13,8 @@
     <Grid>
         <Grid x:Name="menuBarGrid" Margin="0,0,0,491" Background="Gray">
             <Image Margin="39,8,740,17" Source="{Binding Path=LogoImageSource}"/>
-            <Button Content="Profil" HorizontalAlignment="Left" Margin="244,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
-            <Button Content="Pregledi" HorizontalAlignment="Left" Margin="349,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+            <Button Content="Profil" HorizontalAlignment="Left" Margin="244,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click"/>
+            <Button Content="Pregledi" HorizontalAlignment="Left" Margin="349,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click_1"/>
             <Button Content="Terapija" HorizontalAlignment="Left" Margin="454,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
             <Button Content="Vaši utisci" HorizontalAlignment="Left" Margin="559,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
             <Button Content="Odjava" HorizontalAlignment="Left" Margin="664,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
@@ -35,7 +35,7 @@
         </Grid>
 
 
-        <Frame x:Name="mainFrame" Margin="0,148,0,60"/>
+        <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Margin="0,148,0,10"/>
 
 
     </Grid>

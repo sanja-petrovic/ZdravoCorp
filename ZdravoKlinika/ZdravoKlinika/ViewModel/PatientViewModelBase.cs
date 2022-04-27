@@ -7,12 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using ZdravoKlinika.View;
 
 namespace ZdravoKlinika.ViewModel
 {
     internal class PatientViewModelBase : INotifyPropertyChanged
     {
-        // private string logoFileLocation = 
+        private String patientId;
         private ImageSource logoImageSource = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "PatientViewLogo.png"));
         public ImageSource LogoImageSource 
         { 
@@ -75,6 +76,13 @@ namespace ZdravoKlinika.ViewModel
             {
                     this.profilePage = value;
             }
+        }
+
+        private PatientAppointmentView patientApointmentView = new PatientAppointmentView("12345");
+        public PatientAppointmentView PatientApointmentView
+        {
+            get { return this.patientApointmentView; }
+            set { this.patientApointmentView = value; }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

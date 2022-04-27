@@ -43,7 +43,20 @@ public class AppointmentService
     {
         return this.appointmentRepository.GetAppointmentsByPatient(id);
     }
-    
+    public List<Appointment> GetAppointmentsByPatientIdForDate(String id,DateTime date)
+    {
+        List<Appointment> appointments = new List<Appointment>();
+        foreach (Appointment app in this.appointmentRepository.GetAppointmentsByPatient(id))
+        {
+            if(app.DateAndTime.Date == date.Date)
+            {
+                appointments.Add(app);
+            }
+        }
+        return appointments;
+    }
+
+
     public Appointment CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         List<Appointment> appointments = this.AppointmentRepository.GetAll();

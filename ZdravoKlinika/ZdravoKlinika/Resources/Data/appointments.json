@@ -14,15 +14,15 @@
   },
   {
     "Prescriptions": [],
-    "AppointmentId": 2,
-    "DateAndTime": "2022-04-22T00:00:00",
+    "AppointmentId": 3,
+    "DateAndTime": "2022-05-12T09:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 30,
-    "Doctor": null,
-    "Patient": null,
-    "Room": null
+    "Duration": 60,
+    "Doctor": "D1",
+    "Patient": "12345,Registered",
+    "Room": "314"
   }
 ]
