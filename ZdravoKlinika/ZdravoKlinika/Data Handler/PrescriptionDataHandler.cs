@@ -7,29 +7,34 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Data_Handler
 {
-    public class MedicalRecordDataHandler
+    internal class PrescriptionDataHandler
     {
-        private static String fileName = "medical_records.json";
+        private static String fileName = "prescriptions.json";
         private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
 
-        public void Write(List<MedicalRecord> medicalRecord)
+        public void Write(List<Prescription> prescriptions)
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.WriteIndented = true;
-            var json = JsonSerializer.Serialize(medicalRecord, options);
+            options.Converters.Add(new MedicationConverter());
+            options.Converters.Add(new DoctorConverter());
+            options.Converters.Add(new RegisteredPatientConverter());
+            var json = JsonSerializer.Serialize(prescriptions, options);
             File.WriteAllText(fileLocation, json);
 
         }
 
-        public List<MedicalRecord> Read()
+        public List<Prescription> Read()
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
-            options.Converters.Add(new JsonStringEnumConverter());
-            //options.Converters.Add(new MedicationConverter());
-            return JsonSerializer.Deserialize<List<MedicalRecord>>(File.ReadAllText(fileLocation), options);
+            options.Converters.Add(new MedicationConverter());
+            options.Converters.Add(new DoctorConverter());
+            options.Converters.Add(new RegisteredPatientConverter());
+            return JsonSerializer.Deserialize<List<Prescription>>(File.ReadAllText(fileLocation), options);
         }
     }
 }
