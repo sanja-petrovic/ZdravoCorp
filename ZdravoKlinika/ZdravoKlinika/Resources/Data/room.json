@@ -47,10 +47,10 @@
   {
     "EquipmentInRoom": [],
     "RoomId": "9",
-    "Type": 2,
+    "Type": 1,
     "Name": "R9",
     "Level": 1,
     "Number": 15,
-    "Status": 1
+    "Status": 2
   }
 ]

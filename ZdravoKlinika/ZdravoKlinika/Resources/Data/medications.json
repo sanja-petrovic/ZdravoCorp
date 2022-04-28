@@ -1,0 +1,40 @@
+[
+    {
+      "MedicationId": "1",
+      "MedicationCode": "M01AE01",
+      "BrandName": "Brufen",
+      "Dosage": "200mg",
+      "ActiveSubstances": [ "ibuprofen" ],
+      "Form": "film tableta",
+      "Notes": []
+    },
+  {
+    "MedicationId": "2",
+    "MedicationCode": "M01AE01",
+    "BrandName": "Brufen",
+    "Dosage": "400mg",
+    "ActiveSubstances": [ "ibuprofen" ],
+    "Form": "film tableta",
+    "Notes": []
+  },
+
+  {
+    "MedicationId": "3",
+    "MedicationCode": "N02BE51",
+    "BrandName": "Caffetin cold",
+    "Dosage": "500mg+30mg+15mg+60mg",
+    "ActiveSubstances": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
+    "Form": "film tableta",
+    "Notes": []
+  },
+
+  {
+    "MedicationId": "4",
+    "MedicationCode": "R02AA",
+    "BrandName": "Septolete total",
+    "Dosage": "5mg/mL+1.5mg/mL",
+    "ActiveSubstances": [ "cetilpiridinijum-hlorid", "benzidamin" ],
+    "Form": "sprej za usnu sluznicu, rastvor",
+    "Notes": []
+  }
+  ]

@@ -6,8 +6,32 @@
     "Allergies": [
       "Mačja dlaka"
     ],
-    "CurrentMedication": [],
-    "PastMedication": [],
+    "CurrentMedication": [
+      {
+        "MedicationId": "1",
+        "BrandName": "Brufen",
+        "Dosage": "200mg",
+        "Notes": [],
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ]
+      }
+    ],
+    "PastMedication": [
+      {
+        "MedicationId": "2",
+        "BrandName": "Brufen",
+        "Dosage": "400mg",
+        "Notes": [],
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ]
+      }
+    ],
     "Reports": [],
     "MedicalRecordId": "0105965123321"
   },
