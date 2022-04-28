@@ -8,6 +8,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 {
     internal class AppointmentViewModel : ViewModelBase
     {
+        private int id;
         private string name;
         private string type;
         private string time;
@@ -21,7 +22,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Type { get => type; set => SetProperty(ref type, value); }
         public string Time { get => time; set => SetProperty(ref time, value); }
         public string Room { get => room; set => SetProperty(ref room, value); }
-
-
+        public int Id { get => id; set => id = value; }
     }
 }

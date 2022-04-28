@@ -51,6 +51,11 @@ public class RegisteredPatient : RegisteredUser, Patient
     public MedicalRecord MedicalRecord { get => medicalRecord; set => medicalRecord = value; }
     public PatientType PatientType { get => patientType; set => patientType = value; }
 
+    public String GetPatientFullName()
+    {
+        return this.Name + " " + this.Lastname;
+    }
+
     public PatientType GetPatientType() 
     {
         return PatientType;

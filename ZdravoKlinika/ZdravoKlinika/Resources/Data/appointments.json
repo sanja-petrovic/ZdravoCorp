@@ -9,59 +9,64 @@
     "Emergency": false,
     "Duration": 123,
     "Doctor": "123",
-    "Patient": "12345,Registered",
-    "Room": "314"
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false
   },
   {
     "Prescriptions": [],
-    "AppointmentId": 1,
-    "DateAndTime": "2022-04-28T11:00:00",
+    "AppointmentId": 3,
+    "DateAndTime": "2022-04-28T09:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
     "Doctor": "456",
-    "Patient": "12345,Registered",
-    "Room": "314"
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": false
   },
   {
     "Prescriptions": [],
-    "AppointmentId": 1,
+    "AppointmentId": 2,
     "DateAndTime": "2022-04-28T11:00:00",
-    "Diagnoses": null,
+    "Diagnoses": "Hyperglycemia",
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
-    "Doctor": "456",
-    "Patient": "12345,Registered",
-    "Room": "314"
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false
   },
   {
     "Prescriptions": [],
-    "AppointmentId": 1,
+    "AppointmentId": 4,
     "DateAndTime": "2022-04-28T12:00:00",
-    "Diagnoses": null,
+    "Diagnoses": "sfdsdsfds",
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
     "Doctor": "456",
-    "Patient": "12345,Registered",
-    "Room": "314"
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false
   },
   {
     "Prescriptions": [],
-    "AppointmentId": 1,
+    "AppointmentId": 5,
     "DateAndTime": "2022-04-28T10:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
-    "Doctor": "123",
-    "Patient": "12345,Registered",
-    "Room": "314"
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false
   }
 ]

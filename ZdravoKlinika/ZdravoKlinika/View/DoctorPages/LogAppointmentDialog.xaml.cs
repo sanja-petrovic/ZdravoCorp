@@ -22,11 +22,21 @@ namespace ZdravoKlinika.View.DoctorPages
     {
 
         private AppointmentLoggingViewModel viewModel;
+        private int selectedAppointmentId;
+
+        public int SelectedAppointmentId { get => selectedAppointmentId; set => selectedAppointmentId = value; }
 
         public LogAppointmentDialog()
         {
+            
+        }
+
+        public void init()
+        {
             viewModel = new AppointmentLoggingViewModel();
             DataContext = viewModel;
+            viewModel.AppointmentId = selectedAppointmentId;
+            viewModel.load();
             InitializeComponent();
         }
 
@@ -40,9 +50,10 @@ namespace ZdravoKlinika.View.DoctorPages
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Save(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(viewModel.Diagnoses);
+            viewModel.save();
+            this.Close();
         }
     }
 }

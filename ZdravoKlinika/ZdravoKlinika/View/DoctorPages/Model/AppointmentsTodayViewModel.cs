@@ -25,7 +25,25 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 Room room = appointment.Room;
                 
 
-                this.Appointments.Add(new AppointmentViewModel { Name = patient.Name + " " + patient.Lastname, Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room.Name });
+                if(!appointment.Over)
+                    this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.Name + " " + patient.Lastname, Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room.Name });
+            }
+        }
+
+        public void infoChange()
+        {
+            this.Appointments = new ObservableCollection<AppointmentViewModel>();
+            this.appointmentController = new AppointmentController();
+            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate("456", DateTime.Today);
+
+            foreach (Appointment appointment in appts)
+            {
+                RegisteredPatient patient = (RegisteredPatient)appointment.Patient;
+                DateTime time = appointment.DateAndTime;
+                Room room = appointment.Room;
+
+
+                this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.Name + " " + patient.Lastname, Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room.Name });
             }
         }
     }

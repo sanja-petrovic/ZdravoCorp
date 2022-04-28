@@ -98,4 +98,12 @@ public class AppointmentService
 
     }
 
+    public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)
+    {
+        appointment.Diagnoses = diagnoses;
+        appointment.DoctorsNotes = doctorsNote;
+        appointment.Over = true;
+        this.appointmentRepository.LogAppointment(appointment);
+    }
 }
+

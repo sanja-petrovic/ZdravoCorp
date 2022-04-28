@@ -98,6 +98,7 @@ public class AppointmentRepository
     {
 
         this.appointments = this.appointmentDataHandler.Read();
+        updateReferences();
 
         foreach(Appointment appointment in this.appointments)
         {
@@ -207,6 +208,19 @@ public class AppointmentRepository
                 this.appointments.Remove(appointment);
         this.CreateAppointment(appointment);
 
+    }
+
+    public void LogAppointment(Appointment appointment)
+    {
+        Appointment toRemove = this.GetAppointmentById(appointment.AppointmentId);
+        if (appointment == null)
+            return;
+        if (this.appointments != null)
+            if (this.appointments.Contains(toRemove))
+                this.appointments.Remove(toRemove);
+        
+        this.AddAppointment(appointment);
+        appointmentDataHandler.Write(this.appointments);
     }
 
 }

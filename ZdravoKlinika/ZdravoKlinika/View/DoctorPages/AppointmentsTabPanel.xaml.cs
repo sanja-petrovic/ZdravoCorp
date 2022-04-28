@@ -23,6 +23,8 @@ namespace ZdravoKlinika.View.DoctorPages
     {
         private DateTime selected;
         ScheduleViewModel viewModel;
+        private string clickedPatientId;
+        private DoctorSchedule parent;
 
         public AppointmentsTabPanel()
         {
@@ -55,8 +57,14 @@ namespace ZdravoKlinika.View.DoctorPages
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public DoctorSchedule Parent1 { get => parent; set => parent = value; }
+        public string ClickedPatientId { get => clickedPatientId; set => clickedPatientId = value; }
+
+        private void GoToRecord(object sender, RoutedEventArgs e)
         {
+            var sel = (ScheduleTabItem) TabTab.SelectedItem;
+            parent.goToMedicalRecord(sel.PatientId);
         }
+        
     }
 }

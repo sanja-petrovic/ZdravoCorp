@@ -21,6 +21,7 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class DoctorHomePage : UserControl
     {
+        private int selectedAppointmentId;
         private AppointmentsTodayViewModel viewModel;
         public DoctorHomePage()
         {
@@ -29,11 +30,19 @@ namespace ZdravoKlinika.View.DoctorPages
             InitializeComponent();
         }
 
+        private void RowSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            var smth = (AppointmentViewModel)ScheduleDG.CurrentItem;
+            this.selectedAppointmentId = smth.Id;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog();
+            LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog { SelectedAppointmentId = this.selectedAppointmentId };
+            logAppointmentDialog.init();
             logAppointmentDialog.ShowDialog();
-            logAppointmentDialog.Owner = Application.Current.MainWindow;
+            viewModel.infoChange();
+            
         }
     }
 }

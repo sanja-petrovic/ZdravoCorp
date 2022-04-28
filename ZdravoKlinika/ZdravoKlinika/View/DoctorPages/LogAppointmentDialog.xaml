@@ -715,7 +715,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                             <StaticResource ResourceKey="fancyButtonStyle4"/>
                         </Button.Style>
                     </Button>
-                    <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="379,568,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77" Click="Button_Click">
+                    <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="379,568,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77" Click="Save">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>

@@ -8,6 +8,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 {
     public class DoctorMedicalRecordViewModel : ViewModelBase
     {
+        private RegisteredPatientController patientController;
         string name;
         string id;
         string gender;
@@ -29,5 +30,27 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string BloodType { get => bloodType; set => SetProperty(ref bloodType, value); }
         public string EmergancyContactName { get => emergancyContactName; set => SetProperty(ref emergancyContactName, value); }
         public string EmergancyContactPhone { get => emergancyContactPhone; set => SetProperty(ref emergancyContactPhone, value); }
+        public RegisteredPatientController PatientController { get => patientController; set => patientController = value; }
+
+        public DoctorMedicalRecordViewModel()
+        {
+            this.patientController = new RegisteredPatientController();
+        }
+
+        public void init(string patientId)
+        {
+            this.id = patientId;
+            RegisteredPatient patient = patientController.GetById(this.id);
+            this.name = patient.GetPatientFullName();
+            this.phone = patient.Phone;
+            this.address = patient.Address.ToString();
+            this.email = patient.Email;
+            this.bloodType = patient.BloodType.ToString();
+            this.gender = patient.Gender.ToString();
+            this.emergancyContactName = patient.EmergencyContactName;
+            this.emergancyContactPhone = patient.EmergencyContactPhone;
+            this.dateOfBirth = patient.DateOfBirth.ToString("dd.MM.yyyy.");
+
+        }
     }
 }

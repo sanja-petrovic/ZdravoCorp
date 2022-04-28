@@ -10,6 +10,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
     {
         private AppointmentController appointmentController;
         private Appointment appointment;
+        private int appointmentId;
         private string patientName;
         private string patientId;
         private string doctorName;
@@ -28,20 +29,31 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Room { get => room; set => SetProperty(ref room, value); }
         public string Diagnoses { get => diagnoses; set => SetProperty(ref diagnoses, value); }
         public string DoctorsNote { get => doctorsNote; set => SetProperty(ref doctorsNote, value); }
+        public int AppointmentId { get => appointmentId; set => SetProperty(ref appointmentId, value); }
+        public AppointmentController AppointmentController { get => appointmentController; set => SetProperty(ref appointmentController, value); }
+        public Appointment Appointment { get => appointment; set => SetProperty(ref appointment, value); }
 
         public AppointmentLoggingViewModel()
         {
-            
+            this.AppointmentController = new AppointmentController();
         }
 
         public void load()
         {
+            this.appointment = appointmentController.GetAppointmentById(appointmentId);
+            this.patientName = appointment.Patient.GetPatientFullName();
+            this.patientId = appointment.Patient.GetPatientId();
+            this.doctorName = "Dr " + appointment.Doctor.Name + " " + appointment.Doctor.Lastname;
+            this.doctorSpecialty = appointment.Doctor.Specialty;
+            this.dateTime = appointment.DateAndTime.ToString("dd.MM.yyyy HH:mm");
+            this.room = "Soba " + appointment.Room.Name;
 
+            
         }
         
         public void save()
         {
-            
+            appointmentController.LogAppointment(appointment, Diagnoses, DoctorsNote);
         }
     }
 }

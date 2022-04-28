@@ -20,11 +20,9 @@ namespace ZdravoKlinika.View.DoctorPages
         private DateTime selected;
         public DoctorSchedule()
         {
-            InitializeComponent();
             DataContext = this;
-            
-            
-
+            InitializeComponent();
+            ApptTabPanel.Parent1 = this;
         }
 
         public DateTime Selected { get => selected; set => selected = value; }
@@ -36,9 +34,17 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
+            doctorMedicalRecord.PatientId = "0105965123321";
+            this.NavigationService.Navigate(doctorMedicalRecord);
         }
 
-        
+        public void goToMedicalRecord(string patientId)
+        {
+            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
+
+            doctorMedicalRecord.init(patientId);
+            this.NavigationService.Navigate(doctorMedicalRecord);
+        }
     }
 }

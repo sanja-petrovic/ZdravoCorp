@@ -1,14 +1,26 @@
-[
+﻿[
   {
     "Diagnoses": [
-      "asdads"
+      ""
     ],
     "Allergies": [
-      "asdads"
+      "Mačja dlaka"
     ],
     "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
-    "MedicalRecordId": "12345"
+    "MedicalRecordId": "0105965123321"
+  },
+  {
+    "Diagnoses": [
+      "Nema"
+    ],
+    "Allergies": [
+      ""
+    ],
+    "CurrentMedication": [],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "1510963123321"
   }
 ]

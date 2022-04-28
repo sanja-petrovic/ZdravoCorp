@@ -6,7 +6,7 @@ public class Appointment
 {
     private int appointmentId;
     private DateTime dateAndTime;
-    private List<String> diagnoses;
+    private String diagnoses;
     private String doctorsNotes;
     private AppointmentType type;
     private bool emergency;
@@ -15,6 +15,7 @@ public class Appointment
     private Patient patient;
     private Room room;
     private List<Medication> prescriptions;
+    private bool over;
 
     public Appointment() { }
 
@@ -28,6 +29,7 @@ public class Appointment
         this.emergency = emergency;
         this.type = type;
         this.dateAndTime = dateTime;
+        this.Over = false;
     }
 
 
@@ -52,7 +54,7 @@ public class Appointment
 
     public int AppointmentId { get => appointmentId; set => appointmentId = value; }
     public DateTime DateAndTime { get => dateAndTime; set => dateAndTime = value; }
-    public List<string> Diagnoses { get => diagnoses; set => diagnoses = value; }
+    public String Diagnoses { get => diagnoses; set => diagnoses = value; }
     public string DoctorsNotes { get => doctorsNotes; set => doctorsNotes = value; }
     public AppointmentType Type { get => type; set => type = value; }
 
@@ -73,6 +75,7 @@ public class Appointment
     public Doctor Doctor { get => doctor; set => doctor = value; }
     public Patient Patient { get => patient; set => patient = value; }
     public Room Room { get => room; set => room = value; }
+    public bool Over { get => over; set => over = value; }
 
     public void AddPrescriptions(Medication newMedication)
     {
