@@ -57,7 +57,6 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TabTab.ApptInfo.
         }
     }
 }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentsTodayViewModel}"
              mc:Ignorable="d"
              Height="768" Width="1024">
     <UserControl.Resources>
@@ -39,7 +39,7 @@
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
             <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalOnly"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
 
@@ -62,6 +62,7 @@
                                                 <RowDefinition Height="60"/>
                                                 <RowDefinition Height="*"/>
                                                 <RowDefinition Height="*"/>
+                                                
                                             </Grid.RowDefinitions>
                                             <Button Command="{x:Static DataGrid.SelectAllCommand}" Focusable="false" Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}}" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
                                             <DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
@@ -95,7 +96,7 @@
         </Style>
         <Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
             <Setter Property="Width" Value="1"/>
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="White"/>
             <Setter Property="Cursor" Value="SizeWE"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -111,12 +112,13 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="0, 0, 0, 0"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
                         <Grid>
                             <theme:DataGridHeaderBorder CornerRadius="10" Background="Transparent"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" IsPressed="{TemplateBinding IsPressed}" IsHovered="{TemplateBinding IsMouseOver}" IsClickable="{TemplateBinding CanUserSort}" Padding="25 0 110 10" SortDirection="{TemplateBinding SortDirection}" SeparatorVisibility="{TemplateBinding SeparatorVisibility}" SeparatorBrush="{TemplateBinding SeparatorBrush}">
-                                <ContentPresenter  HorizontalAlignment="Center" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                <ContentPresenter HorizontalAlignment="Center" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </theme:DataGridHeaderBorder>
                             <Thumb x:Name="PART_LeftHeaderGripper" HorizontalAlignment="Left" Style="{StaticResource ColumnHeaderGripperStyle}"/>
                             <Thumb x:Name="PART_RightHeaderGripper" HorizontalAlignment="Right" Style="{StaticResource ColumnHeaderGripperStyle}"/>
@@ -170,13 +172,13 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Margin" Value="23, 0, 0, 0"/>
             <Setter Property="Foreground" Value="#555557"/>
             <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="30"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type DataGridCell}">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                        <Border Padding="25, 0, 0, 0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                     </ControlTemplate>
@@ -184,7 +186,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#FF6C63FF"/>
+                    <Setter Property="Background" Value="#FF9E98FF"/>
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                 </Trigger>
@@ -196,7 +198,7 @@
                         <Condition Property="IsSelected" Value="true"/>
                         <Condition Property="Selector.IsSelectionActive" Value="false"/>
                     </MultiTrigger.Conditions>
-                    <Setter Property="Background" Value="#FF9E98FF"/>
+                    <Setter Property="Background" Value="#FFC1BDFF"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="FontWeight" Value="Bold"/>
@@ -245,12 +247,12 @@
         <Border BorderThickness="1" Grid.Row="0"
         CornerRadius="10,10,0,0" BorderBrush="Transparent" Background="White" Margin="274,122,42,592"/>
         <Grid>
-            <DataGrid CanUserResizeColumns="False" Name="patientTable" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" d:ItemsSource="{d:SampleData ItemCount=10}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}"  Margin="275,125,42,274">
+            <DataGrid SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False" Name="patientTable" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding Appointments}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}"  Margin="275,125,42,274" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Ime i prezime" Binding="{Binding FName}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Tip" Binding="{Binding LName}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Vreme" Binding="{Binding LName}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Soba" Binding="{Binding LName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ime i prezime" Binding="{Binding Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tip" Binding="{Binding Type}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Vreme" Binding="{Binding Time}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Soba" Binding="{Binding Room}"></DataGridTextColumn>
                 </DataGrid.Columns>
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type Border}">

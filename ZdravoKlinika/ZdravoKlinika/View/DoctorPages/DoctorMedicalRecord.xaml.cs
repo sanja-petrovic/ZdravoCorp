@@ -27,5 +27,11 @@ namespace ZdravoKlinika.View.DoctorPages
             DataContext = viewModel;
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PrescriptionView prescriptionView = new PrescriptionView();
+            prescriptionView.Show();
+        }
     }
 }

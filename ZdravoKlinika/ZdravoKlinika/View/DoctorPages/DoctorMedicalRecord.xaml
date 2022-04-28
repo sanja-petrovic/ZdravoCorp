@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:DoctorMedicalRecordViewModel}"
              mc:Ignorable="d" 
              Height="768" Width="1024" Background="#F8F9FE">
     <UserControl.Resources>
@@ -290,7 +290,7 @@
     </UserControl.Resources>
     <Grid>
         <local:DoctorBasePage x:Name="Base"/>
-        <Label Content="Monica Geller" Margin="271,45,355,663" FontSize="24" FontWeight="Bold"/>
+        <Label Content="{Binding Name}" Margin="271,45,355,663" FontSize="24" FontWeight="Bold"/>
         <Border  Margin="276,84,53,536"
             BorderBrush="Black"
             BorderThickness="2"
@@ -307,29 +307,31 @@
         </Ellipse>
 
         <TextBlock HorizontalAlignment="Left" Margin="394,98,0,0" TextWrapping="Wrap" Text="JMBG" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="394,123,0,0" TextWrapping="Wrap" Text="2801001123456" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Foreground="#FF5F5F5F"/>
+        <TextBlock HorizontalAlignment="Left" Margin="394,123,0,0" TextWrapping="Wrap" Text="{Binding Id}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Foreground="#FF5F5F5F"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="517,98,0,0" TextWrapping="Wrap" Text="Pol" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="517,123,0,0" TextWrapping="Wrap" Text="Ženski" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Foreground="#FF5F5F5F"/>
+        <TextBlock HorizontalAlignment="Left" Margin="517,123,0,0" TextWrapping="Wrap" Text="{Binding Gender}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Foreground="#FF5F5F5F"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="583,98,0,0" TextWrapping="Wrap" Text="Datum rođenja" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="583,123,0,0" TextWrapping="Wrap" Text="28.01.2001." VerticalAlignment="Top" FontWeight="Regular" FontSize="12"  Foreground="#FF5F5F5F"/>
+        <TextBlock HorizontalAlignment="Left" Margin="583,123,0,0" TextWrapping="Wrap" Text="{Binding DateOfBirth}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"  Foreground="#FF5F5F5F"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="394,160,0,0" TextWrapping="Wrap" Text="Adresa" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="394,184,0,0"  Foreground="#FF5F5F5F" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Height="32" Width="178"><Run Text="Miše Dimitrijevića 11/6, "/><LineBreak/><Run Text="Novi Sad"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="394,184,0,0"  Foreground="#FF5F5F5F" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Height="32" Width="178" Text="{Binding Address}"></TextBlock>
 
         <TextBlock HorizontalAlignment="Left" Margin="583,160,0,0" TextWrapping="Wrap" Text="Krvna grupa" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="583,184,0,0"  Foreground="#FF5F5F5F" TextWrapping="Wrap" Text="A+" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock HorizontalAlignment="Left" Margin="583,184,0,0"  Foreground="#FF5F5F5F" TextWrapping="Wrap" Text="{Binding BloodType}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="874,98,0,0" TextWrapping="Wrap" Text="Telefon" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="874,123,0,0"  Foreground="#FF5F5F5F" TextWrapping="Wrap" Text="0612720344" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock HorizontalAlignment="Left" Margin="874,123,0,0"  Foreground="#FF5F5F5F" TextWrapping="Wrap" Text="{Binding Phone}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="716,160,0,0" TextWrapping="Wrap" Text="Kontakt za hitne slučajeve" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="182"/>
+        <TextBlock HorizontalAlignment="Left" Margin="716,180,0,0" TextWrapping="Wrap"  Foreground="#FF5F5F5F" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Height="20" Width="237" Text="{Binding Email}"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="716,96,0,0" TextWrapping="Wrap" Text="E-mail adresa" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="150"/>
-        <TextBlock HorizontalAlignment="Left" Margin="716,123,0,0" TextWrapping="Wrap"  Foreground="#FF5F5F5F" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Height="41" Width="150" Text="monicageller@gmail.com"/>
+        <TextBlock HorizontalAlignment="Left" Margin="716,180,0,0" TextWrapping="Wrap"  Foreground="#FF5F5F5F" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Height="20" Width="230" Text="{Binding EmergancyContactName}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="716,200,0,0" TextWrapping="Wrap"  Foreground="#FF5F5F5F" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Height="20" Width="230" Text="{Binding EmergancyContactPhone}"/>
 
-        <Label Content="Monica Geller" Margin="271,45,355,663" FontSize="24" FontWeight="Bold"/>
+        <Label Content="{Binding Name}" Margin="271,45,355,663" FontSize="24" FontWeight="Bold"/>
         <Border  Margin="518,278,297,339"
             BorderBrush="Black"
             BorderThickness="2"
@@ -368,7 +370,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Content="Prepišite" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White">
+        <Button Content="Prepišite" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

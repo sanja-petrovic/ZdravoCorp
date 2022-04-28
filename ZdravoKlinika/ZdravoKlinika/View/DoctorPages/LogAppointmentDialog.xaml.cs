@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -19,8 +20,13 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class LogAppointmentDialog : Window
     {
+
+        private AppointmentLoggingViewModel viewModel;
+
         public LogAppointmentDialog()
         {
+            viewModel = new AppointmentLoggingViewModel();
+            DataContext = viewModel;
             InitializeComponent();
         }
 
@@ -32,6 +38,11 @@ namespace ZdravoKlinika.View.DoctorPages
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(viewModel.Diagnoses);
         }
     }
 }

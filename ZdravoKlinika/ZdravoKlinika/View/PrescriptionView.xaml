@@ -1,210 +1,12 @@
-﻿<Window x:Class="ZdravoKlinika.View.DoctorPages.LogAppointmentDialog"
+﻿<Window x:Class="ZdravoKlinika.View.PrescriptionView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
+        xmlns:local="clr-namespace:ZdravoKlinika.View" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna"
         mc:Ignorable="d"
-        Title="Upisivanje pregleda" Height="724" Width="500" d:DesignHeight="724"
-Background="#F8F9FE" ResizeMode="CanMinimize" 
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentLoggingViewModel}">
+        Title="Prepisivanje leka" Height="564" Width="500" SizeToContent="WidthAndHeight">
     <Window.Resources>
-        <Style x:Key="TabItemStyleLogAppt" TargetType="{x:Type TabItem}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Background" Value="{StaticResource TabItem.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource TabItem.Static.Border}"/>
-            <!--<Setter Property="Header" Value="{Binding Path=Times}"/>-->
-            <Setter Property="Margin" Value="0"/>
-            <Setter Property="Padding" Value="8,3,8,3"/>
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TabItem}">
-                        <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
-                            <Border CornerRadius="10" x:Name="mainBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Margin="0">
-                                <Border CornerRadius="10" x:Name="innerBorder" Background="{StaticResource TabItem.Selected.Background1}" BorderBrush="{StaticResource TabItem.Selected.Border1}" BorderThickness="1,1,1,0" Margin="-1" Opacity="0"/>
-                            </Border>
-                            <ContentPresenter x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource TabItem.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource TabItem.MouseOver.Border}"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,0,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,0,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource TabItem.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource TabItem.MouseOver.Border}"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,0,1,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,0,1,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource TabItem.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource TabItem.MouseOver.Border}"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="0,1,1,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="0,1,1,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource TabItem.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource TabItem.MouseOver.Border}"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,1,0"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,1,0"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Opacity" TargetName="contentPresenter" Value="0.56"/>
-                                <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource TabItem.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource TabItem.Disabled.Border}"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,0,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,0,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Opacity" TargetName="contentPresenter" Value="0.56"/>
-                                <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource TabItem.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource TabItem.Disabled.Border}"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,0,1,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,0,1,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Opacity" TargetName="contentPresenter" Value="0.56"/>
-                                <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource TabItem.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource TabItem.Disabled.Border}"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="0,1,1,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="0,1,1,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Opacity" TargetName="contentPresenter" Value="0.56"/>
-                                <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource TabItem.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource TabItem.Disabled.Border}"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,1,0"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,1,0"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,0,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,0,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1"/>
-                                <Setter Property="Margin" Value="-2,-2,0,-2"/>
-                                <Setter Property="Opacity" TargetName="innerBorder" Value="1"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,0,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,0,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,0,1,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,0,1,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1"/>
-                                <Setter Property="Margin" Value="-2,0,-2,-2"/>
-                                <Setter Property="Opacity" TargetName="innerBorder" Value="1"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,0,1,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,0,1,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="0,1,1,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="0,1,1,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1"/>
-                                <Setter Property="Margin" Value="0,-2,-2,-2"/>
-                                <Setter Property="Opacity" TargetName="innerBorder" Value="1"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="0,1,1,1"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="0,1,1,1"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,1,0"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,1,0"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Panel.ZIndex" Value="1"/>
-                                <Setter Property="Margin" Value="-2,-2,-2,0"/>
-                                <Setter Property="Opacity" TargetName="innerBorder" Value="1"/>
-                                <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,1,0"/>
-                                <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,1,0"/>
-                            </MultiDataTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF"/>
         <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
             <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -222,10 +24,6 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                 </Setter.Value>
             </Setter>
         </Style>
-        <!--<LinearGradientBrush x:Key="ComboBox.Static.Background" EndPoint="0,1" StartPoint="0,0">
-            <GradientStop Color="#FFF0F0F0" Offset="0.0"/>
-            <GradientStop Color="#FFE5E5E5" Offset="1.0"/>
-        </LinearGradientBrush>-->
         <SolidColorBrush  x:Key="ComboBox.Static.Background" Color="#F8F9FE"/>
         <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#FFAEAEC1"/>
         <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#555557"/>
@@ -613,129 +411,87 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources>
     <Grid>
-        <TabControl  Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="0,24,0,0">
-            <TabItem Header="Anamneza">
-                <Grid Height="716">
-                    <TextBlock HorizontalAlignment="Left" Margin="38,21,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="38,45,0,0" TextWrapping="Wrap" Text="{Binding PatientName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="38,61,0,0" TextWrapping="Wrap" Text="{Binding PatientId}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource MedComboBoxStyle}" HorizontalAlignment="Left" Margin="40,114,0,0" VerticalAlignment="Top" Width="176" Text="Izaberite lek" Padding="5" Height="28"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="40,198,0,0" TextWrapping="Wrap" Text="Način upotrebe" VerticalAlignment="Top" Width="423" Height="28" BorderBrush="#FFAEAEC1">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Center" Margin="0,114,0,0" TextWrapping="Wrap" Text="Količina" VerticalAlignment="Top" Width="58" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.467,0.43">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="189,155,0,0" TextWrapping="Wrap" Text="Učestalost" VerticalAlignment="Top" Width="74" Height="28" BorderBrush="#FFAEAEC1">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource MedComboBoxStyle}" HorizontalAlignment="Left" Margin="363,155,0,0" VerticalAlignment="Top" Width="100" Text="Izaberite lek" Padding="5" Height="28">
+            <ComboBoxItem Content="dnevno"/>
+            <ComboBoxItem Content="nedeljno"/>
+            <ComboBoxItem Content="mesečno"/>
+        </ComboBox>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="95,155,0,0" TextWrapping="NoWrap" Text="Trajanje (dani)" VerticalAlignment="Top" Width="88" Height="28" BorderBrush="#FFAEAEC1">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <CheckBox Content="Hitno"  Foreground="#555557" HorizontalAlignment="Left" Margin="412,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.585,0.502"/>
+        <CheckBox Content="Zabrana paralele" Foreground="#555557" HorizontalAlignment="Left" Margin="292,120,0,0" VerticalAlignment="Top"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="281,155,0,0" TextWrapping="Wrap" Text="Jedna doza" VerticalAlignment="Top" Width="78" Height="28" BorderBrush="#FFAEAEC1" SelectionBrush="#FF9E98FF">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="268,161,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="40,161,0,0" TextWrapping="Wrap" Text="Doziranje:" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="55"/>
+        <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="385,482,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle3"/>
+            </Button.Style>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="40,41,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="40,65,0,0" TextWrapping="Wrap" Text="Monica Geller" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="40,81,0,0" TextWrapping="Wrap" Text="2801001123456" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
 
-                    <TextBlock HorizontalAlignment="Left" Margin="165,21,0,0" TextWrapping="Wrap" Text="Doktor" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="165,45,0,0" TextWrapping="Wrap" Text="{Binding DoctorName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="122"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="165,61,0,0" TextWrapping="Wrap" Text="{Binding DoctorSpecialty}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-
-                    <TextBlock HorizontalAlignment="Left" Margin="282,21,0,0" TextWrapping="Wrap" Text="Termin" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="282,45,0,0" TextWrapping="Wrap" Text="{Binding DateTime}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="122"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="282,61,0,0" TextWrapping="Wrap" Text="{Binding Room}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-
-                    <TextBlock HorizontalAlignment="Left" Margin="36,104,0,0" TextWrapping="Wrap" Text="Dijagnoza" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Text="{Binding Diagnoses}" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="36,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="419" Height="57" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-
-                    <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource MedComboBoxStyle}" HorizontalAlignment="Left" Margin="36,226,0,0" VerticalAlignment="Top" Width="178" Text="Izaberite lek" Padding="5" Height="28">
-
-                    </ComboBox>
-
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="35,292,0,0" TextWrapping="Wrap" Text="Način upotrebe" VerticalAlignment="Top" Width="426" Height="28" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-
-                    <TextBlock HorizontalAlignment="Left" Margin="38,433,0,0" TextWrapping="Wrap" Text="Nalaz i mišljenje doktora" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" Margin="0,457,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote}" VerticalAlignment="Top" Width="418" Height="92" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="36,356,0,0" TextWrapping="Wrap" Text="Dodati lekovi će se prikazati ovde." VerticalAlignment="Top" Width="425" Height="68" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <TextBlock HorizontalAlignment="Left" Margin="38,202,0,0" TextWrapping="Wrap" Text="Terapija" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="219,226,0,0" TextWrapping="Wrap" Text="Količina" VerticalAlignment="Top" Width="58" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.467,0.43">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="188,259,0,0" TextWrapping="Wrap" Text="Učestalost" VerticalAlignment="Top" Width="74" Height="28" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Style="{DynamicResource MedComboBoxStyle}" HorizontalAlignment="Left" Margin="362,259,0,0" VerticalAlignment="Top" Width="100" Text="Izaberite lek" Padding="5" Height="28">
-                        <ComboBoxItem Content="dnevno"/>
-                        <ComboBoxItem Content="nedeljno"/>
-                        <ComboBoxItem Content="mesečno"/>
-                    </ComboBox>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="94,259,0,0" TextWrapping="NoWrap" Text="Trajanje (dani)" VerticalAlignment="Top" Width="88" Height="28" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <CheckBox Content="Hitno"  Foreground="#555557" HorizontalAlignment="Left" Margin="410,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.585,0.502"/>
-                    <CheckBox Content="Zabrana paralele" Foreground="#555557" HorizontalAlignment="Left" Margin="290,232,0,0" VerticalAlignment="Top"/>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="280,259,0,0" TextWrapping="Wrap" Text="Jedna doza" VerticalAlignment="Top" Width="78" Height="28" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="267,265,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="38,265,0,0" TextWrapping="Wrap" Text="Doziranje:" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="56"/>
-                    <Button BorderBrush="#555557" BorderThickness="1" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Dodajte" HorizontalAlignment="Left"  Margin="38,328,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="23" Width="78">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                        <Button.Style>
-                            <StaticResource ResourceKey="fancyButtonStyle4"/>
-                        </Button.Style>
-                    </Button>
-                    <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="379,568,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77" Click="Button_Click">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                        <Button.Style>
-                            <StaticResource ResourceKey="fancyButtonStyle3"/>
-                        </Button.Style>
-                    </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="181,41,0,0" TextWrapping="Wrap" Text="Doktor" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="181,65,0,0" TextWrapping="Wrap" Text="Dr Lisa Cuddy" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="122"/>
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="181,81,0,0" TextWrapping="Wrap" Text="endokrinolog" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <Border BorderBrush="#FFAEAEC1" BorderThickness="1" CornerRadius="10" Margin="40,270,38,197">
+            <TextBlock HorizontalAlignment="Center" Foreground="#555557" TextWrapping="Wrap" Text="Dodati lekovi će se prikazati ovde." VerticalAlignment="Top"  Width="393" Height="68" Margin="0,9,0,0"/>
+        </Border>
 
 
-                </Grid>
-            </TabItem>
-            <TabItem Header="Uput za laboratoriju"></TabItem>
-            <TabItem Header="Uput za specijalistu"></TabItem>
-            <TabItem Header="Uput za stacionarno lečenje"></TabItem>
-            <TabItem Header="Bolovanje"></TabItem>
 
+        <Button BorderBrush="#555557" BorderThickness="1" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Dodajte" Margin="40,237,382,288" FontSize="12" Padding="7" Height="23" Width="78">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle4"/>
+            </Button.Style>
+        </Button>
+        <TextBlock Margin="40,356,52,137" TextWrapping="Wrap" Text="Recepti za lekove će se automatski generisati i biće dostupni u odseku 'Dokumenti'." Foreground="#555557" Height="55" Width="408" FontStyle="Italic" FontSize="11"/>
 
-        </TabControl>
-        <Rectangle Fill="#F8F9FE" Height="1" Margin="11,154,10,553"/>
     </Grid>
 </Window>

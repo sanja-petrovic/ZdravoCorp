@@ -133,7 +133,7 @@
                                 <Storyboard>
                                     <ColorAnimation 
                   Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                  From="White" To="#FFF1F2F9" Duration="0:0:0.2"/>
+                  From="White" To="#f8f5ff" Duration="0:0:0.2"/>
                                     <!--<ColorAnimation Duration="0:0:0.2" From="White" To="Black" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
                                 </Storyboard>
                             </BeginStoryboard>
@@ -145,7 +145,7 @@
                                 <Storyboard>
                                     <ColorAnimation 
                   Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                  From="#FFF1F2F9" To="White" Duration="0:0:0.2"/>
+                  From="#f8f5ff" To="White" Duration="0:0:0.2"/>
                                     <!--<ColorAnimation Duration="0:0:0.2" From="Black" To="White" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>-->
 
                                 </Storyboard>

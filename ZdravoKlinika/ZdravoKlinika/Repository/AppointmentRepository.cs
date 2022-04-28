@@ -19,9 +19,9 @@ public class AppointmentRepository
         this.appointmentDataHandler = new AppointmentDataHandler();
         this.appointments = this.appointmentDataHandler.Read();
         
-        DoctorRepository = new DoctorRepository();
-        RoomRepository = new RoomRepository();
-        PatientRepository = new PatientRepository();
+        doctorRepository = new DoctorRepository();
+        roomRepository = new RoomRepository();
+        patientRepository = new PatientRepository();
         updateReferences();
     }
 
@@ -46,53 +46,23 @@ public class AppointmentRepository
 
     public AppointmentDataHandler AppointmentDataHandler { get => appointmentDataHandler; set => appointmentDataHandler = value; }
     public DoctorRepository DoctorRepository { get => doctorRepository; set => doctorRepository = value; }
-    public PatientRepository PatientRepository { get => PatientRepository1; set => PatientRepository1 = value; }
     public RoomRepository RoomRepository { get => roomRepository; set => roomRepository = value; }
     public PatientRepository PatientRepository1 { get => patientRepository; set => patientRepository = value; }
 
     private void updateReferences()
     {
         appointments = appointmentDataHandler.Read();
-        List<Doctor> doctors = DoctorRepository.GetAll();
-        List<Room> rooms = RoomRepository.GetAll();
-        List<Patient> patients = PatientRepository.GetAll();
-        if (doctors != null && rooms != null && patients != null)
-        {
-            foreach (Doctor doc in doctors)
-            {
-                foreach (Appointment appointment in appointments)
-                {
-                    if (appointment.Doctor.PersonalId.Equals(doc.PersonalId)) 
-                    {
-                        appointment.Doctor = doc;
-                        break;
-                    }
-                }
-            }
-            foreach (Room room in rooms)
-            {
-                foreach (Appointment appointment in appointments)
-                {
-                    if (appointment.Room.RoomId.Equals(room.RoomId))
-                    {
-                        appointment.Room = room;
-                        break;
-                    }
-                }
-            }
-            foreach (Patient pat in patients)
-            {
-                foreach (Appointment appointment in appointments)
-                {
-                    if (appointment.Patient.GetPatientId().Equals(pat.GetPatientId()))
-                    {
-                        appointment.Patient = pat;
-                        break;
-                    }
-                }
-            }
+        List<Doctor> doctors = doctorRepository.GetAll();
+        List<Room> rooms = roomRepository.GetAll();
+        List<Patient> patients = patientRepository.GetAll();
 
+        foreach (Appointment appointment in appointments)
+        {
+            appointment.Patient = patientRepository.GetById(appointment.Patient.GetPatientId());
+            appointment.Doctor = doctorRepository.GetById(appointment.Doctor.PersonalId);
+            appointment.Room = roomRepository.GetById(appointment.Room.RoomId);
         }
+
 
     }
 
@@ -144,7 +114,6 @@ public class AppointmentRepository
     {
         
         List<Appointment> patientAppointments = new List<Appointment>();
-        updateReferences();
         foreach (Appointment appointment in this.appointments)
         {
             if (appointment.Patient.IsPatientById(patientId))
@@ -193,8 +162,7 @@ public class AppointmentRepository
     {
         List<Appointment> appointmentsByDoctor = GetAppointmentsByDoctor(doctorId);
         List<Appointment> appointments = new List<Appointment>();
-
-        if(appointmentsByDoctor.Count > 0)
+        if (appointmentsByDoctor.Count > 0)
         {
             foreach(Appointment appointment in appointmentsByDoctor)
             {

@@ -31,6 +31,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
             foreach (Appointment appointment in appointments)
             {
+                
                 RegisteredPatient patient = (RegisteredPatient)appointment.Patient;
                 string diagnoses = "";
                 foreach (string diagnosis in patient.MedicalRecord.Diagnoses)
