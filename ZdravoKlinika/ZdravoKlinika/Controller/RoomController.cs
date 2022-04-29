@@ -42,4 +42,19 @@ public class RoomController
         this.roomService.DeleteRoom(roomId);
     }
 
+    public void OccupyRoom(String roomId)
+    {
+        this.roomService.OccupyRoom(roomId);
+    }
+
+    public void FreeRoom(String roomId)
+    {
+        this.roomService.FreeRoom(roomId);
+    }
+
+    public void RenovateRoom(String roomId)
+    {
+        this.roomService.RenovateRoom(roomId);
+    }
+
 }

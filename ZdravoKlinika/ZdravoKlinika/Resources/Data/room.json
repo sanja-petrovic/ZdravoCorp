@@ -1,7 +1,7 @@
 [
   {
     "EquipmentInRoom": [],
-    "RoomId": "314",
+    "RoomId": "1",
     "Type": 1,
     "Name": "R1",
     "Level": 2,
@@ -24,14 +24,14 @@
     "Name": "R5",
     "Level": 1,
     "Number": 11,
-    "Status": 0
+    "Status": 2
   },
   {
     "EquipmentInRoom": [],
     "RoomId": "7",
-    "Type": 1,
+    "Type": 2,
     "Name": "R7",
-    "Level": 2,
+    "Level": 1,
     "Number": 2,
     "Status": 1
   },
@@ -40,17 +40,17 @@
     "RoomId": "8",
     "Type": 0,
     "Name": "R8",
-    "Level": 1,
+    "Level": 2,
     "Number": 1,
-    "Status": 2
+    "Status": 0
   },
   {
     "EquipmentInRoom": [],
     "RoomId": "9",
     "Type": 1,
     "Name": "R9",
-    "Level": 1,
+    "Level": 2,
     "Number": 15,
-    "Status": 2
+    "Status": 1
   }
 ]

@@ -69,5 +69,22 @@ public class RoomService
         this.roomRepository.DeleteRoom(r);
     }
 
+    public void OccupyRoom(String roomId)
+    {
+        Room r = roomRepository.GetById(roomId);
+        this.roomRepository.OccupyRoom(r);
+    }
+
+    public void FreeRoom(String roomId)
+    {
+        Room r = roomRepository.GetById(roomId);
+        this.roomRepository.FreeRoom(r);
+    }
+
+    public void RenovateRoom(String roomId)
+    {
+        Room r = roomRepository.GetById(roomId);
+        this.roomRepository.RenovateRoom(r);
+    }
 }
 

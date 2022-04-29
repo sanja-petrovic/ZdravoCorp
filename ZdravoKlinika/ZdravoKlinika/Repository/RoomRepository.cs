@@ -105,7 +105,6 @@ public class RoomRepository
         if (this.rooms != null)
             if (this.rooms.Contains(room))
                 this.rooms.Remove(room);
-
         roomDataHandler.Write(this.rooms);
     }
 
@@ -114,9 +113,41 @@ public class RoomRepository
         if (room == null)
             return;
         if (this.rooms != null)
-            if (this.rooms.Contains(room))
-                this.rooms.Remove(room);
-        this.CreateRoom(room);
+            foreach (Room r in this.rooms)
+            {
+                if (r.RoomId.Equals(room.RoomId))
+                {
+                    r.Name = room.Name;
+                    r.Type = room.Type;
+                    r.Level = room.Level;
+                    r.Number = room.Number;
+                    r.Status = room.Status;
+                }
+            }
+        roomDataHandler.Write(this.rooms);
     }
 
+    public void OccupyRoom(Room room)
+    {
+        if (room == null)
+            return;
+        room.Status = RoomStatus.occupied;
+       UpdateRoom(room);
+    }
+
+    public void FreeRoom(Room room)
+    {
+        if (room == null)
+            return;
+        room.Status = RoomStatus.available;
+        UpdateRoom(room);
+    }
+
+    public void RenovateRoom(Room room)
+    {
+        if (room == null)
+            return;
+        room.Status = RoomStatus.renovation;
+        UpdateRoom(room);
+    }
 }
