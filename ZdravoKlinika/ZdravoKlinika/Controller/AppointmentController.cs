@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Util;
+
 public class AppointmentController
 {
     private AppointmentService appointmentService;
+    
 
     public AppointmentService AppointmentService { get => appointmentService; set => appointmentService = value; }
 
@@ -37,15 +40,15 @@ public class AppointmentController
     {
         return this.appointmentService.GetAppointmentsByDoctorIdForDate(id, date);
     }
-    public List<Doctor> getFreeDoctorsForTime(DateTime time, int duration)
+    public List<Doctor> getFreeDoctorsForTime(DateBlock block, int startHours, int endHours)
     {
-        return this.appointmentService.getFreeDoctorsForTime(time, duration);
+        return this.appointmentService.getFreeDoctorsForTime(block,startHours,endHours);
     }
-    public List<DateTime> getFreeTimeForDoctor(DateTime date, int duration, Doctor doctor, int startHours, int endHours)
+    public List<DateBlock> getFreeTimeForDoctor(DateTime date, int duration, Doctor doctor, int startHours, int endHours)
     {
         return this.appointmentService.getFreeTimeForDoctor(date, duration, doctor, startHours, endHours);
     }
-    public List<DateTime> getFreeTimeForPatient(DateTime date, int duration, RegisteredPatient patient, int startHours, int endHours)
+    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, RegisteredPatient patient, int startHours, int endHours)
     {
         return this.appointmentService.getFreeTimeForPatient(date, duration, patient, startHours, endHours);
     }

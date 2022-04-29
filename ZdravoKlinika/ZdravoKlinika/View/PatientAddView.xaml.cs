@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Util;
 
 namespace ZdravoKlinika.View
 {
@@ -21,10 +22,12 @@ namespace ZdravoKlinika.View
     
     public partial class PatientAddView : Page
     {
+        private string patientId = "12345";
         private AppointmentController appointmentController = new AppointmentController();
         private DoctorController doctorController = new DoctorController();
         private RegisteredPatientController registeredPatientController = new RegisteredPatientController();
         private int appointmentDuration = 30;
+        
         public PatientAddView()
         {
             InitializeComponent();
@@ -54,9 +57,9 @@ namespace ZdravoKlinika.View
             if (priorityComboBox.SelectedIndex == 0)
             {
                 //time prio
-                
-                //timeComboBox.ItemsSource = getWorkingHours();
-                timeComboBox.SelectedIndex = 0;
+
+                timeComboBox.ItemsSource = DateBlock.getStartTimes(appointmentController.getFreeTimeForPatient(datePicker.SelectedDate.Value,15,registeredPatientController.GetById(patientId),8,20));
+                timeComboBox.SelectedIndex = -1;
                 doctorComboBox.ItemsSource = null;
 
             }
@@ -78,7 +81,7 @@ namespace ZdravoKlinika.View
                 {
                     doctorComboBox.ItemsSource = null;
                     List<Doctor> doctors = new List<Doctor>();
-                    doctors = (appointmentController.getFreeDoctorsForTime((DateTime)timeComboBox.SelectedItem, appointmentDuration));
+                    doctors = appointmentController.getFreeDoctorsForTime(new DateBlock((DateTime)timeComboBox.SelectedItem,15),8,20);
                     if (doctors.Any())
                     {
                         doctorComboBox.ItemsSource = doctors;
@@ -111,8 +114,10 @@ namespace ZdravoKlinika.View
                 if (doctorComboBox.SelectedItem != null)
                 {
                     timeComboBox.ItemsSource = null;
-                    List<DateTime> doctorTimes = appointmentController.getFreeTimeForDoctor(datePicker.SelectedDate.Value, 30, (Doctor)doctorComboBox.SelectedItem, 8, 20);
-                    timeComboBox.ItemsSource = doctorTimes;
+                    List<DateBlock> doctorTimes = appointmentController.getFreeTimeForDoctor(datePicker.SelectedDate.Value, 30, (Doctor)doctorComboBox.SelectedItem, 8, 20);
+                    List<DateBlock> patientTimes = appointmentController.getFreeTimeForPatient(datePicker.SelectedDate.Value, 30, registeredPatientController.GetById(patientId), 8, 20);
+                    timeComboBox.ItemsSource = DateBlock.getStartTimes(DateBlock.getIntersection(doctorTimes, patientTimes));
+
                     if (timeComboBox.ItemsSource == null)
                     {
                         errorLabel.Content = "no available appointment times";
