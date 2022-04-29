@@ -461,16 +461,6 @@
                 <StaticResource ResourceKey="fancyButtonStyle2"/>
             </Button.Style>
         </Button>
-<Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="22,254,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="148" Height="34">
-                                <Button.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="10"/>
-                                    </Style>
-                                </Button.Resources>
-                                <Button.Style>
-                                    <StaticResource ResourceKey="fancyButtonStyle3"/>
-                                </Button.Style>
-                            </Button>
         <Label Content="Mesečni raspored" Margin="285,150,466,554" FontSize="24" FontWeight="Bold"/>
     </Grid>
 </Page>

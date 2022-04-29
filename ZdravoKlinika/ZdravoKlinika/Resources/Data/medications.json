@@ -36,5 +36,15 @@
     "ActiveSubstances": [ "cetilpiridinijum-hlorid", "benzidamin" ],
     "Form": "sprej za usnu sluznicu, rastvor",
     "Notes": []
+  },
+
+  {
+    "MedicationId": "5",
+    "MedicationCode": "J01FA10",
+    "BrandName": "Hemomycin",
+    "Dosage": "250mg",
+    "ActiveSubstances": [ "azitromicin" ],
+    "Form": "kapsula, tvrda",
+    "Notes": []
   }
   ]

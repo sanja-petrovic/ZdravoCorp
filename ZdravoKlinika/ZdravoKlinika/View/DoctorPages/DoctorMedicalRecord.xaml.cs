@@ -40,6 +40,7 @@ namespace ZdravoKlinika.View.DoctorPages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PrescriptionView prescriptionView = new PrescriptionView();
+            prescriptionView.init("456", viewModel.Id);
             prescriptionView.Show();
         }
 
