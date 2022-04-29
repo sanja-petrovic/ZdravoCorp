@@ -5,8 +5,10 @@ using System.IO;
 public class RoomRepository
 {
     private RoomDataHandler roomDataHandler;
+    private AppointmentRepository appointmentRepository;
     private List<Room> rooms;
     private List<Room> freeRooms;
+    private List<Appointment> appointments;
     private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "room.json";
 
     public RoomRepository()
@@ -14,9 +16,11 @@ public class RoomRepository
         this.roomDataHandler = new RoomDataHandler(fileLocation);
         this.rooms = this.roomDataHandler.Read();
         this.freeRooms = new List<Room>();
+        this.appointmentRepository = new AppointmentRepository();
+        this.appointments = appointmentRepository.GetAll();
     }
 
-    public List<Room> Room
+    public List<Room> Rooms
     {
         get
         {
@@ -80,8 +84,38 @@ public class RoomRepository
         return null;
     }
 
-    public List<Room> GetFreeRooms()
+    public List<Room> GetFreeRooms(DateTime enteredTime)
     {
+        DateTime appointmentStart;
+        DateTime appointmentEnd;
+
+        foreach (Appointment app in appointments)
+        {
+            appointmentStart = app.DateAndTime;
+            appointmentEnd = appointmentStart.AddMinutes(app.Duration);
+            if ((enteredTime > appointmentStart) && (enteredTime < appointmentEnd))
+            {
+                //app.Room JE ZAUZETA U NAVEDENOM TERMINU
+                app.Room.Free = false;
+            }
+            else
+            {
+                //app.Room JE SLOBODNA U NAVEDENOM TERMINU
+                app.Room.Free = true;
+            }
+        }
+
+        foreach (Room r in rooms)
+        {
+            if (r.Free)
+            {
+                freeRooms.Add(r);
+            }
+        }
+
+        return freeRooms;
+
+        /* STARI KOD
         foreach (Room r in this.rooms)
         {
             if(r.Status == RoomStatus.available)
@@ -89,7 +123,7 @@ public class RoomRepository
                 freeRooms.Add(r);
             }
         }
-        return freeRooms;
+        return freeRooms;*/
     }
 
     public void CreateRoom(Room room)
@@ -122,6 +156,7 @@ public class RoomRepository
                     r.Level = room.Level;
                     r.Number = room.Number;
                     r.Status = room.Status;
+                    r.Free = room.Free;
                 }
             }
         roomDataHandler.Write(this.rooms);
@@ -132,7 +167,8 @@ public class RoomRepository
         if (room == null)
             return;
         room.Status = RoomStatus.occupied;
-       UpdateRoom(room);
+        room.Free = false;
+        UpdateRoom(room);
     }
 
     public void FreeRoom(Room room)
@@ -140,6 +176,7 @@ public class RoomRepository
         if (room == null)
             return;
         room.Status = RoomStatus.available;
+        room.Free = true;
         UpdateRoom(room);
     }
 
@@ -148,6 +185,7 @@ public class RoomRepository
         if (room == null)
             return;
         room.Status = RoomStatus.renovation;
+        room.Free = false;
         UpdateRoom(room);
     }
 }

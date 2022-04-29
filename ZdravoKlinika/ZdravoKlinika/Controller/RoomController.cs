@@ -22,19 +22,19 @@ public class RoomController
         return this.roomService.GetById(id);
     }
 
-    public List<Room> GetFreeRooms()
+    public List<Room> GetFreeRooms(DateTime enteredTime)
     {
-        return this.roomService.GetFreeRooms();
+        return this.roomService.GetFreeRooms(enteredTime);
     }
 
-    public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number)
+    public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number, bool free)
     {
-        this.roomService.CreateRoom(name, type, status, level, number);
+        this.roomService.CreateRoom(name, type, status, level, number, free);
     }
 
-    public void UpdateRoom(String roomId, String name, RoomType type, RoomStatus status, int level, int number)
+    public void UpdateRoom(String roomId, String name, RoomType type, RoomStatus status, int level, int number, bool free)
     {
-        this.roomService.UpdateRoom(roomId, name, type, status, level, number);
+        this.roomService.UpdateRoom(roomId, name, type, status, level, number, free);
     }
 
     public void DeleteRoom(String roomId)

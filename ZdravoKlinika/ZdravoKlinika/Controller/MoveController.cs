@@ -1,35 +1,40 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 public class MoveController
 {
     private MoveService moveService;
 
+    public MoveService MoveService { get => moveService; set => moveService = value; }
+
+    public MoveController()
+    {
+        this.moveService = new MoveService();
+    }
+
     public List<Move> GetAll()
     {
-        throw new NotImplementedException();
+        return this.moveService.GetAll();
     }
 
     public Move GetById(String id)
     {
-        throw new NotImplementedException();
+        return this.moveService.GetById(id);
     }
 
     public void CreateMove(Room sourceRoom, Room destinationRoom, List<Equipment> equipmentToMove, DateTime scheduledDateTime)
     {
-        throw new NotImplementedException();
+        this.moveService.CreateMove(sourceRoom, destinationRoom, equipmentToMove, scheduledDateTime);
     }
 
     public void UpdateMove(String moveId, Room sourceRoom, Room destinationRoom, List<Equipment> equipmentToMove, DateTime scheduledDateTime)
     {
-        throw new NotImplementedException();
+        this.moveService.UpdateMove(moveId, sourceRoom, destinationRoom, equipmentToMove, scheduledDateTime);
     }
 
-    public void DeleteMove(String roomId)
+    public void DeleteMove(String moveId)
     {
-        throw new NotImplementedException();
+        this.moveService.DeleteMove(moveId);
     }
 
 }
