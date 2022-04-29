@@ -48,11 +48,13 @@ public class RegisteredPatientRepository
 
     public List<RegisteredPatient> GetAll()
     {
+        updateReferences();
         return patients;
     }
 
     public RegisteredPatient? GetById(String id)
     {
+        updateReferences();
         foreach (RegisteredPatient patient in this.patients) 
         {
             if (patient.PersonalId.Equals(id)) 
