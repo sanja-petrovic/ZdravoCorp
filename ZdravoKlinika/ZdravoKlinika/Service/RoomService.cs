@@ -23,6 +23,11 @@ public class RoomService
         return this.roomRepository.GetById(id);
     }
 
+    public List<Room> GetFreeRooms()
+    {
+        return this.roomRepository.GetFreeRooms();
+    }
+
     public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number)
     {
         List<Room> rooms = this.roomRepository.GetAll();

@@ -22,6 +22,11 @@ public class RoomController
         return this.roomService.GetById(id);
     }
 
+    public List<Room> GetFreeRooms()
+    {
+        return this.roomService.GetFreeRooms();
+    }
+
     public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number)
     {
         this.roomService.CreateRoom(name, type, status, level, number);

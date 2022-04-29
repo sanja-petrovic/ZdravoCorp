@@ -6,12 +6,14 @@ public class RoomRepository
 {
     private RoomDataHandler roomDataHandler;
     private List<Room> rooms;
+    private List<Room> freeRooms;
     private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "room.json";
 
     public RoomRepository()
     {
         this.roomDataHandler = new RoomDataHandler(fileLocation);
         this.rooms = this.roomDataHandler.Read();
+        this.freeRooms = new List<Room>();
     }
 
     public List<Room> Room
@@ -76,6 +78,18 @@ public class RoomRepository
         }
 
         return null;
+    }
+
+    public List<Room> GetFreeRooms()
+    {
+        foreach (Room r in this.rooms)
+        {
+            if(r.Status == RoomStatus.available)
+            {
+                freeRooms.Add(r);
+            }
+        }
+        return freeRooms;
     }
 
     public void CreateRoom(Room room)
