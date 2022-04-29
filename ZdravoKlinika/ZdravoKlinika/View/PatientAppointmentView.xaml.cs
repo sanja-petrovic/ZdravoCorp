@@ -24,7 +24,8 @@ namespace ZdravoKlinika.View
     {
         private String patientId;
         private PatientApointmentsViewModel viewModel;
-        
+        private Appointment selectedInList;
+        private ZdravoKlinika.Util.DatePickerRestrictors restrictor = new Util.DatePickerRestrictors();
         public PatientAppointmentView(String id)
         {
             patientId = id;
@@ -34,10 +35,16 @@ namespace ZdravoKlinika.View
             listBox.ItemsSource = viewModel.SelectedDateAppointments;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             popUpFrame.Visibility = Visibility.Visible;
             popUpFrame.Navigate(viewModel.PatientAddView);
+            if (calendar.SelectedDate != null)
+            {
+                viewModel.PatientAddView.datePicker.SelectedDate = calendar.SelectedDate.Value;
+            }
+           
+            restrictor.setDatePickerBlackoutForward(DateTime.Now.AddDays(2), viewModel.PatientAddView.datePicker);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -51,21 +58,18 @@ namespace ZdravoKlinika.View
             viewModel.GetSelectedDateAppointments(calendar.SelectedDate.Value);
             dateLabel.Content = calendar.SelectedDate.ToString();
             
-            if((calendar.SelectedDate.Value - DateTime.Today).TotalDays <= 0)
+            if((calendar.SelectedDate.Value - DateTime.Today.AddDays(2)).TotalDays <= 0)
             {
                 //today or in past
-                resetButtons();
                 buttonAdd.IsEnabled = false;
-                buttonEdit.IsEnabled = false;
-                buttonRemove.IsEnabled = false;
             }
             else
             {
                 buttonAdd.IsEnabled = true;
-                buttonEdit.IsEnabled = true;
-                buttonRemove.IsEnabled = true;
             }
             listBox.ItemsSource = viewModel.SelectedDateAppointments;
+            popUpFrame.Navigate(null);
+            popUpFrame.Visibility = Visibility.Hidden;
         }
         private void resetButtons()
         {
@@ -74,6 +78,20 @@ namespace ZdravoKlinika.View
             buttonRemove.IsEnabled = true;
             buttonComment.IsEnabled = true;
             buttonDocuments.IsEnabled = true;
+        }
+        
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedInList = (Appointment)e.AddedItems[0];
+            timeLabel.Content = selectedInList.DateAndTime.TimeOfDay.ToString();
+            doctorLabel.Content = selectedInList.Doctor.Name.ToString() +" "+ selectedInList.Doctor.Lastname.ToString();
+            roomLabel.Content = selectedInList.Room.Name.ToString();
+            typeLabel.Content = selectedInList.Type.ToString();
+
+            buttonAdd.IsEnabled = false;
+            buttonEdit.IsEnabled = true;
+            buttonRemove.IsEnabled = true;
+
         }
     }
     class LookupConvertor : IMultiValueConverter
