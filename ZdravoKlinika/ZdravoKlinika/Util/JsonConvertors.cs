@@ -92,4 +92,20 @@ namespace JsonConverters
             JsonSerializerOptions options) => writer.WriteStringValue(medication.MedicationId);
     }
 
+    public class EquipmentConverter : JsonConverter<Equipment>
+    {
+        public override Equipment Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) =>
+                Equipment.Parse(reader.GetString());
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            Equipment eq,
+            JsonSerializerOptions options) =>
+                writer.WriteStringValue(eq.Id + "," + eq.Amount);
+    }
+
+
 }

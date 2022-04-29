@@ -15,5 +15,9 @@
     <Page Remove="View\Dialogs\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Data Handler\MoveDataHandler.cs~RF6ed0908.TMP" />
+  </ItemGroup>
+
 
 </Project>

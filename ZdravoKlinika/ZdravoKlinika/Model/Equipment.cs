@@ -12,4 +12,11 @@ public class Equipment
     public string Name { get => name; set => name = value; }
     public int Amount { get => amount; set => amount = value; }
     public bool Expendable { get => expendable; set => expendable = value; }
+
+    public static Equipment Parse(String id)
+    {
+        Equipment eq = new Equipment();
+        eq.Id = id;
+        return eq;
+    }
 }
