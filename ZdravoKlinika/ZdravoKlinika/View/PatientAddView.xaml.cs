@@ -35,22 +35,7 @@ namespace ZdravoKlinika.View
             priorityComboBox.Items.Add("Doktor");
             priorityComboBox.SelectedIndex = -1;
         }
-        /*private List<DateTime> getWorkingHours()
-        {
-            if (datePicker.SelectedDate != null)
-            {
-                List<DateTime> workingHours = new List<DateTime>();
-                DateTime startTime = datePicker.SelectedDate.Value.Date.AddHours(8);
-                DateTime endTime = datePicker.SelectedDate.Value.Date.AddHours(20);
-                for (int i = 0; i < (endTime.Hour - startTime.Hour); i++)
-                {
-                    workingHours.Add(startTime.AddHours(i));
-                }
-                return workingHours;
-            }
-            return null;
-        }*/
-
+  
         private void priorityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             clearCombos();

@@ -7,7 +7,7 @@
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 123,
+    "Duration": 45,
     "Doctor": "D1",
     "Patient": "12345,Registered",
     "Room": "314"

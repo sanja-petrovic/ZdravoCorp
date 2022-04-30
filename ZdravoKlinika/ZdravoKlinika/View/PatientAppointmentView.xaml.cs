@@ -51,14 +51,20 @@ namespace ZdravoKlinika.View
         {
             popUpFrame.Visibility = Visibility.Visible;
             popUpFrame.Navigate(viewModel.PatientEditView);
+            if(listBox.SelectedItem != null)
+            {
+                viewModel.PatientEditView.datePicker.SelectedDate = calendar.SelectedDate.Value;
+                restrictor.setDatePickerBlackoutRange(restrictor.getValidDateRange((DateTime)calendar.SelectedDate.Value,2), viewModel.PatientEditView.datePicker);
+            }
         }
 
         private void calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             viewModel.GetSelectedDateAppointments(calendar.SelectedDate.Value);
             dateLabel.Content = calendar.SelectedDate.ToString();
-            
-            if((calendar.SelectedDate.Value - DateTime.Today.AddDays(2)).TotalDays <= 0)
+            listBox.SelectedIndex = -1;
+
+            if ((calendar.SelectedDate.Value - DateTime.Today.AddDays(2)).TotalDays <= 0)
             {
                 //today or in past
                 buttonAdd.IsEnabled = false;
@@ -67,30 +73,48 @@ namespace ZdravoKlinika.View
             {
                 buttonAdd.IsEnabled = true;
             }
+            
             listBox.ItemsSource = viewModel.SelectedDateAppointments;
             popUpFrame.Navigate(null);
             popUpFrame.Visibility = Visibility.Hidden;
         }
         private void resetButtons()
         {
-            buttonAdd.IsEnabled = true;
-            buttonEdit.IsEnabled = true;
-            buttonRemove.IsEnabled = true;
-            buttonComment.IsEnabled = true;
-            buttonDocuments.IsEnabled = true;
+            buttonAdd.IsEnabled = false;
+            buttonEdit.IsEnabled = false;
+            buttonRemove.IsEnabled = false;
+            buttonComment.IsEnabled = false;
+            buttonDocuments.IsEnabled = false;
         }
         
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedInList = (Appointment)e.AddedItems[0];
-            timeLabel.Content = selectedInList.DateAndTime.TimeOfDay.ToString();
-            doctorLabel.Content = selectedInList.Doctor.Name.ToString() +" "+ selectedInList.Doctor.Lastname.ToString();
-            roomLabel.Content = selectedInList.Room.Name.ToString();
-            typeLabel.Content = selectedInList.Type.ToString();
+            if (listBox.SelectedItem != null)
+            {
+                selectedInList = (Appointment)listBox.SelectedItem;
+                timeLabel.Content = selectedInList.DateAndTime.TimeOfDay.ToString();
+                doctorLabel.Content = selectedInList.Doctor.Name.ToString() + " " + selectedInList.Doctor.Lastname.ToString();
+                roomLabel.Content = selectedInList.Room.Name.ToString();
+                typeLabel.Content = selectedInList.Type.ToString();
 
-            buttonAdd.IsEnabled = false;
-            buttonEdit.IsEnabled = true;
-            buttonRemove.IsEnabled = true;
+                if ((calendar.SelectedDate.Value - DateTime.Now).TotalSeconds > 0)
+                {
+                    buttonAdd.IsEnabled = false;
+                    buttonEdit.IsEnabled = true;
+                    buttonRemove.IsEnabled = true;
+                    buttonComment.IsEnabled = false;
+                    buttonDocuments.IsEnabled = false;
+                }
+                else
+                {
+                    buttonAdd.IsEnabled = false;
+                    buttonEdit.IsEnabled = false; //testing
+                    buttonRemove.IsEnabled = false;
+                    buttonComment.IsEnabled = true;
+                    buttonDocuments.IsEnabled = true;
+                }
+            }
+            
 
         }
     }

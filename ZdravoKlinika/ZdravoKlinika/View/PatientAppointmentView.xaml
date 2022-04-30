@@ -51,21 +51,21 @@
                     <Label x:Name="roomLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
                     <Label x:Name="typeLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="120,146,0,0" VerticalAlignment="Top"/>
 
-                    <Button x:Name="buttonEdit" Grid.Column="1" HorizontalAlignment="Left" Margin="55,206,0,0" VerticalAlignment="Top" Height="28" Width="29" Click="Button_Click_1">
+                    <Button x:Name="buttonEdit" Grid.Column="1" HorizontalAlignment="Left" Margin="55,206,0,0" VerticalAlignment="Top" Height="28" Width="29" Click="Button_Click_1" IsEnabled="False">
                         <Image Source="{Binding EditIcon}"/>
                     </Button>
-                    <Button x:Name="buttonAdd" Grid.Column="1" HorizontalAlignment="Left" Margin="21,206,0,0" VerticalAlignment="Top" Height="28" Width="29" Click="ButtonAdd_Click" >
+                    <Button x:Name="buttonAdd" Grid.Column="1" HorizontalAlignment="Left" Margin="21,206,0,0" VerticalAlignment="Top" Height="28" Width="29" Click="ButtonAdd_Click" IsEnabled="False">
                         <Image Source="{Binding AddIcon}"/>
                     </Button>
-                    <Button x:Name="buttonRemove" Grid.Column="1" HorizontalAlignment="Left" Margin="89,206,0,0" VerticalAlignment="Top" Height="28" Width="29">
+                    <Button x:Name="buttonRemove" Grid.Column="1" HorizontalAlignment="Left" Margin="89,206,0,0" VerticalAlignment="Top" Height="28" Width="29" IsEnabled="False">
                         <Image Source="{Binding RemoveIcon}"/>
                     </Button>
 
-                    <Button x:Name="buttonDocuments" Grid.Column="1" HorizontalAlignment="Left" Margin="200,206,0,0" VerticalAlignment="Top" Height="28" Width="29">
+                    <Button x:Name="buttonDocuments" Grid.Column="1" HorizontalAlignment="Left" Margin="200,206,0,0" VerticalAlignment="Top" Height="28" Width="29" IsEnabled="False">
                         <Image Source="{Binding DocumentsIcon}"/>
                     </Button>
 
-                    <Button x:Name="buttonComment" Grid.Column="1" HorizontalAlignment="Left" Margin="166,206,0,0" VerticalAlignment="Top" Height="28" Width="29">
+                    <Button x:Name="buttonComment" Grid.Column="1" HorizontalAlignment="Left" Margin="166,206,0,0" VerticalAlignment="Top" Height="28" Width="29" IsEnabled="False">
                         <Image Source="{Binding CommentIcon}"/>
                     </Button>
 
