@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 public class Move
 {
@@ -8,14 +9,27 @@ public class Move
     private Room destinationRoom;
     private DateTime scheduledDateTime;
 
-    private System.Collections.Generic.List<Equipment> equipmentToMove;
+    private List<Equipment> equipmentToMove;
 
-    public System.Collections.Generic.List<Equipment> EquipmentToMove
+    public Move(string moveId, Room sourceRoom, Room destinationRoom, DateTime scheduledDateTime, List<Equipment> equipmentToMove)
+    {
+        this.moveId = moveId;
+        this.sourceRoom = sourceRoom;
+        this.destinationRoom = destinationRoom;
+        this.scheduledDateTime = scheduledDateTime;
+        this.equipmentToMove = equipmentToMove;
+    }
+
+    public Move()
+    {
+    }
+
+    public List<Equipment> EquipmentToMove
     {
         get
         {
             if (equipmentToMove == null)
-                equipmentToMove = new System.Collections.Generic.List<Equipment>();
+                equipmentToMove = new List<Equipment>();
             return equipmentToMove;
         }
         set
@@ -29,12 +43,17 @@ public class Move
         }
     }
 
+    public string MoveId { get => moveId; set => moveId = value; }
+    public Room SourceRoom { get => sourceRoom; set => sourceRoom = value; }
+    public Room DestinationRoom { get => destinationRoom; set => destinationRoom = value; }
+    public DateTime ScheduledDateTime { get => scheduledDateTime; set => scheduledDateTime = value; }
+
     public void AddEquipmentToMove(Equipment newEquipment)
     {
         if (newEquipment == null)
             return;
         if (this.equipmentToMove == null)
-            this.equipmentToMove = new System.Collections.Generic.List<Equipment>();
+            this.equipmentToMove = new List<Equipment>();
         if (!this.equipmentToMove.Contains(newEquipment))
             this.equipmentToMove.Add(newEquipment);
     }
@@ -52,6 +71,13 @@ public class Move
     {
         if (equipmentToMove != null)
             equipmentToMove.Clear();
+    }
+
+    public static Move Parse(String id)
+    {
+        Move move = new Move();
+        move.moveId = id;
+        return move;
     }
 
 }
