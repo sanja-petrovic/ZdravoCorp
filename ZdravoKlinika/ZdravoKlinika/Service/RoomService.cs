@@ -36,7 +36,7 @@ public class RoomService
         {
             int maxId = 0;
             int trenutniId = 0;
-            foreach(Room room in rooms)
+            foreach (Room room in rooms)
             {
                 trenutniId = Int32.Parse(room.RoomId);
                 if (trenutniId > maxId) maxId = trenutniId;

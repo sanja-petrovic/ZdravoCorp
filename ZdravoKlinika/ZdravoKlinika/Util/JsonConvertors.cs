@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using ZdravoKlinika.Model;
 
-namespace JsonConverters 
+namespace JsonConverters
 {
     public class MedicalRecordConverter : JsonConverter<MedicalRecord>
     {
@@ -81,8 +81,8 @@ namespace JsonConverters
     public class MedicationConverter : JsonConverter<Medication>
     {
         public override Medication Read(
-            ref Utf8JsonReader reader, 
-            Type typeToConvert, 
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
             JsonSerializerOptions options) => Medication.Parse(reader.GetString());
 
 

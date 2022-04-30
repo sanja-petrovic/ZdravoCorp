@@ -105,6 +105,30 @@ public class RoomRepository
             }
         }
 
+    public List<Room> GetFreeRooms(DateTime enteredTime)
+    {
+        AppointmentRepository appointmentRepository = new AppointmentRepository();
+        List<Appointment> appointments = appointmentRepository.GetAll();
+
+        DateTime appointmentStart;
+        DateTime appointmentEnd;
+
+        foreach (Appointment app in appointments)
+        {
+            appointmentStart = app.DateAndTime;
+            appointmentEnd = appointmentStart.AddMinutes(app.Duration);
+            if ((enteredTime > appointmentStart) && (enteredTime < appointmentEnd))
+            {
+                //app.Room JE ZAUZETA U NAVEDENOM TERMINU
+                app.Room.Free = false;
+            }
+            else
+            {
+                //app.Room JE SLOBODNA U NAVEDENOM TERMINU
+                app.Room.Free = true;
+            }
+        }
+
         foreach (Room r in rooms)
         {
             if (r.Free)
@@ -114,16 +138,6 @@ public class RoomRepository
         }
 
         return freeRooms;
-
-        /* STARI KOD
-        foreach (Room r in this.rooms)
-        {
-            if(r.Status == RoomStatus.available)
-            {
-                freeRooms.Add(r);
-            }
-        }
-        return freeRooms;*/
     }
 
     public void CreateRoom(Room room)
