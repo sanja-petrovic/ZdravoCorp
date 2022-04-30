@@ -52,7 +52,7 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void Save(object sender, RoutedEventArgs e)
         {
-            viewModel.save();
+            viewModel.save(NoteTB.Text);
             this.Close();
         }
     }

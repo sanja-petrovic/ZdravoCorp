@@ -12,16 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
     /// Interaction logic for UpcomingAppointmentView.xaml
     /// </summary>
-    public partial class UpcomingAppointmentView : UserControl
+    public partial class PastAppointmentView : UserControl
     {
-        public UpcomingAppointmentView()
+        PastViewModel viewModel;
+        public PastAppointmentView()
         {
+           
             InitializeComponent();
         }
     }

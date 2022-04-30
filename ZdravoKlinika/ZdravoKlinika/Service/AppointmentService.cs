@@ -105,5 +105,15 @@ public class AppointmentService
         appointment.Over = true;
         this.appointmentRepository.LogAppointment(appointment);
     }
+
+    public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
+    {
+        return this.appointmentRepository.GetPatientsPastAppointments(patient);
+    }
+
+    public List<Appointment> GetPatientsUpcomingAppointments(RegisteredPatient patient)
+    {
+        return this.appointmentRepository.GetPatientsUpcomingAppointments(patient);
+    }
 }
 

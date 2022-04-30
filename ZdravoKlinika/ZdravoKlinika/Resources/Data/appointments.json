@@ -1,6 +1,5 @@
 [
   {
-    "Prescriptions": [],
     "AppointmentId": 1,
     "DateAndTime": "2022-04-28T11:00:00",
     "Diagnoses": null,
@@ -11,41 +10,29 @@
     "Doctor": "123",
     "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false
+    "Over": true,
+    "Prescriptions": []
   },
   {
-    "Prescriptions": [],
-    "AppointmentId": 3,
+    "AppointmentId": 2,
     "DateAndTime": "2022-04-28T09:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
+    "Diagnoses": "Hypertensio",
+    "DoctorsNotes": "Pacijent se \uFFFDalio na povi\uFFFDen krvni pritisak koji mu mesecima pravi probleme.",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
     "Doctor": "456",
     "Patient": "1510963123321,Registered",
     "Room": "314",
-    "Over": false
+    "Over": true,
+    "Prescriptions": [
+      "Lometazid 5 mg \u002B10mg, pola tablete svaki dan"
+    ]
   },
   {
-    "Prescriptions": [],
-    "AppointmentId": 2,
-    "DateAndTime": "2022-04-28T11:00:00",
-    "Diagnoses": "Hyperglycemia",
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 123,
-    "Doctor": "123",
-    "Patient": "0105965123321,Registered",
-    "Room": "314",
-    "Over": false
-  },
-  {
-    "Prescriptions": [],
-    "AppointmentId": 4,
-    "DateAndTime": "2022-04-28T12:00:00",
-    "Diagnoses": "sfdsdsfds",
+    "AppointmentId": 3,
+    "DateAndTime": "2022-04-30T10:00:00",
+    "Diagnoses": "Diabetes mellitus",
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
@@ -53,12 +40,41 @@
     "Doctor": "456",
     "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false
+    "Over": true,
+    "Prescriptions": []
   },
   {
-    "Prescriptions": [],
+    "AppointmentId": 4,
+    "DateAndTime": "2022-04-30T12:00:00",
+    "Diagnoses": "Hmmm",
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
     "AppointmentId": 5,
-    "DateAndTime": "2022-04-28T10:00:00",
+    "DateAndTime": "2022-04-30T11:00:00",
+    "Diagnoses": "hmmmmmmmmmmmmasfd",
+    "DoctorsNotes": "sfdsfdssd",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+
+  {
+    "AppointmentId": 6,
+    "DateAndTime": "2022-04-30T11:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
@@ -67,6 +83,7 @@
     "Doctor": "456",
     "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false
+    "Over": false,
+    "Prescriptions": []
   }
 ]

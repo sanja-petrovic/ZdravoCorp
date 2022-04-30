@@ -10,7 +10,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
     public class DoctorMedicalRecordViewModel : ViewModelBase
     {
         private RegisteredPatientController patientController;
+        private AppointmentController appointmentController;
         private RegisteredPatient patient;
+        public ObservableCollection<PastViewModel> PastAppointments { get; set; }
+        public ObservableCollection<UpcomingViewModel> UpcomingAppointments { get; set; }
         string name;
         string id;
         string gender;
@@ -24,8 +27,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private List<String> medicationDisplay;
         List<string> diagnosisDisplay;
 
-        ObservableCollection<AppointmentViewModel> pastAppointments;
-        ObservableCollection<AppointmentViewModel> upcomingAppointments;
+
 
 
         public string Name { get => name; set => SetProperty(ref name, value); }
@@ -46,6 +48,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             this.patientController = new RegisteredPatientController();
             this.MedicationDisplay = new List<string>();
+            this.appointmentController = new AppointmentController();
+            this.PastAppointments = new ObservableCollection<PastViewModel>();
+            this.UpcomingAppointments = new ObservableCollection<UpcomingViewModel>();
             
         }
 
@@ -65,6 +70,20 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             foreach(Medication m in this.patient.MedicalRecord.CurrentMedication)
             {
                 this.MedicationDisplay.Add(m.ToString());
+            }
+
+            foreach (Appointment a in this.appointmentController.GetPatientsPastAppointments(patient))
+            {
+                PastViewModel past = new PastViewModel();
+                past.init(a);
+                PastAppointments.Add(past);
+            }
+
+            foreach (Appointment a in this.appointmentController.GetPatientsUpcomingAppointments(patient))
+            {
+                UpcomingViewModel upcoming = new UpcomingViewModel();
+                upcoming.init(a);
+                UpcomingAppointments.Add(upcoming);
             }
 
         }

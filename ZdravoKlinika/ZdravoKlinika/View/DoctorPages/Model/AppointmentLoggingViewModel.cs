@@ -51,9 +51,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             
         }
         
-        public void save()
+        public void save(String note)
         {
-            appointmentController.LogAppointment(appointment, Diagnoses, DoctorsNote);
+            appointmentController.LogAppointment(appointment, Diagnoses, note);
         }
     }
 }

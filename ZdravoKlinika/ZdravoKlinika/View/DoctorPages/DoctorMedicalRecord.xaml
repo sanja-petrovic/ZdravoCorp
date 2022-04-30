@@ -594,13 +594,36 @@
                 </Style>
             </TabControl.Resources>
             <TabItem Header="Prošli">
-                <ListBox ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="White" BorderBrush="Transparent" >
-                    <local:UpcomingAppointmentView Margin="10 0 10 0"/>
-                    <local:UpcomingAppointmentView Margin="10 0 10 0"/>
+                <ListBox Name="PastLB" ItemsSource="{Binding PastAppointments}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="Transparent" BorderBrush="Transparent" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0 0 0 -10">
+                                <Label FontSize="14" FontWeight="Bold" Content="{Binding Title}" Grid.ColumnSpan="2"/>
+                                <Label FontSize="12" FontWeight="Bold" Content="Dijagnoza:" Margin="0,20,0,33" Grid.ColumnSpan="2"/>
+                                <TextBlock Text="{Binding Diagnosis}" Margin="70,25,262,71"/>
+                                <Label FontSize="12" FontWeight="Bold" Content="Terapija:" Margin="0,34,0,21" Grid.ColumnSpan="2"/>
+                                <TextBlock Text="{Binding Precription}" Margin="57,39,-5,54" Grid.ColumnSpan="2"></TextBlock>
+                                <Label FontSize="12" FontWeight="Bold" Content="Nalaz i mišljenje doktora:" Margin="0,48,0,7" Grid.ColumnSpan="2"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Opinion}" Margin="5,68,-1,12" Grid.ColumnSpan="2"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </TabItem>
             <TabItem Header="Predstojeći">
-                <Grid/>
+                <ListBox Name="UpcomingTb" ItemsSource="{Binding UpcomingAppointments}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="Transparent" BorderBrush="Transparent" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0 0 0 -50">
+                                <Label FontSize="14" FontWeight="Bold" Content="{Binding Title}" Grid.ColumnSpan="2"/>
+                                <Label FontSize="12" FontWeight="Bold" Content="Tip:" Margin="0,20,0,33" Grid.ColumnSpan="2"/>
+                                <TextBlock Text="{Binding Type}" Margin="30,25,262,71"/>
+                                <Label FontSize="12" FontWeight="Bold" Content="Soba:" Margin="0,34,0,21" Grid.ColumnSpan="2"/>
+                                <TextBlock Text="{Binding Room}" Margin="40,39,-5,10" Grid.ColumnSpan="2"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </TabItem>
         </TabControl>
         <Label Content="Termini" Margin="274,444,352,264" FontSize="24" FontWeight="Bold"/>

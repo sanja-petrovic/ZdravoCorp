@@ -223,4 +223,32 @@ public class AppointmentRepository
         appointmentDataHandler.Write(this.appointments);
     }
 
+    public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
+    {
+        List<Appointment> pastAppointments = new List<Appointment>();
+        foreach(Appointment appointment in this.appointments)
+        {
+            if(appointment.Patient.GetPatientId().Equals(patient.PersonalId) && appointment.Over)
+            {
+                pastAppointments.Add(appointment);
+            }
+        }
+
+        return pastAppointments;
+    }
+
+    public List<Appointment> GetPatientsUpcomingAppointments(RegisteredPatient patient)
+    {
+        List<Appointment> upcomingAppointments = new List<Appointment>();
+        foreach (Appointment appointment in this.appointments)
+        {
+            if (appointment.Patient.GetPatientId().Equals(patient.PersonalId) && !appointment.Over)
+            {
+                upcomingAppointments.Add(appointment);
+            }
+        }
+
+        return upcomingAppointments;
+    }
+
 }

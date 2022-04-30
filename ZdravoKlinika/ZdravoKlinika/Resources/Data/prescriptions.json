@@ -43,5 +43,20 @@
     "RegisteredPatient": "0105965123321",
     "Id": 3,
     "DateOfCreation": "2022-04-30T14:18:18.9052784+02:00"
+  },
+  {
+    "Medication": "3",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "nedeljno",
+    "DoctorsNote": "",
+    "NoAlternatives": false,
+    "Emergency": false,
+    "Doctor": "456",
+    "RegisteredPatient": "1510963123321",
+    "Id": 4,
+    "DateOfCreation": "2022-04-30T17:55:12.7923343+02:00"
   }
 ]

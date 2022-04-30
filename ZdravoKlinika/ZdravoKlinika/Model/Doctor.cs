@@ -25,4 +25,9 @@ public class Doctor : Employee
         doc.PersonalId = id;
         return doc;
     }
+
+    public string ToString()
+    {
+        return "Dr " + this.Name + " " + this.Lastname;
+    }
 }

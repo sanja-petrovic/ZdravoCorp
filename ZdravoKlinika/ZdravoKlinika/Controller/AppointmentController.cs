@@ -59,4 +59,14 @@ public class AppointmentController
     {
         this.appointmentService.LogAppointment(appointment, diagnoses, doctorsNote);
     }
+
+    public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
+    {
+        return this.AppointmentService.GetPatientsPastAppointments(patient);
+    }
+
+    public List<Appointment> GetPatientsUpcomingAppointments(RegisteredPatient patient)
+    {
+        return this.appointmentService.GetPatientsUpcomingAppointments(patient);
+    }
 }

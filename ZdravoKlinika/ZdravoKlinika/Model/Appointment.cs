@@ -14,7 +14,7 @@ public class Appointment
     private Doctor doctor;
     private Patient patient;
     private Room room;
-    private List<Medication> prescriptions;
+    private List<String> prescriptions;
     private bool over;
 
     public Appointment() { }
@@ -32,25 +32,6 @@ public class Appointment
         this.Over = false;
     }
 
-
-    public List<Medication> Prescriptions
-    {
-        get
-        {
-            if (prescriptions == null)
-                prescriptions = new List<Medication>();
-            return prescriptions;
-        }
-        set
-        {
-            RemoveAllPrescriptions();
-            if (value != null)
-            {
-                foreach (Medication oMedication in value)
-                    AddPrescriptions(oMedication);
-            }
-        }
-    }
 
     public int AppointmentId { get => appointmentId; set => appointmentId = value; }
     public DateTime DateAndTime { get => dateAndTime; set => dateAndTime = value; }
@@ -76,28 +57,5 @@ public class Appointment
     public Patient Patient { get => patient; set => patient = value; }
     public Room Room { get => room; set => room = value; }
     public bool Over { get => over; set => over = value; }
-
-    public void AddPrescriptions(Medication newMedication)
-    {
-        if (newMedication == null)
-            return;
-        if (this.prescriptions == null)
-            this.prescriptions = new List<Medication>();
-        if (!this.prescriptions.Contains(newMedication))
-            this.prescriptions.Add(newMedication);
-    }
-    public void RemovePrescriptions(Medication oldMedication)
-    {
-        if (oldMedication == null)
-            return;
-        if (this.prescriptions != null)
-            if (this.prescriptions.Contains(oldMedication))
-                this.prescriptions.Remove(oldMedication);
-    }
-    public void RemoveAllPrescriptions()
-    {
-        if (prescriptions != null)
-            prescriptions.Clear();
-    }
-
+    public List<string> Prescriptions { get => prescriptions; set => prescriptions = value; }
 }
