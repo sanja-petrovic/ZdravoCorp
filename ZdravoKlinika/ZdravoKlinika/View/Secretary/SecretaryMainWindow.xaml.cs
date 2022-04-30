@@ -22,7 +22,7 @@ namespace ZdravoKlinika.View.Secretary
         public SecretaryMainWindow()
         {
             InitializeComponent();
-            MainContentFrame.Source = new System.Uri("/View/Secretary/SecretaryHomePage.xaml",UriKind.Relative);
+            MainContentFrame.Navigate(new SecretaryHomePage());
         }
 
         private void HambuergerMenuIcon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -35,15 +35,18 @@ namespace ZdravoKlinika.View.Secretary
             HamburgerMenuFrame.Visibility = Visibility.Visible;
         }
 
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e,String asdd)
+        private void HomeChangePage(object sender, RoutedEventArgs e)
         {
-            asd.Title = asdd;
-            if (HamburgerMenuFrame.Visibility == Visibility.Visible)
-            {
-                HamburgerMenuFrame.Visibility = Visibility.Collapsed;
-                return;
-            }
-            HamburgerMenuFrame.Visibility = Visibility.Visible;
+            MainContentFrame.Navigate(new SecretaryHomePage());
+            MenuContentLabel.Content = "Pocetna";
+            HamburgerMenuFrame.Visibility = Visibility.Collapsed;
+        }
+
+        private void AddPatientChangePage(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Navigate(new SecretaryAddPatientPage());
+            MenuContentLabel.Content = "Dodavanje pacijenta";
+            HamburgerMenuFrame.Visibility = Visibility.Collapsed;
         }
     }
 }
