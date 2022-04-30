@@ -48,5 +48,12 @@ namespace ZdravoKlinika.View.Secretary
             MenuContentLabel.Content = "Dodavanje pacijenta";
             HamburgerMenuFrame.Visibility = Visibility.Collapsed;
         }
+
+        private void UpdatePatientPage(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Navigate(new SecretaryChoosePatientUDPage());
+            MenuContentLabel.Content = "Azuriranje i brisanje pacijenta";
+            HamburgerMenuFrame.Visibility = Visibility.Collapsed;
+        }
     }
 }
