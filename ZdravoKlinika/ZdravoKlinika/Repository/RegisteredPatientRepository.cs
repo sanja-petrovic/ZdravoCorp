@@ -48,7 +48,7 @@ public class RegisteredPatientRepository
         {
             if (patient.PersonalId.Equals(p.PersonalId))
             {
-                patient.MedicalRecord = MedicalRecordRepository.GetUpdatedMedicalRecord(patient.MedicalRecord.MedicalRecordId);
+                patient.MedicalRecord = MedicalRecordRepository.GetById(patient.MedicalRecord.MedicalRecordId);
             }
         }
 

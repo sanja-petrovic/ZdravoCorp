@@ -23,6 +23,8 @@
     <None Remove="Resources\Images\info %282%29.png" />
     <None Remove="Resources\Images\medicine.png" />
     <None Remove="Resources\Images\pulse.png" />
+    <None Remove="Resources\Images\search %281%29.png" />
+    <None Remove="Resources\Images\search.png" />
     <None Remove="Resources\Images\settings.png" />
     <None Remove="Resources\Images\show %281%29.png" />
     <None Remove="Resources\Images\show.png" />
@@ -37,6 +39,8 @@
 
   <ItemGroup>
     <Content Include="Resources\Images\zdravoklinikaicon.ico" />
+    <Resource Include="Resources\Images\search (1).png" />
+    <Resource Include="Resources\Images\search.png" />
     <Resource Include="Resources\Images\settings.png" />
     <Resource Include="Resources\Images\add.png" />
   </ItemGroup>

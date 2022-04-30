@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKlinika.View" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:PrescriptionViewModel}"
         mc:Ignorable="d"
-        Title="Prepisivanje leka" Height="564" Width="500" SizeToContent="WidthAndHeight"
-    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+        Title="Prepisivanje leka" Height="369" Width="500" SizeToContent="WidthAndHeight"
+    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" ResizeMode="NoResize"> 
     <Window.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF"/>
- 
+
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF9E98FF"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF9E98FF"/>
@@ -474,7 +474,7 @@
             </TextBox.Resources>
         </TextBox>
         <ComboBox Name="RepeatCB" ItemsSource="{Binding RepeatDisplay}" Style="{DynamicResource ComboBoxStyle1}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="363,155,0,0" VerticalAlignment="Top" Width="100" Text="Izaberite lek" Padding="5" Height="28">
-            
+
         </ComboBox>
         <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="95,155,0,0" TextWrapping="NoWrap" Text="{Binding Duration}" VerticalAlignment="Top" Width="88" Height="28" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
@@ -494,7 +494,7 @@
         </TextBox>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left"  Margin="268,161,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="40,161,0,0" TextWrapping="Wrap" Text="Doziranje:" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="55"/>
-        <Button Click="Confirm" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="385,482,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77">
+        <Button Click="Confirm" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="385,291,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -511,23 +511,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="181,41,0,0" TextWrapping="Wrap" Text="Doktor" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="181,65,0,0" TextWrapping="Wrap" Text="{Binding DoctorName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="122"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="181,81,0,0" TextWrapping="Wrap" Text="{Binding DoctorSpecialty}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-        <Border BorderBrush="#FFAEAEC1" BorderThickness="1" CornerRadius="10" Margin="40,270,38,197">
-            <TextBlock HorizontalAlignment="Center" Foreground="#555557" TextWrapping="Wrap" Text="Dodati lekovi će se prikazati ovde." VerticalAlignment="Top"  Width="393" Height="68" Margin="0,9,0,0"/>
-        </Border>
-
-
-
-        <Button BorderBrush="#555557" BorderThickness="1" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Dodajte" Margin="40,237,382,288" FontSize="12" Padding="7" Height="23" Width="78">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-            <Button.Style>
-                <StaticResource ResourceKey="fancyButtonStyle4"/>
-            </Button.Style>
-        </Button>
-        <TextBlock Margin="40,356,52,137" TextWrapping="Wrap" Text="Recepti za lekove će se automatski generisati i biće dostupni u odseku 'Dokumenti'." Foreground="#555557" Height="55" Width="408" FontStyle="Italic" FontSize="11"/>
+        <TextBlock  TextWrapping="Wrap" Text="Recept će se automatski generisati i biće dostupan u odseku 'Dokumenti'." Foreground="#555557" Height="55" Width="408" FontStyle="Italic" FontSize="11" Margin="40,231,52,67"/>
 
     </Grid>
 </Window>

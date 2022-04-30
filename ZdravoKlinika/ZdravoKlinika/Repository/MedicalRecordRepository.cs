@@ -118,20 +118,5 @@ namespace ZdravoKlinika.Repository
 
         }
 
-        public MedicalRecord GetUpdatedMedicalRecord(String id)
-        {
-            this.medicalRecords = medicalRecordDataHandler.Read();
-            UpdateReferences();
-            foreach(MedicalRecord m in this.medicalRecords)
-            {
-                if(m.MedicalRecordId.Equals(id))
-                {
-                    return m;
-                }
-            }
-            
-            return null;
-        }
-
     }
 }

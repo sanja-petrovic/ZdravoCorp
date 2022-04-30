@@ -27,7 +27,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Prescriptions { get => prescriptions; set => SetProperty(ref prescriptions, value); }
         public string AppointmentType { get => appointmentType; set => SetProperty(ref appointmentType, value); }
 
-        ICommand _clickCommand;
 
         public ScheduleTabItem()
         {

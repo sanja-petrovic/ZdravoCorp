@@ -24,6 +24,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private List<String> medicationDisplay;
         List<string> diagnosisDisplay;
 
+        ObservableCollection<AppointmentViewModel> pastAppointments;
+        ObservableCollection<AppointmentViewModel> upcomingAppointments;
+
 
         public string Name { get => name; set => SetProperty(ref name, value); }
         public string Id { get => id; set => SetProperty(ref id, value); }

@@ -13,6 +13,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string type;
         private string time;
         private string room;
+        private string diagnosis;
+        private string prescriptions;
+        private string opinion;
 
         public AppointmentViewModel()
         {
@@ -23,5 +26,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Time { get => time; set => SetProperty(ref time, value); }
         public string Room { get => room; set => SetProperty(ref room, value); }
         public int Id { get => id; set => id = value; }
+        public string Diagnosis { get => diagnosis; set => SetProperty(ref diagnosis, value); }
+        public string Prescriptions { get => prescriptions; set => SetProperty(ref prescriptions, value); }
+        public string Opinion { get => opinion; set => SetProperty(ref opinion, value); }
+
+
     }
 }
