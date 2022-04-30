@@ -16,7 +16,7 @@ public class RoomRepository
         this.freeRooms = new List<Room>();
     }
 
-    public List<Room> Room
+    public List<Room> Rooms
     {
         get
         {
@@ -80,15 +80,38 @@ public class RoomRepository
         return null;
     }
 
-    public List<Room> GetFreeRooms()
+    public List<Room> GetFreeRooms(DateTime enteredTime)
     {
-        foreach (Room r in this.rooms)
+        AppointmentRepository appointmentRepository = new AppointmentRepository();
+        List<Appointment> appointments = appointmentRepository.GetAll();
+
+        DateTime appointmentStart;
+        DateTime appointmentEnd;
+
+        foreach (Appointment app in appointments)
         {
-            if(r.Status == RoomStatus.available)
+            appointmentStart = app.DateAndTime;
+            appointmentEnd = appointmentStart.AddMinutes(app.Duration);
+            if ((enteredTime > appointmentStart) && (enteredTime < appointmentEnd))
+            {
+                //app.Room JE ZAUZETA U NAVEDENOM TERMINU
+                app.Room.Free = false;
+            }
+            else
+            {
+                //app.Room JE SLOBODNA U NAVEDENOM TERMINU
+                app.Room.Free = true;
+            }
+        }
+
+        foreach (Room r in rooms)
+        {
+            if (r.Free)
             {
                 freeRooms.Add(r);
             }
         }
+
         return freeRooms;
     }
 
@@ -122,6 +145,7 @@ public class RoomRepository
                     r.Level = room.Level;
                     r.Number = room.Number;
                     r.Status = room.Status;
+                    r.Free = room.Free;
                 }
             }
         roomDataHandler.Write(this.rooms);
@@ -132,7 +156,8 @@ public class RoomRepository
         if (room == null)
             return;
         room.Status = RoomStatus.occupied;
-       UpdateRoom(room);
+        room.Free = false;
+        UpdateRoom(room);
     }
 
     public void FreeRoom(Room room)
@@ -140,6 +165,7 @@ public class RoomRepository
         if (room == null)
             return;
         room.Status = RoomStatus.available;
+        room.Free = true;
         UpdateRoom(room);
     }
 
@@ -148,6 +174,7 @@ public class RoomRepository
         if (room == null)
             return;
         room.Status = RoomStatus.renovation;
+        room.Free = false;
         UpdateRoom(room);
     }
 }

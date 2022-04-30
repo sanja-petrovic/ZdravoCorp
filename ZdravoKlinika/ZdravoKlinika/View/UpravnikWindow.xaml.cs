@@ -71,7 +71,7 @@ namespace ZdravoKlinika.View
                 default:
                     break;
             }
-            this.roomController.CreateRoom(naziv, tip, status, sprat, broj);
+            this.roomController.CreateRoom(naziv, tip, status, sprat, broj, true);
             Refresh_Display();
         }
 
@@ -111,7 +111,7 @@ namespace ZdravoKlinika.View
                 default:
                     break;
             }
-            this.roomController.UpdateRoom(sifra, naziv, tip, status, sprat, broj);
+            this.roomController.UpdateRoom(sifra, naziv, tip, status, sprat, broj, true);
             Refresh_Display();
         }
 
