@@ -5,10 +5,8 @@ using System.IO;
 public class RoomRepository
 {
     private RoomDataHandler roomDataHandler;
-    private AppointmentRepository appointmentRepository;
     private List<Room> rooms;
     private List<Room> freeRooms;
-    private List<Appointment> appointments;
     private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "room.json";
 
     public RoomRepository()
@@ -16,8 +14,7 @@ public class RoomRepository
         this.roomDataHandler = new RoomDataHandler(fileLocation);
         this.rooms = this.roomDataHandler.Read();
         this.freeRooms = new List<Room>();
-        this.appointmentRepository = new AppointmentRepository();
-        this.appointments = appointmentRepository.GetAll();
+        
     }
 
     public List<Room> Rooms
@@ -83,28 +80,6 @@ public class RoomRepository
 
         return null;
     }
-
-    public List<Room> GetFreeRooms(DateTime enteredTime)
-    {
-        DateTime appointmentStart;
-        DateTime appointmentEnd;
-
-        foreach (Appointment app in appointments)
-        {
-            appointmentStart = app.DateAndTime;
-            appointmentEnd = appointmentStart.AddMinutes(app.Duration);
-            if ((enteredTime > appointmentStart) && (enteredTime < appointmentEnd))
-            {
-                //app.Room JE ZAUZETA U NAVEDENOM TERMINU
-                app.Room.Free = false;
-            }
-            else
-            {
-                //app.Room JE SLOBODNA U NAVEDENOM TERMINU
-                app.Room.Free = true;
-            }
-        }
-
     public List<Room> GetFreeRooms(DateTime enteredTime)
     {
         AppointmentRepository appointmentRepository = new AppointmentRepository();
