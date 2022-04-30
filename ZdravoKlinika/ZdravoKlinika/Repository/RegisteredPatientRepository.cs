@@ -42,6 +42,17 @@ public class RegisteredPatientRepository
         }
     }
 
+    public void recordUpdated(RegisteredPatient p)
+    {
+        foreach (RegisteredPatient patient in this.patients)
+        {
+            if (patient.PersonalId.Equals(p.PersonalId))
+            {
+                patient.MedicalRecord = MedicalRecordRepository.GetUpdatedMedicalRecord(patient.MedicalRecord.MedicalRecordId);
+            }
+        }
+
+    }
 
     public RegisteredPatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
     public MedicalRecordRepository MedicalRecordRepository { get => medicalRecordRepository; set => medicalRecordRepository = value; }

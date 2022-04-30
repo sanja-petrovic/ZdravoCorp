@@ -42,6 +42,15 @@ namespace ZdravoKlinika.View.DoctorPages
             PrescriptionView prescriptionView = new PrescriptionView();
             prescriptionView.init("456", viewModel.Id);
             prescriptionView.Show();
+            prescriptionView.Closed += (s, eventarg) =>
+            {
+                viewModel.MedicationAdded();
+            };
+        }
+
+        public void MedicationAdded()
+        {
+            viewModel.MedicationAdded();
         }
 
     }

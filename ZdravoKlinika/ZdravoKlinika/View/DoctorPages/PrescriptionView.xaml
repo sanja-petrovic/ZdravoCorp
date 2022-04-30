@@ -452,7 +452,7 @@
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="40,198,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote}" VerticalAlignment="Top" Width="423" Height="28" BorderBrush="#FFAEAEC1">
+        <TextBox Name="NoteTB" Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="40,198,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote}" VerticalAlignment="Top" Width="423" Height="28" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -473,10 +473,8 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <ComboBox Style="{DynamicResource ComboBoxStyle1}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="363,155,0,0" VerticalAlignment="Top" Width="100" Text="Izaberite lek" Padding="5" Height="28">
-            <ComboBoxItem Content="dnevno"/>
-            <ComboBoxItem Content="nedeljno"/>
-            <ComboBoxItem Content="mesečno"/>
+        <ComboBox Name="RepeatCB" ItemsSource="{Binding RepeatDisplay}" Style="{DynamicResource ComboBoxStyle1}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="363,155,0,0" VerticalAlignment="Top" Width="100" Text="Izaberite lek" Padding="5" Height="28">
+            
         </ComboBox>
         <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="95,155,0,0" TextWrapping="NoWrap" Text="{Binding Duration}" VerticalAlignment="Top" Width="88" Height="28" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>

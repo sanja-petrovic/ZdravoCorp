@@ -47,7 +47,10 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void Confirm(object sender, RoutedEventArgs e)
         {
-            
+            var selected = (String) RepeatCB.SelectedItem;
+            var note = (String)NoteTB.Text;
+            viewModel.save(MedCB.SelectedIndex, selected, note);
+            this.Close();
         }
     }
 }

@@ -27,5 +27,7 @@ namespace ZdravoKlinika.Controller
         {
             return this.medicationService.GetById(medId);
         }
+
+
     }
 }

@@ -17,11 +17,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string doctorSpecialty;
 
         private string medication;
-        private string amount;
+        private int amount;
         private bool noAlt;
         private bool emergency;
-        private string duration;
-        private string frequency;
+        private int duration;
+        private int frequency;
         private string singleDose;
         private string repeat;
         private string doctorsNote;
@@ -32,6 +32,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private PrescriptionController prescriptionController;
         private List<Medication> medications;
         private List<String> medicationsDisplay;
+        private List<String> repeatDisplay;
         private Doctor doctor;
         private RegisteredPatient patient;
 
@@ -41,7 +42,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.doctorController = new DoctorController();
             this.registeredPatientController = new RegisteredPatientController();
             this.prescriptionController = new PrescriptionController();
-   
+            this.repeatDisplay = new List<string>();
+            this.repeatDisplay.Add("dnevno");
+            this.repeatDisplay.Add("nedeljno");
+            this.repeatDisplay.Add("mesečno");
+
             Medications = medicationController.GetAll();
             this.MedicationsDisplay = new List<String>();
             foreach(Medication m in this.medications)
@@ -59,19 +64,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.patientName = Patient.GetPatientFullName();
             this.doctorName = "Dr " + doctor.Name + " " + doctor.Lastname;
             this.doctorSpecialty = doctor.Specialty;
-
-            this.amount = "Količina";
-            this.singleDose = "Jedna doza";
-            this.duration = "Trajanje (dani)";
-            this.frequency = "Učestalost";
         }
 
-        public void save(int selectedIndex)
+        public void save(int selectedIndex, string selectedRepeat, string note)
         {
-            /*this.prescriptionController.Prescribe(
-                Doctor, Patient, this.medications[selectedIndex], this.amount, this.duration, this.frequency, this.singleDose, this.repeat, this.DoctorsNote, false, false
-
-                );*/
+            this.prescriptionController.Prescribe(
+                Doctor, Patient, this.medications[selectedIndex], this.amount, this.duration, this.frequency, this.singleDose, selectedRepeat, note, false, false
+                );
         }
 
         public string PatientName { get => patientName; set => SetProperty(ref patientName, value);  }
@@ -79,17 +78,18 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string DoctorName { get => doctorName; set => SetProperty(ref doctorName, value); }
         public string DoctorSpecialty { get => doctorSpecialty; set => SetProperty(ref doctorSpecialty, value); }
         public string Medication { get => medication; set => SetProperty(ref medication, value); }
-        public string Amount { get => amount; set => SetProperty(ref amount, value); }
+        public int Amount { get => amount; set => SetProperty(ref amount, value); }
         public bool NoAlt { get => noAlt; set => SetProperty(ref noAlt, value); }
         public bool Emergency { get => emergency; set => SetProperty(ref emergency, value); }
-        public string Duration { get => duration; set => SetProperty(ref duration, value); }
-        public string Frequency { get => frequency; set => SetProperty(ref frequency, value); }
+        public int Duration { get => duration; set => SetProperty(ref duration, value); }
+        public int Frequency { get => frequency; set => SetProperty(ref frequency, value); }
         public string SingleDose { get => singleDose; set => SetProperty(ref singleDose, value); }
         public string Repeat { get => repeat; set => SetProperty(ref repeat, value); }
         public string DoctorsNote { get => doctorsNote; set => SetProperty(ref doctorsNote, value); }
         public List<Medication> Medications { get => medications; set => medications = value; }
         public List<string> MedicationsDisplay { get => medicationsDisplay; set => medicationsDisplay = value; }
-        public Doctor Doctor { get => doctor; set => doctor = value; }
-        public RegisteredPatient Patient { get => patient; set => patient = value; }
+        public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
+        public RegisteredPatient Patient { get => patient; set => SetProperty(ref patient, value); }
+        public List<string> RepeatDisplay { get => repeatDisplay; set => SetProperty(ref repeatDisplay, value); }
     }
 }

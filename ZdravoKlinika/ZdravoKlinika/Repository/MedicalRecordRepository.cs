@@ -96,6 +96,8 @@ namespace ZdravoKlinika.Repository
 
         public MedicalRecord? GetById(String id)
         {
+            this.medicalRecords = this.medicalRecordDataHandler.Read();
+            UpdateReferences();
             foreach (MedicalRecord record in this.medicalRecords)
             {
                 if (record.MedicalRecordId.Equals(id))
@@ -113,16 +115,22 @@ namespace ZdravoKlinika.Repository
             this.medicalRecords.Add(medicalRecord);
 
             MedicalRecordDataHandler.Write(this.medicalRecords);
+
         }
 
-        public void AddCurrentMedication(String id, Medication medication)
+        public MedicalRecord GetUpdatedMedicalRecord(String id)
         {
-            MedicalRecord medicalRecord = this.GetById(id);
-            medicalRecord.AddCurrentMedication(medication);
-            this.DeleteMedicalRecord(medicalRecord);
-            this.medicalRecords.Add(medicalRecord);
-
-            MedicalRecordDataHandler.Write(this.medicalRecords);
+            this.medicalRecords = medicalRecordDataHandler.Read();
+            UpdateReferences();
+            foreach(MedicalRecord m in this.medicalRecords)
+            {
+                if(m.MedicalRecordId.Equals(id))
+                {
+                    return m;
+                }
+            }
+            
+            return null;
         }
 
     }

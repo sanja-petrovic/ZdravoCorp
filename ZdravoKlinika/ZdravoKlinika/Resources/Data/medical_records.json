@@ -1,10 +1,22 @@
-﻿[
+[
   {
     "Diagnoses": [
       ""
     ],
     "Allergies": [
-      "Mačja dlaka"
+      "Ma\u010Dja dlaka"
+    ],
+    "CurrentMedication": [],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "0105965123321"
+  },
+  {
+    "Diagnoses": [
+      "Nema"
+    ],
+    "Allergies": [
+      ""
     ],
     "CurrentMedication": [
       {
@@ -17,9 +29,7 @@
         "ActiveSubstances": [
           "ibuprofen"
         ]
-      }
-    ],
-    "PastMedication": [
+      },
       {
         "MedicationId": "2",
         "BrandName": "Brufen",
@@ -30,19 +40,22 @@
         "ActiveSubstances": [
           "ibuprofen"
         ]
+      },
+      {
+        "MedicationId": "3",
+        "BrandName": "Caffetin cold",
+        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
+        "Notes": [],
+        "MedicationCode": "N02BE51",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
+        ]
       }
     ],
-    "Reports": [],
-    "MedicalRecordId": "0105965123321"
-  },
-  {
-    "Diagnoses": [
-      "Nema"
-    ],
-    "Allergies": [
-      ""
-    ],
-    "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "1510963123321"

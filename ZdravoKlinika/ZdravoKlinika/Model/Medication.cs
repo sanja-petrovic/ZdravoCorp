@@ -25,4 +25,9 @@ public class Medication
         medication.medicationId = id;
         return medication;
     }
+
+    public string ToString()
+    {
+        return this.brandName + " " + this.dosage + ", " + this.form;
+    }
 }
