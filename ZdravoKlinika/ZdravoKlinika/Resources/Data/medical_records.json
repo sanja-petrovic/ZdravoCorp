@@ -1,30 +1,6 @@
 [
   {
     "Diagnoses": [
-      ""
-    ],
-    "Allergies": [
-      "Ma\u010Dja dlaka"
-    ],
-    "CurrentMedication": [
-      {
-        "MedicationId": "5",
-        "BrandName": "Hemomycin",
-        "Dosage": "250mg",
-        "Notes": [],
-        "MedicationCode": "J01FA10",
-        "Form": "kapsula, tvrda",
-        "ActiveSubstances": [
-          "azitromicin"
-        ]
-      }
-    ],
-    "PastMedication": [],
-    "Reports": [],
-    "MedicalRecordId": "0105965123321"
-  },
-  {
-    "Diagnoses": [
       "Nema"
     ],
     "Allergies": [
@@ -40,6 +16,10 @@
         "Form": "film tableta",
         "ActiveSubstances": [
           "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
         ]
       },
       {
@@ -51,6 +31,10 @@
         "Form": "film tableta",
         "ActiveSubstances": [
           "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
         ]
       },
       {
@@ -65,11 +49,45 @@
           "pseudoefedrin",
           "dekstrometorfan",
           "askorbinska kiselina"
+        ],
+        "Allergens": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
         ]
       }
     ],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "1510963123321"
+  },
+  {
+    "Diagnoses": [
+      ""
+    ],
+    "Allergies": [
+      "Ma\u010Dja dlaka",
+      "penicilin"
+    ],
+    "CurrentMedication": [
+      {
+        "MedicationId": "5",
+        "BrandName": "Hemomycin",
+        "Dosage": "250mg",
+        "Notes": [],
+        "MedicationCode": "J01FA10",
+        "Form": "kapsula, tvrda",
+        "ActiveSubstances": [
+          "azitromicin"
+        ],
+        "Allergens": [
+          "azitromicin"
+        ]
+      }
+    ],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "0105965123321"
   }
 ]

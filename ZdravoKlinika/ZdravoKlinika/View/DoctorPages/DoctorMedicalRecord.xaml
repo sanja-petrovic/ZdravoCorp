@@ -579,7 +579,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Border  Margin="279,483,54,58"
+        <Border  Margin="279,483,54,35"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -626,6 +626,7 @@
                 </ListBox>
             </TabItem>
         </TabControl>
+        
         <Label Content="Termini" Margin="274,444,352,264" FontSize="24" FontWeight="Bold"/>
         <Border  Margin="415,249,541,498"
             BorderBrush="Black"
@@ -648,8 +649,51 @@
         <ListBox  Cursor="Arrow" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle1}" Style="{DynamicResource ListBoxStyle1}" ItemsSource="{Binding MedicationDisplay}" Margin="528,289,308,352">
 
         </ListBox>
-
-
+        <Border  Margin="382,457,572,292"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button Content="Zakaži novi" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="380,455,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Border  Margin="482,457,441,292"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button Content="Izmeni odabrani" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="480,455,0,0" VerticalAlignment="Top" Width="103" Height="23" Background="White" Click="EditAppointment" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Border  Margin="602,457,323,292"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button Content="Obriši odabrani" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="600,455,0,0" VerticalAlignment="Top" Width="103" Height="23" Background="White" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
     </Grid>

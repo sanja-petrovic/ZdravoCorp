@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ZdravoKlinika.View" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:PrescriptionViewModel}"
         mc:Ignorable="d"
         Title="Prepisivanje leka" Height="369" Width="500" SizeToContent="WidthAndHeight"
-    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" ResizeMode="NoResize"> 
+    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" ResizeMode="NoResize">
     <Window.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF"/>
 
@@ -445,7 +445,7 @@
 
     </Window.Resources>
     <Grid>
-        <ComboBox Name="MedCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="40,114,0,0" VerticalAlignment="Top" Width="176" Text="Izaberite lek" Padding="5" Height="28">
+        <ComboBox Name="MedCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="40,114,0,0" VerticalAlignment="Top" Width="176" Text="Izaberite lek" Padding="5" Height="28" SelectionChanged="MedCB_SelectionChanged">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -494,7 +494,8 @@
         </TextBox>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left"  Margin="268,161,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="40,161,0,0" TextWrapping="Wrap" Text="Doziranje:" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="55"/>
-        <Button Click="Confirm" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="385,291,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77">
+        <TextBlock Name="AllergyTB"  Visibility="Hidden"  Foreground="#FE5D7A" HorizontalAlignment="Left" Margin="40,298,0,0" TextWrapping="Wrap" Text="Pacijent je alergičan na izabrani lek." VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="319" Height="27"/>
+        <Button Name="ConfirmButton"  Click="Confirm" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="385,291,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

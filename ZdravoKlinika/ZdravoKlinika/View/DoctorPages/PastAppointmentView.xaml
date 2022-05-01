@@ -5,14 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:PastViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <Grid Margin="0,0,812,609">
+        <Button BorderBrush="#555557" BorderThickness="1" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Izmenite" HorizontalAlignment="Left"  Margin="10,126,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="29" Width="80">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle4"/>
+            </Button.Style>
+        </Button>
         <Label FontSize="14" FontWeight="Bold" Content="{Binding Title}" Grid.ColumnSpan="2"/>
         <Label FontSize="12" FontWeight="Bold" Content="Dijagnoza:" Margin="0,20,0,33" Grid.ColumnSpan="2"/>
         <TextBlock Text="{Binding Diagnosis}" Margin="70,25,262,71"/>
         <Label FontSize="12" FontWeight="Bold" Content="Terapija:" Margin="0,34,0,21" Grid.ColumnSpan="2"/>
         <TextBlock Text="{Binding Precription}" Margin="57,39,-5,54" Grid.ColumnSpan="2"></TextBlock>
-         <Label FontSize="12" FontWeight="Bold" Content="Nalaz i mišljenje doktora:" Margin="0,48,0,7" Grid.ColumnSpan="2"/>
+        <Label FontSize="12" FontWeight="Bold" Content="Nalaz i mišljenje doktora:" Margin="0,48,0,7" Grid.ColumnSpan="2"/>
         <TextBlock TextWrapping="Wrap" Text="{Binding Opinion}" Margin="5,68,-1,12" Grid.ColumnSpan="2"></TextBlock>
     </Grid>
 </UserControl>

@@ -66,11 +66,24 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.doctorSpecialty = doctor.Specialty;
         }
 
-        public void save(int selectedIndex, string selectedRepeat, string note)
+        public bool Save(int selectedIndex, string selectedRepeat, string note)
         {
-            this.prescriptionController.Prescribe(
-                Doctor, Patient, this.medications[selectedIndex], this.amount, this.duration, this.frequency, this.singleDose, selectedRepeat, note, false, false
-                );
+            if(AllergyCheck(selectedIndex))
+            {
+                this.prescriptionController.Prescribe(
+                    Doctor, Patient, this.medications[selectedIndex], this.amount, this.duration, this.frequency, this.singleDose, selectedRepeat, note, false, false
+                    );
+            }
+            return AllergyCheck(selectedIndex);
+        }
+
+        public bool AllergyCheck(int selectedIndex)
+        {
+            if (registeredPatientController.IsAllergic(this.medications[selectedIndex], patient))
+            {
+                return false;
+            }
+            return true;
         }
 
         public string PatientName { get => patientName; set => SetProperty(ref patientName, value);  }
@@ -91,5 +104,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
         public RegisteredPatient Patient { get => patient; set => SetProperty(ref patient, value); }
         public List<string> RepeatDisplay { get => repeatDisplay; set => SetProperty(ref repeatDisplay, value); }
+
+
     }
 }

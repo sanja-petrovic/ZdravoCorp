@@ -12,7 +12,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private RegisteredPatientController patientController;
         private AppointmentController appointmentController;
         private RegisteredPatient patient;
-        public ObservableCollection<PastViewModel> PastAppointments { get; set; }
+        //public ObservableCollection<PastViewModel> PastAppointments { get; set; }
+        private List<PastViewModel> pastAppointments;
         public ObservableCollection<UpcomingViewModel> UpcomingAppointments { get; set; }
         string name;
         string id;
@@ -43,13 +44,14 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public RegisteredPatientController PatientController { get => patientController; set => patientController = value; }
         public List<string> DiagnosisDisplay { get => diagnosisDisplay; set => diagnosisDisplay = value; }
         public List<string> MedicationDisplay { get => medicationDisplay; set => SetProperty(ref medicationDisplay, value); }
+        public List<PastViewModel> PastAppointments { get => pastAppointments; set => SetProperty(ref pastAppointments, value); }
 
         public DoctorMedicalRecordViewModel()
         {
             this.patientController = new RegisteredPatientController();
             this.MedicationDisplay = new List<string>();
             this.appointmentController = new AppointmentController();
-            this.PastAppointments = new ObservableCollection<PastViewModel>();
+            this.PastAppointments = new List<PastViewModel>();
             this.UpcomingAppointments = new ObservableCollection<UpcomingViewModel>();
             
         }
@@ -99,5 +101,19 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
             MedicationDisplay = newMedList;
         }
+
+        public void Edited()
+        {
+            List<PastViewModel> pastNew = new List<PastViewModel>();
+            foreach (Appointment a in this.appointmentController.GetPatientsPastAppointments(patient))
+            {
+                PastViewModel past = new PastViewModel();
+                past.init(a);
+                pastNew.Add(past);
+            }
+
+            PastAppointments = pastNew;
+        }
+
     }
 }

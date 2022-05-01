@@ -10,6 +10,7 @@ public class Medication
     private List<String> activeSubstances;
     private string form;
     private List<String> notes;
+    private List<string> allergens;
 
     public string MedicationId { get => medicationId; set => medicationId = value; }
     public string BrandName { get => brandName; set => brandName = value; }
@@ -18,6 +19,7 @@ public class Medication
     public string MedicationCode { get => medicationCode; set => medicationCode = value; }
     public string Form { get => form; set => form = value; }
     public List<string> ActiveSubstances { get => activeSubstances; set => activeSubstances = value; }
+    public List<string> Allergens { get => allergens; set => allergens = value; }
 
     public static Medication Parse(string id)
     {

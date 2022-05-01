@@ -6,7 +6,8 @@
       "Dosage": "200mg",
       "ActiveSubstances": [ "ibuprofen" ],
       "Form": "film tableta",
-      "Notes": []
+      "Notes": [],
+      "Allergens": ["ibuprofen", "brufen"]
     },
   {
     "MedicationId": "2",
@@ -15,7 +16,8 @@
     "Dosage": "400mg",
     "ActiveSubstances": [ "ibuprofen" ],
     "Form": "film tableta",
-    "Notes": []
+    "Notes": [],
+    "Allergens": [ "ibuprofen", "brufen" ]
   },
 
   {
@@ -25,7 +27,8 @@
     "Dosage": "500mg+30mg+15mg+60mg",
     "ActiveSubstances": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
     "Form": "film tableta",
-    "Notes": []
+    "Notes": [],
+    "Allergens": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina"]
   },
 
   {
@@ -35,7 +38,8 @@
     "Dosage": "5mg/mL+1.5mg/mL",
     "ActiveSubstances": [ "cetilpiridinijum-hlorid", "benzidamin" ],
     "Form": "sprej za usnu sluznicu, rastvor",
-    "Notes": []
+    "Notes": [],
+    "Allergens": [ "cetilpiridinijum-hlorid", "benzidamin" ]
   },
 
   {
@@ -45,6 +49,17 @@
     "Dosage": "250mg",
     "ActiveSubstances": [ "azitromicin" ],
     "Form": "kapsula, tvrda",
-    "Notes": []
+    "Notes": [],
+    "Allergens": [ "azitromicin" ]
+  },
+  {
+    "MedicationId": "6",
+    "MedicationCode": "J01CA01",
+    "BrandName": "Pentrexyl",
+    "Dosage": "500mg",
+    "ActiveSubstances": [ "ampicilin" ],
+    "Form": "kapsula, tvrda",
+    "Notes": [],
+    "Allergens": [ "azitromicin", "penicilin" ]
   }
   ]

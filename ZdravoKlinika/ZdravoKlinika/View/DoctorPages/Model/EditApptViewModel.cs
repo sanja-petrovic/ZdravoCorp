@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
-    internal class AppointmentLoggingViewModel : ViewModelBase
+    internal class EditApptViewModel : ViewModelBase
     {
         private AppointmentController appointmentController;
         private Appointment appointment;
@@ -17,7 +17,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string doctorSpecialty;
         private string dateTime;
         private string room;
-        private string prescription;
 
         private string diagnoses;
         private string doctorsNote;
@@ -33,9 +32,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public int AppointmentId { get => appointmentId; set => SetProperty(ref appointmentId, value); }
         public AppointmentController AppointmentController { get => appointmentController; set => SetProperty(ref appointmentController, value); }
         public Appointment Appointment { get => appointment; set => SetProperty(ref appointment, value); }
-        public string Prescription { get => prescription; set => SetProperty(ref prescription, value);  }
 
-        public AppointmentLoggingViewModel()
+        public EditApptViewModel()
         {
             this.AppointmentController = new AppointmentController();
         }
@@ -54,7 +52,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
 
         }
-        
+
         public void save(String note)
         {
             appointmentController.LogAppointment(appointment, Diagnoses, note);

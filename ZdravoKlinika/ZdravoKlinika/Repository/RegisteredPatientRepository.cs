@@ -139,4 +139,26 @@ public class RegisteredPatientRepository
         return;
     }
 
+    public bool IsAllergic(Medication medication, RegisteredPatient patient)
+    {
+        List<string> allergies = patient.MedicalRecord.Allergies;
+        foreach(string allergy in allergies)
+        {
+            if(medication.BrandName.Equals(allergy))
+            {
+                return true;
+            } else
+            {
+                foreach(string allergen in medication.Allergens)
+                {
+                    if(allergen.Equals(allergy))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
 }

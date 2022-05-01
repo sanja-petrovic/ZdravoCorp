@@ -57,5 +57,9 @@ public class RegisteredPatientService
         return;
     }
 
+    public bool IsAllergic(Medication medication, RegisteredPatient patient)
+    {
+        return this.patientRepository.IsAllergic(medication, patient);
+    }
 
 }

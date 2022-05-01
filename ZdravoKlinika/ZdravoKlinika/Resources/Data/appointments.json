@@ -1,19 +1,5 @@
 [
   {
-    "AppointmentId": 1,
-    "DateAndTime": "2022-04-28T11:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 123,
-    "Doctor": "123",
-    "Patient": "0105965123321,Registered",
-    "Room": "314",
-    "Over": true,
-    "Prescriptions": []
-  },
-  {
     "AppointmentId": 2,
     "DateAndTime": "2022-04-28T09:00:00",
     "Diagnoses": "Hypertensio",
@@ -30,10 +16,24 @@
     ]
   },
   {
-    "AppointmentId": 3,
-    "DateAndTime": "2022-04-30T10:00:00",
-    "Diagnoses": "Diabetes mellitus",
+    "AppointmentId": 6,
+    "DateAndTime": "2022-04-30T11:00:00",
+    "Diagnoses": null,
     "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 4,
+    "DateAndTime": "2022-04-30T12:00:00",
+    "Diagnoses": "Problem",
+    "DoctorsNotes": ":/",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
@@ -44,10 +44,10 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 4,
-    "DateAndTime": "2022-04-30T12:00:00",
-    "Diagnoses": "Hmmm",
-    "DoctorsNotes": null,
+    "AppointmentId": 1,
+    "DateAndTime": "2022-05-01T11:00:00",
+    "Diagnoses": ":(",
+    "DoctorsNotes": "dgffsfds",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
@@ -60,8 +60,8 @@
   {
     "AppointmentId": 5,
     "DateAndTime": "2022-04-30T11:00:00",
-    "Diagnoses": "hmmmmmmmmmmmmasfd",
-    "DoctorsNotes": "sfdsfdssd",
+    "Diagnoses": "stvarno stvarno?",
+    "DoctorsNotes": "stvarno?",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
@@ -71,19 +71,18 @@
     "Over": true,
     "Prescriptions": []
   },
-
   {
-    "AppointmentId": 6,
-    "DateAndTime": "2022-04-30T11:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
+    "AppointmentId": 3,
+    "DateAndTime": "2022-04-30T10:00:00",
+    "Diagnoses": "cek",
+    "DoctorsNotes": "bluh",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
     "Doctor": "456",
     "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false,
+    "Over": true,
     "Prescriptions": []
   }
 ]

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -55,5 +56,17 @@ namespace ZdravoKlinika.View.DoctorPages
             viewModel.MedicationAdded();
         }
 
+        private void EditAppointment(object sender, RoutedEventArgs e)
+        {
+            EditAppointmentWindow editAppointmentWindow = new EditAppointmentWindow();
+            var selected = (PastViewModel)PastLB.SelectedItem;
+            editAppointmentWindow.SelectedApptId = selected.AppointmentId;
+            editAppointmentWindow.Init();
+            editAppointmentWindow.Show();
+            editAppointmentWindow.Closed += (s, eventarg) =>
+            {
+                viewModel.Edited();
+            };
+        }
     }
 }

@@ -49,8 +49,27 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             var selected = (String) RepeatCB.SelectedItem;
             var note = (String)NoteTB.Text;
-            viewModel.save(MedCB.SelectedIndex, selected, note);
-            this.Close();
+            if(viewModel.Save(MedCB.SelectedIndex, selected, note))
+            {
+                this.Close();
+            } else
+            {
+                MedCB.Foreground = new SolidColorBrush(Color.FromRgb(254, 93, 122));
+                AllergyTB.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void MedCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(viewModel.AllergyCheck(MedCB.SelectedIndex))
+            {
+                MedCB.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 87));
+                AllergyTB.Visibility = Visibility.Hidden;
+            } else
+            {
+                MedCB.Foreground = new SolidColorBrush(Color.FromRgb(254, 93, 122));
+                AllergyTB.Visibility = Visibility.Visible;
+            }
         }
     }
 }

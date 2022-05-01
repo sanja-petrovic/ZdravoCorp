@@ -221,10 +221,12 @@ public class AppointmentRepository
         
         this.AddAppointment(appointment);
         appointmentDataHandler.Write(this.appointments);
+        this.appointmentListUpdated();
     }
 
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {
+        this.appointments = appointmentDataHandler.Read();
         List<Appointment> pastAppointments = new List<Appointment>();
         foreach(Appointment appointment in this.appointments)
         {
@@ -249,6 +251,11 @@ public class AppointmentRepository
         }
 
         return upcomingAppointments;
+    }
+
+    public void appointmentListUpdated()
+    {
+        this.appointments = this.appointmentDataHandler.Read();
     }
 
 }
