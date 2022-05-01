@@ -33,7 +33,7 @@ namespace ZdravoKlinika.View
             View.DoctorPages.DoctorBasePage doctorBasePage = new View.DoctorPages.DoctorBasePage();
             View.DoctorPages.DoctorMedicalRecord doctorMedicalRecord = new View.DoctorPages.DoctorMedicalRecord();
             View.DoctorPages.DoctorHomePage doctorHomePage = new View.DoctorPages.DoctorHomePage();
-            MainFrame.Navigate(doctorSchedule);
+            MainFrame.Navigate(doctorHomePage);
 
         }
 

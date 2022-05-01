@@ -1,21 +1,5 @@
 [
   {
-    "AppointmentId": 2,
-    "DateAndTime": "2022-04-28T09:00:00",
-    "Diagnoses": "Hypertensio",
-    "DoctorsNotes": "Pacijent se \uFFFDalio na povi\uFFFDen krvni pritisak koji mu mesecima pravi probleme.",
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 123,
-    "Doctor": "456",
-    "Patient": "1510963123321,Registered",
-    "Room": "314",
-    "Over": true,
-    "Prescriptions": [
-      "Lometazid 5 mg \u002B10mg, pola tablete svaki dan"
-    ]
-  },
-  {
     "AppointmentId": 6,
     "DateAndTime": "2022-04-30T11:00:00",
     "Diagnoses": null,
@@ -84,5 +68,21 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": []
+  },
+  {
+    "AppointmentId": 2,
+    "DateAndTime": "2022-04-28T09:00:00",
+    "Diagnoses": "Hypertensio",
+    "DoctorsNotes": "Pacijent se \u017Ealio na povi\u0161en krvni pritisak koji mu mesecima pravi probleme.",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [
+      "Lometazid 5 mg \u002B10mg, pola tablete svaki dan"
+    ]
   }
 ]

@@ -1,6 +1,34 @@
 [
   {
     "Diagnoses": [
+      ""
+    ],
+    "Allergies": [
+      "Ma\u010Dja dlaka",
+      "penicilin"
+    ],
+    "CurrentMedication": [
+      {
+        "MedicationId": "5",
+        "BrandName": "Hemomycin",
+        "Dosage": "250mg",
+        "Notes": [],
+        "MedicationCode": "J01FA10",
+        "Form": "kapsula, tvrda",
+        "ActiveSubstances": [
+          "azitromicin"
+        ],
+        "Allergens": [
+          "azitromicin"
+        ]
+      }
+    ],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "0105965123321"
+  },
+  {
+    "Diagnoses": [
       "Nema"
     ],
     "Allergies": [
@@ -56,38 +84,41 @@
           "dekstrometorfan",
           "askorbinska kiselina"
         ]
-      }
-    ],
-    "PastMedication": [],
-    "Reports": [],
-    "MedicalRecordId": "1510963123321"
-  },
-  {
-    "Diagnoses": [
-      ""
-    ],
-    "Allergies": [
-      "Ma\u010Dja dlaka",
-      "penicilin"
-    ],
-    "CurrentMedication": [
+      },
       {
-        "MedicationId": "5",
-        "BrandName": "Hemomycin",
-        "Dosage": "250mg",
+        "MedicationId": "6",
+        "BrandName": "Pentrexyl",
+        "Dosage": "500mg",
         "Notes": [],
-        "MedicationCode": "J01FA10",
+        "MedicationCode": "J01CA01",
         "Form": "kapsula, tvrda",
         "ActiveSubstances": [
-          "azitromicin"
+          "ampicilin"
         ],
         "Allergens": [
-          "azitromicin"
+          "azitromicin",
+          "penicilin"
+        ]
+      },
+      {
+        "MedicationId": "4",
+        "BrandName": "Septolete total",
+        "Dosage": "5mg/mL\u002B1.5mg/mL",
+        "Notes": [],
+        "MedicationCode": "R02AA",
+        "Form": "sprej za usnu sluznicu, rastvor",
+        "ActiveSubstances": [
+          "cetilpiridinijum-hlorid",
+          "benzidamin"
+        ],
+        "Allergens": [
+          "cetilpiridinijum-hlorid",
+          "benzidamin"
         ]
       }
     ],
     "PastMedication": [],
     "Reports": [],
-    "MedicalRecordId": "0105965123321"
+    "MedicalRecordId": "1510963123321"
   }
 ]
