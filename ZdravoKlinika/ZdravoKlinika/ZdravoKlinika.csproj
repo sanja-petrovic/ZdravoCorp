@@ -27,6 +27,13 @@
     <Resource Include="Resources\Images\cancel.png" />
     <Resource Include="Resources\Images\dots.png" />
     <Resource Include="Resources\Images\plus.png" />
+    <Folder Include="Resources\Localisation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 

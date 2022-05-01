@@ -6,12 +6,14 @@ public class RoomRepository
 {
     private RoomDataHandler roomDataHandler;
     private List<Room> rooms;
+    private List<Room> freeRooms;
     private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "room.json";
 
     public RoomRepository()
     {
         this.roomDataHandler = new RoomDataHandler(fileLocation);
         this.rooms = this.roomDataHandler.Read();
+        this.freeRooms = new List<Room>();
     }
 
     public List<Room> Room
@@ -78,6 +80,18 @@ public class RoomRepository
         return null;
     }
 
+    public List<Room> GetFreeRooms()
+    {
+        foreach (Room r in this.rooms)
+        {
+            if(r.Status == RoomStatus.available)
+            {
+                freeRooms.Add(r);
+            }
+        }
+        return freeRooms;
+    }
+
     public void CreateRoom(Room room)
     {
         this.rooms.Add(room);
@@ -91,7 +105,6 @@ public class RoomRepository
         if (this.rooms != null)
             if (this.rooms.Contains(room))
                 this.rooms.Remove(room);
-
         roomDataHandler.Write(this.rooms);
     }
 
@@ -100,9 +113,41 @@ public class RoomRepository
         if (room == null)
             return;
         if (this.rooms != null)
-            if (this.rooms.Contains(room))
-                this.rooms.Remove(room);
-        this.CreateRoom(room);
+            foreach (Room r in this.rooms)
+            {
+                if (r.RoomId.Equals(room.RoomId))
+                {
+                    r.Name = room.Name;
+                    r.Type = room.Type;
+                    r.Level = room.Level;
+                    r.Number = room.Number;
+                    r.Status = room.Status;
+                }
+            }
+        roomDataHandler.Write(this.rooms);
     }
 
+    public void OccupyRoom(Room room)
+    {
+        if (room == null)
+            return;
+        room.Status = RoomStatus.occupied;
+       UpdateRoom(room);
+    }
+
+    public void FreeRoom(Room room)
+    {
+        if (room == null)
+            return;
+        room.Status = RoomStatus.available;
+        UpdateRoom(room);
+    }
+
+    public void RenovateRoom(Room room)
+    {
+        if (room == null)
+            return;
+        room.Status = RoomStatus.renovation;
+        UpdateRoom(room);
+    }
 }

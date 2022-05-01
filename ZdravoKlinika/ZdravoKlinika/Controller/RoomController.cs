@@ -22,6 +22,11 @@ public class RoomController
         return this.roomService.GetById(id);
     }
 
+    public List<Room> GetFreeRooms()
+    {
+        return this.roomService.GetFreeRooms();
+    }
+
     public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number)
     {
         this.roomService.CreateRoom(name, type, status, level, number);
@@ -35,6 +40,21 @@ public class RoomController
     public void DeleteRoom(String roomId)
     {
         this.roomService.DeleteRoom(roomId);
+    }
+
+    public void OccupyRoom(String roomId)
+    {
+        this.roomService.OccupyRoom(roomId);
+    }
+
+    public void FreeRoom(String roomId)
+    {
+        this.roomService.FreeRoom(roomId);
+    }
+
+    public void RenovateRoom(String roomId)
+    {
+        this.roomService.RenovateRoom(roomId);
     }
 
 }
