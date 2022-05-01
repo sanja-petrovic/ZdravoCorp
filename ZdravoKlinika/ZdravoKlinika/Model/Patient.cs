@@ -10,7 +10,7 @@ namespace ZdravoKlinika.Model
     {
         public PatientType GetPatientType() 
         {
-            return PatientType.none;
+            return PatientType.Null;
         }
 
         public bool IsPatientById(String id) 

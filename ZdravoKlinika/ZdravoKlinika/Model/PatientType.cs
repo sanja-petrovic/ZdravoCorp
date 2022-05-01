@@ -5,5 +5,5 @@ public enum PatientType
 {
     Registered,
     Guest,
-    none
+    Null
 }

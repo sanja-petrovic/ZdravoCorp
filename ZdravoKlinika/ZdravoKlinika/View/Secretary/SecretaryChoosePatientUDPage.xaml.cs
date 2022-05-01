@@ -20,14 +20,20 @@ namespace ZdravoKlinika.View.Secretary
     /// </summary>
     public partial class SecretaryChoosePatientUDPage : Page
     {
+        RegisteredPatientController registeredPatientController;
         public SecretaryChoosePatientUDPage()
         {
             InitializeComponent();
+            registeredPatientController = new RegisteredPatientController();
         }
 
         private void CheckForPatient(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SecretaryUpdateDeletePatientPage());
+            RegisteredPatient pat = registeredPatientController.GetById(TextBoxPID.Text);
+            if (pat != null)
+                if (pat.Name.Equals(TextBoxName.Text) && pat.Lastname.Equals(TextBoxLastname.Text))
+                    NavigationService.RemoveBackEntry();
+                    NavigationService.Navigate(new SecretaryUpdateDeletePatientPage(TextBoxPID.Text));
         }
     }
 }

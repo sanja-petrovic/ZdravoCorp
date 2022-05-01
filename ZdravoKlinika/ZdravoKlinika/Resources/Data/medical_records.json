@@ -1,14 +1,14 @@
 [
   {
     "Diagnoses": [
-      "asdads"
+      "asd    "
     ],
     "Allergies": [
-      "asdads"
+      "asd    "
     ],
     "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
-    "MedicalRecordId": "12345"
+    "MedicalRecordId": "asd"
   }
 ]
