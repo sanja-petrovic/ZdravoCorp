@@ -77,6 +77,13 @@ namespace ZdravoKlinika.Repository
             MedicalRecordDataHandler.Write(medicalRecords);
             return;
         }
+        public void UpdateMedicalRecord(MedicalRecord medicalRecord)
+        {
+            MedicalRecord rec = GetById(medicalRecord.MedicalRecordId);
+            rec = medicalRecord;
+            MedicalRecordDataHandler.Write(medicalRecords);
+            return;
+        }
         public void DeleteAllMedicalRecord()
         {
             if (medicalRecords != null)

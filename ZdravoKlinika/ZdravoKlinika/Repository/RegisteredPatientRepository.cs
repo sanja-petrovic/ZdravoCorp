@@ -123,6 +123,8 @@ public class RegisteredPatientRepository
         }
 
         patients[index] = patient;
+
+        MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
         PatientsDataHandler.Write(patients);
         
         return;

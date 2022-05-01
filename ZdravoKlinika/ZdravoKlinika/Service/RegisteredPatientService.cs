@@ -4,56 +4,62 @@ using System.Collections.Generic;
 
 public class RegisteredPatientService
 {
-    private RegisteredPatientRepository patientRepository;
+    private RegisteredPatientRepository registeredPatientRepository;
 
-    public RegisteredPatientRepository PatientRepository { get => patientRepository; set => patientRepository = value; }
+    public RegisteredPatientRepository PatientRepository { get => registeredPatientRepository; set => registeredPatientRepository = value; }
 
 
     public RegisteredPatientService() { 
         // init
-        this.patientRepository = new RegisteredPatientRepository();
+        this.registeredPatientRepository = new RegisteredPatientRepository();
     }
 
     public List<RegisteredPatient> GetAll()
     {
-        return patientRepository.GetAll();
+        return registeredPatientRepository.GetAll();
     }
 
     public RegisteredPatient GetById(String id)
     {
-        return patientRepository.GetById(id);
+        return registeredPatientRepository.GetById(id);
     }
 
-    public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, Address address, String parentName, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> alergies, List<String> diagnosis)
+    public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> allergies, List<String> diagnosis)
     {
-        Console.WriteLine("service");
-        MedicalRecord record = new MedicalRecord(personalId, alergies, diagnosis);
-        RegisteredPatient patient = new RegisteredPatient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, parentName, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
+        MedicalRecord record = new MedicalRecord(personalId, diagnosis, allergies);
+        Address address = new Address(street,stnumber,city,country);
+        RegisteredPatient patient = new RegisteredPatient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
         
-        patientRepository.CreatePatient(patient);
-        //TODO medicalRecord repo write it too!
+        registeredPatientRepository.CreatePatient(patient);
     }
 
-    public void UpdatePatient(String personalId, String name, String lastname, String phone, String email, String password, String profilePicture, String parentName, String occupation, String emergencyContactName, String emergencyContactPhone)
+    public void UpdatePatient(String personalId, String name, String lastname, String phone, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> allergies, List<String> diagnosis)
     {
         RegisteredPatient pat = this.GetById(personalId);
         pat.Name = name;
         pat.Lastname = lastname;
         pat.Phone = phone;
-        pat.Email = email;
         pat.Password = password;
         pat.ProfilePicture = profilePicture;
-        pat.ParentName = parentName;
         pat.Occupation = occupation;
+        pat.Address.Street = street;
+        pat.Address.Number = stnumber;
+        pat.Address.City = city;
+        pat.Address.Country = country;
+        pat.BloodType = bloodType;
+
         pat.EmergencyContactName = emergencyContactName;
         pat.EmergencyContactPhone = emergencyContactPhone;
 
-        patientRepository.UpdatePatient(pat);
+        pat.MedicalRecord.Allergies = allergies;
+        pat.MedicalRecord.Diagnoses = diagnosis;
+
+        registeredPatientRepository.UpdatePatient(pat);
     }
 
     public void DeletePatient(String patientId)
     {
-        patientRepository.DeletePatient(this.GetById(patientId));
+        registeredPatientRepository.DeletePatient(this.GetById(patientId));
         return;
     }
 
