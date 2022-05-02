@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public class RoomService
 {
@@ -66,25 +65,25 @@ public class RoomService
 
     public void DeleteRoom(String roomId)
     {
-        Room r = roomRepository.GetById(roomId);
+        Room r = this.roomRepository.GetById(roomId);
         this.roomRepository.DeleteRoom(r);
     }
 
     public void OccupyRoom(String roomId)
     {
-        Room r = roomRepository.GetById(roomId);
+        Room r = this.roomRepository.GetById(roomId);
         this.roomRepository.OccupyRoom(r);
     }
 
     public void FreeRoom(String roomId)
     {
-        Room r = roomRepository.GetById(roomId);
+        Room r = this.roomRepository.GetById(roomId);
         this.roomRepository.FreeRoom(r);
     }
 
     public void RenovateRoom(String roomId)
     {
-        Room r = roomRepository.GetById(roomId);
+        Room r = this.roomRepository.GetById(roomId);
         this.roomRepository.RenovateRoom(r);
     }
 }
