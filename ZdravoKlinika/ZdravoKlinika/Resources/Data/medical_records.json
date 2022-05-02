@@ -17,6 +17,16 @@
         "ActiveSubstances": [
           "ibuprofen"
         ]
+      },
+      null,
+      {
+        "MedicationId": null,
+        "BrandName": null,
+        "Dosage": null,
+        "Notes": null,
+        "MedicationCode": null,
+        "Form": null,
+        "ActiveSubstances": null
       }
     ],
     "PastMedication": [

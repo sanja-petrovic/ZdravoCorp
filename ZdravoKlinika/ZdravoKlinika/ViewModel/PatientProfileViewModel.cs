@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.ViewModel
@@ -12,6 +14,7 @@ namespace ZdravoKlinika.ViewModel
     {
         private string name;
         private string lastName;
+        private string fullName;
         private string parentName;
         private string dateOfBirth;
         private string gender;
@@ -27,9 +30,11 @@ namespace ZdravoKlinika.ViewModel
         private List<String> diagnoses;
 
         private RegisteredPatientController controller = new RegisteredPatientController();
-        
-        //private List<PatientMedicationNotification> notifs;
+        private MedicalRecordController medicalRecordController = new MedicalRecordController();
+        private Controller.PatientMedicationNotificationController notifController = new Controller.PatientMedicationNotificationController();
+        private List<PatientMedicationNotification> notifs;
 
+        private ObservableCollection<String> notificationTexts = new ObservableCollection<string>();
         public PatientProfileViewModel(String patientId)
         {
             RegisteredPatient patient = controller.GetById(patientId);
@@ -42,6 +47,7 @@ namespace ZdravoKlinika.ViewModel
                 this.Gender = patient.Gender.ToString();
                 this.PhoneNumber = patient.Phone;
                 this.Email = patient.Email;
+                this.FullName = patient.Name + " " + patient.Lastname;
                 if (patient.ProfilePicture != null)
                 {
                     this.ProfilePictureLocation = ProfilePictureLocation;
@@ -54,12 +60,15 @@ namespace ZdravoKlinika.ViewModel
                 this.Ocupation = patient.Occupation.ToString();
                 this.EmergacyContact = patient.EmergencyContactName;
                 this.EmergencyNumber = patient.EmergencyContactPhone;
+                this.alergies = medicalRecordController.GetById(patientId).Allergies;
+                this.diagnoses = medicalRecordController.GetById(patientId).Diagnoses;
+
             }
             else
             {
                 this.Name = "nepostojeci pacijent";
             }
-
+            Notifs = NotifController.GetAll();
         }
 
         public string Name { get => name; set => name = value; }
@@ -74,6 +83,21 @@ namespace ZdravoKlinika.ViewModel
         public string Ocupation { get => ocupation; set => ocupation = value; }
         public string EmergacyContact { get => emergacyContact; set => emergacyContact = value; }
         public string EmergencyNumber { get => emergencyNumber; set => emergencyNumber = value; }
+        public List<PatientMedicationNotification> Notifs { get => notifs; set => notifs = value; }
+        public ObservableCollection<string> NotificationTexts 
+        { 
+            get => notificationTexts;
+            set
+            {
+                notificationTexts = value;
+                NotifyPropertyChanged("notifTexts");
+            }
+        }
+
+        public string FullName { get => fullName; set => fullName = value; }
+        public List<string> Alergies { get => alergies; set => alergies = value; }
+        public List<string> Diagnoses { get => diagnoses; set => diagnoses = value; }
+        internal PatientMedicationNotificationController NotifController { get => notifController; set => notifController = value; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

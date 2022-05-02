@@ -12,12 +12,14 @@ namespace ZdravoKlinika.Service
     {
         private PrescriptionRepository prescriptionRepository;
         private MedicalRecordService medicalRecordService;
+        private PatientMedicationNotificationService patientMedicationNotificationService;
         //private MedicalRecordRepository medicalRecordRepository;
 
         public PrescriptionService()
         {
             prescriptionRepository = new PrescriptionRepository();
             medicalRecordService = new MedicalRecordService();
+            patientMedicationNotificationService = new PatientMedicationNotificationService();        
             //medicalRecordRepository = new MedicalRecordRepository();
         }
 
@@ -42,10 +44,12 @@ namespace ZdravoKlinika.Service
             int prescriptionId = (this.prescriptionRepository.GetAll().Count > 0) ? this.prescriptionRepository.GetAll().Last().Id + 1 : 1;
 
             Prescription prescription = new Prescription(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote, noAlternatives, emergency, prescriptionId);
+            prescription.DateOfCreation = DateTime.Now;
             medicalRecordService.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
             //medicalRecordRepository.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
             this.prescriptionRepository.Prescribe(prescription);
-
+            //make a notif
+            patientMedicationNotificationService.CreateNotification(doctor, patient, "prepisan lek", prescription);
         }
     }
 }
