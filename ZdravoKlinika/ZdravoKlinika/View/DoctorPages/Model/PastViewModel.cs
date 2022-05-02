@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -24,10 +25,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.appointmentId = appointment.AppointmentId;
             this.title = appointment.DateAndTime.ToString("dd.MM.yyyy. HH:mm") + ", " + appointment.Doctor.ToString();
             this.diagnosis = appointment.Diagnoses;
-            foreach(string medication in appointment.Prescriptions)
+            foreach(Prescription prescription in appointment.Prescriptions)
             {
-                this.precription += medication;
-                if(appointment.Prescriptions.Last() != medication)
+                this.precription += prescription.Medication.ToString(); ;
+                if(appointment.Prescriptions.Last().Id != prescription.Id)
                 {
                     this.precription += ", ";
                 }

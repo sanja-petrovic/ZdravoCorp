@@ -31,6 +31,7 @@
     <None Remove="Resources\Images\show.png" />
     <None Remove="Resources\Images\star.png" />
     <None Remove="Resources\Images\stethoscope.png" />
+    <None Remove="Resources\Images\trash.png" />
     <None Remove="Resources\Images\treatment.png" />
     <None Remove="Resources\Images\undraw_medicine_b1ol.png" />
     <None Remove="Resources\Images\user.png" />
@@ -51,6 +52,7 @@
     <Resource Include="Resources\Images\add (1).png" />
     <Resource Include="Resources\Images\bell (1).png" />
     <Resource Include="Resources\Images\info (2).png" />
+    <Resource Include="Resources\Images\trash.png" />
     <Resource Include="Resources\Images\zdravoklinika.png" />
   </ItemGroup>
 

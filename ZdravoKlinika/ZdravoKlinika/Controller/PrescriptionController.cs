@@ -34,5 +34,12 @@ namespace ZdravoKlinika.Controller
             this.prescriptionService.Prescribe(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote, noAlternatives, emergency);
 
         }
+
+        public void CreatePrescription(String doctorId, String patientId, String medicationId, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency)
+        {
+            this.prescriptionService.Create(doctorId, patientId, medicationId, amount, duration, frequency, singleDose, repeat, doctorsNote, noAlternatives, emergency);
+        }
+
+
     }
 }

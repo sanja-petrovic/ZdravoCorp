@@ -108,8 +108,9 @@ namespace ZdravoKlinika.Repository
             return null;
         }
 
-        public void AddCurrentMedication(MedicalRecord medicalRecord, Medication medication)
+        public void AddCurrentMedication(String medicalRecordId, Medication medication)
         {
+            MedicalRecord medicalRecord = this.GetById(medicalRecordId);
             medicalRecord.AddCurrentMedication(medication);
             this.DeleteMedicalRecord(medicalRecord);
             this.medicalRecords.Add(medicalRecord);

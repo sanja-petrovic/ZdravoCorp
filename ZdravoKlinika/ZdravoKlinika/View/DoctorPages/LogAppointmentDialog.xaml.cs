@@ -55,5 +55,31 @@ namespace ZdravoKlinika.View.DoctorPages
             viewModel.save(NoteTB.Text);
             this.Close();
         }
+
+
+        private void MedCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (viewModel.AllergyCheck(MedCB.SelectedIndex))
+            {
+                MedCB.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 87));
+                AllergyTB.Visibility = Visibility.Hidden;
+                ConfirmButton.IsEnabled = true;
+                AddButton.IsEnabled = true;
+            }
+            else
+            {
+                MedCB.Foreground = new SolidColorBrush(Color.FromRgb(254, 93, 122));
+                AllergyTB.Visibility = Visibility.Visible;
+                ConfirmButton.IsEnabled = false;
+                AddButton.IsEnabled = false;
+            }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = (String)RepeatCB.SelectedItem;
+            var note = (String)MedNoteTB.Text;
+            viewModel.PrescriptionAdded(MedCB.SelectedIndex, selected, note);
+        }
     }
 }

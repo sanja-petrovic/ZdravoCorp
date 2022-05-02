@@ -49,7 +49,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
             Medications = medicationController.GetAll();
             this.MedicationsDisplay = new List<String>();
-            foreach(Medication m in this.medications)
+            foreach (Medication m in this.medications)
             {
                 MedicationsDisplay.Add(m.BrandName + " " + m.Dosage + ", " + m.Form);
             }
@@ -66,15 +66,12 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.doctorSpecialty = doctor.Specialty;
         }
 
-        public bool Save(int selectedIndex, string selectedRepeat, string note)
+        public void Save(int selectedIndex, string selectedRepeat, string note)
         {
-            if(AllergyCheck(selectedIndex))
-            {
-                this.prescriptionController.Prescribe(
-                    Doctor, Patient, this.medications[selectedIndex], this.amount, this.duration, this.frequency, this.singleDose, selectedRepeat, note, false, false
-                    );
-            }
-            return AllergyCheck(selectedIndex);
+            this.prescriptionController.Prescribe(
+                Doctor, Patient, this.medications[selectedIndex], this.amount, this.duration, this.frequency, this.singleDose, selectedRepeat, note, false, false
+                );
+
         }
 
         public bool AllergyCheck(int selectedIndex)
@@ -86,7 +83,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             return true;
         }
 
-        public string PatientName { get => patientName; set => SetProperty(ref patientName, value);  }
+        public string PatientName { get => patientName; set => SetProperty(ref patientName, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
         public string DoctorName { get => doctorName; set => SetProperty(ref doctorName, value); }
         public string DoctorSpecialty { get => doctorSpecialty; set => SetProperty(ref doctorSpecialty, value); }

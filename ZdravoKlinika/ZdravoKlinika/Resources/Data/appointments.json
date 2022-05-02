@@ -1,35 +1,7 @@
 [
   {
-    "AppointmentId": 6,
-    "DateAndTime": "2022-04-30T11:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 123,
-    "Doctor": "456",
-    "Patient": "0105965123321,Registered",
-    "Room": "314",
-    "Over": false,
-    "Prescriptions": []
-  },
-  {
-    "AppointmentId": 4,
-    "DateAndTime": "2022-04-30T12:00:00",
-    "Diagnoses": "Problem",
-    "DoctorsNotes": ":/",
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 123,
-    "Doctor": "456",
-    "Patient": "0105965123321,Registered",
-    "Room": "314",
-    "Over": true,
-    "Prescriptions": []
-  },
-  {
     "AppointmentId": 1,
-    "DateAndTime": "2022-05-01T11:00:00",
+    "DateAndTime": "2022-05-02T11:00:00",
     "Diagnoses": ":(",
     "DoctorsNotes": "dgffsfds",
     "Type": "Regular",
@@ -70,9 +42,23 @@
     "Prescriptions": []
   },
   {
+    "AppointmentId": 4,
+    "DateAndTime": "2022-04-30T12:00:00",
+    "Diagnoses": "Problem2234",
+    "DoctorsNotes": ":/",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
     "AppointmentId": 2,
     "DateAndTime": "2022-04-28T09:00:00",
-    "Diagnoses": "Hypertensio",
+    "Diagnoses": "Hypertension",
     "DoctorsNotes": "Pacijent se \u017Ealio na povi\u0161en krvni pritisak koji mu mesecima pravi probleme.",
     "Type": "Regular",
     "Emergency": false,
@@ -81,8 +67,34 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      "Lometazid 5 mg \u002B10mg, pola tablete svaki dan"
-    ]
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 6,
+    "DateAndTime": "2022-05-02T11:00:00",
+    "Diagnoses": "stressy",
+    "DoctorsNotes": "fdsfds",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 7,
+    "DateAndTime": "2022-05-02T11:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": []
   }
 ]

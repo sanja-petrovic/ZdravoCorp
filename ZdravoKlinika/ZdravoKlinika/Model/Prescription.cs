@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Model
 {
-    internal class Prescription
+    public class Prescription
     {
         private DateTime dateOfCreation;
         Doctor doctor;
@@ -39,6 +39,8 @@ namespace ZdravoKlinika.Model
             this.Id = id;
         }
 
+        public Prescription() { }
+
         public Medication Medication { get => medication; set => medication = value; }
         public int Amount { get => amount; set => amount = value; }
         public int Duration { get => duration; set => duration = value; }
@@ -52,5 +54,17 @@ namespace ZdravoKlinika.Model
         public RegisteredPatient RegisteredPatient { get => registeredPatient; set => registeredPatient = value; }
         public int Id { get => id; set => id = value; }
         public DateTime DateOfCreation { get => dateOfCreation; set => dateOfCreation = value; }
+
+        public static Prescription Parse(string id)
+        {
+            Prescription prescription = new Prescription();
+            int intId;
+            if(int.TryParse(id, out intId))
+            {
+                prescription.Id = intId;
+            }
+            return prescription;
+        }
+
     }
 }

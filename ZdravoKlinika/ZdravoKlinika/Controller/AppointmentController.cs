@@ -69,4 +69,11 @@ public class AppointmentController
     {
         return this.appointmentService.GetPatientsUpcomingAppointments(patient);
     }
+
+    public Appointment GetLatestAppointment(RegisteredPatient patient)
+    {
+        List<Appointment> allPast = this.GetPatientsPastAppointments(patient);
+
+        return null;
+    }
 }
