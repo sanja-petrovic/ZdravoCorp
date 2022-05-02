@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="317*"/>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="78*"/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" SelectionChanged="DataGrid_SelectionChanged" SelectedItem="{Binding Path=SelectedRoom}" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,305,0,0" Width="574"  AutoGenerateColumns="False" SelectedIndex="0" MaxHeight="230" Grid.ColumnSpan="3">
             <DataGrid.Columns>
@@ -22,7 +22,7 @@
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid DataContext="{Binding ElementName=dataGridRooms, Path=SelectedItem}">
+        <Grid DataContext="{Binding ElementName=dataGridRooms, Path=SelectedItem}" Grid.ColumnSpan="3" Margin="4,0,-4,0">
             <Button Content="Dodaj" HorizontalAlignment="Left" Margin="280,256,0,0" VerticalAlignment="Top" Click="Create_Click" Width="74" Height="24"/>
             <Button Content="Izmeni" HorizontalAlignment="Left" Margin="370,256,0,0" VerticalAlignment="Top" Click="Edit_Click" Width="74" Height="24"/>
             <Button Content="Obrisi" HorizontalAlignment="Left" Margin="460,256,0,0" VerticalAlignment="Top" Click="Delete_Click" Width="74" Height="24" Grid.ColumnSpan="3"/>
@@ -46,6 +46,8 @@
                 <ComboBoxItem>available</ComboBoxItem>
                 <ComboBoxItem>renovation</ComboBoxItem>
             </ComboBox>
+            <Button x:Name="EquipmentViewButton" Content="Pregled opreme" HorizontalAlignment="Left" Margin="636,106,0,0" VerticalAlignment="Top" Click="EquipmentView_Click" Height="30" Width="110"/>
+            <Button x:Name="ScheduleRenovationButton" Content="Zakazi renoviranje" HorizontalAlignment="Left" Margin="636,155,0,0" VerticalAlignment="Top" Click="ScheduleRenovation_Click" Height="30" Width="110"/>
         </Grid>
     </Grid>
 </Window>

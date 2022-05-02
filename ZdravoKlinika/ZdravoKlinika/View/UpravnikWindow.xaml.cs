@@ -168,5 +168,17 @@ namespace ZdravoKlinika.View
             }
 
         }
+
+        private void EquipmentView_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentView equipmentView = new EquipmentView();
+            equipmentView.Show();
+        }
+
+        private void ScheduleRenovation_Click(object sender, RoutedEventArgs e)
+        {
+            RenovationView renovationView = new RenovationView();
+            renovationView.Show();
+        }
     }
 }
