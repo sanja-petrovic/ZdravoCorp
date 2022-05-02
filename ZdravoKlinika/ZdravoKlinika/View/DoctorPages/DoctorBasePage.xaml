@@ -125,11 +125,11 @@
         <Rectangle HorizontalAlignment="Left" Height="768" VerticalAlignment="Center" Width="238" Fill="White" Margin="-1,0,0,0" />
 
         <ListBox Margin="0,130,786,0" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
-            <ListBoxItem Content="Početna stranica" FontSize="14" Padding="50 15 15 15" IsSelected="True"/>
+            <ListBoxItem Content="Početna stranica" FontSize="14" Padding="50 15 15 15" IsSelected="True" MouseDoubleClick="GoToHome"/>
             <ListBoxItem Content="Profil" FontSize="14" Padding="50 15 15 15"/>
             <ListBoxItem Content="Pacijenti" FontSize="14" Padding="50 15 15 15" />
             <ListBoxItem Content="Baza lekova" FontSize="14" Padding="50 15 15 15" />
-            <ListBoxItem Content="Mesečni raspored" FontSize="14" Padding="50 15 15 15" MouseDoubleClick="ListBoxItem_MouseDoubleClick"/>
+            <ListBoxItem Content="Mesečni raspored" FontSize="14" Padding="50 15 15 15" MouseDoubleClick="GoToSchedule"/>
             <ListBoxItem Content="Ocenite aplikaciju" FontSize="14" Padding="50 15 15 15"/>
         </ListBox>
         <Image Margin="28,148,980,603" Source="/Resources/Images/home.png" Stretch="Fill"/>

@@ -27,4 +27,15 @@ public class RegisteredUser
     public string ProfilePicture { get => profilePicture; set => profilePicture = value; }
     public DateTime LastLogin { get => lastLogin; set => lastLogin = value; }
     public Address Address { get => address; set => address = value; }
+
+    public string GenderToString()
+    {
+        if(this.gender == Gender.Female)
+        {
+            return "enski";
+        } else
+        {
+            return "Muški";
+        }
+    }
 }

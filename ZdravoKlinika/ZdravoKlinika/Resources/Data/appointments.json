@@ -28,20 +28,6 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 3,
-    "DateAndTime": "2022-04-30T10:00:00",
-    "Diagnoses": "cek",
-    "DoctorsNotes": "bluh",
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 123,
-    "Doctor": "456",
-    "Patient": "0105965123321,Registered",
-    "Room": "314",
-    "Over": true,
-    "Prescriptions": []
-  },
-  {
     "AppointmentId": 4,
     "DateAndTime": "2022-04-30T12:00:00",
     "Diagnoses": "Problem2234",
@@ -70,10 +56,10 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 6,
+    "AppointmentId": 7,
     "DateAndTime": "2022-05-02T11:00:00",
-    "Diagnoses": "stressy",
-    "DoctorsNotes": "fdsfds",
+    "Diagnoses": ":O",
+    "DoctorsNotes": ":/",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 123,
@@ -84,7 +70,87 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 7,
+    "AppointmentId": 8,
+    "DateAndTime": "2022-05-02T13:00:00",
+    "Diagnoses": "fdsfsdf",
+    "DoctorsNotes": "fdsfds",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [
+      {
+        "MedicationId": "2",
+        "BrandName": "Brufen",
+        "Dosage": "400mg",
+        "Notes": [],
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
+        ]
+      }
+    ]
+  },
+  {
+    "AppointmentId": 9,
+    "DateAndTime": "2022-05-02T11:00:00",
+    "Diagnoses": "sdsa",
+    "DoctorsNotes": "dsad",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [
+      {
+        "MedicationId": "1",
+        "BrandName": "Brufen",
+        "Dosage": "200mg",
+        "Notes": [],
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
+        ]
+      },
+      {
+        "MedicationId": "3",
+        "BrandName": "Caffetin cold",
+        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
+        "Notes": [],
+        "MedicationCode": "N02BE51",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
+        ],
+        "Allergens": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
+        ]
+      }
+    ]
+  },
+  {
+    "AppointmentId": 10,
     "DateAndTime": "2022-05-02T11:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
@@ -95,6 +161,34 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": false,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 3,
+    "DateAndTime": "2022-04-30T10:00:00",
+    "Diagnoses": "cek",
+    "DoctorsNotes": "hmmm",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 6,
+    "DateAndTime": "2022-05-02T11:00:00",
+    "Diagnoses": "Laryngitis acuta",
+    "DoctorsNotes": "//////////",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 123,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
     "Prescriptions": []
   }
 ]

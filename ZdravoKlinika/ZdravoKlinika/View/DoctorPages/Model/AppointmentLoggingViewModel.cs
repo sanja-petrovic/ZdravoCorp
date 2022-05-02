@@ -51,8 +51,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string SingleDose { get => singleDose; set => SetProperty(ref singleDose, value); }
         public string Repeat { get => repeat; set => SetProperty(ref repeat, value); }
         public string PrescriptionNote { get => prescriptionNote; set => SetProperty(ref prescriptionNote, value); }
+        public List<Medication> PrescribedMedication { get => prescribedMedication; set => SetProperty(ref prescribedMedication, value); }
+        public string AddedItemDisplay { get => addedItemDisplay; set => SetProperty(ref addedItemDisplay, value); }
+        public List<string> PrescriptionDisplay { get => prescriptionDisplay; set => SetProperty(ref prescriptionDisplay, value); }
 
         private List<Prescription> prescriptions;
+        private List<String> prescriptionDisplay;
+        private List<Medication> prescribedMedication;
 
         private DoctorController doctorController;
         private RegisteredPatientController registeredPatientController;
@@ -61,11 +66,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private List<Medication> medications;
         private List<String> medicationsDisplay;
         private List<String> repeatDisplay;
+        private string addedItemDisplay;
 
         private string medication;
         private int amount;
-        private bool noAlt;
-        private bool emergency;
         private int duration;
         private int frequency;
         private string singleDose;
@@ -90,6 +94,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 MedicationsDisplay.Add(m.BrandName + " " + m.Dosage + ", " + m.Form);
             }
+            this.prescriptions = new List<Prescription>();
+            this.prescribedMedication = new List<Medication>();
+            this.prescriptionDisplay = new List<string>();
         }
 
         public void load()
@@ -103,21 +110,27 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.room = "Soba " + appointment.Room.Name;
             this.diagnoses = appointment.Diagnoses;
             this.doctorsNote = appointment.DoctorsNotes;
-
-
         }
-
 
         public void PrescriptionAdded(int selectedIndex, string repeat, string note)
         {
-
-            Prescription prescription = new Prescription(doctorController.GetById("456"), registeredPatientController.GetById(patientId), 
-                medicationController.GetById(this.medications[selectedIndex].MedicationId), this.amount, this.duration, this.frequency, this.singleDose, repeat, note, false, false, 
-                )
+            Prescription prescription = new Prescription(doctorController.GetById("456"), registeredPatientController.GetById(patientId),
+                medicationController.GetById(this.medications[selectedIndex].MedicationId), this.amount, this.duration, this.frequency, this.singleDose, repeat, note, -1
+                );
+            this.prescriptions.Add(prescription);
+            List<string> newDisplay = this.prescriptionDisplay;
+            newDisplay.Add(prescription.Medication.ToString());
+            this.prescriptionDisplay = newDisplay;
         }
         
         public void save(String note)
         {
+            foreach(Prescription prescription in this.prescriptions)
+            {
+                prescriptionController.Prescribe(prescription);
+                this.prescribedMedication.Add(prescription.Medication);
+            }
+            appointment.Prescriptions = this.prescribedMedication;
             appointmentController.LogAppointment(appointment, Diagnoses, note);
         }
 

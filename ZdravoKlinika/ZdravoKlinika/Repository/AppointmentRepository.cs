@@ -11,7 +11,7 @@ public class AppointmentRepository
     private DoctorRepository doctorRepository;
     private PatientRepository patientRepository;
     private RoomRepository roomRepository;
-    private PrescriptionRepository prescriptionRepository;
+    private MedicationRepository mediicationRepository;
     private List<Appointment> appointments;
     
 
@@ -23,7 +23,7 @@ public class AppointmentRepository
         doctorRepository = new DoctorRepository();
         roomRepository = new RoomRepository();
         patientRepository = new PatientRepository();
-        PrescriptionRepository = new PrescriptionRepository();
+        mediicationRepository = new MedicationRepository();
         updateReferences();
     }
 
@@ -50,7 +50,6 @@ public class AppointmentRepository
     public DoctorRepository DoctorRepository { get => doctorRepository; set => doctorRepository = value; }
     public RoomRepository RoomRepository { get => roomRepository; set => roomRepository = value; }
     public PatientRepository PatientRepository1 { get => patientRepository; set => patientRepository = value; }
-    internal PrescriptionRepository PrescriptionRepository { get => prescriptionRepository; set => prescriptionRepository = value; }
 
     private void updateReferences()
     {
@@ -66,7 +65,7 @@ public class AppointmentRepository
             appointment.Room = roomRepository.GetById(appointment.Room.RoomId);
             for(int i = 0; i < appointment.Prescriptions.Count; i++ )
             {
-                appointment.Prescriptions[i] = prescriptionRepository.GetById(appointment.Prescriptions[i].Id);
+                appointment.Prescriptions[i] = this.mediicationRepository.GetById(appointment.Prescriptions[i].MedicationId);
             } 
         }
 

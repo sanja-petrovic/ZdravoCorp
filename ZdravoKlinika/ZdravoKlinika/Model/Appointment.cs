@@ -14,8 +14,7 @@ public class Appointment
     private Doctor doctor;
     private Patient patient;
     private Room room;
-    //private List<String> prescriptions;
-    private List<Prescription> prescriptions;
+    private List<Medication> prescriptions;
     private bool over;
 
     public Appointment() { }
@@ -58,6 +57,5 @@ public class Appointment
     public Patient Patient { get => patient; set => patient = value; }
     public Room Room { get => room; set => room = value; }
     public bool Over { get => over; set => over = value; }
-    public List<Prescription> Prescriptions { get => prescriptions; set => prescriptions = value; }
-    //public List<string> Prescriptions { get => prescriptions; set => prescriptions = value; }
+    public List<Medication> Prescriptions { get => prescriptions; set => prescriptions = value; }
 }

@@ -19,7 +19,7 @@ namespace ZdravoKlinika.View.DoctorPages
     /// <summary>
     /// Interaction logic for DoctorHomePage.xaml
     /// </summary>
-    public partial class DoctorHomePage : UserControl
+    public partial class DoctorHomePage : Page
     {
         private int selectedAppointmentId;
         private AppointmentsTodayViewModel viewModel;
@@ -34,6 +34,7 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             var smth = (AppointmentViewModel)ScheduleDG.CurrentItem;
             this.selectedAppointmentId = smth.Id;
+            viewModel.SelectionChanged(selectedAppointmentId);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,6 +44,13 @@ namespace ZdravoKlinika.View.DoctorPages
             logAppointmentDialog.ShowDialog();
             viewModel.infoChange();
             
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
+            doctorMedicalRecord.init(viewModel.PatientId);
+            this.NavigationService.Navigate(doctorMedicalRecord);
         }
     }
 }

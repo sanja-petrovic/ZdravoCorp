@@ -30,10 +30,9 @@ namespace ZdravoKlinika.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
-            View.DoctorPages.DoctorBasePage doctorBasePage = new View.DoctorPages.DoctorBasePage();
             View.DoctorPages.DoctorMedicalRecord doctorMedicalRecord = new View.DoctorPages.DoctorMedicalRecord();
             View.DoctorPages.DoctorHomePage doctorHomePage = new View.DoctorPages.DoctorHomePage();
-            MainFrame.Navigate(doctorHomePage);
+            MainFrame.Navigate(doctorSchedule);
 
         }
 

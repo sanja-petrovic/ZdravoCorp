@@ -28,7 +28,7 @@ public class RegisteredPatientService
     {
         Console.WriteLine("service");
         MedicalRecord record = new MedicalRecord(personalId, alergies, diagnosis);
-        RegisteredPatient patient = new RegisteredPatient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, parentName, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
+        RegisteredPatient patient = new RegisteredPatient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
         
         patientRepository.CreatePatient(patient);
         //TODO medicalRecord repo write it too!
@@ -43,7 +43,6 @@ public class RegisteredPatientService
         pat.Email = email;
         pat.Password = password;
         pat.ProfilePicture = profilePicture;
-        pat.ParentName = parentName;
         pat.Occupation = occupation;
         pat.EmergencyContactName = emergencyContactName;
         pat.EmergencyContactPhone = emergencyContactPhone;

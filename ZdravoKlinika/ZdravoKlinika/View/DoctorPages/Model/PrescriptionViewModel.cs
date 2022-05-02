@@ -69,7 +69,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void Save(int selectedIndex, string selectedRepeat, string note)
         {
             this.prescriptionController.Prescribe(
-                Doctor, Patient, this.medications[selectedIndex], this.amount, this.duration, this.frequency, this.singleDose, selectedRepeat, note, false, false
+                Doctor, Patient, this.medications[selectedIndex], this.amount, this.duration, this.frequency, this.singleDose, selectedRepeat, note
                 );
 
         }

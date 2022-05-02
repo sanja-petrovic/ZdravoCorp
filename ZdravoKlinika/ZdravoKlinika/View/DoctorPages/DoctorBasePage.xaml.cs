@@ -32,10 +32,16 @@ namespace ZdravoKlinika.View.DoctorPages
         }
 
 
-        private void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void GoToSchedule(object sender, MouseButtonEventArgs e)
         {
-            /*View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
-            this.Content = doctorSchedule;*/
+            View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
+            //this.NavigationService.Navigate(doctorSchedule);
+        }
+
+        private void GoToHome(object sender, MouseButtonEventArgs e)
+        {
+            View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
+            //this.NavigationService.Navigate(doctorSchedule);
         }
     }
 }

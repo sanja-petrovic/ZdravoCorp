@@ -691,7 +691,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                             </Style>
                         </ComboBox.Resources>
                     </ComboBox>
-                    <TextBox x:Name="MedNoteTB" Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="34,196,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote}" VerticalAlignment="Top" Width="422" Height="28" BorderBrush="#FFAEAEC1">
+                    <TextBox x:Name="MedNoteTB" Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="34,196,0,0" TextWrapping="Wrap" Text="{Binding PrescriptionNote}" VerticalAlignment="Top" Width="422" Height="28" BorderBrush="#FFAEAEC1">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -740,7 +740,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                             <StaticResource ResourceKey="fancyButtonStyle4"/>
                         </Button.Style>
                     </Button>
-                    <ListBox BorderBrush="#FFAEAEC1" Style="{DynamicResource ListBoxStyle1}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="31,282,38,25">
+                    <ListBox Name="MedLB" BorderBrush="#FFAEAEC1" Style="{DynamicResource ListBoxStyle1}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" ItemsSource="{Binding PrescriptionDisplay, UpdateSourceTrigger=LostFocus}" Margin="31,282,38,25">
                         <ListBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -750,7 +750,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <TextBlock Text="Hi" Margin="10 0 0 0"/>
+                                    <TextBlock Text="{Binding PrescriptionDisplay}" Margin="10 0 0 0"/>
                                     <Image Source="/Resources/Images/pencil.png" Height="10" Width="10" Margin="350 0 0 0"/>
                                     <Image Source="/Resources/Images/cross.png" Height="10" Width="10" Margin="380 0 0 0"/>
                                 </Grid>

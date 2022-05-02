@@ -25,10 +25,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.appointmentId = appointment.AppointmentId;
             this.title = appointment.DateAndTime.ToString("dd.MM.yyyy. HH:mm") + ", " + appointment.Doctor.ToString();
             this.diagnosis = appointment.Diagnoses;
-            foreach(Prescription prescription in appointment.Prescriptions)
+            foreach(Medication med in appointment.Prescriptions)
             {
-                this.precription += prescription.Medication.ToString(); ;
-                if(appointment.Prescriptions.Last().Id != prescription.Id)
+                this.precription += med.ToString() ;
+                if(appointment.Prescriptions.Last().MedicationId != med.MedicationId)
                 {
                     this.precription += ", ";
                 }
