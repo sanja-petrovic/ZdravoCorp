@@ -92,7 +92,7 @@ public class RoomRepository
             if (this.rooms.Contains(room))
                 this.rooms.Remove(room);
 
-        roomDataHandler.Write(rooms);
+        roomDataHandler.Write(this.rooms);
     }
 
     public void UpdateRoom(Room room)
