@@ -19,6 +19,11 @@ public class DoctorController
    {
       return (Doctor)doctorService.GetById(id);
    }
+
+    public Doctor GetByEmail(String email)
+    {
+        return doctorService.GetByEmail(email);
+    }
    
    public void CreateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
    {

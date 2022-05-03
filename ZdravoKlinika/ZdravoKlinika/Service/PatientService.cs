@@ -1,60 +1,35 @@
-
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ZdravoKlinika.Data_Handler;
+using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository;
 
-public class PatientService
+namespace ZdravoKlinika.Service
 {
-    private PatientRepository patientRepository;
-
-    public PatientRepository PatientRepository { get => patientRepository; set => patientRepository = value; }
-
-
-    public PatientService() { 
-        // init
-        this.patientRepository = new PatientRepository();
-    }
-
-    public List<Patient> GetAll()
+    public class PatientService
     {
-        return patientRepository.GetAll();
+        private PatientRepository patientRepository;
+
+        public PatientRepository PatientRepository { get => patientRepository; set => patientRepository = value; }
+
+        public PatientService()
+        {
+            patientRepository = new PatientRepository();
+        }
+
+        public Patient GetById(String id)
+        {
+            return PatientRepository.GetById(id);
+        }
+
+        public void CreateNewGuestPatient(String id, String name, String lastname)
+        {
+            PatientRepository.CreateNewGuestPatient(id, name, lastname);
+            return;
+        }
+
     }
-
-    public Patient GetById(String id)
-    {
-        return patientRepository.GetById(id);
-    }
-
-    public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, Address address, String parentName, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> alergies, List<String> diagnosis)
-    {
-        Console.WriteLine("service");
-        MedicalRecord record = new MedicalRecord(personalId, alergies, diagnosis);
-        Patient patient = new Patient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, parentName, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
-        
-        patientRepository.CreatePatient(patient);
-        //TODO medicalRecord repo write it too!
-    }
-
-    public void UpdatePatient(String personalId, String name, String lastname, String phone, String email, String password, String profilePicture, String parentName, String occupation, String emergencyContactName, String emergencyContactPhone)
-    {
-        Patient pat = this.GetById(personalId);
-        pat.Name = name;
-        pat.Lastname = lastname;
-        pat.Phone = phone;
-        pat.Email = email;
-        pat.Password = password;
-        pat.ProfilePicture = profilePicture;
-        pat.ParentName = parentName;
-        pat.Occupation = occupation;
-        pat.EmergencyContactName = emergencyContactName;
-        pat.EmergencyContactPhone = emergencyContactPhone;
-
-        patientRepository.UpdatePatient(pat);
-    }
-
-    public void DeletePatient(String patientId)
-    {
-        patientRepository.DeletePatient(this.GetById(patientId));
-        return;
-    }
-
 }

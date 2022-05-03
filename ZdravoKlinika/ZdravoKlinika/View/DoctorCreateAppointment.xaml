@@ -25,7 +25,7 @@
             <ComboBoxItem>11:00</ComboBoxItem>
         </ComboBox>
         <ComboBox Name="patientCB" HorizontalAlignment="Left" Margin="254,86,0,0" VerticalAlignment="Top" Width="155" Height="20">
-            <ComboBoxItem>Petar Petrović (1010001123456)</ComboBoxItem>
+            <ComboBoxItem>Petar Petrović (12345)</ComboBoxItem>
             <ComboBoxItem>Marko Marković (1211000123456)</ComboBoxItem>
             <ComboBoxItem>Sima Simić (0101001123456)</ComboBoxItem>
         </ComboBox>

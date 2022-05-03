@@ -1,0 +1,65 @@
+[
+    {
+      "MedicationId": "1",
+      "MedicationCode": "M01AE01",
+      "BrandName": "Brufen",
+      "Dosage": "200mg",
+      "ActiveSubstances": [ "ibuprofen" ],
+      "Form": "film tableta",
+      "Notes": [],
+      "Allergens": ["ibuprofen", "brufen"]
+    },
+  {
+    "MedicationId": "2",
+    "MedicationCode": "M01AE01",
+    "BrandName": "Brufen",
+    "Dosage": "400mg",
+    "ActiveSubstances": [ "ibuprofen" ],
+    "Form": "film tableta",
+    "Notes": [],
+    "Allergens": [ "ibuprofen", "brufen" ]
+  },
+
+  {
+    "MedicationId": "3",
+    "MedicationCode": "N02BE51",
+    "BrandName": "Caffetin cold",
+    "Dosage": "500mg+30mg+15mg+60mg",
+    "ActiveSubstances": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
+    "Form": "film tableta",
+    "Notes": [],
+    "Allergens": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina"]
+  },
+
+  {
+    "MedicationId": "4",
+    "MedicationCode": "R02AA",
+    "BrandName": "Septolete total",
+    "Dosage": "5mg/mL+1.5mg/mL",
+    "ActiveSubstances": [ "cetilpiridinijum-hlorid", "benzidamin" ],
+    "Form": "sprej za usnu sluznicu, rastvor",
+    "Notes": [],
+    "Allergens": [ "cetilpiridinijum-hlorid", "benzidamin" ]
+  },
+
+  {
+    "MedicationId": "5",
+    "MedicationCode": "J01FA10",
+    "BrandName": "Hemomycin",
+    "Dosage": "250mg",
+    "ActiveSubstances": [ "azitromicin" ],
+    "Form": "kapsula, tvrda",
+    "Notes": [],
+    "Allergens": [ "azitromicin" ]
+  },
+  {
+    "MedicationId": "6",
+    "MedicationCode": "J01CA01",
+    "BrandName": "Pentrexyl",
+    "Dosage": "500mg",
+    "ActiveSubstances": [ "ampicilin" ],
+    "Form": "kapsula, tvrda",
+    "Notes": [],
+    "Allergens": [ "azitromicin", "penicilin" ]
+  }
+  ]

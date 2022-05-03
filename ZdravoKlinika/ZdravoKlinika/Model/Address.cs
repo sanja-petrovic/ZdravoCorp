@@ -30,4 +30,9 @@ public class Address
     public string Number { get => number; set => number = value; }
     public string City { get => city; set => city = value; }
     public string Country { get => country; set => country = value; }
+
+    public string ToString()
+    {
+        return this.street + " " + this.Number + ", " + this.city + ", " + this.country;
+    }
 }

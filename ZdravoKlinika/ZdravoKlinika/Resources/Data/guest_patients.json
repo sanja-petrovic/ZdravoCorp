@@ -1,0 +1,72 @@
+[
+  {
+    "UserType": "Patient",
+    "PersonalId": "asdads",
+    "Name": "sdadas",
+    "Lastname": "asdads",
+    "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "fghfghffs",
+    "Name": "dddd",
+    "Lastname": "gfhfhg",
+    "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "sfsdfg",
+    "Name": "adgafg",
+    "Lastname": "sfhsfgh",
+    "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "srtsghsf",
+    "Name": "dgfdgfdgf",
+    "Lastname": "srfgstrht",
+    "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "sdgfsfggf",
+    "Name": "fghfghfgh",
+    "Lastname": "gdfgdfh",
+    "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "",
+    "Name": "",
+    "Lastname": "",
+    "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "adfgafdg",
+    "Name": "asdasdagsd",
+    "Lastname": "fafgafdg",
+    "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "123456",
+    "Name": "asd",
+    "Lastname": "asd",
+    "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "12345asf",
+    "Name": "asdfads",
+    "Lastname": "asd",
+    "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "12345123",
+    "Name": "asd",
+    "Lastname": "asd",
+    "PatientType": "Guest"
+  }
+]

@@ -20,6 +20,10 @@ public class DoctorService
       return (Doctor)doctorRepository.GetById(id);  
    }
    
+    public Doctor GetByEmail(String email)
+    {
+        return doctorRepository.GetByEmail(email);
+    }
    public void CreateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
    {
         Doctor doctor = new Doctor();
@@ -33,7 +37,7 @@ public class DoctorService
         doctor.Gender = gender;
         doctor.Phone = phone;
         doctor.Specialty = speciality;
-        doctor.Education = education;
+        doctor.EducationLevel = education;
 
         doctorRepository.CreateDoctor(doctor);
 
@@ -50,7 +54,7 @@ public class DoctorService
         doctor.Password = password;
         doctor.Phone = phone;
         doctor.Specialty = speciality;
-        doctor.Education = education;
+        doctor.EducationLevel = education;
         doctor.Gender = gender;
         doctor.DateOfBirth= dateOfBirth;
         

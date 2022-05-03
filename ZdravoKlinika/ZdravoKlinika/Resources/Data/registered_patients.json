@@ -1,0 +1,102 @@
+[
+  {
+    "BloodType": "APositive",
+    "Occupation": "Kuvar",
+    "EmergencyContactName": "\u010Cendler Bing",
+    "EmergencyContactPhone": "0687462950",
+    "MedicalRecord": "0105965123321",
+    "PatientType": "Registered",
+    "UserType": "Patient",
+    "PersonalId": "0105965123321",
+    "Name": "Monika",
+    "Lastname": "Geler",
+    "DateOfBirth": "1965-05-01T00:00:00",
+    "Gender": "Female",
+    "Phone": "0687462949",
+    "Email": "monicageller@zdravo.com",
+    "Password": "monica",
+    "ProfilePicture": "file:///C:/Users/asd/Documents/GitHub/ZdravoCorp/ZdravoKlinika/ZdravoKlinika/Resources/Images/dots.png",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "Hajduk Veljka Petrovi\u0107a",
+      "Number": "18",
+      "City": "Novi Sad",
+      "Country": "Srbija"
+    }
+  },
+  {
+    "BloodType": "APositive",
+    "Occupation": "Paleontolog",
+    "EmergencyContactName": "Rej\u010Del Grin",
+    "EmergencyContactPhone": "0638962240",
+    "MedicalRecord": "1510963123321",
+    "PatientType": "Registered",
+    "UserType": "Patient",
+    "PersonalId": "1510963123321",
+    "Name": "Ros",
+    "Lastname": "Geler",
+    "DateOfBirth": "1963-10-15T00:00:00",
+    "Gender": "Male",
+    "Phone": "0638962241",
+    "Email": "rosgeller@zdravo.com",
+    "Password": "ross",
+    "ProfilePicture": "file:///C:/Users/asd/Documents/GitHub/ZdravoCorp/ZdravoKlinika/ZdravoKlinika/Resources/Images/dots.png",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "Balzakova",
+      "Number": "3",
+      "City": "Novi Sad",
+      "Country": "Srbija"
+    }
+  },
+  {
+    "BloodType": "APositive",
+    "Occupation": "asd",
+    "EmergencyContactName": "asd",
+    "EmergencyContactPhone": "ads",
+    "MedicalRecord": "12345",
+    "PatientType": "Registered",
+    "UserType": "Patient",
+    "PersonalId": "12345",
+    "Name": "asd",
+    "Lastname": "asd",
+    "DateOfBirth": "2022-04-12T00:00:00",
+    "Gender": "Female",
+    "Phone": "asd",
+    "Email": "asd",
+    "Password": "asd",
+    "ProfilePicture": "",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "a",
+      "Number": "b",
+      "City": "c",
+      "Country": "d"
+    }
+  },
+  {
+    "BloodType": "APositive",
+    "Occupation": "asd",
+    "EmergencyContactName": "ads",
+    "EmergencyContactPhone": "asd",
+    "MedicalRecord": "123333",
+    "PatientType": "Registered",
+    "UserType": "Patient",
+    "PersonalId": "123333",
+    "Name": "asd",
+    "Lastname": "asd",
+    "DateOfBirth": "2022-05-20T00:00:00",
+    "Gender": "Female",
+    "Phone": "asd",
+    "Email": "asd",
+    "Password": "asd",
+    "ProfilePicture": "",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "asd",
+      "Number": "asd",
+      "City": "asd",
+      "Country": "asd"
+    }
+  }
+]

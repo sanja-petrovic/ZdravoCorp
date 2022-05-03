@@ -1,111 +1,109 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ZdravoKlinika.Data_Handler;
+using ZdravoKlinika.Model;
 
-public class PatientRepository
+namespace ZdravoKlinika.Repository
 {
-    private PatientDataHandler patientsDataHandler;
-    private List<Patient> patients;
-    public List<Patient> Patient
+    public class PatientRepository
     {
-        get
+        private List<Patient> patients;
+        private RegisteredPatientRepository registeredPatientRepository;
+        private GuestPatientRepository guestPatientRepository;
+
+        public List<Patient> Patients
         {
-            if (patients == null)
-                patients = new List<Patient>();
+            get
+            {
+                if (patients == null)
+                    patients = new List<Patient>();
+                return patients;
+            }
+            set
+            {
+                RemoveAllPatient();
+                if (value != null)
+                {
+                    foreach (Patient oPatient in value)
+                        AddPatient(oPatient);
+                }
+            }
+        }
+
+        public RegisteredPatientRepository RegisteredPatientRepository { get => registeredPatientRepository; set => registeredPatientRepository = value; }
+        public GuestPatientRepository GuestPatientRepository { get => guestPatientRepository; set => guestPatientRepository = value; }
+
+        public PatientRepository()
+        {
+            RegisteredPatientRepository = new RegisteredPatientRepository();
+            GuestPatientRepository = new GuestPatientRepository();
+
+            List<RegisteredPatient> rpats = RegisteredPatientRepository.GetAll();
+            foreach (RegisteredPatient pat in rpats) 
+            {
+                this.AddPatient(pat);
+            }
+            List<GuestPatient> gpats = GuestPatientRepository.GetAll();
+            if (gpats != null)
+            {
+                foreach (GuestPatient pat in gpats)
+                {
+                    this.AddPatient(pat);
+                }
+            }
+        }
+
+
+        public void AddPatient(Patient newPatient)
+        {
+            if (newPatient == null)
+                return;
+            if (this.patients == null)
+                this.patients = new List<Patient>();
+            if (!this.patients.Contains(newPatient))
+                this.patients.Add(newPatient);
+        }
+        public void RemovePatient(Patient oldPatient)
+        {
+            if (oldPatient == null)
+                return;
+            if (this.patients != null)
+                if (this.patients.Contains(oldPatient))
+                    this.patients.Remove(oldPatient);
+        }
+        public void RemoveAllPatient()
+        {
+            if (patients != null)
+                patients.Clear();
+        }
+        public Patient GetById(String id)
+        {
+            foreach (Patient patient in Patients)
+            {
+                if(patient.IsPatientById(id))
+                    return patient;
+            }
+            return null;
+        }
+
+        public void CreateNewGuestPatient(String id, String name, String lastname)
+        {
+            GuestPatient guestPatient = new GuestPatient();
+            guestPatient.Name = name;
+            guestPatient.Lastname = lastname;
+            guestPatient.PersonalId = id;
+
+            patients.Add(guestPatient);
+            GuestPatientRepository.AddGuestPatient(guestPatient);
+            return;
+        }
+
+        public List<Patient> GetAll()
+        {
             return patients;
         }
-        set
-        {
-            DeleteAllPatients();
-            if (value != null)
-            {
-                foreach (Patient oPatient in value)
-                    CreatePatient(oPatient);
-            }
-        }
     }
-    public PatientRepository() {
-        // init
-        patientsDataHandler = new PatientDataHandler();
-        this.patients = patientsDataHandler.Read();
-    }
-
-    public PatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
-
-    public List<Patient> GetAll()
-    {
-        return patients;
-    }
-
-    public Patient? GetById(String id)
-    {
-        foreach (Patient patient in this.patients) 
-        {
-            if (patient.PersonalId.Equals(id)) 
-            {
-                return patient;
-            }
-        }
-        return null;
-    }
-
-    public void CreatePatient(Patient patient)
-    {
-        if (patient == null)
-            return;
-        if (this.patients == null)
-            this.patients = new List<Patient>();
-
-        foreach (Patient pat in patients)
-        {
-            if (pat.PersonalId == patient.PersonalId)
-            {
-                return;
-            }
-        }
-
-        this.patients.Add(patient);
-        PatientsDataHandler.Write(patients);
-        return;
-    }
-
-    public void DeletePatient(Patient patient)
-    {
-        if (patient == null)
-            return;
-        if (this.patients != null)
-            if (this.patients.Contains(patient))
-                this.patients.Remove(patient);
-
-        PatientsDataHandler.Write(patients);
-        return;
-    }
-    public void DeleteAllPatients()
-    {
-        if (patients != null)
-            patients.Clear();
-    }
-
-    public void UpdatePatient(Patient patient)
-    {
-        int index = -1;
-        foreach (Patient patientObject in this.patients)
-        {
-            if (patientObject.PersonalId.Equals(patient.PersonalId))
-            {
-                index = patients.IndexOf(patientObject);
-            }
-        }
-
-        if (index == -1)
-        {
-            Console.WriteLine("Error");
-            return;
-        }
-
-        patients[index] = patient;
-        PatientsDataHandler.Write(patients);
-
-        return;
-    }
-
 }
