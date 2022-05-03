@@ -34,10 +34,7 @@ namespace ZdravoKlinika.Util
 
             if ((dates[0] - DateTime.Today).TotalDays <= 2)
             {
-
-                //picker.BlackoutDates.Add(new CalendarDateRange(dates[0], DateTime.Today.AddDays(2)));
-
-
+                picker.BlackoutDates.Add(new CalendarDateRange(dates[0], DateTime.Now.AddDays(2).Date));
             }
         }
         public void setDatePickerBlackoutForward(DateTime date, DatePicker picker)

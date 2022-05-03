@@ -27,11 +27,13 @@ namespace ZdravoKlinika.View
         private DoctorController doctorController = new DoctorController();
         private RegisteredPatientController registeredPatientController = new RegisteredPatientController();
         private int appointmentDuration = 30;
-        private string appointmentId;
+        private RoomController roomController = new RoomController();
 
-        public string AppointmentId { get => appointmentId; set => appointmentId = value; }
+        private int appointmentId;
 
-        public PatientEditView(string appointmentId)
+        public int AppointmentId { get => appointmentId; set => appointmentId = value; }
+
+        public PatientEditView(int appointmentId)
         {
             InitializeComponent();
             this.AppointmentId = appointmentId;
@@ -120,12 +122,13 @@ namespace ZdravoKlinika.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            /*resetError();
+            resetError();
 
             if (doctorComboBox.SelectedIndex != -1 && timeComboBox.SelectedIndex != -1)
             {
-                 //TODO finish this
-                if (!getFreeRoom(timeComboBox.SelectedItem))
+                //TODO finish this
+                List<Room> rooms = roomController.GetFreeRooms((DateTime)timeComboBox.SelectedItem);
+                if (!rooms.Any())
                 {
                     errorLabel.Content = "no available rooms times";
                     errorLabel.Visibility = Visibility.Visible;
@@ -134,7 +137,7 @@ namespace ZdravoKlinika.View
                 {
                     Doctor doctor = (Doctor)doctorComboBox.SelectedItem;
 
-                    appointmentController.EditAppointment(AppointmentId, doctor.PersonalId, patientId, timeComboBox.SelectedItem, false, AppointmentType.Regular, roomId, appointmentDuration);
+                    appointmentController.EditAppointment(AppointmentId, doctor.PersonalId, patientId, (DateTime)timeComboBox.SelectedItem, false, AppointmentType.Regular, rooms[0].RoomId, appointmentDuration);
                     resetBaseView();
                 }
             }
@@ -142,7 +145,7 @@ namespace ZdravoKlinika.View
             {
                 errorLabel.Content = "check data entry";
                 errorLabel.Visibility = Visibility.Visible;
-            }*/
+            }
         }
         private void resetError()
         {

@@ -29,14 +29,18 @@ namespace ZdravoKlinika.ViewModel
         private List<String> alergies;
         private List<String> diagnoses;
 
-        private RegisteredPatientController controller = new RegisteredPatientController();
-        private MedicalRecordController medicalRecordController = new MedicalRecordController();
-        private Controller.PatientMedicationNotificationController notifController = new Controller.PatientMedicationNotificationController();
+        private RegisteredPatientController controller;
+        private MedicalRecordController medicalRecordController;
+        private Controller.PatientMedicationNotificationController notifController;
         private List<PatientMedicationNotification> notifs;
 
-        private ObservableCollection<String> notificationTexts = new ObservableCollection<string>();
+        private ObservableCollection<String> notificationTexts;
         public PatientProfileViewModel(String patientId)
         {
+            controller = new RegisteredPatientController();
+            medicalRecordController = new MedicalRecordController();
+            notifController = new Controller.PatientMedicationNotificationController();
+            notificationTexts = new ObservableCollection<string>();
             RegisteredPatient patient = controller.GetById(patientId);
             if(patient != null)
             {

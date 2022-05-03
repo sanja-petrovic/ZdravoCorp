@@ -26,6 +26,7 @@ namespace ZdravoKlinika.View
         private AppointmentController appointmentController = new AppointmentController();
         private DoctorController doctorController = new DoctorController();
         private RegisteredPatientController registeredPatientController = new RegisteredPatientController();
+        private RoomController roomController = new RoomController();
         private int appointmentDuration = 30;
 
         public PatientAddView()
@@ -122,8 +123,9 @@ namespace ZdravoKlinika.View
             
             if (doctorComboBox.SelectedIndex != -1 && timeComboBox.SelectedIndex != -1)
             {
-                /* TODO finish this
-                if (!getFreeRoom(timeComboBox.SelectedItem))
+                // TODO finish this
+                List<Room> rooms = roomController.GetFreeRooms((DateTime)timeComboBox.SelectedItem);
+                if (!rooms.Any())
                 {
                     errorLabel.Content = "no available rooms times";
                     errorLabel.Visibility = Visibility.Visible;
@@ -132,9 +134,9 @@ namespace ZdravoKlinika.View
                 {
                     Doctor doctor = (Doctor)doctorComboBox.SelectedItem;
 
-                    Appointment appointment = appointmentController.CreateAppointment(doctor.PersonalId, patientId, timeComboBox.SelectedItem, false, AppointmentType.Regular, roomId, 15);
+                    appointmentController.CreateAppointment(doctor.PersonalId, patientId, (DateTime)timeComboBox.SelectedItem, false, AppointmentType.Regular, rooms[0].RoomId, appointmentDuration);
                     resetBaseView();
-                }*/
+                }
             }
             else
             {

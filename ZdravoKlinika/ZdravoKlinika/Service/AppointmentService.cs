@@ -247,6 +247,7 @@ public class AppointmentService
         Room room = roomRepository.GetById(roomId);
         Patient pat = patientRepository.GetById(patientId);
         Appointment appointment = new Appointment(newAppointmentId, doc, pat, room, duration, emergency, type, dateAndTime);
+        appointment.Prescriptions = new List<Medication>();
         this.appointmentRepository.CreateAppointment(appointment);
 
         return appointment;
