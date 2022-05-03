@@ -32,6 +32,17 @@ public class AppointmentController
     {
         return this.appointmentService.GetAppointmentsByDoctorId(id);
     }
+
+    public Appointment GetAppointmentByDoctorDateTime(String doctorId, DateTime dateTime)
+    {
+        return this.appointmentService.GetAppointmentByDoctorDateTime(doctorId, dateTime);
+    }
+
+    public List<Appointment> GetAppointmentsByDoctorDate(String doctorId, DateTime dateTime)
+    {
+        return this.appointmentService.GetAppointmentsByDoctorDate(doctorId, dateTime);
+    }
+
     public List<Appointment> GetAppointmentsByPatientIdForDate(String id,DateTime date)
     {
         return this.appointmentService.GetAppointmentsByPatientIdForDate(id, date);
@@ -67,6 +78,27 @@ public class AppointmentController
         this.appointmentService.EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
     }
 
+    public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)
+    {
+        this.appointmentService.LogAppointment(appointment, diagnoses, doctorsNote);
+    }
+
+    public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
+    {
+        return this.AppointmentService.GetPatientsPastAppointments(patient);
+    }
+
+    public List<Appointment> GetPatientsUpcomingAppointments(RegisteredPatient patient)
+    {
+        return this.appointmentService.GetPatientsUpcomingAppointments(patient);
+    }
+
+    public Appointment GetLatestAppointment(RegisteredPatient patient)
+    {
+        List<Appointment> allPast = this.GetPatientsPastAppointments(patient);
+
+        return null;
+    }
     public List<Appointment> GetAppointmentsByRoom(String roomId)
     {
         return this.appointmentService.GetAppointmentsByRoom(roomId);

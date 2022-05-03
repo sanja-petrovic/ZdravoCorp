@@ -9,23 +9,23 @@ public class AppointmentService
 {
     private AppointmentRepository appointmentRepository;
     private DoctorRepository doctorRepository;
-    private PatientRepository patientRepositroy;
+    private PatientRepository patientRepository;
     private RoomRepository roomRepository;
     private ZdravoKlinika.Util.ListHelper listHelper;
     private ZdravoKlinika.Util.DateBlock dateBlock = new ZdravoKlinika.Util.DateBlock();
 
     public AppointmentService()
     {
-        this.AppointmentRepository = new AppointmentRepository();
-        this.DoctorRepository = new DoctorRepository();
-        this.RoomRepository = new RoomRepository();
-        this.PatientRepositroy = new PatientRepository();
+        this.appointmentRepository = new AppointmentRepository();
+        this.doctorRepository = new DoctorRepository();
+        this.roomRepository = new RoomRepository();
+        this.patientRepository = new PatientRepository();
     }
  
     public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
     public DoctorRepository DoctorRepository { get => doctorRepository; set => doctorRepository = value; }
     public RoomRepository RoomRepository { get => roomRepository; set => roomRepository = value; }
-    public PatientRepository PatientRepositroy { get => patientRepositroy; set => patientRepositroy = value; }
+    public PatientRepository PatientRepository { get => patientRepository; set => patientRepository = value; }
 
     public List<Appointment> GetAll()
     {
@@ -44,7 +44,17 @@ public class AppointmentService
 
     public List<Appointment> GetAppointmentsByDoctorId(String id)
     {
-        return this.appointmentRepository.GetAppointmentsByPatient(id);
+        return this.appointmentRepository.GetAppointmentsByDoctor(id);
+    }
+
+    public Appointment GetAppointmentByDoctorDateTime(String doctorId, DateTime dateTime)
+    {
+        return this.appointmentRepository.GetAppointmentByDoctorDateTime(doctorId, dateTime);
+    }
+
+    public List<Appointment> GetAppointmentsByDoctorDate(String doctorId, DateTime dateTime)
+    {
+        return this.appointmentRepository.GetAppointmentsByDoctorDate(doctorId, dateTime);
     }
     public List<Appointment> GetAppointmentsByPatientIdForDate(String id,DateTime date)
     {
@@ -233,9 +243,9 @@ public class AppointmentService
             newAppointmentId = 1;
         }
         //TODO temp fix
-        Doctor doc = DoctorRepository.GetById(doctorId);
-        Room room = RoomRepository.GetById(roomId);
-        Patient pat = PatientRepositroy.GetById(patientId);
+        Doctor doc = doctorRepository.GetById(doctorId);
+        Room room = roomRepository.GetById(roomId);
+        Patient pat = patientRepository.GetById(patientId);
         Appointment appointment = new Appointment(newAppointmentId, doc, pat, room, duration, emergency, type, dateAndTime);
         this.appointmentRepository.CreateAppointment(appointment);
 
@@ -252,9 +262,9 @@ public class AppointmentService
     {
         Appointment appointment = this.appointmentRepository.GetAppointmentById(appointmentId); 
 
-        Doctor doc = DoctorRepository.GetById(doctorId);
-        Room room = RoomRepository.GetById(roomId);
-        Patient pat = PatientRepositroy.GetById(patientId);
+        Doctor doc = doctorRepository.GetById(doctorId);
+        Room room = roomRepository.GetById(roomId);
+        Patient pat = patientRepository.GetById(patientId);
 
         appointment.DateAndTime = dateAndTime;
         appointment.Emergency = emergency;
@@ -265,6 +275,25 @@ public class AppointmentService
         this.appointmentRepository.EditAppointment(appointment);
 
     }
+
+    public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)
+    {
+        appointment.Diagnoses = diagnoses;
+        appointment.DoctorsNotes = doctorsNote;
+        appointment.Over = true;
+        this.appointmentRepository.LogAppointment(appointment);
+    }
+
+    public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
+    {
+        return this.appointmentRepository.GetPatientsPastAppointments(patient);
+    }
+
+    public List<Appointment> GetPatientsUpcomingAppointments(RegisteredPatient patient)
+    {
+        return this.appointmentRepository.GetPatientsUpcomingAppointments(patient);
+    }
+}
 
     public List<Appointment> GetAppointmentsByRoom(String roomId)
     {

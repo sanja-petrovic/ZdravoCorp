@@ -1,27 +1,52 @@
 [
   {
     "BloodType": "APositive",
-    "Occupation": "asd",
-    "EmergencyContactName": "asd",
-    "EmergencyContactPhone": "asd",
-    "MedicalRecord": "asd",
+    "Occupation": "Kuvar",
+    "EmergencyContactName": "Čendler Bing",
+    "EmergencyContactPhone": "0687462950",
+    "MedicalRecord": "0105965123321",
     "PatientType": "Registered",
     "UserType": "Patient",
-    "PersonalId": "asd",
-    "Name": "asd",
-    "Lastname": "asd",
-    "DateOfBirth": "2022-04-02T00:00:00",
+    "PersonalId": "0105965123321",
+    "Name": "Monika",
+    "Lastname": "Geler",
+    "DateOfBirth": "1965-05-01T00:00:00",
     "Gender": "Female",
-    "Phone": "asd",
-    "Email": "asd",
-    "Password": "asd",
-    "ProfilePicture": "file:///C:/Users/asd/Documents/GitHub/ZdravoCorp/ZdravoKlinika/ZdravoKlinika/Resources/Images/dots.png",
+    "Phone": "0687462949",
+    "Email": "monicageller@zdravo.com",
+    "Password": "monica",
+    "ProfilePicture": "asd",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": {
-      "Street": "asd",
-      "Number": "asd",
-      "City": "asd",
-      "Country": "asd"
+      "Street": "Hajduk Veljka Petrovića",
+      "Number": "18",
+      "City": "Novi Sad",
+      "Country": "Srbija"
+    }
+  },
+  {
+    "BloodType": "APositive",
+    "Occupation": "Paleontolog",
+    "EmergencyContactName": "Rejčel Grin",
+    "EmergencyContactPhone": "0638962240",
+    "MedicalRecord": "1510963123321",
+    "PatientType": "Registered",
+    "UserType": "Patient",
+    "PersonalId": "1510963123321",
+    "Name": "Ros",
+    "Lastname": "Geler",
+    "DateOfBirth": "1963-10-15T00:00:00",
+    "Gender": "Male",
+    "Phone": "0638962241",
+    "Email": "rosgeller@zdravo.com",
+    "Password": "ross",
+    "ProfilePicture": "asd",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "Balzakova",
+      "Number": "3",
+      "City": "Novi Sad",
+      "Country": "Srbija"
     }
   }
 ]

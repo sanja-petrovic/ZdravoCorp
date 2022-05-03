@@ -112,10 +112,10 @@ namespace JsonConverters
             Type typeToConvert,
             JsonSerializerOptions options) => Prescription.Parse(reader.GetString());
 
+
         public override void Write(
             Utf8JsonWriter writer,
             Prescription prescription,
-            JsonSerializerOptions options) => writer.WriteStringValue(prescription.Id.ToString());
-
+            JsonSerializerOptions options) => writer.WriteNumberValue(prescription.Id);
     }
 }

@@ -38,4 +38,9 @@ public class RegisteredPatientController
         patientService.DeletePatient(patientId);
     }
 
+    public bool IsAllergic(Medication medication, RegisteredPatient patient)
+    {
+        return this.patientService.IsAllergic(medication, patient);
+    }
+
 }

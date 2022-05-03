@@ -9,6 +9,7 @@ using System.Collections.Generic;
 public class DoctorRepository
 {
    private DoctorDataHandler doctorDataHandler = new DoctorDataHandler();
+
    
    public List<Doctor> GetAll()
    {
@@ -28,6 +29,20 @@ public class DoctorRepository
         }
         return null;
    }
+
+    public Doctor GetByEmail(String email)
+    {
+        List<Doctor> doctors = new List<Doctor>();
+        doctors = doctorDataHandler.Read();
+        foreach (Doctor doctor in doctors)
+        {
+            if (doctor.Email == email)
+            {
+                return doctor;
+            }
+        }
+        return null;
+    }
    
    public void CreateDoctor(Doctor doctor)
    {

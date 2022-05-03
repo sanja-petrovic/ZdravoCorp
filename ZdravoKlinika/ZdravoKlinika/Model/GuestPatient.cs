@@ -29,6 +29,11 @@ namespace ZdravoKlinika.Model
             return patient;
         }
 
+        public String GetPatientFullName()
+        {
+            return this.name + " " + this.lastname;
+        }
+
         public PatientType GetPatientType()
         {
             return PatientType;

@@ -28,10 +28,21 @@ public class RegisteredUser
     public DateTime LastLogin { get => lastLogin; set => lastLogin = value; }
     public Address Address { get => address; set => address = value; }
 
+    public string GenderToString()
+    {
+        if(this.gender == Gender.Female)
+        {
+            return "Ženski";
+        } else
+        {
+            return "Muški";
+        }
+
     public static RegisteredUser Parse(String id)
     {
         RegisteredUser user = new RegisteredUser();
         user.PersonalId = id;
         return user;
+
     }
 }

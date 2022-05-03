@@ -70,7 +70,7 @@ namespace ZdravoKlinika.View
                 emailTextBox1.Text = doc.Email;
                 passwordTextBox1.Text = doc.Password;
                 specialityTextBox1.Text = doc.Specialty;
-                educationTextBox1.Text = doc.Education;
+                educationTextBox1.Text = doc.EducationLevel;
 
             }
         }
