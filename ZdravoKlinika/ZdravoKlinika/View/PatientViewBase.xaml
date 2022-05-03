@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ZdravoKlinika.ViewModel"
         
         mc:Ignorable="d"
-        Title="Pacijent" Height="650" Width="960">
+        Title="Pacijent" Height="650" Width="960" Name="patientBase">
     <Window.DataContext>
         <local:PatientViewModelBase/>
     </Window.DataContext>

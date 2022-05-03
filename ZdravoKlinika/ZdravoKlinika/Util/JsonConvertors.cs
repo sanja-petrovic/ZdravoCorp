@@ -35,6 +35,20 @@ namespace JsonConverters
             JsonSerializerOptions options) =>
                 writer.WriteStringValue(doctor.PersonalId);
     }
+    public class RegisteredUserConverter : JsonConverter<RegisteredUser>
+    {
+        public override RegisteredUser Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) =>
+                RegisteredUser.Parse(reader.GetString()!);
+
+        public override void Write(
+           Utf8JsonWriter writer,
+           RegisteredUser user,
+           JsonSerializerOptions options) =>
+               writer.WriteStringValue(user.PersonalId);
+    }
     public class RegisteredPatientConverter : JsonConverter<RegisteredPatient>
     {
         public override RegisteredPatient Read(
@@ -91,5 +105,17 @@ namespace JsonConverters
             Medication medication,
             JsonSerializerOptions options) => writer.WriteStringValue(medication.MedicationId);
     }
+    public class PrescriptionConverter : JsonConverter<Prescription>
+    {
+        public override Prescription Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) => Prescription.Parse(reader.GetString());
 
+        public override void Write(
+            Utf8JsonWriter writer,
+            Prescription prescription,
+            JsonSerializerOptions options) => writer.WriteStringValue(prescription.Id.ToString());
+
+    }
 }

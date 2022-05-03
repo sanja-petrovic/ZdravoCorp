@@ -37,5 +37,11 @@ namespace ZdravoKlinika.View
         {
             mainFrame.Navigate(viewModel.PatientApointmentView);
         }
+        public void refreshAppointmentView()
+        {
+            //TODO remove hardcoded patientID value
+            viewModel.PatientApointmentView = new PatientAppointmentView("12345");
+            mainFrame.Navigate(viewModel.PatientApointmentView);
+        }
     }
 }
