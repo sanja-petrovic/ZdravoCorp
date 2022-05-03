@@ -32,6 +32,7 @@ namespace ZdravoKlinika.Service
         {
             List<PatientMedicationNotification> notifications = new List<PatientMedicationNotification>();
             int newId;
+            notifications = patientMedicationNotificationRepository.GetAll();
             if (notifications.Count > 0)
             {
                 newId = notifications.Last().NotificationId + 1;

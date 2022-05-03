@@ -50,7 +50,7 @@ namespace ZdravoKlinika.View
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             popUpFrame.Visibility = Visibility.Visible;
-            popUpFrame.Navigate(viewModel.PatientEditView);
+            popUpFrame.Navigate(viewModel.PatientEditView = new PatientEditView(selectedInList.AppointmentId.ToString()));
             if(listBox.SelectedItem != null)
             {
                 viewModel.PatientEditView.datePicker.SelectedDate = calendar.SelectedDate.Value;

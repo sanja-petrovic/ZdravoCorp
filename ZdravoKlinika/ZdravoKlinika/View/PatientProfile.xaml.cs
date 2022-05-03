@@ -46,7 +46,7 @@ namespace ZdravoKlinika.ViewModel
             viewModel.Notifs = viewModel.NotifController.GetAll();
             foreach(PatientMedicationNotification pmn in viewModel.Notifs)
             {
-                if ((pmn.Prescription.DateOfCreation - DateTime.Now).TotalHours < 1 & (pmn.Prescription.DateOfCreation - DateTime.Now).TotalHours > 0 )
+                if ((pmn.Prescription.DateOfCreation - DateTime.Now).TotalHours < 5 & (pmn.Prescription.DateOfCreation - DateTime.Now).TotalHours > 0 )
                 {
                     App.Current.Dispatcher.Invoke((Action)delegate
                     {

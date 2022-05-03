@@ -19,7 +19,7 @@ namespace ZdravoKlinika.View
     /// <summary>
     /// Interaction logic for PatientAddView.xaml
     /// </summary>
-    
+
     public partial class PatientAddView : Page
     {
         private string patientId = "12345";
@@ -27,7 +27,7 @@ namespace ZdravoKlinika.View
         private DoctorController doctorController = new DoctorController();
         private RegisteredPatientController registeredPatientController = new RegisteredPatientController();
         private int appointmentDuration = 30;
-        
+
         public PatientAddView()
         {
             InitializeComponent();
@@ -35,22 +35,23 @@ namespace ZdravoKlinika.View
             priorityComboBox.Items.Add("Doktor");
             priorityComboBox.SelectedIndex = -1;
         }
-  
+
         private void priorityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            resetError();
             clearCombos();
             if (priorityComboBox.SelectedIndex == 0)
             {
                 //time prio
 
-                timeComboBox.ItemsSource = DateBlock.getStartTimes(appointmentController.getFreeTimeForPatient(datePicker.SelectedDate.Value,15,registeredPatientController.GetById(patientId),8,20));
+                timeComboBox.ItemsSource = DateBlock.getStartTimes(appointmentController.getFreeTimeForPatient(datePicker.SelectedDate.Value, 15, registeredPatientController.GetById(patientId), 8, 20));
                 timeComboBox.SelectedIndex = -1;
                 doctorComboBox.ItemsSource = null;
 
             }
-            else if(priorityComboBox.SelectedIndex == 1)
+            else if (priorityComboBox.SelectedIndex == 1)
             {
-                
+
                 doctorComboBox.ItemsSource = doctorController.GetAll();
                 doctorComboBox.SelectedIndex = -1;
                 timeComboBox.ItemsSource = null;
@@ -60,13 +61,14 @@ namespace ZdravoKlinika.View
 
         private void timeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(priorityComboBox.SelectedIndex == 0)
+            resetError();
+            if (priorityComboBox.SelectedIndex == 0)
             {
                 if (timeComboBox.SelectedItem != null)
                 {
                     doctorComboBox.ItemsSource = null;
                     List<Doctor> doctors = new List<Doctor>();
-                    doctors = appointmentController.getFreeDoctorsForTime(new DateBlock((DateTime)timeComboBox.SelectedItem,15),8,20);
+                    doctors = appointmentController.getFreeDoctorsForTime(new DateBlock((DateTime)timeComboBox.SelectedItem, 15), 8, 20);
                     if (doctors.Any())
                     {
                         doctorComboBox.ItemsSource = doctors;
@@ -78,11 +80,12 @@ namespace ZdravoKlinika.View
                         errorLabel.Content = "No doctors available at given time";
                     }
                 }
-            }  
+            }
         }
 
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            resetError();
             priorityComboBox.SelectedIndex = -1;
             clearCombos();
         }
@@ -94,7 +97,8 @@ namespace ZdravoKlinika.View
 
         private void doctorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(priorityComboBox.SelectedIndex == 1)
+            resetError();
+            if (priorityComboBox.SelectedIndex == 1)
             {
                 if (doctorComboBox.SelectedItem != null)
                 {
@@ -108,6 +112,51 @@ namespace ZdravoKlinika.View
                         errorLabel.Content = "no available appointment times";
                         errorLabel.Visibility = Visibility.Visible;
                     }
+                }
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            resetError();
+            
+            if (doctorComboBox.SelectedIndex != -1 && timeComboBox.SelectedIndex != -1)
+            {
+                /* TODO finish this
+                if (!getFreeRoom(timeComboBox.SelectedItem))
+                {
+                    errorLabel.Content = "no available rooms times";
+                    errorLabel.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    Doctor doctor = (Doctor)doctorComboBox.SelectedItem;
+
+                    Appointment appointment = appointmentController.CreateAppointment(doctor.PersonalId, patientId, timeComboBox.SelectedItem, false, AppointmentType.Regular, roomId, 15);
+                    resetBaseView();
+                }*/
+            }
+            else
+            {
+                errorLabel.Content = "check data entry";
+                errorLabel.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        private void resetError()
+        {
+            errorLabel.Content = "";
+            errorLabel.Visibility = Visibility.Hidden;
+        }
+        private void resetBaseView()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Name == "patientBase")
+                {
+                    PatientViewBase baseWindow = (PatientViewBase)window;
+                    baseWindow.refreshAppointmentView();
                 }
             }
         }
