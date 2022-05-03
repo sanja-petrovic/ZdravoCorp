@@ -13,6 +13,7 @@
                 <DataGridTextColumn Header="Kolicina" Binding="{Binding Amount}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="MoveEquipmentButton" Content="Premesti opremu" HorizontalAlignment="Left" Margin="615,16,0,0" VerticalAlignment="Top" Click="MoveEquipment_Click" Height="30" Width="110"/>
     </Grid>
 </Window>
 

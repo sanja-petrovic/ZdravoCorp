@@ -7,6 +7,7 @@ public class RenovationService
 {
     private RenovationRepository renovationRepository;
     private List<Room> rooms;
+    private List<Appointment> appointments;
     private Timer timerRenovation;
     private Timer timerSplit;
     private Timer timerMerge;
@@ -20,6 +21,7 @@ public class RenovationService
         this.timerRenovation = new Timer();
         this.timerSplit = new Timer();
         this.timerMerge = new Timer();
+        this.appointments = new List<Appointment>();
     }
 
     public RenovationRepository RenovationRepository { get => renovationRepository; set => renovationRepository = value; }
@@ -62,33 +64,56 @@ public class RenovationService
         {
             newRenovationId = 1;
         }
-        Renovation r = new Renovation(newRenovationId.ToString(),numberOfExitRooms, scheduledDateTime, entryRooms);
-        this.renovationRepository.CreateRenovation(r);
 
         RoomService roomService = new RoomService();
         rooms = roomService.GetAll();
 
+        AppointmentService appointmentService = new AppointmentService();
+        bool ok = true;
 
-
-        //OVDE LOGIKA ZA SCHEDULE DA SE PROVERI!!!
-
-
-        if (entryRooms.Count == 1 && numberOfExitRooms == 1)
+        foreach(Room room in entryRooms)
         {
-            //U PITANJU JE OBICNO RENOVIRANJE
-            RenovateTheRoom();
-            
-        } else if (entryRooms.Count == 1 && numberOfExitRooms > 1)
-        {
-            //U PITANJU JE DELJENJE PROSTORIJE NA VISE MANJIH
-            SplitTheRoom();
+            appointments.Clear();
+            appointments = appointmentService.GetAppointmentsByRoom(room.RoomId);
+            foreach(Appointment app in appointments)
+            {  
+                DateTime appointmentStart = app.DateAndTime;
+                DateTime appointmentEnd = appointmentStart.AddMinutes(app.Duration);
+                if ((scheduledDateTime > appointmentStart) && (scheduledDateTime < appointmentEnd))
+                {
+                    //SOBA JE ZAUZETA U TOM TRENUTKU
+                    ok = false;
+                }
+            }
 
-        } else if (entryRooms.Count > 1 && numberOfExitRooms == 1)
-        {
-            //U PITANJU JE SPAJANJE PROSTORIJA U JEDNU
-            MergeTheRooms();
+        }
 
-        } 
+        if (ok)
+        {
+            Renovation r = new Renovation(newRenovationId.ToString(), numberOfExitRooms, scheduledDateTime, entryRooms);
+            this.renovationRepository.CreateRenovation(r);
+            if (entryRooms.Count == 1 && numberOfExitRooms == 1)
+            {
+                //U PITANJU JE OBICNO RENOVIRANJE
+                RenovateTheRoom();
+
+            }
+            else if (entryRooms.Count == 1 && numberOfExitRooms > 1)
+            {
+                //U PITANJU JE DELJENJE PROSTORIJE NA VISE MANJIH
+                SplitTheRoom();
+
+            }
+            else if (entryRooms.Count > 1 && numberOfExitRooms == 1)
+            {
+                //U PITANJU JE SPAJANJE PROSTORIJA U JEDNU
+                MergeTheRooms();
+
+            }
+        } else
+        {
+            //OVDE IDE NEKA NOTIFIKACIJA "SOBA JE ZAUZETA U UNETOM VREMENSKOM PERIODU"
+        }
     }
 
     public void UpdateRenovation(String id, List<Room> entryRooms, int numberOfExitRooms, DateTime scheduledDateTime)

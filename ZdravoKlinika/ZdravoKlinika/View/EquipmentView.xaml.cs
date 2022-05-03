@@ -41,5 +41,11 @@ namespace ZdravoKlinika.View
             dataGridEquipment.ItemsSource = this.equipmentController.GetAll();
         }
 
+        private void MoveEquipment_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentMoveView equipmentMoveView = new EquipmentMoveView();
+            equipmentMoveView.Show();
+        }
+
     }
 }

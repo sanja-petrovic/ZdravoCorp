@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <None Remove="Data Handler\MoveDataHandler.cs~RF6ed0908.TMP" />
+    <None Remove="View\UpravnikWindow.xaml~RF9df3ab.TMP" />
   </ItemGroup>
 
 
