@@ -684,7 +684,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
             <TabItem Header="Terapija">
                 <Grid>
 
-                    <ComboBox x:Name="MedCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="34,69,0,0" VerticalAlignment="Top" Width="246" Text="Izaberite lek" Padding="5" Height="28">
+                    <ComboBox x:Name="MedCB" SelectionChanged="MedCB_SelectionChanged" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="34,69,0,0" VerticalAlignment="Top" Width="246" Text="Izaberite lek" Padding="5" Height="28">
                         <ComboBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -767,7 +767,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                     <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="168,154,0,0" TextWrapping="Wrap" Text="pojedinačna doza" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="80" Height="16"/>
                     <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="295,166,0,0" TextWrapping="Wrap" FontStyle="Italic" Text="'na svakih (X) dana/nedelja/meseci'" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="159" Height="16"/>
                     <TextBlock  HorizontalAlignment="Left" Margin="37,176,0,0" TextWrapping="Wrap" Text="Način upotrebe, dodatne napomene..." VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Width="227"/>
-                    <TextBlock Name="AllergyTB"  Visibility="Hidden"  Foreground="#FE5D7A" HorizontalAlignment="Left" Margin="37,250,0,0" TextWrapping="Wrap" Text="Pacijent je alergičan na izabrani lek." VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="319" Height="27"/>
+                    <TextBlock Name="AllergyTB"  Visibility="Hidden"  Foreground="#FE5D7A" HorizontalAlignment="Left" Margin="34,244,0,0" TextWrapping="Wrap" Text="Pacijent je alergičan na izabrani lek." VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="319" Height="27"/>
                     <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="34,261,0,0" TextWrapping="Wrap" Text="Dodati lekovi će se prikazati ovde." VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="184" Height="16"/>
                 </Grid>
             </TabItem>

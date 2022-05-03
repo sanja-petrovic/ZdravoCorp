@@ -1,6 +1,5 @@
 ﻿[
   {
-    "ParentName": "Džek Geler",
     "BloodType": "APositive",
     "Occupation": "Kuvar",
     "EmergencyContactName": "Čendler Bing",
@@ -26,7 +25,6 @@
     }
   },
   {
-    "ParentName": "Džek Geler",
     "BloodType": "APositive",
     "Occupation": "Paleontolog",
     "EmergencyContactName": "Rejčel Grin",
@@ -40,7 +38,7 @@
     "DateOfBirth": "1963-10-15T00:00:00",
     "Gender": "Male",
     "Phone": "0638962241",
-    "Email": "monicageller@zdravo.com",
+    "Email": "rosgeller@zdravo.com",
     "Password": "ross",
     "ProfilePicture": "asd",
     "LastLogin": "0001-01-01T00:00:00",

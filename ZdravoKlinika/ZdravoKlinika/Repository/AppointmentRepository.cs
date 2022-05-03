@@ -190,15 +190,6 @@ public class AppointmentRepository
 
     public void DeleteAppointment(Appointment appointment)
     {
-        /*if (appointment == null)
-            return;
-        if (this.appointments != null) 
-        {
-            if (this.appointments.Find(appointment)) 
-            {
-                this.appointments.Remove(appointment)
-            }
-        };*/
 
         var a = this.appointments.Find(x => x.AppointmentId == appointment.AppointmentId);
         this.appointments.Remove(a);
@@ -207,27 +198,49 @@ public class AppointmentRepository
 
     public void EditAppointment(Appointment appointment)
     {
-        if (appointment == null)
+        int index = -1;
+        foreach (Appointment a in this.appointments)
+        {
+            if (a.AppointmentId == a.AppointmentId)
+            {
+                index = this.appointments.IndexOf(a);
+            }
+        }
+
+        if (index == -1)
+        {
+            Console.WriteLine("Error");
             return;
-        if (this.appointments != null)
-            if (this.appointments.Contains(appointment))
-                this.appointments.Remove(appointment);
-        this.CreateAppointment(appointment);
+        }
+
+        appointments[index] = appointment;
+        this.appointmentDataHandler.Write(this.appointments);
+
+        return;
 
     }
 
     public void LogAppointment(Appointment appointment)
     {
-        Appointment toRemove = this.GetAppointmentById(appointment.AppointmentId);
-        if (appointment == null)
+        int index = -1;
+        foreach(Appointment a in this.appointments)
+        {
+            if (a.AppointmentId == appointment.AppointmentId)
+            {
+                index = this.appointments.IndexOf(a);
+            }
+        }
+
+        if (index == -1)
+        {
+            Console.WriteLine("Error");
             return;
-        if (this.appointments != null)
-            if (this.appointments.Contains(toRemove))
-                this.appointments.Remove(toRemove);
-        
-        this.AddAppointment(appointment);
-        appointmentDataHandler.Write(this.appointments);
-        this.appointmentListUpdated();
+        }
+
+        this.appointments[index] = appointment;
+        this.appointmentDataHandler.Write(this.appointments);
+
+        return;
     }
 
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)

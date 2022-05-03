@@ -14,9 +14,9 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 5,
+    "AppointmentId": 2,
     "DateAndTime": "2022-04-30T11:00:00",
-    "Diagnoses": "stvarno stvarno?",
+    "Diagnoses": "ooooo",
     "DoctorsNotes": "stvarno?",
     "Type": "Regular",
     "Emergency": false,
@@ -28,7 +28,7 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 4,
+    "AppointmentId": 3,
     "DateAndTime": "2022-04-30T12:00:00",
     "Diagnoses": "Problem2234",
     "DoctorsNotes": ":/",
@@ -42,7 +42,7 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 2,
+    "AppointmentId": 4,
     "DateAndTime": "2022-04-28T09:00:00",
     "Diagnoses": "Hypertension",
     "DoctorsNotes": "Pacijent se \u017Ealio na povi\u0161en krvni pritisak koji mu mesecima pravi probleme.",
@@ -56,7 +56,7 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 7,
+    "AppointmentId": 5,
     "DateAndTime": "2022-05-02T11:00:00",
     "Diagnoses": ":O",
     "DoctorsNotes": ":/",
@@ -70,7 +70,7 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 8,
+    "AppointmentId": 6,
     "DateAndTime": "2022-05-02T13:00:00",
     "Diagnoses": "fdsfsdf",
     "DoctorsNotes": "fdsfds",
@@ -100,7 +100,7 @@
     ]
   },
   {
-    "AppointmentId": 9,
+    "AppointmentId": 7,
     "DateAndTime": "2022-05-02T11:00:00",
     "Diagnoses": "sdsa",
     "DoctorsNotes": "dsad",
@@ -150,7 +150,7 @@
     ]
   },
   {
-    "AppointmentId": 10,
+    "AppointmentId": 8,
     "DateAndTime": "2022-05-02T11:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
@@ -164,9 +164,9 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 3,
+    "AppointmentId": 9,
     "DateAndTime": "2022-04-30T10:00:00",
-    "Diagnoses": "cek",
+    "Diagnoses": "Hmmmm",
     "DoctorsNotes": "hmmm",
     "Type": "Regular",
     "Emergency": false,
@@ -178,7 +178,7 @@
     "Prescriptions": []
   },
   {
-    "AppointmentId": 6,
+    "AppointmentId": 10,
     "DateAndTime": "2022-05-02T11:00:00",
     "Diagnoses": "Laryngitis acuta",
     "DoctorsNotes": "//////////",
@@ -189,6 +189,48 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 11,
+    "DateAndTime": "2022-05-04T08:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 12,
+    "DateAndTime": "2022-05-03T10:00:00",
+    "Diagnoses": "a3",
+    "DoctorsNotes": "a4",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 13,
+    "DateAndTime": "2022-05-03T10:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false,
     "Prescriptions": []
   }
 ]
