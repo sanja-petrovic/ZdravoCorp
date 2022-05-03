@@ -27,7 +27,7 @@ public class RegisteredPatientService
     public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> allergies, List<String> diagnosis)
     {
         Console.WriteLine("service");
-        MedicalRecord record = new MedicalRecord(personalId, alergies, diagnosis);
+        MedicalRecord record = new MedicalRecord(personalId, diagnosis, allergies);
         Address address = new Address(street,stnumber,city,country);
         RegisteredPatient patient = new RegisteredPatient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
         
@@ -66,7 +66,7 @@ public class RegisteredPatientService
 
     public bool IsAllergic(Medication medication, RegisteredPatient patient)
     {
-        return this.patientRepository.IsAllergic(medication, patient);
+        return this.registeredPatientRepository.IsAllergic(medication, patient);
     }
 
 }

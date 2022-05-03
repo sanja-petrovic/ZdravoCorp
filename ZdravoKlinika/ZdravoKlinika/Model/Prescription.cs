@@ -20,13 +20,21 @@ namespace ZdravoKlinika.Model
         private string doctorsNote;
         private int id;
 
-        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, int id)
-
-        public Prescription()
-        {
-        }
-
         public Prescription() { }
+
+        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, int id)
+        {
+            this.doctor = doctor;
+            this.registeredPatient = registeredPatient;
+            this.medication = medication;
+            this.amount = amount;
+            this.duration = duration;
+            this.frequency = frequency;
+            this.singleDose = singleDose;
+            this.repeat = repeat;
+            this.doctorsNote = doctorsNote;
+            this.id = id;
+        }
 
         public Medication Medication { get => medication; set => medication = value; }
         public int Amount { get => amount; set => amount = value; }
@@ -40,16 +48,10 @@ namespace ZdravoKlinika.Model
         public int Id { get => id; set => id = value; }
         public DateTime DateOfCreation { get => dateOfCreation; set => dateOfCreation = value; }
 
-        public static Prescription Parse(string id)
-        {
+        public static Prescription Parse(int id) {
             Prescription prescription = new Prescription();
-            int intId;
-            if(int.TryParse(id, out intId))
-            {
-                prescription.Id = intId;
-            }
-            return prescription;
+            prescription.Id = id;
+            return prescription; 
         }
-
     }
 }

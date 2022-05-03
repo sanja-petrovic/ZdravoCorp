@@ -22,7 +22,7 @@ namespace ZdravoKlinika.ViewModel
     /// </summary>
     public partial class PatientProfile : Page
     {
-        private PatientProfileViewModel viewModel = new PatientProfileViewModel("12345");
+        private PatientProfileViewModel viewModel = new PatientProfileViewModel("0105965123321");
         public PatientProfile()
         { 
             InitializeComponent();

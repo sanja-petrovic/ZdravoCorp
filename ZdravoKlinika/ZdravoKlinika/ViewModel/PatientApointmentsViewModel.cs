@@ -29,7 +29,7 @@ namespace ZdravoKlinika.ViewModel
         private ObservableCollection<Appointment> selectedDateAppointments = new ObservableCollection<Appointment>();
         public PatientApointmentsViewModel()
         {
-            foreach(Appointment app in Controller.GetAppointmentsByPatientId("12345"))
+            foreach(Appointment app in Controller.GetAppointmentsByPatientId("0105965123321"))
             {
                 AppointmentDates.Add(app.DateAndTime.Date);
             }
@@ -120,7 +120,7 @@ namespace ZdravoKlinika.ViewModel
 
         public void GetSelectedDateAppointments(DateTime date)
         {
-            SelectedDateAppointments = new ObservableCollection<Appointment> (controller.GetAppointmentsByPatientIdForDate("12345", date));
+            SelectedDateAppointments = new ObservableCollection<Appointment> (controller.GetAppointmentsByPatientIdForDate("0105965123321", date));
             
         }
     }

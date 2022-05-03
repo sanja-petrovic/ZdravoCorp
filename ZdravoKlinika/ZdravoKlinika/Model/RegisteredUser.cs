@@ -30,13 +30,15 @@ public class RegisteredUser
 
     public string GenderToString()
     {
-        if(this.gender == Gender.Female)
+        if (this.gender == Gender.Female)
         {
             return "Ženski";
-        } else
+        }
+        else
         {
             return "Muški";
         }
+    }
 
     public static RegisteredUser Parse(String id)
     {

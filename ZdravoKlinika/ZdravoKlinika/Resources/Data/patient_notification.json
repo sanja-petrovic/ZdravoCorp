@@ -1,23 +1,51 @@
 [
   {
-    "Prescription": "8",
+    "Prescription": 8,
     "NotificationId": 1,
     "NotificationText": "prepisan lek",
-    "Reciver": "12345",
+    "Reciver": "0105965123321",
     "Sender": "D1"
   },
   {
-    "Prescription": "11",
+    "Prescription": 11,
     "NotificationId": 2,
     "NotificationText": "prepisan lek",
-    "Reciver": "12345",
-    "Sender": null
+    "Reciver": "0105965123321",
+    "Sender": "456"
   },
   {
-    "Prescription": "12",
+    "Prescription": 12,
     "NotificationId": 3,
     "NotificationText": "prepisan lek",
-    "Reciver": "12345",
-    "Sender": null
+    "Reciver": "0105965123321",
+    "Sender": "456"
+  },
+  {
+    "Prescription": 13,
+    "NotificationId": 4,
+    "NotificationText": "prepisan lek",
+    "Reciver": "1510963123321",
+    "Sender": "456"
+  },
+  {
+    "Prescription": 14,
+    "NotificationId": 5,
+    "NotificationText": "prepisan lek",
+    "Reciver": "1510963123321",
+    "Sender": "456"
+  },
+  {
+    "Prescription": 15,
+    "NotificationId": 6,
+    "NotificationText": "prepisan lek",
+    "Reciver": "1510963123321",
+    "Sender": "456"
+  },
+  {
+    "Prescription": 16,
+    "NotificationId": 7,
+    "NotificationText": "prepisan lek",
+    "Reciver": "0105965123321",
+    "Sender": "456"
   }
 ]

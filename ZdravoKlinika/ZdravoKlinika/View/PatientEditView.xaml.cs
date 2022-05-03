@@ -22,7 +22,7 @@ namespace ZdravoKlinika.View
     /// </summary>
     public partial class PatientEditView : Page
     {
-        private string patientId = "12345";
+        private string patientId = "0105965123321";
         private AppointmentController appointmentController = new AppointmentController();
         private DoctorController doctorController = new DoctorController();
         private RegisteredPatientController registeredPatientController = new RegisteredPatientController();
