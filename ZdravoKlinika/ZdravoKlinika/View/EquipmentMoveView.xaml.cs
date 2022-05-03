@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace ZdravoKlinika.View
 {
-    /// <summary>
-    /// Interaction logic for EquipmentMoveView.xaml
-    /// </summary>
     public partial class EquipmentMoveView : Window
     {
         private MoveController moveController;
@@ -38,7 +35,7 @@ namespace ZdravoKlinika.View
             Equipment = new ObservableCollection<Equipment>(this.equipmentController.GetAll());
             sourceRoomListBox.ItemsSource = Rooms;
             destinationRoomListBox.ItemsSource = Rooms;
-            equipmentDataGrid.ItemsSource = this.Equipment;
+            equipmentDataGrid.ItemsSource = Equipment;
         }
 
         private void spremiButton_Click(object sender, RoutedEventArgs e)
