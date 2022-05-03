@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using ZdravoKlinika.Model;
 
-namespace JsonConverters 
+namespace JsonConverters
 {
     public class MedicalRecordConverter : JsonConverter<MedicalRecord>
     {
@@ -95,8 +95,8 @@ namespace JsonConverters
     public class MedicationConverter : JsonConverter<Medication>
     {
         public override Medication Read(
-            ref Utf8JsonReader reader, 
-            Type typeToConvert, 
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
             JsonSerializerOptions options) => Medication.Parse(reader.GetString());
 
 
@@ -106,6 +106,21 @@ namespace JsonConverters
             JsonSerializerOptions options) => writer.WriteStringValue(medication.MedicationId);
     }
 
+    public class EquipmentConverter : JsonConverter<Equipment>
+    {
+        public override Equipment Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) =>
+                Equipment.Parse(reader.GetString());
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            Equipment eq,
+            JsonSerializerOptions options) =>
+                writer.WriteStringValue(eq.Id + "," + eq.Amount);
+    }
+    
     public class PrescriptionConverter : JsonConverter<Prescription>
     {
         public override Prescription Read(
@@ -119,4 +134,5 @@ namespace JsonConverters
             JsonSerializerOptions options) => writer.WriteNumberValue(prescription.Id);
 
     }
+
 }

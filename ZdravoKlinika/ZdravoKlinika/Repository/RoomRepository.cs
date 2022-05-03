@@ -7,16 +7,20 @@ public class RoomRepository
     private RoomDataHandler roomDataHandler;
     private List<Room> rooms;
     private List<Room> freeRooms;
+    private List<Room> renovatableRooms;
     private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "room.json";
+
+    public RoomDataHandler RoomDataHandler { get => roomDataHandler; set => roomDataHandler = value; }
 
     public RoomRepository()
     {
         this.roomDataHandler = new RoomDataHandler(fileLocation);
         this.rooms = this.roomDataHandler.Read();
-        this.freeRooms = new List<Room>();
+        this.freeRooms = new List<Room>();    
+        this.renovatableRooms = new List<Room>();
     }
 
-    public List<Room> Room
+    public List<Room> Rooms
     {
         get
         {
@@ -34,9 +38,7 @@ public class RoomRepository
             }
         }
     }
-
-    public RoomDataHandler RoomDataHandler { get => roomDataHandler; set => roomDataHandler = value; }
-
+   
     public void AddRoom(Room newRoom)
     {
         if (newRoom == null)
@@ -79,17 +81,53 @@ public class RoomRepository
 
         return null;
     }
-
-    public List<Room> GetFreeRooms()
+    public List<Room> GetFreeRooms(DateTime enteredTime)
     {
-        foreach (Room r in this.rooms)
+        freeRooms.Clear();
+        AppointmentRepository appointmentRepository = new AppointmentRepository();
+        List<Appointment> appointments = appointmentRepository.GetAll();
+
+        DateTime appointmentStart;
+        DateTime appointmentEnd;
+
+        foreach (Appointment app in appointments)
         {
-            if(r.Status == RoomStatus.available)
+            appointmentStart = app.DateAndTime;
+            appointmentEnd = appointmentStart.AddMinutes(app.Duration);
+            if ((enteredTime > appointmentStart) && (enteredTime < appointmentEnd))
+            {
+                //app.Room JE ZAUZETA U NAVEDENOM TERMINU
+                app.Room.Free = false;
+            }
+            else
+            {
+                //app.Room JE SLOBODNA U NAVEDENOM TERMINU
+                app.Room.Free = true;
+            }
+        }
+
+        foreach (Room r in rooms)
+        {
+            if (r.Free)
             {
                 freeRooms.Add(r);
             }
         }
+
         return freeRooms;
+    }
+
+    public List<Room> GetRenovatableRooms()
+    {
+        renovatableRooms.Clear();
+        foreach (Room r in rooms)
+        {
+            if(r.Status == RoomStatus.occupied || r.Status == RoomStatus.available)
+            {
+                renovatableRooms.Add(r);
+            }
+        }
+        return renovatableRooms;
     }
 
     public void CreateRoom(Room room)
@@ -122,6 +160,7 @@ public class RoomRepository
                     r.Level = room.Level;
                     r.Number = room.Number;
                     r.Status = room.Status;
+                    r.Free = room.Free;
                 }
             }
         roomDataHandler.Write(this.rooms);
@@ -132,7 +171,8 @@ public class RoomRepository
         if (room == null)
             return;
         room.Status = RoomStatus.occupied;
-       UpdateRoom(room);
+        room.Free = false;
+        UpdateRoom(room);
     }
 
     public void FreeRoom(Room room)
@@ -140,6 +180,7 @@ public class RoomRepository
         if (room == null)
             return;
         room.Status = RoomStatus.available;
+        room.Free = true;
         UpdateRoom(room);
     }
 
@@ -148,6 +189,7 @@ public class RoomRepository
         if (room == null)
             return;
         room.Status = RoomStatus.renovation;
+        room.Free = false;
         UpdateRoom(room);
     }
 }

@@ -27,6 +27,9 @@ public class AppointmentDataHandler
 
     public List<Appointment> Read()
     {
+        string jsonString = File.ReadAllText(fileLocation);
+        List<Appointment> appointments = new List<Appointment>();
+
         JsonSerializerOptions options = new JsonSerializerOptions();
         options.Converters.Add(new DoctorConverter());
         options.Converters.Add(new PatientConverter());

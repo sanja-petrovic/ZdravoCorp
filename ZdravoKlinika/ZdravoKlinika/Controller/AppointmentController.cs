@@ -77,7 +77,6 @@ public class AppointmentController
     {
         this.appointmentService.EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
     }
-
     public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)
     {
         this.appointmentService.LogAppointment(appointment, diagnoses, doctorsNote);

@@ -1,46 +1,43 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using JsonConverters;
 
-public class MoveDataHandler
+public class RenovationDataHandler
 {
     private String fileLocation;
 
     public String FileLocation { get => fileLocation; set => fileLocation = value; }
 
-    public MoveDataHandler(string fileLocation)
+    public RenovationDataHandler(string fileLocation)
     {
         this.fileLocation = fileLocation;
     }
 
-    public void Write(List<Move> moves)
+    public void Write(List<Renovation> renovationList)
     {
         JsonSerializerOptions options = new JsonSerializerOptions();
         options.WriteIndented = true;
         options.Converters.Add(new RoomConverter());
-        options.Converters.Add(new EquipmentConverter());
-        var json = JsonSerializer.Serialize(moves, options);
+        var json = JsonSerializer.Serialize(renovationList, options);
         File.WriteAllText(fileLocation, json);
     }
 
-    public List<Move> Read()
+    public List<Renovation> Read()
     {
         string jsonString = File.ReadAllText(fileLocation);
-        List<Move> moves = new List<Move>();
+        List<Renovation> renovations = new List<Renovation>();
 
         JsonSerializerOptions options = new JsonSerializerOptions();
         options.Converters.Add(new RoomConverter());
-        options.Converters.Add(new EquipmentConverter());
 
         if (jsonString != "")
         {
-            moves = JsonSerializer.Deserialize<List<Move>>(jsonString, options);
+            renovations = JsonSerializer.Deserialize<List<Renovation>>(jsonString, options);
         }
 
-        return moves;
+        return renovations;
     }
 
 }

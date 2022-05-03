@@ -275,7 +275,6 @@ public class AppointmentService
         this.appointmentRepository.EditAppointment(appointment);
 
     }
-
     public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)
     {
         appointment.Diagnoses = diagnoses;
