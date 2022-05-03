@@ -56,7 +56,9 @@ namespace ZdravoKlinika.View.Secretary
             String ECname = TextBoxECName.Text;
             String ECphone = TextBoxECPhone.Text;
 
-            String profilePic = ProfilePicImage.Source.ToString();
+            Uri uripath = new Uri(ProfilePicImage.Source.ToString());
+
+            String profilePic = (uripath.MakeRelativeUri(uripath)).ToString();
 
             registeredPatientController.CreatePatient(personalID, name, lastname, dateOfBirth, gender, phone, email, password, profilePic, street, stnumber, city, country, bloodType, occupation, ECname, ECphone, allergies, diagnosis);
             NavigationService.RemoveBackEntry();
@@ -71,7 +73,7 @@ namespace ZdravoKlinika.View.Secretary
                 BitmapImage bitim = new BitmapImage();
                 bitim.BeginInit();
                 Uri uripath = new Uri(openFileDialog.FileName);
-                bitim.UriSource = new Uri(uripath.AbsoluteUri);
+                bitim.UriSource = new Uri(uripath.LocalPath);
                 bitim.DecodePixelHeight = 140;
                 bitim.DecodePixelWidth = 140;
                 bitim.EndInit();

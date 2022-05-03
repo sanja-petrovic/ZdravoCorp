@@ -20,6 +20,10 @@ namespace ZdravoKlinika.Model
         public string Lastname { get => lastname; set => lastname = value; }
         public PatientType PatientType { get => patientType; set => patientType = value; }
 
+        public GuestPatient() { 
+            PatientType = PatientType.Guest;
+            UserType = UserType.Patient;
+        }
         public static GuestPatient Parse(String id)
         {
             GuestPatient patient = new GuestPatient();
@@ -45,6 +49,14 @@ namespace ZdravoKlinika.Model
         public String GetPatientId()
         {
             return PersonalId;
+        }
+        public String GetName()
+        {
+            return Name;
+        }
+        public String GetLastname()
+        {
+            return Lastname;
         }
     }
 }

@@ -204,6 +204,7 @@ public class AppointmentRepository
             if (a.AppointmentId == a.AppointmentId)
             {
                 index = this.appointments.IndexOf(a);
+
             }
         }
 
@@ -212,7 +213,6 @@ public class AppointmentRepository
             Console.WriteLine("Error");
             return;
         }
-
         appointments[index] = appointment;
         this.appointmentDataHandler.Write(this.appointments);
 

@@ -175,10 +175,19 @@ public class AppointmentService
             return result;
         }
     }
-    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, RegisteredPatient patient, int startHours, int endHours)
+    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
     {
         List<DateBlock> result = new List<DateBlock>();
-         List<Appointment> appointments = GetAppointmentsByPatientIdForDate(patient.PersonalId, date.Date);
+        List<Appointment> appointments = new List<Appointment>();
+        if (patient.GetPatientType() == PatientType.Registered)
+        {
+            appointments = GetAppointmentsByPatientIdForDate(((RegisteredPatient)patient).PersonalId, date.Date);
+        }
+        else 
+        {
+            appointments = GetAppointmentsByPatientIdForDate(((GuestPatient)patient).PersonalId, date.Date);
+        }
+         
          {
              if (appointments.Count == 0)
              {
@@ -267,13 +276,24 @@ public class AppointmentService
         Room room = roomRepository.GetById(roomId);
         Patient pat = patientRepository.GetById(patientId);
 
-        appointment.DateAndTime = dateAndTime;
-        appointment.Emergency = emergency;
-        appointment.Patient = pat;
-        appointment.Doctor = doc;
-        appointment.Room = room;
+        List<DateBlock> t = DateBlock.getIntersection(getFreeTimeForDoctor(dateAndTime.Date, duration, doc, 8, 20), getFreeTimeForPatient(dateAndTime.Date, duration, pat, 8, 20));
 
-        this.appointmentRepository.EditAppointment(appointment);
+        foreach (DateBlock block in t) 
+        {
+            if (block.Start.TimeOfDay.Equals(dateAndTime.TimeOfDay) || dateAndTime.TimeOfDay.Equals(appointment.DateAndTime.TimeOfDay))
+            {
+                appointment.DateAndTime = dateAndTime;
+                appointment.Emergency = emergency;
+                appointment.Patient = pat;
+                appointment.Doctor = doc;
+                appointment.Room = room;
+
+                this.appointmentRepository.EditAppointment(appointment);
+                return;
+            }
+        }
+
+        
 
     }
     public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Model;
 using ZdravoKlinika.Util;
 
 public class AppointmentController
@@ -59,7 +60,7 @@ public class AppointmentController
     {
         return this.appointmentService.getFreeTimeForDoctor(date, duration, doctor, startHours, endHours);
     }
-    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, RegisteredPatient patient, int startHours, int endHours)
+    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
     {
         return this.appointmentService.getFreeTimeForPatient(date, duration, patient, startHours, endHours);
     }

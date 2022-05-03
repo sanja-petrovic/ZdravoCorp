@@ -22,7 +22,14 @@ namespace ZdravoKlinika.Model
         {
             return null;
         }
-
+        public String GetName()
+        {
+            return null;
+        }
+        public String GetLastname()
+        {
+            return null;
+        }
         public String GetPatientFullName()
         {
             return null;

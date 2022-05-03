@@ -29,11 +29,16 @@ namespace ZdravoKlinika.View.Secretary
 
         private void CheckForPatient(object sender, RoutedEventArgs e)
         {
-            RegisteredPatient pat = registeredPatientController.GetById(TextBoxPID.Text);
-            if (pat != null)
+            RegisteredPatient? pat = registeredPatientController.GetById(TextBoxPID.Text);
+            if (pat != null) 
+            {
                 if (pat.Name.Equals(TextBoxName.Text) && pat.Lastname.Equals(TextBoxLastname.Text))
+                {
                     NavigationService.RemoveBackEntry();
                     NavigationService.Navigate(new SecretaryUpdateDeletePatientPage(TextBoxPID.Text));
+                }
+            }
+                
         }
     }
 }

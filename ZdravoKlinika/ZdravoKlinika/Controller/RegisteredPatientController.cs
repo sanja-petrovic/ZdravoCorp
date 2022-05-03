@@ -17,7 +17,7 @@ public class RegisteredPatientController
         return  patientService.GetAll();
     }
 
-    public RegisteredPatient GetById(String id)
+    public RegisteredPatient? GetById(String id)
     {
         return patientService.GetById(id);
     }

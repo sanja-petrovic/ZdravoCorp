@@ -46,7 +46,6 @@ namespace ZdravoKlinika.ViewModel
             {
                 this.Name = patient.Name;
                 this.LastName = patient.Lastname;
-                //this.ParentName = patient.ParentName;
                 this.DateOfBirth = patient.DateOfBirth.ToString();
                 this.Gender = patient.Gender.ToString();
                 this.PhoneNumber = patient.Phone;

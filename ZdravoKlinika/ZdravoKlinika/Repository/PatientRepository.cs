@@ -89,18 +89,16 @@ namespace ZdravoKlinika.Repository
             return null;
         }
 
-        public void CreatePatient(String id, PatientType type)
+        public void CreateNewGuestPatient(String id, String name, String lastname)
         {
-            if (type == PatientType.Registered)
-            {
-                Patient pat = RegisteredPatientRepository.GetById(id);
-                AddPatient(pat);
-            }
-            else if (type == PatientType.Guest)
-            {
-                Patient pat = GuestPatientRepository.GetById(id);
-                AddPatient(pat);
-            }
+            GuestPatient guestPatient = new GuestPatient();
+            guestPatient.Name = name;
+            guestPatient.Lastname = lastname;
+            guestPatient.PersonalId = id;
+
+            patients.Add(guestPatient);
+            GuestPatientRepository.AddGuestPatient(guestPatient);
+            return;
         }
 
         public List<Patient> GetAll()
