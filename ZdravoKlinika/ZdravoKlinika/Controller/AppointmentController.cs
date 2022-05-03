@@ -67,4 +67,9 @@ public class AppointmentController
         this.appointmentService.EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
     }
 
+    public List<Appointment> GetAppointmentsByRoom(String roomId)
+    {
+        return this.appointmentService.GetAppointmentsByRoom(roomId);
+    } 
+
 }

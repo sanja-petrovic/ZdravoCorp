@@ -29,11 +29,6 @@ namespace ZdravoKlinika
         {
             View.DoctorWindow doctorWindow = new View.DoctorWindow();
             doctorWindow.Show();
-            PrescriptionController prescriptionController = new PrescriptionController();
-            MedicationController medicationController = new MedicationController();
-            RegisteredPatientController registeredPatientController = new RegisteredPatientController();
-
-            prescriptionController.Prescribe(new Doctor(), registeredPatientController.GetById("12345"), new Medication(), 1, 7, 1, "2tbl", "dnevno", "Ujutru pre dorucka", true, true);
         }
 
         private void secretaryButton_Click(object sender, RoutedEventArgs e)

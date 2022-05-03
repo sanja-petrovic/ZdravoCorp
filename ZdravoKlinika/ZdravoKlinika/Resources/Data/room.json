@@ -52,5 +52,15 @@
     "Level": 2,
     "Number": 15,
     "Status": 1
+  },
+
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "314",
+    "Type": 1,
+    "Name": "R10",
+    "Level": 3,
+    "Number": 14,
+    "Status": 0
   }
 ]

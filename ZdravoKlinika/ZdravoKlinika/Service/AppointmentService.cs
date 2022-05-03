@@ -266,4 +266,9 @@ public class AppointmentService
 
     }
 
+    public List<Appointment> GetAppointmentsByRoom(String roomId)
+    {
+       Room room = RoomRepository.GetById(roomId);
+       return this.appointmentRepository.GetAppointmentsByRoom(room);
+    }
 }
