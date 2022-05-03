@@ -4,7 +4,7 @@ using System;
 public class Doctor : Employee
 {
     private String specialty;
-    private String education; //TODO delete
+    //private String education;
 
     public Doctor()
     {
@@ -12,7 +12,7 @@ public class Doctor : Employee
     }
 
     public string Specialty { get => specialty; set => specialty = value; }
-    public string Education { get => education; set => education = value; }
+    //public string Education { get => education; set => education = value; }
 
     public bool IsSpecialist()
     {
@@ -24,5 +24,10 @@ public class Doctor : Employee
         Doctor doc = new Doctor();
         doc.PersonalId = id;
         return doc;
+    }
+
+    public string ToString()
+    {
+        return "Dr " + this.Name + " " + this.Lastname;
     }
 }

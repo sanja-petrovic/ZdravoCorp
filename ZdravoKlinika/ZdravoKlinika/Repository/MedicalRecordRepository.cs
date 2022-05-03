@@ -77,6 +77,13 @@ namespace ZdravoKlinika.Repository
             MedicalRecordDataHandler.Write(medicalRecords);
             return;
         }
+        public void UpdateMedicalRecord(MedicalRecord medicalRecord)
+        {
+            MedicalRecord rec = GetById(medicalRecord.MedicalRecordId);
+            rec = medicalRecord;
+            MedicalRecordDataHandler.Write(medicalRecords);
+            return;
+        }
         public void DeleteAllMedicalRecord()
         {
             if (medicalRecords != null)
@@ -96,6 +103,8 @@ namespace ZdravoKlinika.Repository
 
         public MedicalRecord? GetById(String id)
         {
+            this.medicalRecords = this.medicalRecordDataHandler.Read();
+            UpdateReferences();
             foreach (MedicalRecord record in this.medicalRecords)
             {
                 if (record.MedicalRecordId.Equals(id))
@@ -106,23 +115,15 @@ namespace ZdravoKlinika.Repository
             return null;
         }
 
-        public void AddCurrentMedication(MedicalRecord medicalRecord, Medication medication)
+        public void AddCurrentMedication(String medicalRecordId, Medication medication)
         {
+            MedicalRecord medicalRecord = this.GetById(medicalRecordId);
             medicalRecord.AddCurrentMedication(medication);
             this.DeleteMedicalRecord(medicalRecord);
             this.medicalRecords.Add(medicalRecord);
 
             MedicalRecordDataHandler.Write(this.medicalRecords);
-        }
 
-        public void AddCurrentMedication(String id, Medication medication)
-        {
-            MedicalRecord medicalRecord = this.GetById(id);
-            medicalRecord.AddCurrentMedication(medication);
-            this.DeleteMedicalRecord(medicalRecord);
-            this.medicalRecords.Add(medicalRecord);
-
-            MedicalRecordDataHandler.Write(this.medicalRecords);
         }
 
     }

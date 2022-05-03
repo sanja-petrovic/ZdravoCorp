@@ -25,7 +25,7 @@ namespace ZdravoKlinika.Service
 
         public void AddCurrentMedication(String id, Medication medication)
         {
-            this.medicalRecordRepository.AddCurrentMedication(this.GetById(id), medication);
+            this.medicalRecordRepository.AddCurrentMedication(id, medication);
         }
     }
 }

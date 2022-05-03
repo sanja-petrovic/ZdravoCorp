@@ -10,7 +10,7 @@ namespace ZdravoKlinika.Model
     {
         public PatientType GetPatientType() 
         {
-            return PatientType.none;
+            return PatientType.Null;
         }
 
         public bool IsPatientById(String id) 
@@ -22,6 +22,12 @@ namespace ZdravoKlinika.Model
         {
             return null;
         }
+
+        public String GetPatientFullName()
+        {
+            return null;
+        }
+
         public static Patient Parse(String data)
         {
             String[] splitData = data.Split(',');

@@ -42,6 +42,17 @@ public class RegisteredPatientRepository
         }
     }
 
+    public void recordUpdated(RegisteredPatient p)
+    {
+        foreach (RegisteredPatient patient in this.patients)
+        {
+            if (patient.PersonalId.Equals(p.PersonalId))
+            {
+                patient.MedicalRecord = MedicalRecordRepository.GetById(patient.MedicalRecord.MedicalRecordId);
+            }
+        }
+
+    }
 
     public RegisteredPatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
     public MedicalRecordRepository MedicalRecordRepository { get => medicalRecordRepository; set => medicalRecordRepository = value; }
@@ -123,9 +134,33 @@ public class RegisteredPatientRepository
         }
 
         patients[index] = patient;
+
+        MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
         PatientsDataHandler.Write(patients);
         
         return;
+    }
+
+    public bool IsAllergic(Medication medication, RegisteredPatient patient)
+    {
+        List<string> allergies = patient.MedicalRecord.Allergies;
+        foreach(string allergy in allergies)
+        {
+            if(medication.BrandName.Equals(allergy))
+            {
+                return true;
+            } else
+            {
+                foreach(string allergen in medication.Allergens)
+                {
+                    if(allergen.Equals(allergy))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
 }

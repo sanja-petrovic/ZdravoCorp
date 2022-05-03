@@ -1,15 +1,209 @@
 [
-    {
-        "Prescriptions": [],
-        "AppointmentId": 1,
-        "DateAndTime": "2022-05-03T17:30:00",
-        "Diagnoses": null,
-        "DoctorsNotes": null,
-        "Type": "Regular",
-        "Emergency": false,
-        "Duration": 30,
-        "Doctor": "D1",
-        "Patient": "12345,Registered",
-        "Room": "314"
-    }
+  {
+    "AppointmentId": 1,
+    "DateAndTime": "2022-05-02T11:00:00",
+    "Diagnoses": ":(",
+    "DoctorsNotes": "dgffsfds",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 2,
+    "DateAndTime": "2022-04-30T11:00:00",
+    "Diagnoses": "ooooo",
+    "DoctorsNotes": "stvarno?",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 3,
+    "DateAndTime": "2022-04-30T12:00:00",
+    "Diagnoses": "Problem2234",
+    "DoctorsNotes": ":/",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 4,
+    "DateAndTime": "2022-04-28T09:00:00",
+    "Diagnoses": "Hypertension",
+    "DoctorsNotes": "Pacijent se \u017Ealio na povi\u0161en krvni pritisak koji mu mesecima pravi probleme.",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 5,
+    "DateAndTime": "2022-05-02T11:00:00",
+    "Diagnoses": ":OO",
+    "DoctorsNotes": ":/",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 6,
+    "DateAndTime": "2022-05-02T13:00:00",
+    "Diagnoses": "fdsfsdf",
+    "DoctorsNotes": "fdsfds",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [
+      {
+        "MedicationId": "2",
+        "BrandName": "Brufen",
+        "Dosage": "400mg",
+        "Notes": [],
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
+        ]
+      }
+    ]
+  },
+  {
+    "AppointmentId": 7,
+    "DateAndTime": "2022-05-02T11:00:00",
+    "Diagnoses": "sdsa",
+    "DoctorsNotes": "dsad",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [
+      {
+        "MedicationId": "1",
+        "BrandName": "Brufen",
+        "Dosage": "200mg",
+        "Notes": [],
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
+        ]
+      },
+      {
+        "MedicationId": "3",
+        "BrandName": "Caffetin cold",
+        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
+        "Notes": [],
+        "MedicationCode": "N02BE51",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
+        ],
+        "Allergens": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
+        ]
+      }
+    ]
+  },
+  {
+    "AppointmentId": 8,
+    "DateAndTime": "2022-05-03T11:00:00",
+    "Diagnoses": "test1234",
+    "DoctorsNotes": "test2",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 9,
+    "DateAndTime": "2022-05-03T11:00:00",
+    "Diagnoses": "adsdf",
+    "DoctorsNotes": "asfds",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [
+      {
+        "MedicationId": "5",
+        "BrandName": "Hemomycin",
+        "Dosage": "250mg",
+        "Notes": [],
+        "MedicationCode": "J01FA10",
+        "Form": "kapsula, tvrda",
+        "ActiveSubstances": [
+          "azitromicin"
+        ],
+        "Allergens": [
+          "azitromicin"
+        ]
+      }
+    ]
+  },
+  {
+    "AppointmentId": 10,
+    "DateAndTime": "2022-05-04T11:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": []
+  }
 ]

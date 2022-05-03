@@ -9,5 +9,6 @@ public enum BloodType
     ABPositive,
     ABNegative,
     OPositive,
-    ONegative
+    ONegative,
+    Null
 }

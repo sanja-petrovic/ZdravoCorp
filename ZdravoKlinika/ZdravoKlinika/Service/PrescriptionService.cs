@@ -11,14 +11,28 @@ namespace ZdravoKlinika.Service
     internal class PrescriptionService
     {
         private PrescriptionRepository prescriptionRepository;
+        private MedicalRecordRepository medicalRecordRepository;
+        private RegisteredPatientRepository registeredPatientRepository;
+        private DoctorRepository doctorRepository;
+        private RegisteredPatientRepository patientRepository;
+        private MedicationRepository medicationRepository;
+        
         private MedicalRecordService medicalRecordService;
+        private PatientMedicationNotificationService patientMedicationNotificationService;
         //private MedicalRecordRepository medicalRecordRepository;
 
         public PrescriptionService()
         {
             prescriptionRepository = new PrescriptionRepository();
+            //medicalRecordService = new MedicalRecordService();
+            this.registeredPatientRepository = new RegisteredPatientRepository();
+            medicalRecordRepository = new MedicalRecordRepository();
+            this.doctorRepository = new DoctorRepository();
+            this.patientRepository = new RegisteredPatientRepository();
+            this.medicationRepository = new MedicationRepository();
             medicalRecordService = new MedicalRecordService();
-            //medicalRecordRepository = new MedicalRecordRepository();
+            patientMedicationNotificationService = new PatientMedicationNotificationService();        
+
         }
 
         public List<Prescription> GetAll()
@@ -31,21 +45,42 @@ namespace ZdravoKlinika.Service
             return this.prescriptionRepository.GetById(id);
         }
 
-        public void Prescribe(Doctor doctor, RegisteredPatient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency)
+        public void Prescribe(Doctor doctor, RegisteredPatient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote)
         {
-            /*int prescriptionId = 1;
-            if(this.prescriptionRepository.GetAll().Count > 0)
-            {
-                prescriptionId = this.prescriptionRepository.GetAll().Last().Id + 1;
-            }*/
-
             int prescriptionId = (this.prescriptionRepository.GetAll().Count > 0) ? this.prescriptionRepository.GetAll().Last().Id + 1 : 1;
 
+            Prescription prescription = new Prescription(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote, prescriptionId);
+            //medicalRecordService.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
+            medicalRecordRepository.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
+            this.registeredPatientRepository.recordUpdated(patient);
+
             Prescription prescription = new Prescription(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote, noAlternatives, emergency, prescriptionId);
+            prescription.DateOfCreation = DateTime.Now;
             medicalRecordService.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
             //medicalRecordRepository.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
-            this.prescriptionRepository.Prescribe(prescription);
 
+            this.prescriptionRepository.Prescribe(prescription);
+            //make a notif
+            patientMedicationNotificationService.CreateNotification(doctor, patient, "prepisan lek", prescription);
+        }
+
+        public void Prescribe(Prescription prescription)
+        {
+            int prescriptionId = (this.prescriptionRepository.GetAll().Count > 0) ? this.prescriptionRepository.GetAll().Last().Id + 1 : 1;
+            prescription.Id = prescriptionId;
+            medicalRecordRepository.AddCurrentMedication(prescription.RegisteredPatient.MedicalRecord.MedicalRecordId, prescription.Medication);
+            this.registeredPatientRepository.recordUpdated(prescription.RegisteredPatient);
+            this.prescriptionRepository.Prescribe(prescription);
+            //make a notif
+            patientMedicationNotificationService.CreateNotification(doctor, patient, "prepisan lek", prescription);
+        }
+
+        public void CreatePrescription(String doctorId, String patientId, String medicationId, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote)
+        {
+            Doctor doctor = this.doctorRepository.GetById(doctorId);
+            RegisteredPatient patient = this.patientRepository.GetById(patientId);
+            Medication medication = this.medicationRepository.GetById(medicationId);
+            //this.prescriptionService.Create(doctorId, patientId, medicationId, amount, duration, frequency, singleDose, repeat, doctorsNote, noAlternatives, emergency);
         }
     }
 }

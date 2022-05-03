@@ -38,9 +38,9 @@ namespace ZdravoKlinika.View
             alergies.Add(TextBoxAlergies.Text);
             List<String> diag = new List<String>();
             diag.Add(TextBoxDiagnosis.Text);
-            PatientController.CreatePatient(TextBoxID.Text, TextBoxName.Text, TextBoxLastName.Text, (DateTime)picker.SelectedDate, (Gender)int.Parse(TextBoxGender.Text), TextBoxPhone.Text,
-                TextBoxEmail.Text, TextBoxPassword.Text, TextBoxProfilepic.Text, new Address(TextBoxAddress.Text), TextBoxParrentName.Text, (BloodType)int.Parse(TextBoxBlood.Text),
-                TextBoxOccupation.Text, TextBoxECName.Text, TextBoxECPhone.Text, alergies, diag);
+            // PatientController.CreatePatient(TextBoxID.Text, TextBoxName.Text, TextBoxLastName.Text, (DateTime)picker.SelectedDate, (Gender)int.Parse(TextBoxGender.Text), TextBoxPhone.Text,
+            //TextBoxEmail.Text, TextBoxPassword.Text, TextBoxProfilepic.Text, new Address(TextBoxAddress.Text), TextBoxParrentName.Text, (BloodType)int.Parse(TextBoxBlood.Text),
+             //   TextBoxOccupation.Text, TextBoxECName.Text, TextBoxECPhone.Text, alergies, diag);
             ReadAll();
 
         }
@@ -54,7 +54,7 @@ namespace ZdravoKlinika.View
 
         private void Update(object sender, RoutedEventArgs e)
         {
-            PatientController.UpdatePatient(TextBoxID.Text, TextBoxName.Text, TextBoxLastName.Text, TextBoxPhone.Text, TextBoxEmail.Text, TextBoxPassword.Text, TextBoxProfilepic.Text, TextBoxParrentName.Text, TextBoxOccupation.Text, TextBoxECName.Text, TextBoxECPhone.Text);
+            //PatientController.UpdatePatient(TextBoxID.Text, TextBoxName.Text, TextBoxLastName.Text, TextBoxPhone.Text, TextBoxEmail.Text, TextBoxPassword.Text, TextBoxProfilepic.Text, TextBoxParrentName.Text, TextBoxOccupation.Text, TextBoxECName.Text, TextBoxECPhone.Text);
             ReadAll();
         }
 

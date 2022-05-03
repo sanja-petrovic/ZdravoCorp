@@ -20,6 +20,7 @@ public class AppointmentDataHandler
         options.Converters.Add(new PatientConverter());
         options.Converters.Add(new RoomConverter());
         options.Converters.Add(new JsonStringEnumConverter());
+        options.Converters.Add(new PrescriptionConverter());
         var json = JsonSerializer.Serialize(appointments, options);
         File.WriteAllText(fileLocation, json);
     }
@@ -34,12 +35,8 @@ public class AppointmentDataHandler
         options.Converters.Add(new PatientConverter());
         options.Converters.Add(new RoomConverter());
         options.Converters.Add(new JsonStringEnumConverter());
-
-        if (jsonString != "")
-        {
-           appointments = JsonSerializer.Deserialize<List<Appointment>>(jsonString, options);
-        }
-        return appointments;
+        options.Converters.Add(new PrescriptionConverter());
+        return JsonSerializer.Deserialize<List<Appointment>>(File.ReadAllText(fileLocation), options);
     }
 
 }

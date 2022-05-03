@@ -1,38 +1,27 @@
 [
   {
     "Diagnoses": [
-      "asdads"
+      ""
     ],
     "Allergies": [
-      "asdads"
+      ""
     ],
-    "CurrentMedication": [
-      {
-        "MedicationId": "1",
-        "BrandName": "Brufen",
-        "Dosage": "200mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ]
-      }
-    ],
-    "PastMedication": [
-      {
-        "MedicationId": "2",
-        "BrandName": "Brufen",
-        "Dosage": "400mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ]
-      }
-    ],
+    "CurrentMedication": [],
+    "PastMedication": [],
     "Reports": [],
-    "MedicalRecordId": "12345"
+    "MedicalRecordId": "1510963123321"
+  },
+  {
+    "Diagnoses": [
+      ""
+    ],
+    "Allergies": [
+      "Ma\u010Dja dlaka",
+      "penicilin"
+    ],
+    "CurrentMedication": [],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "0105965123321"
   }
 ]

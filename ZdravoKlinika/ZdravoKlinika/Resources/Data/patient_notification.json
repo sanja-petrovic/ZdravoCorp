@@ -1,0 +1,23 @@
+[
+  {
+    "Prescription": "8",
+    "NotificationId": 1,
+    "NotificationText": "prepisan lek",
+    "Reciver": "12345",
+    "Sender": "D1"
+  },
+  {
+    "Prescription": "11",
+    "NotificationId": 2,
+    "NotificationText": "prepisan lek",
+    "Reciver": "12345",
+    "Sender": null
+  },
+  {
+    "Prescription": "12",
+    "NotificationId": 3,
+    "NotificationText": "prepisan lek",
+    "Reciver": "12345",
+    "Sender": null
+  }
+]

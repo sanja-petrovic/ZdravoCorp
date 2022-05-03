@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Model
 {
-    internal class Prescription
+    public class Prescription
     {
         private DateTime dateOfCreation;
         Doctor doctor;
@@ -18,26 +18,15 @@ namespace ZdravoKlinika.Model
         private string singleDose;
         private string repeat;
         private string doctorsNote;
-        private bool noAlternatives;
-        private bool emergency;
         private int id;
 
-        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency, int id)
+        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, int id)
+
+        public Prescription()
         {
-            this.DateOfCreation = DateTime.Now;
-            this.doctor = doctor;
-            this.registeredPatient = registeredPatient;
-            this.medication = medication;
-            this.amount = amount;
-            this.duration = duration;
-            this.frequency = frequency;
-            this.singleDose = singleDose;
-            this.repeat = repeat;
-            this.doctorsNote = doctorsNote;
-            this.noAlternatives = noAlternatives;
-            this.emergency = emergency;
-            this.Id = id;
         }
+
+        public Prescription() { }
 
         public Medication Medication { get => medication; set => medication = value; }
         public int Amount { get => amount; set => amount = value; }
@@ -46,11 +35,21 @@ namespace ZdravoKlinika.Model
         public string SingleDose { get => singleDose; set => singleDose = value; }
         public string Repeat { get => repeat; set => repeat = value; }
         public string DoctorsNote { get => doctorsNote; set => doctorsNote = value; }
-        public bool NoAlternatives { get => noAlternatives; set => noAlternatives = value; }
-        public bool Emergency { get => emergency; set => emergency = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
         public RegisteredPatient RegisteredPatient { get => registeredPatient; set => registeredPatient = value; }
         public int Id { get => id; set => id = value; }
         public DateTime DateOfCreation { get => dateOfCreation; set => dateOfCreation = value; }
+
+        public static Prescription Parse(string id)
+        {
+            Prescription prescription = new Prescription();
+            int intId;
+            if(int.TryParse(id, out intId))
+            {
+                prescription.Id = intId;
+            }
+            return prescription;
+        }
+
     }
 }
