@@ -1,26 +1,13 @@
 [
   {
     "Prescriptions": [],
-    "AppointmentId": 1,
-    "DateAndTime": "2022-03-31T11:00:00",
+    "AppointmentId": 6,
+    "DateAndTime": "2022-05-06T14:30:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 45,
-    "Doctor": "D1",
-    "Patient": "12345,Registered",
-    "Room": "314"
-  },
-  {
-    "Prescriptions": [],
-    "AppointmentId": 3,
-    "DateAndTime": "2022-05-12T09:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 60,
+    "Duration": 30,
     "Doctor": "D1",
     "Patient": "12345,Registered",
     "Room": "314"
@@ -34,14 +21,40 @@
     "Type": "Regular",
     "Emergency": false,
     "Duration": 45,
+    "Doctor": "qwer",
+    "Patient": "12345,Registered",
+    "Room": "314"
+  },
+  {
+    "Prescriptions": [],
+    "AppointmentId": 3,
+    "DateAndTime": "2022-05-12T12:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 60,
+    "Doctor": "qwer",
+    "Patient": "12345,Registered",
+    "Room": "314"
+  },
+  {
+    "Prescriptions": [],
+    "AppointmentId": 4,
+    "DateAndTime": "2022-05-26T13:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Surgery",
+    "Emergency": false,
+    "Duration": 30,
     "Doctor": "D1",
     "Patient": "12345,Registered",
     "Room": "314"
   },
   {
     "Prescriptions": [],
-    "AppointmentId": 6,
-    "DateAndTime": "2022-05-06T11:00:00",
+    "AppointmentId": 5,
+    "DateAndTime": "2022-05-04T13:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
@@ -49,6 +62,32 @@
     "Duration": 30,
     "Doctor": "D1",
     "Patient": "12345,Registered",
+    "Room": "314"
+  },
+  {
+    "Prescriptions": [],
+    "AppointmentId": 6,
+    "DateAndTime": "2022-05-06T14:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "D1",
+    "Patient": "12345,Registered",
+    "Room": "314"
+  },
+  {
+    "Prescriptions": [],
+    "AppointmentId": 7,
+    "DateAndTime": "2022-05-12T12:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 45,
+    "Doctor": "D1",
+    "Patient": "12345asf,Guest",
     "Room": "314"
   }
 ]

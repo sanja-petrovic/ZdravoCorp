@@ -26,14 +26,25 @@ namespace ZdravoKlinika.View.Secretary
             Select(BorderHomePage);
         }
 
-        private void HambuergerMenuIcon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void HambuergerMenuIcon_MouseLeftButtonUp(object sender, RoutedEventArgs e)
         {
+            /*
             if (HamburgerMenuFrame.Visibility == Visibility.Visible) 
             {
                 HamburgerMenuFrame.Visibility = Visibility.Collapsed;
                 return;
             }
             HamburgerMenuFrame.Visibility = Visibility.Visible;
+            */
+            if (HamburgerMenuFrame.Visibility == Visibility.Collapsed)
+                HamburgerMenuFrame.Visibility = Visibility.Visible;
+
+            if (HamburgerMenuFrame.IsChecked == false)
+            {
+                HamburgerMenuFrame.IsChecked = true;
+                return;
+            }
+            HamburgerMenuFrame.IsChecked = false;
         }
 
         private void HomeChangePage(object sender, RoutedEventArgs e)
@@ -43,7 +54,7 @@ namespace ZdravoKlinika.View.Secretary
                 MainContentFrame.RemoveBackEntry();
             MainContentFrame.Navigate(new SecretaryHomePage());
             MenuContentLabel.Content = "Pocetna";
-            HamburgerMenuFrame.Visibility = Visibility.Collapsed;
+            HamburgerMenuFrame.IsChecked = false;
         }
 
         private void AddPatientChangePage(object sender, RoutedEventArgs e)
@@ -53,7 +64,7 @@ namespace ZdravoKlinika.View.Secretary
                 MainContentFrame.RemoveBackEntry();
             MainContentFrame.Navigate(new SecretaryAddPatientPage());
             MenuContentLabel.Content = "Dodavanje pacijenta";
-            HamburgerMenuFrame.Visibility = Visibility.Collapsed;
+            HamburgerMenuFrame.IsChecked = false;
         }
 
         private void UpdatePatientPage(object sender, RoutedEventArgs e)
@@ -63,7 +74,7 @@ namespace ZdravoKlinika.View.Secretary
                 MainContentFrame.RemoveBackEntry();
             MainContentFrame.Navigate(new SecretaryChoosePatientUDPage());
             MenuContentLabel.Content = "Azuriranje i brisanje pacijenta";
-            HamburgerMenuFrame.Visibility = Visibility.Collapsed;
+            HamburgerMenuFrame.IsChecked = false;
         }
 
         private void Select(Border b)
@@ -72,6 +83,8 @@ namespace ZdravoKlinika.View.Secretary
             ChangeColorUnSelected(BorderAddPatient);
             ChangeColorUnSelected(BorderUDPatient);
             ChangeColorUnSelected(BorderHomePage);
+            ChangeColorUnSelected(BorderCrAppointment);
+
 
             // selected border
             ChangeColorSelected(b);
@@ -90,6 +103,16 @@ namespace ZdravoKlinika.View.Secretary
         private void ChangeColorUnSelected(Border b)
         {
             b.BorderThickness = new Thickness(0, 0, 0, 0);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Select(BorderCrAppointment);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryCreateAppointment());
+            MenuContentLabel.Content = "Kreiranje termina";
+            HamburgerMenuFrame.IsChecked = false;
         }
     }
 }

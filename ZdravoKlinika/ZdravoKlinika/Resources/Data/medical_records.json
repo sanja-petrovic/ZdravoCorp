@@ -1,10 +1,10 @@
 [
   {
     "Diagnoses": [
-      "asd    "
+      "asd     "
     ],
     "Allergies": [
-      "asd    "
+      "asd     "
     ],
     "CurrentMedication": [
       {
@@ -33,6 +33,42 @@
       }
     ],
     "Reports": [],
+    "MedicalRecordId": "12345"
+  },
+  {
+    "Diagnoses": [
+      "asd"
+    ],
+    "Allergies": [
+      "asd"
+    ],
+    "CurrentMedication": [],
+    "PastMedication": [],
+    "Reports": [],
     "MedicalRecordId": "asd"
+  },
+  {
+    "Diagnoses": [
+      "tyu"
+    ],
+    "Allergies": [
+      "tyu"
+    ],
+    "CurrentMedication": [],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "tyu"
+  },
+  {
+    "Diagnoses": [
+      "jkl"
+    ],
+    "Allergies": [
+      "jkl"
+    ],
+    "CurrentMedication": [],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "jkl"
   }
 ]

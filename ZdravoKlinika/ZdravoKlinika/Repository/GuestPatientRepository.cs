@@ -36,7 +36,7 @@ namespace ZdravoKlinika.Repository
         public GuestPatientRepository()
         { 
             GuestPatientDataHandler = new GuestPatientDataHandler();
-            Guests = GuestPatientDataHandler.Read();
+            guests = GuestPatientDataHandler.Read();
         }
 
         public void AddGuestPatient(GuestPatient newGuest)
@@ -47,6 +47,7 @@ namespace ZdravoKlinika.Repository
                 this.guests = new List<GuestPatient>();
             if (!this.guests.Contains(newGuest))
                 this.guests.Add(newGuest);
+            GuestPatientDataHandler.Write(Guests);
         }
         public void RemoveGuestPatient(GuestPatient oldGuest)
         {
@@ -55,11 +56,13 @@ namespace ZdravoKlinika.Repository
             if (this.guests != null)
                 if (this.guests.Contains(oldGuest))
                     this.guests.Remove(oldGuest);
+            GuestPatientDataHandler.Write(Guests);
         }
         public void RemoveAllGuestPatient()
         {
             if (guests != null)
                 guests.Clear();
+            GuestPatientDataHandler.Write(Guests);
         }
 
         public List<GuestPatient> GetAll() 

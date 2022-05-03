@@ -64,7 +64,6 @@ public class AppointmentRepository
                     if (appointment.Doctor.PersonalId.Equals(doc.PersonalId)) 
                     {
                         appointment.Doctor = doc;
-                        break;
                     }
                 }
             }
@@ -75,7 +74,6 @@ public class AppointmentRepository
                     if (appointment.Room.RoomId.Equals(room.RoomId))
                     {
                         appointment.Room = room;
-                        break;
                     }
                 }
             }
@@ -86,7 +84,6 @@ public class AppointmentRepository
                     if (appointment.Patient.GetPatientId().Equals(pat.GetPatientId()))
                     {
                         appointment.Patient = pat;
-                        break;
                     }
                 }
             }
@@ -187,12 +184,26 @@ public class AppointmentRepository
 
     public void EditAppointment(Appointment appointment)
     {
-        if (appointment == null)
+        int index = -1;
+        foreach (Appointment appointmentObject in this.Appointments)
+        {
+            if (appointmentObject.AppointmentId.Equals(appointment.AppointmentId))
+            {
+                index = Appointments.IndexOf(appointmentObject);
+            }
+        }
+
+        if (index == -1)
+        {
+            Console.WriteLine("Error");
             return;
-        if (this.appointments != null)
-            if (this.appointments.Contains(appointment))
-                this.appointments.Remove(appointment);
-        this.CreateAppointment(appointment);
+        }
+
+        appointments[index] = appointment;
+
+        appointmentDataHandler.Write(appointments);
+
+        return;
 
     }
 

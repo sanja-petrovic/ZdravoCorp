@@ -22,6 +22,16 @@ namespace ZdravoKlinika.Model
         {
             return null;
         }
+
+        public String GetName()
+        {
+            return null;
+        }
+        public String GetLastname()
+        {
+            return null;
+        }
+
         public static Patient Parse(String data)
         {
             String[] splitData = data.Split(',');

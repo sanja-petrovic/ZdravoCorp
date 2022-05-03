@@ -60,4 +60,13 @@ public class RegisteredPatient : RegisteredUser, Patient
     {
         return PersonalId;
     }
+
+    public String GetName() 
+    {
+        return Name;
+    }
+    public String GetLastname()
+    {
+        return Lastname;
+    }
 }

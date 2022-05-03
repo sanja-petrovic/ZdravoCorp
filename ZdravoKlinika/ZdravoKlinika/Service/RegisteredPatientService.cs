@@ -19,7 +19,7 @@ public class RegisteredPatientService
         return registeredPatientRepository.GetAll();
     }
 
-    public RegisteredPatient GetById(String id)
+    public RegisteredPatient? GetById(String id)
     {
         return registeredPatientRepository.GetById(id);
     }
