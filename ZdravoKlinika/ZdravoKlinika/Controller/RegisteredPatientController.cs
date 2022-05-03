@@ -22,16 +22,15 @@ public class RegisteredPatientController
         return patientService.GetById(id);
     }
 
-    public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, Address address,String parentName, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> alergies, List<String> diagnosis)
+    public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> allergies, List<String> diagnosis)
     {
-        Console.WriteLine("cont");
-        patientService.CreatePatient(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, parentName, bloodType, occupation, emergencyContactName, emergencyContactPhone, alergies, diagnosis);
+        patientService.CreatePatient(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, street, stnumber, city, country, bloodType, occupation, emergencyContactName, emergencyContactPhone, allergies, diagnosis);
 
     }
 
-    public void UpdatePatient(String personalId, String name, String lastname, String phone, String email, String password, String profilePicture, String parentName, String occupation, String emergencyContactName, String emergencyContactPhone)
+    public void UpdatePatient(String personalId, String name, String lastname, String phone, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone,List<String> allergies, List<String> diagnosis)
     {
-        patientService.UpdatePatient(personalId, name, lastname, phone, email, password, profilePicture, parentName, occupation, emergencyContactName, emergencyContactPhone);
+        patientService.UpdatePatient(personalId, name, lastname, phone, password, profilePicture, street, stnumber, city, country, bloodType, occupation, emergencyContactName, emergencyContactPhone, allergies, diagnosis);
     }
 
     public void DeletePatient(String patientId)

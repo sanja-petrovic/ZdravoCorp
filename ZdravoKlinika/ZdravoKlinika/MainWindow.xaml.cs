@@ -33,14 +33,17 @@ namespace ZdravoKlinika
 
         private void secretaryButton_Click(object sender, RoutedEventArgs e)
         {
-            View.SecretaryWindowCP1 secretaryWindow = new View.SecretaryWindowCP1();
+            //View.SecretaryWindowCP1 secretaryWindow = new View.SecretaryWindowCP1();
+            View.Secretary.SecretaryMainWindow secretaryWindow = new View.Secretary.SecretaryMainWindow();
             secretaryWindow.Show();
         }
 
         private void patientButton_Click(object sender, RoutedEventArgs e)
         {
-            View.PatientView patientView = new View.PatientView();
-            patientView.Show();
+            /*View.PatientView patientView = new View.PatientView();
+            patientView.Show();*/
+            View.PatientViewBase pvB = new View.PatientViewBase();
+            pvB.Show();
         }
 
         private void Doctor_Management_Click(object sender, RoutedEventArgs e)

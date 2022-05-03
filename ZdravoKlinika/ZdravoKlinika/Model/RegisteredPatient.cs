@@ -32,8 +32,7 @@ public class RegisteredPatient : RegisteredUser, Patient
     }
 
     public RegisteredPatient() { }
-
-
+    
     public static RegisteredPatient Parse(String id)
     {
         RegisteredPatient patient = new RegisteredPatient();

@@ -103,5 +103,26 @@
 	  </EmbeddedResource>
 	</ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Images\burger-bar.png" />
+    <None Remove="Resources\Images\cancel.png" />
+    <None Remove="Resources\Images\dots.png" />
+    <None Remove="Resources\Images\plus.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\burger-bar.png" />
+    <Resource Include="Resources\Images\cancel.png" />
+    <Resource Include="Resources\Images\dots.png" />
+    <Resource Include="Resources\Images\plus.png" />
+    <Folder Include="Resources\Localisation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 
 </Project>

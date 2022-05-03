@@ -32,10 +32,17 @@ public class RegisteredUser
     {
         if(this.gender == Gender.Female)
         {
-            return "enski";
+            return "Å½enski";
         } else
         {
-            return "Muški";
+            return "MuÅ¡ki";
         }
+
+    public static RegisteredUser Parse(String id)
+    {
+        RegisteredUser user = new RegisteredUser();
+        user.PersonalId = id;
+        return user;
+
     }
 }

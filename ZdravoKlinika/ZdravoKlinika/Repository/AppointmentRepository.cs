@@ -278,4 +278,18 @@ public class AppointmentRepository
         this.appointments = this.appointmentDataHandler.Read();
     }
 
+    public List<Appointment> GetAppointmentsByRoom(Room room)
+    {
+        List<Appointment> appointmentsByRoom = new List<Appointment>();
+        foreach(Appointment appointment in this.appointments)
+        {
+            if(appointment.Room.RoomId.Equals(room.RoomId))
+            {
+                appointmentsByRoom.Add(appointment);
+            }
+        }
+
+        return appointmentsByRoom;
+    }
+
 }

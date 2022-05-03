@@ -21,18 +21,9 @@ namespace ZdravoKlinika.Model
         private int id;
 
         public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, int id)
+
+        public Prescription()
         {
-            this.DateOfCreation = DateTime.Now;
-            this.doctor = doctor;
-            this.registeredPatient = registeredPatient;
-            this.medication = medication;
-            this.amount = amount;
-            this.duration = duration;
-            this.frequency = frequency;
-            this.singleDose = singleDose;
-            this.repeat = repeat;
-            this.doctorsNote = doctorsNote;
-            this.Id = id;
         }
 
         public Prescription() { }
