@@ -57,7 +57,7 @@
                     <Button x:Name="buttonAdd" Grid.Column="1" HorizontalAlignment="Left" Margin="21,206,0,0" VerticalAlignment="Top" Height="28" Width="29" Click="ButtonAdd_Click" IsEnabled="False">
                         <Image Source="{Binding AddIcon}"/>
                     </Button>
-                    <Button x:Name="buttonRemove" Grid.Column="1" HorizontalAlignment="Left" Margin="89,206,0,0" VerticalAlignment="Top" Height="28" Width="29" IsEnabled="False">
+                    <Button x:Name="buttonRemove" Grid.Column="1" HorizontalAlignment="Left" Margin="89,206,0,0" VerticalAlignment="Top" Height="28" Width="29" Click="buttonRemove_Click"  IsEnabled="False">
                         <Image Source="{Binding RemoveIcon}"/>
                     </Button>
 

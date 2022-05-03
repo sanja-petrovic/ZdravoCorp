@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Util;
+using ZdravoKlinika.ViewModel;
 
 namespace ZdravoKlinika.View
 {
@@ -21,14 +22,21 @@ namespace ZdravoKlinika.View
     /// </summary>
     public partial class PatientEditView : Page
     {
-        private string patientId = "12345";
+        private string patientId = "0105965123321";
         private AppointmentController appointmentController = new AppointmentController();
         private DoctorController doctorController = new DoctorController();
         private RegisteredPatientController registeredPatientController = new RegisteredPatientController();
         private int appointmentDuration = 30;
-        public PatientEditView()
+        private RoomController roomController = new RoomController();
+
+        private int appointmentId;
+
+        public int AppointmentId { get => appointmentId; set => appointmentId = value; }
+
+        public PatientEditView(int appointmentId)
         {
             InitializeComponent();
+            this.AppointmentId = appointmentId;
             priorityComboBox.Items.Add("Vreme");
             priorityComboBox.Items.Add("Doktor");
             priorityComboBox.SelectedIndex = -1;
@@ -108,6 +116,50 @@ namespace ZdravoKlinika.View
                         errorLabel.Content = "no available appointment times";
                         errorLabel.Visibility = Visibility.Visible;
                     }
+                }
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            resetError();
+
+            if (doctorComboBox.SelectedIndex != -1 && timeComboBox.SelectedIndex != -1)
+            {
+                //TODO finish this
+                List<Room> rooms = roomController.GetFreeRooms((DateTime)timeComboBox.SelectedItem);
+                if (!rooms.Any())
+                {
+                    errorLabel.Content = "no available rooms times";
+                    errorLabel.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    Doctor doctor = (Doctor)doctorComboBox.SelectedItem;
+
+                    appointmentController.EditAppointment(AppointmentId, doctor.PersonalId, patientId, (DateTime)timeComboBox.SelectedItem, false, AppointmentType.Regular, rooms[0].RoomId, appointmentDuration);
+                    resetBaseView();
+                }
+            }
+            else
+            {
+                errorLabel.Content = "check data entry";
+                errorLabel.Visibility = Visibility.Visible;
+            }
+        }
+        private void resetError()
+        {
+            errorLabel.Content = "";
+            errorLabel.Visibility = Visibility.Hidden;
+        }
+        private void resetBaseView()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Name == "patientBase")
+                {
+                    PatientViewBase baseWindow = (PatientViewBase)window;
+                    baseWindow.refreshAppointmentView();
                 }
             }
         }

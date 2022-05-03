@@ -1,0 +1,207 @@
+﻿<Window x:Class="ZdravoKlinika.View.SignInWindow" ResizeMode="CanMinimize"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.View"
+        mc:Ignorable="d"
+        Title="Zdravo klinika" Height="768" Width="1024" SizeToContent="WidthAndHeight" d:DesignHeight="768" d:DesignWidth="1024" >
+    <Window.Resources>
+        <Style x:Key="fancyButtonStyle" TargetType="Button">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Opacity="0.3" Direction="320" ShadowDepth="5" BlurRadius="20"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="#FF6C63FF"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="#FF6C63FF" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#FF6C63FF" To="#FF9E98FF" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#FF9E98FF" To="#FF6C63FF" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF9E98FF"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF6C63FF"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="OptionMarkFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="14,0,0,0" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#FFF3F9FF"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FF9E98FF"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#FFD9ECFF"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FF6C63FF"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#FFE6E6E6"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFBCBCBC"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FF707070"/>
+        <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="checkBoxBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid x:Name="markGrid">
+                                    <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Fill="{StaticResource OptionMark.Static.Glyph}" Margin="1" Opacity="0" Stretch="None"/>
+                                    <Rectangle x:Name="indeterminateMark" Fill="{StaticResource OptionMark.Static.Glyph}" Margin="2" Opacity="0"/>
+                                </Grid>
+                            </Border>
+                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasContent" Value="true">
+                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+                                <Setter Property="Padding" Value="4,-1,0,0"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
+                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
+                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+                                <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="0"/>
+                                <Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,0" VerticalAlignment="Center" Height="768" Cursor="Hand">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image Source="/Resources/Images/undraw_medicine_b1ol.png" Width="700" Margin="-29,10,329,-10" Grid.RowSpan="2" Grid.ColumnSpan="2" Cursor="Arrow"/>
+        <Canvas>
+            <Image  Name="PasswordViewControl" Height="20" Canvas.Left="898" Source="/Resources/Images/show.png" Stretch="Fill" Canvas.Top="430" Width="20" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="ShowPassword"/>
+        </Canvas>
+        <CheckBox Style="{DynamicResource CheckBoxStyle}" Content="Ostanite prijavljeni" Margin="684,463,96,289" Checked="CheckBox_Checked" Cursor="Arrow"  Foreground="#FF5F5F5F"></CheckBox>
+        <Label Content="Dobrodošli!" HorizontalAlignment="Left" Margin="676,250,0,0" VerticalAlignment="Top"  FontSize="36" FontWeight="Bold" Cursor="Arrow"/>
+        <Label Content="Korisničko ime" HorizontalAlignment="Left" Margin="680,317,0,0" VerticalAlignment="Top"  FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
+        <Button  Style="{StaticResource ResourceKey=fancyButtonStyle}"  HorizontalAlignment="Left" Margin="688,496,0,0" VerticalAlignment="Top"   Foreground="White"  Width="240" BorderThickness="0" Padding="4" Height="36" FontSize="20" Click="Button_Click" Content="Prijavite se">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBox Name="UsernameTB" Text="Npr. vaseime@zdravo.com" Padding="7" HorizontalAlignment="Left" Margin="684,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="29"  BorderBrush="#FFC8C8C8" TextAlignment="Left" FontSize="12" Foreground="Gray" PreviewMouseDown="TextBox_MouseDown" SelectionBrush="#FF6C63FF">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Label Content="Šifra" HorizontalAlignment="Left" Margin="680,392,0,0" VerticalAlignment="Top"  FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
+        <TextBox Name="PasswordTB" Padding="7" HorizontalAlignment="Left" Margin="684,425,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="29" FontFamily="Password" BorderBrush="#FFC8C8C8"  SelectionBrush="#FF6C63FF" Panel.ZIndex="-1">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Image Margin="190,132,634,538" Source="/Resources/Images/zdravoklinika.png" Stretch="Fill" Width="200"/>
+        <Frame Name="MainFrame" Panel.ZIndex="10" NavigationUIVisibility="Hidden"  />
+
+    </Grid>
+</Window>

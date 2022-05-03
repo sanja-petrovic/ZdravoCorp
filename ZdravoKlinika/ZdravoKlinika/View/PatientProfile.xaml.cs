@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.ViewModel
 {
@@ -20,11 +22,38 @@ namespace ZdravoKlinika.ViewModel
     /// </summary>
     public partial class PatientProfile : Page
     {
-        private PatientProfileViewModel viewModel = new PatientProfileViewModel("12345");
+        private PatientProfileViewModel viewModel = new PatientProfileViewModel("0105965123321");
         public PatientProfile()
         { 
             InitializeComponent();
             this.DataContext = viewModel;
+
+            Timer execute = new Timer();
+            TimeSpan fireInterval = new TimeSpan(0, 0, 15);
+            execute.Interval = fireInterval.TotalMilliseconds;
+            execute.Elapsed += OnTimedEvent;
+            execute.AutoReset = true;
+            execute.Start();
+        }
+
+        private void OnTimedEvent(object? sender, ElapsedEventArgs e)
+        {
+
+            App.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        viewModel.NotificationTexts.Clear();
+                    });
+            viewModel.Notifs = viewModel.NotifController.GetAll();
+            foreach(PatientMedicationNotification pmn in viewModel.Notifs)
+            {
+                if ((pmn.Prescription.DateOfCreation - DateTime.Now).TotalHours < 5 & (pmn.Prescription.DateOfCreation - DateTime.Now).TotalHours > 0 )
+                {
+                    App.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        viewModel.NotificationTexts.Add(pmn.generateNotification());
+                    });
+                }
+            }
         }
     }
 }

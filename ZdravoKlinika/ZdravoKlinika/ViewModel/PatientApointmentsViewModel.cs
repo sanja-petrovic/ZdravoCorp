@@ -23,14 +23,13 @@ namespace ZdravoKlinika.ViewModel
         private ImageSource documentsIcon = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "pagePatient.png"));
         private ImageSource removeIcon = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "removePatient.png"));
         private PatientAddView patientAddView = new PatientAddView();
-        private PatientEditView patientEditView = new PatientEditView();
+        private PatientEditView patientEditView;
         private List<DateTime> appointmentDates = new List<DateTime>();
         private AppointmentController controller = new AppointmentController();
         private ObservableCollection<Appointment> selectedDateAppointments = new ObservableCollection<Appointment>();
-
         public PatientApointmentsViewModel()
         {
-            foreach(Appointment app in Controller.GetAppointmentsByPatientId("12345"))
+            foreach(Appointment app in Controller.GetAppointmentsByPatientId("0105965123321"))
             {
                 AppointmentDates.Add(app.DateAndTime.Date);
             }
@@ -111,6 +110,8 @@ namespace ZdravoKlinika.ViewModel
                 NotifyPropertyChanged("dates");
             }
         }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {
@@ -119,7 +120,7 @@ namespace ZdravoKlinika.ViewModel
 
         public void GetSelectedDateAppointments(DateTime date)
         {
-            SelectedDateAppointments = new ObservableCollection<Appointment> (controller.GetAppointmentsByPatientIdForDate("12345", date));
+            SelectedDateAppointments = new ObservableCollection<Appointment> (controller.GetAppointmentsByPatientIdForDate("0105965123321", date));
             
         }
     }

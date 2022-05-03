@@ -8,12 +8,12 @@ public class RoomDataHandler
     private String fileLocation;
 
     public String FileLocation { get => fileLocation; set => fileLocation = value; }
-    
+
     public RoomDataHandler(string fileLocation)
     {
         this.fileLocation = fileLocation;
     }
-    
+
     public void Write(List<Room> rooms)
     {
         var jsonList = JsonSerializer.Serialize(rooms, new JsonSerializerOptions() { WriteIndented = true });

@@ -17,23 +17,17 @@ namespace ZdravoKlinika.View
     public partial class UpravnikWindow : Window
     {
         private int selectedIndex = -1;
-        private DataGridRow selectedRow;
-        private int colNum = 0;
         private RoomController roomController;
-        private String roomId;
-        private RoomType type;
-        private String name;
-        private int level;
-        private int number;
-        private RoomStatus status;
         public ObservableCollection<Room> Rooms { get; set; }
+
         public UpravnikWindow()
         {
             InitializeComponent();
             this.DataContext = this;
             this.roomController = new RoomController();
             Rooms = new ObservableCollection<Room>(this.roomController.GetAll());
-
+            EditButton.IsEnabled = false;
+            DeleteButton.IsEnabled = false;
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -71,7 +65,7 @@ namespace ZdravoKlinika.View
                 default:
                     break;
             }
-            this.roomController.CreateRoom(naziv, tip, status, sprat, broj);
+            this.roomController.CreateRoom(naziv, tip, status, sprat, broj, true);
             Refresh_Display();
         }
 
@@ -111,7 +105,7 @@ namespace ZdravoKlinika.View
                 default:
                     break;
             }
-            this.roomController.UpdateRoom(sifra, naziv, tip, status, sprat, broj);
+            this.roomController.UpdateRoom(sifra, naziv, tip, status, sprat, broj, true);
             Refresh_Display();
         }
 
@@ -136,6 +130,8 @@ namespace ZdravoKlinika.View
             Room r = (Room)dg.SelectedItem;
             if (r != null)
             {
+                EditButton.IsEnabled = true;
+                DeleteButton.IsEnabled = true;
                 switch (r.Type)
                 {
                     case RoomType.checkup:
@@ -166,7 +162,24 @@ namespace ZdravoKlinika.View
                         break;
                 }
             }
+            else
+            {
+                EditButton.IsEnabled = false;
+                DeleteButton.IsEnabled = false;
+            }
 
+        }
+
+        private void EquipmentView_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentView equipmentView = new EquipmentView();
+            equipmentView.Show();
+        }
+
+        private void ScheduleRenovation_Click(object sender, RoutedEventArgs e)
+        {
+            RenovationView renovationView = new RenovationView();
+            renovationView.Show();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Model
 {
-    internal class Prescription
+    public class Prescription
     {
         private DateTime dateOfCreation;
         Doctor doctor;
@@ -18,13 +18,12 @@ namespace ZdravoKlinika.Model
         private string singleDose;
         private string repeat;
         private string doctorsNote;
-        private bool noAlternatives;
-        private bool emergency;
         private int id;
 
-        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, bool noAlternatives, bool emergency, int id)
+        public Prescription() { }
+
+        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, int id)
         {
-            this.DateOfCreation = DateTime.Now;
             this.doctor = doctor;
             this.registeredPatient = registeredPatient;
             this.medication = medication;
@@ -34,9 +33,7 @@ namespace ZdravoKlinika.Model
             this.singleDose = singleDose;
             this.repeat = repeat;
             this.doctorsNote = doctorsNote;
-            this.noAlternatives = noAlternatives;
-            this.emergency = emergency;
-            this.Id = id;
+            this.id = id;
         }
 
         public Medication Medication { get => medication; set => medication = value; }
@@ -46,11 +43,15 @@ namespace ZdravoKlinika.Model
         public string SingleDose { get => singleDose; set => singleDose = value; }
         public string Repeat { get => repeat; set => repeat = value; }
         public string DoctorsNote { get => doctorsNote; set => doctorsNote = value; }
-        public bool NoAlternatives { get => noAlternatives; set => noAlternatives = value; }
-        public bool Emergency { get => emergency; set => emergency = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
         public RegisteredPatient RegisteredPatient { get => registeredPatient; set => registeredPatient = value; }
         public int Id { get => id; set => id = value; }
         public DateTime DateOfCreation { get => dateOfCreation; set => dateOfCreation = value; }
+
+        public static Prescription Parse(int id) {
+            Prescription prescription = new Prescription();
+            prescription.Id = id;
+            return prescription; 
+        }
     }
 }

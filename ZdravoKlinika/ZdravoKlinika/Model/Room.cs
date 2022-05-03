@@ -9,10 +9,11 @@ public class Room
     private int level;
     private int number;
     private RoomStatus status;
+    private bool free;
 
     private List<Equipment> equipmentInRoom;
 
-    public Room(String roomId, String name, RoomType type, int level, int number, RoomStatus status)
+    public Room(String roomId, String name, RoomType type, int level, int number, RoomStatus status, bool free)
     {
         this.roomId = roomId;
         this.name = name;
@@ -20,6 +21,7 @@ public class Room
         this.level = level;
         this.number = number;
         this.status = status;
+        this.free = free;
     }
 
     public Room()
@@ -51,6 +53,7 @@ public class Room
     public int Level { get => level; set => level = value; }
     public int Number { get => number; set => number = value; }
     public RoomStatus Status { get => status; set => status = value; }
+    public bool Free { get => free; set => free = value; }
 
     public void AddEquipmentInRoom(Equipment newEquipment)
     {
@@ -83,5 +86,8 @@ public class Room
         room.roomId = id;
         return room;
     }
-
+    public override string ToString()
+    {
+        return Name;
+    }
 }

@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using ZdravoKlinika.Model;
 
-namespace JsonConverters 
+namespace JsonConverters
 {
     public class MedicalRecordConverter : JsonConverter<MedicalRecord>
     {
@@ -34,6 +34,20 @@ namespace JsonConverters
             Doctor doctor,
             JsonSerializerOptions options) =>
                 writer.WriteStringValue(doctor.PersonalId);
+    }
+    public class RegisteredUserConverter : JsonConverter<RegisteredUser>
+    {
+        public override RegisteredUser Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) =>
+                RegisteredUser.Parse(reader.GetString()!);
+
+        public override void Write(
+           Utf8JsonWriter writer,
+           RegisteredUser user,
+           JsonSerializerOptions options) =>
+               writer.WriteStringValue(user.PersonalId);
     }
     public class RegisteredPatientConverter : JsonConverter<RegisteredPatient>
     {
@@ -81,8 +95,8 @@ namespace JsonConverters
     public class MedicationConverter : JsonConverter<Medication>
     {
         public override Medication Read(
-            ref Utf8JsonReader reader, 
-            Type typeToConvert, 
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
             JsonSerializerOptions options) => Medication.Parse(reader.GetString());
 
 
@@ -90,6 +104,35 @@ namespace JsonConverters
             Utf8JsonWriter writer,
             Medication medication,
             JsonSerializerOptions options) => writer.WriteStringValue(medication.MedicationId);
+    }
+
+    public class EquipmentConverter : JsonConverter<Equipment>
+    {
+        public override Equipment Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) =>
+                Equipment.Parse(reader.GetString());
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            Equipment eq,
+            JsonSerializerOptions options) =>
+                writer.WriteStringValue(eq.Id + "," + eq.Amount);
+    }
+    
+    public class PrescriptionConverter : JsonConverter<Prescription>
+    {
+        public override Prescription Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options) => Prescription.Parse(reader.GetInt32());
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            Prescription prescription,
+            JsonSerializerOptions options) => writer.WriteNumberValue(prescription.Id);
+
     }
 
 }

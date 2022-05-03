@@ -26,6 +26,7 @@ namespace ZdravoKlinika.View
         private PatientApointmentsViewModel viewModel;
         private Appointment selectedInList;
         private ZdravoKlinika.Util.DatePickerRestrictors restrictor = new Util.DatePickerRestrictors();
+        private AppointmentController appointmentController = new AppointmentController();
         public PatientAppointmentView(String id)
         {
             patientId = id;
@@ -39,22 +40,63 @@ namespace ZdravoKlinika.View
         {
             popUpFrame.Visibility = Visibility.Visible;
             popUpFrame.Navigate(viewModel.PatientAddView);
-            if (calendar.SelectedDate != null)
-            {
-                viewModel.PatientAddView.datePicker.SelectedDate = calendar.SelectedDate.Value;
-            }
+            
            
             restrictor.setDatePickerBlackoutForward(DateTime.Now.AddDays(2), viewModel.PatientAddView.datePicker);
+
+            if (calendar.SelectedDate != null)
+            {
+                
+                try
+                {
+                    viewModel.PatientAddView.datePicker.SelectedDate = calendar.SelectedDate.Value;
+                }
+                catch (Exception err)
+                {
+                    Console.WriteLine(err);
+
+                }
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             popUpFrame.Visibility = Visibility.Visible;
-            popUpFrame.Navigate(viewModel.PatientEditView);
+            popUpFrame.Navigate(viewModel.PatientEditView = new PatientEditView(selectedInList.AppointmentId));
             if(listBox.SelectedItem != null)
             {
-                viewModel.PatientEditView.datePicker.SelectedDate = calendar.SelectedDate.Value;
+                
                 restrictor.setDatePickerBlackoutRange(restrictor.getValidDateRange((DateTime)calendar.SelectedDate.Value,2), viewModel.PatientEditView.datePicker);
+                try
+                {
+                    viewModel.PatientEditView.datePicker.SelectedDate = calendar.SelectedDate.Value;
+                }
+                catch (Exception err)
+                {
+                    Console.WriteLine(err);
+
+                }
+            }
+        }
+
+        private void buttonRemove_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                appointmentController.DeleteAppointment(selectedInList.AppointmentId);
+                resetBaseView();
+            }
+        }
+
+        private void resetBaseView()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Name == "patientBase")
+                {
+                    PatientViewBase baseWindow = (PatientViewBase)window;
+                    baseWindow.refreshAppointmentView();
+                }
             }
         }
 
@@ -114,9 +156,14 @@ namespace ZdravoKlinika.View
                     buttonDocuments.IsEnabled = true;
                 }
             }
-            
+            else
+            {
+                resetButtons();
+            }
 
         }
+
+  
     }
     class LookupConvertor : IMultiValueConverter
     {

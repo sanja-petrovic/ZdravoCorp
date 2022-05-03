@@ -29,7 +29,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         
-        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="191,189,0,0" VerticalAlignment="Top"/>
+        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="191,189,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Label x:Name="errorLabel" Content="Label" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" FontSize="10" Visibility="Hidden" Foreground="#FF640000"/>
 
     </Grid>
