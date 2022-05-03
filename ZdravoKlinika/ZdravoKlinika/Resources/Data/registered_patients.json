@@ -15,7 +15,7 @@
     "Phone": "0687462949",
     "Email": "monicageller@zdravo.com",
     "Password": "monica",
-    "ProfilePicture": "asd",
+    "ProfilePicture": "file:///C:/Users/asd/Documents/GitHub/ZdravoCorp/ZdravoKlinika/ZdravoKlinika/Resources/Images/dots.png",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": {
       "Street": "Hajduk Veljka Petrovića",
@@ -40,13 +40,40 @@
     "Phone": "0638962241",
     "Email": "rosgeller@zdravo.com",
     "Password": "ross",
-    "ProfilePicture": "asd",
+    "ProfilePicture": "file:///C:/Users/asd/Documents/GitHub/ZdravoCorp/ZdravoKlinika/ZdravoKlinika/Resources/Images/dots.png",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": {
       "Street": "Balzakova",
       "Number": "3",
       "City": "Novi Sad",
       "Country": "Srbija"
+    }
+  },
+
+  {
+    "ParentName": "asd",
+    "BloodType": "APositive",
+    "Occupation": "asd",
+    "EmergencyContactName": "asd",
+    "EmergencyContactPhone": "ads",
+    "MedicalRecord": "12345",
+    "PatientType": "Registered",
+    "UserType": "Patient",
+    "PersonalId": "12345",
+    "Name": "asd",
+    "Lastname": "asd",
+    "DateOfBirth": "2022-04-12T00:00:00",
+    "Gender": "Female",
+    "Phone": "asd",
+    "Email": "asd",
+    "Password": "asd",
+    "ProfilePicture": "file:///C:/Users/asd/Documents/GitHub/ZdravoCorp/ZdravoKlinika/ZdravoKlinika/Resources/Images/dots.png",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "a",
+      "Number": "b",
+      "City": "c",
+      "Country": "d"
     }
   }
 ]

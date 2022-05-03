@@ -50,14 +50,9 @@ namespace ZdravoKlinika.Service
             int prescriptionId = (this.prescriptionRepository.GetAll().Count > 0) ? this.prescriptionRepository.GetAll().Last().Id + 1 : 1;
 
             Prescription prescription = new Prescription(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote, prescriptionId);
-            //medicalRecordService.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
+            prescription.DateOfCreation = DateTime.Now;
             medicalRecordRepository.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
             this.registeredPatientRepository.recordUpdated(patient);
-
-            Prescription prescription = new Prescription(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote, noAlternatives, emergency, prescriptionId);
-            prescription.DateOfCreation = DateTime.Now;
-            medicalRecordService.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
-            //medicalRecordRepository.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
 
             this.prescriptionRepository.Prescribe(prescription);
             //make a notif
@@ -72,7 +67,7 @@ namespace ZdravoKlinika.Service
             this.registeredPatientRepository.recordUpdated(prescription.RegisteredPatient);
             this.prescriptionRepository.Prescribe(prescription);
             //make a notif
-            patientMedicationNotificationService.CreateNotification(doctor, patient, "prepisan lek", prescription);
+            patientMedicationNotificationService.CreateNotification(prescription.Doctor, prescription.RegisteredPatient, "prepisan lek", prescription);
         }
 
         public void CreatePrescription(String doctorId, String patientId, String medicationId, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote)

@@ -293,7 +293,7 @@ public class AppointmentService
     {
         return this.appointmentRepository.GetPatientsUpcomingAppointments(patient);
     }
-}
+
 
     public List<Appointment> GetAppointmentsByRoom(String roomId)
     {

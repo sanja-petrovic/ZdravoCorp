@@ -52,9 +52,9 @@ namespace ZdravoKlinika.Repository
 
             foreach(Prescription p in this.prescriptions)
             {
-               /* p.Medication = medicationRepository.GetById(p.Medication.MedicationId);
+                p.Medication = medicationRepository.GetById(p.Medication.MedicationId);
                 p.Doctor = doctorRepository.GetById(p.Doctor.PersonalId);
-                p.RegisteredPatient = registeredPatientRepository.GetById(p.RegisteredPatient.PersonalId);*/
+                p.RegisteredPatient = registeredPatientRepository.GetById(p.RegisteredPatient.PersonalId);
             }
 
             

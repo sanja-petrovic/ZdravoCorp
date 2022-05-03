@@ -105,17 +105,18 @@ namespace JsonConverters
             Medication medication,
             JsonSerializerOptions options) => writer.WriteStringValue(medication.MedicationId);
     }
+
     public class PrescriptionConverter : JsonConverter<Prescription>
     {
         public override Prescription Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
-            JsonSerializerOptions options) => Prescription.Parse(reader.GetString());
-
+            JsonSerializerOptions options) => Prescription.Parse(reader.GetInt32());
 
         public override void Write(
             Utf8JsonWriter writer,
             Prescription prescription,
             JsonSerializerOptions options) => writer.WriteNumberValue(prescription.Id);
+
     }
 }

@@ -6,7 +6,7 @@
     "DoctorsNotes": "dgffsfds",
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 123,
+    "Duration": 15,
     "Doctor": "456",
     "Patient": "0105965123321,Registered",
     "Room": "314",
@@ -20,7 +20,7 @@
     "DoctorsNotes": "stvarno?",
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 123,
+    "Duration": 15,
     "Doctor": "456",
     "Patient": "0105965123321,Registered",
     "Room": "314",
@@ -34,7 +34,7 @@
     "DoctorsNotes": ":/",
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 123,
+    "Duration": 15,
     "Doctor": "456",
     "Patient": "0105965123321,Registered",
     "Room": "314",
@@ -48,7 +48,7 @@
     "DoctorsNotes": "Pacijent se \u017Ealio na povi\u0161en krvni pritisak koji mu mesecima pravi probleme.",
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 123,
+    "Duration": 15,
     "Doctor": "456",
     "Patient": "1510963123321,Registered",
     "Room": "314",
@@ -58,11 +58,11 @@
   {
     "AppointmentId": 5,
     "DateAndTime": "2022-05-02T11:00:00",
-    "Diagnoses": ":O",
+    "Diagnoses": ":OO",
     "DoctorsNotes": ":/",
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 123,
+    "Duration": 15,
     "Doctor": "456",
     "Patient": "1510963123321,Registered",
     "Room": "314",
@@ -76,7 +76,7 @@
     "DoctorsNotes": "fdsfds",
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 123,
+    "Duration": 15,
     "Doctor": "456",
     "Patient": "1510963123321,Registered",
     "Room": "314",
@@ -106,7 +106,7 @@
     "DoctorsNotes": "dsad",
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 123,
+    "Duration": 15,
     "Doctor": "456",
     "Patient": "1510963123321,Registered",
     "Room": "314",
@@ -148,5 +148,62 @@
         ]
       }
     ]
+  },
+  {
+    "AppointmentId": 8,
+    "DateAndTime": "2022-05-03T11:00:00",
+    "Diagnoses": "test1234",
+    "DoctorsNotes": "test2",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 9,
+    "DateAndTime": "2022-05-03T11:00:00",
+    "Diagnoses": "adsdf",
+    "DoctorsNotes": "asfds",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [
+      {
+        "MedicationId": "5",
+        "BrandName": "Hemomycin",
+        "Dosage": "250mg",
+        "Notes": [],
+        "MedicationCode": "J01FA10",
+        "Form": "kapsula, tvrda",
+        "ActiveSubstances": [
+          "azitromicin"
+        ],
+        "Allergens": [
+          "azitromicin"
+        ]
+      }
+    ]
+  },
+  {
+    "AppointmentId": 10,
+    "DateAndTime": "2022-05-04T11:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": []
   }
 ]
