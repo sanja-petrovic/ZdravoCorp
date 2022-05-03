@@ -2,7 +2,7 @@
   {
     "BloodType": "APositive",
     "Occupation": "Kuvar",
-    "EmergencyContactName": "Čendler Bing",
+    "EmergencyContactName": "\u010Cendler Bing",
     "EmergencyContactPhone": "0687462950",
     "MedicalRecord": "0105965123321",
     "PatientType": "Registered",
@@ -18,7 +18,7 @@
     "ProfilePicture": "file:///C:/Users/asd/Documents/GitHub/ZdravoCorp/ZdravoKlinika/ZdravoKlinika/Resources/Images/dots.png",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": {
-      "Street": "Hajduk Veljka Petrovića",
+      "Street": "Hajduk Veljka Petrovi\u0107a",
       "Number": "18",
       "City": "Novi Sad",
       "Country": "Srbija"
@@ -27,7 +27,7 @@
   {
     "BloodType": "APositive",
     "Occupation": "Paleontolog",
-    "EmergencyContactName": "Rejčel Grin",
+    "EmergencyContactName": "Rej\u010Del Grin",
     "EmergencyContactPhone": "0638962240",
     "MedicalRecord": "1510963123321",
     "PatientType": "Registered",
@@ -49,13 +49,10 @@
       "Country": "Srbija"
     }
   },
-
   {
-    "ParentName": "asd",
     "BloodType": "APositive",
     "Occupation": "asd",
     "EmergencyContactName": "asd",
-
     "EmergencyContactPhone": "ads",
     "MedicalRecord": "12345",
     "PatientType": "Registered",
@@ -79,52 +76,27 @@
   },
   {
     "BloodType": "APositive",
-    "Occupation": "tyu",
-    "EmergencyContactName": "tyu",
-    "EmergencyContactPhone": "tyu",
-    "MedicalRecord": "tyu",
+    "Occupation": "asd",
+    "EmergencyContactName": "ads",
+    "EmergencyContactPhone": "asd",
+    "MedicalRecord": "123333",
     "PatientType": "Registered",
     "UserType": "Patient",
-    "PersonalId": "tyu",
-    "Name": "tyu",
-    "Lastname": "tyu",
-    "DateOfBirth": "2022-05-13T00:00:00",
+    "PersonalId": "123333",
+    "Name": "asd",
+    "Lastname": "asd",
+    "DateOfBirth": "2022-05-20T00:00:00",
     "Gender": "Female",
-    "Phone": "tyu",
-    "Email": "tyu",
-    "Password": "tyu",
+    "Phone": "asd",
+    "Email": "asd",
+    "Password": "asd",
     "ProfilePicture": "",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": {
-      "Street": "tyu",
-      "Number": "tyu",
-      "City": "tyu",
-      "Country": "tyu"
-    }
-  },
-  {
-    "BloodType": "APositive",
-    "Occupation": "jkl",
-    "EmergencyContactName": "jkl",
-    "EmergencyContactPhone": "jkl",
-    "MedicalRecord": "jkl",
-    "PatientType": "Registered",
-    "UserType": "Patient",
-    "PersonalId": "jkl",
-    "Name": "jlk",
-    "Lastname": "jkl",
-    "DateOfBirth": "2022-05-13T00:00:00",
-    "Gender": "Female",
-    "Phone": "jkl",
-    "Email": "jkl",
-    "Password": "jkl",
-    "ProfilePicture": "",
-    "LastLogin": "0001-01-01T00:00:00",
-    "Address": {
-      "Street": "jkl",
-      "Number": "jkl",
-      "City": "jkl",
-      "Country": "jkl"
+      "Street": "asd",
+      "Number": "asd",
+      "City": "asd",
+      "Country": "asd"
     }
   }
 ]

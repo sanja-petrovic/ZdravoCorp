@@ -219,5 +219,61 @@
     "Room": "314",
     "Over": false,
     "Prescriptions": []
+  },
+  {
+    "AppointmentId": 12,
+    "DateAndTime": "2022-05-19T12:45:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "456",
+    "Patient": "12345,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 13,
+    "DateAndTime": "2022-05-12T14:15:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "12345,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 14,
+    "DateAndTime": "2022-05-12T17:15:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "12345123,Guest",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 15,
+    "DateAndTime": "2022-05-12T19:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "12345123,Guest",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": []
   }
 ]

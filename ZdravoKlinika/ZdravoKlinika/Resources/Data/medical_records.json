@@ -177,5 +177,17 @@
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "0105965123321"
+  },
+  {
+    "Diagnoses": [
+      "asd"
+    ],
+    "Allergies": [
+      "asd"
+    ],
+    "CurrentMedication": [],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "123333"
   }
 ]

@@ -66,7 +66,7 @@ namespace ZdravoKlinika.View.Secretary
             TextBoxECName.Text = pat.EmergencyContactName;
             TextBoxECPhone.Text = pat.EmergencyContactPhone;
 
-            updateImage(pat.ProfilePicture);
+            //updateImage(pat.ProfilePicture);
         }
         private void updateImage(String path)
         {
