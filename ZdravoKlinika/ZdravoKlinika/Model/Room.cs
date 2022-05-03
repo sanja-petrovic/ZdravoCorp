@@ -86,5 +86,8 @@ public class Room
         room.roomId = id;
         return room;
     }
-
+    public override string ToString()
+    {
+        return Name;
+    }
 }

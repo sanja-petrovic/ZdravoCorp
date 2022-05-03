@@ -27,6 +27,11 @@ public class RoomService
         return this.roomRepository.GetFreeRooms(enteredTime);
     }
 
+    public List<Room> GetRenovatableRooms()
+    {
+        return this.roomRepository.GetRenovatableRooms();
+    }
+
     public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number, bool free)
     {
         List<Room> rooms = this.roomRepository.GetAll();
@@ -47,7 +52,7 @@ public class RoomService
         {
             newRoomId = 1;
         }
-        Room r = new Room(newRoomId.ToString(), name, type, level, number, status, free);
+        Room r = new Room(newRoomId.ToString(), "R"+newRoomId, type, level, number, status, free);
         this.roomRepository.CreateRoom(r);
     }
 
@@ -86,5 +91,6 @@ public class RoomService
         Room r = this.roomRepository.GetById(roomId);
         this.roomRepository.RenovateRoom(r);
     }
+
 }
 

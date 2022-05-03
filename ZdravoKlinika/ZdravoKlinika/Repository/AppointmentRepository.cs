@@ -64,7 +64,6 @@ public class AppointmentRepository
                     if (appointment.Doctor.PersonalId.Equals(doc.PersonalId)) 
                     {
                         appointment.Doctor = doc;
-                        break;
                     }
                 }
             }
@@ -75,7 +74,6 @@ public class AppointmentRepository
                     if (appointment.Room.RoomId.Equals(room.RoomId))
                     {
                         appointment.Room = room;
-                        break;
                     }
                 }
             }
@@ -86,7 +84,6 @@ public class AppointmentRepository
                     if (appointment.Patient.GetPatientId().Equals(pat.GetPatientId()))
                     {
                         appointment.Patient = pat;
-                        break;
                     }
                 }
             }

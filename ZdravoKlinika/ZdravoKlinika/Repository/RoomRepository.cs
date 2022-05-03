@@ -7,6 +7,7 @@ public class RoomRepository
     private RoomDataHandler roomDataHandler;
     private List<Room> rooms;
     private List<Room> freeRooms;
+    private List<Room> renovatableRooms;
     private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "room.json";
 
     public RoomDataHandler RoomDataHandler { get => roomDataHandler; set => roomDataHandler = value; }
@@ -16,6 +17,7 @@ public class RoomRepository
         this.roomDataHandler = new RoomDataHandler(fileLocation);
         this.rooms = this.roomDataHandler.Read();
         this.freeRooms = new List<Room>();    
+        this.renovatableRooms = new List<Room>();
     }
 
     public List<Room> Rooms
@@ -81,6 +83,7 @@ public class RoomRepository
     }
     public List<Room> GetFreeRooms(DateTime enteredTime)
     {
+        freeRooms.Clear();
         AppointmentRepository appointmentRepository = new AppointmentRepository();
         List<Appointment> appointments = appointmentRepository.GetAll();
 
@@ -112,6 +115,19 @@ public class RoomRepository
         }
 
         return freeRooms;
+    }
+
+    public List<Room> GetRenovatableRooms()
+    {
+        renovatableRooms.Clear();
+        foreach (Room r in rooms)
+        {
+            if(r.Status == RoomStatus.occupied || r.Status == RoomStatus.available)
+            {
+                renovatableRooms.Add(r);
+            }
+        }
+        return renovatableRooms;
     }
 
     public void CreateRoom(Room room)

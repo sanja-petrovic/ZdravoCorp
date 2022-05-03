@@ -27,6 +27,11 @@ public class RoomController
         return this.roomService.GetFreeRooms(enteredTime);
     }
 
+    public List<Room> GetRenovatableRooms() 
+    {
+        return this.roomService.GetRenovatableRooms();
+    }
+
     public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number, bool free)
     {
         this.roomService.CreateRoom(name, type, status, level, number, free);
