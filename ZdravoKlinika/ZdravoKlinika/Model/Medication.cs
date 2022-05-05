@@ -12,7 +12,11 @@ public class Medication
     private List<String> notes;
     private List<string> allergens;
     bool validated;
-    public List<Medication> alternatives;
+    private List<Medication> alternatives;
+    private string classification; //analgetik, antipiretik, antibiotik...
+    private string indications; //za glavobolju, protiv povisene temperature, protiv bakterijske infekcije...
+    private string sideEffects; //gastritis,...
+    private Doctor approvedBy;
 
     public string MedicationId { get => medicationId; set => medicationId = value; }
     public string BrandName { get => brandName; set => brandName = value; }
@@ -23,11 +27,16 @@ public class Medication
     public List<string> ActiveSubstances { get => activeSubstances; set => activeSubstances = value; }
     public List<string> Allergens { get => allergens; set => allergens = value; }
     public bool Validated { get => validated; set => validated = value; }
+    public List<Medication> Alternatives { get => alternatives; set => alternatives = value; }
+    public string Classification { get => classification; set => classification = value; }
+    public string SideEffects { get => sideEffects; set => sideEffects = value; }
+    public Doctor ApprovedBy { get => approvedBy; set => approvedBy = value; }
+    public string Indications { get => indications; set => indications = value; }
 
     public Medication()
     {
         this.validated = false;
-        this.alternatives = new List<Medication>();
+        this.Alternatives = new List<Medication>();
     }
 
     public static Medication Parse(string id)
