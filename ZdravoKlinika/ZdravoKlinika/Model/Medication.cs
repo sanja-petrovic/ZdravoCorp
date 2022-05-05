@@ -11,6 +11,8 @@ public class Medication
     private string form;
     private List<String> notes;
     private List<string> allergens;
+    bool validated;
+    public List<Medication> alternatives;
 
     public string MedicationId { get => medicationId; set => medicationId = value; }
     public string BrandName { get => brandName; set => brandName = value; }
@@ -20,6 +22,13 @@ public class Medication
     public string Form { get => form; set => form = value; }
     public List<string> ActiveSubstances { get => activeSubstances; set => activeSubstances = value; }
     public List<string> Allergens { get => allergens; set => allergens = value; }
+    public bool Validated { get => validated; set => validated = value; }
+
+    public Medication()
+    {
+        this.validated = false;
+        this.alternatives = new List<Medication>();
+    }
 
     public static Medication Parse(string id)
     {

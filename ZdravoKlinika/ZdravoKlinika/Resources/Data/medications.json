@@ -7,7 +7,9 @@
       "ActiveSubstances": [ "ibuprofen" ],
       "Form": "film tableta",
       "Notes": [],
-      "Allergens": ["ibuprofen", "brufen"]
+      "Allergens": [ "ibuprofen", "brufen" ],
+      "Validated": true,
+      "Alternatives": []
     },
   {
     "MedicationId": "2",
@@ -17,7 +19,9 @@
     "ActiveSubstances": [ "ibuprofen" ],
     "Form": "film tableta",
     "Notes": [],
-    "Allergens": [ "ibuprofen", "brufen" ]
+    "Allergens": [ "ibuprofen", "brufen" ],
+    "Validated": true,
+    "Alternatives": []
   },
 
   {
@@ -28,7 +32,9 @@
     "ActiveSubstances": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
     "Form": "film tableta",
     "Notes": [],
-    "Allergens": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina"]
+    "Allergens": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
+    "Validated": true,
+    "Alternatives": []
   },
 
   {
@@ -39,7 +45,9 @@
     "ActiveSubstances": [ "cetilpiridinijum-hlorid", "benzidamin" ],
     "Form": "sprej za usnu sluznicu, rastvor",
     "Notes": [],
-    "Allergens": [ "cetilpiridinijum-hlorid", "benzidamin" ]
+    "Allergens": [ "cetilpiridinijum-hlorid", "benzidamin" ],
+    "Validated": true,
+    "Alternatives": []
   },
 
   {
@@ -50,7 +58,9 @@
     "ActiveSubstances": [ "azitromicin" ],
     "Form": "kapsula, tvrda",
     "Notes": [],
-    "Allergens": [ "azitromicin" ]
+    "Allergens": [ "azitromicin" ],
+    "Validated": true,
+    "Alternatives": []
   },
   {
     "MedicationId": "6",
@@ -60,6 +70,8 @@
     "ActiveSubstances": [ "ampicilin" ],
     "Form": "kapsula, tvrda",
     "Notes": [],
-    "Allergens": [ "azitromicin", "penicilin" ]
+    "Allergens": [ "azitromicin", "penicilin" ],
+    "Validated": true,
+    "Alternatives": []
   }
   ]

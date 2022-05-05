@@ -20,7 +20,8 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true
       }
     ],
     "PastMedication": [
@@ -37,7 +38,8 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true
       }
     ],
     "Reports": [],
@@ -64,7 +66,8 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true
       },
       {
         "MedicationId": "3",
@@ -84,7 +87,8 @@
           "pseudoefedrin",
           "dekstrometorfan",
           "askorbinska kiselina"
-        ]
+        ],
+        "Validated": true
       },
       {
         "MedicationId": "5",
@@ -98,7 +102,8 @@
         ],
         "Allergens": [
           "azitromicin"
-        ]
+        ],
+        "Validated": true
       },
       {
         "MedicationId": "2",
@@ -113,7 +118,8 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true
       },
       {
         "MedicationId": "1",
@@ -128,7 +134,8 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true
       },
       {
         "MedicationId": "2",
@@ -143,7 +150,8 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true
       }
     ],
     "PastMedication": [],
@@ -183,7 +191,8 @@
         ],
         "Allergens": [
           "azitromicin"
-        ]
+        ],
+        "Validated": true
       },
       {
         "MedicationId": "2",
@@ -198,7 +207,8 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true
       },
       {
         "MedicationId": "1",
@@ -213,7 +223,29 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true
+      },
+      {
+        "MedicationId": "3",
+        "BrandName": "Caffetin cold",
+        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
+        "Notes": [],
+        "MedicationCode": "N02BE51",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
+        ],
+        "Allergens": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
+        ],
+        "Validated": true
       }
     ],
     "PastMedication": [],
