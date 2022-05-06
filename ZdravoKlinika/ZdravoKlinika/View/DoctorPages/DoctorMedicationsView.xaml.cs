@@ -24,5 +24,26 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             InitializeComponent();
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.Source is TabControl)
+            {
+                if(MedsTab.SelectedIndex == 0)
+                {
+                    SupplyRequestButton.Visibility = Visibility.Visible;
+                    SupplyShadow.Visibility = Visibility.Visible;
+                    AuthorizeButton.Visibility = Visibility.Hidden;
+                    AuthorizeShadow.Visibility = Visibility.Hidden;
+                } else
+                {
+
+                    AuthorizeButton.Visibility = Visibility.Visible;
+                    AuthorizeShadow.Visibility = Visibility.Visible;
+                    SupplyRequestButton.Visibility = Visibility.Hidden;
+                    SupplyShadow.Visibility = Visibility.Hidden;
+                }
+            }
+        }
     }
 }

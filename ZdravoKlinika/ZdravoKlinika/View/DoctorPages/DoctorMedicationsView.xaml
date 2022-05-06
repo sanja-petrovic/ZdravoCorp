@@ -118,7 +118,28 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
                         <Grid>
-                            <theme:DataGridHeaderBorder CornerRadius="10" Background="Transparent"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" IsPressed="{TemplateBinding IsPressed}" IsHovered="{TemplateBinding IsMouseOver}" IsClickable="{TemplateBinding CanUserSort}" Padding="25 0 20 0" SortDirection="{TemplateBinding SortDirection}" SeparatorVisibility="{TemplateBinding SeparatorVisibility}" SeparatorBrush="{TemplateBinding SeparatorBrush}" Margin="0,0,0,0">
+                            <theme:DataGridHeaderBorder CornerRadius="10" Background="Transparent"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" IsPressed="{TemplateBinding IsPressed}" IsHovered="{TemplateBinding IsMouseOver}" IsClickable="{TemplateBinding CanUserSort}" Padding="25 0 45 0" SortDirection="{TemplateBinding SortDirection}" SeparatorVisibility="{TemplateBinding SeparatorVisibility}" SeparatorBrush="{TemplateBinding SeparatorBrush}" Margin="0,0,0,0">
+                                <ContentPresenter HorizontalAlignment="Center" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </theme:DataGridHeaderBorder>
+                            <Thumb x:Name="PART_LeftHeaderGripper" HorizontalAlignment="Left" Style="{StaticResource ColumnHeaderGripperStyle}"/>
+                            <Thumb x:Name="PART_RightHeaderGripper" HorizontalAlignment="Right" Style="{StaticResource ColumnHeaderGripperStyle}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DataGridColumnHeaderStyle2" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="0, 0, 0, 0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                        <Grid>
+                            <theme:DataGridHeaderBorder CornerRadius="10" Background="Transparent"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" IsPressed="{TemplateBinding IsPressed}" IsHovered="{TemplateBinding IsMouseOver}" IsClickable="{TemplateBinding CanUserSort}" Padding="25 0 85 0" SortDirection="{TemplateBinding SortDirection}" SeparatorVisibility="{TemplateBinding SeparatorVisibility}" SeparatorBrush="{TemplateBinding SeparatorBrush}" Margin="0,0,0,0">
                                 <ContentPresenter HorizontalAlignment="Center" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </theme:DataGridHeaderBorder>
                             <Thumb x:Name="PART_LeftHeaderGripper" HorizontalAlignment="Left" Style="{StaticResource ColumnHeaderGripperStyle}"/>
@@ -407,17 +428,16 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <TabControl Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="274,126,28,63">
+        <TabControl Name="MedsTab" SelectionChanged="TabControl_SelectionChanged" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="274,126,28,63">
             <TabItem Header="Odobreni lekovi">
                 <Grid>
-                    <DataGrid Name="ApprovedMeds" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False">
+                    <DataGrid Name="ApprovedMeds" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Naziv leka"></DataGridTextColumn>
                             <DataGridTextColumn Header="Aktivne supstance"></DataGridTextColumn>
                             <DataGridTextColumn Header="Doza"></DataGridTextColumn>
                             <DataGridTextColumn Header="Oblik"></DataGridTextColumn>
                             <DataGridTextColumn Header="Količina"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Odobren"></DataGridTextColumn>
                         </DataGrid.Columns>
 
                         <DataGrid.Resources>
@@ -434,14 +454,12 @@
             </TabItem>
             <TabItem Header="Neodobreni lekovi">
                 <Grid>
-                    <DataGrid Name="UnapprovedMeds" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False">
+                    <DataGrid Name="UnapprovedMeds" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Naziv leka"></DataGridTextColumn>
                             <DataGridTextColumn Header="Aktivne supstance"></DataGridTextColumn>
                             <DataGridTextColumn Header="Doza"></DataGridTextColumn>
                             <DataGridTextColumn Header="Oblik"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Količina"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Odobren"></DataGridTextColumn>
                         </DataGrid.Columns>
 
                         <DataGrid.Resources>
@@ -459,7 +477,7 @@
         </TabControl>
         <Label Content="Baza lekova" Margin="271,75,355,643" FontSize="24" FontWeight="Bold"/>
 
-        <Border  Margin="892,127,29,618"
+        <Border Name="AuthorizeShadow" Margin="892,127,29,618"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -467,7 +485,15 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Nabavite lek" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="890,126,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="106" Height="25"  Foreground="#555557" >
+        <Border Visibility="Hidden" Name="SupplyShadow"  Margin="763,127,29,618"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button Visibility="Hidden" Name="SupplyRequestButton" OverridesDefaultStyle="False"  Focusable="False" Content="Podnesite zahtev za nabavku" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="760,126,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="236" Height="25"  Foreground="#555557" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -478,15 +504,7 @@
             </Button.Style>
         </Button>
 
-        <Border  Margin="765,126,156,619"
-            BorderBrush="Black"
-            BorderThickness="2"
-            CornerRadius="10">
-            <Border.Effect>
-                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
-            </Border.Effect>
-        </Border>
-        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Pregledajte lek" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="763,125,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="106" Height="25"  Foreground="#555557" >
+        <Button Name="AuthorizeButton" OverridesDefaultStyle="False"  Focusable="False" Content="Odobrite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="891,126,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="106" Height="25"  Foreground="#555557" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -496,5 +514,6 @@
                 <StaticResource ResourceKey="fancyButtonStyle2"/>
             </Button.Style>
         </Button>
+        <Rectangle Fill="#F8F9FE" Height="1" Margin="295,223,61,544"/>
     </Grid>
 </Page>
