@@ -21,7 +21,12 @@
           "ibuprofen",
           "brufen"
         ],
-        "Validated": true
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null
       }
     ],
     "PastMedication": [
@@ -39,7 +44,12 @@
           "ibuprofen",
           "brufen"
         ],
-        "Validated": true
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null
       }
     ],
     "Reports": [],
@@ -52,108 +62,7 @@
     "Allergies": [
       ""
     ],
-    "CurrentMedication": [
-      {
-        "MedicationId": "1",
-        "BrandName": "Brufen",
-        "Dosage": "200mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true
-      },
-      {
-        "MedicationId": "3",
-        "BrandName": "Caffetin cold",
-        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
-        "Notes": [],
-        "MedicationCode": "N02BE51",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "paracetamol",
-          "pseudoefedrin",
-          "dekstrometorfan",
-          "askorbinska kiselina"
-        ],
-        "Allergens": [
-          "paracetamol",
-          "pseudoefedrin",
-          "dekstrometorfan",
-          "askorbinska kiselina"
-        ],
-        "Validated": true
-      },
-      {
-        "MedicationId": "5",
-        "BrandName": "Hemomycin",
-        "Dosage": "250mg",
-        "Notes": [],
-        "MedicationCode": "J01FA10",
-        "Form": "kapsula, tvrda",
-        "ActiveSubstances": [
-          "azitromicin"
-        ],
-        "Allergens": [
-          "azitromicin"
-        ],
-        "Validated": true
-      },
-      {
-        "MedicationId": "2",
-        "BrandName": "Brufen",
-        "Dosage": "400mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true
-      },
-      {
-        "MedicationId": "1",
-        "BrandName": "Brufen",
-        "Dosage": "200mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true
-      },
-      {
-        "MedicationId": "2",
-        "BrandName": "Brufen",
-        "Dosage": "400mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true
-      }
-    ],
+    "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "1510963123321"
@@ -180,37 +89,6 @@
     ],
     "CurrentMedication": [
       {
-        "MedicationId": "5",
-        "BrandName": "Hemomycin",
-        "Dosage": "250mg",
-        "Notes": [],
-        "MedicationCode": "J01FA10",
-        "Form": "kapsula, tvrda",
-        "ActiveSubstances": [
-          "azitromicin"
-        ],
-        "Allergens": [
-          "azitromicin"
-        ],
-        "Validated": true
-      },
-      {
-        "MedicationId": "2",
-        "BrandName": "Brufen",
-        "Dosage": "400mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true
-      },
-      {
         "MedicationId": "1",
         "BrandName": "Brufen",
         "Dosage": "200mg",
@@ -224,28 +102,12 @@
           "ibuprofen",
           "brufen"
         ],
-        "Validated": true
-      },
-      {
-        "MedicationId": "3",
-        "BrandName": "Caffetin cold",
-        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
-        "Notes": [],
-        "MedicationCode": "N02BE51",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "paracetamol",
-          "pseudoefedrin",
-          "dekstrometorfan",
-          "askorbinska kiselina"
-        ],
-        "Allergens": [
-          "paracetamol",
-          "pseudoefedrin",
-          "dekstrometorfan",
-          "askorbinska kiselina"
-        ],
-        "Validated": true
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null
       }
     ],
     "PastMedication": [],

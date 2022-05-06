@@ -11,7 +11,7 @@ public class AppointmentRepository
     private DoctorRepository doctorRepository;
     private PatientRepository patientRepository;
     private RoomRepository roomRepository;
-    private MedicationRepository mediicationRepository;
+    private MedicationRepository medicationRepository;
     private List<Appointment> appointments;
     
 
@@ -23,8 +23,8 @@ public class AppointmentRepository
         doctorRepository = new DoctorRepository();
         roomRepository = new RoomRepository();
         patientRepository = new PatientRepository();
-        mediicationRepository = new MedicationRepository();
-        updateReferences();
+        medicationRepository = new MedicationRepository();
+        UpdateReferences();
     }
 
     public List<Appointment> Appointments
@@ -51,7 +51,7 @@ public class AppointmentRepository
     public RoomRepository RoomRepository { get => roomRepository; set => roomRepository = value; }
     public PatientRepository PatientRepository1 { get => patientRepository; set => patientRepository = value; }
 
-    private void updateReferences()
+    private void UpdateReferences()
     {
         appointments = appointmentDataHandler.Read();
         List<Doctor> doctors = doctorRepository.GetAll();
@@ -60,12 +60,18 @@ public class AppointmentRepository
 
         foreach (Appointment appointment in appointments)
         {
-            appointment.Patient = patientRepository.GetById(appointment.Patient.GetPatientId());
-            appointment.Doctor = doctorRepository.GetById(appointment.Doctor.PersonalId);
-            appointment.Room = roomRepository.GetById(appointment.Room.RoomId);
-            for(int i = 0; i < appointment.Prescriptions.Count; i++ )
+            if(appointment.Patient != null)
+                appointment.Patient = patientRepository.GetById(appointment.Patient.GetPatientId());
+            if(appointment.Doctor != null)
+                appointment.Doctor = doctorRepository.GetById(appointment.Doctor.PersonalId);
+            if(appointment.Room != null)
+                appointment.Room = roomRepository.GetById(appointment.Room.RoomId);
+            if(appointment.Prescriptions != null)
             {
-                appointment.Prescriptions[i] = this.mediicationRepository.GetById(appointment.Prescriptions[i].MedicationId);
+                for (int i = 0; i < appointment.Prescriptions.Count; i++)
+                {
+                    appointment.Prescriptions[i] = this.medicationRepository.GetById(appointment.Prescriptions[i].MedicationId);
+                }
             } 
         }
 
@@ -104,7 +110,7 @@ public class AppointmentRepository
     {
 
         this.appointments = this.appointmentDataHandler.Read();
-        updateReferences();
+        UpdateReferences();
 
         foreach(Appointment appointment in this.appointments)
         {
@@ -136,7 +142,7 @@ public class AppointmentRepository
         
         List<Appointment> doctorsAppointments = new List<Appointment>();
         this.appointments = this.appointmentDataHandler.Read();
-        updateReferences();
+        UpdateReferences();
         foreach (Appointment appointment in this.appointments)
         {
             if (appointment.Doctor.PersonalId.Equals(doctorId))
@@ -246,7 +252,7 @@ public class AppointmentRepository
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {
         this.appointments = appointmentDataHandler.Read();
-        updateReferences();
+        UpdateReferences();
         List<Appointment> pastAppointments = new List<Appointment>();
         foreach(Appointment appointment in this.appointments)
         {

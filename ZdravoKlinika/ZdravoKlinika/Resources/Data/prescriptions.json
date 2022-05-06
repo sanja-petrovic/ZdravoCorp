@@ -245,5 +245,18 @@
     "RegisteredPatient": "0105965123321",
     "Id": 19,
     "DateOfCreation": "2022-05-05T22:39:54.3734776+02:00"
+  },
+  {
+    "Medication": "1",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "",
+    "Doctor": "456",
+    "RegisteredPatient": "0105965123321",
+    "Id": 20,
+    "DateOfCreation": "2022-05-06T02:02:15.2065302+02:00"
   }
 ]

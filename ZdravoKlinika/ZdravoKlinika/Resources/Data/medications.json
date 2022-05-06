@@ -9,7 +9,11 @@
       "Notes": [],
       "Allergens": [ "ibuprofen", "brufen" ],
       "Validated": true,
-      "Alternatives": []
+      "Alternatives": [],
+      "Classification": null,
+      "Indications": null,
+      "SideEffects": null,
+      "ApprovedBy": null
     },
   {
     "MedicationId": "2",
@@ -21,7 +25,11 @@
     "Notes": [],
     "Allergens": [ "ibuprofen", "brufen" ],
     "Validated": true,
-    "Alternatives": []
+    "Alternatives": [],
+    "Classification": null,
+    "Indications": null,
+    "SideEffects": null,
+    "ApprovedBy": null
   },
 
   {
@@ -34,7 +42,11 @@
     "Notes": [],
     "Allergens": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
     "Validated": true,
-    "Alternatives": []
+    "Alternatives": [],
+    "Classification": null,
+    "Indications": null,
+    "SideEffects": null,
+    "ApprovedBy": null
   },
 
   {
@@ -47,7 +59,11 @@
     "Notes": [],
     "Allergens": [ "cetilpiridinijum-hlorid", "benzidamin" ],
     "Validated": true,
-    "Alternatives": []
+    "Alternatives": [],
+    "Classification": null,
+    "Indications": null,
+    "SideEffects": null,
+    "ApprovedBy": null
   },
 
   {
@@ -60,7 +76,11 @@
     "Notes": [],
     "Allergens": [ "azitromicin" ],
     "Validated": true,
-    "Alternatives": []
+    "Alternatives": [],
+    "Classification": null,
+    "Indications": null,
+    "SideEffects": null,
+    "ApprovedBy": null
   },
   {
     "MedicationId": "6",
@@ -72,6 +92,10 @@
     "Notes": [],
     "Allergens": [ "azitromicin", "penicilin" ],
     "Validated": true,
-    "Alternatives": []
+    "Alternatives": [],
+    "Classification": null,
+    "Indications": null,
+    "SideEffects": null,
+    "ApprovedBy": null
   }
   ]
