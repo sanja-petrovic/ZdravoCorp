@@ -12,6 +12,7 @@ namespace ZdravoKlinika.Repository
 
         private MedicationDataHandler medicationDataHandler;
         private List<Medication> medications;
+        private DoctorRepository doctorRepository;
 
 
         public MedicationRepository()
@@ -21,6 +22,25 @@ namespace ZdravoKlinika.Repository
             foreach(Medication medication in medications)
             {
                 Console.WriteLine(medication.MedicationId);
+            }
+            this.doctorRepository = new DoctorRepository();
+        }
+
+        public void UpdateReferences()
+        {
+            foreach (Medication medication in this.medications)
+            {
+                if(medication.ApprovedBy != null)
+                {
+                    medication.ApprovedBy = this.doctorRepository.GetById(medication.ApprovedBy.PersonalId);
+                }
+                if(medication.Alternatives != null)
+                {
+                    for (int i = 0; i < medication.Alternatives.Count; i++)
+                    {
+                        medication.Alternatives[i] = this.GetById(medication.Alternatives[i].MedicationId);
+                    }
+                }
             }
         }
 

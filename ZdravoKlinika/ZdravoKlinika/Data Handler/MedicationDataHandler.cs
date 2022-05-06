@@ -17,6 +17,7 @@ namespace ZdravoKlinika.Data_Handler
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.WriteIndented = true;
+            options.Converters.Add(new JsonConverters.DoctorConverter());
             var json = JsonSerializer.Serialize(medications, options);
             File.WriteAllText(fileLocation, json);
 
@@ -25,6 +26,7 @@ namespace ZdravoKlinika.Data_Handler
         public List<Medication> Read()
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
+            options.Converters.Add(new JsonConverters.DoctorConverter());
 
             return JsonSerializer.Deserialize<List<Medication>>(File.ReadAllText(fileLocation), options);
         }
