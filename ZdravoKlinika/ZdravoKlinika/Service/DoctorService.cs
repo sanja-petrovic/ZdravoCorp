@@ -8,24 +8,24 @@ using System.Collections.Generic;
 
 public class DoctorService
 {
-   private DoctorRepository doctorRepository = new DoctorRepository();
-   
-   public List<Doctor> GetAll()
-   {
-       return doctorRepository.GetAll();
-   }
-   
-   public Doctor GetById(String id)
-   {
-      return (Doctor)doctorRepository.GetById(id);  
-   }
-   
+    private DoctorRepository doctorRepository = new DoctorRepository();
+
+    public List<Doctor> GetAll()
+    {
+        return doctorRepository.GetAll();
+    }
+
+    public Doctor GetById(String id)
+    {
+        return (Doctor)doctorRepository.GetById(id);
+    }
+
     public Doctor GetByEmail(String email)
     {
         return doctorRepository.GetByEmail(email);
     }
-   public void CreateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
-   {
+    public void CreateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
+    {
         Doctor doctor = new Doctor();
         doctor.PersonalId = personalId;
         doctor.Name = name;
@@ -41,9 +41,9 @@ public class DoctorService
 
         doctorRepository.CreateDoctor(doctor);
 
-   }
-   
-   public void UpdateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
+    }
+
+    public void UpdateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
     {
         Doctor doctor = new Doctor();
         doctor.PersonalId = personalId;
@@ -56,15 +56,24 @@ public class DoctorService
         doctor.Specialty = speciality;
         doctor.EducationLevel = education;
         doctor.Gender = gender;
-        doctor.DateOfBirth= dateOfBirth;
-        
+        doctor.DateOfBirth = dateOfBirth;
+
         doctorRepository.UpdateDoctor(doctor);
 
     }
-   
-   public void DeleteDoctor(String personalId)
-   {
-        doctorRepository.DeleteDoctor(GetById(personalId));
-   }
 
+    public void DeleteDoctor(String personalId)
+    {
+        doctorRepository.DeleteDoctor(GetById(personalId));
+    }
+
+    public List<Doctor> GetBySpecialty(string specialty)
+    {
+        return this.doctorRepository.GetBySpecialty(specialty);
+    }
+
+    public List<String> GetAllSpecialties()
+    {
+        return this.doctorRepository.GetAllSpecialties();
+    }
 }

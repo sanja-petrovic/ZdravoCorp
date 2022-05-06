@@ -343,7 +343,8 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                 </Grid>
             </TabItem>
             <TabItem Header="Uput za laboratoriju"></TabItem>
-            <TabItem Header="Uput za specijalistu"></TabItem>
+            <TabItem Header="Uput za specijalistu">
+            </TabItem>
             <TabItem Header="Uput za stacionarno lečenje"></TabItem>
             <TabItem Header="Bolovanje"></TabItem>
 
