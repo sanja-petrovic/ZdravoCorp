@@ -1,20 +1,22 @@
 [
-    {
-      "MedicationId": "1",
-      "MedicationCode": "M01AE01",
-      "BrandName": "Brufen",
-      "Dosage": "200mg",
-      "ActiveSubstances": [ "ibuprofen" ],
-      "Form": "film tableta",
-      "Notes": [],
-      "Allergens": [ "ibuprofen", "brufen" ],
-      "Validated": true,
-      "Alternatives": [],
-      "Classification": null,
-      "Indications": null,
-      "SideEffects": null,
-      "ApprovedBy": null
-    },
+  {
+    "MedicationId": "1",
+    "MedicationCode": "M01AE01",
+    "BrandName": "Brufen",
+    "Dosage": "200mg",
+    "ActiveSubstances": [ "ibuprofen" ],
+    "Form": "film tableta",
+    "Notes": [],
+    "Allergens": [ "ibuprofen", "brufen" ],
+    "Validated": true,
+    "Alternatives": [],
+    "Classification": null,
+    "Indications": null,
+    "SideEffects": null,
+    "ApprovedBy": null,
+    "Note": null,
+    "DosingInstructions": null
+  },
   {
     "MedicationId": "2",
     "MedicationCode": "M01AE01",
@@ -29,7 +31,9 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null
+    "ApprovedBy": null,
+    "Note": null,
+    "DosingInstructions": null
   },
 
   {
@@ -46,7 +50,9 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null
+    "ApprovedBy": null,
+    "Note": null,
+    "DosingInstructions": null
   },
 
   {
@@ -63,7 +69,9 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null
+    "ApprovedBy": null,
+    "Note": null,
+    "DosingInstructions": null
   },
 
   {
@@ -80,7 +88,9 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null
+    "ApprovedBy": null,
+    "Note": null,
+    "DosingInstructions": null
   },
   {
     "MedicationId": "6",
@@ -96,6 +106,8 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null
+    "ApprovedBy": null,
+    "Note": null,
+    "DosingInstructions": null
   }
-  ]
+]
