@@ -68,5 +68,11 @@ namespace ZdravoKlinika.View.DoctorPages
                 viewModel.Edited();
             };
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DoctorCreateAppointmentWindow doctorCreateAppointmentWindow = new DoctorCreateAppointmentWindow();
+            doctorCreateAppointmentWindow.ShowDialog();
+        }
     }
 }
