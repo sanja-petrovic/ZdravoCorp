@@ -1,0 +1,42 @@
+﻿<Window x:Class="ZdravoKlinika.View.DoctorPages.ApproveMedView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
+        mc:Ignorable="d"
+        Title="Pregled neodobrenog leka" Height="768" Width="598">
+    <Grid>
+        <Label Content="Naziv leka" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="226,39,0,0" VerticalAlignment="Top"/>
+        <Label Content="Aktivne supstance" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="404,39,0,0" VerticalAlignment="Top"/>
+        <Label Content="Klasifikacija" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="404,123,0,0" VerticalAlignment="Top"/>
+        <Label Content="Upotreba" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="50,199,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doziranje i način primene" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="50,326,0,0" VerticalAlignment="Top"/>
+        <Label Content="Moguća neželjena dejstva" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="50,476,0,0" VerticalAlignment="Top"/>
+        <Label Content="Informacija o alergenima" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="50,573,0,0" VerticalAlignment="Top"/>
+        <Label Content="Šifra leka" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="50,39,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doza" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="50,123,0,0" VerticalAlignment="Top"/>
+        <Label Content="Oblik" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="226,123,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ConfirmButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Odobrite" HorizontalAlignment="Left"  Margin="456,682,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle3"/>
+            </Button.Style>
+        </Button>
+        <Button x:Name="EditButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odbijte" HorizontalAlignment="Left"  Margin="356,682,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="83">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle4"/>
+            </Button.Style>
+        </Button>
+
+    </Grid>
+</Window>

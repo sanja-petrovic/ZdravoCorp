@@ -6,52 +6,8 @@
     "Allergies": [
       "asdads"
     ],
-    "CurrentMedication": [
-      {
-        "MedicationId": "1",
-        "BrandName": "Brufen",
-        "Dosage": "200mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null
-      }
-    ],
-    "PastMedication": [
-      {
-        "MedicationId": "2",
-        "BrandName": "Brufen",
-        "Dosage": "400mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null
-      }
-    ],
+    "CurrentMedication": [],
+    "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "12345"
   },
@@ -87,29 +43,7 @@
       "Ma\u010Dja dlaka",
       "penicilin"
     ],
-    "CurrentMedication": [
-      {
-        "MedicationId": "1",
-        "BrandName": "Brufen",
-        "Dosage": "200mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null
-      }
-    ],
+    "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "0105965123321"

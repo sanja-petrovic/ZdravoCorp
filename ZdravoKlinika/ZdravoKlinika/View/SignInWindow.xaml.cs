@@ -31,7 +31,8 @@ namespace ZdravoKlinika.View
         {
             View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
             View.DoctorPages.DoctorHomePage doctorHomePage = new View.DoctorPages.DoctorHomePage();
-            MainFrame.Navigate(doctorSchedule);
+            View.DoctorPages.DoctorMedicationsView doctorMedicationsView = new View.DoctorPages.DoctorMedicationsView();
+            MainFrame.Navigate(doctorMedicationsView);
 
         }
 
