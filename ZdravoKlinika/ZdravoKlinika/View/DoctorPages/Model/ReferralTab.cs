@@ -11,5 +11,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string header;
 
         public string Header { get => header; set => SetProperty(ref header, value); }
+
+        public ReferralTab() { }
+
+
     }
 }

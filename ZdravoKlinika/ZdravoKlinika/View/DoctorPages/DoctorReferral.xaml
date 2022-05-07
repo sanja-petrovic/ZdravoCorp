@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xml:lang="sr-Latn-RS" 
              mc:Ignorable="d" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
-             Height="482" Width="500">
+             Height="482" Width="500" >
     <UserControl.Resources>
         <Style x:Key="DatePickerStyle1" TargetType="{x:Type DatePicker}">
             <Setter Property="Foreground" Value="#555557"/>

@@ -21,7 +21,7 @@ namespace ZdravoKlinika.View.DoctorPages
     public partial class LogAppointmentDialog : Window
     {
 
-        private AppointmentLoggingViewModel viewModel;
+        private ApptLogViewModel viewModel;
         private int selectedAppointmentId;
 
         public int SelectedAppointmentId { get => selectedAppointmentId; set => selectedAppointmentId = value; }
@@ -33,14 +33,15 @@ namespace ZdravoKlinika.View.DoctorPages
 
         public void init()
         {
-            viewModel = new AppointmentLoggingViewModel();
+            viewModel = new ApptLogViewModel();
             DataContext = viewModel;
-            viewModel.AppointmentId = selectedAppointmentId;
-            viewModel.load();
+            /*viewModel.AppointmentId = selectedAppointmentId;
+            viewModel.load();*/
             InitializeComponent();
+            Tabby.ItemsSource = viewModel.TabViewModels;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        /*private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
@@ -80,6 +81,6 @@ namespace ZdravoKlinika.View.DoctorPages
             var selected = (String)RepeatCB.SelectedItem;
             var note = (String)MedNoteTB.Text;
             viewModel.PrescriptionAdded(MedCB.SelectedIndex, selected, note);
-        }
+        }*/
     }
 }

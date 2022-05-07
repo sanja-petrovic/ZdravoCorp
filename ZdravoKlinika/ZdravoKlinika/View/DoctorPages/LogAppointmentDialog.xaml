@@ -6,9 +6,9 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
         mc:Ignorable="d"
-        Title="Upisivanje pregleda" Height="482" Width="500"
+        Title="Upisivanje pregleda" Height="550" Width="500"
 Background="#F8F9FE" ResizeMode="CanMinimize" 
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentLoggingViewModel}">
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:ApptLogViewModel}">
     <Window.Resources>
         <Style x:Key="TabItemStyleLogAppt" TargetType="{x:Type TabItem}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -16,7 +16,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Background" Value="{StaticResource TabItem.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource TabItem.Static.Border}"/>
-            <!--<Setter Property="Header" Value="{Binding Path=Times}"/>-->
+            <Setter Property="Header" Value="{Binding Path=Header}"/>
             <Setter Property="Margin" Value="0"/>
             <Setter Property="Padding" Value="8,3,8,3"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -208,147 +208,20 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
         <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF"/>
     </Window.Resources>
     <Grid>
-        <TabControl  Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="0,24,0,0">
-            <TabItem Header="Anamneza">
-                <Grid Height="716">
-                    <TextBlock HorizontalAlignment="Left" Margin="38,21,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="38,45,0,0" TextWrapping="Wrap" Text="{Binding PatientName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="38,61,0,0" TextWrapping="Wrap" Text="{Binding PatientId}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TabControl x:Name="Tabby"
+            SelectedItem="{Binding SelectedViewModel}" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="0,24,0,0">
 
-                    <TextBlock HorizontalAlignment="Left" Margin="165,21,0,0" TextWrapping="Wrap" Text="Doktor" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="165,45,0,0" TextWrapping="Wrap" Text="{Binding DoctorName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="122"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="165,61,0,0" TextWrapping="Wrap" Text="{Binding DoctorSpecialty}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-
-                    <TextBlock HorizontalAlignment="Left" Margin="282,21,0,0" TextWrapping="Wrap" Text="Termin" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="282,45,0,0" TextWrapping="Wrap" Text="{Binding DateTime}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="122"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="282,61,0,0" TextWrapping="Wrap" Text="{Binding Room}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-
-                    <TextBlock HorizontalAlignment="Left" Margin="36,104,0,0" TextWrapping="Wrap" Text="Dijagnoza" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Text="{Binding Diagnoses}" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="36,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="419" Height="57" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-
-                    <TextBlock HorizontalAlignment="Left" Margin="36,222,0,0" TextWrapping="Wrap" Text="Nalaz i mišljenje doktora" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-                    <TextBox Name="NoteTB" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="33,246,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote, Mode=TwoWay}" VerticalAlignment="Top" Width="422" Height="59" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <Button Name="ConfirmButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="378,328,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77" Click="Save">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                        <Button.Style>
-                            <StaticResource ResourceKey="fancyButtonStyle3"/>
-                        </Button.Style>
-                    </Button>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Terapija">
-                <Grid>
-
-                    <ComboBox x:Name="MedCB" SelectionChanged="MedCB_SelectionChanged" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="34,69,0,0" VerticalAlignment="Top" Width="246" Text="Izaberite lek" Padding="5" Height="28">
-                        <ComboBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </ComboBox.Resources>
-                    </ComboBox>
-                    <TextBox x:Name="MedNoteTB" Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="34,196,0,0" TextWrapping="Wrap" Text="{Binding PrescriptionNote}" VerticalAlignment="Top" Width="422" Height="28" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="293,69,0,0" TextWrapping="Wrap" Text="{Binding Amount}" VerticalAlignment="Top" Width="58" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.467,0.43">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="34,124,0,0" TextWrapping="Wrap" Text="{Binding Frequency}" VerticalAlignment="Top" Width="95" Height="28" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <ComboBox IsEditable="True" x:Name="RepeatCB" ItemsSource="{Binding RepeatDisplay}" Style="{DynamicResource ComboBoxStyle1}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="293,125,0,0" VerticalAlignment="Top" Width="163" Padding="5" Height="28"/>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="360,69,0,0" TextWrapping="NoWrap" Text="{Binding Duration}" VerticalAlignment="Top" Width="96" Height="28" BorderBrush="#FFAEAEC1">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="160,124,0,0" TextWrapping="Wrap" Text="{Binding SingleDose}" VerticalAlignment="Top" Width="96" Height="28" BorderBrush="#FFAEAEC1" SelectionBrush="#FF9E98FF">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <TextBlock Foreground="#555557" HorizontalAlignment="Left"  Margin="141,130,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
-                    <TextBlock  HorizontalAlignment="Left" Margin="34,51,0,0" TextWrapping="Wrap" Text="Naziv leka" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Width="81"/>
-
-                    <Button Name="AddButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Dodajte na listu" HorizontalAlignment="Left"  Margin="338,237,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="118" Click="AddButton_Click">
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                        <Button.Style>
-                            <StaticResource ResourceKey="fancyButtonStyle4"/>
-                        </Button.Style>
-                    </Button>
-                    <ListBox Name="MedLB" BorderBrush="#FFAEAEC1" Style="{DynamicResource ListBoxStyle1}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="31,282,38,25">
-                        <ListBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </ListBox.Resources>
-
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <TextBlock Text="{Binding PrescriptionDisplay}" Margin="10 0 0 0"/>
-                                    <Image Source="/Resources/Images/pencil.png" Height="10" Width="10" Margin="350 0 0 0"/>
-                                    <Image Source="/Resources/Images/cross.png" Height="10" Width="10" Margin="380 0 0 0"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <TextBlock HorizontalAlignment="Left" Margin="293,51,0,0" TextWrapping="Wrap" Text="Količina" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Width="81"/>
-                    <TextBlock  HorizontalAlignment="Left" Margin="360,51,0,0" TextWrapping="Wrap" Text="Trajanje terapije" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Width="97" Height="16"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="37,103,0,0" TextWrapping="Wrap" Text="Doziranje" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Width="332"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="296,105,0,0" TextWrapping="Wrap" Text="Ponavljanje" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Width="82"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="383,97,0,0" TextWrapping="Wrap" Text="(u danima)" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="50" Height="16"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="297,154,0,0" TextWrapping="Wrap" Text="Izaberite od ponuđenog ili upišite" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="155" Height="16"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="56,154,0,0" TextWrapping="Wrap" Text="učestalost" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="50" Height="16"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="168,154,0,0" TextWrapping="Wrap" Text="pojedinačna doza" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="80" Height="16"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="295,166,0,0" TextWrapping="Wrap" FontStyle="Italic" Text="'na svakih (X) dana/nedelja/meseci'" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="159" Height="16"/>
-                    <TextBlock  HorizontalAlignment="Left" Margin="37,176,0,0" TextWrapping="Wrap" Text="Način upotrebe, dodatne napomene..." VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Width="227"/>
-                    <TextBlock Name="AllergyTB"  Visibility="Hidden"  Foreground="#FE5D7A" HorizontalAlignment="Left" Margin="34,244,0,0" TextWrapping="Wrap" Text="Pacijent je alergičan na izabrani lek." VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="319" Height="27"/>
-                    <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="34,261,0,0" TextWrapping="Wrap" Text="Dodati lekovi će se prikazati ovde." VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="184" Height="16"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Uput za laboratoriju"></TabItem>
-            <TabItem Header="Uput za specijalistu">
-            </TabItem>
-            <TabItem Header="Uput za stacionarno lečenje"></TabItem>
-            <TabItem Header="Bolovanje"></TabItem>
-
-
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type model:AnamnesisTab}">
+                    <local:AnamnesisView></local:AnamnesisView>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type model:TherapyTab}">
+                    <local:TherapyView></local:TherapyView>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type model:ReferralTab}">
+                    <local:DoctorReferral></local:DoctorReferral>
+                </DataTemplate>
+            </TabControl.Resources>
         </TabControl>
     </Grid>
 </Window>
