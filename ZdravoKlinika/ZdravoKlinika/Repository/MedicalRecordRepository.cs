@@ -79,8 +79,22 @@ namespace ZdravoKlinika.Repository
         }
         public void UpdateMedicalRecord(MedicalRecord medicalRecord)
         {
-            MedicalRecord rec = GetById(medicalRecord.MedicalRecordId);
-            rec = medicalRecord;
+            int index = -1;
+            foreach (MedicalRecord recordObject in this.medicalRecords)
+            {
+                if (recordObject.MedicalRecordId.Equals(medicalRecord.MedicalRecordId))
+                {
+                    index = medicalRecords.IndexOf(recordObject);
+                }
+            }
+
+            if (index == -1)
+            {
+                Console.WriteLine("Error");
+                return;
+            }
+
+            medicalRecords[index] = medicalRecord;
             MedicalRecordDataHandler.Write(medicalRecords);
             return;
         }
