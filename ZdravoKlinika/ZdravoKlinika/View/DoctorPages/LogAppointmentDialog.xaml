@@ -209,7 +209,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
     </Window.Resources>
     <Grid>
         <TabControl x:Name="Tabby"
-            SelectedItem="{Binding SelectedViewModel}" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="0,24,0,0">
+            SelectedItem="{Binding SelectedViewModel}" ItemsSource="{Binding TabViewModels}" SelectionChanged="Tabby_SelectionChanged" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="0,24,0,0">
 
             <TabControl.Resources>
                 <DataTemplate DataType="{x:Type model:AnamnesisTab}">
@@ -223,5 +223,15 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                 </DataTemplate>
             </TabControl.Resources>
         </TabControl>
+        <Button Name="ConfirmButton" Click="Save" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="391,456,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle3"/>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>

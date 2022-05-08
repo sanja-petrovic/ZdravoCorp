@@ -31,12 +31,12 @@ namespace ZdravoKlinika.View.DoctorPages
             //https://stackoverflow.com/questions/9796174/load-usercontrol-in-tabitem
         }
 
-        public void init()
+        public void Init()
         {
             viewModel = new ApptLogViewModel();
+            viewModel.AppointmentId = SelectedAppointmentId;
+            viewModel.Init();
             DataContext = viewModel;
-            /*viewModel.AppointmentId = selectedAppointmentId;
-            viewModel.load();*/
             InitializeComponent();
             Tabby.ItemsSource = viewModel.TabViewModels;
         }
@@ -50,14 +50,31 @@ namespace ZdravoKlinika.View.DoctorPages
         {
 
         }
-
+        */
         private void Save(object sender, RoutedEventArgs e)
         {
-            viewModel.save(NoteTB.Text);
+            var hm = Tabby.Items[0] as AnamnesisView;
+            hm.Save();
+
             this.Close();
         }
 
+        private void Tabby_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ConfirmButton != null)
+            {
+                if (Tabby.SelectedIndex != 0)
+                {
+                    ConfirmButton.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    ConfirmButton.Visibility = Visibility.Visible;
+                }
+            }
+        }
 
+        /*
         private void MedCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (viewModel.AllergyCheck(MedCB.SelectedIndex))

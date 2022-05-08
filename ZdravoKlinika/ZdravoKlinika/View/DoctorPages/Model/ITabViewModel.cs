@@ -9,5 +9,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
     public interface ITabViewModel
     {
         string Header { get; set; }
+        int AppointmentId { get; set; }
+
+        void Load();
     }
 }

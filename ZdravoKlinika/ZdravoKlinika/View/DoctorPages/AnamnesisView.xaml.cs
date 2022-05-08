@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -20,9 +21,19 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class AnamnesisView : UserControl
     {
+        private AnamnesisTab viewModel;
+        private int selectedAppointmentId;
         public AnamnesisView()
         {
             InitializeComponent();
         }
+
+        public int SelectedAppointmentId { get => selectedAppointmentId; set => selectedAppointmentId = value; }
+
+        public void Save()
+        {
+            viewModel.Save(NoteTB.Text);
+        }
+
     }
 }

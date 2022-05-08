@@ -40,7 +40,7 @@ namespace ZdravoKlinika.View.DoctorPages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog { SelectedAppointmentId = this.selectedAppointmentId };
-            logAppointmentDialog.init();
+            logAppointmentDialog.Init();
             logAppointmentDialog.ShowDialog();
             viewModel.infoChange();
             
