@@ -44,6 +44,7 @@ namespace ZdravoKlinika.View.DoctorPages
             LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog { SelectedAppointmentId = this.selectedAppointmentId };
             logAppointmentDialog.init();
             logAppointmentDialog.ShowDialog();
+            //needsto change
             
         }
 
