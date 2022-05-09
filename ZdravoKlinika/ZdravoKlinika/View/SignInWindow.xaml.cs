@@ -48,9 +48,8 @@ namespace ZdravoKlinika.View
                         secretaryMainWindow.Show();
                         break;
                     case UserType.Doctor:
-                        View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
-                        View.DoctorPages.DoctorHomePage doctorHomePage = new View.DoctorPages.DoctorHomePage();
-                        MainFrame.Navigate(doctorSchedule);
+                        DoctorPages.DoctorBasePage doctorBase = new DoctorPages.DoctorBasePage(tryUser);
+                        doctorBase.Show();
                         break;
                     case UserType.Manager:
                         UpravnikWindow upravnikWindow = new UpravnikWindow();
@@ -60,6 +59,8 @@ namespace ZdravoKlinika.View
                         break;
 
                 }
+
+                this.Close();
             }
             
 

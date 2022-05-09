@@ -19,29 +19,31 @@ namespace ZdravoKlinika.View.DoctorPages
     /// <summary>
     /// Interaction logic for DoctorBasePage.xaml
     /// </summary>
-    public partial class DoctorBasePage : UserControl
+    public partial class DoctorBasePage : Window
     {
+        Model.DoctorViewModel viewModel;
 
-        public DoctorBasePage()
+        private DoctorHomePage doctorHomePage;
+        private DoctorSchedule doctorSchedule;
+
+        public DoctorBasePage(RegisteredUser doctor)
         {
-            Model.DoctorViewModel viewModel = new Model.DoctorViewModel();
-            viewModel.Name = "Dr Gregory House";
-            viewModel.Specialty = "Dijagnostičar";
-            DataContext = viewModel;
+            this.viewModel = new Model.DoctorViewModel(doctor);
+            DataContext = this.viewModel;
             InitializeComponent();
+            doctorHomePage = new DoctorHomePage(viewModel.Doctor);
+            doctorSchedule = new DoctorSchedule(this.viewModel.Doctor);
+            MainFrame.Navigate(doctorHomePage);
         }
-
 
         private void GoToSchedule(object sender, MouseButtonEventArgs e)
         {
-            View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
-            //this.NavigationService.Navigate(doctorSchedule);
+            MainFrame.Navigate(doctorSchedule);
         }
 
         private void GoToHome(object sender, MouseButtonEventArgs e)
         {
-            View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
-            //this.NavigationService.Navigate(doctorSchedule);
+            MainFrame.Navigate(doctorHomePage);
         }
     }
 }
