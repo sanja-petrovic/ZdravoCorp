@@ -15,7 +15,7 @@
     "SideEffects": null,
     "ApprovedBy": null,
     "Note": null,
-    "DosingInstructions": null
+    "DosageInstructions": null
   },
   {
     "MedicationId": "2",
@@ -33,7 +33,7 @@
     "SideEffects": null,
     "ApprovedBy": null,
     "Note": null,
-    "DosingInstructions":  null
+    "DosageInstructions": null
   },
 
   {
@@ -52,7 +52,7 @@
     "SideEffects": null,
     "ApprovedBy": null,
     "Note": null,
-    "DosingInstructions": null
+    "DosageInstructions": null
   },
 
   {
@@ -71,7 +71,7 @@
     "SideEffects": null,
     "ApprovedBy": null,
     "Note": null,
-    "DosingInstructions": null
+    "DosageInstructions": null
   },
 
   {
@@ -90,7 +90,7 @@
     "SideEffects": null,
     "ApprovedBy": null,
     "Note": null,
-    "DosingInstructions": null
+    "DosageInstructions": null
   },
   {
     "MedicationId": "6",
@@ -108,6 +108,6 @@
     "SideEffects": null,
     "ApprovedBy": null,
     "Note": null,
-    "DosingInstructions": null
+    "DosageInstructions": null
   }
-  ]
+]

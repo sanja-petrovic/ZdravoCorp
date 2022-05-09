@@ -10,15 +10,16 @@ namespace ZdravoKlinika.View.DoctorPages.Model
     internal class ScheduleViewModel : ViewModelBase
     {
         private DateTime selected;
+        private Doctor doctor;
         public ObservableCollection<ScheduleTabItem> Tabs { get; set; }
         public DateTime Selected { get => selected; set => SetProperty(ref selected, value); }
-        
+        public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
 
         public ScheduleViewModel()
         {
             Tabs = new ObservableCollection<ScheduleTabItem>();
             selected = DateTime.Today;
-            infoChange();
+            //infoChange();
         }
 
         public void infoChange()
@@ -26,7 +27,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Tabs.Clear();
 
             AppointmentController controller = new AppointmentController();
-            List<Appointment> appointments = controller.GetAppointmentsByDoctorDate("456", Selected);
+            List<Appointment> appointments = controller.GetAppointmentsByDoctorDate(doctor.PersonalId, Selected);
             RegisteredPatientController patientController = new RegisteredPatientController();
 
             foreach (Appointment appointment in appointments)

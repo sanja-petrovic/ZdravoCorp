@@ -18,7 +18,7 @@ public class Medication
     private string sideEffects; //gastritis,...
     private Doctor approvedBy;
     private string note;
-    private string dosingInstructions;
+    private string dosageInstructions;
 
     public string MedicationId { get => medicationId; set => medicationId = value; }
     public string BrandName { get => brandName; set => brandName = value; }
@@ -35,7 +35,7 @@ public class Medication
     public Doctor ApprovedBy { get => approvedBy; set => approvedBy = value; }
     public string Indications { get => indications; set => indications = value; }
     public string Note { get => note; set => note = value; }
-    public string DosingInstructions { get => dosingInstructions; set => dosingInstructions = value; }
+    public string DosageInstructions { get => dosageInstructions; set => dosageInstructions = value; }
 
     public Medication()
     {
