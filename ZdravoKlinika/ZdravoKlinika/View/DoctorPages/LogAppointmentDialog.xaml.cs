@@ -53,8 +53,11 @@ namespace ZdravoKlinika.View.DoctorPages
         */
         private void Save(object sender, RoutedEventArgs e)
         {
-            var hm = Tabby.Items[0] as AnamnesisView;
-            hm.Save();
+            var therapy = Tabby.Items[1] as TherapyTab;
+            therapy.Save();
+            var anamnesis = Tabby.Items[0] as AnamnesisTab;
+            anamnesis.Appointment.Prescriptions = therapy.PrescribedList.ToList();
+            anamnesis.Save();
 
             this.Close();
         }
@@ -72,7 +75,10 @@ namespace ZdravoKlinika.View.DoctorPages
                     ConfirmButton.Visibility = Visibility.Visible;
                 }
             }
+
         }
+
+        
 
         /*
         private void MedCB_SelectionChanged(object sender, SelectionChangedEventArgs e)

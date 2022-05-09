@@ -10,7 +10,7 @@ namespace ZdravoKlinika.Model
     {
         private DateTime dateOfCreation;
         Doctor doctor;
-        RegisteredPatient registeredPatient;
+        Patient patient;
         Medication medication;
         private int amount;
         private int duration;
@@ -22,10 +22,10 @@ namespace ZdravoKlinika.Model
 
         public Prescription() { }
 
-        public Prescription(Doctor doctor, RegisteredPatient registeredPatient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, int id)
+        public Prescription(Doctor doctor, Patient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, int id)
         {
             this.doctor = doctor;
-            this.registeredPatient = registeredPatient;
+            this.Patient = patient;
             this.medication = medication;
             this.amount = amount;
             this.duration = duration;
@@ -44,14 +44,19 @@ namespace ZdravoKlinika.Model
         public string Repeat { get => repeat; set => repeat = value; }
         public string DoctorsNote { get => doctorsNote; set => doctorsNote = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
-        public RegisteredPatient RegisteredPatient { get => registeredPatient; set => registeredPatient = value; }
         public int Id { get => id; set => id = value; }
         public DateTime DateOfCreation { get => dateOfCreation; set => dateOfCreation = value; }
+        public Patient Patient { get => patient; set => patient = value; }
 
         public static Prescription Parse(int id) {
             Prescription prescription = new Prescription();
             prescription.Id = id;
             return prescription; 
+        }
+
+        public string ToString()
+        {
+            return this.medication.ToString() + ", " + this.frequency + "x" + this.singleDose + " " + this.repeat + ", " + this.duration + " dana, " + this.doctorsNote;
         }
     }
 }

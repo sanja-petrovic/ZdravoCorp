@@ -30,11 +30,13 @@ namespace ZdravoKlinika.View.DoctorPages
             DataContext = viewModel;
             this.doctor = doctor;
             InitializeComponent();
+            
         }
 
         private void RowSelectionChanged(object sender, RoutedEventArgs e)
         {
-            var smth = (AppointmentViewModel)ScheduleDG.CurrentItem;
+
+            var smth = (AppointmentViewModel)ScheduleDG.SelectedItem;
             this.selectedAppointmentId = smth.Id;
             viewModel.SelectionChanged(selectedAppointmentId);
         }
@@ -44,8 +46,6 @@ namespace ZdravoKlinika.View.DoctorPages
             LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog { SelectedAppointmentId = this.selectedAppointmentId };
             logAppointmentDialog.Init();
             logAppointmentDialog.ShowDialog();
-            //needsto change
-            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

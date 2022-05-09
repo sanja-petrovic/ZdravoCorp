@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -23,6 +24,30 @@ namespace ZdravoKlinika.View.DoctorPages
         public TherapyView()
         {
             InitializeComponent();
+        }
+
+        private void MedCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(DataContext != null)
+            {
+                if (((TherapyTab)DataContext).AllergyCheck(MedCB.SelectedIndex))
+                {
+                    MedCB.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 87));
+                    AllergyTB.Visibility = Visibility.Hidden;
+                    AddButton.IsEnabled = true;
+                }
+                else
+                {
+                    MedCB.Foreground = new SolidColorBrush(Color.FromRgb(254, 93, 122));
+                    AllergyTB.Visibility = Visibility.Visible;
+                    AddButton.IsEnabled = false;
+                }
+            }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((TherapyTab)DataContext).Add(MedCB.SelectedIndex);
         }
     }
 }

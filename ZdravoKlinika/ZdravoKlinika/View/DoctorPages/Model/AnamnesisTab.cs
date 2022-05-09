@@ -25,7 +25,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string room;
 
         private string diagnoses;
-        private string doctorsNote;
+        private string note;
 
         public string PatientName { get => patientName; set => SetProperty(ref patientName, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
@@ -34,7 +34,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string DateTime { get => dateTime; set => SetProperty(ref dateTime, value); }
         public string Room { get => room; set => SetProperty(ref room, value); }
         public string Diagnoses { get => diagnoses; set => SetProperty(ref diagnoses, value); }
-        public string DoctorsNote { get => doctorsNote; set => SetProperty(ref doctorsNote, value); }
+        public string Note { get => note; set => SetProperty(ref note, value); }
         public AppointmentController AppointmentController { get => appointmentController; set => SetProperty(ref appointmentController, value); }
         public Appointment Appointment { get => appointment; set => SetProperty(ref appointment, value); }
 
@@ -53,12 +53,12 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.dateTime = appointment.DateAndTime.ToString("dd.MM.yyyy HH:mm");
             this.room = "Soba " + appointment.Room.Name;
             this.diagnoses = appointment.Diagnoses;
-            this.doctorsNote = appointment.DoctorsNotes;
+            this.note = appointment.DoctorsNotes;
         }
 
-        public void Save(String note)
+        public void Save()
         {
-            appointmentController.LogAppointment(appointment, Diagnoses, note);
+            appointmentController.LogAppointment(appointment, Diagnoses, Note);
         }
     }
 }

@@ -210,14 +210,14 @@
 
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="69,88,0,0" TextWrapping="Wrap" Text="2801001736329" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Height="16" Width="170"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="271,87,0,0" TextWrapping="Wrap" Text="dijagnostičar" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Height="16" Width="170"/>
-        <Button x:Name="ConfirmButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="371,418,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
+        <Button x:Name="ConfirmButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="371,418,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
             <Button.Style>
-                <StaticResource ResourceKey="fancyButtonStyle3"/>
+                <StaticResource ResourceKey="fancyButtonStyle4"/>
             </Button.Style>
         </Button>
         <ComboBox x:Name="DoctorCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="271,146,0,0" VerticalAlignment="Top" Width="132" Padding="5" Height="28">

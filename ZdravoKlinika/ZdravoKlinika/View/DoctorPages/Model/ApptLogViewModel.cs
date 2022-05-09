@@ -23,7 +23,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             TabViewModels.Add(new TherapyTab { Header = "Terapija", AppointmentId = appointmentId });
             TabViewModels.Add(new ReferralTab { Header = "Uput za specijalistu", AppointmentId = appointmentId });
             selectedViewModel = TabViewModels[0];
-            TabViewModels[0].Load();
+            foreach(ITabViewModel tabViewModel in TabViewModels)
+            {
+                tabViewModel.Load();
+            }
         }
 
         public ITabViewModel SelectedViewModel { get => selectedViewModel; set => SetProperty(ref selectedViewModel, value); }

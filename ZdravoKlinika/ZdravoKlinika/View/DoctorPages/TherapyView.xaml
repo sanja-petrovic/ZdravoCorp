@@ -3,18 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:TherapyTab}"
              mc:Ignorable="d" 
              Height="482" Width="500">
     <Grid>
-        <ComboBox x:Name="MedCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="34,69,0,0" VerticalAlignment="Top" Width="246" Text="Izaberite lek" Padding="5" Height="28">
+        <ComboBox x:Name="MedCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="34,69,0,0" VerticalAlignment="Top" Width="246" Text="Izaberite lek" Padding="5" Height="28" SelectionChanged="MedCB_SelectionChanged">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <TextBox x:Name="MedNoteTB" Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="34,196,0,0" TextWrapping="Wrap" Text="{Binding PrescriptionNote}" VerticalAlignment="Top" Width="422" Height="28" BorderBrush="#FFAEAEC1">
+        <TextBox x:Name="MedNoteTB" Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="34,196,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="422" Height="28" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -35,7 +35,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <ComboBox IsEditable="True" x:Name="RepeatCB" ItemsSource="{Binding RepeatDisplay}" Style="{DynamicResource ComboBoxStyle1}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="293,125,0,0" VerticalAlignment="Top" Width="163" Padding="5" Height="28"/>
+        <ComboBox SelectedItem="{Binding Repeat}"  IsEditable="True" x:Name="RepeatCB" ItemsSource="{Binding RepeatDisplay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ComboBoxStyle1}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="293,125,0,0" VerticalAlignment="Top" Width="163" Padding="5" Height="28"/>
         <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="360,69,0,0" TextWrapping="NoWrap" Text="{Binding Duration}" VerticalAlignment="Top" Width="96" Height="28" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -53,7 +53,7 @@
         <TextBlock Foreground="#555557" HorizontalAlignment="Left"  Margin="141,130,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
         <TextBlock  HorizontalAlignment="Left" Margin="34,51,0,0" TextWrapping="Wrap" Text="Naziv leka" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Width="81"/>
 
-        <Button Name="AddButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Dodajte na listu" HorizontalAlignment="Left"  Margin="338,237,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="118">
+        <Button Name="AddButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Dodajte na listu" HorizontalAlignment="Left"  Margin="338,237,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="118" Click="AddButton_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -63,7 +63,7 @@
                 <StaticResource ResourceKey="fancyButtonStyle4"/>
             </Button.Style>
         </Button>
-        <ListBox Name="MedLB" BorderBrush="#FFAEAEC1" Style="{DynamicResource ListBoxStyle1}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="31,282,38,25">
+        <ListBox Name="MedLB" BorderBrush="#FFAEAEC1" Style="{DynamicResource ListBoxStyle1}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" ItemsSource="{Binding PrescribedList, UpdateSourceTrigger=PropertyChanged}" Margin="31,282,38,25">
             <ListBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -73,7 +73,15 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <TextBlock Text="{Binding PrescriptionDisplay}" Margin="10 0 0 0"/>
+                        <TextBlock Margin="10 0 0 0">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}, {1}, {2}">
+                                    <Binding Path="Medication.BrandName" />
+                                    <Binding Path="Medication.Dosage" />
+                                    <Binding Path="Medication.Form" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
                         <Image Source="/Resources/Images/pencil.png" Height="10" Width="10" Margin="350 0 0 0"/>
                         <Image Source="/Resources/Images/cross.png" Height="10" Width="10" Margin="380 0 0 0"/>
                     </Grid>

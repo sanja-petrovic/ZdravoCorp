@@ -43,7 +43,153 @@
       "Ma\u010Dja dlaka",
       "penicilin"
     ],
-    "CurrentMedication": [],
+    "CurrentMedication": [
+      {
+        "MedicationId": "1",
+        "BrandName": "Brufen",
+        "Dosage": "200mg",
+        "Notes": [],
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
+      },
+      {
+        "MedicationId": "2",
+        "BrandName": "Brufen",
+        "Dosage": "400mg",
+        "Notes": [],
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
+      },
+      {
+        "MedicationId": "1",
+        "BrandName": "Brufen",
+        "Dosage": "200mg",
+        "Notes": [],
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
+      },
+      {
+        "MedicationId": "3",
+        "BrandName": "Caffetin cold",
+        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
+        "Notes": [],
+        "MedicationCode": "N02BE51",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
+        ],
+        "Allergens": [
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
+      },
+      {
+        "MedicationId": "4",
+        "BrandName": "Septolete total",
+        "Dosage": "5mg/mL\u002B1.5mg/mL",
+        "Notes": [],
+        "MedicationCode": "R02AA",
+        "Form": "sprej za usnu sluznicu, rastvor",
+        "ActiveSubstances": [
+          "cetilpiridinijum-hlorid",
+          "benzidamin"
+        ],
+        "Allergens": [
+          "cetilpiridinijum-hlorid",
+          "benzidamin"
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
+      },
+      {
+        "MedicationId": "4",
+        "BrandName": "Septolete total",
+        "Dosage": "5mg/mL\u002B1.5mg/mL",
+        "Notes": [],
+        "MedicationCode": "R02AA",
+        "Form": "sprej za usnu sluznicu, rastvor",
+        "ActiveSubstances": [
+          "cetilpiridinijum-hlorid",
+          "benzidamin"
+        ],
+        "Allergens": [
+          "cetilpiridinijum-hlorid",
+          "benzidamin"
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
+      }
+    ],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "0105965123321"

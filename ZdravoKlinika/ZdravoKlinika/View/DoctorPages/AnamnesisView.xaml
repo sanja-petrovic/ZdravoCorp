@@ -20,7 +20,7 @@
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="282,61,0,0" TextWrapping="Wrap" Text="{Binding Room}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="36,104,0,0" TextWrapping="Wrap" Text="Dijagnoza" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox Text="{Binding Diagnoses}" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="36,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="419" Height="57" BorderBrush="#FFAEAEC1">
+        <TextBox Name="diag" Text="{Binding Diagnoses}" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="36,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="419" Height="57" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -29,7 +29,7 @@
         </TextBox>
 
         <TextBlock HorizontalAlignment="Left" Margin="36,222,0,0" TextWrapping="Wrap" Text="Nalaz i mišljenje doktora" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox Name="NoteTB" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="33,246,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote, Mode=TwoWay}" VerticalAlignment="Top" Width="422" Height="59" BorderBrush="#FFAEAEC1">
+        <TextBox Name="note" Text="{Binding Note, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Left" Margin="38,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="419" Height="57" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

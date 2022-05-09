@@ -16,6 +16,7 @@ namespace ZdravoKlinika.Repository
         private MedicationRepository medicationRepository;
         private DoctorRepository doctorRepository;
         private RegisteredPatientRepository registeredPatientRepository;
+        private PatientRepository patientRepository;
 
         public PrescriptionRepository()
         {
@@ -23,6 +24,7 @@ namespace ZdravoKlinika.Repository
             this.prescriptions = prescriptionDataHandler.Read();
             this.medicationRepository = new MedicationRepository();
             registeredPatientRepository = new RegisteredPatientRepository();
+            patientRepository = new PatientRepository();
             doctorRepository = new DoctorRepository();
             UpdateReferences();
         }
@@ -54,7 +56,7 @@ namespace ZdravoKlinika.Repository
             {
                 p.Medication = medicationRepository.GetById(p.Medication.MedicationId);
                 p.Doctor = doctorRepository.GetById(p.Doctor.PersonalId);
-                p.RegisteredPatient = registeredPatientRepository.GetById(p.RegisteredPatient.PersonalId);
+                p.Patient = patientRepository.GetById(p.Patient.GetPatientId());
             }
 
             

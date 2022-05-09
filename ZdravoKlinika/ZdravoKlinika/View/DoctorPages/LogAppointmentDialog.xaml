@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
         mc:Ignorable="d"
-        Title="Upisivanje pregleda" Height="550" Width="500"
+        Title="Upisivanje pregleda" Height="650" Width="500"
 Background="#F8F9FE" ResizeMode="CanMinimize" 
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:ApptLogViewModel}">
     <Window.Resources>
@@ -209,7 +209,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
     </Window.Resources>
     <Grid>
         <TabControl x:Name="Tabby"
-            SelectedItem="{Binding SelectedViewModel}" ItemsSource="{Binding TabViewModels}" SelectionChanged="Tabby_SelectionChanged" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="0,24,0,0">
+            SelectedItem="{Binding SelectedViewModel}" ItemsSource="{Binding TabViewModels}" SelectionChanged="Tabby_SelectionChanged" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="0,24,0,81">
 
             <TabControl.Resources>
                 <DataTemplate DataType="{x:Type model:AnamnesisTab}">
@@ -223,7 +223,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize"
                 </DataTemplate>
             </TabControl.Resources>
         </TabControl>
-        <Button Name="ConfirmButton" Click="Save" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="391,456,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77" >
+        <Button Name="ConfirmButton" Click="Save" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Upišite pregled" HorizontalAlignment="Left"  Margin="359,579,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="116" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

@@ -1,7 +1,7 @@
 <Application x:Class="ZdravoKlinika.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ZdravoKlinika"
+             xmlns:local="clr-namespace:ZdravoKlinika" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna"
              StartupUri="View/SignInWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -807,11 +807,11 @@
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFAEAEC1"/>
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="#FF9E98FF"/>
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#FF9E98FF"/>
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="White"/>
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="#FF9E98FF"/>
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#FF9E98FF"/>
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="#FFF9F8FF"/>
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#FFF9F8FF"/>
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#555557"/>
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="#FFF9F8FF"/>
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#FFF9F8FF"/>
             <LinearGradientBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" EndPoint="0,1" StartPoint="0,0">
                 <GradientStop Color="#FFEBF4FC" Offset="0.0"/>
                 <GradientStop Color="#FFDCECFC" Offset="1.0"/>

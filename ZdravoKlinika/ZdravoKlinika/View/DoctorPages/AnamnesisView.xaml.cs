@@ -30,10 +30,6 @@ namespace ZdravoKlinika.View.DoctorPages
 
         public int SelectedAppointmentId { get => selectedAppointmentId; set => selectedAppointmentId = value; }
 
-        public void Save()
-        {
-            viewModel.Save(NoteTB.Text);
-        }
 
     }
 }

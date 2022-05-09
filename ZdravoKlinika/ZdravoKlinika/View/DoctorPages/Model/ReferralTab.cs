@@ -19,7 +19,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void Load()
         {
-            throw new NotImplementedException();
+            return;
         }
     }
 }
