@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.Model" d:DataContext="{d:DesignInstance Type=model:ScheduleViewModel}"
-             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:ScheduleViewModel}"
+             mc:Ignorable="d"  
              Height="768" Width="1024">
     <UserControl.Resources>
         <Style x:Key="TabItemStyleApptInfo" TargetType="{x:Type TabItem}">

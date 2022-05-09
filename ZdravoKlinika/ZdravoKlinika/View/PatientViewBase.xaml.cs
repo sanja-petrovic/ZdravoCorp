@@ -20,7 +20,7 @@ namespace ZdravoKlinika.View
     public partial class PatientViewBase : Window
     {
         private ViewModel.PatientViewModelBase viewModel;
-        public PatientViewBase()
+        public PatientViewBase(string personalId)
         {
             InitializeComponent();
             viewModel = new ViewModel.PatientViewModelBase();

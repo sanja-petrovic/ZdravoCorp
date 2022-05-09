@@ -9,6 +9,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 {
     internal class AppointmentsTodayViewModel : ViewModelBase
     {
+        
         public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
         public int SelectedAppointmentId { get => selectedAppointmentId; set => SetProperty(ref selectedAppointmentId, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
@@ -18,7 +19,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Diagnoses { get => diagnoses; set => SetProperty(ref diagnoses, value); }
         public string Therapy { get => therapy; set => SetProperty(ref therapy, value); }
         public Appointment SelectedAppointment { get => selectedAppointment; set => SetProperty(ref selectedAppointment, value); }
+        public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
 
+        private Doctor doctor;
         AppointmentController appointmentController;
         Appointment selectedAppointment;
         private int selectedAppointmentId;
@@ -29,11 +32,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string diagnoses;
         private string therapy;
 
-        public AppointmentsTodayViewModel()
+        public AppointmentsTodayViewModel(Doctor doctor)
         {
             this.Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
-            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate("456", DateTime.Today);
+            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate(doctor.PersonalId, DateTime.Today);
 
             foreach(Appointment appointment in appts)
             {
@@ -51,7 +54,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             this.Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
-            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate("456", DateTime.Today);
+            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate(doctor.PersonalId, DateTime.Today);
 
             foreach (Appointment appointment in appts)
             {

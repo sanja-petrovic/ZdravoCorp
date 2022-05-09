@@ -24,9 +24,11 @@ namespace ZdravoKlinika.View.DoctorPages
         Model.DoctorMedicalRecordViewModel viewModel;
         string patientId;
         List<PastAppointmentView> pastAppointmentViews;
-        public DoctorMedicalRecord()
+        private Doctor doctor;
+        public DoctorMedicalRecord(Doctor doctor)
         {
             pastAppointmentViews = new List<PastAppointmentView>();
+            this.doctor = doctor;
         }
 
         public void init(string patientId)
@@ -43,7 +45,7 @@ namespace ZdravoKlinika.View.DoctorPages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PrescriptionView prescriptionView = new PrescriptionView();
-            prescriptionView.init("456", viewModel.Id);
+            prescriptionView.init(doctor.PersonalId, viewModel.Id);
             prescriptionView.Show();
             prescriptionView.Closed += (s, eventarg) =>
             {
@@ -58,15 +60,18 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void EditAppointment(object sender, RoutedEventArgs e)
         {
-            EditAppointmentWindow editAppointmentWindow = new EditAppointmentWindow();
             var selected = (PastViewModel)PastLB.SelectedItem;
-            editAppointmentWindow.SelectedApptId = selected.AppointmentId;
-            editAppointmentWindow.Init();
-            editAppointmentWindow.Show();
-            editAppointmentWindow.Closed += (s, eventarg) =>
+            if(selected.Doctor.PersonalId.Equals(this.doctor.PersonalId))
             {
-                viewModel.Edited();
-            };
+                EditAppointmentWindow editAppointmentWindow = new EditAppointmentWindow();
+                editAppointmentWindow.SelectedApptId = selected.AppointmentId;
+                editAppointmentWindow.Init();
+                editAppointmentWindow.Show();
+                editAppointmentWindow.Closed += (s, eventarg) =>
+                {
+                    viewModel.Edited();
+                };
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

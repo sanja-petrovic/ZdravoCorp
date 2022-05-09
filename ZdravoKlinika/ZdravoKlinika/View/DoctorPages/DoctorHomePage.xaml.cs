@@ -23,10 +23,12 @@ namespace ZdravoKlinika.View.DoctorPages
     {
         private int selectedAppointmentId;
         private AppointmentsTodayViewModel viewModel;
-        public DoctorHomePage()
+        private Doctor doctor;
+        public DoctorHomePage(Doctor doctor)
         {
-            viewModel = new AppointmentsTodayViewModel();
+            viewModel = new AppointmentsTodayViewModel(doctor);
             DataContext = viewModel;
+            this.doctor = doctor;
             InitializeComponent();
         }
 
@@ -42,13 +44,13 @@ namespace ZdravoKlinika.View.DoctorPages
             LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog { SelectedAppointmentId = this.selectedAppointmentId };
             logAppointmentDialog.Init();
             logAppointmentDialog.ShowDialog();
-            viewModel.infoChange();
+            //needsto change
             
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
+            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord(doctor);
             doctorMedicalRecord.init(viewModel.PatientId);
             this.NavigationService.Navigate(doctorMedicalRecord);
         }

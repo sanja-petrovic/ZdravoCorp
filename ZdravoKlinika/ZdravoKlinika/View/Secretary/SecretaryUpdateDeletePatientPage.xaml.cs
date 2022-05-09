@@ -104,7 +104,7 @@ namespace ZdravoKlinika.View.Secretary
             String ECname = TextBoxECName.Text;
             String ECphone = TextBoxECPhone.Text;
 
-            String profilePic = ProfilePicImage.Source.ToString();
+            String profilePic = "asd";//ProfilePicImage.Source.ToString();
             registeredPatientController.UpdatePatient(personalID, name, lastname, phone, password, profilePic, street, stnumber, city, country, bloodType, occupation, ECname, ECphone, allergies, diagnosis);
             NavigationService.RemoveBackEntry();
             NavigationService.Navigate(new SecretaryChoosePatientUDPage());

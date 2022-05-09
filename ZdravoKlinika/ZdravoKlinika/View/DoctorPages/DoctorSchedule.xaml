@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
       xml:lang="sr-Latn-RS" 
-      mc:Ignorable="d"  Width="1024" Height="768" Cursor="Arrow" Background="#F8F9FE">
+      mc:Ignorable="d"  Width="1024" Height="768" Cursor="Arrow" ShowsNavigationUI="False">
     <Page.Resources>
 
 
@@ -22,7 +22,6 @@
 
     <Grid RenderTransformOrigin="0.452,0.431">
 
-        <local:DoctorBasePage x:Name="Base"/>
         <local:AppointmentsTabPanel x:Name="ApptTabPanel"/>
         <Border  Margin="290,201,360,241"
             BorderBrush="Black"
@@ -44,7 +43,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Style="{StaticResource ResourceKey=fancyButtonStyle2}" OverridesDefaultStyle="False" Focusable="False" Content="Podnesite zahtev za slobodan dan" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="428,542,0,0" VerticalAlignment="Top" FontSize="14"  Foreground="#555557"  Background="White" Click="Button_Click" Padding="7" Width="237" Height="33">
+        <Button Style="{StaticResource ResourceKey=fancyButtonStyle2}" OverridesDefaultStyle="False" Focusable="False" Content="Podnesite zahtev za slobodan dan" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="428,542,0,0" VerticalAlignment="Top" FontSize="14"  Foreground="#555557"  Background="White" Padding="7" Width="237" Height="33">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -60,7 +59,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Zakažite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="581,162,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Click="Button_Click" Padding="7" Width="84" Height="25"  Foreground="#555557" >
+        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Zakažite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="581,162,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="84" Height="25"  Foreground="#555557" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

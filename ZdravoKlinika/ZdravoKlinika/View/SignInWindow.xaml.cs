@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Navigation;
+using ZdravoKlinika.Controller;
 
 namespace ZdravoKlinika.View
 {
@@ -22,16 +23,46 @@ namespace ZdravoKlinika.View
     {
         private bool clicked = false;
         private bool show = false;
+
+        RegisteredUserController registeredUserController;
+
         public SignInWindow()
         {
+            registeredUserController = new RegisteredUserController();
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
-            View.DoctorPages.DoctorHomePage doctorHomePage = new View.DoctorPages.DoctorHomePage();
-            MainFrame.Navigate(doctorHomePage);
+            RegisteredUser? tryUser = registeredUserController.GetUserByEmailAndPassword(UsernameTB.Text, PasswordTB.Text);
+            if (tryUser != null) 
+            {
+                switch (tryUser.UserType) 
+                {
+                    case UserType.Patient:
+                        View.PatientViewBase pvB = new View.PatientViewBase(tryUser.PersonalId);
+                        pvB.Show();
+                        break;
+                    case UserType.Secretary:
+                        Secretary.SecretaryMainWindow secretaryMainWindow = new Secretary.SecretaryMainWindow();
+                        secretaryMainWindow.Show();
+                        break;
+                    case UserType.Doctor:
+                        DoctorPages.DoctorBasePage doctorBase = new DoctorPages.DoctorBasePage(tryUser);
+                        doctorBase.Show();
+                        break;
+                    case UserType.Manager:
+                        UpravnikWindow upravnikWindow = new UpravnikWindow();
+                        upravnikWindow.Show();
+                        break;
+                    default:
+                        break;
+
+                }
+
+                this.Close();
+            }
+            
 
         }
 

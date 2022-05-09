@@ -95,7 +95,15 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
       }
     ]
   },
@@ -125,7 +133,15 @@
         "Allergens": [
           "ibuprofen",
           "brufen"
-        ]
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
       },
       {
         "MedicationId": "3",
@@ -145,7 +161,15 @@
           "pseudoefedrin",
           "dekstrometorfan",
           "askorbinska kiselina"
-        ]
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
       }
     ]
   },
@@ -188,14 +212,22 @@
         ],
         "Allergens": [
           "azitromicin"
-        ]
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "ApprovedBy": null,
+        "Indications": null,
+        "Note": null,
+        "DosageInstructions": null
       }
     ]
   },
   {
     "AppointmentId": 10,
     "DateAndTime": "2022-05-04T11:00:00",
-    "Diagnoses": "123",
+    "Diagnoses": "1234",
     "DoctorsNotes": "2",
     "Type": "Regular",
     "Emergency": false,
@@ -306,13 +338,13 @@
   },
   {
     "AppointmentId": 18,
-    "DateAndTime": "2022-05-08T09:00:00",
+    "DateAndTime": "2022-05-09T09:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
     "Duration": 15,
-    "Doctor": "456",
+    "Doctor": "123",
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": false,
