@@ -8,8 +8,14 @@ using System.Collections.Generic;
 
 public class DoctorRepository
 {
-    private DoctorDataHandler doctorDataHandler = new DoctorDataHandler();
+    private DoctorDataHandler doctorDataHandler;
     private List<Doctor> doctors;
+
+    public DoctorRepository()
+    {
+        this.doctorDataHandler = new DoctorDataHandler();
+        this.doctors = this.doctorDataHandler.Read();
+    }
 
     public List<Doctor> Doctors { get => doctors; set => doctors = value; }
 

@@ -21,7 +21,7 @@
     "Sender": "123"
   },
   {
-    "Prescription": null,
+    "Prescription": 4,
     "NotificationId": 4,
     "NotificationText": "prepisan lek",
     "Reciver": "0105965123321",
