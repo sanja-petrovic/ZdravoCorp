@@ -27,7 +27,7 @@ namespace ZdravoKlinika.Data_Handler
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.Converters.Add(new EquipmentConverter());
-            return JsonSerializer.Deserialize<List<Order>>(File.ReadAllText(fileLocation));
+            return JsonSerializer.Deserialize<List<Order>>(File.ReadAllText(fileLocation), options);
         }
     }
 }

@@ -26,6 +26,8 @@ namespace ZdravoKlinika.Model
             EquipmentToOrder = new List<Equipment>();
         }
 
+        public Order() { }
+
         public void AddEquipment(Equipment equipment)
         { 
             EquipmentToOrder.Add(equipment);
