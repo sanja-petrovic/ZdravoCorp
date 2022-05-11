@@ -81,7 +81,7 @@ public class RoomRepository
 
         return null;
     }
-    public List<Room> GetFreeRooms(DateTime enteredTime)
+    public List<Room> GetFreeRooms(DateTime enteredTime, AppointmentType appointmentType)
     {
         freeRooms.Clear();
         AppointmentRepository appointmentRepository = new AppointmentRepository();
@@ -108,13 +108,27 @@ public class RoomRepository
 
         foreach (Room r in rooms)
         {
-            if (r.Free)
+            if (r.Free && r.Type == GetRoomTypeForAppointmentType(appointmentType))
             {
                 freeRooms.Add(r);
             }
         }
 
         return freeRooms;
+    }
+
+    public RoomType GetRoomTypeForAppointmentType(AppointmentType type)
+    {
+        RoomType result;
+        if(type == AppointmentType.Regular)
+        {
+            result = RoomType.checkup;
+        } else
+        {
+            result = RoomType.operating;
+        }
+
+        return result;
     }
 
     public List<Room> GetRenovatableRooms()

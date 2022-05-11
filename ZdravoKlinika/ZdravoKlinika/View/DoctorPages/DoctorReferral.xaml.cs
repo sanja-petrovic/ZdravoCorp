@@ -39,7 +39,6 @@ namespace ZdravoKlinika.View.DoctorPages
                     if (watermark != null)
                     {
                         watermark.Content = string.Empty;
-                        //or set it some value here...
                     }
                 }
             }
@@ -67,6 +66,14 @@ namespace ZdravoKlinika.View.DoctorPages
             if(DataContext != null)
             {
                 ((ReferralTab)DataContext).SetDoctorComboBox(SpecialtyCB.SelectedIndex);
+            }
+        }
+
+        private void ScheduleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(DataContext != null)
+            {
+                //((ReferralTab)DataContext).Schedule();
             }
         }
     }

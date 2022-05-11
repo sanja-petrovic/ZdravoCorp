@@ -29,25 +29,6 @@ public class AppointmentRepository
         UpdateReferences();
     }
 
-    public List<Appointment> Appointments
-    {
-        get
-        {
-            if (appointments == null)
-                appointments = new List<Appointment>();
-            return appointments;
-        }
-        set
-        {
-            RemoveAllAppointment();
-            if (value != null)
-            {
-                foreach (Appointment oAppointment in value)
-                    AddAppointment(oAppointment);
-            }
-        }
-    }
-
     public AppointmentDataHandler AppointmentDataHandler { get => appointmentDataHandler; set => appointmentDataHandler = value; }
     public DoctorRepository DoctorRepository { get => doctorRepository; set => doctorRepository = value; }
     public RoomRepository RoomRepository { get => roomRepository; set => roomRepository = value; }

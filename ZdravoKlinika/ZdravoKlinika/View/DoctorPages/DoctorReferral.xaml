@@ -6,7 +6,7 @@
              xml:lang="sr-Latn-RS" 
              mc:Ignorable="d" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:ReferralTab}"
-             Height="482" Width="432" Background="White">
+             Height="390" Width="432" Background="White">
     <UserControl.Resources>
         <Style x:Key="DatePickerStyle1" TargetType="{x:Type DatePicker}">
             <Setter Property="Foreground" Value="#555557"/>
@@ -204,143 +204,81 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="OptionMarkFocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="14,0,0,0" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
-        <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FFAEAEC1"/>
-        <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#555557"/>
-        <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#FFF8F3FF"/>
-        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FF9E98FF"/>
-        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FF212121"/>
-        <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#FFE1D9FF"/>
-        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FF9E98FF"/>
-        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FF212121"/>
-        <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#FFE6E6E6"/>
-        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFAEAEC1"/>
-        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FF7C7B92"/>
-        <Style x:Key="CheckBoxStyle1" TargetType="{x:Type CheckBox}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type CheckBox}">
-                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border x:Name="checkBoxBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" CornerRadius="3" Height="16" Width="16">
-                                <Grid x:Name="markGrid">
-                                    <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Fill="{StaticResource OptionMark.Static.Glyph}" Margin="0" Opacity="0" Stretch="Fill"/>
-                                    <Rectangle x:Name="indeterminateMark" Fill="{StaticResource OptionMark.Static.Glyph}" Margin="2" Opacity="0"/>
-                                </Grid>
-                            </Border>
-                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="HasContent" Value="true">
-                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
-                                <Setter Property="Padding" Value="4,-1,0,0"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Border}"/>
-                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
-                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Border}"/>
-                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
-                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Border}"/>
-                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
-                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="true">
-                                <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
-                                <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="{x:Null}">
-                                <Setter Property="Opacity" TargetName="optionMark" Value="0"/>
-                                <Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+
     </UserControl.Resources>
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="100,116,0,0" TextWrapping="Wrap" Text="Doktor specijalista" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="100,198,0,0" TextWrapping="Wrap" Text="Tip" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
-        <TextBlock HorizontalAlignment="Left" Margin="241,0,0,0" TextWrapping="Wrap" Text="Hitan slučaj" VerticalAlignment="Center" FontWeight="Regular" FontSize="12"/>
-        <TextBlock HorizontalAlignment="Left" Margin="105,261,0,0" TextWrapping="Wrap" Text="Datum" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="215,261,0,0" TextWrapping="Wrap" Text="Vreme" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="288,261,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Button x:Name="ScheduleButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="255,381,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
+    <Grid Margin="0,-68,0,0">
+        <TextBlock HorizontalAlignment="Left" Margin="230,89,0,0" TextWrapping="Wrap" Text="Doktor specijalista" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="27,165,0,0" TextWrapping="Wrap" Text="Tip" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="165,199,0,0" TextWrapping="Wrap" Text="Hitno?" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,250,0,0" TextWrapping="Wrap" Text="Datum" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="230,250,0,0" TextWrapping="Wrap" Text="Vreme" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="324,250,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Border  Margin="303,340,40,95"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="#5cff75" Opacity="0.5" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button x:Name="ScheduleButton" Click="ScheduleButton_Click" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF01F176" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="301,336,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
             <Button.Style>
-                <StaticResource ResourceKey="fancyButtonStyle4"/>
+                <StaticResource ResourceKey="fancyButtonStyle5"/>
             </Button.Style>
         </Button>
-        <ComboBox x:Name="DoctorCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding DoctorsDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="100,145,0,0" VerticalAlignment="Top" Width="249" Padding="5" Height="28">
+        <ComboBox x:Name="DoctorCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding DoctorsDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="230,113,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <ComboBox x:Name="TypeCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" SelectedItem="{Binding Type}" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" Width="102" Padding="5" Height="28">
-            <ComboBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </ComboBox.Resources>
-            <ComboBoxItem Content="Pregled"/>
-            <ComboBoxItem Content="Operacija"/>
-        </ComboBox>
-        <CheckBox Name="EmergencyCB" Style="{DynamicResource CheckBoxStyle1}" Margin="215,234,196,227"/>
-        
-        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}"  Loaded="DatePicker_Loaded" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="100,289,0,0" VerticalAlignment="Top" Width="102" Height="28" FirstDayOfWeek="Monday"/>
-        <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Times}" HorizontalAlignment="Left" Margin="215,289,0,0" VerticalAlignment="Top" Width="61" Padding="5" Height="28">
+        <ComboBox x:Name="TypeCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" ItemsSource="{Binding Types, UpdateSourceTrigger=PropertyChanged}" Foreground="#555557" SelectedItem="{Binding Type}" HorizontalAlignment="Left" Margin="26,193,0,0" VerticalAlignment="Top" Width="102" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <ComboBox x:Name="RoomCB" Style="{DynamicResource ComboBoxStyle1}" ItemsSource="{Binding Rooms}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="288,289,0,0" VerticalAlignment="Top" Width="61" Padding="5" Height="28">
+        <CheckBox Name="EmergencyCB" Style="{DynamicResource CheckBoxStyle1}" Margin="143,199,269,242"/>
+
+        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Loaded="DatePicker_Loaded" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="26,274,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday"/>
+        <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="230,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="100,43,0,0" TextWrapping="Wrap" Text="Specijalnost" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <ComboBox x:Name="SpecialtyCB" SelectionChanged="SpecialtyCB_SelectionChanged" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Specialties}" HorizontalAlignment="Left" Margin="100,68,0,0" VerticalAlignment="Top" Width="249" Padding="5" Height="28">
+        <ComboBox x:Name="RoomCB" Style="{DynamicResource ComboBoxStyle1}" ItemsSource="{Binding RoomsDisplay, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="324,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+            <ComboBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </ComboBox.Resources>
+
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="26,89,0,0" TextWrapping="Wrap" Text="Specijalnost" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <ComboBox x:Name="SpecialtyCB" SelectionChanged="SpecialtyCB_SelectionChanged" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Specialties}" HorizontalAlignment="Left" Margin="26,113,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="230,165,0,0" TextWrapping="Wrap" Text="Trajanje" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
+        <TextBox x:Name="TypeCB_Copy" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource TextBoxStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="230,194,0,0" VerticalAlignment="Top" Width="114" Padding="5" Height="28">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" Margin="357,200,0,0" TextWrapping="Wrap" Text="minuta" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
     </Grid>
 </UserControl>

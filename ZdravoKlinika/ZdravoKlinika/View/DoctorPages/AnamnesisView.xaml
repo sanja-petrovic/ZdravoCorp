@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AnamnesisTab}"
              mc:Ignorable="d" 
-             Height="482" Width="432" Background="White">
+             Height="390" Width="432" Background="White">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="38,21,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="38,45,0,0" TextWrapping="Wrap" Text="{Binding PatientName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>

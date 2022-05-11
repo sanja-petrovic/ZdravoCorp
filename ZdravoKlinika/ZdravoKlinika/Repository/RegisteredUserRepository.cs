@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Data_Handler;
 
 namespace ZdravoKlinika.Repository
 {
@@ -13,7 +14,7 @@ namespace ZdravoKlinika.Repository
         DoctorRepository doctorRepository;
         EmployeeRepository employeeRepository;
 
-
+        
         public RegisteredPatientRepository RegisteredPatientRepository { get => registeredPatientRepository; set => registeredPatientRepository = value; }
         public DoctorRepository DoctorRepository { get => doctorRepository; set => doctorRepository = value; }
         public EmployeeRepository EmployeeRepository { get => employeeRepository; set => employeeRepository = value; }
@@ -24,9 +25,7 @@ namespace ZdravoKlinika.Repository
             RegisteredPatientRepository = new RegisteredPatientRepository();
             DoctorRepository = new DoctorRepository();
             EmployeeRepository = new EmployeeRepository();
-
             FillList();
-
         }
 
         private void FillList()
@@ -56,7 +55,6 @@ namespace ZdravoKlinika.Repository
                     this.AddUser(emp);
                 }
             }
-
         }
 
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password) 
@@ -80,5 +78,27 @@ namespace ZdravoKlinika.Repository
             if (!this.registeredUsers.Contains(newUser))
                 this.registeredUsers.Add(newUser);
         }
+
+        public void RememberUser(RegisteredUser user)
+        {
+            CurrentUserDataHandler dataHandler = new CurrentUserDataHandler();
+            dataHandler.Clear();
+            dataHandler.Write(user);
+        }
+
+        public RegisteredUser GetRememberedUser()
+        {
+            CurrentUserDataHandler dataHandler = new CurrentUserDataHandler();
+            RegisteredUser user = dataHandler.Read();
+
+            return user;
+        }
+
+        public void ForgetUser()
+        {
+            CurrentUserDataHandler dataHandler = new CurrentUserDataHandler();
+            dataHandler.Clear();
+        }
+
     }
 }

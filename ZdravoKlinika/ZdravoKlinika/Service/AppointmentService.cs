@@ -240,26 +240,13 @@ public class AppointmentService
     }
 
 
-    public Appointment CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public void CreateAppointment(Appointment appointment)
     {
         List<Appointment> appointments = this.AppointmentRepository.GetAll();
-        int newAppointmentId;
-        if(appointments.Count > 0)
-        {
-            newAppointmentId = appointments.Last().AppointmentId + 1;
-        } else
-        {
-            newAppointmentId = 1;
-        }
-        //TODO temp fix
-        Doctor doc = doctorRepository.GetById(doctorId);
-        Room room = roomRepository.GetById(roomId);
-        Patient pat = patientRepository.GetById(patientId);
-        Appointment appointment = new Appointment(newAppointmentId, doc, pat, room, duration, emergency, type, dateAndTime);
-        appointment.Prescriptions = new List<Prescription>();
-        this.appointmentRepository.CreateAppointment(appointment);
+        int newAppointmentId = appointments.Count > 0 ? appointments.Last().AppointmentId + 1 : 1;
+        appointment.AppointmentId = newAppointmentId;
 
-        return appointment;
+        this.appointmentRepository.CreateAppointment(appointment);
     }
 
     public void DeleteAppointment(int id)

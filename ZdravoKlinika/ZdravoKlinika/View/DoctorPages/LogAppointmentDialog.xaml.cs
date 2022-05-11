@@ -28,7 +28,6 @@ namespace ZdravoKlinika.View.DoctorPages
 
         public LogAppointmentDialog()
         {
-            //https://stackoverflow.com/questions/9796174/load-usercontrol-in-tabitem
         }
 
         public void Init()

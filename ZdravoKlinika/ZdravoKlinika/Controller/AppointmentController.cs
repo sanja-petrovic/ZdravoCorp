@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Util;
 
@@ -64,10 +65,15 @@ public class AppointmentController
     {
         return this.appointmentService.getFreeTimeForPatient(date, duration, patient, startHours, endHours);
     }
-    public Appointment CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public void CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        return this.appointmentService.CreateAppointment(doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
+        PatientController patientController = new PatientController();
+        DoctorController doctorController = new DoctorController();
+        RoomController roomController = new RoomController();
+        Appointment appointment = new Appointment(-1, doctorController.GetById(doctorId), patientController.GetById(patientId), roomController.GetById(roomId), duration, emergency, type, dateAndTime);
+        this.appointmentService.CreateAppointment(appointment);
     }
+
 
     public void DeleteAppointment(int id)
     {
