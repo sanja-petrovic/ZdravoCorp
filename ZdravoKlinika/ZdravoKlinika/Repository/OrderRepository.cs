@@ -40,7 +40,6 @@ namespace ZdravoKlinika.Repository
                     Equipment eq = EquipmentRepository.GetById(equipment.Id);
                     equipment.Expendable = eq.Expendable;
                     equipment.Name = eq.Name;
-                    equipment.Amount = eq.Amount;
                 }
             }
         }
