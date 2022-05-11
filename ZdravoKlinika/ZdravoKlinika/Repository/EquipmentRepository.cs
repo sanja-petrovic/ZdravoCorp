@@ -2,21 +2,68 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKlinika.Data_Handler;
+using ZdravoKlinika.Model;
 
 public class EquipmentRepository
 {
     private EquipmentDataHandler equipmentDataHandler;
+    private OrderDataHandler orderDataHandler;
     private List<Equipment> equipment;
     private List<Equipment> expendabilityList;
-    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "equipment.json";
-
+    
     public EquipmentDataHandler EquipmentDataHandler { get => equipmentDataHandler; set => equipmentDataHandler = value; }
 
     public EquipmentRepository()
     {
-        this.EquipmentDataHandler = new EquipmentDataHandler(fileLocation);
+        this.EquipmentDataHandler = new EquipmentDataHandler();
+        OrderDataHandler = new OrderDataHandler();
+
         this.equipment = EquipmentDataHandler.Read();
         this.expendabilityList = new List<Equipment>();
+
+        UpdateStorageByOrders();
+    }
+
+    private void UpdateStorageByOrders()
+    {
+        // goes thorugh all the orders and checks if theres any that got into storage
+        List<Order> orders = OrderDataHandler.Read();
+        if (orders != null) 
+        {
+            foreach (Order order in orders)
+            {
+                if (order.IsOrderFinished)
+                {
+                    continue;
+                }
+                DateTime deliveryDate = order.CreationDate.AddDays(3);
+                if (deliveryDate < DateTime.Now)
+                {
+                    AddNewEqupment(order);
+                    order.IsOrderFinished = true;
+                }
+            }
+            OrderDataHandler.Write(orders);
+        }
+       
+        
+    }
+
+    private void AddNewEqupment(Order order)
+    {
+        List<Equipment> equipmentToAdd = order.EquipmentToOrder;
+        foreach (Equipment equipmentInOrder in equipmentToAdd)
+        {
+            foreach (Equipment equipmentInStorage in Equipment)
+            {
+                if (equipmentInOrder.Id.Equals(equipmentInStorage.Id))
+                { 
+                    equipmentInStorage.Amount += equipmentInOrder.Amount;
+                    break;
+                }
+            }
+        }
     }
 
     public List<Equipment> Equipment
@@ -37,6 +84,8 @@ public class EquipmentRepository
             }
         }
     }
+
+    public OrderDataHandler OrderDataHandler { get => orderDataHandler; set => orderDataHandler = value; }
 
     public void AddEquipment(Equipment newEquipment)
     {

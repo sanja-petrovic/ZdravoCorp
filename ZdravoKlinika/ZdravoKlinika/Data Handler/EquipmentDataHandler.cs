@@ -5,14 +5,10 @@ using System.Text.Json;
 
 public class EquipmentDataHandler
 {
-    private String fileLocation;
+    private static String fileName = "equipment.json";
+    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
 
-    public String FileLocation { get => fileLocation; set => fileLocation = value; }
-
-    public EquipmentDataHandler(string fileLocation)
-    {
-        this.fileLocation = fileLocation;
-    }
+    public string FileLocation { get => fileLocation; set => fileLocation = value; }
 
     public void Write(List<Equipment> equipmentList)
     {

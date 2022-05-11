@@ -13,7 +13,7 @@ public class DoctorDataHandler
     private static String fileName = "doctors.json";
     private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
     public void Write(List<Doctor> doctors)
-   {
+    {
         JsonSerializerOptions options = new JsonSerializerOptions();
         options.WriteIndented = true;
         var jsonList = JsonSerializer.Serialize(doctors, options);
@@ -23,6 +23,6 @@ public class DoctorDataHandler
    public List<Doctor> Read()
    {
         return JsonSerializer.Deserialize<List<Doctor>>(File.ReadAllText(fileLocation));
-    }
+   }
 
 }
