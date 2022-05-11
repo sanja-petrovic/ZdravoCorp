@@ -45,6 +45,7 @@ public class EquipmentRepository
                 }
             }
             OrderDataHandler.Write(orders);
+            EquipmentDataHandler.Write(equipment);
         }
        
         
