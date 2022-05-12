@@ -16,12 +16,17 @@ namespace ZdravoKlinika.Repository
         public TimeOffRequestRepository()
         {
             this.dataHandler = new TimeOffRequestDataHandler();
-            this.requests = new List<TimeOffRequest>();
+            this.requests = this.dataHandler.Read();
         }
 
         public List<TimeOffRequest> GetAll()
         {
-            return this.dataHandler.Read();
+            foreach(TimeOffRequest request in this.requests)
+            {
+                UpdateReferences(request);
+            }
+            
+            return this.requests;
         }
 
         public TimeOffRequest GetById(int id)
@@ -32,6 +37,7 @@ namespace ZdravoKlinika.Repository
                 if(r.Id == id)
                 {
                     request = r;
+                    UpdateReferences(request);
                 }
             }
 
@@ -46,6 +52,13 @@ namespace ZdravoKlinika.Repository
         public void ChangeState(TimeOffRequest request, RequestState state)
         {
             request.State = state;
+        }
+
+
+        public void UpdateReferences(TimeOffRequest request)
+        {
+            DoctorRepository doctorRepository = new DoctorRepository();
+            request.Doctor = doctorRepository.GetById(request.Doctor.PersonalId);
         }
     }
 }

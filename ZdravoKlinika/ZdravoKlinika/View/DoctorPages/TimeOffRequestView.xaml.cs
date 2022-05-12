@@ -12,15 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using ZdravoKlinika.View.DoctorPages.Model;
+
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
-    /// Interaction logic for DaysOffView.xaml
+    /// Interaction logic for TimeOffRequestView.xaml
     /// </summary>
-    public partial class DaysOffView : Window
+    public partial class TimeOffRequestView : Window
     {
-        public DaysOffView()
+        private TimeOffRequestViewModel viewModel;
+
+        public TimeOffRequestView(Doctor doctor)
         {
+            this.viewModel = new TimeOffRequestViewModel(doctor);
             InitializeComponent();
         }
     }

@@ -36,6 +36,7 @@ namespace ZdravoKlinika.Model
             this.emergency = emergency;
         }
 
+
         public int Id { get => id; set => id = value; }
         public DateTime StartDate { get => startDate; set => startDate = value; }
         public DateTime EndDate { get => endDate; set => endDate = value; }

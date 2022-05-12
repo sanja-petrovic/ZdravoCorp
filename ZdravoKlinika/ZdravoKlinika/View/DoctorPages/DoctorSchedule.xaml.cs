@@ -47,7 +47,8 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void ViewDaysOff(object sender, RoutedEventArgs e)
         {
-
+            TimeOffView timeOffView = new TimeOffView(Doctor);
+            timeOffView.ShowDialog();
         }
     }
 }

@@ -29,6 +29,8 @@ namespace ZdravoKlinika.Service
 
         public void CreateRequest(TimeOffRequest request)
         {
+            int newId = this.repository.GetAll().Count > 0 ? this.GetAll().Last().Id + 1 : 1;
+            request.Id = newId;
             this.repository.CreateRequest(request);
         }
 
