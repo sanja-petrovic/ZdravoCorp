@@ -178,7 +178,6 @@ namespace ZdravoKlinika.View.Secretary
                     List<String> a = new List<String>();
                     List<String> b = new List<String>();
 
-
                     foreach (Doctor doc in doctorController.GetAll())
                     {
                         a.Add(doc.NameAndLast);

@@ -274,7 +274,7 @@
     "Type": "Regular",
     "Emergency": false,
     "Duration": 30,
-    "Doctor": "123",
+    "Doctor": "qwer",
     "Patient": "12345,Registered",
     "Room": "314",
     "Over": false,
@@ -320,6 +320,20 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 17,
+    "DateAndTime": "2022-05-19T14:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Surgery",
+    "Emergency": false,
+    "Duration": 120,
+    "Doctor": "123",
+    "Patient": "12345,Registered",
+    "Room": "314",
+    "Over": false,
     "Prescriptions": []
   }
 ]

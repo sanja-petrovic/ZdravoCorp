@@ -36,7 +36,9 @@ namespace ZdravoKlinika.View.Secretary
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                updateImage(openFileDialog.FileName);
+                String[] splitData = openFileDialog.FileName.Split(System.IO.Path.DirectorySeparatorChar);
+                String profilePic = System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 3] + System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 2] + System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 1];
+                updateImage(profilePic);
             }
         }
         private void updateComponents(String pid)
@@ -59,25 +61,35 @@ namespace ZdravoKlinika.View.Secretary
             if (pat.BloodType == BloodType.Null)
                 ComboBoxBloodType.IsEnabled = true;
             foreach (String aler in pat.MedicalRecord.Allergies)
-                TextBoxAllergies.Text += aler + " ";
+                if (pat.MedicalRecord.Allergies.Last().Equals(aler))
+                    TextBoxAllergies.Text += aler;
+                else TextBoxAllergies.Text += aler + ", ";
             foreach (String diag in pat.MedicalRecord.Diagnoses)
-                TextBoxDiagnosis.Text += diag + " ";
+                if (pat.MedicalRecord.Diagnoses.Last().Equals(diag))
+                    TextBoxDiagnosis.Text += diag;
+                else TextBoxDiagnosis.Text += diag + ", ";
 
             TextBoxECName.Text = pat.EmergencyContactName;
             TextBoxECPhone.Text = pat.EmergencyContactPhone;
 
-            //updateImage(pat.ProfilePicture);
+            updateImage(pat.ProfilePicture);
         }
         private void updateImage(String path)
         {
             BitmapImage bitim = new BitmapImage();
-            bitim.BeginInit();
-            Uri uripath = new Uri(path);
-            bitim.UriSource = new Uri(uripath.AbsoluteUri);
-            bitim.DecodePixelHeight = 140;
-            bitim.DecodePixelWidth = 140;
-            bitim.EndInit();
-            ProfilePicImage.Source = bitim;
+            try
+            {
+                bitim.BeginInit();
+                Uri uripath = new Uri(string.Concat(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, path));
+                bitim.UriSource = new Uri(uripath.ToString());
+                bitim.DecodePixelHeight = 140;
+                bitim.DecodePixelWidth = 140;
+                bitim.EndInit();
+                ProfilePicImage.Source = bitim;
+            }
+            catch (FileNotFoundException) 
+            {
+            }    
         }
         private void UpdatePatient(object sender, RoutedEventArgs e)
         {
@@ -97,14 +109,18 @@ namespace ZdravoKlinika.View.Secretary
             else
                 bloodType = (BloodType)ComboBoxBloodType.SelectedIndex;
             List<String> allergies = new List<String>();
-            allergies.Add(TextBoxAllergies.Text);
+            foreach (String allergy in TextBoxAllergies.Text.Split(","))
+                allergies.Add(allergy.Trim());
             List<String> diagnosis = new List<String>();
-            diagnosis.Add(TextBoxDiagnosis.Text);
+            foreach (String diagnose in TextBoxDiagnosis.Text.Split(","))
+                diagnosis.Add(diagnose.Trim());
 
             String ECname = TextBoxECName.Text;
             String ECphone = TextBoxECPhone.Text;
 
-            String profilePic = "asd";//ProfilePicImage.Source.ToString();
+            String[] splitData = ProfilePicImage.Source.ToString().Split("/");
+            String profilePic = System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 3] + System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 2] + System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 1];
+
             registeredPatientController.UpdatePatient(personalID, name, lastname, phone, password, profilePic, street, stnumber, city, country, bloodType, occupation, ECname, ECphone, allergies, diagnosis);
             NavigationService.RemoveBackEntry();
             NavigationService.Navigate(new SecretaryChoosePatientUDPage());

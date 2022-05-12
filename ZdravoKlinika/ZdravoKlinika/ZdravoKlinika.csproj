@@ -16,6 +16,7 @@
     <None Remove="Resources\Images\add.png" />
     <None Remove="Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" />
     <None Remove="Resources\Images\bell %281%29.png" />
+    <None Remove="Resources\Images\bell.png" />
     <None Remove="Resources\Images\calendar.png" />
     <None Remove="Resources\Images\comment.png" />
     <None Remove="Resources\Images\edit.png" />
@@ -41,6 +42,7 @@
 
   <ItemGroup>
     <Content Include="Resources\Images\zdravoklinikaicon.ico" />
+    <Resource Include="Resources\Images\bell.png" />
     <Resource Include="Resources\Images\edit.png" />
     <Resource Include="Resources\Images\search (1).png" />
     <Resource Include="Resources\Images\search.png" />
