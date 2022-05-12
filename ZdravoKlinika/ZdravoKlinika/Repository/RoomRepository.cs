@@ -81,11 +81,12 @@ public class RoomRepository
 
         return null;
     }
-    public List<Room> GetFreeRooms(DateTime enteredTime, AppointmentType appointmentType)
+    public List<Room> GetFreeRooms(DateTime enteredTime, RoomType roomType)
     {
         freeRooms.Clear();
         AppointmentRepository appointmentRepository = new AppointmentRepository();
-        List<Appointment> appointments = appointmentRepository.GetAll();
+        List<Appointment> appointments = appointmentRepository.GetFutureAppointments();
+        Room? room = null;
 
         DateTime appointmentStart;
         DateTime appointmentEnd;
@@ -94,21 +95,27 @@ public class RoomRepository
         {
             appointmentStart = app.DateAndTime;
             appointmentEnd = appointmentStart.AddMinutes(app.Duration);
-            if ((enteredTime > appointmentStart) && (enteredTime < appointmentEnd))
+            room = this.rooms.Find(r => r.RoomId.Equals(app.Room.RoomId));
+
+            if (room != null)
             {
-                //app.Room JE ZAUZETA U NAVEDENOM TERMINU
-                app.Room.Free = false;
+                if ((enteredTime > appointmentStart) && (enteredTime < appointmentEnd))
+                {
+                    //app.Room JE ZAUZETA U NAVEDENOM TERMINU
+                    room.Free = false;
+                }
+                else
+                {
+                    //app.Room JE SLOBODNA U NAVEDENOM TERMINU
+                    room.Free = true;
+                }
             }
-            else
-            {
-                //app.Room JE SLOBODNA U NAVEDENOM TERMINU
-                app.Room.Free = true;
-            }
+                
         }
 
         foreach (Room r in rooms)
         {
-            if (r.Free && r.Type == GetRoomTypeForAppointmentType(appointmentType))
+            if (r.Free && r.Type.Equals(roomType))
             {
                 freeRooms.Add(r);
             }
