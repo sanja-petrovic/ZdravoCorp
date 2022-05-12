@@ -7,13 +7,12 @@ public class RenovationRepository
 {
     private RenovationDataHandler renovationDataHandler;
     private List<Renovation> renovations;
-    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "renovation.json";
-
+    
     public RenovationDataHandler RenovationDataHandler { get => renovationDataHandler; set => renovationDataHandler = value; }
 
     public RenovationRepository()
     {
-        this.renovationDataHandler = new RenovationDataHandler(fileLocation);
+        this.renovationDataHandler = new RenovationDataHandler();
         this.renovations = this.renovationDataHandler.Read();
     }
 

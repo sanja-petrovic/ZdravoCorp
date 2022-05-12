@@ -1,0 +1,12 @@
+[
+  {
+    "Id": "1",
+    "NumberOfExitRooms": 1,
+    "ScheduledDateTime": "2022-05-12T17:22:00",
+    "EntryRooms": [
+      "317",
+      "316",
+      "315"
+    ]
+  }
+]

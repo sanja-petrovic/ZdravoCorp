@@ -8,14 +8,14 @@ public class RoomRepository
     private List<Room> rooms;
     private List<Room> freeRooms;
     private List<Room> renovatableRooms;
-    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "room.json";
-
+    
     public RoomDataHandler RoomDataHandler { get => roomDataHandler; set => roomDataHandler = value; }
 
     public RoomRepository()
     {
-        this.roomDataHandler = new RoomDataHandler(fileLocation);
+        this.roomDataHandler = new RoomDataHandler();
         this.rooms = this.roomDataHandler.Read();
+
         this.freeRooms = new List<Room>();    
         this.renovatableRooms = new List<Room>();
     }
