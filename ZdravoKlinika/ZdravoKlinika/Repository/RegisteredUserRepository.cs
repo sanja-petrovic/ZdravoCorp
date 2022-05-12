@@ -61,14 +61,16 @@ namespace ZdravoKlinika.Repository
 
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password) 
         {
+            RegisteredUser? userToReturn = null;
             foreach (RegisteredUser user in RegisteredUsers)
             {
                 if (user.Email.Equals(email) && user.Password.Equals(password)) 
                 {
-                    return user;
+                    userToReturn = user;
+                    break;
                 }
             }
-            return null;
+            return userToReturn;
         }
 
         private void AddUser(RegisteredUser newUser)

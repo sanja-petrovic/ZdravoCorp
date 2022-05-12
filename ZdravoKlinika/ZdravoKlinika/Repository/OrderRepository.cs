@@ -21,50 +21,57 @@ namespace ZdravoKlinika.Repository
         public OrderRepository()
         {
             // let this first update finished orders 
-            equipmentRepository = new EquipmentRepository();
+            EquipmentRepository = new EquipmentRepository();
 
-
-            orderDataHandler = new OrderDataHandler();
-            orders = OrderDataHandler.Read();
-            if (orders == null) orders = new List<Order>();
-
-            UpdateReferences();
+            OrderDataHandler = new OrderDataHandler();
+            ReadDataFromFiles();
         }
 
-        private void UpdateReferences()
+        private void ReadDataFromFiles()
         {
-            foreach (Order order in orders)
+            Orders = OrderDataHandler.Read();
+            if (Orders == null) Orders = new List<Order>();
+        }
+
+        private void UpdateReferences(Order order)
+        {
+            foreach (Equipment equipment in order.EquipmentToOrder)
             {
-                foreach (Equipment equipment in order.EquipmentToOrder)
-                {
-                    Equipment eq = EquipmentRepository.GetById(equipment.Id);
-                    equipment.Expendable = eq.Expendable;
-                    equipment.Name = eq.Name;
-                }
+                Equipment eq = EquipmentRepository.GetById(equipment.Id);
+                equipment.Expendable = eq.Expendable;
+                equipment.Name = eq.Name;
             }
         }
 
         public List<Order> GetAllOrders()
         {
-            return orders;
+            ReadDataFromFiles();
+            foreach (Order order in Orders)
+            {
+                UpdateReferences(order);
+            }
+            return Orders;
         }
 
         public Order? GetById(String orderId)
         {
-            foreach (var order in orders)
+            Order? orderToReturn = null;
+            foreach (var order in Orders)
             {
                 if (order.OrderId.Equals(orderId))
                 {
-                    return order;
+                    UpdateReferences(order);
+                    orderToReturn = order;
+                    break;
                 }
             }
-            return null;
+            return orderToReturn;
         }
 
         public void CreateNewOrder(Order newOrder)
         {
-            orders.Add(newOrder);
-            OrderDataHandler.Write(orders);
+            Orders.Add(newOrder);
+            OrderDataHandler.Write(Orders);
         }
     }
 }

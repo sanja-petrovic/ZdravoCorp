@@ -12,13 +12,8 @@ namespace ZdravoKlinika.Repository
         private MedicalRecordDataHandler medicalRecordDataHandler;
         private MedicationRepository medicationRepository;
         private List<MedicalRecord> medicalRecords;
+        
 
-        public MedicalRecordRepository()
-        {
-            MedicalRecordDataHandler = new MedicalRecordDataHandler();
-            medicalRecords = MedicalRecordDataHandler.Read();
-            medicationRepository = new MedicationRepository();
-        }
         public List<MedicalRecord> MedicalRecords
         {
             get
@@ -40,20 +35,30 @@ namespace ZdravoKlinika.Repository
 
         public MedicalRecordDataHandler MedicalRecordDataHandler { get => medicalRecordDataHandler; set => medicalRecordDataHandler = value; }
 
-        public void UpdateReferences()
+        public MedicalRecordRepository()
         {
-            medicalRecords = MedicalRecordDataHandler.Read();
-            foreach (MedicalRecord medicalRecord in medicalRecords)
+            MedicalRecordDataHandler = new MedicalRecordDataHandler();
+            ReadDataFromFiles();
+
+            medicationRepository = new MedicationRepository();
+        }
+
+        private void ReadDataFromFiles()
+        {
+            MedicalRecords = MedicalRecordDataHandler.Read();
+            if (MedicalRecords == null) MedicalRecords = new List<MedicalRecord>();
+        }
+
+        public void UpdateReferences(MedicalRecord medicalRecord)
+        {
+            for(int i = 0; i < medicalRecord.CurrentMedication.Count; i++)
             {
-                for(int i = 0; i < medicalRecord.CurrentMedication.Count; i++)
-                {
-                    medicalRecord.CurrentMedication[i] = medicationRepository.GetById(medicalRecord.CurrentMedication[i].MedicationId);
-                }
-                for(int i = 0; i < medicalRecord.PastMedication.Count; i++)
-                {
-                    medicalRecord.PastMedication[i] = medicationRepository.GetById(medicalRecord.PastMedication[i].MedicationId);
-                }
+                medicalRecord.CurrentMedication[i] = medicationRepository.GetById(medicalRecord.CurrentMedication[i].MedicationId);
             }
+            for(int i = 0; i < medicalRecord.PastMedication.Count; i++)
+            {
+                medicalRecord.PastMedication[i] = medicationRepository.GetById(medicalRecord.PastMedication[i].MedicationId);
+            }      
         }
 
         public void CreateMedicalRecord(MedicalRecord medicalRecord)
@@ -67,7 +72,7 @@ namespace ZdravoKlinika.Repository
             {
                 if (med.MedicalRecordId == medicalRecord.MedicalRecordId)
                 {
-                    return;
+                    throw new Exception("BAD");
                 }
             }
 
@@ -88,8 +93,7 @@ namespace ZdravoKlinika.Repository
 
             if (index == -1)
             {
-                Console.WriteLine("Error");
-                return;
+                throw new Exception("BAD");
             }
 
             medicalRecords[index] = medicalRecord;
@@ -109,31 +113,34 @@ namespace ZdravoKlinika.Repository
             if (this.MedicalRecords != null)
                 if (MedicalRecords.Contains(record))
                     MedicalRecords.Remove(record);
-            // TODO medication
+
             MedicalRecordDataHandler.Write(MedicalRecords);
         }
 
         public MedicalRecord? GetById(String id)
         {
-            UpdateReferences();
+            ReadDataFromFiles();
+            MedicalRecord? medicalRecordToReturn = null;
             foreach (MedicalRecord record in this.medicalRecords)
             {
                 if (record.MedicalRecordId.Equals(id))
                 {
-                    return record;
+                    UpdateReferences(record);
+                    medicalRecordToReturn = record;
+                    break;
                 }
             }
-            return null;
+            return medicalRecordToReturn;
         }
 
         public void AddCurrentMedication(String medicalRecordId, Medication medication)
         {
             MedicalRecord medicalRecord = this.GetById(medicalRecordId);
             medicalRecord.AddCurrentMedication(medication);
-            this.DeleteMedicalRecord(medicalRecord);
-            this.medicalRecords.Add(medicalRecord);
+            DeleteMedicalRecord(medicalRecord);
+            medicalRecords.Add(medicalRecord);
 
-            MedicalRecordDataHandler.Write(this.medicalRecords);
+            MedicalRecordDataHandler.Write(medicalRecords);
 
         }
 

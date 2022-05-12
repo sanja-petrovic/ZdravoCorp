@@ -28,20 +28,21 @@ public class RegisteredPatientRepository
     public RegisteredPatientRepository() {
         patientsDataHandler = new RegisteredPatientDataHandler();
         MedicalRecordRepository = new MedicalRecordRepository();
+        ReadDataFromFiles();
+    }
+
+    private void ReadDataFromFiles()
+    {
         Patients = patientsDataHandler.Read();
         if (Patients == null) Patients = new List<RegisteredPatient>();
     }
 
-    private void updateReferences()
+    private void UpdateReferences(RegisteredPatient pat)
     {
-        Patients = patientsDataHandler.Read();
-        foreach (RegisteredPatient pat in patients)
-        {
-            pat.MedicalRecord = MedicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId); 
-        }
+        pat.MedicalRecord = MedicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId);
     }
 
-    public void recordUpdated(RegisteredPatient p)
+    public void RecordUpdated(RegisteredPatient p)
     {
         foreach (RegisteredPatient patient in this.patients)
         {
@@ -58,21 +59,28 @@ public class RegisteredPatientRepository
 
     public List<RegisteredPatient> GetAll()
     {
-        updateReferences();
+        ReadDataFromFiles();
+        foreach (RegisteredPatient pat in Patients)
+        {
+            UpdateReferences(pat);
+        }
         return patients;
     }
 
     public RegisteredPatient? GetById(String id)
     {
-        updateReferences();
+        ReadDataFromFiles();
+        RegisteredPatient registeredPatientToReturn = null;
         foreach (RegisteredPatient patient in this.patients) 
         {
             if (patient.PersonalId.Equals(id)) 
             {
-                return patient;
+                UpdateReferences(patient);
+                registeredPatientToReturn = patient;
+                break;
             }
         }
-        return null;
+        return registeredPatientToReturn;
     }
 
     public void CreatePatient(RegisteredPatient patient)

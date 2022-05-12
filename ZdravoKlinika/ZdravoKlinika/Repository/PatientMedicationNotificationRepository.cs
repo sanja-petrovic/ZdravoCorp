@@ -44,34 +44,42 @@ namespace ZdravoKlinika.Repository
         {
             PatientMedicationNotificationDataHandler = new PatientMedicationNotificationDataHandler();
             PrescriptionRepository = new PrescriptionRepository();
-            this.Notifications = null;
-            this.notifications = PatientMedicationNotificationDataHandler.Read();
+            ReadDataFromFiles();
             
         }
-        private void updatePreferences()
+
+        private void ReadDataFromFiles()
         {
-            this.notifications = PatientMedicationNotificationDataHandler.Read();
-            foreach (PatientMedicationNotification notification in Notifications)
-            {
-                notification.Prescription = PrescriptionRepository.GetById(notification.Prescription.Id);
-            }
+            notifications = PatientMedicationNotificationDataHandler.Read();
+            if (notifications == null) notifications = new List<PatientMedicationNotification>();
+        }
+
+        private void UpdateReferences(PatientMedicationNotification notification)
+        {
+            notification.Prescription = PrescriptionRepository.GetById(notification.Prescription.Id);
         }
         public List<PatientMedicationNotification> GetAll()
         {
-            updatePreferences();
+            ReadDataFromFiles();
+            foreach (PatientMedicationNotification notification in Notifications)
+            {
+                UpdateReferences(notification);
+            }
             return Notifications;
         }
-        public PatientMedicationNotification GetById(int id)
+        public PatientMedicationNotification? GetById(int id)
         {
-            updatePreferences();
-            foreach(PatientMedicationNotification notification in this.Notifications)
+            PatientMedicationNotification? notificationToReturn = null;
+            foreach(PatientMedicationNotification notification in Notifications)
             {
                 if(notification.NotificationId == id)
                 {
-                    return notification;
+                    UpdateReferences(notification);
+                    notificationToReturn = notification;
+                    break;
                 }
             }
-            return null;
+            return notificationToReturn;
         }
         public void CreateNotification(PatientMedicationNotification notification)
         {
@@ -79,9 +87,9 @@ namespace ZdravoKlinika.Repository
             {
                 return;
             }
-            if(this.Notifications == null)
+            if(Notifications == null)
             {
-                this.Notifications = new List<PatientMedicationNotification>();
+                Notifications = new List<PatientMedicationNotification>();
             }
             foreach(PatientMedicationNotification notif in Notifications)
             {
@@ -90,8 +98,8 @@ namespace ZdravoKlinika.Repository
                     return;
                 }
             }
-            this.Notifications.Add(notification);
-            PatientMedicationNotificationDataHandler.Write(this.Notifications);
+            Notifications.Add(notification);
+            PatientMedicationNotificationDataHandler.Write(Notifications);
             return;
         }
         public void DeleteNotification(PatientMedicationNotification notification)
@@ -100,18 +108,18 @@ namespace ZdravoKlinika.Repository
             {
                 return;
             }
-            if (this.Notifications != null)
+            if (Notifications != null)
             {
-                if (this.Notifications.Contains(notification))
+                if (Notifications.Contains(notification))
                 {
-                    this.Notifications.Remove(notification);
+                    Notifications.Remove(notification);
                 }
             }
-            PatientMedicationNotificationDataHandler.Write(this.Notifications);
+            PatientMedicationNotificationDataHandler.Write(Notifications);
         }
         public void DeleteAllNotifications()
         {
-            if(this.Notifications != null)
+            if(Notifications != null)
             {
                 Notifications.Clear();
             }
@@ -120,7 +128,7 @@ namespace ZdravoKlinika.Repository
         public void UpdateNotification(PatientMedicationNotification notification)
         {
             int index = -1;
-            foreach(PatientMedicationNotification notif in this.Notifications)
+            foreach(PatientMedicationNotification notif in Notifications)
             {
                 if(notif.NotificationId == notification.NotificationId)
                 {
