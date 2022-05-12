@@ -25,10 +25,12 @@ public class Equipment
     {
     }
 
-    public static Equipment Parse(String id)
+    public static Equipment Parse(String data)
     {
+        String[] splitData = data.Split(",");
         Equipment eq = new Equipment();
-        eq.Id = id;
+        eq.Id = splitData[0];
+        eq.amount = int.Parse(splitData[1]);
         return eq;
     }
 }

@@ -81,31 +81,7 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      {
-        "MedicationId": "2",
-        "BrandName": "Brufen",
-        "Dosage": "400mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null,
-        "Note": null,
-        "DosageInstructions": null
-      }
-    ]
+    "Prescriptions": []
   },
   {
     "AppointmentId": 7,
@@ -119,59 +95,7 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      {
-        "MedicationId": "1",
-        "BrandName": "Brufen",
-        "Dosage": "200mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null,
-        "Note": null,
-        "DosageInstructions": null
-      },
-      {
-        "MedicationId": "3",
-        "BrandName": "Caffetin cold",
-        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
-        "Notes": [],
-        "MedicationCode": "N02BE51",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "paracetamol",
-          "pseudoefedrin",
-          "dekstrometorfan",
-          "askorbinska kiselina"
-        ],
-        "Allergens": [
-          "paracetamol",
-          "pseudoefedrin",
-          "dekstrometorfan",
-          "askorbinska kiselina"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null,
-        "Note": null,
-        "DosageInstructions": null
-      }
-    ]
+    "Prescriptions": []
   },
   {
     "AppointmentId": 8,
@@ -199,30 +123,7 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      {
-        "MedicationId": "5",
-        "BrandName": "Hemomycin",
-        "Dosage": "250mg",
-        "Notes": [],
-        "MedicationCode": "J01FA10",
-        "Form": "kapsula, tvrda",
-        "ActiveSubstances": [
-          "azitromicin"
-        ],
-        "Allergens": [
-          "azitromicin"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null,
-        "Note": null,
-        "DosageInstructions": null
-      }
-    ]
+    "Prescriptions": []
   },
   {
     "AppointmentId": 10,
@@ -240,17 +141,20 @@
   },
   {
     "AppointmentId": 11,
-    "DateAndTime": "2022-05-07T09:45:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
+    "DateAndTime": "2022-05-12T09:45:00",
+    "Diagnoses": "123",
+    "DoctorsNotes": "12345",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 30,
-    "Doctor": "456",
+    "Doctor": "123",
     "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false,
-    "Prescriptions": []
+    "Over": true,
+    "Prescriptions": [
+      10,
+      11
+    ]
   },
   {
     "AppointmentId": 12,
@@ -268,7 +172,7 @@
   },
   {
     "AppointmentId": 13,
-    "DateAndTime": "2022-05-12T14:15:00",
+    "DateAndTime": "2022-05-11T14:15:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
@@ -304,7 +208,7 @@
     "Duration": 30,
     "Doctor": "123",
     "Patient": "12345123,Guest",
-    "Room": "314",
+    "Room": "2",
     "Over": false,
     "Prescriptions": []
   },
@@ -324,30 +228,74 @@
   },
   {
     "AppointmentId": 17,
-    "DateAndTime": "2022-05-04T10:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 15,
-    "Doctor": "456",
-    "Patient": "1510963123321,Registered",
-    "Room": "314",
-    "Over": false,
-    "Prescriptions": []
-  },
-  {
-    "AppointmentId": 18,
-    "DateAndTime": "2022-05-09T09:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
+    "DateAndTime": "2022-05-09T10:00:00",
+    "Diagnoses": "asfds",
+    "DoctorsNotes": "asds",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 15,
     "Doctor": "123",
     "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false,
+    "Over": true,
     "Prescriptions": []
+  },
+  {
+    "AppointmentId": 18,
+    "DateAndTime": "2022-05-09T09:00:00",
+    "Diagnoses": "132",
+    "DoctorsNotes": "1234",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": []
+  },
+  {
+    "AppointmentId": 19,
+    "DateAndTime": "2022-05-10T14:15:00",
+    "Diagnoses": "Laryngitis acuta",
+    "DoctorsNotes": "Preporuka: \u010Daj od nane",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [
+      5
+    ]
+  },
+  {
+    "AppointmentId": 20,
+    "DateAndTime": "2022-05-19T08:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": true,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "12345123,Guest",
+    "Room": null,
+    "Over": false,
+    "Prescriptions": null
+  },
+  {
+    "AppointmentId": 21,
+    "DateAndTime": "2022-05-12T08:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "315",
+    "Over": false,
+    "Prescriptions": null
   }
 ]

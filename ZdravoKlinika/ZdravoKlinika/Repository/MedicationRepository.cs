@@ -18,48 +18,58 @@ namespace ZdravoKlinika.Repository
         public MedicationRepository()
         {
             medicationDataHandler = new MedicationDataHandler();
-            this.medications = medicationDataHandler.Read();
-            foreach(Medication medication in medications)
-            {
-                Console.WriteLine(medication.MedicationId);
-            }
+            ReadDataFromFiles();
+
             this.doctorRepository = new DoctorRepository();
         }
 
-        public void UpdateReferences()
+        private void ReadDataFromFiles()
         {
-            foreach (Medication medication in this.medications)
+            medications = medicationDataHandler.Read();
+            if (medications == null) medications = new List<Medication>();
+        }
+
+        public void UpdateReferences(Medication medication)
+        {
+            if(medication.ApprovedBy != null)
             {
-                if(medication.ApprovedBy != null)
+                medication.ApprovedBy = this.doctorRepository.GetById(medication.ApprovedBy.PersonalId);
+            }
+            if (medication.Alternatives != null)
+            {
+                for (int i = 0; i < medication.Alternatives.Count; i++)
                 {
-                    medication.ApprovedBy = this.doctorRepository.GetById(medication.ApprovedBy.PersonalId);
-                }
-                if(medication.Alternatives != null)
-                {
-                    for (int i = 0; i < medication.Alternatives.Count; i++)
-                    {
-                        medication.Alternatives[i] = this.GetById(medication.Alternatives[i].MedicationId);
-                    }
+                    medication.Alternatives[i] = this.GetById(medication.Alternatives[i].MedicationId);
                 }
             }
         }
 
         public List<Medication> GetAll()
         {
-            return medicationDataHandler.Read();
+            ReadDataFromFiles();
+            foreach (Medication medication in this.medications)
+            {
+                UpdateReferences(medication);
+            }
+
+            return medications;
         }
 
         public Medication GetById(String id)
         {
-            foreach(Medication medication in medications)
+            ReadDataFromFiles();
+            Medication? medicationToReturn = null;
+            foreach (Medication medication in medications)
             {
                 if(medication.MedicationId == id)
                 {
-                    return medication;
+                    UpdateReferences(medication);
+                    medicationToReturn = medication;
+                    break;
                 }
             }
 
-            return null;
+            return medicationToReturn;
         }
     }
 }

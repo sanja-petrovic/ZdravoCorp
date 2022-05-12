@@ -129,5 +129,11 @@
     <None Remove="View\UpravnikWindow.xaml~RF9df3ab.TMP" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\Data\orders.json">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
 
 </Project>

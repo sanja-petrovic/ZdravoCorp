@@ -22,9 +22,9 @@ public class RoomController
         return this.roomService.GetById(id);
     }
 
-    public List<Room> GetFreeRooms(DateTime enteredTime)
+    public List<Room> GetFreeRooms(DateTime enteredTime, RoomType roomType)
     {
-        return this.roomService.GetFreeRooms(enteredTime);
+        return this.roomService.GetFreeRooms(enteredTime, roomType);
     }
 
     public List<Room> GetRenovatableRooms() 

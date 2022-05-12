@@ -76,7 +76,24 @@ namespace ZdravoKlinika.View.Secretary
             MenuContentLabel.Content = "Azuriranje i brisanje pacijenta";
             HamburgerMenuFrame.IsChecked = false;
         }
-
+        private void CreateAppointmentPage(object sender, RoutedEventArgs e)
+        {
+            Select(BorderCrAppointment);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryCreateAppointment());
+            MenuContentLabel.Content = "Kreiranje termina";
+            HamburgerMenuFrame.IsChecked = false;
+        }
+        private void OrderEquipmentPage(object sender, RoutedEventArgs e)
+        {
+            Select(BorderOrderEquipment);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryOrderEquipment());
+            MenuContentLabel.Content = "Narucivanje opreme";
+            HamburgerMenuFrame.IsChecked = false;
+        }
         private void Select(Border b)
         {
             // unselect every border first
@@ -84,7 +101,7 @@ namespace ZdravoKlinika.View.Secretary
             ChangeColorUnSelected(BorderUDPatient);
             ChangeColorUnSelected(BorderHomePage);
             ChangeColorUnSelected(BorderCrAppointment);
-
+            ChangeColorUnSelected(BorderOrderEquipment);
 
             // selected border
             ChangeColorSelected(b);
@@ -105,14 +122,6 @@ namespace ZdravoKlinika.View.Secretary
             b.BorderThickness = new Thickness(0, 0, 0, 0);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Select(BorderCrAppointment);
-            if (MainContentFrame.CanGoBack)
-                MainContentFrame.RemoveBackEntry();
-            MainContentFrame.Navigate(new SecretaryCreateAppointment());
-            MenuContentLabel.Content = "Kreiranje termina";
-            HamburgerMenuFrame.IsChecked = false;
-        }
+        
     }
 }

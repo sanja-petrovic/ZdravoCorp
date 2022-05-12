@@ -3,9 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  Title="Zdravo klinika"
-      xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:DoctorViewModel}"
-             mc:Ignorable="d"  ResizeMode="CanMinimize"
-      Background="#F8F9FE" Width="1024" Height="768" Cursor="Arrow"
+      xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:DoctorViewModel}" WindowStartupLocation="CenterScreen"
+             mc:Ignorable="d"  ResizeMode="NoResize"
+      Background="#F8F9FE" Width="1024" Height="768" Cursor="Arrow" SizeToContent="WidthAndHeight"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:system="clr-namespace:System;assembly=netstandard">
     <Window.Resources>
 
@@ -104,7 +104,7 @@
 
 
     </Window.Resources>
-    <Grid>
+    <Grid Width="1024" Height="768">
         <Border  Margin="0,0,-13,730"
             BorderBrush="Black"
             BorderThickness="2"
@@ -125,19 +125,13 @@
         <Rectangle HorizontalAlignment="Left" Height="768" VerticalAlignment="Center" Width="238" Fill="White" Margin="-1,0,0,0" />
 
         <ListBox Margin="0,130,786,0" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
-            <ListBoxItem Content="Početna stranica" FontSize="14" Padding="50 15 15 15" IsSelected="True" MouseDoubleClick="GoToHome"/>
+            <ListBoxItem PreviewMouseLeftButtonDown="GoToHome" Content="Početna stranica" FontSize="14" Padding="50 15 15 15" IsSelected="True" />
             <ListBoxItem Content="Profil" FontSize="14" Padding="50 15 15 15"/>
             <ListBoxItem Content="Pacijenti" FontSize="14" Padding="50 15 15 15" />
             <ListBoxItem Content="Baza lekova" FontSize="14" Padding="50 15 15 15" />
-            <ListBoxItem Content="Mesečni raspored" FontSize="14" Padding="50 15 15 15" MouseDoubleClick="GoToSchedule"/>
+            <ListBoxItem Content="Mesečni raspored" FontSize="14" Padding="50 15 15 15" PreviewMouseLeftButtonDown="GoToSchedule"/>
             <ListBoxItem Content="Ocenite aplikaciju" FontSize="14" Padding="50 15 15 15"/>
         </ListBox>
-        <Image Margin="28,148,980,587" Source="/Resources/Images/home.png" Stretch="Fill" Height="16" Width="16"/>
-        <Image Margin="28,198,980,539" Source="/Resources/Images/user.png" Stretch="Fill" Height="16" Width="16"/>
-        <Image Margin="28,247,980,490" Source="/Resources/Images/stethoscope.png" Stretch="Fill" Height="16" Width="16"/>
-        <Image Margin="28,345,980,391" Source="/Resources/Images/calendar.png" Stretch="Fill" Height="16" Width="16"/>
-        <Image Margin="28,393,980,343" Source="/Resources/Images/star.png" Stretch="Fill" Height="16" Width="16"/>
-        <Image Margin="28,294,980,441" Source="/Resources/Images/medicine.png" Stretch="Fill" Height="16" Width="16"/>
         <Ellipse HorizontalAlignment="Left" Height="46" Margin="16,37,0,0" VerticalAlignment="Top" Width="44">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="\Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" Stretch="Fill"></ImageBrush>
@@ -149,12 +143,18 @@
             <Run FontWeight="Bold" FontSize="16" Text="{Binding Name}" /><LineBreak></LineBreak>
             <Run Text="{Binding Specialty}"/>
         </TextBlock>
-        <Image Margin="870,11,134,722" Source="/Resources/Images/bell (1).png" Stretch="Uniform"/>
-        <Image Margin="909,10,95,722" Source="/Resources/Images/info (2).png" Stretch="Uniform"/>
-        <Image Margin="946,11,58,722" Source="/Resources/Images/settings.png" Stretch="Uniform"/>
-        <Image Margin="254,4,699,716" Source="/Resources/Images/zdravoklinika2.png" Stretch="Uniform" Height="35"/>
         <Rectangle Fill="#F8F9FE" Height="1" Margin="13,107,801,660"/>
         <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Margin="0,0,0,0" />
 
+        <Image Margin="893,4,111,728" Source="/Resources/Images/bell (1).png" Stretch="Uniform"/>
+        <Image Margin="932,4,72,728" Source="/Resources/Images/info (2).png" Stretch="Uniform"/>
+        <Image Margin="969,4,35,728" Source="/Resources/Images/settings.png" Stretch="Uniform" MouseLeftButtonDown="SignOut"/>
+        <Image Margin="254,4,706,730" Source="/Resources/Images/zdravoklinika2.png" Stretch="Fill"/>
+        <Image Margin="28,148,980,604" Source="/Resources/Images/home.png" Stretch="UniformToFill"  Height="16" Width="16"/>
+        <Image Margin="28,198,980,555" Source="/Resources/Images/user.png" Stretch="Fill"  Height="16" Width="16"/>
+        <Image Margin="28,247,980,504" Source="/Resources/Images/stethoscope.png" Stretch="Fill" Height="16" Width="16"/>
+        <Image Margin="28,345,980,407" Source="/Resources/Images/calendar.png" Stretch="Fill" Height="16" Width="16"/>
+        <Image Margin="28,394,980,358" Source="/Resources/Images/star.png" Stretch="Fill" Height="16" Width="16"/>
+        <Image Margin="28,296,980,456" Source="/Resources/Images/medicine.png" Stretch="Fill" Height="16" Width="16"/>
     </Grid>
 </Window>

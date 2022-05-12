@@ -25,9 +25,9 @@ namespace ZdravoKlinika.Service
             return PatientRepository.GetById(id);
         }
 
-        public void CreateNewGuestPatient(String id, String name, String lastname)
+        public void CreateNewGuestPatient(GuestPatient guestPatient)
         {
-            PatientRepository.CreateNewGuestPatient(id, name, lastname);
+            PatientRepository.CreateNewGuestPatient(guestPatient);
             return;
         }
 

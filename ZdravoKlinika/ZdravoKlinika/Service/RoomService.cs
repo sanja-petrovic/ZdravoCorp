@@ -22,9 +22,9 @@ public class RoomService
         return this.roomRepository.GetById(id);
     }
 
-    public List<Room> GetFreeRooms(DateTime enteredTime)
+    public List<Room> GetFreeRooms(DateTime enteredTime, RoomType roomType)
     {
-        return this.roomRepository.GetFreeRooms(enteredTime);
+        return this.roomRepository.GetFreeRooms(enteredTime, roomType);
     }
 
     public List<Room> GetRenovatableRooms()

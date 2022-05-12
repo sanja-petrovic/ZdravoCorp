@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Data_Handler;
 
 namespace ZdravoKlinika.Repository
 {
@@ -13,7 +14,7 @@ namespace ZdravoKlinika.Repository
         DoctorRepository doctorRepository;
         EmployeeRepository employeeRepository;
 
-
+        
         public RegisteredPatientRepository RegisteredPatientRepository { get => registeredPatientRepository; set => registeredPatientRepository = value; }
         public DoctorRepository DoctorRepository { get => doctorRepository; set => doctorRepository = value; }
         public EmployeeRepository EmployeeRepository { get => employeeRepository; set => employeeRepository = value; }
@@ -25,11 +26,11 @@ namespace ZdravoKlinika.Repository
             DoctorRepository = new DoctorRepository();
             EmployeeRepository = new EmployeeRepository();
 
-            FillList();
+            LoadAllRegisteredUsers();
 
         }
 
-        private void FillList()
+        private void LoadAllRegisteredUsers()
         {
 
             List<RegisteredPatient> rpats = RegisteredPatientRepository.GetAll();
@@ -56,19 +57,20 @@ namespace ZdravoKlinika.Repository
                     this.AddUser(emp);
                 }
             }
-
         }
 
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password) 
         {
+            RegisteredUser? userToReturn = null;
             foreach (RegisteredUser user in RegisteredUsers)
             {
                 if (user.Email.Equals(email) && user.Password.Equals(password)) 
                 {
-                    return user;
+                    userToReturn = user;
+                    break;
                 }
             }
-            return null;
+            return userToReturn;
         }
 
         private void AddUser(RegisteredUser newUser)
@@ -80,5 +82,27 @@ namespace ZdravoKlinika.Repository
             if (!this.registeredUsers.Contains(newUser))
                 this.registeredUsers.Add(newUser);
         }
+
+        public void RememberUser(RegisteredUser user)
+        {
+            CurrentUserDataHandler dataHandler = new CurrentUserDataHandler();
+            dataHandler.Clear();
+            dataHandler.Write(user);
+        }
+
+        public RegisteredUser GetRememberedUser()
+        {
+            CurrentUserDataHandler dataHandler = new CurrentUserDataHandler();
+            RegisteredUser user = dataHandler.Read();
+
+            return user;
+        }
+
+        public void ForgetUser()
+        {
+            CurrentUserDataHandler dataHandler = new CurrentUserDataHandler();
+            dataHandler.Clear();
+        }
+
     }
 }

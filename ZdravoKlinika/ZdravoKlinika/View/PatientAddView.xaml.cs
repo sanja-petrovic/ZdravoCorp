@@ -124,7 +124,7 @@ namespace ZdravoKlinika.View
             if (doctorComboBox.SelectedIndex != -1 && timeComboBox.SelectedIndex != -1)
             {
                 // TODO finish this
-                List<Room> rooms = roomController.GetFreeRooms((DateTime)timeComboBox.SelectedItem);
+                List<Room> rooms = roomController.GetFreeRooms((DateTime)timeComboBox.SelectedItem, RoomType.checkup);
                 if (!rooms.Any())
                 {
                     errorLabel.Content = "no available rooms times";
