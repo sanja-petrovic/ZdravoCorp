@@ -113,6 +113,12 @@ public class AppointmentRepository
         }
         return Appointments;
     }
+    public List<Appointment> GetFutureAppointments()
+    {
+        this.appointments = this.GetAll();
+        this.appointments.RemoveAll(app => app.Over == false);
+        return this.appointments;
+    }
 
     public Appointment? GetAppointmentById(int id)
     {
