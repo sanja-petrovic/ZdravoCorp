@@ -9,15 +9,23 @@ namespace ZdravoKlinika.Util
     public class DateBlock
     {
         DateTime start;
+        DateTime end;
         int duration;//number of minimal intervals
         static int minInterval = 15; //minutes
 
         public DateTime Start { get => start; set => start = value; }
         public int Duration { get => duration; set => duration = value; }
+        public DateTime End { get => end; set => end = value; }
 
         public DateBlock()
         {
 
+        }
+
+        public DateBlock(DateTime start, DateTime end)
+        {
+            this.end = end;
+            this.start = start; 
         }
         public DateBlock(DateTime start, int duration)
         {

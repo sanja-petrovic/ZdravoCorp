@@ -56,6 +56,23 @@ public class AppointmentService
     {
         return this.appointmentRepository.GetAppointmentsByDoctorDate(doctorId, dateTime);
     }
+
+    public bool DoctorHasAppointmentsInDateRange(Doctor doctor, DateBlock dateBlock)
+    {
+        bool result = false;
+        foreach(Appointment a in this.GetAll())
+        {
+            if(!a.Over)
+            {
+                if (a.DateAndTime.CompareTo(dateBlock.Start) <= 0 && a.DateAndTime.CompareTo(dateBlock.End) >= 0) {
+                    result = true;
+                }
+            }
+        }
+
+        return result;
+    }
+
     public List<Appointment> GetAppointmentsByPatientIdForDate(String id,DateTime date)
     {
         List<Appointment> appointments = new List<Appointment>();

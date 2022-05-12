@@ -44,5 +44,10 @@ namespace ZdravoKlinika.View.DoctorPages
             doctorMedicalRecord.init(patientId);
             this.NavigationService.Navigate(doctorMedicalRecord);
         }
+
+        private void ViewDaysOff(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
