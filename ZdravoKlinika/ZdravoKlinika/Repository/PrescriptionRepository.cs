@@ -20,51 +20,58 @@ namespace ZdravoKlinika.Repository
         public PrescriptionRepository()
         {
             prescriptionDataHandler = new PrescriptionDataHandler();
-            this.prescriptions = prescriptionDataHandler.Read();
-            this.medicationRepository = new MedicationRepository();
+            ReadDataFromFiles();
+           
+            medicationRepository = new MedicationRepository();
             registeredPatientRepository = new RegisteredPatientRepository();
             doctorRepository = new DoctorRepository();
-            UpdateReferences();
+        }
+
+        private void ReadDataFromFiles()
+        {
+            prescriptions = prescriptionDataHandler.Read();
+            if (prescriptions == null) prescriptions = new List<Prescription>();
         }
 
         public List<Prescription> GetAll()
         {
-            return this.prescriptionDataHandler.Read();
+            ReadDataFromFiles();
+            foreach (Prescription p in prescriptions)
+            {
+                UpdateReferences(p);
+            }
+            return prescriptions;
         }
 
-        public Prescription GetById(int id)
+        public Prescription? GetById(int id)
         {
-            UpdateReferences();
-            foreach(Prescription p in this.prescriptions)
+            ReadDataFromFiles();
+            Prescription? prescriptionToReturn = null;
+            foreach(Prescription p in prescriptions)
             {
                 if(p.Id == id)
                 {
-                    return p;
+                    UpdateReferences(p);
+                    prescriptionToReturn = p;
+                    break;
                 }
             }
 
-            return null;
+            return prescriptionToReturn;
         }
         
 
-        public void UpdateReferences()
+        public void UpdateReferences(Prescription prescription)
         {
-
-            foreach(Prescription p in this.prescriptions)
-            {
-                p.Medication = medicationRepository.GetById(p.Medication.MedicationId);
-                p.Doctor = doctorRepository.GetById(p.Doctor.PersonalId);
-                p.RegisteredPatient = registeredPatientRepository.GetById(p.RegisteredPatient.PersonalId);
-            }
-
-            
+            prescription.Medication = medicationRepository.GetById(prescription.Medication.MedicationId);
+            prescription.Doctor = doctorRepository.GetById(prescription.Doctor.PersonalId);
+            prescription.RegisteredPatient = registeredPatientRepository.GetById(prescription.RegisteredPatient.PersonalId);  
         }
 
         public void Prescribe(Prescription prescription)
         {
-            this.prescriptions.Add(prescription);
-            this.prescriptionDataHandler.Write(this.prescriptions);
-            
+            prescriptions.Add(prescription);
+            prescriptionDataHandler.Write(prescriptions);        
         }
         
     }

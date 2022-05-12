@@ -70,16 +70,18 @@ namespace ZdravoKlinika.Repository
             return guests;
         }
 
-        public GuestPatient GetById(String id) 
+        public GuestPatient? GetById(String id) 
         {
+            GuestPatient? guestToReturn = null;
             foreach (GuestPatient guest in Guests)
             {
                 if (guest.PersonalId.Equals(id))
                 {
-                    return guest;
+                    guestToReturn = guest;
+                    break;
                 }
             }
-            return null;
+            return guestToReturn;
         }
     }
 }

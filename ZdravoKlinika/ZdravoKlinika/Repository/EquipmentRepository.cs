@@ -22,10 +22,10 @@ public class EquipmentRepository
         this.equipment = EquipmentDataHandler.Read();
         this.expendabilityList = new List<Equipment>();
 
-        UpdateStorageByOrders();
+        UpdateStorageForOrders();
     }
 
-    private void UpdateStorageByOrders()
+    private void UpdateStorageForOrders()
     {
         // goes thorugh all the orders and checks if theres any that got into storage
         List<Order> orders = OrderDataHandler.Read();

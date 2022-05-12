@@ -52,7 +52,7 @@ namespace ZdravoKlinika.Service
             Prescription prescription = new Prescription(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote, prescriptionId);
             prescription.DateOfCreation = DateTime.Now;
             medicalRecordRepository.AddCurrentMedication(patient.MedicalRecord.MedicalRecordId, medication);
-            this.registeredPatientRepository.recordUpdated(patient);
+            this.registeredPatientRepository.RecordUpdated(patient);
 
             this.prescriptionRepository.Prescribe(prescription);
             //make a notif
@@ -64,7 +64,7 @@ namespace ZdravoKlinika.Service
             int prescriptionId = (this.prescriptionRepository.GetAll().Count > 0) ? this.prescriptionRepository.GetAll().Last().Id + 1 : 1;
             prescription.Id = prescriptionId;
             medicalRecordRepository.AddCurrentMedication(prescription.RegisteredPatient.MedicalRecord.MedicalRecordId, prescription.Medication);
-            this.registeredPatientRepository.recordUpdated(prescription.RegisteredPatient);
+            this.registeredPatientRepository.RecordUpdated(prescription.RegisteredPatient);
             this.prescriptionRepository.Prescribe(prescription);
             //make a notif
             patientMedicationNotificationService.CreateNotification(prescription.Doctor, prescription.RegisteredPatient, "prepisan lek", prescription);
