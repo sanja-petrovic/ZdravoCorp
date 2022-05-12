@@ -14,7 +14,6 @@ public class Appointment
     private Doctor doctor;
     private Patient patient;
     private Room room;
-    //private List<Medication> prescriptions;
     private List<Prescription> prescriptions;
     private bool over;
 

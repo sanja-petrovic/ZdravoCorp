@@ -67,7 +67,7 @@ namespace ZdravoKlinika.Repository
         {
             prescription.Medication = medicationRepository.GetById(prescription.Medication.MedicationId);
             prescription.Doctor = doctorRepository.GetById(prescription.Doctor.PersonalId);
-            prescription.RegisteredPatient = registeredPatientRepository.GetById(prescription.RegisteredPatient.PersonalId);  
+            prescription.Patient = patientRepository.GetById(prescription.Patient.GetPatientId());  
         }
 
         public void Prescribe(Prescription prescription)

@@ -76,7 +76,7 @@ public class DoctorRepository
     {
         List<Doctor> doctors = new List<Doctor>();
 
-        foreach (Doctor doctor in this.doctors)
+        foreach (Doctor doctor in this.doctorList)
         {
             if (doctor.Specialty.Equals(specialty))
             {
@@ -90,7 +90,7 @@ public class DoctorRepository
     {
         List<String> specialties = new List<String>();
 
-        foreach(Doctor doctor in this.doctors)
+        foreach(Doctor doctor in this.DoctorList)
         {
             if(!specialties.Contains(doctor.Specialty))
             {
