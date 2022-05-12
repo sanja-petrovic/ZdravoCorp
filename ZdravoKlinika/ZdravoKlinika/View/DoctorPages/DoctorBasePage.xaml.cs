@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -44,6 +45,15 @@ namespace ZdravoKlinika.View.DoctorPages
         private void GoToHome(object sender, MouseButtonEventArgs e)
         {
             MainFrame.Navigate(doctorHomePage);
+        }
+
+        private void SignOut(object sender, MouseButtonEventArgs e)
+        {
+            RegisteredUserController registeredUserController = new RegisteredUserController();
+            registeredUserController.ForgetUser();
+            SignInWindow signInWindow = new SignInWindow();
+            signInWindow.Show();
+            this.Close();
         }
     }
 }

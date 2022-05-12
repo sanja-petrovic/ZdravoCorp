@@ -12,6 +12,7 @@ public class AppointmentRepository
     private PatientRepository patientRepository;
     private RoomRepository roomRepository;
     private MedicationRepository medicationRepository;
+    private PrescriptionRepository prescriptionRepository;
     private List<Appointment> appointments;
     
 
@@ -118,6 +119,20 @@ public class AppointmentRepository
         this.appointments = this.GetAll();
         this.appointments.RemoveAll(app => app.Over == false);
         return this.appointments;
+    }
+
+    public List<Appointment> GetAppointmentsOnDate(DateTime date)
+    {
+        List<Appointment> appointments = new List<Appointment>();
+        foreach(Appointment appointment in this.appointments)
+        {
+            if(appointment.DateAndTime.Date == date.Date)
+            {
+                appointments.Add(appointment);
+            }
+        }
+
+        return appointments;
     }
 
     public Appointment? GetAppointmentById(int id)

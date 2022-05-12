@@ -85,7 +85,7 @@ public class RoomRepository
     {
         freeRooms.Clear();
         AppointmentRepository appointmentRepository = new AppointmentRepository();
-        List<Appointment> appointments = appointmentRepository.GetFutureAppointments();
+        List<Appointment> appointments = appointmentRepository.GetAppointmentsOnDate(enteredTime);
         Room? room = null;
 
         DateTime appointmentStart;
@@ -99,15 +99,20 @@ public class RoomRepository
 
             if (room != null)
             {
-                if ((enteredTime > appointmentStart) && (enteredTime < appointmentEnd))
+                if ((enteredTime.TimeOfDay >= appointmentStart.TimeOfDay) && (enteredTime.TimeOfDay < appointmentEnd.TimeOfDay))
                 {
                     //app.Room JE ZAUZETA U NAVEDENOM TERMINU
                     room.Free = false;
+                    
                 }
                 else
                 {
                     //app.Room JE SLOBODNA U NAVEDENOM TERMINU
                     room.Free = true;
+                }
+                if(room.Free == false)
+                {
+                    break;
                 }
             }
                 
@@ -122,6 +127,29 @@ public class RoomRepository
         }
 
         return freeRooms;
+    }
+
+    public List<Room> GetOccupiedRooms(DateTime dateAndTime, RoomType type)
+    {
+        List<Room> rooms = new List<Room>();
+
+        AppointmentRepository appointmentRepository = new AppointmentRepository();
+
+        return rooms;
+    }
+
+    public RoomType GetRoomTypeForAppointmentType(AppointmentType type)
+    {
+        RoomType result;
+        if(type == AppointmentType.Regular)
+        {
+            result = RoomType.checkup;
+        } else
+        {
+            result = RoomType.operating;
+        }
+
+        return result;
     }
 
     public List<Room> GetRenovatableRooms()

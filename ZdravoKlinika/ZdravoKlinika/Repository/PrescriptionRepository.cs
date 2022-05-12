@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +16,7 @@ namespace ZdravoKlinika.Repository
         private MedicationRepository medicationRepository;
         private DoctorRepository doctorRepository;
         private RegisteredPatientRepository registeredPatientRepository;
+        private PatientRepository patientRepository;
 
         public PrescriptionRepository()
         {
@@ -24,6 +25,7 @@ namespace ZdravoKlinika.Repository
            
             medicationRepository = new MedicationRepository();
             registeredPatientRepository = new RegisteredPatientRepository();
+            patientRepository = new PatientRepository();
             doctorRepository = new DoctorRepository();
         }
 

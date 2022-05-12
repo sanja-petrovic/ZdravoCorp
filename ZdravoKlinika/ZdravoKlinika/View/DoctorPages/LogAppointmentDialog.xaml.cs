@@ -21,42 +21,55 @@ namespace ZdravoKlinika.View.DoctorPages
     public partial class LogAppointmentDialog : Window
     {
 
-        private AppointmentLoggingViewModel viewModel;
+        private ApptLogViewModel viewModel;
         private int selectedAppointmentId;
 
         public int SelectedAppointmentId { get => selectedAppointmentId; set => selectedAppointmentId = value; }
 
         public LogAppointmentDialog()
         {
-            
         }
 
-        public void init()
+        public void Init()
         {
-            viewModel = new AppointmentLoggingViewModel();
+            viewModel = new ApptLogViewModel();
+            viewModel.AppointmentId = SelectedAppointmentId;
+            viewModel.Init();
             DataContext = viewModel;
-            viewModel.AppointmentId = selectedAppointmentId;
-            viewModel.load();
             InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
+            Tabby.ItemsSource = viewModel.TabViewModels;
         }
 
         private void Save(object sender, RoutedEventArgs e)
         {
-            viewModel.save(NoteTB.Text);
+            var therapy = Tabby.Items[1] as TherapyTab;
+            therapy.Save();
+            var anamnesis = Tabby.Items[0] as AnamnesisTab;
+            anamnesis.Appointment.Prescriptions = therapy.PrescribedList.ToList();
+            anamnesis.Save();
+
             this.Close();
         }
 
+        private void Tabby_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ConfirmButton != null)
+            {
+                if (Tabby.SelectedIndex != 0)
+                {
+                    ConfirmButton.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    ConfirmButton.Visibility = Visibility.Visible;
+                }
+            }
 
+        }
+
+        
+
+        /*
         private void MedCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (viewModel.AllergyCheck(MedCB.SelectedIndex))
@@ -80,6 +93,6 @@ namespace ZdravoKlinika.View.DoctorPages
             var selected = (String)RepeatCB.SelectedItem;
             var note = (String)MedNoteTB.Text;
             viewModel.PrescriptionAdded(MedCB.SelectedIndex, selected, note);
-        }
+        }*/
     }
 }

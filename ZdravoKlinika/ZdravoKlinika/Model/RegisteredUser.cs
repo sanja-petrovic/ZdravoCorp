@@ -40,11 +40,17 @@ public class RegisteredUser
         }
     }
 
-    public static RegisteredUser Parse(String id)
+    public static RegisteredUser ParseId(String id)
     {
         RegisteredUser user = new RegisteredUser();
         user.PersonalId = id;
         return user;
+    }
 
+    public static RegisteredUser ParseEmail(String email)
+    {
+        RegisteredUser user = new RegisteredUser();
+        user.Email = email;
+        return user;
     }
 }

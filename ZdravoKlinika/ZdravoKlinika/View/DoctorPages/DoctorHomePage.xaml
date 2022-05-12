@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentsTodayViewModel}"
-             mc:Ignorable="d" ShowsNavigationUI="False"
+             mc:Ignorable="d" 
              Height="768" Width="1024">
     <Page.Resources>
         <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}" TargetType="{x:Type Button}">
@@ -213,26 +213,7 @@
 
         <Label Content="Današnji raspored" Margin="271,75,355,643" FontSize="24" FontWeight="Bold"/>
 
-        <Border Margin="277,506,53,87"
-            BorderBrush="Black"
-            BorderThickness="2"
-            CornerRadius="10">
-            <Border.Effect>
-                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
-            </Border.Effect>
-        </Border>
-        <Rectangle HorizontalAlignment="Left" Height="178" Margin="275,505,0,0"  VerticalAlignment="Top" Width="697" Fill="White"  RadiusX="10" RadiusY="10"/>
-        <Label Content="O pacijentu" Margin="275,457,351,251" FontSize="24" FontWeight="Bold" Panel.ZIndex="1"/>
-        <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="298,632,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="148" Height="34" Click="Button_Click_1">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-            <Button.Style>
-                <StaticResource ResourceKey="fancyButtonStyle3"/>
-            </Button.Style>
-        </Button>
+        
         <Border Margin="276,126,44,331"
             BorderBrush="Black"
             BorderThickness="2"
@@ -246,7 +227,7 @@
         <Border BorderThickness="1" Grid.Row="0"
         CornerRadius="10,10,0,0" BorderBrush="Transparent" Background="White" Margin="274,122,42,592"/>
         <Grid>
-            <DataGrid SelectionChanged="RowSelectionChanged" Name="ScheduleDG" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding Appointments}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}"  Margin="275,125,42,274" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid SelectionChanged="RowSelectionChanged" SelectedIndex="0" Name="ScheduleDG" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding Appointments}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}"  Margin="275,125,42,274" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ime i prezime" Binding="{Binding Name}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Tip" Binding="{Binding Type}"></DataGridTextColumn>
@@ -281,17 +262,38 @@
                 <StaticResource ResourceKey="fancyButtonStyle2"/>
             </Button.Style>
         </Button>
-        <Label Content="{Binding PatientName, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="20"  HorizontalAlignment="Left" Margin="292,517,0,0" VerticalAlignment="Top"/>
-        <Label Content="Datum rođenja" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="292,554,0,0" VerticalAlignment="Top"/>
-        <Label Content="Pol" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="430,554,0,0" VerticalAlignment="Top"/>
-        <Label Content="JMBG" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="498,554,0,0" VerticalAlignment="Top"/>
-        <Label Content="Dijagnoze" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="628,554,0,0" VerticalAlignment="Top"/>
-        <Label Content="Aktivna terapija" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="769,554,0,0" VerticalAlignment="Top"/>
-        <TextBlock Foreground="#555557"  Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"  Margin="297,588,620,148"></TextBlock>
-        <TextBlock Foreground="#555557" Text="{Binding Gender, UpdateSourceTrigger=PropertyChanged}"  Margin="435,588,481,148"></TextBlock>
-        <TextBlock Foreground="#555557" Text="{Binding PatientId, UpdateSourceTrigger=PropertyChanged}"  Margin="502,588,414,148"></TextBlock>
-        <TextBlock Foreground="#555557" Text="{Binding Diagnoses, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Margin="633,588,283,126"></TextBlock>
-        <TextBlock Foreground="#555557" Text="{Binding Therapy, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Margin="773,588,92,126"></TextBlock>
-
+        <Grid Name="AboutGrid">
+            <Border Margin="277,506,53,87"
+                BorderBrush="Black"
+                BorderThickness="2"
+                CornerRadius="10">
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+                </Border.Effect>
+            </Border>
+            <Rectangle HorizontalAlignment="Left" Height="178" Margin="275,505,0,0"  VerticalAlignment="Top" Width="697" Fill="White"  RadiusX="10" RadiusY="10"/>
+            <Label Content="O pacijentu" Margin="275,457,351,251" FontSize="24" FontWeight="Bold" Panel.ZIndex="1"/>
+            <Button Name="RecordButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="298,632,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="148" Height="34" Click="Button_Click_1">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <StaticResource ResourceKey="fancyButtonStyle3"/>
+                </Button.Style>
+            </Button>
+            <Label Content="{Binding PatientName, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="20"  HorizontalAlignment="Left" Margin="292,517,0,0" VerticalAlignment="Top"/>
+            <Label Content="Datum rođenja" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="292,554,0,0" VerticalAlignment="Top"/>
+            <Label Content="Pol" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="430,554,0,0" VerticalAlignment="Top"/>
+            <Label Content="JMBG" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="498,554,0,0" VerticalAlignment="Top"/>
+            <Label Content="Dijagnoze" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="628,554,0,0" VerticalAlignment="Top"/>
+            <Label Content="Aktivna terapija" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="769,554,0,0" VerticalAlignment="Top"/>
+            <TextBlock Foreground="#555557"  Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"  Margin="297,588,620,148"></TextBlock>
+            <TextBlock Foreground="#555557" Text="{Binding Gender, UpdateSourceTrigger=PropertyChanged}"  Margin="435,588,481,148"></TextBlock>
+            <TextBlock Foreground="#555557" Text="{Binding PatientId, UpdateSourceTrigger=PropertyChanged}"  Margin="502,588,414,148"></TextBlock>
+            <TextBlock Foreground="#555557" Text="{Binding Diagnoses, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Margin="633,588,283,126"></TextBlock>
+            <TextBlock Foreground="#555557" Text="{Binding Therapy, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Margin="773,588,92,126"></TextBlock>
+        </Grid>
     </Grid>
 </Page>

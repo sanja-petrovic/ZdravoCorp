@@ -41,7 +41,7 @@ namespace JsonConverters
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options) =>
-                RegisteredUser.Parse(reader.GetString()!);
+                RegisteredUser.ParseId(reader.GetString()!);
 
         public override void Write(
            Utf8JsonWriter writer,
@@ -49,6 +49,23 @@ namespace JsonConverters
            JsonSerializerOptions options) =>
                writer.WriteStringValue(user.PersonalId);
     }
+
+    public class CurrentUserConverter : JsonConverter<RegisteredUser>
+    {
+        public override RegisteredUser Read(
+        ref Utf8JsonReader reader,
+        Type typeToConvert,
+        JsonSerializerOptions options) =>
+            RegisteredUser.ParseEmail(reader.GetString()!);
+
+        public override void Write(
+           Utf8JsonWriter writer,
+           RegisteredUser user,
+           JsonSerializerOptions options) =>
+               writer.WriteStringValue(user.Email);
+    }
+
+
     public class RegisteredPatientConverter : JsonConverter<RegisteredPatient>
     {
         public override RegisteredPatient Read(
