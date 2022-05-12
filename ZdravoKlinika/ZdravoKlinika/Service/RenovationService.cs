@@ -90,7 +90,7 @@ public class RenovationService
 
         if (ok)
         {
-            Renovation r = new Renovation(newRenovationId.ToString(), numberOfExitRooms, scheduledDateTime, entryRooms);
+            Renovation r = new Renovation(newRenovationId.ToString(), numberOfExitRooms, scheduledDateTime, entryRooms, false);
             this.renovationRepository.CreateRenovation(r);
             if (entryRooms.Count == 1 && numberOfExitRooms == 1)
             {
@@ -118,12 +118,13 @@ public class RenovationService
         }
     }
 
-    public void UpdateRenovation(String id, List<Room> entryRooms, int numberOfExitRooms, DateTime scheduledDateTime)
+    public void UpdateRenovation(String id, List<Room> entryRooms, int numberOfExitRooms, DateTime scheduledDateTime, bool isRenovationFinished)
     {
         Renovation r = this.renovationRepository.GetById(id);
         r.EntryRooms = entryRooms;
         r.NumberOfExitRooms = numberOfExitRooms;
         r.ScheduledDateTime = scheduledDateTime;
+        r.IsRenovationFinished = isRenovationFinished;
         this.renovationRepository.UpdateRenovation(r);
     }
 
@@ -157,28 +158,17 @@ public class RenovationService
     {
         RoomService roomService = new RoomService();
         List<Room> rooms = roomService.GetAll();
-        List<Renovation> renovations = this.GetAll();
-        Room soba = null;
+
         foreach (Room r in rooms)
         {
             if (r.RoomId.Equals(entryRooms[0].RoomId))
             {
                 roomService.FreeRoom(r.RoomId);
-                soba = roomService.GetById(r.RoomId);
             }
         }
 
         timerRenovation.Stop();
         timerRenovation.Dispose();
-
-        /*if(soba != null)
-            foreach(Renovation reno in renovations)
-            {
-                if (reno.EntryRooms.Contains(soba))
-                {
-                    this.DeleteRenovation(reno.Id);
-                }
-            }*/
     }
 
     public void SplitTheRoom()
@@ -203,11 +193,13 @@ public class RenovationService
     private void ExecuteSplit(object? sender, ElapsedEventArgs e)
     {
         RoomService roomService = new RoomService();
+
         roomService.DeleteRoom(entryRooms[0].RoomId);
         for(int i = 0; i < numberOfExitRooms; i++)
         {
             roomService.CreateRoom("placeholder", RoomType.checkup, RoomStatus.available, 1, 1, true);
         }
+
         timerSplit.Stop();
         timerSplit.Dispose();
     }
@@ -223,7 +215,6 @@ public class RenovationService
             {
                 if (r1.RoomId.Equals(r.RoomId))
                 {
-                    //roomService.UpdateRoom(r.RoomId, r.Name, r.Type, RoomStatus.renovation, r.Level, r.Number, r.Free);
                     roomService.RenovateRoom(r.RoomId);
                 }
             }
@@ -238,11 +229,13 @@ public class RenovationService
     private void ExecuteMerge(object? sender, ElapsedEventArgs e)
     {
         RoomService roomService = new RoomService();
+
         foreach (Room r in EntryRooms)
         {
             roomService.DeleteRoom(r.RoomId);
         }
         roomService.CreateRoom("placeholder", RoomType.checkup, RoomStatus.available, 1, 1, true);
+
         timerMerge.Dispose();
         timerMerge.Dispose();
     }

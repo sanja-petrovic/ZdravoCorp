@@ -106,6 +106,7 @@ public class RenovationRepository
                     r.EntryRooms = renovation.EntryRooms;
                     r.NumberOfExitRooms = renovation.NumberOfExitRooms;
                     r.ScheduledDateTime = renovation.ScheduledDateTime;
+                    r.IsRenovationFinished = renovation.IsRenovationFinished;
                 }
             }
         renovationDataHandler.Write(this.renovations);
