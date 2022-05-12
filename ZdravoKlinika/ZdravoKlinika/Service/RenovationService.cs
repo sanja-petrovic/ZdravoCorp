@@ -110,6 +110,8 @@ public class RenovationService
                 MergeTheRooms();
 
             }
+            //OVDE UPDATE TABELU SOBA
+
         } else
         {
             //OVDE IDE NEKA NOTIFIKACIJA "SOBA JE ZAUZETA U UNETOM VREMENSKOM PERIODU"
