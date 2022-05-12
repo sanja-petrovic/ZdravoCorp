@@ -18,7 +18,6 @@ namespace ZdravoKlinika.Repository
             MedicalRecordDataHandler = new MedicalRecordDataHandler();
             medicalRecords = MedicalRecordDataHandler.Read();
             medicationRepository = new MedicationRepository();
-            UpdateReferences();
         }
         public List<MedicalRecord> MedicalRecords
         {
@@ -43,9 +42,8 @@ namespace ZdravoKlinika.Repository
 
         public void UpdateReferences()
         {
-            
-
-            foreach(MedicalRecord medicalRecord in medicalRecords)
+            medicalRecords = MedicalRecordDataHandler.Read();
+            foreach (MedicalRecord medicalRecord in medicalRecords)
             {
                 for(int i = 0; i < medicalRecord.CurrentMedication.Count; i++)
                 {
@@ -117,7 +115,6 @@ namespace ZdravoKlinika.Repository
 
         public MedicalRecord? GetById(String id)
         {
-            this.medicalRecords = this.medicalRecordDataHandler.Read();
             UpdateReferences();
             foreach (MedicalRecord record in this.medicalRecords)
             {

@@ -8,19 +8,29 @@ using System.Collections.Generic;
 
 public class DoctorRepository
 {
-   private DoctorDataHandler doctorDataHandler = new DoctorDataHandler();
+    private DoctorDataHandler doctorDataHandler;
+    private List<Doctor> doctorList;
+
+    public List<Doctor> DoctorList { get => doctorList; set => doctorList = value; }
+    public DoctorDataHandler DoctorDataHandler { get => doctorDataHandler; set => doctorDataHandler = value; }
+
+    public DoctorRepository()
+    { 
+        DoctorDataHandler = new DoctorDataHandler();
+        DoctorList = DoctorDataHandler.Read();
+        if (DoctorList == null) DoctorList = new List<Doctor>();
+    }
 
    
    public List<Doctor> GetAll()
    {
-        return doctorDataHandler.Read();
+        return DoctorList;
    }
    
    public Doctor GetById(String id)
    {
-        List<Doctor> doctors = new List<Doctor>();
-        doctors = doctorDataHandler.Read();
-        foreach (Doctor doctor in doctors)
+
+        foreach (Doctor doctor in DoctorList)
         {
             if(doctor.PersonalId == id)
             {
@@ -32,9 +42,7 @@ public class DoctorRepository
 
     public Doctor GetByEmail(String email)
     {
-        List<Doctor> doctors = new List<Doctor>();
-        doctors = doctorDataHandler.Read();
-        foreach (Doctor doctor in doctors)
+        foreach (Doctor doctor in DoctorList)
         {
             if (doctor.Email == email)
             {
@@ -46,26 +54,15 @@ public class DoctorRepository
    
    public void CreateDoctor(Doctor doctor)
    {
-
-        List<Doctor> doctors = doctorDataHandler.Read(); 
-        if(doctors == null)
-        {
-            doctors = new List<Doctor>();
-        }
-        doctors.Add(doctor);
-        doctorDataHandler.Write(doctors);
+        DoctorList.Add(doctor);
+        DoctorDataHandler.Write(DoctorList);
     }
    
    public void DeleteDoctor(Doctor doctor)
    {
-        List<Doctor> doctors = doctorDataHandler.Read();
-        if (doctors == null)
-        {
-            throw new Exception();
-        }
-        var d = doctors.Find(x => x.PersonalId.Equals(doctor.PersonalId));
-        doctors.Remove(d);
-        doctorDataHandler.Write(doctors);
+        var d = DoctorList.Find(x => x.PersonalId.Equals(doctor.PersonalId));
+        DoctorList.Remove(d);
+        DoctorDataHandler.Write(DoctorList);
     }
    
    public void UpdateDoctor(Doctor doctor)

@@ -20,16 +20,18 @@ namespace ZdravoKlinika.Repository
         public PrescriptionRepository()
         {
             prescriptionDataHandler = new PrescriptionDataHandler();
-            this.prescriptions = prescriptionDataHandler.Read();
-            this.medicationRepository = new MedicationRepository();
+            prescriptions = prescriptionDataHandler.Read();
+            if (prescriptions == null) prescriptions = new List<Prescription>();
+
+            medicationRepository = new MedicationRepository();
             registeredPatientRepository = new RegisteredPatientRepository();
             doctorRepository = new DoctorRepository();
-            UpdateReferences();
         }
 
         public List<Prescription> GetAll()
         {
-            return this.prescriptionDataHandler.Read();
+            UpdateReferences();
+            return prescriptions;
         }
 
         public Prescription GetById(int id)
@@ -49,8 +51,8 @@ namespace ZdravoKlinika.Repository
 
         public void UpdateReferences()
         {
-
-            foreach(Prescription p in this.prescriptions)
+            prescriptionDataHandler.Read();
+            foreach (Prescription p in this.prescriptions)
             {
                 p.Medication = medicationRepository.GetById(p.Medication.MedicationId);
                 p.Doctor = doctorRepository.GetById(p.Doctor.PersonalId);

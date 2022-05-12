@@ -14,27 +14,6 @@ namespace ZdravoKlinika.Repository
         private PrescriptionRepository prescriptionRepository;
 
         private List<PatientMedicationNotification> notifications;
-        /*{
-            get
-            {
-                if(notifications == null)
-                {
-                    notifications = new List<PatientMedicationNotification>();
-                }
-                return notifications;
-            }
-            set
-            {
-                DeleteAllNotifications();
-                if(value != null)
-                {
-                    foreach(PatientMedicationNotification notification in value)
-                    {
-                        CreateNotification(notification);
-                    }
-                }
-            }
-        }*/
 
         internal PatientMedicationNotificationDataHandler PatientMedicationNotificationDataHandler { get => patientMedicationNotificationDataHandler; set => patientMedicationNotificationDataHandler = value; }
         internal PrescriptionRepository PrescriptionRepository { get => prescriptionRepository; set => prescriptionRepository = value; }
@@ -67,11 +46,12 @@ namespace ZdravoKlinika.Repository
             PrescriptionRepository = new PrescriptionRepository();
             this.Notifications = null;
             this.notifications = PatientMedicationNotificationDataHandler.Read();
-            updatePreferences();
+            
         }
         private void updatePreferences()
         {
-            foreach(PatientMedicationNotification notification in Notifications)
+            this.notifications = PatientMedicationNotificationDataHandler.Read();
+            foreach (PatientMedicationNotification notification in Notifications)
             {
                 notification.Prescription = PrescriptionRepository.GetById(notification.Prescription.Id);
             }

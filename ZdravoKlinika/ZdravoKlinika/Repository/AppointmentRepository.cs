@@ -17,14 +17,16 @@ public class AppointmentRepository
 
     public AppointmentRepository()
     {
-        this.appointmentDataHandler = new AppointmentDataHandler();
-        this.appointments = this.appointmentDataHandler.Read();
-        
+        appointmentDataHandler = new AppointmentDataHandler();
+
+        appointments = appointmentDataHandler.Read();
+        if (appointments == null) appointments = new List<Appointment>();
+
         doctorRepository = new DoctorRepository();
         roomRepository = new RoomRepository();
         patientRepository = new PatientRepository();
         medicationRepository = new MedicationRepository();
-        UpdateReferences();
+        
     }
 
     public List<Appointment> Appointments
@@ -54,10 +56,7 @@ public class AppointmentRepository
     private void UpdateReferences()
     {
         appointments = appointmentDataHandler.Read();
-        List<Doctor> doctors = doctorRepository.GetAll();
-        List<Room> rooms = roomRepository.GetAll();
-        List<Patient> patients = patientRepository.GetAll();
-
+        if (appointments == null) appointments = new List<Appointment>();
         foreach (Appointment appointment in appointments)
         {
             if(appointment.Patient != null)
@@ -103,15 +102,13 @@ public class AppointmentRepository
 
     public List<Appointment> GetAll()
     {
+        UpdateReferences();
         return this.appointmentDataHandler.Read();
     }
 
     public Appointment GetAppointmentById(int id)
     {
-
-        this.appointments = this.appointmentDataHandler.Read();
         UpdateReferences();
-
         foreach(Appointment appointment in this.appointments)
         {
             if(appointment.AppointmentId == id)
@@ -125,7 +122,7 @@ public class AppointmentRepository
 
     public List<Appointment> GetAppointmentsByPatient(String patientId)
     {
-        
+        UpdateReferences();
         List<Appointment> patientAppointments = new List<Appointment>();
         foreach (Appointment appointment in this.appointments)
         {
@@ -139,10 +136,8 @@ public class AppointmentRepository
 
     public List<Appointment> GetAppointmentsByDoctor(String doctorId)
     {
-        
-        List<Appointment> doctorsAppointments = new List<Appointment>();
-        this.appointments = this.appointmentDataHandler.Read();
         UpdateReferences();
+        List<Appointment> doctorsAppointments = new List<Appointment>();
         foreach (Appointment appointment in this.appointments)
         {
             if (appointment.Doctor.PersonalId.Equals(doctorId))
@@ -156,6 +151,7 @@ public class AppointmentRepository
 
     public Appointment GetAppointmentByDoctorDateTime(String doctorId, DateTime dateTime)
     {
+        UpdateReferences();
         List<Appointment> appointmentsByDoctor = GetAppointmentsByDoctor(doctorId);
         if(appointmentsByDoctor.Count != 0)
         {
@@ -173,6 +169,7 @@ public class AppointmentRepository
 
     public List<Appointment> GetAppointmentsByDoctorDate(String doctorId, DateTime dateTime)
     {
+        UpdateReferences();
         List<Appointment> appointmentsByDoctor = GetAppointmentsByDoctor(doctorId);
         List<Appointment> appointments = new List<Appointment>();
         if (appointmentsByDoctor.Count > 0)
@@ -251,7 +248,6 @@ public class AppointmentRepository
 
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {
-        this.appointments = appointmentDataHandler.Read();
         UpdateReferences();
         List<Appointment> pastAppointments = new List<Appointment>();
         foreach(Appointment appointment in this.appointments)
@@ -267,6 +263,7 @@ public class AppointmentRepository
 
     public List<Appointment> GetPatientsUpcomingAppointments(RegisteredPatient patient)
     {
+        UpdateReferences();
         List<Appointment> upcomingAppointments = new List<Appointment>();
         foreach (Appointment appointment in this.appointments)
         {
@@ -279,13 +276,9 @@ public class AppointmentRepository
         return upcomingAppointments;
     }
 
-    public void appointmentListUpdated()
-    {
-        this.appointments = this.appointmentDataHandler.Read();
-    }
-
     public List<Appointment> GetAppointmentsByRoom(Room room)
     {
+        UpdateReferences();
         List<Appointment> appointmentsByRoom = new List<Appointment>();
         foreach(Appointment appointment in this.appointments)
         {

@@ -41,21 +41,28 @@ namespace ZdravoKlinika.Repository
             RegisteredPatientRepository = new RegisteredPatientRepository();
             GuestPatientRepository = new GuestPatientRepository();
 
-            List<RegisteredPatient> rpats = RegisteredPatientRepository.GetAll();
-            foreach (RegisteredPatient pat in rpats) 
+            LoadAllPatients();
+        }
+
+        private void LoadAllPatients()
+        {
+            List<RegisteredPatient> regPatients = RegisteredPatientRepository.GetAll();
+            if (regPatients != null)
             {
-                this.AddPatient(pat);
-            }
-            List<GuestPatient> gpats = GuestPatientRepository.GetAll();
-            if (gpats != null)
-            {
-                foreach (GuestPatient pat in gpats)
+                foreach (RegisteredPatient patient in regPatients)
                 {
-                    this.AddPatient(pat);
+                    this.AddPatient(patient);
+                }
+            }      
+            List<GuestPatient> guestPatients = GuestPatientRepository.GetAll();
+            if (guestPatients != null)
+            {
+                foreach (GuestPatient patient in guestPatients)
+                {
+                    this.AddPatient(patient);
                 }
             }
         }
-
 
         public void AddPatient(Patient newPatient)
         {
@@ -89,13 +96,8 @@ namespace ZdravoKlinika.Repository
             return null;
         }
 
-        public void CreateNewGuestPatient(String id, String name, String lastname)
+        public void CreateNewGuestPatient(GuestPatient guestPatient)
         {
-            GuestPatient guestPatient = new GuestPatient();
-            guestPatient.Name = name;
-            guestPatient.Lastname = lastname;
-            guestPatient.PersonalId = id;
-
             patients.Add(guestPatient);
             GuestPatientRepository.AddGuestPatient(guestPatient);
             return;

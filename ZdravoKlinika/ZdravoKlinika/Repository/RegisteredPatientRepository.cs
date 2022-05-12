@@ -7,7 +7,7 @@ public class RegisteredPatientRepository
     private RegisteredPatientDataHandler patientsDataHandler;
     private MedicalRecordRepository medicalRecordRepository;
     private List<RegisteredPatient> patients;
-    public List<RegisteredPatient> Patient
+    public List<RegisteredPatient> Patients
     {
         get
         {
@@ -26,16 +26,15 @@ public class RegisteredPatientRepository
         }
     }
     public RegisteredPatientRepository() {
-        // init
         patientsDataHandler = new RegisteredPatientDataHandler();
         MedicalRecordRepository = new MedicalRecordRepository();
-        this.patients = patientsDataHandler.Read();
-        updateReferences();
+        Patients = patientsDataHandler.Read();
+        if (Patients == null) Patients = new List<RegisteredPatient>();
     }
 
     private void updateReferences()
     {
-       
+        Patients = patientsDataHandler.Read();
         foreach (RegisteredPatient pat in patients)
         {
             pat.MedicalRecord = MedicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId); 
@@ -127,37 +126,39 @@ public class RegisteredPatientRepository
             }
         }
 
-        if (index == -1)
+        if (index != -1)
         {
-            Console.WriteLine("Error");
-            return;
+            patients[index] = patient;
+
+            MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
+            PatientsDataHandler.Write(patients);
         }
 
-        patients[index] = patient;
-
-        MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
-        PatientsDataHandler.Write(patients);
-        
         return;
     }
 
     public bool IsAllergic(Medication medication, RegisteredPatient patient)
     {
         List<string> allergies = patient.MedicalRecord.Allergies;
+        bool isAlergic = false;
         foreach(string allergy in allergies)
         {
             if(medication.BrandName.Equals(allergy))
             {
-                return true;
-            } else
+                isAlergic = true;
+                break;
+            } 
+            else
             {
                 foreach(string allergen in medication.Allergens)
                 {
                     if(allergen.Equals(allergy))
                     {
-                        return true;
+                        isAlergic = true;
+                        break;
                     }
                 }
+                if (isAlergic) break;
             }
         }
         return false;

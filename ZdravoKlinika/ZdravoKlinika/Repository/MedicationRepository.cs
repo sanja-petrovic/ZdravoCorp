@@ -19,15 +19,12 @@ namespace ZdravoKlinika.Repository
         {
             medicationDataHandler = new MedicationDataHandler();
             this.medications = medicationDataHandler.Read();
-            foreach(Medication medication in medications)
-            {
-                Console.WriteLine(medication.MedicationId);
-            }
             this.doctorRepository = new DoctorRepository();
         }
 
         public void UpdateReferences()
         {
+            medicationDataHandler.Read();
             foreach (Medication medication in this.medications)
             {
                 if(medication.ApprovedBy != null)
@@ -45,13 +42,15 @@ namespace ZdravoKlinika.Repository
         }
 
         public List<Medication> GetAll()
-        {
-            return medicationDataHandler.Read();
+        {        
+            UpdateReferences();
+            return medications;
         }
 
         public Medication GetById(String id)
         {
-            foreach(Medication medication in medications)
+            UpdateReferences();
+            foreach (Medication medication in medications)
             {
                 if(medication.MedicationId == id)
                 {

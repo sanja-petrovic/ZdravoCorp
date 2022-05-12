@@ -25,11 +25,11 @@ namespace ZdravoKlinika.Repository
             DoctorRepository = new DoctorRepository();
             EmployeeRepository = new EmployeeRepository();
 
-            FillList();
+            LoadAllRegisteredUsers();
 
         }
 
-        private void FillList()
+        private void LoadAllRegisteredUsers()
         {
 
             List<RegisteredPatient> rpats = RegisteredPatientRepository.GetAll();
