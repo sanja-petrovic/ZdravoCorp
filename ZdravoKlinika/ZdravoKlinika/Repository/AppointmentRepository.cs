@@ -111,7 +111,7 @@ public class AppointmentRepository
         {
             UpdateReferences(appointment);
         }
-        return this.appointmentDataHandler.Read();
+        return Appointments;
     }
 
     public Appointment? GetAppointmentById(int id)
@@ -216,10 +216,10 @@ public class AppointmentRepository
         int index = -1;
         foreach (Appointment a in this.appointments)
         {
-            if (a.AppointmentId == a.AppointmentId)
+            if (a.AppointmentId == appointment.AppointmentId)
             {
                 index = this.appointments.IndexOf(a);
-
+                break;
             }
         }
 

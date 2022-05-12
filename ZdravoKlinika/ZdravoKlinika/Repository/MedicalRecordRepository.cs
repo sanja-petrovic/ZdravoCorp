@@ -72,7 +72,7 @@ namespace ZdravoKlinika.Repository
             {
                 if (med.MedicalRecordId == medicalRecord.MedicalRecordId)
                 {
-                    throw new Exception("BAD");
+                    return; // throw new Exception("BAD");
                 }
             }
 
