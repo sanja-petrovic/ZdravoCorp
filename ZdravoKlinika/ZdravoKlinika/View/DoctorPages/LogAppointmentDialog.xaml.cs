@@ -40,16 +40,6 @@ namespace ZdravoKlinika.View.DoctorPages
             Tabby.ItemsSource = viewModel.TabViewModels;
         }
 
-        /*private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        */
         private void Save(object sender, RoutedEventArgs e)
         {
             var therapy = Tabby.Items[1] as TherapyTab;

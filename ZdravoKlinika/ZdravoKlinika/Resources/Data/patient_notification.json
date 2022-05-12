@@ -33,5 +33,19 @@
     "NotificationText": "prepisan lek",
     "Reciver": "0105965123321",
     "Sender": "123"
+  },
+  {
+    "Prescription": 6,
+    "NotificationId": 6,
+    "NotificationText": "prepisan lek",
+    "Reciver": "0105965123321",
+    "Sender": "123"
+  },
+  {
+    "Prescription": 7,
+    "NotificationId": 7,
+    "NotificationText": "prepisan lek",
+    "Reciver": "0105965123321",
+    "Sender": "123"
   }
 ]

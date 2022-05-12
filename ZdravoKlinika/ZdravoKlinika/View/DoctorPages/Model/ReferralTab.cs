@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Util;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -38,8 +39,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public DateTime DateAndTime { get => dateAndTime; set => SetProperty(ref dateAndTime, value); }
         public int Duration { get => duration; set => SetProperty(ref duration, value); }
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
+        public Room Room { get => room; set => SetProperty(ref room, value); }
 
         private Doctor doctor;
+        private Room room;
 
         private List<Room> rooms;
         private ObservableCollection<String> types;
@@ -50,7 +53,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public ReferralTab()
         {
-            
+            this.appointmentController = new AppointmentController();
         }
 
         public void Load()
@@ -64,10 +67,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.RoomsDisplay = new ObservableCollection<string>();
             this.Times = new List<String>();
             this.Rooms = new List<Room>();
-            Room room = new Room();
-            room.Name = "Hi";
-            Rooms.Add(new Room());
             this.types = new ObservableCollection<string>();
+            this.types.Add("Pregled");
+            this.types.Add("Operacija");
             this.appointmentController = new AppointmentController();
         }
 
@@ -84,7 +86,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void SetRooms()
         {
             RoomController roomController = new RoomController();
-            this.rooms = roomController.GetFreeRooms(DateAndTime);
+            if(Type == "Pregled")
+            {
+                this.rooms = roomController.GetFreeRooms(DateAndTime, RoomType.checkup);
+            } else
+            {
+                this.rooms = roomController.GetFreeRooms(DateAndTime, RoomType.operating);
+            }
             foreach(Room room in this.rooms)
             {
                 RoomsDisplay.Add(room.Name);
@@ -102,9 +110,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             }
         }
 
-        public Doctor SetSelectedDoctor(int selected)
+        public void SetSelectedDoctor(int selected)
         {
-            return this.Doctors[selected];
+            this.doctor = this.Doctors[selected];
         }
 
         public void SetDateTime(int selected)
@@ -117,15 +125,28 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
             DateAndTime = new DateTime(this.date.Year, this.date.Month, this.date.Day, hours, minutes, 0);
         }
+        
 
         public void SetTimes()
         {
-            this.appointmentController.getFreeTimeForDoctor(Date, Duration, Doctor, 8, 20);
+            if(Doctor != null)
+            {
+                List<DateBlock> list = this.appointmentController.getFreeTimeForDoctor(Date, Duration, Doctor, 8, 20);
+                foreach(DateBlock block in list)
+                {
+                    Times.Add(block.Start.ToShortTimeString());
+                }
+            }
         }
 
-        public void Schedule(int selectedDoc, int selectedTime)
+        public void SetRoom(int selected)
         {
-            this.appointmentController.CreateAppointment(Doctor.PersonalId, this.appointmentController.GetAppointmentById(this.appointmentId).Patient.GetPatientId(), DateAndTime, Emergency, AppointmentType.Regular, "1", 15);
+            Room = this.rooms[selected];
+        }
+
+        public void Schedule()
+        {
+            this.appointmentController.CreateAppointment(Doctor.PersonalId, this.appointmentController.GetAppointmentById(this.appointmentId).Patient.GetPatientId(), DateAndTime, Emergency, AppointmentType.Regular, Room.RoomId, Duration);
         }
     }
 }

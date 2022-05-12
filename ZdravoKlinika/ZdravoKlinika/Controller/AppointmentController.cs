@@ -65,6 +65,13 @@ public class AppointmentController
     {
         return this.appointmentService.getFreeTimeForPatient(date, duration, patient, startHours, endHours);
     }
+
+    public List<String> ConvertDateBlockToString()
+    {
+        List<String> list = new List<String>();
+
+        return list;
+    }
     public void CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         PatientController patientController = new PatientController();

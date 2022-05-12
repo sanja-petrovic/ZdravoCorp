@@ -97,6 +97,20 @@ public class AppointmentRepository
         return this.appointments;
     }
 
+    public List<Appointment> GetAppointmentsOnDate(DateTime date)
+    {
+        List<Appointment> appointments = new List<Appointment>();
+        foreach(Appointment appointment in this.appointments)
+        {
+            if(appointment.DateAndTime.Date == date.Date)
+            {
+                appointments.Add(appointment);
+            }
+        }
+
+        return appointments;
+    }
+
     public Appointment GetAppointmentById(int id)
     {
 

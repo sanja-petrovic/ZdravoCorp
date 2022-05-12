@@ -73,7 +73,41 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             if(DataContext != null)
             {
-                //((ReferralTab)DataContext).Schedule();
+                ((ReferralTab)DataContext).Schedule();
+            }
+        }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(DataContext != null)
+            {
+                ((ReferralTab)DataContext).SetTimes();
+
+            }
+        }
+
+        private void TimePicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataContext != null)
+            {
+                ((ReferralTab)DataContext).SetDateTime(TimePicker.SelectedIndex);
+                ((ReferralTab)DataContext).SetRooms();
+            }
+        }
+
+        private void DoctorCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataContext != null)
+            {
+                ((ReferralTab)DataContext).SetSelectedDoctor(DoctorCB.SelectedIndex);
+            }
+        }
+
+        private void RoomCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataContext != null)
+            {
+                ((ReferralTab)DataContext).SetRoom(RoomCB.SelectedIndex);
             }
         }
     }

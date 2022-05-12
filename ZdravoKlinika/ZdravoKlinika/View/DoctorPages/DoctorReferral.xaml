@@ -231,7 +231,7 @@
                 <StaticResource ResourceKey="fancyButtonStyle5"/>
             </Button.Style>
         </Button>
-        <ComboBox x:Name="DoctorCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding DoctorsDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="230,113,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
+        <ComboBox x:Name="DoctorCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" SelectionChanged="DoctorCB_SelectionChanged" Foreground="#555557" ItemsSource="{Binding DoctorsDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="230,113,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -245,17 +245,17 @@
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <CheckBox Name="EmergencyCB" Style="{DynamicResource CheckBoxStyle1}" Margin="143,199,269,242"/>
+        <CheckBox Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="143,199,269,242"/>
 
-        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Loaded="DatePicker_Loaded" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="26,274,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday"/>
-        <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="230,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Loaded="DatePicker_Loaded"  SelectedDateChanged="DatePicker_SelectedDateChanged" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="26,274,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday"/>
+        <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" SelectionChanged="TimePicker_SelectionChanged" Margin="230,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <ComboBox x:Name="RoomCB" Style="{DynamicResource ComboBoxStyle1}" ItemsSource="{Binding RoomsDisplay, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="324,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+        <ComboBox x:Name="RoomCB" Style="{DynamicResource ComboBoxStyle1}" ItemsSource="{Binding RoomsDisplay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="RoomCB_SelectionChanged" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="324,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

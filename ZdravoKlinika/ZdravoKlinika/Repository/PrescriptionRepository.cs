@@ -66,7 +66,6 @@ namespace ZdravoKlinika.Repository
         {
             this.prescriptions.Add(prescription);
             this.prescriptionDataHandler.Write(this.prescriptions);
-            
         }
         
     }

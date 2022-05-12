@@ -132,12 +132,32 @@ namespace ZdravoKlinika.Repository
         public void AddCurrentMedication(String medicalRecordId, Medication medication)
         {
             MedicalRecord medicalRecord = this.GetById(medicalRecordId);
-            medicalRecord.AddCurrentMedication(medication);
-            this.DeleteMedicalRecord(medicalRecord);
-            this.medicalRecords.Add(medicalRecord);
+            if(!medicalRecord.CurrentMedication.Contains(medication))
+            {
+                medicalRecord.AddCurrentMedication(medication);
+            }
+            int i = FindIndexInList(medicalRecordId);
+            this.medicalRecords[i] = medicalRecord;
+            //this.DeleteMedicalRecord(medicalRecord);
+            //this.medicalRecords.Add(medicalRecord);
 
             MedicalRecordDataHandler.Write(this.medicalRecords);
 
+        }
+
+        public int FindIndexInList(string id)
+        {
+            int retVal = -1;
+            for(int i = 0; i < this.medicalRecords.Count(); i++)
+            {
+                if(this.medicalRecords[i].MedicalRecordId.Equals(id))
+                {
+                    retVal = i;
+                    break;
+                }
+            }
+
+            return retVal;
         }
 
     }

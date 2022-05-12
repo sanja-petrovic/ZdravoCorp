@@ -148,7 +148,7 @@
 
         <Image Margin="893,4,111,728" Source="/Resources/Images/bell (1).png" Stretch="Uniform"/>
         <Image Margin="932,4,72,728" Source="/Resources/Images/info (2).png" Stretch="Uniform"/>
-        <Image Margin="969,4,35,728" Source="/Resources/Images/settings.png" Stretch="Uniform"/>
+        <Image Margin="969,4,35,728" Source="/Resources/Images/settings.png" Stretch="Uniform" MouseLeftButtonDown="SignOut"/>
         <Image Margin="254,4,706,730" Source="/Resources/Images/zdravoklinika2.png" Stretch="Fill"/>
         <Image Margin="28,148,980,604" Source="/Resources/Images/home.png" Stretch="UniformToFill"  Height="16" Width="16"/>
         <Image Margin="28,198,980,555" Source="/Resources/Images/user.png" Stretch="Fill"  Height="16" Width="16"/>
