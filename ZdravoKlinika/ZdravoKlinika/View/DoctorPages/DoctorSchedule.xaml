@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
       xml:lang="sr-Latn-RS" 
-      mc:Ignorable="d"  Width="1024" Height="768" Cursor="Arrow" ShowsNavigationUI="False">
+      mc:Ignorable="d"  Width="1024" Height="768" Cursor="Arrow">
     <Page.Resources>
 
 
@@ -35,7 +35,7 @@
             <Calendar SelectedDatesChanged="CalendarSelectionChanged" Name="Cal" Style="{DynamicResource CalendarStyle1}" CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}"/>
         </Viewbox>
 
-        <Border  Margin="538,543,360,194"
+        <Border  Margin="538,537,360,200"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -43,7 +43,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Style="{StaticResource ResourceKey=fancyButtonStyle2}" OverridesDefaultStyle="False" Focusable="False" Content="Slobodni dani" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="537,542,0,0" VerticalAlignment="Top" FontSize="14"  Foreground="#555557"  Background="White" Padding="7" Width="128" Height="33" Click="ViewDaysOff">
+        <Button Style="{StaticResource ResourceKey=fancyButtonStyle2}" OverridesDefaultStyle="False" Focusable="False" Content="Slobodni dani" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="537,536,0,0" VerticalAlignment="Top" FontSize="14"  Foreground="#555557"  Background="White" Padding="7" Width="128" Height="33" Click="ViewDaysOff">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -51,7 +51,7 @@
 
             </Button.Resources>
         </Button>
-        <Border  Margin="582,163,360,582"
+        <Border  Margin="575,160,360,580"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -59,7 +59,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Zakažite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="581,162,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="84" Height="25"  Foreground="#555557" >
+        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Zakažite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="572,158,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="93" Height="33"  Foreground="#555557" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

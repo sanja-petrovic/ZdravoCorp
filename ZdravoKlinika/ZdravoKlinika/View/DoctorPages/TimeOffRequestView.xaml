@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:TimeOffRequestViewModel}"
-        mc:Ignorable="d"
-        Title="Zahtev za slobodne dane" Height="419" Width="262">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="31,209,0,0" TextWrapping="Wrap" Text="Razlog" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox Text="{Binding Reason}" HorizontalAlignment="Left" Margin="31,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" Height="110" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.5,0.5">
+        mc:Ignorable="d" xml:lang="sr-Latn-RS" 
+        Title="Zahtev za slobodne dane" Height="507" Width="301" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight">
+    <Grid Height="422" Width="301">
+        <TextBlock HorizontalAlignment="Left" Margin="46,168,0,0" TextWrapping="Wrap" Text="Razlog" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Text="{Binding Reason, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Height="94" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.5,0.5">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -23,10 +23,29 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <DatePicker SelectedDate="{Binding Start}" HorizontalAlignment="Left" Margin="31,85,0,0" VerticalAlignment="Top" Width="194"/>
-        <DatePicker SelectedDate="{Binding End}" HorizontalAlignment="Left" Margin="31,160,0,0" VerticalAlignment="Top" Width="194"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,51,0,0" TextWrapping="Wrap" Text="Datum početka" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="104"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,127,0,0" TextWrapping="Wrap" Text="Datum kraja" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="104"/>
-
+        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" Style="{DynamicResource DatePickerStyle1}"  SelectedDate="{Binding Start, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,44,0,0" VerticalAlignment="Top" Width="216"/>
+        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" Style="{DynamicResource DatePickerStyle1}"   SelectedDate="{Binding End, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,119,0,0" VerticalAlignment="Top" Width="216"/>
+        <TextBlock HorizontalAlignment="Left" Margin="46,10,0,0" TextWrapping="Wrap" Text="Datum početka" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="104"/>
+        <TextBlock HorizontalAlignment="Left" Margin="46,86,0,0" TextWrapping="Wrap" Text="Datum kraja" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="104"/>
+        <Border  Margin="118,382,42,14"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button Name="ConfirmButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Podnesite zahtev" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="115,379,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="147" Height="33" Click="ConfirmButton_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle3"/>
+            </Button.Style>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="72,315,0,0" TextWrapping="Wrap" Text="Hitno?" VerticalAlignment="Top" FontWeight="Regular" Foreground="#555557" FontSize="14"/>
+        <CheckBox Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="46,317,239,85"/>
     </Grid>
 </Window>

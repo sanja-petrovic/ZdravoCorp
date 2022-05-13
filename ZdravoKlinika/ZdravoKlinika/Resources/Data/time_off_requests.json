@@ -1,0 +1,12 @@
+[
+  {
+    "Id": 1,
+    "StartDate": "2022-05-20T00:00:00",
+    "EndDate": "2022-05-27T00:00:00",
+    "Reason": "Odmor",
+    "State": "Pending",
+    "Emergency": false,
+    "DateOfCreation": "2022-05-13T00:00:00+02:00",
+    "Doctor": "123"
+  }
+]

@@ -26,7 +26,14 @@ namespace ZdravoKlinika.View.DoctorPages
         public TimeOffRequestView(Doctor doctor)
         {
             this.viewModel = new TimeOffRequestViewModel(doctor);
+            DataContext = this.viewModel;
             InitializeComponent();
+        }
+
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.viewModel.Save();
+            this.Close();
         }
     }
 }

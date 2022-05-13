@@ -60,13 +60,15 @@ public class AppointmentService
     public bool DoctorHasAppointmentsInDateRange(Doctor doctor, DateBlock dateBlock)
     {
         bool result = false;
-        foreach(Appointment a in this.GetAll())
+        foreach(Appointment a in this.GetAppointmentsByDoctorId(doctor.PersonalId))
         {
             if(!a.Over)
             {
-                if (a.DateAndTime.CompareTo(dateBlock.Start) <= 0 && a.DateAndTime.CompareTo(dateBlock.End) >= 0) {
+                if ((a.DateAndTime.CompareTo(dateBlock.Start)) >= 0 && (a.DateAndTime.CompareTo(dateBlock.End) <= 0)) {
                     result = true;
                 }
+                var hsdmf = a.DateAndTime.CompareTo(dateBlock.Start);
+                var dsjkf = a.DateAndTime.CompareTo(dateBlock.End);
             }
         }
 

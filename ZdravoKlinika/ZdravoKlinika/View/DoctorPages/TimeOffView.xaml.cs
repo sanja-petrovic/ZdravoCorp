@@ -20,12 +20,12 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class TimeOffView : Window
     {
-        private TimeOffRequestViewModel viewModel;
+        private AllRequestsViewModel viewModel;
         private Doctor doctor;
         public TimeOffView(Doctor doctor)
         {
             this.doctor = doctor;
-            this.viewModel = new TimeOffRequestViewModel(doctor);
+            this.viewModel = new AllRequestsViewModel(doctor);
             DataContext = this.viewModel;
             InitializeComponent();
         }

@@ -31,14 +31,17 @@ namespace ZdravoKlinika.Service
         {
             int newId = this.repository.GetAll().Count > 0 ? this.GetAll().Last().Id + 1 : 1;
             request.Id = newId;
-            this.repository.CreateRequest(request);
+            if(IsRequestAcceptable(request))
+            {
+                this.repository.CreateRequest(request);
+            }
         }
 
         public bool IsRequestAcceptable(TimeOffRequest request)
         {
             AppointmentService appointmentService = new AppointmentService();
             bool result = true;
-            if ((request.DateOfCreation - request.StartDate).Days < 2)
+            if ((request.StartDate - request.DateOfCreation).Days < 2)
             {
                 result = false;
 
@@ -57,7 +60,7 @@ namespace ZdravoKlinika.Service
             bool result = false;
             foreach(TimeOffRequest r in this.GetAll())
             {
-                if(r.EndDate.CompareTo(DateTime.Today) > 0 || request.State == RequestState.Denied)
+                if(r.EndDate.CompareTo(DateTime.Today) < 0 || request.State == RequestState.Denied)
                 {
                     continue;
                 } else if(r.Doctor.Specialty == request.Doctor.Specialty)

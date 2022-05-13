@@ -47,6 +47,7 @@ namespace ZdravoKlinika.Repository
         public void CreateRequest(TimeOffRequest request)
         {
             this.requests.Add(request);
+            this.dataHandler.Write(this.requests);
         }
 
         public void ChangeState(TimeOffRequest request, RequestState state)

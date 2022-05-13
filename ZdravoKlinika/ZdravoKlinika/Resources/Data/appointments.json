@@ -297,5 +297,19 @@
     "Room": "315",
     "Over": false,
     "Prescriptions": null
+  },
+  {
+    "AppointmentId": 21,
+    "DateAndTime": "2022-05-20T08:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "0105965123321,Registered",
+    "Room": "315",
+    "Over": false,
+    "Prescriptions": null
   }
 ]
