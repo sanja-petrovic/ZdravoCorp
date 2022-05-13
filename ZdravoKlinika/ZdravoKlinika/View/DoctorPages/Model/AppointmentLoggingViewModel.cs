@@ -130,7 +130,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 prescriptionController.Prescribe(prescription);
                 this.prescribedMedication.Add(prescription.Medication);
             }
-            appointment.Prescriptions = this.prescribedMedication;
+            //appointment.Prescriptions = this.prescribedMedication;
             appointmentController.LogAppointment(appointment, Diagnoses, note);
         }
 

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -33,23 +34,27 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             foreach (Appointment appointment in appointments)
             {
                 
-                RegisteredPatient patient = (RegisteredPatient)appointment.Patient;
+                Patient patient = appointment.Patient;
                 string diagnoses = "";
-                foreach (string diagnosis in patient.MedicalRecord.Diagnoses)
-                {
-                    diagnoses += diagnosis;
-                    if (patient.MedicalRecord.Diagnoses.Last() != diagnosis)
-                    {
-                        diagnoses += ", ";
-                    }
-                }
                 string prescriptions = "";
-                foreach (Medication prescription in patient.MedicalRecord.CurrentMedication)
+                if(patient.GetPatientType() == PatientType.Registered)
                 {
-                    prescriptions += prescription.BrandName + " " + prescription.Dosage;
-                    if (patient.MedicalRecord.CurrentMedication.Last() != prescription)
+
+                    foreach (string diagnosis in ((RegisteredPatient) patient).MedicalRecord.Diagnoses)
                     {
-                        prescriptions += ", ";
+                        diagnoses += diagnosis;
+                        if (((RegisteredPatient)patient).MedicalRecord.Diagnoses.Last() != diagnosis)
+                        {
+                            diagnoses += ", ";
+                        }
+                    }
+                    foreach (Medication prescription in ((RegisteredPatient)patient).MedicalRecord.CurrentMedication)
+                    {
+                        prescriptions += prescription.BrandName + " " + prescription.Dosage;
+                        if (((RegisteredPatient)patient).MedicalRecord.CurrentMedication.Last() != prescription)
+                        {
+                            prescriptions += ", ";
+                        }
                     }
                 }
 
@@ -58,7 +63,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 {
                     lastDate = patient.MedicalRecord.PastAppointments.Last().DateAndTime.ToShortDateString();
                 }*/
-                Tabs.Add(new ScheduleTabItem { Time = appointment.DateAndTime.ToShortTimeString(), AppointmentType = appointment.getTranslatedType(), PatientId = patient.GetPatientId(), PatientName = patient.Name + " " + patient.Lastname, Room = appointment.Room.RoomId, Diagnoses = diagnoses, LastDate = lastDate, Prescriptions = prescriptions });
+                Tabs.Add(new ScheduleTabItem { Time = appointment.DateAndTime.ToShortTimeString(), AppointmentType = appointment.getTranslatedType(), PatientId = patient.GetPatientId(), PatientName = patient.GetPatientFullName(), Room = appointment.Room.RoomId, Diagnoses = diagnoses, LastDate = lastDate, Prescriptions = prescriptions });
 
             }
 

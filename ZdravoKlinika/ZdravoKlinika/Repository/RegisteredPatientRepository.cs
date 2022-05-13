@@ -7,7 +7,7 @@ public class RegisteredPatientRepository
     private RegisteredPatientDataHandler patientsDataHandler;
     private MedicalRecordRepository medicalRecordRepository;
     private List<RegisteredPatient> patients;
-    public List<RegisteredPatient> Patient
+    public List<RegisteredPatient> Patients
     {
         get
         {
@@ -26,23 +26,23 @@ public class RegisteredPatientRepository
         }
     }
     public RegisteredPatientRepository() {
-        // init
         patientsDataHandler = new RegisteredPatientDataHandler();
         MedicalRecordRepository = new MedicalRecordRepository();
-        this.patients = patientsDataHandler.Read();
-        updateReferences();
+        ReadDataFromFiles();
     }
 
-    private void updateReferences()
+    private void ReadDataFromFiles()
     {
-       
-        foreach (RegisteredPatient pat in patients)
-        {
-            pat.MedicalRecord = MedicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId); 
-        }
+        Patients = patientsDataHandler.Read();
+        if (Patients == null) Patients = new List<RegisteredPatient>();
     }
 
-    public void recordUpdated(RegisteredPatient p)
+    private void UpdateReferences(RegisteredPatient pat)
+    {
+        pat.MedicalRecord = MedicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId);
+    }
+
+    public void RecordUpdated(RegisteredPatient p)
     {
         foreach (RegisteredPatient patient in this.patients)
         {
@@ -59,21 +59,28 @@ public class RegisteredPatientRepository
 
     public List<RegisteredPatient> GetAll()
     {
-        updateReferences();
+        ReadDataFromFiles();
+        foreach (RegisteredPatient pat in Patients)
+        {
+            UpdateReferences(pat);
+        }
         return patients;
     }
 
     public RegisteredPatient? GetById(String id)
     {
-        updateReferences();
+        ReadDataFromFiles();
+        RegisteredPatient registeredPatientToReturn = null;
         foreach (RegisteredPatient patient in this.patients) 
         {
             if (patient.PersonalId.Equals(id)) 
             {
-                return patient;
+                UpdateReferences(patient);
+                registeredPatientToReturn = patient;
+                break;
             }
         }
-        return null;
+        return registeredPatientToReturn;
     }
 
     public void CreatePatient(RegisteredPatient patient)
@@ -127,37 +134,39 @@ public class RegisteredPatientRepository
             }
         }
 
-        if (index == -1)
+        if (index != -1)
         {
-            Console.WriteLine("Error");
-            return;
+            patients[index] = patient;
+
+            MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
+            PatientsDataHandler.Write(patients);
         }
 
-        patients[index] = patient;
-
-        MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
-        PatientsDataHandler.Write(patients);
-        
         return;
     }
 
     public bool IsAllergic(Medication medication, RegisteredPatient patient)
     {
         List<string> allergies = patient.MedicalRecord.Allergies;
+        bool isAlergic = false;
         foreach(string allergy in allergies)
         {
             if(medication.BrandName.Equals(allergy))
             {
-                return true;
-            } else
+                isAlergic = true;
+                break;
+            } 
+            else
             {
                 foreach(string allergen in medication.Allergens)
                 {
                     if(allergen.Equals(allergy))
                     {
-                        return true;
+                        isAlergic = true;
+                        break;
                     }
                 }
+                if (isAlergic) break;
             }
         }
         return false;
