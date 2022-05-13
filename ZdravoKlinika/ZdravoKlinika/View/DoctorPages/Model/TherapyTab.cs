@@ -111,7 +111,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             if(patient.GetPatientType().Equals(PatientType.Registered))
             {
-                return !(registeredPatientController.IsAllergic(this.medications[selectedIndex], (RegisteredPatient)patient));
+                return !(registeredPatientController.IsAllergic(this.medications[selectedIndex].MedicationId, patientId));
             } else
             {
                 return true;

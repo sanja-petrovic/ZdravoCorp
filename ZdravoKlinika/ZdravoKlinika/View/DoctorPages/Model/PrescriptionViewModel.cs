@@ -76,7 +76,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public bool AllergyCheck(int selectedIndex)
         {
-            if (registeredPatientController.IsAllergic(this.medications[selectedIndex], patient))
+            if (registeredPatientController.IsAllergic(this.medications[selectedIndex].MedicationId, patientId))
             {
                 return false;
             }
