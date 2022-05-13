@@ -87,20 +87,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.PrescribedList = new ObservableCollection<Prescription>();
         } 
 
-        public void Save(int selectedIndex, string selectedRepeat, string note)
-        {
-            this.prescriptionController.Prescribe(
-                Doctor, Patient, this.medications[selectedIndex], this.amount, this.duration, this.frequency, this.singleDose, selectedRepeat, note
-                );
-
-        }
 
         public void Save()
         {
-            foreach(Medication m in PrescribedMedList)
-            {
-                this.prescriptionController.Prescribe(Doctor, Patient, m, this.amount, this.duration, this.frequency, this.singleDose, this.repeat, this.doctorsNote);
-            }
             foreach(Prescription p in PrescribedList)
             {
                 this.prescriptionController.Prescribe(p);

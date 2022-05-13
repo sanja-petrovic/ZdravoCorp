@@ -18,7 +18,10 @@
     "Allergies": [
       ""
     ],
-    "CurrentMedication": [],
+    "CurrentMedication": [
+      "1",
+      "5"
+    ],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "1510963123321"
@@ -36,8 +39,13 @@
     "MedicalRecordId": "123333"
   },
   {
-    "Diagnoses": null,
-    "Allergies": null,
+    "Diagnoses": [
+      ""
+    ],
+    "Allergies": [
+      "Ma\u010Dja dlaka",
+      "penicilin"
+    ],
     "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
