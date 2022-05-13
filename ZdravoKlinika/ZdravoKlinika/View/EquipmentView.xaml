@@ -6,14 +6,22 @@
         mc:Ignorable="d"
         Title="Pregled opreme" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dataGridEquipment" ItemsSource="{Binding Equipment}" Margin="0,62,0,0" SelectionChanged="dataGridEquipment_SelectionChanged" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" AutoGenerateColumns="False" SelectedIndex="-1" Width="650" Height="300" HeadersVisibility="Column" CanUserAddRows = "False">
+        <DataGrid x:Name="dataGridEquipment" ItemsSource="{Binding Equipment}" SelectionChanged="dataGridEquipment_SelectionChanged" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" AutoGenerateColumns="False" SelectedIndex="-1" Width="650" Height="300" HeadersVisibility="Column" CanUserAddRows = "False" Margin="75,58,50,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Sifra" Binding="{Binding Id}" Width="*"/>
-                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn CanUserSort="False" Header="Sifra" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn CanUserSort="False" Header="Naziv" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Kolicina" Binding="{Binding Amount}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="MoveEquipmentButton" Content="Premesti opremu" HorizontalAlignment="Left" Margin="615,16,0,0" VerticalAlignment="Top" Click="MoveEquipment_Click" Height="30" Width="110"/>
+        <TextBox x:Name="searchTextBox" HorizontalAlignment="Left" Margin="75,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Height="30" TextChanged="searchTextBox_TextChanged"/>
+        <Label x:Name="filteriLabel" Content="Filteri:" HorizontalAlignment="Left" Margin="265,19,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="filteriComboBox" HorizontalAlignment="Left" Margin="312,16,0,0" VerticalAlignment="Top" Width="120" Height="30" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBoxItem>Potrosna roba</ComboBoxItem>
+            <ComboBoxItem>Nepotrosna roba</ComboBoxItem>
+            <ComboBoxItem>Istek zaliha</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="resetFiltersButton" Content="Resetuj filtere" HorizontalAlignment="Left" Margin="441,16,0,0" VerticalAlignment="Top" Click="ResetFilters_Click" Height="30" Width="110"/>
     </Grid>
 </Window>
 
