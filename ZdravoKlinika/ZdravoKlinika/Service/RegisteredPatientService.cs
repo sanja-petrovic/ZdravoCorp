@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Repository;
 
 public class RegisteredPatientService
 {
@@ -64,9 +65,32 @@ public class RegisteredPatientService
         return;
     }
 
+
     public bool IsAllergic(Medication medication, RegisteredPatient patient)
     {
-        return this.registeredPatientRepository.IsAllergic(medication, patient);
+        List<string> allergies = patient.MedicalRecord.Allergies;
+        bool isAllergic = false;
+        foreach (string allergy in allergies)
+        {
+            if (medication.BrandName.Equals(allergy))
+            {
+                isAllergic = true;
+                break;
+            }
+            else
+            {
+                foreach (string allergen in medication.Allergens)
+                {
+                    if (allergen.Equals(allergy))
+                    {
+                        isAllergic = true;
+                        break;
+                    }
+                }
+                if (isAllergic) break;
+            }
+        }
+        return isAllergic;
     }
 
 }

@@ -58,25 +58,5 @@
     "Number": 1,
     "Status": 1,
     "Free": true
-  },
-  {
-    "EquipmentInRoom": [],
-    "RoomId": "314",
-    "Type": 1,
-    "Name": "R316",
-    "Level": 1,
-    "Number": 1,
-    "Status": 1,
-    "Free": true
-  },
-  {
-    "EquipmentInRoom": [],
-    "RoomId": "317",
-    "Type": 1,
-    "Name": "R317",
-    "Level": 1,
-    "Number": 1,
-    "Status": 1,
-    "Free": true
   }
 ]

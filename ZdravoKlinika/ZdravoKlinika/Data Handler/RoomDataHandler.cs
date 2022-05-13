@@ -5,14 +5,8 @@ using System.Text.Json;
 
 public class RoomDataHandler
 {
-    private String fileLocation;
-
-    public String FileLocation { get => fileLocation; set => fileLocation = value; }
-
-    public RoomDataHandler(string fileLocation)
-    {
-        this.fileLocation = fileLocation;
-    }
+    private static String fileName = "room.json";
+    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
 
     public void Write(List<Room> rooms)
     {

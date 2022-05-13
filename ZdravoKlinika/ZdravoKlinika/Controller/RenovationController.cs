@@ -30,7 +30,7 @@ public class RenovationController
 
     public void UpdateRenovation(String id, List<Room> entryRooms, int numberOfExitRooms, DateTime scheduledDateTime)
     {
-        this.renovationService.UpdateRenovation(id, entryRooms, numberOfExitRooms, scheduledDateTime);
+        this.renovationService.UpdateRenovation(id, entryRooms, numberOfExitRooms, scheduledDateTime, false);
     }
 
     public void DeleteRenovation(String id)
