@@ -8,6 +8,7 @@ public class Move
     private Room sourceRoom;
     private Room destinationRoom;
     private DateTime scheduledDateTime;
+    private bool isMoveFinished;
 
     private List<Equipment> equipmentToMove;
 
@@ -18,10 +19,12 @@ public class Move
         this.destinationRoom = destinationRoom;
         this.scheduledDateTime = scheduledDateTime;
         this.equipmentToMove = equipmentToMove;
+        this.isMoveFinished = false;
     }
 
     public Move()
     {
+        this.isMoveFinished = false;
     }
 
     public List<Equipment> EquipmentToMove
@@ -47,6 +50,7 @@ public class Move
     public Room SourceRoom { get => sourceRoom; set => sourceRoom = value; }
     public Room DestinationRoom { get => destinationRoom; set => destinationRoom = value; }
     public DateTime ScheduledDateTime { get => scheduledDateTime; set => scheduledDateTime = value; }
+    public bool IsMoveFinished { get => isMoveFinished; set => isMoveFinished = value; }
 
     public void AddEquipmentToMove(Equipment newEquipment)
     {

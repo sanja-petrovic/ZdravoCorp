@@ -3,32 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKlinika.View"
-        xmlns:Util="clr-namespace:ZdravoKlinika.Util" x:Class="ZdravoKlinika.View.EquipmentMoveView"
+        x:Class="ZdravoKlinika.View.EquipmentMoveView"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
         Title="Premestanje opreme" Height="450" Width="800">
     <Grid Margin="0,-10,0,10">
         <Label Content="1. Izaberite sobu iz koje zelite da premestite opremu:" HorizontalAlignment="Left" Margin="45,18,0,0" VerticalAlignment="Top"/>
         <Label Content="2. Izaberite sobu u koju zelite da premestite opremu:" HorizontalAlignment="Left" Margin="45,167,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="sourceRoomListBox" Margin="63,44,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="237" Height="123"/>
-        <ListBox x:Name="destinationRoomListBox" Margin="63,193,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="237" Height="123"/>
-        <DataGrid x:Name="equipmentDataGrid" ItemsSource="{Binding Equipment}" AutoGenerateColumns="False" SelectedIndex="-1" HeadersVisibility="Column" Margin="407,42,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="342" Height="175" CanUserAddRows="False">
+        <ListBox x:Name="sourceRoomListBox" Margin="63,44,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="237" Height="123" SelectionChanged="sourceRoomListBox_SelectionChanged"/>
+        <ListBox x:Name="destinationRoomListBox" Margin="63,193,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="237" Height="123" SelectionChanged="destinationRoomListBox_SelectionChanged"/>
+        <DataGrid x:Name="equipmentDataGrid" ItemsSource="{Binding Equipment}" AutoGenerateColumns="False" SelectedIndex="-1" HeadersVisibility="Column" Margin="407,42,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="342" Height="137" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Sifra" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Kolicina" Binding="{Binding Amount}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="readyEquipmentDataGrid" ItemsSource="{Binding ReadyEquipment}" AutoGenerateColumns="False" SelectedIndex="-1" HeadersVisibility="Column" Margin="407,237,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="342" Height="137" CanUserAddRows="False">
+            <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Kolicina" Binding="{Binding Amount}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="3. Izaberite artikal koji zelite da premestite:" HorizontalAlignment="Left" Margin="407,18,0,0" VerticalAlignment="Top"/>
-        <Label Content="4. Kolicina za premestanje:" HorizontalAlignment="Left" Margin="400,223,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textAmount" HorizontalAlignment="Left" Margin="571,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64"/>
-        <Label Content="5. Artikli spremni za premestanje:" HorizontalAlignment="Left" Margin="457,253,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="spremiButton" Content="Spremi" HorizontalAlignment="Left" Margin="677,226,0,0" VerticalAlignment="Top" Width="72" Click="spremiButton_Click"/>
-        <ListBox x:Name="addedEquipmentListBox" Margin="457,287,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="237" Height="81"/>
-        <Button x:Name="premestiButton" Content="Premesti" HorizontalAlignment="Left" Margin="555,384,0,0" VerticalAlignment="Top" Click="premestiButton_Click"/>
+        <Label Content="4. Kolicina za premestanje:" HorizontalAlignment="Left" Margin="400,184,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textAmount" HorizontalAlignment="Left" Margin="571,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64"/>
+        <Label Content="5. Artikli spremni za premestanje:" HorizontalAlignment="Left" Margin="400,213,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="spremiButton" Content="Spremi" HorizontalAlignment="Left" Margin="677,188,0,0" VerticalAlignment="Top" Width="72" Click="spremiButton_Click"/>
+        <Button x:Name="ukloniButton" Content="Ukloni" HorizontalAlignment="Left" Margin="407,385,0,0" VerticalAlignment="Top" Click="ukloniButton_Click" Width="72"/>
+        <Button x:Name="premestiButton" Content="Premesti" HorizontalAlignment="Left" Margin="677,385,0,0" VerticalAlignment="Top" Click="premestiButton_Click" Width="72"/>
         <Label Content="3. Izaberite datum za premestanje opreme:" HorizontalAlignment="Left" Margin="45,318,0,0" VerticalAlignment="Top"/>
-
-        <Util:DateTimePicker x:Name="dateTimePicker" HorizontalAlignment="Left" Margin="123,350,0,0" VerticalAlignment="Top"/>
-
+        <Label x:Name="infoLabel" Content="" HorizontalAlignment="Left" Margin="70,385,0,0" VerticalAlignment="Top" Width="223" RenderTransformOrigin="0.5,0.5" Foreground="#FFB51111" FontWeight="Bold"/>
+        <wpfTool:DateTimePicker x:Name="dateTimePicker" Margin="63,344,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Height="40"></wpfTool:DateTimePicker>
     </Grid>
 </Window>

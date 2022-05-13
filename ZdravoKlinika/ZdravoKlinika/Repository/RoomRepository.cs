@@ -255,6 +255,7 @@ public class RoomRepository
                     r.Number = room.Number;
                     r.Status = room.Status;
                     r.Free = room.Free;
+                    r.EquipmentInRoom = room.EquipmentInRoom;
                 }
             }
         roomDataHandler.Write(this.rooms);
