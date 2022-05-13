@@ -70,5 +70,17 @@
     "Name": "Papuce",
     "Amount": 138,
     "Expendable": false
+  },
+  {
+    "Id": "13",
+    "Name": "Flaster",
+    "Amount": 678,
+    "Expendable": true
+  },
+  {
+    "Id": "14",
+    "Name": "Spric",
+    "Amount": 40,
+    "Expendable": true
   }
 ]
