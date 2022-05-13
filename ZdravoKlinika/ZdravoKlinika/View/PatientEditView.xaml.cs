@@ -22,7 +22,7 @@ namespace ZdravoKlinika.View
     /// </summary>
     public partial class PatientEditView : Page
     {
-        private string patientId = "0105965123321";
+        private string patientId;
         private AppointmentController appointmentController = new AppointmentController();
         private DoctorController doctorController = new DoctorController();
         private RegisteredPatientController registeredPatientController = new RegisteredPatientController();
@@ -33,10 +33,12 @@ namespace ZdravoKlinika.View
 
         public int AppointmentId { get => appointmentId; set => appointmentId = value; }
 
-        public PatientEditView(int appointmentId)
+        public PatientEditView(int appointmentId, string patientId)
         {
+
             InitializeComponent();
-            this.AppointmentId = appointmentId;
+            this.patientId = patientId;
+            this.appointmentId = appointmentId;
             priorityComboBox.Items.Add("Vreme");
             priorityComboBox.Items.Add("Doktor");
             priorityComboBox.SelectedIndex = -1;

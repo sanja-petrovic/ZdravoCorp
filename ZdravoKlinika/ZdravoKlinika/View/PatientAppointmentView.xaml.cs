@@ -31,7 +31,7 @@ namespace ZdravoKlinika.View
         {
             patientId = id;
             InitializeComponent();
-            viewModel = new PatientApointmentsViewModel();
+            viewModel = new PatientApointmentsViewModel(patientId);
             this.DataContext = viewModel;
             listBox.ItemsSource = viewModel.SelectedDateAppointments;
         }
@@ -39,6 +39,7 @@ namespace ZdravoKlinika.View
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             popUpFrame.Visibility = Visibility.Visible;
+            viewModel.PatientAddView = new PatientAddView(patientId);
             popUpFrame.Navigate(viewModel.PatientAddView);
             
            
@@ -62,7 +63,8 @@ namespace ZdravoKlinika.View
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             popUpFrame.Visibility = Visibility.Visible;
-            popUpFrame.Navigate(viewModel.PatientEditView = new PatientEditView(selectedInList.AppointmentId));
+            viewModel.PatientEditView = new PatientEditView(selectedInList.AppointmentId, patientId);
+            popUpFrame.Navigate(viewModel.PatientEditView);
             if(listBox.SelectedItem != null)
             {
                 

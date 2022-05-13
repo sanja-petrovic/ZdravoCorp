@@ -23,7 +23,7 @@ namespace ZdravoKlinika.View
         public PatientViewBase(string personalId)
         {
             InitializeComponent();
-            viewModel = new ViewModel.PatientViewModelBase();
+            viewModel = new ViewModel.PatientViewModelBase(personalId);
             this.DataContext = viewModel;
             mainFrame.Navigate(viewModel.ProfilePage);
             
