@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
         xmlns:System="clr-namespace:System;assembly=System.Runtime" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AllRequestsViewModel}" x:Class="ZdravoKlinika.View.DoctorPages.TimeOffView"
         mc:Ignorable="d"
-        Title="Pregled slobodnih dana" Height="614" Width="860" Background="#F8F9FE" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
-    <Grid Height="614" Width="860">
-        <Border  Margin="40,87,36,72"
+        Title="Pregled slobodnih dana" Height="486" Width="1024" Background="#F8F9FE" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Grid Height="486" Width="1024">
+        <Border  Margin="26,97,26,195"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -17,8 +17,10 @@
             </Border.Effect>
         </Border>
 
-        <DataGrid Background="White" x:Name="DaysOffDG" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding Requests}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False" Margin="33,81,33,66">
-            
+        <Rectangle Fill="White" Margin="19,87,20,59" RadiusX="10" RadiusY="10">
+        </Rectangle>
+        <DataGrid Background="Transparent" x:Name="DaysOffDG" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="True" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding Requests}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False" Margin="19,87,19,10">
+
             <DataGrid.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -27,8 +29,8 @@
 
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Datum početka" Binding="{Binding Start}"/>
-                <DataGridTextColumn Header="Datum kraja" Binding="{Binding End}"/>
+                <DataGridTextColumn Header="Datum početka" Binding="{Binding StartString}"/>
+                <DataGridTextColumn Header="Datum kraja" Binding="{Binding EndString}"/>
                 <DataGridTextColumn Header="Razlog" Binding="{Binding Reason}"/>
                 <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyString}"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
@@ -36,15 +38,15 @@
         </DataGrid>
 
         <Rectangle Fill="#F8F9FE" Height="1" Margin="53,134,70,479"/>
-        <Border  Margin="682,31,0,556"
+        <Border  Margin="861,33,0,553"
             BorderBrush="Black"
             BorderThickness="2"
-            CornerRadius="10" HorizontalAlignment="Left" Width="142">
+            CornerRadius="10" HorizontalAlignment="Left" Width="140">
             <Border.Effect>
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Podnesite zahtev" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="679,28,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="148" Height="33"  Foreground="#555557" Click="Button_Click">
+        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Podnesite zahtev" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="857,30,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="148" Height="34"  Foreground="#555557" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

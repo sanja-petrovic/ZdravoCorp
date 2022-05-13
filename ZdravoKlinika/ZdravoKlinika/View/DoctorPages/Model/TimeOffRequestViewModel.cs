@@ -15,6 +15,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private Doctor doctor;
         private string reason;
         private string emergencyString;
+        private string startString;
+        private string endString;
+        private string status;
 
         private TimeOffRequestController controller;
 
@@ -28,14 +31,27 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public DateTime Start { get => start; set => SetProperty(ref start, value); }
         public DateTime End { get => end; set => SetProperty(ref end, value);  }
-        public bool Emergency { get => emergency; set => SetProperty(ref emergency, value); }
+        public bool Emergency { get { return emergency; } set { SetProperty(ref emergency, value); SetEmergencyString(); } }
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
         public string Reason { get => reason; set => SetProperty(ref reason, value); }
         public string EmergencyString { get => emergencyString; set => SetProperty(ref emergencyString, value); }
+        public string StartString { get => startString; set => SetProperty(ref startString, value); }
+        public string EndString { get => endString; set => SetProperty(ref endString, value); }
+        public string Status { get => status; set => SetProperty(ref status, value); }
 
         public void CreateRequest()
         {
             this.controller.CreateRequest(Doctor, Start, End, Reason, ZdravoKlinika.Model.RequestState.Pending, Emergency);
+        }
+
+        public void SetStartDateString()
+        {
+            StartString = Start.Date.ToString("dd.MM.yyyy.");
+        }
+
+        public void SetEndDateString()
+        {
+            EndString = End.Date.ToString("dd.MM.yyyy.");
         }
 
         public void SetEmergencyString()

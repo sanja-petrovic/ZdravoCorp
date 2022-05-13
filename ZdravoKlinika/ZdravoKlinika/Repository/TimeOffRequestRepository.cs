@@ -61,5 +61,22 @@ namespace ZdravoKlinika.Repository
             DoctorRepository doctorRepository = new DoctorRepository();
             request.Doctor = doctorRepository.GetById(request.Doctor.PersonalId);
         }
+
+        public List<TimeOffRequest> GetRequestsByDoctor(Doctor doctor)
+        {
+            List<TimeOffRequest> requests = new List<TimeOffRequest>();
+
+            foreach(TimeOffRequest request in this.dataHandler.Read())
+            {
+                if(request.Doctor.PersonalId.Equals(doctor.PersonalId) && request.EndDate.CompareTo(DateTime.Today) >= 0)
+                {
+                    UpdateReferences(request);
+                    requests.Add(request);
+                } 
+            }
+
+            return requests;
+        }
+
     }
 }

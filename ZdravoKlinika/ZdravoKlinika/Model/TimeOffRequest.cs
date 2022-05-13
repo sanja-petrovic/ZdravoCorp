@@ -45,5 +45,26 @@ namespace ZdravoKlinika.Model
         public bool Emergency { get => emergency; set => emergency = value; }
         public DateTime DateOfCreation { get => dateOfCreation; set => dateOfCreation = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
+
+        public string StateToString(RequestState state)
+        {
+            string retVal = "";
+            switch (state)
+            {
+                case RequestState.Pending:
+                    retVal = "Na čekanju";
+                    break;
+                case RequestState.Approved:
+                    retVal = "Odobren";
+                    break;
+                case RequestState.Denied:
+                    retVal = "Odbijen";
+                    break;
+                default:
+                    break;
+            }
+
+            return retVal;
+        }
     }
 }

@@ -76,5 +76,10 @@ namespace ZdravoKlinika.Service
 
             return result;
         }
+
+        public List<TimeOffRequest> GetRequestsByDoctor(Doctor doctor)
+        {
+            return this.repository.GetRequestsByDoctor(doctor);
+        }
     }
 }

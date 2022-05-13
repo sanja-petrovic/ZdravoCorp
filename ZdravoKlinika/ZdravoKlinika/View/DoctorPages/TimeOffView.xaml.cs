@@ -34,6 +34,7 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             TimeOffRequestView timeOffRequestView = new TimeOffRequestView(this.doctor);
             timeOffRequestView.ShowDialog();
+            this.viewModel.Load();
         }
     }
 }

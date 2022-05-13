@@ -26,19 +26,19 @@ namespace ZdravoKlinika.Controller
         {
             return service.GetById(id);
         }
-        /*        private int id;
-        private Doctor doctor;
-        private DateTime dateOfCreation;
-        private DateTime startDate;
-        private DateTime endDate;
-        private string reason;
-        private RequestState state;
-        private bool emergency;*/
+
         public void CreateRequest(Doctor doctor, DateTime start, DateTime end, String reason, RequestState state, bool emergency)
         {
             TimeOffRequest request = new TimeOffRequest(-1, doctor, DateTime.Today, start, end, reason, state, emergency);
 
             this.service.CreateRequest(request);
+        }
+
+        public List<TimeOffRequest> GetRequestsByDoctor(String doctorId)
+        {
+            DoctorService doctorService = new DoctorService();
+            Doctor doctor = doctorService.GetById(doctorId);
+            return this.service.GetRequestsByDoctor(doctor);
         }
     }
 }
