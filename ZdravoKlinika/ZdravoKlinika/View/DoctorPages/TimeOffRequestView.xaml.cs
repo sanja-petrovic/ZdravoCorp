@@ -28,12 +28,26 @@ namespace ZdravoKlinika.View.DoctorPages
             this.viewModel = new TimeOffRequestViewModel(doctor);
             DataContext = this.viewModel;
             InitializeComponent();
+            StartDatePicker.BlackoutDates.AddDatesInPast();
+            EndDatePicker.BlackoutDates.AddDatesInPast();
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             this.viewModel.Save();
             this.Close();
+        }
+
+        private void StartDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(EndDatePicker != null)
+            {
+                EndDatePicker.BlackoutDates.Clear();
+                EndDatePicker.SelectedDate = StartDatePicker.SelectedDate;
+                DateTime date = (DateTime)StartDatePicker.SelectedDate;
+                date = date.AddDays(-1);
+                EndDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, date));
+            }
         }
     }
 }
