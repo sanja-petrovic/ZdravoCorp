@@ -68,5 +68,8 @@ public class RegisteredPatientService
     {
         return this.registeredPatientRepository.IsAllergic(medication, patient);
     }
-
+    public bool IsBanned(RegisteredPatient patient)
+    {
+        return this.registeredPatientRepository.IsBanned(patient);
+    }
 }

@@ -176,6 +176,10 @@ public class RegisteredPatientRepository
         }
         return false;
     }
+    public bool IsBanned(RegisteredPatient patient)
+    {
+        return patient.Ban;
+    }
     public void Ban(RegisteredPatient patient)
     {
         patient.Ban = true;

@@ -26,6 +26,7 @@ namespace ZdravoKlinika.View
 
         public PatientViewBase(string personalId)
         {
+            
             InitializeComponent();
             id = personalId;
             viewModel = new ViewModel.PatientViewModelBase(id);

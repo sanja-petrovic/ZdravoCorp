@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ZdravoKlinika.View;
@@ -17,9 +18,11 @@ namespace ZdravoKlinika.ViewModel
 
         public PatientViewModelBase( String patientId)
         {
+            RegisteredPatientController controller = new RegisteredPatientController();
             this.patientId = patientId;
             profilePage = new PatientProfile(patientId);
             patientApointmentView = new PatientAppointmentView(patientId);
+           
         }
         private ImageSource logoImageSource = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "PatientViewLogo.png"));
         public ImageSource LogoImageSource 

@@ -321,7 +321,10 @@ public class AppointmentService
         appointment.Over = true;
         this.appointmentRepository.LogAppointment(appointment);
     }
-
+    public void AddGrading(int appointmentId, int[] grades)
+    {
+        this.appointmentRepository.AddGrading(this.appointmentRepository.GetAppointmentById(appointmentId), grades);
+    }
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {
         return this.appointmentRepository.GetPatientsPastAppointments(patient);

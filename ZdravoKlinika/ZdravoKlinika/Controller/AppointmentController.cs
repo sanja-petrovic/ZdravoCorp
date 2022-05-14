@@ -116,6 +116,10 @@ public class AppointmentController
     {
         this.appointmentService.LogAppointment(appointment, diagnoses, doctorsNote);
     }
+    public void AddGrading(int appointmentId, int[] grades)
+    {
+        this.appointmentService.AddGrading(appointmentId, grades);
+    }
 
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {
