@@ -6,7 +6,7 @@
       "6,40"
     ],
     "OrderId": "o18FozuH",
-    "IsOrderFinished": false
+    "IsOrderFinished": true
   },
   {
     "CreationDate": "2022-05-11T05:36:33.4208426+02:00",
@@ -14,7 +14,7 @@
       "11,11"
     ],
     "OrderId": "BRz9P1Uu",
-    "IsOrderFinished": false
+    "IsOrderFinished": true
   },
   {
     "CreationDate": "2022-05-11T05:39:30.0045541+02:00",
@@ -22,6 +22,6 @@
       "8,4"
     ],
     "OrderId": "1EGZD47V",
-    "IsOrderFinished": false
+    "IsOrderFinished": true
   }
 ]

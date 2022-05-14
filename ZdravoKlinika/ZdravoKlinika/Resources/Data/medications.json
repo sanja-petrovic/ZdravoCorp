@@ -13,7 +13,7 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null,
+    "Reviewer": null,
     "Note": null,
     "DosageInstructions": null
   },
@@ -31,7 +31,7 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null,
+    "Reviewer": null,
     "Note": null,
     "DosageInstructions": null
   },
@@ -50,7 +50,7 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null,
+    "Reviewer": null,
     "Note": null,
     "DosageInstructions": null
   },
@@ -69,7 +69,7 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null,
+    "Reviewer": null,
     "Note": null,
     "DosageInstructions": null
   },
@@ -88,7 +88,7 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null,
+    "Reviewer": null,
     "Note": null,
     "DosageInstructions": null
   },
@@ -106,7 +106,7 @@
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
-    "ApprovedBy": null,
+    "Reviewer": null,
     "Note": null,
     "DosageInstructions": null
   }

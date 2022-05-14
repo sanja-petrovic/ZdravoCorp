@@ -31,9 +31,9 @@ namespace ZdravoKlinika.Repository
 
         public void UpdateReferences(Medication medication)
         {
-            if(medication.ApprovedBy != null)
+            if(medication.Reviewer != null)
             {
-                medication.ApprovedBy = this.doctorRepository.GetById(medication.ApprovedBy.PersonalId);
+                medication.Reviewer = this.doctorRepository.GetById(medication.Reviewer.PersonalId);
             }
             if (medication.Alternatives != null)
             {
@@ -70,6 +70,51 @@ namespace ZdravoKlinika.Repository
             }
 
             return medicationToReturn;
+        }
+
+        public void CreateMedication(Medication medication)
+        {
+            this.medications.Add(medication);
+            medicationDataHandler.Write(this.medications);
+        }
+
+        public void DeleteMedication(Medication medication)
+        {
+            if (medication == null)
+                return;
+            if (this.medications != null)
+                if (this.medications.Contains(medication))
+                    this.medications.Remove(medication);
+            medicationDataHandler.Write(this.medications);
+        }
+
+        public void UpdateMedication(Medication medication)
+        {
+            if (medication == null)
+                return;
+            if (this.medications != null)
+                foreach (Medication m in this.medications)
+                {
+                    if (m.MedicationId.Equals(medication.MedicationId))
+                    {
+                        m.MedicationCode = medication.MedicationCode;
+                        m.BrandName = medication.BrandName;
+                        m.Dosage = medication.Dosage;
+                        m.ActiveSubstances = medication.ActiveSubstances;
+                        m.Form = medication.Form;
+                        m.Notes = medication.Notes;
+                        m.Allergens = medication.Allergens;
+                        m.Validated = medication.Validated;
+                        m.Alternatives = medication.Alternatives;
+                        m.Classification = medication.Classification;
+                        m.Indications = medication.Indications;
+                        m.SideEffects = medication.SideEffects;
+                        m.Reviewer = medication.Reviewer;
+                        m.Note = medication.Note;
+                        m.DosageInstructions = medication.DosageInstructions;
+                    }
+                }
+            medicationDataHandler.Write(this.medications);
         }
     }
 }

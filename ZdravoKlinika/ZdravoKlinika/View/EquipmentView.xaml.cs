@@ -30,11 +30,6 @@ namespace ZdravoKlinika.View
             dataGridEquipment.ItemsSource = this.Equipment;
         }
 
-        private void dataGridEquipment_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Refresh_Display()
         {
             dataGridEquipment.ItemsSource = null;
