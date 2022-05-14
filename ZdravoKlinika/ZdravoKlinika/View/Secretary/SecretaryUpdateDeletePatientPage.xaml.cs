@@ -38,7 +38,7 @@ namespace ZdravoKlinika.View.Secretary
             {
                 String[] splitData = openFileDialog.FileName.Split(System.IO.Path.DirectorySeparatorChar);
                 String profilePic = System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 3] + System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 2] + System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 1];
-                updateImage(profilePic);
+                UpdateImage(profilePic);
             }
         }
         private void updateComponents(String pid)
@@ -72,9 +72,9 @@ namespace ZdravoKlinika.View.Secretary
             TextBoxECName.Text = pat.EmergencyContactName;
             TextBoxECPhone.Text = pat.EmergencyContactPhone;
 
-            updateImage(pat.ProfilePicture);
+            UpdateImage(pat.ProfilePicture);
         }
-        private void updateImage(String path)
+        private void UpdateImage(String path)
         {
             BitmapImage bitim = new BitmapImage();
             try

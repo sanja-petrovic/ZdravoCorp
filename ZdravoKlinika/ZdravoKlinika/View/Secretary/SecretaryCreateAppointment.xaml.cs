@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,7 +56,7 @@ namespace ZdravoKlinika.View.Secretary
                 LabelLastname.Content = rpat.Lastname;
                 LabelName.Content = rpat.Name;
                 LabelPID.Content = rpat.PersonalId;
-                //UpdateImage(rpat.ProfilePicture);
+                UpdateImage(rpat.ProfilePicture);
             }
             else if (pat.GetPatientType() == PatientType.Guest)
             {
@@ -64,7 +65,7 @@ namespace ZdravoKlinika.View.Secretary
                 LabelLastname.Content = gpat.Lastname;
                 LabelName.Content = gpat.Name;
                 LabelPID.Content = gpat.PersonalId;
-               // UpdateImage("file:///C:/Users/asd/Documents/GitHub/ZdravoCorp/ZdravoKlinika/ZdravoKlinika/Resources/Images/IconFlagRs.png");
+                UpdateImage("/Resources/Images/IconFlagRs.png");
             }
 
             LoadAppointments(pat.GetPatientId());
@@ -81,13 +82,19 @@ namespace ZdravoKlinika.View.Secretary
         private void UpdateImage(String path)
         {
             BitmapImage bitim = new BitmapImage();
-            bitim.BeginInit();
-            Uri uripath = new Uri(path);
-            bitim.UriSource = new Uri(uripath.LocalPath);
-            bitim.DecodePixelHeight = 140;
-            bitim.DecodePixelWidth = 140;
-            bitim.EndInit();
-            ProfilePicImage.Source = bitim;
+            try
+            {
+                bitim.BeginInit();
+                Uri uripath = new Uri(string.Concat(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, path));
+                bitim.UriSource = new Uri(uripath.ToString());
+                bitim.DecodePixelHeight = 140;
+                bitim.DecodePixelWidth = 140;
+                bitim.EndInit();
+                ProfilePicImage.Source = bitim;
+            }
+            catch (FileNotFoundException)
+            {
+            }
         }
 
         private void AppointmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
