@@ -128,7 +128,6 @@ namespace ZdravoKlinika.View
 
             if (doctorComboBox.SelectedIndex != -1 && timeComboBox.SelectedIndex != -1)
             {
-                //TODO finish this
                 List<Room> rooms = roomController.GetFreeRooms((DateTime)timeComboBox.SelectedItem, RoomType.checkup);
                 if (!rooms.Any())
                 {
@@ -138,9 +137,17 @@ namespace ZdravoKlinika.View
                 else
                 {
                     Doctor doctor = (Doctor)doctorComboBox.SelectedItem;
+                    try
+                    {
+                        appointmentController.PatientEditAppointment(AppointmentId, doctor.PersonalId, patientId, (DateTime)timeComboBox.SelectedItem, false, AppointmentType.Regular, rooms[0].RoomId, appointmentDuration);
+                        resetBaseView();
+                    }
+                    catch (Exception ex)
+                    {
+                        //TODO localise this later and call logout!
+                        MessageBox.Show("Previse puta ste izmenili pregled, rad ce privremeno biti onemogucen obratite se sekretaru", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                    appointmentController.EditAppointment(AppointmentId, doctor.PersonalId, patientId, (DateTime)timeComboBox.SelectedItem, false, AppointmentType.Regular, rooms[0].RoomId, appointmentDuration);
-                    resetBaseView();
+                    }
                 }
             }
             else

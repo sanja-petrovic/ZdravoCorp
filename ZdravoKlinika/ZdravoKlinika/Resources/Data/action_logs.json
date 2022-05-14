@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "GAYnXbSk",
+    "Time": "2022-05-14T10:04:21.1032138+02:00",
+    "Action": "Remove Appointment",
+    "RegisteredPatient": "0105965123321"
+  },
+  {
+    "Id": "Bqygq7gz",
+    "Time": "2022-05-14T10:06:15.0600774+02:00",
+    "Action": "Remove Appointment",
+    "RegisteredPatient": "0105965123321"
+  },
+  {
+    "Id": "XdYxyM34",
+    "Time": "2022-05-14T10:06:19.0271203+02:00",
+    "Action": "Remove Appointment",
+    "RegisteredPatient": "0105965123321"
+  },
+  {
+    "Id": "sMfs5gSF",
+    "Time": "2022-05-14T10:06:23.3312212+02:00",
+    "Action": "Remove Appointment",
+    "RegisteredPatient": "0105965123321"
+  }
+]

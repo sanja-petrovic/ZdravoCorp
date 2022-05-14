@@ -85,8 +85,17 @@ namespace ZdravoKlinika.View
         {
             if (listBox.SelectedItem != null)
             {
-                appointmentController.DeleteAppointment(selectedInList.AppointmentId);
-                resetBaseView();
+                try
+                {
+                    appointmentController.PatientDeleteAppointment(selectedInList.AppointmentId, patientId);
+                    resetBaseView();
+                }
+                catch (Exception ex)
+                {
+                    //TODO localise this later and call logout!
+                    MessageBox.Show("Previse puta ste izmenili pregled, rad ce privremeno biti onemogucen obratite se sekretaru", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
             }
         }
 

@@ -20,10 +20,15 @@ namespace ZdravoKlinika.View
     public partial class PatientViewBase : Window
     {
         private ViewModel.PatientViewModelBase viewModel;
+        private String id;
+
+        public string Id { get => id; set => id = value; }
+
         public PatientViewBase(string personalId)
         {
             InitializeComponent();
-            viewModel = new ViewModel.PatientViewModelBase(personalId);
+            id = personalId;
+            viewModel = new ViewModel.PatientViewModelBase(id);
             this.DataContext = viewModel;
             mainFrame.Navigate(viewModel.ProfilePage);
             
@@ -41,7 +46,7 @@ namespace ZdravoKlinika.View
         public void refreshAppointmentView()
         {
             //TODO remove hardcoded patientID value
-            viewModel.PatientApointmentView = new PatientAppointmentView("0105965123321");
+            viewModel.PatientApointmentView = new PatientAppointmentView(id);
             mainFrame.Navigate(viewModel.PatientApointmentView);
         }
     }

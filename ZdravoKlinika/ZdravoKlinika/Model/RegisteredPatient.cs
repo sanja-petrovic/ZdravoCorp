@@ -10,6 +10,7 @@ public class RegisteredPatient : RegisteredUser, Patient
     private String emergencyContactName;
     private String emergencyContactPhone;
     private MedicalRecord medicalRecord;
+    private bool ban = false;
 
     public RegisteredPatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, Address address, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, MedicalRecord medicalRecord)
     {
@@ -46,6 +47,7 @@ public class RegisteredPatient : RegisteredUser, Patient
     public string EmergencyContactPhone { get => emergencyContactPhone; set => emergencyContactPhone = value; }
     public MedicalRecord MedicalRecord { get => medicalRecord; set => medicalRecord = value; }
     public PatientType PatientType { get => patientType; set => patientType = value; }
+    public bool Ban { get => ban; set => ban = value; }
 
     public String GetPatientFullName()
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Service;
 using ZdravoKlinika.Util;
 
 public class AppointmentService
@@ -13,6 +14,8 @@ public class AppointmentService
     private RoomRepository roomRepository;
     private ZdravoKlinika.Util.ListHelper listHelper;
     private ZdravoKlinika.Util.DateBlock dateBlock = new ZdravoKlinika.Util.DateBlock();
+    private ActionLogService actionLogService;
+    private RegisteredPatientRepository registeredPatientRepository;
 
     public AppointmentService()
     {
@@ -20,6 +23,8 @@ public class AppointmentService
         this.doctorRepository = new DoctorRepository();
         this.roomRepository = new RoomRepository();
         this.patientRepository = new PatientRepository();
+        this.actionLogService = new ActionLogService();
+        this.registeredPatientRepository = new RegisteredPatientRepository();
     }
  
     public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
@@ -80,7 +85,7 @@ public class AppointmentService
         }
         return appointments;
     }
-    public List<Doctor> getFreeDoctorsForTime(DateBlock block, int startHours, int endHours)
+    public List<Doctor> GetFreeDoctorsForTime(DateBlock block, int startHours, int endHours)
     {
         List<Doctor> doctors = doctorRepository.GetAll();
         List<Doctor> result =  new List<Doctor>();
@@ -115,14 +120,18 @@ public class AppointmentService
                     }
                 }
             }
-
+            //all appointments have been looked at, is the needed time after the last doc appointment for the day
+            if (DateBlock.ContainsDateTime(sortedAppointments.Last().DateAndTime.AddMinutes(sortedAppointments.Last().Duration), block.Start.Date.AddHours(endHours), block.Start, block.Duration))
+            {
+                result.Add(doc);
+            }
 
         }
         return result;
     }
 
     //TODO these 2 need code cleanup, they can become one-ish ? 
-    public List<DateBlock> getFreeTimeForDoctor(DateTime date,int duration, Doctor doctor, int startHours, int endHours)
+    public List<DateBlock> GetFreeTimeForDoctor(DateTime date,int duration, Doctor doctor, int startHours, int endHours)
     {
         List<DateBlock> result = new List<DateBlock>();
         List<Appointment> appointments = GetAppointmentsByDoctorIdForDate(doctor.PersonalId, date.Date);
@@ -175,7 +184,7 @@ public class AppointmentService
             return result;
         }
     }
-    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
+    public List<DateBlock> GetFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
     {
         List<DateBlock> result = new List<DateBlock>();
         List<Appointment> appointments = new List<Appointment>();
@@ -254,7 +263,19 @@ public class AppointmentService
         Appointment appointment = appointmentRepository.GetAppointmentById(id);
         this.appointmentRepository.DeleteAppointment(appointment);
     }
-
+    public void PatientDeleteAppointment(int id, String patientId)
+    {
+        if (actionLogService.IsUserBannable(patientId))
+        {
+            registeredPatientRepository.Ban(registeredPatientRepository.GetById(patientId));
+            throw new Exception("Ban");
+        }
+        else
+        {
+            DeleteAppointment(id);
+            actionLogService.AddLog(DateTime.Now, "Remove Appointment", registeredPatientRepository.GetById(patientId));
+        }
+    }
     public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         Appointment appointment = this.appointmentRepository.GetAppointmentById(appointmentId); 
@@ -263,7 +284,7 @@ public class AppointmentService
         Room room = roomRepository.GetById(roomId);
         Patient pat = patientRepository.GetById(patientId);
 
-        List<DateBlock> t = DateBlock.getIntersection(getFreeTimeForDoctor(dateAndTime.Date, duration, doc, 8, 20), getFreeTimeForPatient(dateAndTime.Date, duration, pat, 8, 20));
+        List<DateBlock> t = DateBlock.getIntersection(GetFreeTimeForDoctor(dateAndTime.Date, duration, doc, 8, 20), GetFreeTimeForPatient(dateAndTime.Date, duration, pat, 8, 20));
 
         foreach (DateBlock block in t) 
         {
@@ -279,9 +300,19 @@ public class AppointmentService
                 return;
             }
         }
-
-        
-
+    }
+    public void PatientEditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    {
+        if (actionLogService.IsUserBannable(patientId))
+        {
+            registeredPatientRepository.Ban(registeredPatientRepository.GetById(patientId));
+            throw new Exception("Ban");
+        }
+        else
+        {
+            EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
+            actionLogService.AddLog(DateTime.Now, "Edit Appointment", registeredPatientRepository.GetById(patientId));
+        }
     }
     public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)
     {
