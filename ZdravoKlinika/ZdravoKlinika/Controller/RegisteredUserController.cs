@@ -24,5 +24,21 @@ namespace ZdravoKlinika.Controller
         {
             return UserService.GetUserByEmailAndPassword(email, password);
         }
+
+
+        public void RememberUser(RegisteredUser user)
+        {
+            this.userService.RememberUser(user);
+        }
+
+        public RegisteredUser GetRememberedUser()
+        {
+            return this.userService.GetRememberedUser();
+        }
+
+        public void ForgetUser()
+        {
+            this.userService.ForgetUser();
+        }
     }
 }

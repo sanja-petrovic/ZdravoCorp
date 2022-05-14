@@ -18,48 +18,104 @@ namespace ZdravoKlinika.Repository
         public MedicationRepository()
         {
             medicationDataHandler = new MedicationDataHandler();
-            this.medications = medicationDataHandler.Read();
-            foreach(Medication medication in medications)
-            {
-                Console.WriteLine(medication.MedicationId);
-            }
+            ReadDataFromFiles();
+
             this.doctorRepository = new DoctorRepository();
         }
 
-        public void UpdateReferences()
+        private void ReadDataFromFiles()
         {
-            foreach (Medication medication in this.medications)
+            medications = medicationDataHandler.Read();
+            if (medications == null) medications = new List<Medication>();
+        }
+
+        public void UpdateReferences(Medication medication)
+        {
+            if(medication.Reviewer != null)
             {
-                if(medication.ApprovedBy != null)
+                medication.Reviewer = this.doctorRepository.GetById(medication.Reviewer.PersonalId);
+            }
+            if (medication.Alternatives != null)
+            {
+                for (int i = 0; i < medication.Alternatives.Count; i++)
                 {
-                    medication.ApprovedBy = this.doctorRepository.GetById(medication.ApprovedBy.PersonalId);
-                }
-                if(medication.Alternatives != null)
-                {
-                    for (int i = 0; i < medication.Alternatives.Count; i++)
-                    {
-                        medication.Alternatives[i] = this.GetById(medication.Alternatives[i].MedicationId);
-                    }
+                    medication.Alternatives[i] = this.GetById(medication.Alternatives[i].MedicationId);
                 }
             }
         }
 
         public List<Medication> GetAll()
         {
-            return medicationDataHandler.Read();
+            ReadDataFromFiles();
+            foreach (Medication medication in this.medications)
+            {
+                UpdateReferences(medication);
+            }
+
+            return medications;
         }
 
         public Medication GetById(String id)
         {
-            foreach(Medication medication in medications)
+            ReadDataFromFiles();
+            Medication? medicationToReturn = null;
+            foreach (Medication medication in medications)
             {
                 if(medication.MedicationId == id)
                 {
-                    return medication;
+                    UpdateReferences(medication);
+                    medicationToReturn = medication;
+                    break;
                 }
             }
 
-            return null;
+            return medicationToReturn;
+        }
+
+        public void CreateMedication(Medication medication)
+        {
+            this.medications.Add(medication);
+            medicationDataHandler.Write(this.medications);
+        }
+
+        public void DeleteMedication(Medication medication)
+        {
+            if (medication == null)
+                return;
+            if (this.medications != null)
+                if (this.medications.Contains(medication))
+                    this.medications.Remove(medication);
+            medicationDataHandler.Write(this.medications);
+        }
+
+        public void UpdateMedication(Medication medication)
+        {
+            if (medication == null)
+                return;
+            if (this.medications != null)
+                foreach (Medication m in this.medications)
+                {
+                    if (m.MedicationId.Equals(medication.MedicationId))
+                    {
+                        m.MedicationCode = medication.MedicationCode;
+                        m.BrandName = medication.BrandName;
+                        m.Dosage = medication.Dosage;
+                        m.ActiveSubstances = medication.ActiveSubstances;
+                        m.Form = medication.Form;
+                        m.Note = medication.Note;
+                        m.Allergens = medication.Allergens;
+                        m.Validated = medication.Validated;
+                        m.Alternatives = medication.Alternatives;
+                        m.Classification = medication.Classification;
+                        m.Indications = medication.Indications;
+                        m.SideEffects = medication.SideEffects;
+                        m.Reviewer = medication.Reviewer;
+                        m.Comment = medication.Comment;
+                        m.DosageInstructions = medication.DosageInstructions;
+                        m.Amount = medication.Amount;
+                    }
+                }
+            medicationDataHandler.Write(this.medications);
         }
     }
 }

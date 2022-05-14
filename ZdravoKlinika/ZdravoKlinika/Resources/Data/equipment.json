@@ -1,74 +1,86 @@
 [
-    {
-        "Id": "1",
-        "Name": "Krevet",
-        "Amount": 52,
-        "Expendable": false
-    },
-    {
-        "Id": "2",
-        "Name": "Stolica",
-        "Amount": 140,
-        "Expendable": false
-    },
-    {
-        "Id": "3",
-        "Name": "Jastuk",
-        "Amount": 75,
-        "Expendable": false
-    },
-    {
-        "Id": "4",
-        "Name": "Peskir",
-        "Amount": 150,
-        "Expendable": false
-    },
-    {
-        "Id": "5",
-        "Name": "Rendgen aparat",
-        "Amount": 7,
-        "Expendable": false
-    },
-    {
-        "Id": "6",
-        "Name": "Zavesa",
-        "Amount": 40,
-        "Expendable": false
-    },
-    {
-        "Id": "7",
-        "Name": "Cebe",
-        "Amount": 96,
-        "Expendable": false
-    },
-    {
-        "Id": "8",
-        "Name": "Jorgan",
-        "Amount": 60,
-        "Expendable": false
-    },
-    {
-        "Id": "9",
-        "Name": "Ormar",
-        "Amount": 55,
-        "Expendable": false
-    },
-    {
-        "Id": "10",
-        "Name": "Fotelja",
-        "Amount": 45,
-        "Expendable": false
-    },
-    {
-        "Id": "11",
-        "Name": "Tepih",
-        "Amount": 49,
-        "Expendable": false
-    },
-    {
-        "Id": "12",
-        "Name": "Papuce",
-        "Amount": 138,
-        "Expendable": false
-    }
+  {
+    "Id": "1",
+    "Name": "Krevet",
+    "Amount": 52,
+    "Expendable": false
+  },
+  {
+    "Id": "2",
+    "Name": "Stolica",
+    "Amount": 280,
+    "Expendable": false
+  },
+  {
+    "Id": "3",
+    "Name": "Jastuk",
+    "Amount": 75,
+    "Expendable": false
+  },
+  {
+    "Id": "4",
+    "Name": "Peskir",
+    "Amount": 150,
+    "Expendable": false
+  },
+  {
+    "Id": "5",
+    "Name": "Rendgen aparat",
+    "Amount": 7,
+    "Expendable": false
+  },
+  {
+    "Id": "6",
+    "Name": "Zavesa",
+    "Amount": 80,
+    "Expendable": false
+  },
+  {
+    "Id": "7",
+    "Name": "Cebe",
+    "Amount": 96,
+    "Expendable": false
+  },
+  {
+    "Id": "8",
+    "Name": "Jorgan",
+    "Amount": 64,
+    "Expendable": false
+  },
+  {
+    "Id": "9",
+    "Name": "Ormar",
+    "Amount": 55,
+    "Expendable": false
+  },
+  {
+    "Id": "10",
+    "Name": "Fotelja",
+    "Amount": 45,
+    "Expendable": false
+  },
+  {
+    "Id": "11",
+    "Name": "Tepih",
+    "Amount": 60,
+    "Expendable": false
+  },
+  {
+    "Id": "12",
+    "Name": "Papuce",
+    "Amount": 138,
+    "Expendable": false
+  },
+  {
+    "Id": "13",
+    "Name": "Flaster",
+    "Amount": 678,
+    "Expendable": true
+  },
+  {
+    "Id": "14",
+    "Name": "Spric",
+    "Amount": 40,
+    "Expendable": true
+  }
 ]

@@ -22,7 +22,7 @@ namespace ZdravoKlinika.Data_Handler
             options.WriteIndented = true;
             options.Converters.Add(new MedicationConverter());
             options.Converters.Add(new DoctorConverter());
-            options.Converters.Add(new RegisteredPatientConverter());
+            options.Converters.Add(new PatientConverter());
             var json = JsonSerializer.Serialize(prescriptions, options);
             File.WriteAllText(fileLocation, json);
 
@@ -33,7 +33,7 @@ namespace ZdravoKlinika.Data_Handler
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.Converters.Add(new MedicationConverter());
             options.Converters.Add(new DoctorConverter());
-            options.Converters.Add(new RegisteredPatientConverter());
+            options.Converters.Add(new PatientConverter());
             return JsonSerializer.Deserialize<List<Prescription>>(File.ReadAllText(fileLocation), options);
         }
     }

@@ -19,6 +19,7 @@ namespace ZdravoKlinika.Repository
         {
             EmployeeDataHandler = new EmployeeDataHandler();
             Employees = EmployeeDataHandler.Read();
+            if (Employees == null) Employees = new List<Employee>();
         }
 
         public List<Employee> GetAll()

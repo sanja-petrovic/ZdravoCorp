@@ -26,7 +26,11 @@ namespace ZdravoKlinika.Controller
 
         public void CreateNewGuestPatient(String id, String name, String lastname)
         {
-            PatientService.CreateNewGuestPatient(id, name, lastname);
+            GuestPatient guestPatient = new GuestPatient();
+            guestPatient.Name = name;
+            guestPatient.Lastname = lastname;
+            guestPatient.PersonalId = id;
+            PatientService.CreateNewGuestPatient(guestPatient);
             return;
         }
     }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Navigation;
 using ZdravoKlinika.Controller;
+using ZdravoKlinika.ViewModel;
 
 namespace ZdravoKlinika.View
 {
@@ -23,47 +24,63 @@ namespace ZdravoKlinika.View
     {
         private bool clicked = false;
         private bool show = false;
+        RegisteredUser user;
 
         RegisteredUserController registeredUserController;
 
+        public RegisteredUser User { get => user; set => user = value; }
+
+        public SignInViewModel viewModel;
+
         public SignInWindow()
         {
-            registeredUserController = new RegisteredUserController();
+            viewModel = new SignInViewModel();
+            DataContext = viewModel;
             InitializeComponent();
+            if (viewModel.SavedLogin())
+            {
+                this.LogIn();
+                this.Close();
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RegisteredUser? tryUser = registeredUserController.GetUserByEmailAndPassword(UsernameTB.Text, PasswordTB.Text);
-            if (tryUser != null) 
+            if (viewModel.IsLoginSuccessful()) 
             {
-                switch (tryUser.UserType) 
+                this.LogIn();
+                if(StayLoggedIn.IsChecked == true)
                 {
-                    case UserType.Patient:
-                        View.PatientViewBase pvB = new View.PatientViewBase(tryUser.PersonalId);
-                        pvB.Show();
-                        break;
-                    case UserType.Secretary:
-                        Secretary.SecretaryMainWindow secretaryMainWindow = new Secretary.SecretaryMainWindow();
-                        secretaryMainWindow.Show();
-                        break;
-                    case UserType.Doctor:
-                        DoctorPages.DoctorBasePage doctorBase = new DoctorPages.DoctorBasePage(tryUser);
-                        doctorBase.Show();
-                        break;
-                    case UserType.Manager:
-                        UpravnikWindow upravnikWindow = new UpravnikWindow();
-                        upravnikWindow.Show();
-                        break;
-                    default:
-                        break;
-
+                    viewModel.RememberUser();
                 }
 
                 this.Close();
             }
-            
+        }
 
+        public void LogIn()
+        {
+            switch (viewModel.User.UserType)
+            {
+                case UserType.Patient:
+                    View.PatientViewBase pvB = new View.PatientViewBase(viewModel.User.PersonalId);
+                    pvB.Show();
+                    break;
+                case UserType.Secretary:
+                    Secretary.SecretaryMainWindow secretaryMainWindow = new Secretary.SecretaryMainWindow();
+                    secretaryMainWindow.Show();
+                    break;
+                case UserType.Doctor:
+                    DoctorPages.DoctorBasePage doctorBase = new DoctorPages.DoctorBasePage(viewModel.User);
+                    doctorBase.Show();
+                    break;
+                case UserType.Manager:
+                    UpravnikWindow upravnikWindow = new UpravnikWindow();
+                    upravnikWindow.Show();
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void TextBox_MouseDown(Object sender, RoutedEventArgs e)

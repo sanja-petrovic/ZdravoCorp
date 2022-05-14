@@ -30,11 +30,6 @@ namespace ZdravoKlinika.View
             dataGridEquipment.ItemsSource = this.Equipment;
         }
 
-        private void dataGridEquipment_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Refresh_Display()
         {
             dataGridEquipment.ItemsSource = null;
@@ -47,5 +42,54 @@ namespace ZdravoKlinika.View
             equipmentMoveView.Show();
         }
 
+        private void searchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            String query = searchTextBox.Text;
+            ObservableCollection<Equipment> filteredEquipment = new ObservableCollection<Equipment>();
+            foreach(Equipment eq in Equipment)
+            {
+                if (eq.Name.ToLower().Contains(query))
+                {
+                    filteredEquipment.Add(eq);
+                }
+            }
+            dataGridEquipment.ItemsSource = filteredEquipment;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int query = filteriComboBox.SelectedIndex;
+            ObservableCollection<Equipment> expendableGoods = new ObservableCollection<Equipment>(this.equipmentController.GetByExpendability(true));
+            ObservableCollection<Equipment> inexpendableGoods = new ObservableCollection<Equipment>(this.equipmentController.GetByExpendability(false));
+            ObservableCollection<Equipment> expiringGoods = new ObservableCollection<Equipment>();
+            switch (query)
+            {
+                case 0:
+                    dataGridEquipment.ItemsSource = expendableGoods;
+                    break;
+                case 1: 
+                    dataGridEquipment.ItemsSource = inexpendableGoods;
+                    break;
+                case 2:
+                    foreach (Equipment eq in expendableGoods)
+                    {
+                        if(eq.Amount < 50)
+                        {
+                            expiringGoods.Add(eq);
+                        }
+                    }
+                    dataGridEquipment.ItemsSource = expiringGoods;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ResetFilters_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridEquipment.ItemsSource = Equipment;
+            filteriComboBox.SelectedIndex = -1;
+            searchTextBox.Text = "";
+        }
     }
 }
