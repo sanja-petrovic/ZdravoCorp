@@ -418,7 +418,6 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <local:DoctorBasePage></local:DoctorBasePage>
 
         <Border Margin="276,162,35,69"
             BorderBrush="Black"

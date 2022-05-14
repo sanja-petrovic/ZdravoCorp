@@ -13,6 +13,7 @@ namespace ZdravoKlinika.Data_Handler
     {
         private static String fileName = "current_user.json";
         private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
+
         public void Write(RegisteredUser user)
         {
             JsonSerializerOptions options = new JsonSerializerOptions();

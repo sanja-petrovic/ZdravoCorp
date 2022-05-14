@@ -16,8 +16,8 @@ public class Medication
     private string classification; //analgetik, antipiretik, antibiotik...
     private string indications; //za glavobolju, protiv povisene temperature, protiv bakterijske infekcije...
     private string sideEffects; //gastritis,...
-    private Doctor reviewer;
-    private string comment;
+    //private Doctor reviewer;
+    //private string comment;
     private string dosageInstructions;
     private int amount;
 
@@ -33,9 +33,9 @@ public class Medication
     public List<Medication> Alternatives { get => alternatives; set => alternatives = value; }
     public string Classification { get => classification; set => classification = value; }
     public string SideEffects { get => sideEffects; set => sideEffects = value; }
-    public Doctor Reviewer { get => reviewer; set => reviewer = value; }
+    //public Doctor Reviewer { get => reviewer; set => reviewer = value; }
     public string Indications { get => indications; set => indications = value; }
-    public string Comment { get => comment; set => comment = value; }
+    //public string Comment { get => comment; set => comment = value; }
     public string DosageInstructions { get => dosageInstructions; set => dosageInstructions = value; }
     public int Amount { get => amount; set => amount = value; }
 
@@ -45,7 +45,7 @@ public class Medication
         this.Alternatives = new List<Medication>();
     }
 
-    public Medication(string medicationId, string medicationCode, string brandName, string dosage, List<string> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, Doctor reviewer, string comment, string dosageInstructions, int amount)
+    public Medication(string medicationId, string medicationCode, string brandName, string dosage, List<string> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, string dosageInstructions, int amount)
     {
         this.medicationId = medicationId;
         this.medicationCode = medicationCode;
@@ -60,8 +60,6 @@ public class Medication
         this.classification = classification;
         this.indications = indications;
         this.sideEffects = sideEffects;
-        this.reviewer = reviewer;
-        this.comment = comment;
         this.dosageInstructions = dosageInstructions;
         this.amount = amount;
     }
