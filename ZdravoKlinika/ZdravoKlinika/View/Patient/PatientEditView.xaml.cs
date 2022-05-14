@@ -146,7 +146,7 @@ namespace ZdravoKlinika.View
                     {
                         //TODO localise this later and call logout!
                         MessageBox.Show("Previse puta ste izmenili pregled, rad ce privremeno biti onemogucen obratite se sekretaru", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                        forcedLogout();
                     }
                 }
             }
@@ -169,6 +169,19 @@ namespace ZdravoKlinika.View
                 {
                     PatientViewBase baseWindow = (PatientViewBase)window;
                     baseWindow.refreshAppointmentView();
+                }
+            }
+        }
+        private void forcedLogout()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Name == "patientBase")
+                {
+                    PatientViewBase baseWindow = (PatientViewBase)window;
+                    SignInWindow signInWindow = new SignInWindow();
+                    signInWindow.Show();
+                    baseWindow.Close();
                 }
             }
         }
