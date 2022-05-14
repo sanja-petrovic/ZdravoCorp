@@ -31,10 +31,6 @@ namespace ZdravoKlinika.Repository
 
         public void UpdateReferences(Medication medication)
         {
-            if(medication.Reviewer != null)
-            {
-                medication.Reviewer = this.doctorRepository.GetById(medication.Reviewer.PersonalId);
-            }
             if (medication.Alternatives != null)
             {
                 for (int i = 0; i < medication.Alternatives.Count; i++)
@@ -93,29 +89,26 @@ namespace ZdravoKlinika.Repository
             if (medication == null)
                 return;
             if (this.medications != null)
-                foreach (Medication m in this.medications)
+            {
+                int index = GetIndex(medication);
+                this.medications[index] = medication;
+                medicationDataHandler.Write(this.medications);
+            }
+        }
+
+        public int GetIndex(Medication medication)
+        {
+            int index = -1;
+            for(int i = 0; i < this.medications.Count; i++)
+            {
+                if(this.medications[i].MedicationId.Equals(medication.MedicationId))
                 {
-                    if (m.MedicationId.Equals(medication.MedicationId))
-                    {
-                        m.MedicationCode = medication.MedicationCode;
-                        m.BrandName = medication.BrandName;
-                        m.Dosage = medication.Dosage;
-                        m.ActiveSubstances = medication.ActiveSubstances;
-                        m.Form = medication.Form;
-                        m.Note = medication.Note;
-                        m.Allergens = medication.Allergens;
-                        m.Validated = medication.Validated;
-                        m.Alternatives = medication.Alternatives;
-                        m.Classification = medication.Classification;
-                        m.Indications = medication.Indications;
-                        m.SideEffects = medication.SideEffects;
-                        m.Reviewer = medication.Reviewer;
-                        m.Comment = medication.Comment;
-                        m.DosageInstructions = medication.DosageInstructions;
-                        m.Amount = medication.Amount;
-                    }
+                    index = i;
+                    break;
                 }
-            medicationDataHandler.Write(this.medications);
+            }
+
+            return index;
         }
     }
 }
