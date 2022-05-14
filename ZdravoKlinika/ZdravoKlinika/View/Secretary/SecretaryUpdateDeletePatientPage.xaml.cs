@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.Secretary
 {
@@ -23,12 +25,23 @@ namespace ZdravoKlinika.View.Secretary
     public partial class SecretaryUpdateDeletePatientPage : Page
     {
         RegisteredPatientController registeredPatientController;
+        PatientController patientController;
         public SecretaryUpdateDeletePatientPage(String pid)
         {
             InitializeComponent();
             registeredPatientController = new RegisteredPatientController();
-
-            updateComponents(pid);
+            patientController = new PatientController();
+            
+            Patient pat = patientController.GetById(pid);
+            if (pat.GetPatientType() == PatientType.Registered)
+            {
+                updateComponents(pid);
+            }
+            else 
+            {
+                GuestPatientFocus.Visibility = Visibility.Visible;
+                GuestPatientWindow.Visibility = Visibility.Visible;
+            }
         }
 
         private void ChoosePictureFile(object sender, RoutedEventArgs e)
@@ -129,6 +142,12 @@ namespace ZdravoKlinika.View.Secretary
             String personalID = TextBoxPID.Text;
             registeredPatientController.DeletePatient(personalID);
             NavigationService.RemoveBackEntry();
+        }
+
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            SecretaryMainWindow p = (SecretaryMainWindow)Application.Current.MainWindow;
+            p.ToHomePage();
         }
     }
 }

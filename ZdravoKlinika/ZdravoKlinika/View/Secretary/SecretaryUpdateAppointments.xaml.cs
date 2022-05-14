@@ -129,41 +129,6 @@ namespace ZdravoKlinika.View.Secretary
             }
 
         }
-
-        private void ToggleButtonUpdate_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void updateLists()
-        {
-
-            ComboBoxAddTime.ItemsSource = null;
-            ComboBoxAddDoctor.ItemsSource = null;
-            List<String> a = new List<String>();
-            List<String> b = new List<String>();
-
-
-            foreach (Doctor doc in doctorController.GetAll())
-            {
-                a.Add(doc.NameAndLast);
-            }
-
-            foreach (DateBlock block in AppointmentContoller.getFreeTimeForPatient(((DateTime)DatePickerAdd.SelectedDate).Date, Int32.Parse(TextBoxDurationAdd.Text), patientContoller.GetById(LabelPID.Content.ToString()), 8, 20))
-            {
-                b.Add(block.Start.TimeOfDay.ToString());
-            }
-
-            b.Sort();
-
-            //SelectedDateUpdate.SelectedDate = selected.DateAndTime;
-
-            ComboBoxAddDoctor.ItemsSource = a;
-            ComboBoxAddTime.ItemsSource = b;
-
-
-        }
-
         private void SelectedDateUpdate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (AppointmentDataGrid.SelectedIndex != -1)
@@ -182,7 +147,7 @@ namespace ZdravoKlinika.View.Secretary
                         a.Add(doc.NameAndLast);
                     }
 
-                    foreach (DateBlock block in AppointmentContoller.getFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, 30, selected.Patient, 8, 20))
+                    foreach (DateBlock block in AppointmentContoller.getFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, selected.Duration, selected.Patient, 8, 20))
                     {
                         b.Add(block.Start.TimeOfDay.ToString());
                     }
@@ -190,8 +155,6 @@ namespace ZdravoKlinika.View.Secretary
                     b.Add(selected.DateAndTime.TimeOfDay.ToString());
 
                     b.Sort();
-
-                    //SelectedDateUpdate.SelectedDate = selected.DateAndTime;
 
                     ComboBoxDoctorUpdate.ItemsSource = a;
                     ComboBoxTimeUpdate.ItemsSource = b;
@@ -233,43 +196,6 @@ namespace ZdravoKlinika.View.Secretary
                 LoadAppointments(LabelPID.Content.ToString());
             }
 
-        }
-
-        private void Dodavanje(object sender, RoutedEventArgs e)
-        {
-
-            DateTime date = (DateTime)DatePickerAdd.SelectedDate;
-            String[] a = ComboBoxAddTime.SelectedItem.ToString().Split(":");
-            date = date.AddMinutes(Int32.Parse(a[1]));
-            date = date.AddHours(Int32.Parse(a[0]));
-
-            String[] ab = ComboBoxAddDoctor.SelectedItem.ToString().Split(" ");
-            DateTime date2 = (DateTime.Now).AddDays(2);
-            if (date <= date2)
-                return;
-
-            int duration = Int32.Parse(TextBoxDurationAdd.Text);
-
-            AppointmentType type = (AppointmentType)ComboBoxAddType.SelectedIndex;
-            Doctor doc = doctorController.GetById(ab[2]);
-            Patient pat = patientContoller.GetById(LabelPID.Content.ToString());
-
-            List<DateBlock> t = DateBlock.getIntersection(AppointmentContoller.getFreeTimeForDoctor(date.Date, duration, doc, 8, 20), AppointmentContoller.getFreeTimeForPatient(date.Date, duration, pat, 8, 20));
-
-            foreach (DateBlock block in t)
-            {
-                if (block.Start.TimeOfDay.Equals(date.TimeOfDay))
-                {
-                    AppointmentContoller.CreateAppointment(ab[2], LabelPID.Content.ToString(), date, false, type, "314", duration);
-                    return;
-                }
-            }
-            LoadAppointments(LabelPID.Content.ToString());
-        }
-
-        private void DatePickerAdd_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            updateLists();
         }
     }
 }

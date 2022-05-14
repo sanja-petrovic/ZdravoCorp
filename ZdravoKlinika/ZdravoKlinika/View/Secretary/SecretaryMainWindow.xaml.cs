@@ -30,6 +30,7 @@ namespace ZdravoKlinika.View.Secretary
             MainContentFrame.Navigate(new SecretaryHomePage());
             PatientViewModel = new PatientViewModel();
             Select(BorderHomePage);
+            Application.Current.MainWindow = this;
         }
 
         private void HambuergerMenuIcon_MouseLeftButtonUp(object sender, RoutedEventArgs e)
@@ -46,6 +47,11 @@ namespace ZdravoKlinika.View.Secretary
         }
 
         private void HomeChangePage(object sender, RoutedEventArgs e)
+        {
+            ChangeToHomePage();
+        }
+
+        private void ChangeToHomePage()
         {
             Select(BorderHomePage);
             if (MainContentFrame.CanGoBack)
@@ -112,6 +118,7 @@ namespace ZdravoKlinika.View.Secretary
             ChangeColorUnSelected(BorderOrderEquipment);
             ChangeColorUnSelected(BorderChoosePatient);
             ChangeColorUnSelected(BorderOrderEquipment);
+            ChangeColorUnSelected(BorderUpdateAppointment);
 
             // selected border
             ChangeColorSelected(b);
@@ -147,5 +154,24 @@ namespace ZdravoKlinika.View.Secretary
             MainContentFrame.Navigate(new ChoosePatientPage(PatientViewModel));
         }
 
+        private void UpdateAppointmentPage(object sender, RoutedEventArgs e)
+        {
+            if (PatientViewModel.SelectedPatient == null)
+            {
+                ChoosePatient();
+                return;
+            }
+            Select(BorderUpdateAppointment);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryUpdateAppointments(PatientViewModel));
+            MenuContentLabel.Content = "Azuriranje termina";
+            HamburgerMenuFrame.IsChecked = false;
+        }
+
+        public void ToHomePage() 
+        {
+            ChangeToHomePage();
+        }
     }
 }

@@ -89,51 +89,7 @@ namespace ZdravoKlinika.View.Secretary
             }
         }
 
-        private void AppointmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (AppointmentDataGrid.SelectedIndex != -1) 
-            {
-                Appointment selected = (Appointment)AppointmentDataGrid.SelectedItem;
-                if (selected != null)
-                {
-                    SelectedDateUpdate.SelectedDate = selected.DateAndTime.Date;
-
-                    ComboBoxDoctorUpdate.ItemsSource = null;
-                    ComboBoxTimeUpdate.ItemsSource = null;
-                    List<String> a = new List<String>();
-                    List<String> b = new List<String>();
-
-
-                    foreach (Doctor doc in doctorController.GetAll())
-                    {
-                        a.Add(doc.NameAndLast);
-                    }
-
-                    foreach (DateBlock block in AppointmentContoller.getFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, 30, selected.Patient, 8, 20))
-                    {
-                        b.Add(block.Start.TimeOfDay.ToString());
-                    }
-
-                    b.Add(selected.DateAndTime.TimeOfDay.ToString());
-
-                    b.Sort();
-
-                    //SelectedDateUpdate.SelectedDate = selected.DateAndTime;
-
-                    ComboBoxDoctorUpdate.ItemsSource = a;
-                    ComboBoxTimeUpdate.ItemsSource = b;
-
-                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor.NameAndLast;
-                    ComboBoxTimeUpdate.SelectedItem = selected.DateAndTime.TimeOfDay.ToString();
-                }
-            }
-            
-        }
-
-        private void ToggleButtonUpdate_Checked(object sender, RoutedEventArgs e)
-        {
-            
-        }
+      
 
         private void updateLists() 
         {
@@ -164,77 +120,6 @@ namespace ZdravoKlinika.View.Secretary
             
         }
 
-        private void SelectedDateUpdate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (AppointmentDataGrid.SelectedIndex != -1)
-            {
-                Appointment selected = (Appointment)AppointmentDataGrid.SelectedItem;
-                if (selected != null)
-                {
-
-                    ComboBoxDoctorUpdate.ItemsSource = null;
-                    ComboBoxTimeUpdate.ItemsSource = null;
-                    List<String> a = new List<String>();
-                    List<String> b = new List<String>();
-
-                    foreach (Doctor doc in doctorController.GetAll())
-                    {
-                        a.Add(doc.NameAndLast);
-                    }
-
-                    foreach (DateBlock block in AppointmentContoller.getFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, 30, selected.Patient, 8, 20))
-                    {
-                        b.Add(block.Start.TimeOfDay.ToString());
-                    }
-
-                    b.Add(selected.DateAndTime.TimeOfDay.ToString());
-
-                    b.Sort();
-
-                    //SelectedDateUpdate.SelectedDate = selected.DateAndTime;
-
-                    ComboBoxDoctorUpdate.ItemsSource = a;
-                    ComboBoxTimeUpdate.ItemsSource = b;
-
-                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor.NameAndLast;
-                    ComboBoxTimeUpdate.SelectedItem = selected.DateAndTime.TimeOfDay.ToString();
-                }
-            }
-        }
-
-        private void Brisanje(object sender, RoutedEventArgs e)
-        {
-            Appointment selected = (Appointment)AppointmentDataGrid.SelectedItem;
-            if (selected != null) 
-            {
-                AppointmentContoller.DeleteAppointment(selected.AppointmentId);
-                LoadAppointments(selected.Patient.GetPatientId());
-            }
-            
-        }
-
-        private void Izmena(object sender, RoutedEventArgs e)
-        {
-            Appointment selected = (Appointment)AppointmentDataGrid.SelectedItem;
-
-            if (SelectedDateUpdate.SelectedDate != null && ComboBoxDoctorUpdate.SelectedItem != null && ComboBoxTimeUpdate.SelectedItem != null && selected != null) 
-            {
-                DateTime date = (DateTime)SelectedDateUpdate.SelectedDate;
-                String[] a = ComboBoxTimeUpdate.SelectedItem.ToString().Split(":");
-                date = date.AddMinutes(Int32.Parse(a[1]));
-                date = date.AddHours(Int32.Parse(a[0]));
-
-                String[] ab = ComboBoxDoctorUpdate.SelectedItem.ToString().Split(" ");
-                DateTime date2 = (DateTime.Now).AddDays(2);
-                if (date <= date2)
-                    return;
-
-                AppointmentContoller.EditAppointment(selected.AppointmentId, ab[2], selected.Patient.GetPatientId(), date, selected.Emergency, selected.Type, selected.Room.RoomId, selected.Duration);
-                LoadAppointments(LabelPID.Content.ToString());
-            }
-            
-        }
-
         private void Dodavanje(object sender, RoutedEventArgs e)
         {
 
@@ -255,12 +140,20 @@ namespace ZdravoKlinika.View.Secretary
             Patient pat = patientContoller.GetById(LabelPID.Content.ToString());
 
             List<DateBlock> t = DateBlock.getIntersection(AppointmentContoller.getFreeTimeForDoctor(date.Date, duration, doc, 8, 20), AppointmentContoller.getFreeTimeForPatient(date.Date, duration, pat, 8, 20));
+            
 
             foreach (DateBlock block in t)
             {
                 if (block.Start.TimeOfDay.Equals(date.TimeOfDay))
                 {
-                    AppointmentContoller.CreateAppointment(ab[2], LabelPID.Content.ToString(), date, false, type, "314", duration);
+                    RoomType roomType = RoomType.checkup;
+                    if (type == AppointmentType.Surgery) roomType = RoomType.operating;
+                    List<Room> rooms = new RoomController().GetFreeRooms(block.Start,roomType);
+                    if (rooms.Count > 0)
+                    {
+                        AppointmentContoller.CreateAppointment(ab[2], LabelPID.Content.ToString(), date, false, type, rooms.First().RoomId, duration);
+                    }
+                    
                     return;
                 }
             }

@@ -68,5 +68,12 @@
     "Name": "asd",
     "Lastname": "asd",
     "PatientType": "Guest"
+  },
+  {
+    "UserType": "Patient",
+    "PersonalId": "123456789",
+    "Name": "asd",
+    "Lastname": "asd",
+    "PatientType": "Guest"
   }
 ]
