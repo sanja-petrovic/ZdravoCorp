@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Util;
 
 namespace ZdravoKlinika.Service
 {
@@ -47,13 +48,33 @@ namespace ZdravoKlinika.Service
 
             } else if (IsAnotherSpecialistOff(request) && request.Emergency == false) {
                 result = false;
-            } else if (appointmentService.DoctorHasAppointmentsInDateRange(request.Doctor, new Util.DateBlock(request.StartDate, request.EndDate)))
+            } else if (appointmentService.HasScheduledAppointments(request.Doctor.PersonalId, new Util.DateBlock(request.StartDate, request.EndDate)))
             {
                 result = false;
             }
 
             return result;
         }
+
+        public bool IsAnotherSpecialistOff(DateBlock period, String specialty)
+        {
+
+            bool result = false;
+            foreach (TimeOffRequest r in this.GetAll())
+            {
+                if (specialty.Equals(r.Doctor.Specialty))
+                {
+                    if (r.StartDate <= period.End && period.Start <= r.EndDate)
+                    {
+                        result = true;
+                    }
+                    if(result) { break; }
+                }
+            }
+
+            return result;
+        }
+
 
         public bool IsAnotherSpecialistOff(TimeOffRequest request)
         {
@@ -76,6 +97,26 @@ namespace ZdravoKlinika.Service
 
             return result;
         }
+
+        public bool HasAlreadyMadeRequest(DateBlock period, String doctorId)
+        {
+            bool result = false;
+            foreach (TimeOffRequest r in this.GetAll())
+            {
+                if (r.EndDate.CompareTo(DateTime.Today) < 0 || !(r.Doctor.PersonalId.Equals(doctorId)))
+                {
+                    continue;
+                }
+                else if (r.StartDate == period.Start && period.End == r.EndDate)
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
 
         public List<TimeOffRequest> GetRequestsByDoctor(Doctor doctor)
         {

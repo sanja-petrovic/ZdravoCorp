@@ -57,18 +57,16 @@ public class AppointmentService
         return this.appointmentRepository.GetAppointmentsByDoctorDate(doctorId, dateTime);
     }
 
-    public bool DoctorHasAppointmentsInDateRange(Doctor doctor, DateBlock dateBlock)
+    public bool HasScheduledAppointments(String doctorId, DateBlock dateBlock)
     {
         bool result = false;
-        foreach(Appointment a in this.GetAppointmentsByDoctorId(doctor.PersonalId))
+        foreach(Appointment a in this.GetAppointmentsByDoctorId(doctorId))
         {
             if(!a.Over)
             {
                 if ((a.DateAndTime.CompareTo(dateBlock.Start)) >= 0 && (a.DateAndTime.CompareTo(dateBlock.End) <= 0)) {
                     result = true;
                 }
-                var hsdmf = a.DateAndTime.CompareTo(dateBlock.Start);
-                var dsjkf = a.DateAndTime.CompareTo(dateBlock.End);
             }
         }
 

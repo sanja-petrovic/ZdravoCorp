@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Controller;
+using ZdravoKlinika.Util;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -63,6 +64,30 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 EmergencyString = "Ne";
             }
+        }
+
+        public bool CheckAppointments()
+        {
+            DateBlock period = new DateBlock(Start, End);
+            return this.controller.HasScheduledAppointments(Doctor.PersonalId, period);
+        }
+
+        public bool CheckDuplicate()
+        {
+            DateBlock period = new DateBlock(Start, End);
+            return this.controller.HasAlreadyMadeRequest(period, Doctor.PersonalId);
+        }
+
+        public bool CheckRequests()
+        {
+            DateBlock period = new DateBlock(Start, End);
+            bool retVal = this.controller.IsAnotherSpecialistOff(period, Doctor.Specialty);
+            if(emergency == true)
+            {
+                retVal = false;
+            }
+
+            return retVal;
         }
 
         public void Save()

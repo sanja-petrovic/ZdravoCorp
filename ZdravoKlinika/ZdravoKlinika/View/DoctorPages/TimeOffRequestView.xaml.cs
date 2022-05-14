@@ -30,24 +30,84 @@ namespace ZdravoKlinika.View.DoctorPages
             InitializeComponent();
             StartDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(1)));
             EndDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(1)));
+
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            this.viewModel.Save();
-            this.Close();
+            if(this.viewModel.CheckDuplicate())
+            {
+                DuplicateWarning.Visibility = Visibility.Visible;
+                WarningImg.Visibility = Visibility.Visible;
+                ConfirmButton.IsEnabled = false;
+            } else if (this.viewModel.CheckRequests()) {
+
+                SpecialistsWarning.Visibility = Visibility.Visible;
+                WarningImg.Visibility = Visibility.Visible;
+                ConfirmButton.IsEnabled = false;
+            } else
+            {
+                this.viewModel.Save();
+                this.Close();
+            }
         }
 
         private void StartDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(EndDatePicker != null)
+            if (EndDatePicker != null)
             {
+                SpecialistsWarning.Visibility = Visibility.Collapsed;
+                AppointmentsWarning.Visibility = Visibility.Collapsed;
+                DuplicateWarning.Visibility = Visibility.Collapsed;
+                WarningImg.Visibility = Visibility.Collapsed;
+                ConfirmButton.IsEnabled = true;
                 EndDatePicker.BlackoutDates.Clear();
-                EndDatePicker.SelectedDate = StartDatePicker.SelectedDate;
+                if (EndDatePicker.SelectedDate < StartDatePicker.SelectedDate)
+                {
+                    EndDatePicker.SelectedDate = StartDatePicker.SelectedDate;
+                }
                 DateTime date = (DateTime)StartDatePicker.SelectedDate;
                 date = date.AddDays(-1);
                 EndDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, date));
             }
+        }
+
+        private void EndDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(this.IsInitialized)
+            {
+                if (this.viewModel.CheckAppointments())
+                {
+                    AppointmentsWarning.Visibility = Visibility.Visible;
+                    WarningImg.Visibility = Visibility.Visible;
+                    ConfirmButton.IsEnabled = false;
+                }
+                else if (this.viewModel.CheckDuplicate())
+                {
+                    DuplicateWarning.Visibility = Visibility.Visible;
+                    WarningImg.Visibility = Visibility.Visible;
+                    ConfirmButton.IsEnabled = false;
+                }
+                else
+                {
+                    SpecialistsWarning.Visibility = Visibility.Collapsed;
+                    AppointmentsWarning.Visibility = Visibility.Collapsed;
+                    WarningImg.Visibility = Visibility.Collapsed;
+                    ConfirmButton.IsEnabled = true;
+                }
+            }
+        }
+
+        private void EmergencyCB_Checked(object sender, RoutedEventArgs e)
+        {
+            SpecialistsWarning.Visibility = Visibility.Collapsed;
+            WarningImg.Visibility = Visibility.Collapsed;
+            ConfirmButton.IsEnabled = true;
+        }
+
+        private void GiveUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

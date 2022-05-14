@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Service;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Util;
 
 namespace ZdravoKlinika.Controller
 {
@@ -46,6 +47,22 @@ namespace ZdravoKlinika.Controller
             DoctorService doctorService = new DoctorService();
             Doctor doctor = doctorService.GetById(doctorId);
             return this.service.GetDoctorsRequestsByStatus(doctor, status);
+        }
+
+        public bool IsAnotherSpecialistOff(DateBlock period, String specialty)
+        {
+            return this.service.IsAnotherSpecialistOff(period, specialty);
+        }
+
+        public bool HasAlreadyMadeRequest(DateBlock period, String doctorId)
+        {
+            return this.service.HasAlreadyMadeRequest(period, doctorId);
+        }
+
+        public bool HasScheduledAppointments(String doctorId, DateBlock period)
+        {
+            AppointmentService appointmentService = new AppointmentService();
+            return appointmentService.HasScheduledAppointments(doctorId, period);
         }
 
     }

@@ -1788,7 +1788,7 @@
                                     <Grid RenderTransformOrigin="0.5,0.5" x:Name="RootGrid">
                                         <Ellipse x:Name ="OuterRing" Width ="40" Height ="40" Fill="{TemplateBinding Background}"/>
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        <Border Background="{TemplateBinding Background}" BorderBrush="#FF9E98FF" BorderThickness="0">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
                                     </Grid>
@@ -1926,7 +1926,7 @@
                             <Grid RenderTransformOrigin="0.5,0.5" x:Name="RootGrid">
                                 <Ellipse x:Name ="OuterRing" Width ="40" Height ="40" Fill="{TemplateBinding Background}"/>
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                <Border Name="border" Background="{TemplateBinding Background}" BorderBrush="#FF01F176" BorderThickness="1">
+                                <Border Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
 
