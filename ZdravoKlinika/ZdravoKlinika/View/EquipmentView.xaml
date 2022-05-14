@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="Pregled opreme" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dataGridEquipment" ItemsSource="{Binding Equipment}" SelectionChanged="dataGridEquipment_SelectionChanged" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" AutoGenerateColumns="False" SelectedIndex="-1" Width="650" Height="300" HeadersVisibility="Column" CanUserAddRows = "False" Margin="75,58,50,0">
+        <DataGrid x:Name="dataGridEquipment" ItemsSource="{Binding Equipment}" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" AutoGenerateColumns="False" SelectedIndex="-1" Width="650" Height="300" HeadersVisibility="Column" CanUserAddRows = "False" Margin="75,58,50,0">
             <DataGrid.Columns>
                 <DataGridTextColumn CanUserSort="False" Header="Sifra" Binding="{Binding Id}" Width="*"/>
                 <DataGridTextColumn CanUserSort="False" Header="Naziv" Binding="{Binding Name}" Width="*"/>
