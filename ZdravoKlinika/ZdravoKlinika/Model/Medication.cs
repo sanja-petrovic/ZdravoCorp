@@ -7,9 +7,9 @@ public class Medication
     private string medicationCode;
     private String brandName;
     private string dosage;
-    private List<String> activeSubstances;
+    private List<String> activeSubstances; 
     private string form;
-    private String note;
+    private String note; 
     private List<string> allergens;
     private bool validated;
     private List<Medication> alternatives;

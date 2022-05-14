@@ -35,5 +35,11 @@ namespace ZdravoKlinika.View
         {
 
         }
+
+        private void AddMedicineButton_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerAddMedicineView m = new ManagerAddMedicineView();
+            m.Show();
+        }
     }
 }
