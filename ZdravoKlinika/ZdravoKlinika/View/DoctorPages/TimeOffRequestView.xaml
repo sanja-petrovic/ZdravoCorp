@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:TimeOffRequestViewModel}"
         mc:Ignorable="d" xml:lang="sr-Latn-RS" 
-        Title="Zahtev za slobodne dane" Height="507" Width="301" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight">
-    <Grid Height="422" Width="301">
-        <TextBlock HorizontalAlignment="Left" Margin="46,168,0,0" TextWrapping="Wrap" Text="Razlog" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Text="{Binding Reason, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Height="94" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.5,0.5">
+        Title="Zahtev za slobodne dane" Height="455" Width="301" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight">
+    <Grid Height="455" Width="301">
+        <TextBlock HorizontalAlignment="Left" Margin="46,228,0,0" TextWrapping="Wrap" Text="Razlog" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" Text="{Binding Reason, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="47,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Height="42" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.5,0.5">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -23,13 +23,13 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <DatePicker Name="StartDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}"  Style="{DynamicResource DatePickerStyle1}"  SelectedDate="{Binding Start, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,44,0,0" VerticalAlignment="Top" Width="216" SelectedDateChanged="StartDatePicker_SelectedDateChanged">
-            
+        <DatePicker Name="StartDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}"  Style="{DynamicResource DatePickerStyle1}"  SelectedDate="{Binding Start, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top" Width="216" SelectedDateChanged="StartDatePicker_SelectedDateChanged">
+
         </DatePicker>
-        <DatePicker Name="EndDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" Style="{DynamicResource DatePickerStyle1}"   SelectedDate="{Binding End, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,119,0,0" VerticalAlignment="Top" Width="216"/>
-        <TextBlock HorizontalAlignment="Left" Margin="46,10,0,0" TextWrapping="Wrap" Text="Datum početka" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="104"/>
-        <TextBlock HorizontalAlignment="Left" Margin="46,86,0,0" TextWrapping="Wrap" Text="Datum kraja" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="104"/>
-        <Border  Margin="118,382,42,14"
+        <DatePicker Name="EndDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" Style="{DynamicResource DatePickerStyle1}"   SelectedDate="{Binding End, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,174,0,0" VerticalAlignment="Top" Width="216"/>
+        <TextBlock HorizontalAlignment="Left" Margin="46,38,0,0" TextWrapping="Wrap" Text="Datum početka" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="104"/>
+        <TextBlock HorizontalAlignment="Left" Margin="46,146,0,0" TextWrapping="Wrap" Text="Datum kraja" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="104"/>
+        <Border  Margin="166,341,43,69"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -37,7 +37,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Name="ConfirmButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Podnesite zahtev" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="115,379,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="147" Height="33" Click="ConfirmButton_Click">
+        <Button Name="ConfirmButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Podnesite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="162,337,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="100" Height="33" Click="ConfirmButton_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -47,7 +47,17 @@
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="72,315,0,0" TextWrapping="Wrap" Text="Hitno?" VerticalAlignment="Top" FontWeight="Regular" Foreground="#555557" FontSize="14"/>
-        <CheckBox Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="46,317,239,85"/>
+        <TextBlock HorizontalAlignment="Left" Margin="68,306,0,0" TextWrapping="Wrap" Text="Hitno?" VerticalAlignment="Top" FontWeight="Regular" Foreground="#555557" FontSize="14"/>
+        <CheckBox Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="46,306,239,96"/>
+
+        <TextBlock Name="TwoDaysWarning"  Visibility="Visible"  Foreground="#555557" HorizontalAlignment="Left" Margin="46,62,0,0" TextWrapping="Wrap" Text="Zahtev možete podneti najmanje dva dana pred željeni datum." VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="216" Height="54"/>
+
+        <TextBlock Name="AppointmentsWarning"  Visibility="Hidden"  Foreground="#FE5D7A" HorizontalAlignment="Left" Margin="46,207,0,0" TextWrapping="Wrap" Text="Imate zakazane termine u ovom periodu." VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="266" Height="15"/>
+
+        <Rectangle Fill="#FE5D7A" Margin="46,337,39,55" RadiusX="10" RadiusY="10" Visibility="Hidden"/>
+        <TextBlock Name="SpecialistsWarning"  Visibility="Hidden"  Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" Margin="60,343,0,0" TextWrapping="Wrap" Text="Više od jednog lekara Vaše specijalnosti je već podnelo zahtev za slobodne dane u ovom periodu." VerticalAlignment="Top"  FontSize="12" Width="195" Height="63"/>
+
+
+
     </Grid>
 </Window>

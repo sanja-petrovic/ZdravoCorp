@@ -78,5 +78,20 @@ namespace ZdravoKlinika.Repository
             return requests;
         }
 
+        public List<TimeOffRequest> GetDoctorsRequestsByStatus(Doctor doctor, RequestState status)
+        {
+            List<TimeOffRequest> requests = new List<TimeOffRequest>();
+
+            foreach (TimeOffRequest request in this.GetRequestsByDoctor(doctor))
+            {
+                if(request.State == status)
+                {
+                    requests.Add(request);
+                }
+            }
+
+            return requests;
+        }
+
     }
 }

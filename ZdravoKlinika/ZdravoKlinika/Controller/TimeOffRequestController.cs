@@ -40,5 +40,13 @@ namespace ZdravoKlinika.Controller
             Doctor doctor = doctorService.GetById(doctorId);
             return this.service.GetRequestsByDoctor(doctor);
         }
+
+        public List<TimeOffRequest> GetDoctorsRequestsByStatus(String doctorId, RequestState status)
+        {
+            DoctorService doctorService = new DoctorService();
+            Doctor doctor = doctorService.GetById(doctorId);
+            return this.service.GetDoctorsRequestsByStatus(doctor, status);
+        }
+
     }
 }

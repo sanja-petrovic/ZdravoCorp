@@ -28,8 +28,8 @@ namespace ZdravoKlinika.View.DoctorPages
             this.viewModel = new TimeOffRequestViewModel(doctor);
             DataContext = this.viewModel;
             InitializeComponent();
-            StartDatePicker.BlackoutDates.AddDatesInPast();
-            EndDatePicker.BlackoutDates.AddDatesInPast();
+            StartDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(1)));
+            EndDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(1)));
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)

@@ -10,19 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
-    /// <summary>
-    /// Interaction logic for DaysOffView.xaml
-    /// </summary>
-    public partial class TimeOffView : Window
+    public partial class TimeOffView : UserControl
     {
         private AllRequestsViewModel viewModel;
         private Doctor doctor;
-        public TimeOffView(Doctor doctor)
+        public TimeOffView()
+        {
+        }
+
+        public void Load(Doctor doctor)
         {
             this.doctor = doctor;
             this.viewModel = new AllRequestsViewModel(doctor);
@@ -36,5 +38,6 @@ namespace ZdravoKlinika.View.DoctorPages
             timeOffRequestView.ShowDialog();
             this.viewModel.Load();
         }
+
     }
 }

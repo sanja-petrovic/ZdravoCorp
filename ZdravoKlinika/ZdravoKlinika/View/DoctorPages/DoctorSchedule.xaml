@@ -20,10 +20,10 @@
         </Style>
     </Page.Resources>
 
-    <Grid RenderTransformOrigin="0.452,0.431">
+    <Grid>
 
-        <local:AppointmentsTabPanel x:Name="ApptTabPanel"/>
-        <Border  Margin="290,201,360,241"
+        <local:AppointmentsTabPanel x:Name="ApptTabPanel" Margin="0, -145, 0, 0"/>
+        <Border  Margin="294,136,363,318"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -31,11 +31,10 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Viewbox Stretch="Uniform" Margin="289,111,359,151">
+        <Viewbox Stretch="Uniform" Margin="289,18,359,200">
             <Calendar SelectedDatesChanged="CalendarSelectionChanged" Name="Cal" Style="{DynamicResource CalendarStyle1}" CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}"/>
         </Viewbox>
-
-        <Border  Margin="538,537,360,200"
+        <Border  Margin="576,90,362,650"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -43,23 +42,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Style="{StaticResource ResourceKey=fancyButtonStyle2}" OverridesDefaultStyle="False" Focusable="False" Content="Slobodni dani" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="537,536,0,0" VerticalAlignment="Top" FontSize="14"  Foreground="#555557"  Background="White" Padding="7" Width="128" Height="33" Click="ViewDaysOff">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-
-            </Button.Resources>
-        </Button>
-        <Border  Margin="575,160,360,580"
-            BorderBrush="Black"
-            BorderThickness="2"
-            CornerRadius="10">
-            <Border.Effect>
-                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
-            </Border.Effect>
-        </Border>
-        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Zakažite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="572,158,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="93" Height="33"  Foreground="#555557" >
+        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Zakažite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="572,88,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="93" Height="33"  Foreground="#555557" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -69,6 +52,34 @@
                 <StaticResource ResourceKey="fancyButtonStyle2"/>
             </Button.Style>
         </Button>
-        <Label Content="Mesečni raspored" Margin="285,150,466,554" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Zakazani termini" Margin="289,82,462,622" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Slobodni dani" Margin="289,465,462,239" FontSize="24" FontWeight="Bold"/>
+        <Border Margin="294,524,63,46"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border Margin="825,476,60,262"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button x:Name="RequestButton" OverridesDefaultStyle="False"  Focusable="False" Content="Podnesite zahtev" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="822,474,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="144" Height="32"  Foreground="#555557" Click="RequestButton_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle2"/>
+            </Button.Style>
+        </Button>
+        <local:TimeOffView x:Name="TimeOffView"></local:TimeOffView>
     </Grid>
 </Page>

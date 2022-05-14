@@ -27,6 +27,7 @@ namespace ZdravoKlinika.View.DoctorPages
             ApptTabPanel.Parent1 = this;
             ApptTabPanel.Doctor = doctor;
             ApptTabPanel.Selected = DateTime.Today;
+            TimeOffView.Load(doctor);
         }
 
         public DateTime Selected { get => selected; set => selected = value; }
@@ -47,8 +48,13 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void ViewDaysOff(object sender, RoutedEventArgs e)
         {
-            TimeOffView timeOffView = new TimeOffView(Doctor);
-            timeOffView.ShowDialog();
+        }
+
+        private void RequestButton_Click(object sender, RoutedEventArgs e)
+        {
+            TimeOffRequestView timeOffRequestView = new TimeOffRequestView(this.doctor);
+            timeOffRequestView.ShowDialog();
+            TimeOffView.Load(doctor);
         }
     }
 }
