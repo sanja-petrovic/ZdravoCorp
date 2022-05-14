@@ -27,13 +27,13 @@ namespace ZdravoKlinika.Service
             return this.medicationRepository.GetById(medId);
         }
 
-        public void CreateMedication(string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, List<String> notes, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, Doctor reviewer, string note, string dosageInstructions)
+        public void CreateMedication(string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, Doctor reviewer, string comment, string dosageInstructions, int amount)
         {         
-            Medication m = new Medication(GenerateId().ToString(), medicationCode, brandName, dosage, activeSubstances, form, notes, allergens, validated, alternatives, classification, indications, sideEffects, reviewer, note, dosageInstructions);
+            Medication m = new Medication(GenerateId().ToString(), medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, reviewer, comment, dosageInstructions, amount);
             this.medicationRepository.CreateMedication(m);
         }
 
-        public void UpdateMedication(string medicationId, string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, List<String> notes, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, Doctor reviewer, string note, string dosageInstructions)
+        public void UpdateMedication(string medicationId, string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, Doctor reviewer, string comment, string dosageInstructions, int amount)
         {
             Medication m = this.medicationRepository.GetById(medicationId);
 
@@ -42,7 +42,7 @@ namespace ZdravoKlinika.Service
             m.Dosage = dosage;
             m.ActiveSubstances = activeSubstances;
             m.Form = form;
-            m.Notes = notes;
+            m.Note = note;
             m.Allergens = allergens;
             m.Validated = validated;
             m.Alternatives = alternatives;
@@ -50,8 +50,9 @@ namespace ZdravoKlinika.Service
             m.Indications = indications;
             m.SideEffects = sideEffects;
             m.Reviewer = reviewer;
-            m.Note = note;
+            m.Comment = comment;
             m.DosageInstructions = dosageInstructions;
+            m.Amount = amount;
 
             this.medicationRepository.UpdateMedication(m);
         }

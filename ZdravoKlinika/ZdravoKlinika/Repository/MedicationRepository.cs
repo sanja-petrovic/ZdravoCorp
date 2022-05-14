@@ -102,7 +102,7 @@ namespace ZdravoKlinika.Repository
                         m.Dosage = medication.Dosage;
                         m.ActiveSubstances = medication.ActiveSubstances;
                         m.Form = medication.Form;
-                        m.Notes = medication.Notes;
+                        m.Note = medication.Note;
                         m.Allergens = medication.Allergens;
                         m.Validated = medication.Validated;
                         m.Alternatives = medication.Alternatives;
@@ -110,8 +110,9 @@ namespace ZdravoKlinika.Repository
                         m.Indications = medication.Indications;
                         m.SideEffects = medication.SideEffects;
                         m.Reviewer = medication.Reviewer;
-                        m.Note = medication.Note;
+                        m.Comment = medication.Comment;
                         m.DosageInstructions = medication.DosageInstructions;
+                        m.Amount = medication.Amount;
                     }
                 }
             medicationDataHandler.Write(this.medications);

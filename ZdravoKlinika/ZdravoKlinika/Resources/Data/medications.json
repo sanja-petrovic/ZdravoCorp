@@ -6,7 +6,7 @@
     "Dosage": "200mg",
     "ActiveSubstances": [ "ibuprofen" ],
     "Form": "film tableta",
-    "Notes": [],
+    "Note": "",
     "Allergens": [ "ibuprofen", "brufen" ],
     "Validated": true,
     "Alternatives": [],
@@ -14,8 +14,9 @@
     "Indications": null,
     "SideEffects": null,
     "Reviewer": null,
-    "Note": null,
-    "DosageInstructions": null
+    "Comment": "",
+    "DosageInstructions": null,
+    "Amount": 222
   },
   {
     "MedicationId": "2",
@@ -24,7 +25,7 @@
     "Dosage": "400mg",
     "ActiveSubstances": [ "ibuprofen" ],
     "Form": "film tableta",
-    "Notes": [],
+    "Note": "",
     "Allergens": [ "ibuprofen", "brufen" ],
     "Validated": true,
     "Alternatives": [],
@@ -32,8 +33,9 @@
     "Indications": null,
     "SideEffects": null,
     "Reviewer": null,
-    "Note": null,
-    "DosageInstructions": null
+    "Comment": "",
+    "DosageInstructions": null,
+    "Amount": 191
   },
 
   {
@@ -43,7 +45,7 @@
     "Dosage": "500mg+30mg+15mg+60mg",
     "ActiveSubstances": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
     "Form": "film tableta",
-    "Notes": [],
+    "Note": "",
     "Allergens": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
     "Validated": true,
     "Alternatives": [],
@@ -51,8 +53,9 @@
     "Indications": null,
     "SideEffects": null,
     "Reviewer": null,
-    "Note": null,
-    "DosageInstructions": null
+    "Comment": "",
+    "DosageInstructions": null,
+    "Amount": 192
   },
 
   {
@@ -62,7 +65,7 @@
     "Dosage": "5mg/mL+1.5mg/mL",
     "ActiveSubstances": [ "cetilpiridinijum-hlorid", "benzidamin" ],
     "Form": "sprej za usnu sluznicu, rastvor",
-    "Notes": [],
+    "Note": "",
     "Allergens": [ "cetilpiridinijum-hlorid", "benzidamin" ],
     "Validated": true,
     "Alternatives": [],
@@ -70,8 +73,9 @@
     "Indications": null,
     "SideEffects": null,
     "Reviewer": null,
-    "Note": null,
-    "DosageInstructions": null
+    "Comment": "",
+    "DosageInstructions": null,
+    "Amount": 208
   },
 
   {
@@ -81,7 +85,7 @@
     "Dosage": "250mg",
     "ActiveSubstances": [ "azitromicin" ],
     "Form": "kapsula, tvrda",
-    "Notes": [],
+    "Note": "",
     "Allergens": [ "azitromicin" ],
     "Validated": true,
     "Alternatives": [],
@@ -89,8 +93,9 @@
     "Indications": null,
     "SideEffects": null,
     "Reviewer": null,
-    "Note": null,
-    "DosageInstructions": null
+    "Comment": "",
+    "DosageInstructions": null,
+    "Amount": 215
   },
   {
     "MedicationId": "6",
@@ -99,7 +104,7 @@
     "Dosage": "500mg",
     "ActiveSubstances": [ "ampicilin" ],
     "Form": "kapsula, tvrda",
-    "Notes": [],
+    "Note": "",
     "Allergens": [ "azitromicin", "penicilin" ],
     "Validated": true,
     "Alternatives": [],
@@ -107,7 +112,8 @@
     "Indications": null,
     "SideEffects": null,
     "Reviewer": null,
-    "Note": null,
-    "DosageInstructions": null
+    "Comment": "",
+    "DosageInstructions": null,
+    "Amount": 254
   }
 ]
