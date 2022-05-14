@@ -21,16 +21,16 @@ using ZdravoKlinika.ViewModel.SecretaryViewModel;
 namespace ZdravoKlinika.View.Secretary
 {
     /// <summary>
-    /// Interaction logic for SecretaryCreateAppointment.xaml
+    /// Interaction logic for SecretaryUpdateAppointments.xaml
     /// </summary>
-    public partial class SecretaryCreateAppointment : Page
+    public partial class SecretaryUpdateAppointments : Page
     {
         PatientController patientContoller;
         AppointmentController appointmentContoller;
         PatientViewModel patientViewModel;
         DoctorController doctorController;
         List<Appointment> apps;
-        public SecretaryCreateAppointment(PatientViewModel viewModel)
+        public SecretaryUpdateAppointments(PatientViewModel viewModel)
         {
             InitializeComponent();
             patientViewModel = viewModel;
@@ -62,7 +62,7 @@ namespace ZdravoKlinika.View.Secretary
         public PatientController PatientContoller { get => patientContoller; set => patientContoller = value; }
         public AppointmentController AppointmentContoller { get => appointmentContoller; set => appointmentContoller = value; }
 
-        
+
         private void LoadAppointments(String id)
         {
             AppointmentContoller = new AppointmentController();
@@ -91,7 +91,7 @@ namespace ZdravoKlinika.View.Secretary
 
         private void AppointmentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (AppointmentDataGrid.SelectedIndex != -1) 
+            if (AppointmentDataGrid.SelectedIndex != -1)
             {
                 Appointment selected = (Appointment)AppointmentDataGrid.SelectedItem;
                 if (selected != null)
@@ -127,15 +127,15 @@ namespace ZdravoKlinika.View.Secretary
                     ComboBoxTimeUpdate.SelectedItem = selected.DateAndTime.TimeOfDay.ToString();
                 }
             }
-            
+
         }
 
         private void ToggleButtonUpdate_Checked(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
-        private void updateLists() 
+        private void updateLists()
         {
 
             ComboBoxAddTime.ItemsSource = null;
@@ -160,8 +160,8 @@ namespace ZdravoKlinika.View.Secretary
 
             ComboBoxAddDoctor.ItemsSource = a;
             ComboBoxAddTime.ItemsSource = b;
-            
-            
+
+
         }
 
         private void SelectedDateUpdate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -205,19 +205,19 @@ namespace ZdravoKlinika.View.Secretary
         private void Brisanje(object sender, RoutedEventArgs e)
         {
             Appointment selected = (Appointment)AppointmentDataGrid.SelectedItem;
-            if (selected != null) 
+            if (selected != null)
             {
                 AppointmentContoller.DeleteAppointment(selected.AppointmentId);
                 LoadAppointments(selected.Patient.GetPatientId());
             }
-            
+
         }
 
         private void Izmena(object sender, RoutedEventArgs e)
         {
             Appointment selected = (Appointment)AppointmentDataGrid.SelectedItem;
 
-            if (SelectedDateUpdate.SelectedDate != null && ComboBoxDoctorUpdate.SelectedItem != null && ComboBoxTimeUpdate.SelectedItem != null && selected != null) 
+            if (SelectedDateUpdate.SelectedDate != null && ComboBoxDoctorUpdate.SelectedItem != null && ComboBoxTimeUpdate.SelectedItem != null && selected != null)
             {
                 DateTime date = (DateTime)SelectedDateUpdate.SelectedDate;
                 String[] a = ComboBoxTimeUpdate.SelectedItem.ToString().Split(":");
@@ -232,7 +232,7 @@ namespace ZdravoKlinika.View.Secretary
                 AppointmentContoller.EditAppointment(selected.AppointmentId, ab[2], selected.Patient.GetPatientId(), date, selected.Emergency, selected.Type, selected.Room.RoomId, selected.Duration);
                 LoadAppointments(LabelPID.Content.ToString());
             }
-            
+
         }
 
         private void Dodavanje(object sender, RoutedEventArgs e)

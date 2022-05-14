@@ -123,14 +123,12 @@ namespace ZdravoKlinika.View.Secretary
 
             registeredPatientController.UpdatePatient(personalID, name, lastname, phone, password, profilePic, street, stnumber, city, country, bloodType, occupation, ECname, ECphone, allergies, diagnosis);
             NavigationService.RemoveBackEntry();
-            NavigationService.Navigate(new SecretaryChoosePatientUDPage());
         }
         private void DeletePatient(object sender, RoutedEventArgs e)
         { 
             String personalID = TextBoxPID.Text;
             registeredPatientController.DeletePatient(personalID);
             NavigationService.RemoveBackEntry();
-            NavigationService.Navigate(new SecretaryChoosePatientUDPage());
         }
     }
 }
