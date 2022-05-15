@@ -9,7 +9,7 @@
     "Note": "",
     "Allergens": [ "ibuprofen", "brufen" ],
     "Validated": true,
-    "Alternatives": [],
+    "Alternatives": ["3"],
     "Classification": null,
     "Indications": null,
     "SideEffects": null,

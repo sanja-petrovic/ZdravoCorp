@@ -37,6 +37,8 @@ namespace ZdravoKlinika.View.DoctorPages
             doctorSchedule = new DoctorSchedule(this.viewModel.Doctor);
             doctorMedicationsView = new DoctorMedicationsView(this.viewModel.Doctor);
             MainFrame.Navigate(doctorHomePage);
+            MedicationController medicationController = new MedicationController();
+            medicationController.GetById("1");
         }
 
         private void GoToSchedule(object sender, MouseButtonEventArgs e)

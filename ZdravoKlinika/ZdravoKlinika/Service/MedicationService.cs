@@ -49,7 +49,7 @@ namespace ZdravoKlinika.Service
         public int GenerateId()
         {
             List<Medication> medications = this.medicationRepository.GetAll();
-            int newMedicationId = medications.Count > 0 ? Int32.Parse(medications.Last().MedicationId + 1) : 1;
+            int newMedicationId = medications.Count > 0 ? Int32.Parse(medications.Last().MedicationId) + 1 : 1;
             
             return newMedicationId;
         }
