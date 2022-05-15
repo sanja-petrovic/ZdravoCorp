@@ -43,5 +43,10 @@ namespace ZdravoKlinika.Controller
             this.medicationService.DeleteMedication(medicationId);
         }
 
+        public List<Medication> GetApproved()
+        {
+            return this.medicationService.GetApproved();
+        }
+
     }
 }

@@ -108,10 +108,5 @@ namespace ZdravoKlinika.View
             }
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            //https://stackoverflow.com/questions/40529684/how-to-store-login-info-of-a-wpf-application
-            //https://stackoverflow.com/questions/33294471/proper-way-to-save-previous-user-login-info
-        }
     }
 }

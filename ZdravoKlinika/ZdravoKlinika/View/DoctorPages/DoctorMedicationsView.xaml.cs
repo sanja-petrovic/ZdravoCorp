@@ -12,16 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
     /// Interaction logic for DoctorMedicationsView.xaml
     /// </summary>
-    public partial class DoctorMedicationsView : Page
+    public partial class DoctorMedicationsView : UserControl
     {
-        public DoctorMedicationsView()
+        DoctorMedicationsViewModel viewModel;
+        public DoctorMedicationsView(Doctor doctor)
         {
+            viewModel = new DoctorMedicationsViewModel(doctor);
+            DataContext = viewModel;
             InitializeComponent();
         }
 

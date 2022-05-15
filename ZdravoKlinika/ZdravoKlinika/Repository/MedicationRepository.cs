@@ -110,5 +110,21 @@ namespace ZdravoKlinika.Repository
 
             return index;
         }
+
+        public List<Medication> GetApproved()
+        {
+            List<Medication> list = new List<Medication>();
+
+            foreach(Medication medication in this.medications)
+            {
+                if(medication.Validated)
+                {
+                    UpdateReferences(medication);
+                    list.Add(medication);
+                }
+            }
+
+            return list;
+        }
     }
 }

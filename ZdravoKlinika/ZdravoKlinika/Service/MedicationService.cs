@@ -53,5 +53,11 @@ namespace ZdravoKlinika.Service
             
             return newMedicationId;
         }
+
+
+        public List<Medication> GetApproved()
+        {
+            return this.medicationRepository.GetApproved();
+        }
     }
 }
