@@ -6,7 +6,7 @@
       "6,40"
     ],
     "OrderId": "o18FozuH",
-    "IsOrderFinished": false
+    "IsOrderFinished": true
   },
   {
     "CreationDate": "2022-05-10T20:36:33.4208426-07:00",
@@ -14,7 +14,7 @@
       "11,11"
     ],
     "OrderId": "BRz9P1Uu",
-    "IsOrderFinished": false
+    "IsOrderFinished": true
   },
   {
     "CreationDate": "2022-05-10T20:39:30.0045541-07:00",
@@ -22,6 +22,18 @@
       "8,4"
     ],
     "OrderId": "1EGZD47V",
+    "IsOrderFinished": true
+  },
+  {
+    "CreationDate": "2022-05-15T12:18:18.6302665-07:00",
+    "EquipmentToOrder": [
+      "13,120",
+      "14,120",
+      "15,260",
+      "16,1080",
+      "17,266"
+    ],
+    "OrderId": "W22b4cNG",
     "IsOrderFinished": false
   }
 ]

@@ -33,10 +33,7 @@ namespace ZdravoKlinika.View.Secretary
             equipmentController = new EquipmentController();
             orderController = new OrderController();
 
-            List<Equipment> eq =  equipmentController.GetAll();
-
-            ComboBoxEquipment.ItemsSource = eq;
-            ComboBoxEquipment.SelectedIndex = 0;
+            List<Equipment> eq =  equipmentController.GetByExpendability(true);
 
             DataGridStorageEquipment.ItemsSource = eq;
 
@@ -56,7 +53,7 @@ namespace ZdravoKlinika.View.Secretary
         {
             foreach (Equipment equipment in equipmentInOrder)
             {
-                if (equipment.Id == ComboBoxEquipment.SelectedValue.ToString())
+                if (equipment.Name.Equals(TextBoxName.Text))
                 {
                     equipment.Amount += Int32.Parse(TextBoxAmount.Text);
                     RefreshGrid();
@@ -65,11 +62,37 @@ namespace ZdravoKlinika.View.Secretary
             }
 
             Equipment eq = new Equipment();
-            eq.Id = ComboBoxEquipment.SelectedValue.ToString();
-            eq.Amount = Int32.Parse(TextBoxAmount.Text);
-            eq.Name = ComboBoxEquipment.Text;
+            
+            foreach (Equipment equip in equipmentController.GetByExpendability(true))
+            {
+                if (equip.Name.Equals(TextBoxName.Text))
+                {
+                    eq.Id = equip.Id;
+                    eq.Amount = Int32.Parse(TextBoxAmount.Text);
+                    eq.Name = equip.Name;
+                    break;
+                }
+            }
+
+            if (eq.Id == null)
+            {
+                equipmentController.CreateEquipment(TextBoxName.Text,0,true);
+                foreach (Equipment equip in equipmentController.GetByExpendability(true))
+                {
+                    if (equip.Name.Equals(TextBoxName.Text))
+                    {
+                        eq.Id = equip.Id;
+                        eq.Amount = Int32.Parse(TextBoxAmount.Text);
+                        eq.Name = equip.Name;
+                        break;
+                    }
+                }
+            }
+
+            
             equipmentInOrder.Add(eq);
             RefreshGrid();
+            RefreshGridAllEquiptment();
 
         }
 
@@ -79,6 +102,14 @@ namespace ZdravoKlinika.View.Secretary
             DataGridOrderEquipment.ItemsSource = equipmentInOrder;
         }
 
+        private void RefreshGridAllEquiptment()
+        {
+            equipmentController = new EquipmentController();
+            List<Equipment> eq = equipmentController.GetByExpendability(true);
+
+            DataGridStorageEquipment.ItemsSource = null;
+            DataGridStorageEquipment.ItemsSource = eq;
+        }
         private void RemoveFromOrder(object sender, RoutedEventArgs e)
         {
             Equipment eq = (Equipment)DataGridOrderEquipment.SelectedItem;
@@ -91,7 +122,8 @@ namespace ZdravoKlinika.View.Secretary
 
         private void DataGridStorageEquipment_Selected(object sender, RoutedEventArgs e)
         {
-            ComboBoxEquipment.SelectedIndex = DataGridStorageEquipment.SelectedIndex;
+            TextBoxName.Text = ((Equipment) DataGridStorageEquipment.SelectedItem).Name;
+            TextBoxAmount.Text = "";
         }
     }
 }
