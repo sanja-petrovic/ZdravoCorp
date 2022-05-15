@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="ZdravoKlinika.View.DoctorPages.TimeOffView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Royale" xmlns:System="clr-namespace:System;assembly=netstandard" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model"
+             mc:Ignorable="d" Height="768" Width="1024" d:DataContext="{d:DesignInstance Type=model:AllRequestsViewModel}">
+
+    <Grid>
+        <Border  Margin="293,528,60,44"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+
+        <Rectangle Fill="White" Margin="289,512,58,39" RadiusX="10" RadiusY="10">
+        </Rectangle>
+        <DataGrid Background="Transparent" x:Name="DaysOffDG" CanUserReorderColumns="False"  CanUserResizeColumns="True" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding Requests}" RowStyle="{DynamicResource DataGridRowStyle1}" VerticalScrollBarVisibility="Visible" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}" Style="{DynamicResource DataGridStyle2}" IsReadOnly="True" AutoGenerateColumns="False" Margin="289,512,58,-27">
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+                <System:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">10</System:Double>
+
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Datum početka" Binding="{Binding StartString}"/>
+                <DataGridTextColumn Header="Datum kraja" Binding="{Binding EndString}"/>
+                <DataGridTextColumn Header="Razlog" Binding="{Binding Reason}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyString}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Rectangle Fill="#F8F9FE" Height="1" Margin="308,562,89,205"/>
+    </Grid>
+</UserControl>

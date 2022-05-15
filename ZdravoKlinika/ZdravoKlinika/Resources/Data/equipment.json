@@ -8,7 +8,7 @@
   {
     "Id": "2",
     "Name": "Stolica",
-    "Amount": 140,
+    "Amount": 280,
     "Expendable": false
   },
   {
@@ -32,7 +32,7 @@
   {
     "Id": "6",
     "Name": "Zavesa",
-    "Amount": 40,
+    "Amount": 80,
     "Expendable": false
   },
   {
@@ -44,7 +44,7 @@
   {
     "Id": "8",
     "Name": "Jorgan",
-    "Amount": 60,
+    "Amount": 64,
     "Expendable": false
   },
   {
@@ -62,7 +62,7 @@
   {
     "Id": "11",
     "Name": "Tepih",
-    "Amount": 49,
+    "Amount": 60,
     "Expendable": false
   },
   {
@@ -70,5 +70,17 @@
     "Name": "Papuce",
     "Amount": 138,
     "Expendable": false
+  },
+  {
+    "Id": "13",
+    "Name": "Flaster",
+    "Amount": 678,
+    "Expendable": true
+  },
+  {
+    "Id": "14",
+    "Name": "Spric",
+    "Amount": 40,
+    "Expendable": true
   }
 ]

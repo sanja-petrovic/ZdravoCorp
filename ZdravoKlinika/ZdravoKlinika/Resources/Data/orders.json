@@ -1,27 +1,27 @@
 [
   {
-    "CreationDate": "2022-05-10T19:20:27.4826954-07:00",
+    "CreationDate": "2022-05-11T04:20:27.4826954+02:00",
     "EquipmentToOrder": [
       "2,140",
       "6,40"
     ],
     "OrderId": "o18FozuH",
-    "IsOrderFinished": false
+    "IsOrderFinished": true
   },
   {
-    "CreationDate": "2022-05-10T20:36:33.4208426-07:00",
+    "CreationDate": "2022-05-11T05:36:33.4208426+02:00",
     "EquipmentToOrder": [
       "11,11"
     ],
     "OrderId": "BRz9P1Uu",
-    "IsOrderFinished": false
+    "IsOrderFinished": true
   },
   {
-    "CreationDate": "2022-05-10T20:39:30.0045541-07:00",
+    "CreationDate": "2022-05-11T05:39:30.0045541+02:00",
     "EquipmentToOrder": [
       "8,4"
     ],
     "OrderId": "1EGZD47V",
-    "IsOrderFinished": false
+    "IsOrderFinished": true
   }
 ]

@@ -181,5 +181,11 @@ namespace ZdravoKlinika.View
             RenovationView renovationView = new RenovationView();
             renovationView.Show();
         }
+
+        private void MedicineView_Click(object sender, RoutedEventArgs e)
+        {
+            MedicineView medicineView = new MedicineView();
+            medicineView.Show();
+        }
     }
 }

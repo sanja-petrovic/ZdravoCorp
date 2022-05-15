@@ -31,10 +31,6 @@ namespace ZdravoKlinika.Repository
 
         public void UpdateReferences(Medication medication)
         {
-            if(medication.ApprovedBy != null)
-            {
-                medication.ApprovedBy = this.doctorRepository.GetById(medication.ApprovedBy.PersonalId);
-            }
             if (medication.Alternatives != null)
             {
                 for (int i = 0; i < medication.Alternatives.Count; i++)
@@ -70,6 +66,49 @@ namespace ZdravoKlinika.Repository
             }
 
             return medicationToReturn;
+        }
+
+        public void CreateMedication(Medication medication)
+        {
+            this.medications.Add(medication);
+            medicationDataHandler.Write(this.medications);
+        }
+
+        public void DeleteMedication(Medication medication)
+        {
+            if (medication == null)
+                return;
+            if (this.medications != null)
+                if (this.medications.Contains(medication))
+                    this.medications.Remove(medication);
+            medicationDataHandler.Write(this.medications);
+        }
+
+        public void UpdateMedication(Medication medication)
+        {
+            if (medication == null)
+                return;
+            if (this.medications != null)
+            {
+                int index = GetIndex(medication);
+                this.medications[index] = medication;
+                medicationDataHandler.Write(this.medications);
+            }
+        }
+
+        public int GetIndex(Medication medication)
+        {
+            int index = -1;
+            for(int i = 0; i < this.medications.Count; i++)
+            {
+                if(this.medications[i].MedicationId.Equals(medication.MedicationId))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
         }
     }
 }

@@ -18,7 +18,10 @@
     "Allergies": [
       ""
     ],
-    "CurrentMedication": [],
+    "CurrentMedication": [
+      "1",
+      "5"
+    ],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "1510963123321"

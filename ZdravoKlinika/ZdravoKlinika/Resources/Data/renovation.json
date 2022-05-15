@@ -1,0 +1,24 @@
+[
+  {
+    "Id": "1",
+    "NumberOfExitRooms": 5,
+    "ScheduledDateTime": "2022-05-12T19:03:00",
+    "IsRenovationFinished": true,
+    "EntryRooms": [
+      "315"
+    ]
+  },
+  {
+    "Id": "2",
+    "NumberOfExitRooms": 1,
+    "ScheduledDateTime": "2022-05-12T19:05:00",
+    "IsRenovationFinished": true,
+    "EntryRooms": [
+      "316",
+      "315",
+      "319",
+      "318",
+      "317"
+    ]
+  }
+]

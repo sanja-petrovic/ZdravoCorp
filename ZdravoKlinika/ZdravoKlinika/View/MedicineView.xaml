@@ -1,0 +1,25 @@
+﻿<Window x:Class="ZdravoKlinika.View.MedicineView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.View"
+        mc:Ignorable="d"
+        Title="Pregled lekova" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dataGridMedicine" ItemsSource="{Binding Medicine}" SelectionChanged="dataGridMedicine_SelectionChanged" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" AutoGenerateColumns="False" SelectedIndex="-1" Width="650" Height="300" HeadersVisibility="Column" CanUserAddRows = "False" Margin="0,58,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sifra" Binding="{Binding MedicationId}" Width="*"/>
+                <DataGridTextColumn Header="Naziv" Binding="{Binding BrandName}" Width="*"/>
+                <DataGridTextColumn Header="Doze" Binding="{Binding Dosage}" Width="*"/>
+                <DataGridTextColumn Header="Forma" Binding="{Binding Form}" Width="*"/>
+                <DataGridTextColumn Header="Klasifikacija" Binding="{Binding Classification}" Width="*"/>
+                <DataGridTextColumn Header="Kolicina" Binding="{Binding Amount}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

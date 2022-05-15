@@ -137,7 +137,6 @@ public class RegisteredPatientRepository
 
         return;
     }
-
     public int GetPatientIndex(RegisteredPatient patient)
     {
         int index = -1;

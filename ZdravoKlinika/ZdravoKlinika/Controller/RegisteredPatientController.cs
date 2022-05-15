@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Service;
 
 public class RegisteredPatientController
 {
@@ -38,9 +39,11 @@ public class RegisteredPatientController
         patientService.DeletePatient(patientId);
     }
 
-    public bool IsAllergic(Medication medication, RegisteredPatient patient)
+    public bool IsAllergic(String medicationId, String patientId)
     {
-        return this.patientService.IsAllergic(medication, patient);
+        RegisteredPatientService registeredPatientService = new RegisteredPatientService();
+        MedicationService medicationService = new MedicationService();
+        return this.patientService.IsAllergic(medicationService.GetById(medicationId), registeredPatientService.GetById(patientId));
     }
     public bool IsBanned(RegisteredPatient patient)
     {

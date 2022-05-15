@@ -98,7 +98,7 @@
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="135,171,0,0" TextWrapping="Wrap" Text="pojedinačna doza" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="80" Height="16"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="225,183,0,0" TextWrapping="Wrap" FontStyle="Italic" Text="'na svakih (X) dana/nedelja/meseci'" VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="159" Height="16"/>
         <TextBlock  HorizontalAlignment="Left" Margin="40,210,0,0" TextWrapping="Wrap" Text="Način upotrebe, dodatne napomene..." VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="313"/>
-        <TextBlock Name="AllergyTB"  Visibility="Hidden"  Foreground="#FE5D7A" HorizontalAlignment="Left" Margin="34,244,0,0" TextWrapping="Wrap" Text="Pacijent je alergičan na izabrani lek." VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="319" Height="27"/>
+        <TextBlock Name="AllergyTB"  Visibility="Hidden"  Foreground="#FE5D7A" HorizontalAlignment="Left" Margin="34,284,0,0" TextWrapping="Wrap" Text="Pacijent je alergičan na izabrani lek!" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="319" Height="27"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="37,303,0,0" TextWrapping="Wrap" Text="Dodati lekovi će se prikazati ovde." VerticalAlignment="Top" FontWeight="Regular" FontSize="10" Width="184" Height="16"/>
     </Grid>
 </UserControl>
