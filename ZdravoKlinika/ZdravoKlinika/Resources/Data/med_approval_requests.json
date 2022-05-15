@@ -14,17 +14,10 @@
     "Id": 2
   },
   {
-    "Medication": null,
+    "Medication": "6",
     "Reviewer": "123",
     "Pending": false,
     "Comment": "komentar truc truc",
     "Id": 4
-  },
-  {
-    "Medication": "8",
-    "Reviewer": "456",
-    "Pending": true,
-    "Comment": null,
-    "Id": 5
   }
 ]

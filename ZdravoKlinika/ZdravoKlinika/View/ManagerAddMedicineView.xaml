@@ -34,7 +34,7 @@
         <Label Content="Alternative:" HorizontalAlignment="Left" Margin="334,243,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="alternativesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,272,0,0" Width="283" Height="70" SelectionMode="Multiple"/>
         <Label Content="Odobrava lekar:" HorizontalAlignment="Left" Margin="334,355,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="addMedicationButton" Content="Dodaj" HorizontalAlignment="Center" Margin="0,416,0,0" VerticalAlignment="Top" Height="28" Width="78" Click="addMedicationButton_Click"/>
+        <Button x:Name="addMedicationButton" Content="Posalji lekaru na potvrdu" HorizontalAlignment="Center" Margin="0,416,0,0" VerticalAlignment="Top" Height="28" Width="155" Click="addMedicationButton_Click"/>
         <ComboBox x:Name="doctorsComboBox" HorizontalAlignment="Left" Margin="497,357,0,0" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

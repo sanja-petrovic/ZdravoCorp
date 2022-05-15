@@ -32,11 +32,18 @@ namespace ZdravoKlinika.View
             this.medApprovalRequestController = new MedApprovalRequestController();
             this.Medications = new ObservableCollection<Medication>(this.medicationController.GetAll());
             dataGridMedicine.ItemsSource = this.Medications;
+            EditMedicineButton.IsEnabled = false;
         }
 
         private void dataGridMedicine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if(dataGridMedicine.SelectedItem != null && filteriComboBox.SelectedIndex == 1)
+            {
+                EditMedicineButton.IsEnabled = true;
+            } else
+            {
+                EditMedicineButton.IsEnabled = false;
+            }
         }
 
         private void AddMedicineButton_Click(object sender, RoutedEventArgs e)

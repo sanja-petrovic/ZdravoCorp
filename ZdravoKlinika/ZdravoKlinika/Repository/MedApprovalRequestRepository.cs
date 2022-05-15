@@ -121,7 +121,7 @@ namespace ZdravoKlinika.Repository
             List<MedApprovalRequest> requests = new List<MedApprovalRequest>();
             foreach (MedApprovalRequest request in this.requests)
             {
-                if (request.Pending == false && request.Comment != null)
+                if (request.Comment != null)
                 {
                     UpdateReferences(request);
                     requests.Add(request);

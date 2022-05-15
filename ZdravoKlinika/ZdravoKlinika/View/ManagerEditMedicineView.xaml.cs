@@ -112,12 +112,11 @@ namespace ZdravoKlinika.View
 
         private void editMedicationButton_Click(object sender, RoutedEventArgs e)
         {
-            /*this.medicationController.DeleteMedication(med.MedicationId);
-            CreateMedication();
-            CreateMedApprovalRequest();*/
+            UpdateMedication();
+            CreateMedApprovalRequest();
         }
 
-        private void CreateMedication()
+        private void UpdateMedication()
         {
             bool validated = false;
             string medicationCode = codeTextBox.Text;
@@ -133,7 +132,7 @@ namespace ZdravoKlinika.View
             string sideEffects = sideEffectsTextBox.Text;
             string dosageInstructions = instructionsTextBox.Text;
             int amount = Int32.Parse(amountTextBox.Text);
-            this.medicationController.CreateMedication(medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, dosageInstructions, amount);
+            this.medicationController.UpdateMedication(med.MedicationId, medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, dosageInstructions, amount);
         }
 
         private void CreateMedApprovalRequest()

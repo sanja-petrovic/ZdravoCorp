@@ -78,15 +78,36 @@
     "MedicationCode": "R02AA",
     "Form": "sprej za usnu sluznicu, rastvor",
     "ActiveSubstances": [
-      "cetilpiridinijum-hlorid",
-      "benzidamin"
+      "androgen"
     ],
     "Allergens": [
-      "cetilpiridinijum-hlorid",
-      "benzidamin"
+      "antiparazitik"
     ],
     "Validated": false,
-    "Alternatives": [],
+    "Alternatives": [
+      {
+        "MedicationId": "1",
+        "BrandName": "Brufen",
+        "Dosage": "200mg",
+        "Note": "",
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "Indications": null,
+        "DosageInstructions": null,
+        "Amount": 222
+      }
+    ],
     "Classification": "adsadsdsadsa",
     "SideEffects": "dasbadasd",
     "Indications": "asdad",
