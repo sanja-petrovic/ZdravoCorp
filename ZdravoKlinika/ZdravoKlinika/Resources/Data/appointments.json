@@ -11,7 +11,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 2,
@@ -25,7 +26,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 3,
@@ -39,7 +41,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 4,
@@ -53,7 +56,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 5,
@@ -67,7 +71,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 6,
@@ -81,7 +86,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 7,
@@ -95,7 +101,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 8,
@@ -109,7 +116,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 9,
@@ -123,7 +131,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 10,
@@ -137,7 +146,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 11,
@@ -154,38 +164,8 @@
     "Prescriptions": [
       10,
       11
-    ]
-  },
-  {
-    "AppointmentId": 12,
-    "DateAndTime": "2022-05-13T12:45:00",
-    "Diagnoses": "1234",
-    "DoctorsNotes": "12432",
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 30,
-    "Doctor": "123",
-    "Patient": "1510963123321,Registered",
-    "Room": "314",
-    "Over": true,
-    "Prescriptions": [
-      16,
-      17
-    ]
-  },
-  {
-    "AppointmentId": 13,
-    "DateAndTime": "2022-05-11T14:15:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 30,
-    "Doctor": "123",
-    "Patient": "12345,Registered",
-    "Room": "314",
-    "Over": false,
-    "Prescriptions": []
+    ],
+    "Grading": null
   },
   {
     "AppointmentId": 14,
@@ -199,7 +179,8 @@
     "Patient": "12345123,Guest",
     "Room": "314",
     "Over": false,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 15,
@@ -213,7 +194,8 @@
     "Patient": "12345123,Guest",
     "Room": "2",
     "Over": false,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 16,
@@ -227,7 +209,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 17,
@@ -241,7 +224,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 18,
@@ -255,7 +239,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 19,
@@ -271,7 +256,8 @@
     "Over": true,
     "Prescriptions": [
       5
-    ]
+    ],
+    "Grading": null
   },
   {
     "AppointmentId": 20,
@@ -285,7 +271,8 @@
     "Patient": "12345123,Guest",
     "Room": "315",
     "Over": false,
-    "Prescriptions": null
+    "Prescriptions": null,
+    "Grading": null
   },
   {
     "AppointmentId": 21,
@@ -298,6 +285,54 @@
     "Doctor": "123",
     "Patient": "0105965123321,Registered",
     "Room": "315",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null
+  },
+  {
+    "AppointmentId": 25,
+    "DateAndTime": "2022-05-28T13:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null
+  },
+  {
+    "AppointmentId": 26,
+    "DateAndTime": "2022-05-28T15:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null
+  },
+  {
+    "AppointmentId": 27,
+    "DateAndTime": "2022-06-04T08:15:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null
     "Over": true,
     "Prescriptions": [
       14,

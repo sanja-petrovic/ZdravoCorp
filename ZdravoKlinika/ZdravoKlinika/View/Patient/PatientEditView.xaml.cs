@@ -22,7 +22,7 @@ namespace ZdravoKlinika.View
     /// </summary>
     public partial class PatientEditView : Page
     {
-        private string patientId = "0105965123321";
+        private string patientId;
         private AppointmentController appointmentController = new AppointmentController();
         private DoctorController doctorController = new DoctorController();
         private RegisteredPatientController registeredPatientController = new RegisteredPatientController();
@@ -33,10 +33,12 @@ namespace ZdravoKlinika.View
 
         public int AppointmentId { get => appointmentId; set => appointmentId = value; }
 
-        public PatientEditView(int appointmentId)
+        public PatientEditView(int appointmentId, string patientId)
         {
+
             InitializeComponent();
-            this.AppointmentId = appointmentId;
+            this.patientId = patientId;
+            this.appointmentId = appointmentId;
             priorityComboBox.Items.Add("Vreme");
             priorityComboBox.Items.Add("Doktor");
             priorityComboBox.SelectedIndex = -1;
@@ -126,7 +128,6 @@ namespace ZdravoKlinika.View
 
             if (doctorComboBox.SelectedIndex != -1 && timeComboBox.SelectedIndex != -1)
             {
-                //TODO finish this
                 List<Room> rooms = roomController.GetFreeRooms((DateTime)timeComboBox.SelectedItem, RoomType.checkup);
                 if (!rooms.Any())
                 {
@@ -136,9 +137,17 @@ namespace ZdravoKlinika.View
                 else
                 {
                     Doctor doctor = (Doctor)doctorComboBox.SelectedItem;
-
-                    appointmentController.EditAppointment(AppointmentId, doctor.PersonalId, patientId, (DateTime)timeComboBox.SelectedItem, false, AppointmentType.Regular, rooms[0].RoomId, appointmentDuration);
-                    resetBaseView();
+                    try
+                    {
+                        appointmentController.PatientEditAppointment(AppointmentId, doctor.PersonalId, patientId, (DateTime)timeComboBox.SelectedItem, false, AppointmentType.Regular, rooms[0].RoomId, appointmentDuration);
+                        resetBaseView();
+                    }
+                    catch (Exception ex)
+                    {
+                        //TODO localise this later and call logout!
+                        MessageBox.Show("Previse puta ste izmenili pregled, rad ce privremeno biti onemogucen obratite se sekretaru", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
+                        forcedLogout();
+                    }
                 }
             }
             else
@@ -160,6 +169,19 @@ namespace ZdravoKlinika.View
                 {
                     PatientViewBase baseWindow = (PatientViewBase)window;
                     baseWindow.refreshAppointmentView();
+                }
+            }
+        }
+        private void forcedLogout()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Name == "patientBase")
+                {
+                    PatientViewBase baseWindow = (PatientViewBase)window;
+                    SignInWindow signInWindow = new SignInWindow();
+                    signInWindow.Show();
+                    baseWindow.Close();
                 }
             }
         }

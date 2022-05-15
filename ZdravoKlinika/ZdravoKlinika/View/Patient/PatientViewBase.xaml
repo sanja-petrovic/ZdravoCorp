@@ -7,9 +7,7 @@
         
         mc:Ignorable="d"
         Title="Pacijent" Height="650" Width="960" Name="patientBase">
-    <Window.DataContext>
-        <local:PatientViewModelBase/>
-    </Window.DataContext>
+    
     <Grid>
         <Grid x:Name="menuBarGrid" Margin="0,0,0,491" Background="Gray">
             <Image Margin="39,8,740,17" Source="{Binding Path=LogoImageSource}"/>
