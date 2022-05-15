@@ -78,6 +78,7 @@ namespace ZdravoKlinika.Repository
             {
                 if(request.Medication.MedicationId.Equals(medication.MedicationId))
                 {
+                    UpdateReferences(request);
                     r = request;
                 }
             }
@@ -92,6 +93,7 @@ namespace ZdravoKlinika.Repository
             {
                 if (request.Reviewer.PersonalId.Equals(doctor.PersonalId))
                 {
+                    UpdateReferences(request);
                     requests.Add(request);
                 }
             }
@@ -106,6 +108,7 @@ namespace ZdravoKlinika.Repository
             {
                 if (request.Pending)
                 {
+                    UpdateReferences(request);
                     requests.Add(request);
                 }
             }
@@ -120,6 +123,7 @@ namespace ZdravoKlinika.Repository
             {
                 if (request.Reviewer.PersonalId.Equals(doctor.PersonalId) && request.Pending)
                 {
+                    UpdateReferences(request);
                     requests.Add(request);
                 }
             }
