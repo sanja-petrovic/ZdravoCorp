@@ -59,13 +59,21 @@ namespace ZdravoKlinika.Repository
             {
                 if(medication.MedicationId == id)
                 {
-                    UpdateReferences(medication);
+                    //UpdateReferences(medication); (!)
+                    //causes stack overflow in case of a circular reference
+                    //instead if you need alternatives, call GetAlternatives(string medicationId)
                     medicationToReturn = medication;
                     break;
                 }
             }
 
             return medicationToReturn;
+        }
+
+        public List<Medication> GetAlternatives(Medication medication)
+        {
+            UpdateReferences(medication);
+            return medication.Alternatives;
         }
 
         public void CreateMedication(Medication medication)

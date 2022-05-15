@@ -91,6 +91,7 @@ namespace ZdravoKlinika.Util
                 // Then if converter is actually a JsonConverterFactory (e.g. JsonStringEnumConverter) then the correct JsonConverter<T> will be manufactured or fetched.
                 this.modifiedOptions = new JsonSerializerOptions(options);
                 this.modifiedOptions.Converters.Insert(0, converter);
+
             }
 
             protected TCollection BaseRead<TCollection>(ref Utf8JsonReader reader, Type typeToConvert) where TCollection : ICollection<TItem>, new()

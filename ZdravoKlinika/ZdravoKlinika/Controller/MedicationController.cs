@@ -48,5 +48,11 @@ namespace ZdravoKlinika.Controller
             return this.medicationService.GetApproved();
         }
 
+
+        public List<Medication> GetAlternatives(String medicationId)
+        {
+            return this.medicationService.GetAlternatives(this.medicationService.GetById(medicationId));
+        }
+
     }
 }

@@ -44,7 +44,7 @@
     "Note": "",
     "Allergens": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
     "Validated": true,
-    "Alternatives": [],
+    "Alternatives": ["1"],
     "Classification": null,
     "Indications": null,
     "SideEffects": null,
