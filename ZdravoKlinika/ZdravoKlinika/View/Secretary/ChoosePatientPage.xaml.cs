@@ -39,7 +39,39 @@ namespace ZdravoKlinika.View.Secretary
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.ChoosePatient(TextBoxPID.Text, TextBoxName.Text, TextBoxLastname.Text);
+            int p = viewModel.ChoosePatient(TextBoxPID.Text, TextBoxName.Text, TextBoxLastname.Text);
+            if (p == 2)
+            { 
+                InformationFocus.Visibility = Visibility.Visible;
+                CreateGuest.Visibility = Visibility.Visible;
+            }
+            if (p == 1)
+            {
+                InformationText.Text = "Pogresno ime ili prezime za pacijenta sa izabranim JMBG!";
+                InformationFocus.Visibility = Visibility.Visible;
+                InformationWindow.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                InformationText.Text = "Uspesno ste izabrali pacijenta!";
+                InformationFocus.Visibility = Visibility.Visible;
+                InformationWindow.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            InformationFocus.Visibility = Visibility.Collapsed;
+            InformationWindow.Visibility = Visibility.Collapsed;
+            CreateGuest.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            viewModel.CreateGuest(TextBoxPID.Text, TextBoxName.Text, TextBoxLastname.Text);
+            InformationText.Text = "Uspesno ste kreirali gost pacijenta!";
+            InformationFocus.Visibility = Visibility.Visible;
+            InformationWindow.Visibility = Visibility.Visible;
         }
     }
 }
