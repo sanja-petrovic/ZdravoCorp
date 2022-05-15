@@ -1,0 +1,30 @@
+[
+  {
+    "Medication": "4",
+    "Reviewer": "123",
+    "Pending": false,
+    "Comment": "komentar bla bla",
+    "Id": 1
+  },
+  {
+    "Medication": "7",
+    "Reviewer": "123",
+    "Pending": true,
+    "Comment": null,
+    "Id": 2
+  },
+  {
+    "Medication": null,
+    "Reviewer": "123",
+    "Pending": false,
+    "Comment": "komentar truc truc",
+    "Id": 4
+  },
+  {
+    "Medication": "8",
+    "Reviewer": "456",
+    "Pending": true,
+    "Comment": null,
+    "Id": 5
+  }
+]

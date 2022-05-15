@@ -28,6 +28,16 @@ namespace ZdravoKlinika.Controller
             return this.medicationService.GetById(medId);
         }
 
+        public Medication GetByCodeAndName(string medicationCode, string brandName)
+        {
+            return this.medicationService.GetByCodeAndName(medicationCode, brandName);
+        }
+
+        public List<Medication> GetByApprovedValue(bool approved)
+        {
+            return this.medicationService.GetByApprovedValue(approved);
+        }
+
         public void CreateMedication(string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, string dosageInstructions, int amount)
         {
             this.medicationService.CreateMedication(medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, dosageInstructions, amount);

@@ -1,119 +1,183 @@
 [
   {
     "MedicationId": "1",
-    "MedicationCode": "M01AE01",
     "BrandName": "Brufen",
     "Dosage": "200mg",
-    "ActiveSubstances": [ "ibuprofen" ],
-    "Form": "film tableta",
     "Note": "",
-    "Allergens": [ "ibuprofen", "brufen" ],
+    "MedicationCode": "M01AE01",
+    "Form": "film tableta",
+    "ActiveSubstances": [
+      "ibuprofen"
+    ],
+    "Allergens": [
+      "ibuprofen",
+      "brufen"
+    ],
     "Validated": true,
     "Alternatives": [],
     "Classification": null,
-    "Indications": null,
     "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
+    "Indications": null,
     "DosageInstructions": null,
     "Amount": 222
   },
   {
     "MedicationId": "2",
-    "MedicationCode": "M01AE01",
     "BrandName": "Brufen",
     "Dosage": "400mg",
-    "ActiveSubstances": [ "ibuprofen" ],
-    "Form": "film tableta",
     "Note": "",
-    "Allergens": [ "ibuprofen", "brufen" ],
+    "MedicationCode": "M01AE02",
+    "Form": "film tableta",
+    "ActiveSubstances": [
+      "ibuprofen"
+    ],
+    "Allergens": [
+      "ibuprofen",
+      "brufen"
+    ],
     "Validated": true,
     "Alternatives": [],
     "Classification": null,
-    "Indications": null,
     "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
+    "Indications": null,
     "DosageInstructions": null,
     "Amount": 191
   },
-
   {
     "MedicationId": "3",
-    "MedicationCode": "N02BE51",
     "BrandName": "Caffetin cold",
-    "Dosage": "500mg+30mg+15mg+60mg",
-    "ActiveSubstances": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
-    "Form": "film tableta",
+    "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
     "Note": "",
-    "Allergens": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
+    "MedicationCode": "N02BE51",
+    "Form": "film tableta",
+    "ActiveSubstances": [
+      "paracetamol",
+      "pseudoefedrin",
+      "dekstrometorfan",
+      "askorbinska kiselina"
+    ],
+    "Allergens": [
+      "paracetamol",
+      "pseudoefedrin",
+      "dekstrometorfan",
+      "askorbinska kiselina"
+    ],
     "Validated": true,
     "Alternatives": [],
     "Classification": null,
-    "Indications": null,
     "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
+    "Indications": null,
     "DosageInstructions": null,
     "Amount": 192
   },
-
   {
     "MedicationId": "4",
-    "MedicationCode": "R02AA",
     "BrandName": "Septolete total",
-    "Dosage": "5mg/mL+1.5mg/mL",
-    "ActiveSubstances": [ "cetilpiridinijum-hlorid", "benzidamin" ],
+    "Dosage": "5mg/mL\u002B1.5mg/mL",
+    "Note": "nasdadds",
+    "MedicationCode": "R02AA",
     "Form": "sprej za usnu sluznicu, rastvor",
-    "Note": "",
-    "Allergens": [ "cetilpiridinijum-hlorid", "benzidamin" ],
-    "Validated": true,
+    "ActiveSubstances": [
+      "cetilpiridinijum-hlorid",
+      "benzidamin"
+    ],
+    "Allergens": [
+      "cetilpiridinijum-hlorid",
+      "benzidamin"
+    ],
+    "Validated": false,
     "Alternatives": [],
-    "Classification": null,
-    "Indications": null,
-    "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
-    "DosageInstructions": null,
+    "Classification": "adsadsdsadsa",
+    "SideEffects": "dasbadasd",
+    "Indications": "asdad",
+    "DosageInstructions": "asdsas",
     "Amount": 208
   },
-
   {
     "MedicationId": "5",
-    "MedicationCode": "J01FA10",
     "BrandName": "Hemomycin",
     "Dosage": "250mg",
-    "ActiveSubstances": [ "azitromicin" ],
-    "Form": "kapsula, tvrda",
     "Note": "",
-    "Allergens": [ "azitromicin" ],
+    "MedicationCode": "J01FA10",
+    "Form": "kapsula, tvrda",
+    "ActiveSubstances": [
+      "azitromicin"
+    ],
+    "Allergens": [
+      "azitromicin"
+    ],
     "Validated": true,
     "Alternatives": [],
     "Classification": null,
-    "Indications": null,
     "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
+    "Indications": null,
     "DosageInstructions": null,
     "Amount": 215
   },
   {
     "MedicationId": "6",
-    "MedicationCode": "J01CA01",
     "BrandName": "Pentrexyl",
     "Dosage": "500mg",
-    "ActiveSubstances": [ "ampicilin" ],
+    "Note": "adsaddsd",
+    "MedicationCode": "J01CA01",
     "Form": "kapsula, tvrda",
-    "Note": "",
-    "Allergens": [ "azitromicin", "penicilin" ],
-    "Validated": true,
+    "ActiveSubstances": [
+      "ampicilin"
+    ],
+    "Allergens": [
+      "azitromicin",
+      "penicilin"
+    ],
+    "Validated": false,
     "Alternatives": [],
-    "Classification": null,
-    "Indications": null,
-    "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
-    "DosageInstructions": null,
+    "Classification": "asadsda",
+    "SideEffects": "asdad",
+    "Indications": "asdas",
+    "DosageInstructions": "asda",
     "Amount": 254
+  },
+  {
+    "MedicationId": "7",
+    "BrandName": "a",
+    "Dosage": "a",
+    "Note": "a",
+    "MedicationCode": "aa",
+    "Form": "a",
+    "ActiveSubstances": [
+      "anestetik"
+    ],
+    "Allergens": [
+      "penicilin"
+    ],
+    "Validated": false,
+    "Alternatives": [
+      {
+        "MedicationId": "1",
+        "BrandName": "Brufen",
+        "Dosage": "200mg",
+        "Note": "",
+        "MedicationCode": "M01AE01",
+        "Form": "film tableta",
+        "ActiveSubstances": [
+          "ibuprofen"
+        ],
+        "Allergens": [
+          "ibuprofen",
+          "brufen"
+        ],
+        "Validated": true,
+        "Alternatives": [],
+        "Classification": null,
+        "SideEffects": null,
+        "Indications": null,
+        "DosageInstructions": null,
+        "Amount": 222
+      }
+    ],
+    "Classification": "a",
+    "SideEffects": "a",
+    "Indications": "a",
+    "DosageInstructions": "a",
+    "Amount": 5
   }
 ]

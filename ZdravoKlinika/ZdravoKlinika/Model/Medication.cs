@@ -71,8 +71,9 @@ public class Medication
         return medication;
     }
 
-    public string ToString()
+    public override string ToString()
     {
         return this.brandName + " " + this.dosage + ", " + this.form;
     }
+
 }

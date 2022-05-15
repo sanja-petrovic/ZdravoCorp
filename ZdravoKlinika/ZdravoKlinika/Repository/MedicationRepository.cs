@@ -13,6 +13,7 @@ namespace ZdravoKlinika.Repository
         private MedicationDataHandler medicationDataHandler;
         private List<Medication> medications;
         private DoctorRepository doctorRepository;
+        private List<Medication> approvedValueList;
 
 
         public MedicationRepository()
@@ -21,6 +22,7 @@ namespace ZdravoKlinika.Repository
             ReadDataFromFiles();
 
             this.doctorRepository = new DoctorRepository();
+            this.approvedValueList = new List<Medication>();
         }
 
         private void ReadDataFromFiles()
@@ -68,6 +70,37 @@ namespace ZdravoKlinika.Repository
             return medicationToReturn;
         }
 
+        public Medication GetByCodeAndName(string medicationCode, string brandName)
+        {
+            ReadDataFromFiles();
+            Medication? medicationToReturn = null;
+            foreach (Medication medication in medications)
+            {
+                if (medication.MedicationCode.Equals(medicationCode) && medication.BrandName.Equals(brandName))
+                {
+                    UpdateReferences(medication);
+                    medicationToReturn = medication;
+                    break;
+                }
+            }
+
+            return medicationToReturn;
+        }
+
+        public List<Medication> GetByApprovedValue(bool approved)
+        {
+            this.approvedValueList.Clear();
+
+            foreach (Medication m in this.medications)
+            {
+                if (m.Validated == approved)
+                {
+                    approvedValueList.Add(m);
+                }
+            }
+
+            return this.approvedValueList;
+        }
         public void CreateMedication(Medication medication)
         {
             this.medications.Add(medication);

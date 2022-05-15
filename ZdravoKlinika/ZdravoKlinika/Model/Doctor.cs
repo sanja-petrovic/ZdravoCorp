@@ -26,7 +26,7 @@ public class Doctor : Employee
         doc.PersonalId = id;
         return doc;
     }
-    public string ToString()
+    public override string ToString()
     {
         return "Dr " + this.Name + " " + this.Lastname;
     }

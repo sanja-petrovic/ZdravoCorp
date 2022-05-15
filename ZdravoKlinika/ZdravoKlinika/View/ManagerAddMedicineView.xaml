@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKlinika.View"
         mc:Ignorable="d"
-        Title="Dodavanje novog leka" Height="450" Width="700">
+        Title="Dodavanje novog leka" Height="500" Width="700">
     <Grid>
         <Label Content="Kod:" HorizontalAlignment="Left" Margin="90,22,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="codeTextBox" HorizontalAlignment="Left" Margin="165,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
@@ -27,12 +27,14 @@
         <TextBox x:Name="instructionsTextBox" HorizontalAlignment="Left" Margin="165,306,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="40"/>
         <Label Content="Kolicina:" HorizontalAlignment="Left" Margin="90,172,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="amountTextBox" HorizontalAlignment="Left" Margin="165,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
-        <Label Content="Aktivne supstance:" HorizontalAlignment="Left" Margin="367,22,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="activeSubstancesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="367,52,0,0" Width="250" Height="70"/>
-        <Label Content="Alergeni:" HorizontalAlignment="Left" Margin="367,132,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="allergensListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="367,162,0,0" Width="250" Height="70"/>
-        <Label Content="Alternative:" HorizontalAlignment="Left" Margin="367,242,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="alternativesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="367,272,0,0" Width="250" Height="70"/>
-        <Button x:Name="addMedicationButton" Content="Dodaj" HorizontalAlignment="Left" Margin="453,369,0,0" VerticalAlignment="Top" Height="28" Width="78" Click="addMedicationButton_Click"/>
+        <Label Content="Aktivne supstance:" HorizontalAlignment="Left" Margin="334,24,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="activeSubstancesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,52,0,0" Width="283" Height="70" SelectionMode="Multiple"/>
+        <Label Content="Alergeni:" HorizontalAlignment="Left" Margin="334,133,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="allergensListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,162,0,0" Width="283" Height="70" SelectionMode="Multiple"/>
+        <Label Content="Alternative:" HorizontalAlignment="Left" Margin="334,243,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="alternativesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,272,0,0" Width="283" Height="70" SelectionMode="Multiple"/>
+        <Label Content="Odobrava lekar:" HorizontalAlignment="Left" Margin="334,355,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="addMedicationButton" Content="Dodaj" HorizontalAlignment="Center" Margin="0,416,0,0" VerticalAlignment="Top" Height="28" Width="78" Click="addMedicationButton_Click"/>
+        <ComboBox x:Name="doctorsComboBox" HorizontalAlignment="Left" Margin="497,357,0,0" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

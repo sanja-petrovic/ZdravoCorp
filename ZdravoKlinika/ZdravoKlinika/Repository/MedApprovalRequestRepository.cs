@@ -78,6 +78,7 @@ namespace ZdravoKlinika.Repository
             {
                 if(request.Medication.MedicationId.Equals(medication.MedicationId))
                 {
+                    UpdateReferences(request);
                     r = request;
                 }
             }
@@ -92,6 +93,7 @@ namespace ZdravoKlinika.Repository
             {
                 if (request.Reviewer.PersonalId.Equals(doctor.PersonalId))
                 {
+                    UpdateReferences(request);
                     requests.Add(request);
                 }
             }
@@ -106,6 +108,22 @@ namespace ZdravoKlinika.Repository
             {
                 if (request.Pending)
                 {
+                    UpdateReferences(request);
+                    requests.Add(request);
+                }
+            }
+
+            return requests;
+        }
+
+        public List<MedApprovalRequest> GetDeniedRequests()
+        {
+            List<MedApprovalRequest> requests = new List<MedApprovalRequest>();
+            foreach (MedApprovalRequest request in this.requests)
+            {
+                if (request.Pending == false && request.Comment != null)
+                {
+                    UpdateReferences(request);
                     requests.Add(request);
                 }
             }
@@ -120,6 +138,7 @@ namespace ZdravoKlinika.Repository
             {
                 if (request.Reviewer.PersonalId.Equals(doctor.PersonalId) && request.Pending)
                 {
+                    UpdateReferences(request);
                     requests.Add(request);
                 }
             }
