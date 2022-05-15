@@ -333,10 +333,5 @@
     "Over": false,
     "Prescriptions": null,
     "Grading": null
-    "Over": true,
-    "Prescriptions": [
-      14,
-      15
-    ]
   }
 ]
