@@ -9,8 +9,9 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ZdravoKlinika.View;
+using ZdravoKlinika.View.PatientPages;
 
-namespace ZdravoKlinika.ViewModel
+namespace ZdravoKlinika.PatientPages.ViewModel
 {
     internal class PatientViewModelBase : INotifyPropertyChanged
     {

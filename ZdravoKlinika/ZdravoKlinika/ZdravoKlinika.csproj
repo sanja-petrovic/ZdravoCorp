@@ -88,6 +88,7 @@
 
   <ItemGroup>
     <Folder Include="View\Dialogs\" />
+    <Folder Include="View\Patient\" />
   </ItemGroup>
 
 	<ItemGroup>
