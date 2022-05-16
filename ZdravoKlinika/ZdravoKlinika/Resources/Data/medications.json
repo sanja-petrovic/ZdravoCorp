@@ -1,119 +1,149 @@
 [
   {
     "MedicationId": "1",
-    "MedicationCode": "M01AE01",
     "BrandName": "Brufen",
     "Dosage": "200mg",
-    "ActiveSubstances": [ "ibuprofen" ],
+    "Note": "Pacijenti sa osetljivim stomakom ovaj lek treba da uzimaju uz obrok. Ne sme sa davati trudnicama.",
+    "MedicationCode": "M01AE01",
     "Form": "film tableta",
-    "Note": "",
-    "Allergens": [ "ibuprofen", "brufen" ],
+    "ActiveSubstances": [
+      "ibuprofen"
+    ],
+    "Allergens": [
+      "ibuprofen",
+      "brufen"
+    ],
     "Validated": true,
-    "Alternatives": [],
-    "Classification": null,
-    "Indications": null,
-    "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
-    "DosageInstructions": null,
-    "Amount": 222
+    "Alternatives": [
+      "3"
+    ],
+    "Classification": "analgetik, antipiretik",
+    "SideEffects": "Naj\u010De\u0161\u0107e: Alergijska reakcija, stoma\u010Dni problemi.",
+    "Indications": "Za kratkotrajnu simptomatsku terapiju blagog do umerenog bola kao \u0161to su glavobolja, uklju\u010Duju\u0107i migrene, neuralgija, zubobolja, bolovi u mi\u0161i\u0107ima i zglobovima, bolovi u le\u0111ima, menstrualne bolovi i bolovi povezani sa prehladom. Za sni\u017Eavanje povi\u0161ene telesne temperature kao i za otklanjanje simptoma prehlade i gripa.",
+    "DosageInstructions": "Maksimalna pojedina\u010Dna dnevna doza za odrasle i za adolescente ne treba da pre\u0111e 400 mg ibuprofena. Ne sme se prekora\u010Diti doza od 1200 mg u periodu od 24 sata. Minimalni interval izme\u0111u pojedina\u010Dnih doza je najmanje 4 sata. Lek nije namenjen deci mla\u0111oj od 12 godina. Lek je namenjen za kratkotrajnu primenu.",
+    "Amount": 222,
+    "ValidatedBy": "123"
   },
   {
     "MedicationId": "2",
-    "MedicationCode": "M01AE01",
     "BrandName": "Brufen",
     "Dosage": "400mg",
-    "ActiveSubstances": [ "ibuprofen" ],
-    "Form": "film tableta",
     "Note": "",
-    "Allergens": [ "ibuprofen", "brufen" ],
+    "MedicationCode": "M01AE01",
+    "Form": "film tableta",
+    "ActiveSubstances": [
+      "ibuprofen"
+    ],
+    "Allergens": [
+      "ibuprofen",
+      " brufen"
+    ],
     "Validated": true,
     "Alternatives": [],
-    "Classification": null,
-    "Indications": null,
+    "Classification": "analgetik, antipiretik",
     "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
+    "Indications": "Za kratkotrajnu simptomatsku terapiju blagog do umerenog bola kao \u0161to su glavobolja, uklju\u010Duju\u0107i migrene, neuralgija, zubobolja, bolovi u mi\u0161i\u0107ima i zglobovima, bolovi u le\u0111ima, menstrualne bolovi i bolovi povezani sa prehladom. Za sni\u017Eavanje povi\u0161ene telesne temperature kao i za otklanjanje simptoma prehlade i gripa.",
     "DosageInstructions": null,
-    "Amount": 191
+    "Amount": 191,
+    "ValidatedBy": "123"
   },
-
   {
     "MedicationId": "3",
-    "MedicationCode": "N02BE51",
     "BrandName": "Caffetin cold",
-    "Dosage": "500mg+30mg+15mg+60mg",
-    "ActiveSubstances": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
+    "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
+    "Note": "Lek se ne sme uzimati du\u017Ee od 5 dana, bez konsultacije sa lekarom.",
+    "MedicationCode": "N02BE51",
     "Form": "film tableta",
-    "Note": "",
-    "Allergens": [ "paracetamol", "pseudoefedrin", "dekstrometorfan", "askorbinska kiselina" ],
+    "ActiveSubstances": [
+      "paracetamol",
+      " pseudoefedrin",
+      " dekstrometorfan",
+      " askorbinska kiselina"
+    ],
+    "Allergens": [
+      "paracetamol",
+      " pseudoefedrin",
+      " dekstrometorfan",
+      " askorbinska kiselina"
+    ],
     "Validated": true,
     "Alternatives": [],
-    "Classification": null,
-    "Indications": null,
-    "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
-    "DosageInstructions": null,
-    "Amount": 192
+    "Classification": "dekongestiv, analgetik, antipiretik",
+    "SideEffects": "Alergija, lupanje srca, gastrointestinalni poreme\u0107aji, ko\u017Ene reakcije, pove\u0107anje krvnog pritiska",
+    "Indications": "Caffetin Cold se koristi za ubla\u017Eavanje simptoma prehlade i gripa (glavobolja, bolovi u mi\u0161i\u0107ima, bolovi u grlu, nazalna kongestija, groznica i suvi ka\u0161alj).",
+    "DosageInstructions": "Odrasli i deca iznad 12 godina: 1-2 tbl. do 4 puta dnevno, sa minimalnim razmakom od \u010Detiri sata.  Ne preporu\u010Duje se za decu mla\u0111u od 12 godina.",
+    "Amount": 192,
+    "ValidatedBy": "123"
   },
-
   {
     "MedicationId": "4",
-    "MedicationCode": "R02AA",
     "BrandName": "Septolete total",
-    "Dosage": "5mg/mL+1.5mg/mL",
-    "ActiveSubstances": [ "cetilpiridinijum-hlorid", "benzidamin" ],
+    "Dosage": "5mg/mL\u002B1.5mg/mL",
+    "Note": "Ne preporu\u010Duje se primena ovog leka neposredno pre ili posle pranja zuba. Sme da se koristi najvi\u0161e 7 dana.",
+    "MedicationCode": "R02AA",
     "Form": "sprej za usnu sluznicu, rastvor",
-    "Note": "",
-    "Allergens": [ "cetilpiridinijum-hlorid", "benzidamin" ],
-    "Validated": true,
+    "ActiveSubstances": [
+      "cetilpiridinijum-hlorid",
+      " benzidamin"
+    ],
+    "Allergens": [
+      "cetilpiridinijum-hlorid",
+      " benzidamin",
+      " nana",
+      " mentol"
+    ],
+    "Validated": false,
     "Alternatives": [],
     "Classification": null,
-    "Indications": null,
-    "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
-    "DosageInstructions": null,
-    "Amount": 208
+    "SideEffects": "Preosetljivost",
+    "Indications": "Indikovan je kod odraslih i dece starije od 6 godina za antiinflamatornu, analgetsku i antisepti\u010Dnu terapiju grla, usta i desni, kod gingivitisa, faringitisa i laringitisa, i pre i nakon ekstrakcije zuba.",
+    "DosageInstructions": "1-2 puta, na svaka 2 sata, 3-5 puta dnevno. Lek je kontraidikovan kod dece uzrasta ispod 6 godina.",
+    "Amount": 208,
+    "ValidatedBy": null
   },
-
   {
     "MedicationId": "5",
-    "MedicationCode": "J01FA10",
     "BrandName": "Hemomycin",
     "Dosage": "250mg",
-    "ActiveSubstances": [ "azitromicin" ],
-    "Form": "kapsula, tvrda",
     "Note": "",
-    "Allergens": [ "azitromicin" ],
+    "MedicationCode": "J01FA10",
+    "Form": "kapsula, tvrda",
+    "ActiveSubstances": [
+      "azitromicin"
+    ],
+    "Allergens": [
+      "azitromicin"
+    ],
     "Validated": true,
     "Alternatives": [],
     "Classification": null,
-    "Indications": null,
     "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
+    "Indications": null,
     "DosageInstructions": null,
-    "Amount": 215
+    "Amount": 215,
+    "ValidatedBy": "123"
   },
   {
     "MedicationId": "6",
-    "MedicationCode": "J01CA01",
     "BrandName": "Pentrexyl",
     "Dosage": "500mg",
-    "ActiveSubstances": [ "ampicilin" ],
-    "Form": "kapsula, tvrda",
     "Note": "",
-    "Allergens": [ "azitromicin", "penicilin" ],
+    "MedicationCode": "J01CA01",
+    "Form": "kapsula, tvrda",
+    "ActiveSubstances": [
+      "ampicilin"
+    ],
+    "Allergens": [
+      "azitromicin",
+      "penicilin"
+    ],
     "Validated": true,
     "Alternatives": [],
     "Classification": null,
-    "Indications": null,
     "SideEffects": null,
-    "Reviewer": null,
-    "Comment": "",
+    "Indications": null,
     "DosageInstructions": null,
-    "Amount": 254
+    "Amount": 254,
+    "ValidatedBy": "123"
   }
 ]

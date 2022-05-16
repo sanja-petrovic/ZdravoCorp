@@ -48,7 +48,7 @@ namespace ZdravoKlinika.Repository
 
         public List<MedApprovalRequest> GetAll()
         {
-            foreach(MedApprovalRequest request in this.requests)
+            foreach(MedApprovalRequest request in this.dataHandler.Read())
             {
                 UpdateReferences(request);
             }
@@ -119,12 +119,15 @@ namespace ZdravoKlinika.Repository
         public List<MedApprovalRequest> GetPendingRequestsByReviewer(Doctor doctor)
         {
             List<MedApprovalRequest> requests = new List<MedApprovalRequest>();
-            foreach (MedApprovalRequest request in this.requests)
+            foreach (MedApprovalRequest request in this.dataHandler.Read())
             {
-                if (request.Reviewer.PersonalId.Equals(doctor.PersonalId) && request.Pending)
+                if(request.Reviewer != null)
                 {
-                    UpdateReferences(request);
-                    requests.Add(request);
+                    if (request.Reviewer.PersonalId.Equals(doctor.PersonalId) && request.Pending)
+                    {
+                        UpdateReferences(request);
+                        requests.Add(request);
+                    }
                 }
             }
 

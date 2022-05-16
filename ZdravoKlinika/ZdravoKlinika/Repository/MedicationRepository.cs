@@ -38,12 +38,22 @@ namespace ZdravoKlinika.Repository
                     medication.Alternatives[i] = this.GetById(medication.Alternatives[i].MedicationId);
                 }
             }
+            UpdateDoctor(medication);
+        }
+
+        public void UpdateDoctor(Medication medication)
+        {
+
+            if (medication.ValidatedBy != null)
+            {
+                medication.ValidatedBy = doctorRepository.GetById(medication.ValidatedBy.PersonalId);
+            }
         }
 
         public List<Medication> GetAll()
         {
             ReadDataFromFiles();
-            foreach (Medication medication in this.medications)
+            foreach (Medication medication in this.medicationDataHandler.Read())
             {
                 UpdateReferences(medication);
             }
@@ -59,13 +69,22 @@ namespace ZdravoKlinika.Repository
             {
                 if(medication.MedicationId == id)
                 {
-                    UpdateReferences(medication);
+                    //UpdateReferences(medication); (!)
+                    //causes stack overflow in case of a circular reference
+                    //instead if you need alternatives, call GetAlternatives(string medicationId)
+                    UpdateDoctor(medication);
                     medicationToReturn = medication;
                     break;
                 }
             }
 
             return medicationToReturn;
+        }
+
+        public List<Medication> GetAlternatives(Medication medication)
+        {
+            UpdateReferences(medication);
+            return medication.Alternatives;
         }
 
         public void CreateMedication(Medication medication)
@@ -110,5 +129,22 @@ namespace ZdravoKlinika.Repository
 
             return index;
         }
+
+        public List<Medication> GetApproved()
+        {
+            List<Medication> list = new List<Medication>();
+
+            foreach(Medication medication in this.medicationDataHandler.Read())
+            {
+                if(medication.Validated)
+                {
+                    UpdateReferences(medication);
+                    list.Add(medication);
+                }
+            }
+
+            return list;
+        }
+
     }
 }
