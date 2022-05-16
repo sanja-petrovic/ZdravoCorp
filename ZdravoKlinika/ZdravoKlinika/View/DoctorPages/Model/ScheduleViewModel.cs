@@ -39,7 +39,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 string prescriptions = "";
                 if(patient.GetPatientType() == PatientType.Registered)
                 {
-
+                    patient = patientController.GetById(patient.GetPatientId());
                     foreach (string diagnosis in ((RegisteredPatient) patient).MedicalRecord.Diagnoses)
                     {
                         diagnoses += diagnosis;

@@ -47,9 +47,13 @@
       " "
     ],
     "Allergies": [
-      "Ma\u010Dja dlaka penicilin "
+      "Ma\u010Dja dlaka",
+      "penicilin"
     ],
-    "CurrentMedication": [],
+    "CurrentMedication": [
+      "4",
+      "3"
+    ],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "0105965123321"

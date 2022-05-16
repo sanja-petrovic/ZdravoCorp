@@ -219,5 +219,44 @@
     "Id": 17,
     "DateOfCreation": "0001-01-01T00:00:00",
     "Patient": "1510963123321,Registered"
+  },
+  {
+    "Medication": "4",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "1233",
+    "Doctor": "123",
+    "Id": 18,
+    "DateOfCreation": "0001-01-01T00:00:00",
+    "Patient": "0105965123321,Registered"
+  },
+  {
+    "Medication": "3",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "nedeljno",
+    "DoctorsNote": "1234",
+    "Doctor": "123",
+    "Id": 19,
+    "DateOfCreation": "0001-01-01T00:00:00",
+    "Patient": "0105965123321,Registered"
+  },
+  {
+    "Medication": "3",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "23",
+    "Repeat": "dnevno",
+    "DoctorsNote": "1234",
+    "Doctor": "123",
+    "Id": 20,
+    "DateOfCreation": "0001-01-01T00:00:00",
+    "Patient": "0105965123321,Registered"
   }
 ]

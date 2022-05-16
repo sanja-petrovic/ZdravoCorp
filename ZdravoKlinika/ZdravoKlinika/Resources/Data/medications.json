@@ -116,7 +116,7 @@
     ],
     "Validated": false,
     "Alternatives": [],
-    "Classification": null,
+    "Classification": "antibiotik",
     "SideEffects": null,
     "Indications": null,
     "DosageInstructions": null,
@@ -137,13 +137,13 @@
       "azitromicin",
       "penicilin"
     ],
-    "Validated": false,
+    "Validated": true,
     "Alternatives": [],
     "Classification": null,
     "SideEffects": null,
     "Indications": null,
     "DosageInstructions": null,
     "Amount": 254,
-    "Validator": null
+    "Validator": "123"
   }
 ]

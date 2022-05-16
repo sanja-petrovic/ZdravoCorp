@@ -142,8 +142,6 @@ namespace ZdravoKlinika.Repository
             }
             int i = FindIndexInList(medicalRecordId);
             this.medicalRecords[i] = medicalRecord;
-            //this.medicalRecords.Add(medicalRecord);
-            //this.DeleteMedicalRecord(medicalRecord);
 
             MedicalRecordDataHandler.Write(medicalRecords);
 
