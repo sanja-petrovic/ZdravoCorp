@@ -10,6 +10,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 {
     public class MedViewModel : ViewModelBase
     {
+        private bool isChecked;
         private string id;
         private string brandName;
         private string dosage;
@@ -28,6 +29,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private int amount;
         private MedicationController medicationController;
         private MedApprovalRequestController approvalRequestController;
+        private int requestId;
 
         public MedViewModel()
         {
@@ -50,8 +52,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Reviewer { get => reviewer; set => SetProperty(ref reviewer, value); }
         public MedApprovalRequestController ApprovalRequestController { get => approvalRequestController; set => approvalRequestController = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
-        public string Comment { get => comment; set => comment = value; }
-        public int Amount { get => amount; set => amount = value; }
+        public string Comment { get => comment; set => SetProperty(ref comment, value); }
+        public int Amount { get => amount; set => SetProperty(ref amount, value); }
+        public bool IsChecked { get => isChecked; set => SetProperty(ref isChecked, value); }
+        public int RequestId { get => requestId; set => SetProperty(ref requestId, value); }
         internal MedicationController MedicationController { get => medicationController; set => medicationController = value; }
 
         public void LoadMed(Medication medication)
@@ -92,10 +96,44 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Amount = medication.Amount;
         }
 
+        public void LoadMed(string medId)
+        {
+            LoadMed(this.medicationController.GetById(medId));
+        }
+
+        public List<string> GetActivesAsList()
+        {
+            string[] actives = Actives.Split(',');
+            return actives.ToList();
+        }
+
+        public List<string> GetAllergensAsList()
+        {
+            string[] allergens = Allergens.Split(',');
+            return allergens.ToList();
+         }
+
         public void LoadRequest(MedApprovalRequest request)
         {
-            LoadMed(request.Medication);
+            RequestId = request.Id;
 
+            LoadMed(request.Medication);
+        }
+
+        public void LoadRequest(int id)
+        {
+            LoadRequest(this.approvalRequestController.GetById(id));
+        }
+
+        public void DenyRequest()
+        {
+            this.medicationController.UpdateMedication(Id, Code, BrandName, Dosage, GetActivesAsList(), Form, Note, GetAllergensAsList(), false, Classification, Indications, SideEffects, Instructions, Amount);
+            this.approvalRequestController.DenyRequest(RequestId, Comment);
+        }
+
+        public void ApproveRequest()
+        {
+            this.approvalRequestController.ApproveRequest(RequestId);
         }
     }
 }

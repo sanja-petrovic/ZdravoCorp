@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKlinika.Model;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -19,9 +21,41 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class ApproveMedView : Window
     {
-        public ApproveMedView()
+        private MedViewModel viewModel;
+        public ApproveMedView(Doctor doctor, int requestId)
         {
+            viewModel = new MedViewModel();
+            viewModel.Doctor = doctor;
+            viewModel.LoadRequest(requestId);
+            DataContext = viewModel;
             InitializeComponent();
+            this.Title = viewModel.BrandName + " " + viewModel.Dosage + ", " + viewModel.Form;
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxGrid.IsEnabled = true;
+            ConfirmButton.Visibility = Visibility.Collapsed;
+            OkButton.Visibility = Visibility.Visible;
+            EditButton.Visibility = Visibility.Collapsed;
+            GiveUpButton.Visibility = Visibility.Visible;
+        }
+
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.viewModel.ApproveRequest();
+            this.Close();
+        }
+
+        private void OkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.viewModel.DenyRequest();
+            this.Close();
+        }
+
+        private void GiveUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

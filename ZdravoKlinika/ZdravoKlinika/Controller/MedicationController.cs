@@ -33,9 +33,15 @@ namespace ZdravoKlinika.Controller
             this.medicationService.CreateMedication(medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, dosageInstructions, amount);
         }
 
-        public void UpdateMedication(string medicationId, string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, Doctor reviewer, string comment, string dosageInstructions, int amount)
+        public void UpdateMedication(string medicationId, string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, string dosageInstructions, int amount)
         {
             this.medicationService.UpdateMedication(medicationId, medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, dosageInstructions, amount);
+        }
+
+        public void UpdateMedication(string medicationId, string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, string classification, string indications, string sideEffects, string dosageInstructions, int amount)
+        {
+            Medication medication = new Medication { MedicationId = medicationId, MedicationCode = medicationCode, BrandName = brandName, Dosage = dosage, ActiveSubstances = activeSubstances, Form = form, Note = note, Allergens = allergens, Validated = validated, Classification = classification, Indications = indications, SideEffects = sideEffects, DosageInstructions = dosageInstructions, Amount = amount };
+            this.medicationService.UpdateMedication(medication);
         }
 
         public void DeleteMedication(string medicationId)

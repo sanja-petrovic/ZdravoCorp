@@ -2,29 +2,29 @@
   {
     "Medication": "1",
     "Reviewer": "123",
-    "Pending": true,
-    "Comment": null,
+    "Pending": false,
+    "Comment": "",
     "Id": 1
   },
   {
     "Medication": "2",
     "Reviewer": "123",
-    "Pending": true,
-    "Comment": null,
+    "Pending": false,
+    "Comment": "",
     "Id": 2
   },
   {
     "Medication": "3",
     "Reviewer": "123",
-    "Pending": true,
+    "Pending": false,
     "Comment": null,
     "Id": 3
   },
   {
-    "Medication": "3",
+    "Medication": "4",
     "Reviewer": "123",
     "Pending": true,
-    "Comment": null,
+    "Comment": "Izmenjeni podaci o alergenima i dodati ostali nedostaju\u0107i podaci.",
     "Id": 4
   }
 ]

@@ -11,10 +11,12 @@ namespace ZdravoKlinika.Service
     public class MedApprovalRequestService
     {
         private MedApprovalRequestRepository repository;
+        private MedicationRepository medicationRepository;
 
         public MedApprovalRequestService()
         {
             this.repository = new MedApprovalRequestRepository();
+            this.medicationRepository = new MedicationRepository();
         }
 
         public List<MedApprovalRequest> GetAll()
@@ -65,6 +67,8 @@ namespace ZdravoKlinika.Service
         {
             request.Pending = false;
             request.Medication.Validated = true;
+            request.Medication.ValidatedBy = request.Reviewer;
+            medicationRepository.UpdateMedication(request.Medication);
             this.repository.UpdateRequest(request);
         }
     }

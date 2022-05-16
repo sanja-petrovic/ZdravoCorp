@@ -40,6 +40,11 @@ namespace ZdravoKlinika.Service
             this.medicationRepository.UpdateMedication(medication);
         }
 
+        public void UpdateMedication(Medication medication)
+        {
+            this.medicationRepository.UpdateMedication(medication);
+        }
+
         public void DeleteMedication(string medicationId)
         {
             Medication m = medicationRepository.GetById(medicationId);

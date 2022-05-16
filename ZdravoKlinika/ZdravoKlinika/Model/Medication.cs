@@ -22,6 +22,7 @@ public class Medication
     private string sideEffects; 
     private string dosageInstructions;
     private int amount;
+    private Doctor validatedBy;
 
     public string MedicationId { get => medicationId; set => medicationId = value; }
     public string BrandName { get => brandName; set => brandName = value; }
@@ -41,6 +42,7 @@ public class Medication
     public string Indications { get => indications; set => indications = value; }
     public string DosageInstructions { get => dosageInstructions; set => dosageInstructions = value; }
     public int Amount { get => amount; set => amount = value; }
+    public Doctor ValidatedBy { get => validatedBy; set => validatedBy = value; }
 
     public Medication()
     {

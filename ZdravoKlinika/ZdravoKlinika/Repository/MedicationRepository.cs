@@ -38,12 +38,22 @@ namespace ZdravoKlinika.Repository
                     medication.Alternatives[i] = this.GetById(medication.Alternatives[i].MedicationId);
                 }
             }
+            UpdateDoctor(medication);
+        }
+
+        public void UpdateDoctor(Medication medication)
+        {
+
+            if (medication.ValidatedBy != null)
+            {
+                medication.ValidatedBy = doctorRepository.GetById(medication.ValidatedBy.PersonalId);
+            }
         }
 
         public List<Medication> GetAll()
         {
             ReadDataFromFiles();
-            foreach (Medication medication in this.medications)
+            foreach (Medication medication in this.medicationDataHandler.Read())
             {
                 UpdateReferences(medication);
             }
@@ -62,6 +72,7 @@ namespace ZdravoKlinika.Repository
                     //UpdateReferences(medication); (!)
                     //causes stack overflow in case of a circular reference
                     //instead if you need alternatives, call GetAlternatives(string medicationId)
+                    UpdateDoctor(medication);
                     medicationToReturn = medication;
                     break;
                 }
@@ -123,7 +134,7 @@ namespace ZdravoKlinika.Repository
         {
             List<Medication> list = new List<Medication>();
 
-            foreach(Medication medication in this.medications)
+            foreach(Medication medication in this.medicationDataHandler.Read())
             {
                 if(medication.Validated)
                 {
@@ -134,5 +145,6 @@ namespace ZdravoKlinika.Repository
 
             return list;
         }
+
     }
 }

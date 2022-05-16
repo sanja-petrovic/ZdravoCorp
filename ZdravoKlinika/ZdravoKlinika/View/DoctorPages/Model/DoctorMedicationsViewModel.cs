@@ -14,8 +14,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public ObservableCollection<MedViewModel> ApprovedMeds { get; set; }
         public ObservableCollection<MedViewModel> PendingMeds { get; set; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
-        
+        public bool SelectAll { get => selectAll; set => selectAll = value; }
 
+        private bool selectAll;
         private Doctor doctor;
         private MedicationController medicationController;
         private MedApprovalRequestController medApprovalRequestController;
@@ -32,14 +33,25 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void Load()
         {
-            foreach(Medication m in medicationController.GetApproved())
+            LoadApproved();
+            LoadPending();
+        }
+
+        public void LoadApproved()
+        {
+            ApprovedMeds = new ObservableCollection<MedViewModel>();
+            foreach (Medication m in medicationController.GetApproved())
             {
                 MedViewModel mViewModel = new MedViewModel();
                 mViewModel.LoadMed(m);
                 ApprovedMeds.Add(mViewModel);
             }
+        }
 
-            foreach(MedApprovalRequest r in medApprovalRequestController.GetPendingRequestsByReviewer(Doctor.PersonalId))
+        public void LoadPending()
+        {
+            PendingMeds = new ObservableCollection<MedViewModel>();
+            foreach (MedApprovalRequest r in medApprovalRequestController.GetPendingRequestsByReviewer(Doctor.PersonalId))
             {
                 MedViewModel mViewModel = new MedViewModel();
                 mViewModel.LoadRequest(r);
