@@ -47,9 +47,18 @@ namespace ZdravoKlinika.View.PatientPages
         }
         public void refreshAppointmentView()
         {
-            //TODO remove hardcoded patientID value
             viewModel.PatientApointmentView = new PatientAppointmentView(id);
             mainFrame.Navigate(viewModel.PatientApointmentView);
+        }
+        public void refreshProfileView()
+        {
+            mainFrame.Navigate(viewModel.ProfilePage);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            viewModel.ApplicationReviewView = new ApplicationReviewView(id);
+            mainFrame.Navigate(viewModel.ApplicationReviewView);
         }
     }
 }

@@ -92,7 +92,10 @@ namespace ZdravoKlinika.Repository
             if (this.appReviews == null)
                 this.appReviews = new System.Collections.Generic.List<AppReview>();
             if (!this.appReviews.Contains(newAppReview))
+            {
                 this.appReviews.Add(newAppReview);
+                appReviewDataHandler.Write(AppReviews);
+            }
         }
 
         /// <summary>

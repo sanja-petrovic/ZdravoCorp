@@ -14,7 +14,7 @@
             <Button Content="Profil" HorizontalAlignment="Left" Margin="244,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click"/>
             <Button Content="Pregledi" HorizontalAlignment="Left" Margin="349,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click_1"/>
             <Button Content="Terapija" HorizontalAlignment="Left" Margin="454,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
-            <Button Content="Vaši utisci" HorizontalAlignment="Left" Margin="559,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+            <Button Content="Vaši utisci" HorizontalAlignment="Left" Margin="559,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click_2"/>
             <Button Content="Odjava" HorizontalAlignment="Left" Margin="664,67,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
             <ComboBox HorizontalAlignment="Left" Margin="838,67,0,0" VerticalAlignment="Top" Width="80" SelectedIndex="0" Height="25">
                 <ComboBoxItem>
