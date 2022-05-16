@@ -67,7 +67,7 @@ namespace ZdravoKlinika.Service
         {
             request.Pending = false;
             request.Medication.Validated = true;
-            request.Medication.ValidatedBy = request.Reviewer;
+            request.Medication.Validator = request.Reviewer;
             medicationRepository.UpdateMedication(request.Medication);
             this.repository.UpdateRequest(request);
         }

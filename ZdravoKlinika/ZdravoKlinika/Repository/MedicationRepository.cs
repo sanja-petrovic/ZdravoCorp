@@ -44,9 +44,9 @@ namespace ZdravoKlinika.Repository
         public void UpdateDoctor(Medication medication)
         {
 
-            if (medication.ValidatedBy != null)
+            if (medication.Validator != null)
             {
-                medication.ValidatedBy = doctorRepository.GetById(medication.ValidatedBy.PersonalId);
+                medication.Validator = doctorRepository.GetById(medication.Validator.PersonalId);
             }
         }
 
