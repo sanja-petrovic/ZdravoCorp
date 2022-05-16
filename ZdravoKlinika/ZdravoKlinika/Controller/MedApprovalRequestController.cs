@@ -67,6 +67,8 @@ namespace ZdravoKlinika.Controller
         public void DenyRequest(int requestId, string comment)
         {
             MedApprovalRequest request = this.service.GetById(requestId);
+            request.Comment = comment;
+            //request.Reviewer = null;
             this.service.DenyRequest(request);
         }
 

@@ -276,6 +276,13 @@ public class AppointmentRepository
         return;
     }
 
+    public void AddGrading(Appointment appointment, int[] grades)
+    {
+        var a = this.appointments.Find(x => x.AppointmentId == appointment.AppointmentId);
+        a.Grading = grades;
+        appointmentDataHandler.Write(appointments);
+    }
+
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {
         List<Appointment> pastAppointments = new List<Appointment>();

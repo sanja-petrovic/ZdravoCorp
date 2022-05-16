@@ -12,16 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
     /// Interaction logic for DoctorMedicationsView.xaml
     /// </summary>
-    public partial class DoctorMedicationsView : Page
+    public partial class DoctorMedicationsView : UserControl
     {
-        public DoctorMedicationsView()
+        DoctorMedicationsViewModel viewModel;
+        public DoctorMedicationsView(Doctor doctor)
         {
+            this.viewModel = new DoctorMedicationsViewModel(doctor);
+            DataContext = this.viewModel;
             InitializeComponent();
         }
 
@@ -43,6 +47,48 @@ namespace ZdravoKlinika.View.DoctorPages
                     SupplyRequestButton.Visibility = Visibility.Hidden;
                     SupplyShadow.Visibility = Visibility.Hidden;
                 }
+            }
+        }
+
+        private void ApprovedMeds_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var m = ApprovedMeds.SelectedItem as MedViewModel;
+            
+            if(m != null)
+            {
+                MedView med = new MedView(this.viewModel.Doctor, m.Id);
+                med.Show();
+            }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach(MedViewModel vm in viewModel.ApprovedMeds)
+            {
+                vm.IsChecked = true;
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            foreach (MedViewModel vm in viewModel.ApprovedMeds)
+            {
+                vm.IsChecked = false; ;
+            }
+        }
+
+        private void AuthorizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var s = UnapprovedMeds.SelectedItem as MedViewModel;
+            if(s != null)
+            {
+
+                ApproveMedView approveMedView = new ApproveMedView(this.viewModel.Doctor, s.RequestId);
+                approveMedView.ShowDialog();
+                this.viewModel.LoadApproved();
+                this.viewModel.LoadPending();
+                DataContext = null;
+                DataContext = this.viewModel;
             }
         }
     }

@@ -22,9 +22,10 @@ namespace ZdravoKlinika.ViewModel
     /// </summary>
     public partial class PatientProfile : Page
     {
-        private PatientProfileViewModel viewModel = new PatientProfileViewModel("0105965123321");
-        public PatientProfile()
-        { 
+        private PatientProfileViewModel viewModel;
+        public PatientProfile(String patientId)
+        {
+            viewModel = new PatientProfileViewModel(patientId);
             InitializeComponent();
             this.DataContext = viewModel;
 
@@ -38,7 +39,7 @@ namespace ZdravoKlinika.ViewModel
 
         private void OnTimedEvent(object? sender, ElapsedEventArgs e)
         {
-
+            //TODO on window close terminate this thread, and edit check only for patientId notifs
             App.Current.Dispatcher.Invoke((Action)delegate
                     {
                         viewModel.NotificationTexts.Clear();

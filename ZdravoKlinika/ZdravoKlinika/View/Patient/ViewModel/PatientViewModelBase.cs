@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ZdravoKlinika.View;
@@ -14,6 +15,15 @@ namespace ZdravoKlinika.ViewModel
     internal class PatientViewModelBase : INotifyPropertyChanged
     {
         private String patientId;
+
+        public PatientViewModelBase( String patientId)
+        {
+            RegisteredPatientController controller = new RegisteredPatientController();
+            this.patientId = patientId;
+            profilePage = new PatientProfile(patientId);
+            patientApointmentView = new PatientAppointmentView(patientId);
+           
+        }
         private ImageSource logoImageSource = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "PatientViewLogo.png"));
         public ImageSource LogoImageSource 
         { 
@@ -68,7 +78,7 @@ namespace ZdravoKlinika.ViewModel
             }
         }
 
-        private PatientProfile profilePage = new PatientProfile();
+        private PatientProfile profilePage;
         public PatientProfile ProfilePage
         {
             get { return this.profilePage; }
@@ -78,12 +88,14 @@ namespace ZdravoKlinika.ViewModel
             }
         }
 
-        private PatientAppointmentView patientApointmentView = new PatientAppointmentView("12345");
+        private PatientAppointmentView patientApointmentView;
         public PatientAppointmentView PatientApointmentView
         {
             get { return this.patientApointmentView; }
             set { this.patientApointmentView = value; }
         }
+
+        public string PatientId { get => patientId; set => patientId = value; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)

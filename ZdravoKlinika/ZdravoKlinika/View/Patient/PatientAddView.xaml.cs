@@ -22,15 +22,16 @@ namespace ZdravoKlinika.View
 
     public partial class PatientAddView : Page
     {
-        private string patientId = "0105965123321";
+        private string patientId;
         private AppointmentController appointmentController = new AppointmentController();
         private DoctorController doctorController = new DoctorController();
         private RegisteredPatientController registeredPatientController = new RegisteredPatientController();
         private RoomController roomController = new RoomController();
         private int appointmentDuration = 30;
 
-        public PatientAddView()
+        public PatientAddView(String id)
         {
+            patientId = id;
             InitializeComponent();
             priorityComboBox.Items.Add("Vreme");
             priorityComboBox.Items.Add("Doktor");

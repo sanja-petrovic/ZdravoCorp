@@ -246,7 +246,7 @@
         <TabControl ItemsSource="{Binding Tabs}"  Name="TabTab" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleApptInfo}" Margin="688,167,57,237">
             
         </TabControl>
-        <TextBlock Visibility="Hidden" Name="HiddenTb" TextWrapping="WrapWithOverflow" Text="Nema zakazanih termina za ovaj dan." Margin="754,349,0,0" FontSize="14" FontWeight="Regular" FontFamily="OpenSans-Regular" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Center" Height="35" Width="147"/>
+        <TextBlock Visibility="Hidden" Name="HiddenTb" TextWrapping="WrapWithOverflow" Text="Nema zakazanih termina za ovaj dan." Margin="754,349,0,0" FontSize="14" FontWeight="Regular" Foreground="#555557" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Center" Height="35" Width="147"/>
 
     </Grid>
 

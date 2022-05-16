@@ -128,7 +128,7 @@
             <ListBoxItem PreviewMouseLeftButtonDown="GoToHome" Content="Početna stranica" FontSize="14" Padding="50 15 15 15" IsSelected="True" />
             <ListBoxItem Content="Profil" FontSize="14" Padding="50 15 15 15"/>
             <ListBoxItem Content="Pacijenti" FontSize="14" Padding="50 15 15 15" />
-            <ListBoxItem Content="Baza lekova" FontSize="14" Padding="50 15 15 15" />
+            <ListBoxItem Content="Baza lekova" FontSize="14" Padding="50 15 15 15" PreviewMouseLeftButtonDown="GoToMeds"/>
             <ListBoxItem Content="Mesečni raspored" FontSize="14" Padding="50 15 15 15" PreviewMouseLeftButtonDown="GoToSchedule"/>
             <ListBoxItem Content="Ocenite aplikaciju" FontSize="14" Padding="50 15 15 15"/>
         </ListBox>

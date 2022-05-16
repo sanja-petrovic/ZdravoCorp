@@ -173,9 +173,9 @@
         </Grid.ColumnDefinitions>
         <Image Source="/Resources/Images/undraw_medicine_b1ol.png" Width="700" Margin="-29,10,329,-10" Grid.RowSpan="2" Grid.ColumnSpan="2" Cursor="Arrow"/>
         <Canvas>
-            <Image  Name="PasswordViewControl" Height="20" Canvas.Left="898" Source="/Resources/Images/show.png" Stretch="Fill" Canvas.Top="430" Width="20" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="ShowPassword"/>
+            <Image  Name="PasswordViewControl" Height="20" Canvas.Left="898" Source="/Resources/Images/show.png" Stretch="Fill" Canvas.Top="432" Width="20" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="ShowPassword"/>
         </Canvas>
-        <CheckBox Name="StayLoggedIn" Style="{DynamicResource CheckBoxStyle1}" Content="Ostanite prijavljeni" Margin="684,463,96,289" Checked="CheckBox_Checked" Cursor="Arrow"  Foreground="#FF5F5F5F"></CheckBox>
+        <CheckBox Name="StayLoggedIn" Style="{DynamicResource CheckBoxStyle1}" Content="Ostanite prijavljeni" Margin="684,463,96,289" Cursor="Arrow"  Foreground="#FF5F5F5F"></CheckBox>
         <Label Content="Dobrodošli!" HorizontalAlignment="Left" Margin="676,250,0,0" VerticalAlignment="Top"  FontSize="36" FontWeight="Bold" Cursor="Arrow"/>
         <Label Content="Korisničko ime" HorizontalAlignment="Left" Margin="680,317,0,0" VerticalAlignment="Top"  FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
         <Button  Style="{StaticResource ResourceKey=fancyButtonStyle}"  HorizontalAlignment="Left" Margin="688,496,0,0" VerticalAlignment="Top"   Foreground="White"  Width="240" BorderThickness="0" Padding="4" Height="36" FontSize="20" Click="Button_Click" Content="Prijavite se">
@@ -201,7 +201,6 @@
             </TextBox.Resources>
         </TextBox>
         <Image Margin="190,132,634,538" Source="/Resources/Images/zdravoklinika.png" Stretch="Fill" Width="200"/>
-        <!--<Frame Name="MainFrame" Panel.ZIndex="10" NavigationUIVisibility="Hidden"  />-->
 
     </Grid>
 </Window>

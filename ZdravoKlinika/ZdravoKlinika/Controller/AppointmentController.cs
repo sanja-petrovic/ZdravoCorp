@@ -55,15 +55,15 @@ public class AppointmentController
     }
     public List<Doctor> getFreeDoctorsForTime(DateBlock block, int startHours, int endHours)
     {
-        return this.appointmentService.getFreeDoctorsForTime(block,startHours,endHours);
+        return this.appointmentService.GetFreeDoctorsForTime(block,startHours,endHours);
     }
     public List<DateBlock> getFreeTimeForDoctor(DateTime date, int duration, Doctor doctor, int startHours, int endHours)
     {
-        return this.appointmentService.getFreeTimeForDoctor(date, duration, doctor, startHours, endHours);
+        return this.appointmentService.GetFreeTimeForDoctor(date, duration, doctor, startHours, endHours);
     }
     public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
     {
-        return this.appointmentService.getFreeTimeForPatient(date, duration, patient, startHours, endHours);
+        return this.appointmentService.GetFreeTimeForPatient(date, duration, patient, startHours, endHours);
     }
 
     public List<String> ConvertDateBlockToString()
@@ -86,14 +86,39 @@ public class AppointmentController
     {
         this.appointmentService.DeleteAppointment(id);
     }
-
+    public void PatientDeleteAppointment(int id, String patientId)
+    {
+        try
+        {
+            this.appointmentService.PatientDeleteAppointment(id, patientId);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
     public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         this.appointmentService.EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
     }
+    public void PatientEditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    { 
+        try
+        {
+            this.appointmentService.PatientEditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
     public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)
     {
         this.appointmentService.LogAppointment(appointment, diagnoses, doctorsNote);
+    }
+    public void AddGrading(int appointmentId, int[] grades)
+    {
+        this.appointmentService.AddGrading(appointmentId, grades);
     }
 
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)

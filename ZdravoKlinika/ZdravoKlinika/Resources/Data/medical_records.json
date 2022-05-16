@@ -39,8 +39,12 @@
     "MedicalRecordId": "123333"
   },
   {
-    "Diagnoses": null,
-    "Allergies": null,
+    "Diagnoses": [
+      " "
+    ],
+    "Allergies": [
+      "Ma\u010Dja dlaka penicilin "
+    ],
     "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
