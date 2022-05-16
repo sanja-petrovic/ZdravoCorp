@@ -21,22 +21,16 @@ namespace ZdravoKlinika.View
     public partial class MedicineView : Window
     {
         private MedicationController medicationController;
-        private MedApprovalRequestController medApprovalRequestController;
         public ObservableCollection<Medication> Medications { get; set; }
 
         ObservableCollection<Medication> approvedMedication;
-        ObservableCollection<MedApprovalRequest> deniedRequests;
-        ObservableCollection<MedApprovalRequest> pendingRequests;
         ObservableCollection<Medication> unapprovedMedication;
-        ObservableCollection<Medication> pendingMedication;
-
 
         public MedicineView()
         {
             InitializeComponent();
             this.DataContext = this;
             this.medicationController = new MedicationController();
-            this.medApprovalRequestController = new MedApprovalRequestController();
             this.Medications = new ObservableCollection<Medication>(this.medicationController.GetAll());
             dataGridMedicine.ItemsSource = this.Medications;
             EditMedicineButton.IsEnabled = false;        
@@ -68,10 +62,7 @@ namespace ZdravoKlinika.View
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             approvedMedication = new ObservableCollection<Medication>(this.medicationController.GetByApprovedValue(true));
-            deniedRequests = new ObservableCollection<MedApprovalRequest>(this.medApprovalRequestController.GetDeniedRequests());
-            pendingRequests = new ObservableCollection<MedApprovalRequest>(this.medApprovalRequestController.GetPendingRequests());
-            unapprovedMedication = new ObservableCollection<Medication>();
-            pendingMedication = new ObservableCollection<Medication>();
+            unapprovedMedication = new ObservableCollection<Medication>(this.medicationController.GetByApprovedValue(false));
 
             switch (filteriComboBox.SelectedIndex)
             {
@@ -79,18 +70,7 @@ namespace ZdravoKlinika.View
                     dataGridMedicine.ItemsSource = approvedMedication;
                     break;
                 case 1: //neodobreni
-                    foreach (MedApprovalRequest mar in this.deniedRequests)
-                    {
-                        unapprovedMedication.Add(mar.Medication);
-                    }
                     dataGridMedicine.ItemsSource = unapprovedMedication;
-                    break;
-                case 2: //cekaju odobrenje
-                    foreach (MedApprovalRequest mar in pendingRequests)
-                    {
-                        pendingMedication.Add(mar.Medication);
-                    }
-                    dataGridMedicine.ItemsSource = pendingMedication;
                     break;
                 default:
                     break;

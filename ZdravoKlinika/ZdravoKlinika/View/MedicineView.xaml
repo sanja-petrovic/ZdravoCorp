@@ -24,7 +24,6 @@
         <ComboBox x:Name="filteriComboBox" HorizontalAlignment="Left" Margin="312,16,0,0" VerticalAlignment="Top" Width="120" Height="30" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBoxItem>Odobreni lekovi</ComboBoxItem>
             <ComboBoxItem>Neodobreni lekovi</ComboBoxItem>
-            <ComboBoxItem>Lekovi koji cekaju odobrenje</ComboBoxItem>
         </ComboBox>
         <Button x:Name="resetFiltersButton" Content="Resetuj filtere" HorizontalAlignment="Left" Margin="441,16,0,0" VerticalAlignment="Top" Click="ResetFilters_Click" Height="30" Width="110"/>
         <Button x:Name="AddMedicineButton" Content="Dodaj lek" HorizontalAlignment="Left" Margin="75,16,0,0" VerticalAlignment="Top" Click="AddMedicineButton_Click" Height="30" Width="67"/>
