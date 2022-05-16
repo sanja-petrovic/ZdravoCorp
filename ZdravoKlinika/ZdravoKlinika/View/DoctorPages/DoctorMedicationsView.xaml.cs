@@ -37,13 +37,13 @@ namespace ZdravoKlinika.View.DoctorPages
                 {
                     SupplyRequestButton.Visibility = Visibility.Visible;
                     SupplyShadow.Visibility = Visibility.Visible;
-                    AuthorizeButton.Visibility = Visibility.Hidden;
-                    AuthorizeShadow.Visibility = Visibility.Hidden;
+                    //AuthorizeButton.Visibility = Visibility.Hidden;
+                    //AuthorizeShadow.Visibility = Visibility.Hidden;
                 } else
                 {
 
-                    AuthorizeButton.Visibility = Visibility.Visible;
-                    AuthorizeShadow.Visibility = Visibility.Visible;
+                    //AuthorizeButton.Visibility = Visibility.Visible;
+                    //AuthorizeShadow.Visibility = Visibility.Visible;
                     SupplyRequestButton.Visibility = Visibility.Hidden;
                     SupplyShadow.Visibility = Visibility.Hidden;
                 }
