@@ -187,5 +187,13 @@ namespace ZdravoKlinika.View
             MedicineView medicineView = new MedicineView();
             medicineView.Show();
         }
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            SignInWindow signInWindow = new SignInWindow();
+            signInWindow.Show();
+            this.Close();
+        }
+
     }
 }
