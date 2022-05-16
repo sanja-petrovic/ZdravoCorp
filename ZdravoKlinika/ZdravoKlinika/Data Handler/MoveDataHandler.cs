@@ -7,14 +7,8 @@ using JsonConverters;
 
 public class MoveDataHandler
 {
-    private String fileLocation;
-
-    public String FileLocation { get => fileLocation; set => fileLocation = value; }
-
-    public MoveDataHandler(string fileLocation)
-    {
-        this.fileLocation = fileLocation;
-    }
+    private static String fileName = "move.json";
+    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
 
     public void Write(List<Move> moves)
     {

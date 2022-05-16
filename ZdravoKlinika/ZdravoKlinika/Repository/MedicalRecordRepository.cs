@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -136,12 +136,32 @@ namespace ZdravoKlinika.Repository
         public void AddCurrentMedication(String medicalRecordId, Medication medication)
         {
             MedicalRecord medicalRecord = this.GetById(medicalRecordId);
-            medicalRecord.AddCurrentMedication(medication);
-            DeleteMedicalRecord(medicalRecord);
-            medicalRecords.Add(medicalRecord);
+            if(!medicalRecord.CurrentMedication.Contains(medication))
+            {
+                medicalRecord.AddCurrentMedication(medication);
+            }
+            int i = FindIndexInList(medicalRecordId);
+            this.medicalRecords[i] = medicalRecord;
+            //this.medicalRecords.Add(medicalRecord);
+            //this.DeleteMedicalRecord(medicalRecord);
 
             MedicalRecordDataHandler.Write(medicalRecords);
 
+        }
+
+        public int FindIndexInList(string id)
+        {
+            int retVal = -1;
+            for(int i = 0; i < this.medicalRecords.Count(); i++)
+            {
+                if(this.medicalRecords[i].MedicalRecordId.Equals(id))
+                {
+                    retVal = i;
+                    break;
+                }
+            }
+
+            return retVal;
         }
 
     }

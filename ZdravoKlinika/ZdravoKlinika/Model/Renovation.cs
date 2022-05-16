@@ -6,6 +6,7 @@ public class Renovation
     private String id;
     private int numberOfExitRooms;
     private DateTime scheduledDateTime;
+    private bool isRenovationFinished;
 
     private List<Room> entryRooms;
 
@@ -13,33 +14,17 @@ public class Renovation
     public int NumberOfExitRooms { get => numberOfExitRooms; set => numberOfExitRooms = value; }
     public DateTime ScheduledDateTime { get => scheduledDateTime; set => scheduledDateTime = value; }
 
-/*    public List<Room> EntryRooms
-    {
-        get
-        {
-            if (EntryRooms == null)
-                EntryRooms = new List<Room>();
-            return EntryRooms;
-        }
-        set
-        {
-            RemoveAllEntryRooms();
-            if (value != null)
-            {
-                foreach (Room oRoom in value)
-                    AddEntryRooms(oRoom);
-            }
-        }
-    }*/
+    public bool IsRenovationFinished { get => isRenovationFinished; set => isRenovationFinished = value; }
 
     public List<Room> EntryRooms { get => entryRooms; set => entryRooms = value; }
 
-    public Renovation(string id, int numberOfExitRooms, DateTime scheduledDateTime, List<Room> entryRooms)
+    public Renovation(string id, int numberOfExitRooms, DateTime scheduledDateTime, List<Room> entryRooms, bool isRenovationFinished)
     {
         this.id = id;
         this.numberOfExitRooms = numberOfExitRooms;
         this.scheduledDateTime = scheduledDateTime;
         this.EntryRooms = entryRooms;
+        this.isRenovationFinished = isRenovationFinished;
     }
 
     public Renovation()

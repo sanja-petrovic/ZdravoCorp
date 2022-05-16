@@ -73,32 +73,14 @@
   },
   {
     "Id": "13",
-    "Name": "Igle",
-    "Amount": 0,
+    "Name": "Flaster",
+    "Amount": 678,
     "Expendable": true
   },
   {
     "Id": "14",
-    "Name": "Rukavice",
-    "Amount": 0,
-    "Expendable": true
-  },
-  {
-    "Id": "15",
-    "Name": "Maske",
-    "Amount": 0,
-    "Expendable": true
-  },
-  {
-    "Id": "16",
-    "Name": "Spric-igla",
-    "Amount": 0,
-    "Expendable": true
-  },
-  {
-    "Id": "17",
-    "Name": "Sapun",
-    "Amount": 0,
+    "Name": "Spric",
+    "Amount": 40,
     "Expendable": true
   }
 ]

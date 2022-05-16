@@ -11,7 +11,7 @@ public class AppointmentRepository
     private DoctorRepository doctorRepository;
     private PatientRepository patientRepository;
     private RoomRepository roomRepository;
-    private MedicationRepository medicationRepository;
+    private PrescriptionRepository prescriptionRepository;
     private List<Appointment> appointments;
     
 
@@ -23,7 +23,7 @@ public class AppointmentRepository
         doctorRepository = new DoctorRepository();
         roomRepository = new RoomRepository();
         patientRepository = new PatientRepository();
-        medicationRepository = new MedicationRepository();
+        prescriptionRepository = new PrescriptionRepository();
         
     }
 
@@ -77,7 +77,7 @@ public class AppointmentRepository
     {
         for (int i = 0; i < appointment.Prescriptions.Count; i++)
         {
-            appointment.Prescriptions[i] = this.medicationRepository.GetById(appointment.Prescriptions[i].MedicationId);
+            appointment.Prescriptions[i] = this.prescriptionRepository.GetById(appointment.Prescriptions[i].Id);
         }
     }
 
@@ -118,6 +118,20 @@ public class AppointmentRepository
         this.appointments = this.GetAll();
         this.appointments.RemoveAll(app => app.Over == false);
         return this.appointments;
+    }
+
+    public List<Appointment> GetAppointmentsOnDate(DateTime date)
+    {
+        List<Appointment> appointments = new List<Appointment>();
+        foreach(Appointment appointment in this.appointments)
+        {
+            if(appointment.DateAndTime.Date == date.Date)
+            {
+                appointments.Add(appointment);
+            }
+        }
+
+        return appointments;
     }
 
     public Appointment? GetAppointmentById(int id)
@@ -260,6 +274,13 @@ public class AppointmentRepository
         appointmentDataHandler.Write(appointments);
 
         return;
+    }
+
+    public void AddGrading(Appointment appointment, int[] grades)
+    {
+        var a = this.appointments.Find(x => x.AppointmentId == appointment.AppointmentId);
+        a.Grading = grades;
+        appointmentDataHandler.Write(appointments);
     }
 
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)

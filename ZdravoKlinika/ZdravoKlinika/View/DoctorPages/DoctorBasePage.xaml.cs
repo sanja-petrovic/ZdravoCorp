@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -25,6 +26,7 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private DoctorHomePage doctorHomePage;
         private DoctorSchedule doctorSchedule;
+        private DoctorMedicationsView doctorMedicationsView;
 
         public DoctorBasePage(RegisteredUser doctor)
         {
@@ -33,7 +35,9 @@ namespace ZdravoKlinika.View.DoctorPages
             InitializeComponent();
             doctorHomePage = new DoctorHomePage(viewModel.Doctor);
             doctorSchedule = new DoctorSchedule(this.viewModel.Doctor);
+            doctorMedicationsView = new DoctorMedicationsView(this.viewModel.Doctor);
             MainFrame.Navigate(doctorHomePage);
+
         }
 
         private void GoToSchedule(object sender, MouseButtonEventArgs e)
@@ -44,6 +48,21 @@ namespace ZdravoKlinika.View.DoctorPages
         private void GoToHome(object sender, MouseButtonEventArgs e)
         {
             MainFrame.Navigate(doctorHomePage);
+        }
+
+
+        private void GoToMeds(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Navigate(doctorMedicationsView);
+        }
+
+        private void SignOut(object sender, MouseButtonEventArgs e)
+        {
+            RegisteredUserController registeredUserController = new RegisteredUserController();
+            registeredUserController.ForgetUser();
+            SignInWindow signInWindow = new SignInWindow();
+            signInWindow.Show();
+            this.Close();
         }
     }
 }

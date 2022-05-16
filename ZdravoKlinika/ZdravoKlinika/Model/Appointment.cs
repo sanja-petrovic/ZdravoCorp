@@ -14,8 +14,9 @@ public class Appointment
     private Doctor doctor;
     private Patient patient;
     private Room room;
-    private List<Medication> prescriptions;
+    private List<Prescription> prescriptions;
     private bool over;
+    private int[]? grading;
 
     public Appointment() { }
 
@@ -30,6 +31,7 @@ public class Appointment
         this.type = type;
         this.dateAndTime = dateTime;
         this.Over = false;
+        this.Grading = null;
     }
 
 
@@ -57,5 +59,7 @@ public class Appointment
     public Patient Patient { get => patient; set => patient = value; }
     public Room Room { get => room; set => room = value; }
     public bool Over { get => over; set => over = value; }
-    public List<Medication> Prescriptions { get => prescriptions; set => prescriptions = value; }
+    public List<Prescription> Prescriptions { get => prescriptions; set => prescriptions = value; }
+    public int[]? Grading { get => grading; set => grading = value; }
+    //public List<Medication> Prescriptions { get => prescriptions; set => prescriptions = value; }
 }

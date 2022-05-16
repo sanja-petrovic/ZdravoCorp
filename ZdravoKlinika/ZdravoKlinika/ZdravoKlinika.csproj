@@ -24,6 +24,7 @@
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info %282%29.png" />
     <None Remove="Resources\Images\medicine.png" />
+    <None Remove="Resources\Images\more.png" />
     <None Remove="Resources\Images\pulse.png" />
     <None Remove="Resources\Images\search %281%29.png" />
     <None Remove="Resources\Images\search.png" />
@@ -36,6 +37,7 @@
     <None Remove="Resources\Images\treatment.png" />
     <None Remove="Resources\Images\undraw_medicine_b1ol.png" />
     <None Remove="Resources\Images\user.png" />
+    <None Remove="Resources\Images\warning.png" />
     <None Remove="Resources\Images\zdravoklinika.png" />
     <None Remove="Resources\Images\zdravoklinika2.png" />
   </ItemGroup>
@@ -44,6 +46,7 @@
     <Content Include="Resources\Images\zdravoklinikaicon.ico" />
     <Resource Include="Resources\Images\bell.png" />
     <Resource Include="Resources\Images\edit.png" />
+    <Resource Include="Resources\Images\more.png" />
     <Resource Include="Resources\Images\search (1).png" />
     <Resource Include="Resources\Images\search.png" />
     <Resource Include="Resources\Images\settings.png" />
@@ -55,6 +58,7 @@
     <Resource Include="Resources\Images\bell (1).png" />
     <Resource Include="Resources\Images\info (2).png" />
     <Resource Include="Resources\Images\trash.png" />
+    <Resource Include="Resources\Images\warning.png" />
     <Resource Include="Resources\Images\zdravoklinika.png" />
   </ItemGroup>
 

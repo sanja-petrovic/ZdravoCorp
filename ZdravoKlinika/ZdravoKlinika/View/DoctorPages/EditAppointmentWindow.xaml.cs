@@ -20,7 +20,7 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class EditAppointmentWindow : Window
     {
-        private AppointmentLoggingViewModel viewModel;
+        private ApptLogViewModel viewModel;
         private int selectedApptId;
         public EditAppointmentWindow()
         {
@@ -31,16 +31,16 @@ namespace ZdravoKlinika.View.DoctorPages
 
         public void Init()
         {
-            viewModel = new AppointmentLoggingViewModel();
-            viewModel.AppointmentId = SelectedApptId;
-            viewModel.load();
-            DataContext = viewModel;
+            //viewModel = new ApptLogViewModel();
+            //viewModel.AppointmentId = SelectedApptId;
+            //viewModel.Load();
+            //DataContext = viewModel;
             InitializeComponent();
         }
 
         public void Save(object sender, RoutedEventArgs e)
         {
-            viewModel.save(NoteTB.Text);
+            //viewModel.save(NoteTB.Text);
             this.Close();
         }
     }

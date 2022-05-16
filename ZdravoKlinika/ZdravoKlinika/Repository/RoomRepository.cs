@@ -5,19 +5,106 @@ using System.IO;
 public class RoomRepository
 {
     private RoomDataHandler roomDataHandler;
+    private RenovationDataHandler renovationDataHandler;
     private List<Room> rooms;
     private List<Room> freeRooms;
     private List<Room> renovatableRooms;
-    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "room.json";
-
+    private RenovationRepository renovationRepository;
+    private List<Renovation> renovations;
+    
     public RoomDataHandler RoomDataHandler { get => roomDataHandler; set => roomDataHandler = value; }
 
     public RoomRepository()
     {
-        this.roomDataHandler = new RoomDataHandler(fileLocation);
+        this.roomDataHandler = new RoomDataHandler();
         this.rooms = this.roomDataHandler.Read();
+
         this.freeRooms = new List<Room>();    
         this.renovatableRooms = new List<Room>();
+
+        this.renovationRepository = new RenovationRepository();
+        this.renovationDataHandler = new RenovationDataHandler();
+        this.renovations = this.renovationRepository.GetAll();
+
+        UpdateFinishedRenovations();
+    }
+
+    private void UpdateFinishedRenovations()
+    {
+        if (this.renovations != null)
+        {
+            foreach (Renovation r in this.renovations)
+            {
+                if (r.IsRenovationFinished)
+                {
+                    continue;
+                }
+                if (r.ScheduledDateTime <= DateTime.Now)
+                {
+                    if (r.EntryRooms.Count == 1 && r.NumberOfExitRooms == 1)
+                    {
+                        //U PITANJU JE OBICNO RENOVIRANJE
+                        foreach (Room room in rooms)
+                        {
+                            if (room.RoomId.Equals(r.EntryRooms[0].RoomId))
+                            {
+                                this.FreeRoom(this.GetById(room.RoomId));
+                            }
+                        }
+
+                    }
+                    else if (r.EntryRooms.Count == 1 && r.NumberOfExitRooms > 1)
+                    {
+                        //U PITANJU JE DELJENJE PROSTORIJE NA VISE MANJIH
+                        this.DeleteRoom(this.GetById(r.EntryRooms[0].RoomId));
+                        for (int i = 0; i < r.NumberOfExitRooms; i++)
+                        {
+                            Room r1 = new Room(GenerateId().ToString(), "R" + GenerateId(), RoomType.checkup, 1, 1, RoomStatus.available, true);
+                            this.CreateRoom(r1);
+                        }
+
+                    }
+                    else if (r.EntryRooms.Count > 1 && r.NumberOfExitRooms == 1)
+                    {
+                        //U PITANJU JE SPAJANJE PROSTORIJA U JEDNU
+                        foreach (Room room in r.EntryRooms)
+                        {
+                            this.DeleteRoom(this.GetById(room.RoomId));
+                        }
+                        Room r1 = new Room(GenerateId().ToString(), "R" + GenerateId(), RoomType.checkup, 1, 1, RoomStatus.available, true);
+                        this.CreateRoom(r1);
+
+                    }
+
+                    r.IsRenovationFinished = true;
+                }
+            }
+            this.renovationDataHandler.Write(this.renovations);
+        }
+
+    }
+
+    public int GenerateId()
+    {
+        List<Room> rooms = this.GetAll();
+        int newRoomId;
+        if (rooms.Count > 0)
+        {
+            int maxId = 0;
+            int trenutniId = 0;
+            foreach (Room room in rooms)
+            {
+                trenutniId = Int32.Parse(room.RoomId);
+                if (trenutniId > maxId) maxId = trenutniId;
+            }
+
+            newRoomId = maxId + 1;
+        }
+        else
+        {
+            newRoomId = 1;
+        }
+        return newRoomId;
     }
 
     public List<Room> Rooms
@@ -85,7 +172,7 @@ public class RoomRepository
     {
         freeRooms.Clear();
         AppointmentRepository appointmentRepository = new AppointmentRepository();
-        List<Appointment> appointments = appointmentRepository.GetFutureAppointments();
+        List<Appointment> appointments = appointmentRepository.GetAppointmentsOnDate(enteredTime);
         Room? room = null;
 
         DateTime appointmentStart;
@@ -99,15 +186,20 @@ public class RoomRepository
 
             if (room != null)
             {
-                if ((enteredTime > appointmentStart) && (enteredTime < appointmentEnd))
+                if ((enteredTime.TimeOfDay >= appointmentStart.TimeOfDay) && (enteredTime.TimeOfDay < appointmentEnd.TimeOfDay))
                 {
                     //app.Room JE ZAUZETA U NAVEDENOM TERMINU
                     room.Free = false;
+                    
                 }
                 else
                 {
                     //app.Room JE SLOBODNA U NAVEDENOM TERMINU
                     room.Free = true;
+                }
+                if(room.Free == false)
+                {
+                    break;
                 }
             }
                 
@@ -122,6 +214,29 @@ public class RoomRepository
         }
 
         return freeRooms;
+    }
+
+    public List<Room> GetOccupiedRooms(DateTime dateAndTime, RoomType type)
+    {
+        List<Room> rooms = new List<Room>();
+
+        AppointmentRepository appointmentRepository = new AppointmentRepository();
+
+        return rooms;
+    }
+
+    public RoomType GetRoomTypeForAppointmentType(AppointmentType type)
+    {
+        RoomType result;
+        if(type == AppointmentType.Regular)
+        {
+            result = RoomType.checkup;
+        } else
+        {
+            result = RoomType.operating;
+        }
+
+        return result;
     }
 
     public List<Room> GetRenovatableRooms()

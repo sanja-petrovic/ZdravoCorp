@@ -32,13 +32,13 @@ public class DoctorRepository
 
         foreach (Doctor doctor in DoctorList)
         {
-            if(doctor.PersonalId == id)
+            if (doctor.PersonalId == id)
             {
                 return doctor;
             }
         }
         return null;
-   }
+    }
 
     public Doctor GetByEmail(String email)
     {
@@ -64,11 +64,41 @@ public class DoctorRepository
         DoctorList.Remove(d);
         DoctorDataHandler.Write(DoctorList);
     }
-   
-   public void UpdateDoctor(Doctor doctor)
-   {
-      DeleteDoctor(doctor);
-      CreateDoctor(doctor);
-   }
+
+    public void UpdateDoctor(Doctor doctor)
+    {
+        DeleteDoctor(doctor);
+        CreateDoctor(doctor);
+    }
+
+
+    public List<Doctor> GetBySpecialty(string specialty)
+    {
+        List<Doctor> doctors = new List<Doctor>();
+
+        foreach (Doctor doctor in this.doctorList)
+        {
+            if (doctor.Specialty.Equals(specialty))
+            {
+                doctors.Add(doctor);
+            }
+        }
+        return doctors;
+    }
+
+    public List<String> GetAllSpecialties()
+    {
+        List<String> specialties = new List<String>();
+
+        foreach(Doctor doctor in this.DoctorList)
+        {
+            if(!specialties.Contains(doctor.Specialty))
+            {
+                specialties.Add(doctor.Specialty);
+            }
+        }
+
+        return specialties;
+    }
 
 }

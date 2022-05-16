@@ -7,13 +7,15 @@ public class MoveRepository
 {
     private MoveDataHandler moveDataHandler;
     private List<Move> moves;
-    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + "move.json";
+
+    public MoveDataHandler MoveDataHandler { get => moveDataHandler; set => moveDataHandler = value; }
 
     public MoveRepository()
     {
-        this.MoveDataHandler = new MoveDataHandler(fileLocation);
+        this.MoveDataHandler = new MoveDataHandler();
         this.moves = this.MoveDataHandler.Read();
     }
+
     public List<Move> Moves
     {
         get
@@ -32,8 +34,6 @@ public class MoveRepository
             }
         }
     }
-
-    public MoveDataHandler MoveDataHandler { get => moveDataHandler; set => moveDataHandler = value; }
 
     public void AddMove(Move newMove)
     {

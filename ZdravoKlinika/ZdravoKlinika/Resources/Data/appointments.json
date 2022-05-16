@@ -11,7 +11,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 2,
@@ -25,7 +26,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 3,
@@ -39,7 +41,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 4,
@@ -53,7 +56,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 5,
@@ -67,7 +71,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 6,
@@ -81,31 +86,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      {
-        "MedicationId": "2",
-        "BrandName": "Brufen",
-        "Dosage": "400mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null,
-        "Note": null,
-        "DosageInstructions": null
-      }
-    ]
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 7,
@@ -119,59 +101,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      {
-        "MedicationId": "1",
-        "BrandName": "Brufen",
-        "Dosage": "200mg",
-        "Notes": [],
-        "MedicationCode": "M01AE01",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "ibuprofen"
-        ],
-        "Allergens": [
-          "ibuprofen",
-          "brufen"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null,
-        "Note": null,
-        "DosageInstructions": null
-      },
-      {
-        "MedicationId": "3",
-        "BrandName": "Caffetin cold",
-        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
-        "Notes": [],
-        "MedicationCode": "N02BE51",
-        "Form": "film tableta",
-        "ActiveSubstances": [
-          "paracetamol",
-          "pseudoefedrin",
-          "dekstrometorfan",
-          "askorbinska kiselina"
-        ],
-        "Allergens": [
-          "paracetamol",
-          "pseudoefedrin",
-          "dekstrometorfan",
-          "askorbinska kiselina"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null,
-        "Note": null,
-        "DosageInstructions": null
-      }
-    ]
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 8,
@@ -185,7 +116,8 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 9,
@@ -199,30 +131,8 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      {
-        "MedicationId": "5",
-        "BrandName": "Hemomycin",
-        "Dosage": "250mg",
-        "Notes": [],
-        "MedicationCode": "J01FA10",
-        "Form": "kapsula, tvrda",
-        "ActiveSubstances": [
-          "azitromicin"
-        ],
-        "Allergens": [
-          "azitromicin"
-        ],
-        "Validated": true,
-        "Alternatives": [],
-        "Classification": null,
-        "SideEffects": null,
-        "ApprovedBy": null,
-        "Indications": null,
-        "Note": null,
-        "DosageInstructions": null
-      }
-    ]
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 10,
@@ -236,49 +146,26 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 11,
-    "DateAndTime": "2022-05-07T09:45:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
+    "DateAndTime": "2022-05-12T09:45:00",
+    "Diagnoses": "123",
+    "DoctorsNotes": "12345",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 30,
-    "Doctor": "456",
+    "Doctor": "123",
     "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false,
-    "Prescriptions": []
-  },
-  {
-    "AppointmentId": 12,
-    "DateAndTime": "2022-05-19T12:45:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 30,
-    "Doctor": "456",
-    "Patient": "12345,Registered",
-    "Room": "314",
-    "Over": false,
-    "Prescriptions": []
-  },
-  {
-    "AppointmentId": 13,
-    "DateAndTime": "2022-05-19T08:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 30,
-    "Doctor": "qwer",
-    "Patient": "12345,Registered",
-    "Room": "314",
-    "Over": false,
-    "Prescriptions": []
+    "Over": true,
+    "Prescriptions": [
+      10,
+      11
+    ],
+    "Grading": null
   },
   {
     "AppointmentId": 14,
@@ -292,7 +179,8 @@
     "Patient": "12345123,Guest",
     "Room": "314",
     "Over": false,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 15,
@@ -304,9 +192,10 @@
     "Duration": 30,
     "Doctor": "123",
     "Patient": "12345123,Guest",
-    "Room": "314",
+    "Room": "2",
     "Over": false,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 16,
@@ -320,90 +209,129 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": []
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 17,
-    "DateAndTime": "2022-05-19T10:15:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Surgery",
+    "DateAndTime": "2022-05-09T10:00:00",
+    "Diagnoses": "asfds",
+    "DoctorsNotes": "asds",
+    "Type": "Regular",
     "Emergency": false,
-    "Duration": 120,
+    "Duration": 15,
     "Doctor": "123",
-    "Patient": "12345,Registered",
+    "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false,
-    "Prescriptions": []
+    "Over": true,
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 18,
-    "DateAndTime": "2022-05-19T17:30:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
+    "DateAndTime": "2022-05-09T09:00:00",
+    "Diagnoses": "132",
+    "DoctorsNotes": "1234",
     "Type": "Regular",
     "Emergency": false,
-    "Duration": 30,
-    "Doctor": "456",
-    "Patient": "12345,Registered",
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false,
-    "Prescriptions": []
+    "Over": true,
+    "Prescriptions": [],
+    "Grading": null
   },
   {
     "AppointmentId": 19,
-    "DateAndTime": "2022-05-19T08:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
+    "DateAndTime": "2022-05-10T14:15:00",
+    "Diagnoses": "Laryngitis acuta",
+    "DoctorsNotes": "Preporuka: \u010Daj od nane",
     "Type": "Regular",
     "Emergency": false,
     "Duration": 30,
-    "Doctor": "456",
-    "Patient": "123456789,Guest",
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false,
-    "Prescriptions": []
+    "Over": true,
+    "Prescriptions": [
+      5
+    ],
+    "Grading": null
   },
   {
     "AppointmentId": 20,
-    "DateAndTime": "2022-05-19T10:30:00",
+    "DateAndTime": "2022-05-13T08:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
-    "Emergency": false,
-    "Duration": 30,
+    "Emergency": true,
+    "Duration": 15,
     "Doctor": "456",
-    "Patient": "123456789,Guest",
-    "Room": "314",
+    "Patient": "12345123,Guest",
+    "Room": "315",
     "Over": false,
-    "Prescriptions": []
+    "Prescriptions": null,
+    "Grading": null
   },
   {
     "AppointmentId": 21,
-    "DateAndTime": "2022-05-19T12:45:00",
+    "DateAndTime": "2022-05-13T08:00:00",
+    "Diagnoses": "asds",
+    "DoctorsNotes": "asdf",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "315",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null
+  },
+  {
+    "AppointmentId": 25,
+    "DateAndTime": "2022-05-28T13:30:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
     "Emergency": false,
     "Duration": 30,
     "Doctor": "123",
-    "Patient": "123456789,Guest",
+    "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": false,
-    "Prescriptions": []
+    "Prescriptions": null,
+    "Grading": null
   },
   {
-    "AppointmentId": 22,
-    "DateAndTime": "2022-05-26T10:15:00",
+    "AppointmentId": 26,
+    "DateAndTime": "2022-05-28T15:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
-    "Type": "Surgery",
+    "Type": "Regular",
     "Emergency": false,
-    "Duration": 120,
-    "Doctor": "456",
-    "Patient": "12345,Registered",
-    "Room": "2",
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
     "Over": false,
-    "Prescriptions": []
+    "Prescriptions": null,
+    "Grading": null
+  },
+  {
+    "AppointmentId": 27,
+    "DateAndTime": "2022-06-04T08:15:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null
   }
 ]

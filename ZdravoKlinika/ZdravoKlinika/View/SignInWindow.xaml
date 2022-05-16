@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKlinika.View"
+        xmlns:local="clr-namespace:ZdravoKlinika.View" xmlns:viewmodel="clr-namespace:ZdravoKlinika.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:SignInViewModel}" WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="Zdravo klinika" Height="768" Width="1024" SizeToContent="WidthAndHeight" d:DesignHeight="768" d:DesignWidth="1024" >
     <Window.Resources>
@@ -173,9 +173,9 @@
         </Grid.ColumnDefinitions>
         <Image Source="/Resources/Images/undraw_medicine_b1ol.png" Width="700" Margin="-29,10,329,-10" Grid.RowSpan="2" Grid.ColumnSpan="2" Cursor="Arrow"/>
         <Canvas>
-            <Image  Name="PasswordViewControl" Height="20" Canvas.Left="898" Source="/Resources/Images/show.png" Stretch="Fill" Canvas.Top="430" Width="20" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="ShowPassword"/>
+            <Image  Name="PasswordViewControl" Height="20" Canvas.Left="898" Source="/Resources/Images/show.png" Stretch="Fill" Canvas.Top="432" Width="20" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="ShowPassword"/>
         </Canvas>
-        <CheckBox Style="{DynamicResource CheckBoxStyle}" Content="Ostanite prijavljeni" Margin="684,463,96,289" Checked="CheckBox_Checked" Cursor="Arrow"  Foreground="#FF5F5F5F"></CheckBox>
+        <CheckBox Name="StayLoggedIn" Style="{DynamicResource CheckBoxStyle1}" Content="Ostanite prijavljeni" Margin="684,463,96,289" Cursor="Arrow"  Foreground="#FF5F5F5F"></CheckBox>
         <Label Content="Dobrodošli!" HorizontalAlignment="Left" Margin="676,250,0,0" VerticalAlignment="Top"  FontSize="36" FontWeight="Bold" Cursor="Arrow"/>
         <Label Content="Korisničko ime" HorizontalAlignment="Left" Margin="680,317,0,0" VerticalAlignment="Top"  FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
         <Button  Style="{StaticResource ResourceKey=fancyButtonStyle}"  HorizontalAlignment="Left" Margin="688,496,0,0" VerticalAlignment="Top"   Foreground="White"  Width="240" BorderThickness="0" Padding="4" Height="36" FontSize="20" Click="Button_Click" Content="Prijavite se">
@@ -185,23 +185,22 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox Name="UsernameTB" Text="Npr. vaseime@zdravo.com" Padding="7" HorizontalAlignment="Left" Margin="684,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="29"  BorderBrush="#FFC8C8C8" TextAlignment="Left" FontSize="12" Foreground="Gray" PreviewMouseDown="TextBox_MouseDown" SelectionBrush="#FF6C63FF">
+        <TextBox  Name="UsernameTB" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Padding="7 0 0 0" Margin="683,352,97,387" TextWrapping="Wrap" Width="244" Height="29"  BorderBrush="#FFC8C8C8"  FontSize="12" Foreground="Gray" PreviewMouseDown="TextBox_MouseDown" SelectionBrush="#FF6C63FF">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="7"/>
+                    <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
         <Label Content="Šifra" HorizontalAlignment="Left" Margin="680,392,0,0" VerticalAlignment="Top"  FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
-        <TextBox Name="PasswordTB" Padding="7" HorizontalAlignment="Left" Margin="684,425,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="29" FontFamily="Password" BorderBrush="#FFC8C8C8"  SelectionBrush="#FF6C63FF" Panel.ZIndex="-1">
+        <TextBox Name="PasswordTB" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Margin="683,427,0,312" TextWrapping="Wrap" VerticalContentAlignment="Center" HorizontalAlignment="Left" Padding="7 0 0 0"   Width="244" Height="29" FontFamily="Password" BorderBrush="#FFC8C8C8"  SelectionBrush="#FF6C63FF" Panel.ZIndex="-1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="7"/>
+                    <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
         <Image Margin="190,132,634,538" Source="/Resources/Images/zdravoklinika.png" Stretch="Fill" Width="200"/>
-        <Frame Name="MainFrame" Panel.ZIndex="10" NavigationUIVisibility="Hidden"  />
 
     </Grid>
 </Window>

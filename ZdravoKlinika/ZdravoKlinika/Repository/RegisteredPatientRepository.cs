@@ -125,14 +125,7 @@ public class RegisteredPatientRepository
 
     public void UpdatePatient(RegisteredPatient patient)
     {
-        int index = -1;
-        foreach (RegisteredPatient patientObject in this.patients)
-        {
-            if (patientObject.PersonalId.Equals(patient.PersonalId))
-            {
-                index = patients.IndexOf(patientObject);
-            }
-        }
+        int index = GetPatientIndex(patient);
 
         if (index != -1)
         {
@@ -144,7 +137,18 @@ public class RegisteredPatientRepository
 
         return;
     }
-
+    public int GetPatientIndex(RegisteredPatient patient)
+    {
+        int index = -1;
+        foreach (RegisteredPatient patientObject in this.patients)
+        {
+            if (patientObject.PersonalId.Equals(patient.PersonalId))
+            {
+                index = patients.IndexOf(patientObject);
+            }
+        }
+        return index;
+    }
     public bool IsAllergic(Medication medication, RegisteredPatient patient)
     {
         List<string> allergies = patient.MedicalRecord.Allergies;
@@ -171,5 +175,13 @@ public class RegisteredPatientRepository
         }
         return false;
     }
-
+    public bool IsBanned(RegisteredPatient patient)
+    {
+        return patient.Ban;
+    }
+    public void Ban(RegisteredPatient patient)
+    {
+        patient.Ban = true;
+        UpdatePatient(patient);
+    }
 }

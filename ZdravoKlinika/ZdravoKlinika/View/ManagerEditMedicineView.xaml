@@ -1,0 +1,42 @@
+﻿<Window x:Class="ZdravoKlinika.View.ManagerEditMedicineView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.View"
+        mc:Ignorable="d"
+        Title="Izmena leka" Height="560" Width="700">
+    <Grid>
+        <Label Content="Kod:" HorizontalAlignment="Left" Margin="90,76,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="codeTextBox" HorizontalAlignment="Left" Margin="165,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Naziv:" HorizontalAlignment="Left" Margin="90,106,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Margin="165,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Doza:" HorizontalAlignment="Left" Margin="90,136,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="dosageTextBox" HorizontalAlignment="Left" Margin="165,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Oblik:" HorizontalAlignment="Left" Margin="90,166,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="formTextBox" HorizontalAlignment="Left" Margin="165,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Napomena:" HorizontalAlignment="Left" Margin="90,411,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="noteTextBox" HorizontalAlignment="Left" Margin="165,414,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="40"/>
+        <Label Content="Tip:" HorizontalAlignment="Left" Margin="90,196,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="classificationTextBox" HorizontalAlignment="Left" Margin="165,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Indikacije:" HorizontalAlignment="Left" Margin="90,255,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="indicationsTextBox" HorizontalAlignment="Left" Margin="165,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="40"/>
+        <Label Content="Nuspojave:" HorizontalAlignment="Left" Margin="90,307,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="sideEffectsTextBox" HorizontalAlignment="Left" Margin="165,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="40"/>
+        <Label Content="Instrukcije:" HorizontalAlignment="Left" Margin="90,359,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="instructionsTextBox" HorizontalAlignment="Left" Margin="165,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="40"/>
+        <Label Content="Kolicina:" HorizontalAlignment="Left" Margin="90,226,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="amountTextBox" HorizontalAlignment="Left" Margin="165,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Aktivne supstance:" HorizontalAlignment="Left" Margin="334,78,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="activeSubstancesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,106,0,0" Width="283" Height="70" SelectionMode="Multiple"/>
+        <Label Content="Alergeni:" HorizontalAlignment="Left" Margin="334,187,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="allergensListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,216,0,0" Width="283" Height="70" SelectionMode="Multiple"/>
+        <Label Content="Alternative:" HorizontalAlignment="Left" Margin="334,296,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="alternativesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="334,326,0,0" Width="283" Height="70" SelectionMode="Multiple"/>
+        <Label Content="Odobrava lekar:" HorizontalAlignment="Left" Margin="334,409,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="editMedicationButton" Content="Posalji lekaru na potvrdu" HorizontalAlignment="Center" Margin="0,470,0,0" VerticalAlignment="Top" Height="28" Width="155" Click="editMedicationButton_Click"/>
+        <ComboBox x:Name="doctorsComboBox" HorizontalAlignment="Left" Margin="497,411,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Komentar:" HorizontalAlignment="Left" Margin="90,28,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="commentLabel" HorizontalAlignment="Left" Margin="165,28,0,0" VerticalAlignment="Top" Width="452" Height="45" Foreground="Red"/>
+    </Grid>
+</Window>

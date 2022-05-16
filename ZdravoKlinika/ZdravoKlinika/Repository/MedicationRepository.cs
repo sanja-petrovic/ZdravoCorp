@@ -13,7 +13,7 @@ namespace ZdravoKlinika.Repository
         private MedicationDataHandler medicationDataHandler;
         private List<Medication> medications;
         private DoctorRepository doctorRepository;
-
+        private List<Medication> approvedValueList;
 
         public MedicationRepository()
         {
@@ -21,6 +21,7 @@ namespace ZdravoKlinika.Repository
             ReadDataFromFiles();
 
             this.doctorRepository = new DoctorRepository();
+            this.approvedValueList = new List<Medication>();
         }
 
         private void ReadDataFromFiles()
@@ -31,10 +32,6 @@ namespace ZdravoKlinika.Repository
 
         public void UpdateReferences(Medication medication)
         {
-            if(medication.ApprovedBy != null)
-            {
-                medication.ApprovedBy = this.doctorRepository.GetById(medication.ApprovedBy.PersonalId);
-            }
             if (medication.Alternatives != null)
             {
                 for (int i = 0; i < medication.Alternatives.Count; i++)
@@ -42,12 +39,22 @@ namespace ZdravoKlinika.Repository
                     medication.Alternatives[i] = this.GetById(medication.Alternatives[i].MedicationId);
                 }
             }
+            UpdateDoctor(medication);
+        }
+
+        public void UpdateDoctor(Medication medication)
+        {
+
+            if (medication.Validator != null)
+            {
+                medication.Validator = doctorRepository.GetById(medication.Validator.PersonalId);
+            }
         }
 
         public List<Medication> GetAll()
         {
             ReadDataFromFiles();
-            foreach (Medication medication in this.medications)
+            foreach (Medication medication in this.medicationDataHandler.Read())
             {
                 UpdateReferences(medication);
             }
@@ -63,6 +70,23 @@ namespace ZdravoKlinika.Repository
             {
                 if(medication.MedicationId == id)
                 {
+                    UpdateDoctor(medication);
+                    medicationToReturn = medication;
+                    break;
+                }
+            }
+
+            return medicationToReturn;
+        }
+      
+        public Medication GetByCodeAndName(string medicationCode, string brandName)
+        {
+            ReadDataFromFiles();
+            Medication? medicationToReturn = null;
+            foreach (Medication medication in medications)
+            {
+                if (medication.MedicationCode.Equals(medicationCode) && medication.BrandName.Equals(brandName))
+                {
                     UpdateReferences(medication);
                     medicationToReturn = medication;
                     break;
@@ -71,5 +95,87 @@ namespace ZdravoKlinika.Repository
 
             return medicationToReturn;
         }
+
+        public List<Medication> GetByApprovedValue(bool approved)
+        {
+            this.approvedValueList.Clear();
+
+            foreach (Medication m in this.medications)
+            {
+                UpdateReferences(m);
+                if (m.Validated == approved)
+                {
+                    approvedValueList.Add(m);
+                }
+            }
+
+            return this.approvedValueList;
+        }
+      
+        public List<Medication> GetAlternatives(Medication medication)
+        {
+            UpdateReferences(medication);
+            return medication.Alternatives;
+        }
+
+        public void CreateMedication(Medication medication)
+        {
+            this.medications.Add(medication);
+            medicationDataHandler.Write(this.medications);
+        }
+
+        public void DeleteMedication(Medication medication)
+        {
+            if (medication == null)
+                return;
+            if (this.medications != null)
+                if (this.medications.Contains(medication))
+                    this.medications.Remove(medication);
+            medicationDataHandler.Write(this.medications);
+        }
+
+        public void UpdateMedication(Medication medication)
+        {
+            if (medication == null)
+                return;
+            if (this.medications != null)
+            {
+                int index = GetIndex(medication);
+                this.medications[index] = medication;
+                medicationDataHandler.Write(this.medications);
+            }
+        }
+
+        public int GetIndex(Medication medication)
+        {
+            int index = -1;
+            for(int i = 0; i < this.medications.Count; i++)
+            {
+                if(this.medications[i].MedicationId.Equals(medication.MedicationId))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
+
+        public List<Medication> GetApproved()
+        {
+            List<Medication> list = new List<Medication>();
+
+            foreach(Medication medication in this.medicationDataHandler.Read())
+            {
+                if(medication.Validated)
+                {
+                    UpdateReferences(medication);
+                    list.Add(medication);
+                }
+            }
+
+            return list;
+        }
+
     }
 }
