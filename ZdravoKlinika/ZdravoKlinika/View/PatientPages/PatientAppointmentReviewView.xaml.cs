@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.PatientPages.ViewModel;
 
 namespace ZdravoKlinika.View.PatientPages
 {
@@ -20,9 +21,10 @@ namespace ZdravoKlinika.View.PatientPages
     /// </summary>
     public partial class PatientAppointmentReviewView : Page
     {
-        public PatientAppointmentReviewView()
+        public PatientAppointmentReviewView(int appointmentId)
         {
             InitializeComponent();
+            ((PatientAppointmentReviewViewModel)DataContext).AppointmentId = appointmentId;
         }
     }
 }

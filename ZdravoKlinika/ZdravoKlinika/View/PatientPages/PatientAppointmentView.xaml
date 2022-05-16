@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKlinika.View.PatientPages" xmlns:viewmodel="clr-namespace:ZdravoKlinika.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:PatientApointmentsViewModel}"
+      xmlns:local="clr-namespace:ZdravoKlinika.View.PatientPages" xmlns:viewmodel="clr-namespace:ZdravoKlinika.View.PatientPages.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:PatientApointmentsViewModel}"
       mc:Ignorable="d" d:DesignWidth="960"
       Title="PatientAppointmentView" Height="442">
     <Page.Resources>
@@ -15,7 +15,6 @@
                         <MultiBinding Converter="{StaticResource LookupConverter}">
                             <Binding/>
                             <Binding Path="DataContext.AppointmentDates" RelativeSource="{RelativeSource AncestorType=Calendar}"></Binding>
-
                         </MultiBinding>
                     </DataTrigger.Binding>
                     <Setter Property="Background" Value="LightGreen"/>
@@ -23,10 +22,10 @@
             </Style.Triggers>
         </Style>
     </Page.Resources>
-    <ScrollViewer>
-        <Grid Height="575">
-            <Label x:Name="title" Content="Label" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22"/>
-            <Grid Margin="40,54,95,258" >
+    <ScrollViewer VerticalAlignment="Center" Height="442">
+        <Grid Height="676">
+            <Label x:Name="title" Content="Pregledi" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22"/>
+            <Grid Margin="40,54,95,358" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -41,15 +40,15 @@
                 <Grid Grid.Column="1" Margin="7,5,7,5">
                     <Border BorderBrush="Black" BorderThickness="1"/>
 
-                    <Label x:Name="dateLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="25,16,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="dateLabel" Grid.Column="1" HorizontalAlignment="Left" Margin="25,16,0,0" VerticalAlignment="Top" FontSize="16"/>
                     <Label Grid.Column="1" Content="Vreme pocetka:" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top"/>
                     <Label Grid.Column="1" Content="Doktor:" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top"/>
                     <Label Grid.Column="1" Content="Soba:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
                     <Label Grid.Column="1" Content="Tip pregleda:" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="timeLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="120,52,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="doctorLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="120,83,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.65,2.163"/>
-                    <Label x:Name="roomLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
-                    <Label x:Name="typeLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="120,146,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="timeLabel" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="120,52,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="doctorLabel" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="120,83,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.65,2.163"/>
+                    <Label x:Name="roomLabel" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
+                    <Label x:Name="typeLabel" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="120,146,0,0" VerticalAlignment="Top"/>
 
                     <Button x:Name="buttonEdit" Grid.Column="1" HorizontalAlignment="Left" Margin="55,206,0,0" VerticalAlignment="Top" Height="28" Width="29" Click="Button_Click_1" IsEnabled="False">
                         <Image Source="{Binding EditIcon}"/>
@@ -71,14 +70,14 @@
 
 
                 </Grid>
-                <ListBox x:Name="listBox" ItemsSource="{Binding Path = SelectedDateAppointments }" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Height="254" VerticalAlignment="Center" HorizontalAlignment="Left" Width="259" SelectionChanged="listBox_SelectionChanged">
+                <ListBox x:Name="listBox" ItemsSource="{Binding Path = SelectedDateAppointments }" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Height="258" VerticalAlignment="Center" HorizontalAlignment="Left" Width="259" SelectionChanged="listBox_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding DateAndTime}"></TextBlock>
                                 <TextBlock Text=" "></TextBlock>
                                 <TextBlock Text="Doktor:"></TextBlock>
-                                <TextBlock Text="{Binding Doctor.Name}"> </TextBlock>
+                                <TextBlock Text="{Binding Doctor.Name}"></TextBlock>
                                 <TextBlock Text=" "></TextBlock>
                                 <TextBlock Text="{Binding Doctor.Lastname}"></TextBlock>
                                 <TextBlock Text=" "></TextBlock>
@@ -89,7 +88,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
-            <Frame x:Name="popUpFrame" NavigationUIVisibility="Hidden" Margin="40,322,95,33" BorderBrush="Black" BorderThickness="1" Visibility="Hidden" />
+            <Frame x:Name="popUpFrame" NavigationUIVisibility="Hidden" Margin="40,322,95,0" BorderBrush="Black" BorderThickness="1" Visibility="Hidden" MinHeight ="219" MaxHeight="344" VerticalAlignment="Top" />
         </Grid>
     </ScrollViewer>
 

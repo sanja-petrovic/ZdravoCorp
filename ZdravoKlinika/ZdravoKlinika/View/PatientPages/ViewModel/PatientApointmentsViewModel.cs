@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using ZdravoKlinika.View;
 using ZdravoKlinika.View.PatientPages;
 
-namespace ZdravoKlinika.PatientPages.ViewModel
+namespace ZdravoKlinika.View.PatientPages.ViewModel
 {
     internal class PatientApointmentsViewModel : INotifyPropertyChanged
     {

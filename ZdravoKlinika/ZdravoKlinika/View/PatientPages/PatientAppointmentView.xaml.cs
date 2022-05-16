@@ -178,7 +178,14 @@ namespace ZdravoKlinika.View.PatientPages
                     buttonAdd.IsEnabled = false;
                     buttonEdit.IsEnabled = false; //testing
                     buttonRemove.IsEnabled = false;
-                    buttonComment.IsEnabled = true;
+                    if (selectedInList.Grading == null)
+                    {
+                        buttonComment.IsEnabled = true;
+                    }
+                    else
+                    {
+                        buttonComment.IsEnabled = false;
+                    }
                     buttonDocuments.IsEnabled = true;
                 }
             }
@@ -191,20 +198,18 @@ namespace ZdravoKlinika.View.PatientPages
 
         private void buttonComment_Click(object sender, RoutedEventArgs e)
         {
-            PatientAppointmentReviewView reviewView = new PatientAppointmentReviewView();
+            PatientAppointmentReviewView reviewView = new PatientAppointmentReviewView(selectedInList.AppointmentId);
             popUpFrame.Navigate(reviewView);
             popUpFrame.Visibility = Visibility.Visible;
         }
     }
-    class LookupConvertor : IMultiValueConverter
+    public class LookupConvertor : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-             var date = (DateTime)values[0];
-             var dates = values[1] as List<DateTime>;
-             return dates.Contains(date);
-
-            throw new NotImplementedException();
+            var date = (DateTime)values[0];
+            var dates = values[1] as List<DateTime>;
+            return dates.Contains(date);
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
