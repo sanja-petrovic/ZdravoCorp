@@ -45,5 +45,9 @@ public class RegisteredPatientController
         MedicationService medicationService = new MedicationService();
         return this.patientService.IsAllergic(medicationService.GetById(medicationId), registeredPatientService.GetById(patientId));
     }
+    public bool IsBanned(RegisteredPatient patient)
+    {
+        return this.patientService.IsBanned(patient);
+    }
 
 }

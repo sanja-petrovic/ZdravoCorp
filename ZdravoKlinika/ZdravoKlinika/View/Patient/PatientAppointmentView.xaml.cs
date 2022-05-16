@@ -31,7 +31,7 @@ namespace ZdravoKlinika.View
         {
             patientId = id;
             InitializeComponent();
-            viewModel = new PatientApointmentsViewModel();
+            viewModel = new PatientApointmentsViewModel(patientId);
             this.DataContext = viewModel;
             listBox.ItemsSource = viewModel.SelectedDateAppointments;
         }
@@ -39,6 +39,7 @@ namespace ZdravoKlinika.View
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             popUpFrame.Visibility = Visibility.Visible;
+            viewModel.PatientAddView = new PatientAddView(patientId);
             popUpFrame.Navigate(viewModel.PatientAddView);
             
            
@@ -62,7 +63,8 @@ namespace ZdravoKlinika.View
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             popUpFrame.Visibility = Visibility.Visible;
-            popUpFrame.Navigate(viewModel.PatientEditView = new PatientEditView(selectedInList.AppointmentId));
+            viewModel.PatientEditView = new PatientEditView(selectedInList.AppointmentId, patientId);
+            popUpFrame.Navigate(viewModel.PatientEditView);
             if(listBox.SelectedItem != null)
             {
                 
@@ -83,8 +85,17 @@ namespace ZdravoKlinika.View
         {
             if (listBox.SelectedItem != null)
             {
-                appointmentController.DeleteAppointment(selectedInList.AppointmentId);
-                resetBaseView();
+                try
+                {
+                    appointmentController.PatientDeleteAppointment(selectedInList.AppointmentId, patientId);
+                    resetBaseView();
+                }
+                catch (Exception ex)
+                {
+                    //TODO localise this later and call logout!
+                    MessageBox.Show("Previse puta ste izmenili pregled, rad ce privremeno biti onemogucen obratite se sekretaru", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
+                    forcedLogout();
+                }
             }
         }
 
@@ -96,6 +107,19 @@ namespace ZdravoKlinika.View
                 {
                     PatientViewBase baseWindow = (PatientViewBase)window;
                     baseWindow.refreshAppointmentView();
+                }
+            }
+        }
+        private void forcedLogout()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Name == "patientBase")
+                {
+                    PatientViewBase baseWindow = (PatientViewBase)window;
+                    SignInWindow signInWindow = new SignInWindow();
+                    signInWindow.Show();
+                    baseWindow.Close();
                 }
             }
         }

@@ -13,6 +13,7 @@ namespace ZdravoKlinika.ViewModel
 
         private RegisteredUser user;
         private RegisteredUserController registeredUserController;
+        private RegisteredPatientController registeredPatientController;
 
         private string username;
         private string password;
@@ -23,11 +24,13 @@ namespace ZdravoKlinika.ViewModel
         public string Username { get => username; set => SetProperty(ref username, value); }
         public string Password { get => password; set => SetProperty(ref password, value); }
         public bool Remember { get => remember; set => SetProperty(ref remember, value); }
+        public RegisteredPatientController RegisteredPatientController { get => registeredPatientController; set => registeredPatientController = value; }
 
         public SignInViewModel()
         {
             username = "Npr. vaseime@zdravo.com";
             registeredUserController = new RegisteredUserController();
+            RegisteredPatientController = new RegisteredPatientController();
             if (this.SavedLogin())
             {
                 User = registeredUserController.GetRememberedUser();

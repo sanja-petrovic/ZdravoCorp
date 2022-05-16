@@ -16,20 +16,21 @@ namespace ZdravoKlinika.ViewModel
 {
     internal class PatientApointmentsViewModel : INotifyPropertyChanged
     {
-        //private string patientid;
+        private string patientid;
         private ImageSource addIcon = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "addPatient.png"));
         private ImageSource commentIcon = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "commentPatient.png"));
         private ImageSource editIcon = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "editPatient.png"));
         private ImageSource documentsIcon = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "pagePatient.png"));
         private ImageSource removeIcon = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "removePatient.png"));
-        private PatientAddView patientAddView = new PatientAddView();
+        private PatientAddView patientAddView;
         private PatientEditView patientEditView;
         private List<DateTime> appointmentDates = new List<DateTime>();
         private AppointmentController controller = new AppointmentController();
         private ObservableCollection<Appointment> selectedDateAppointments = new ObservableCollection<Appointment>();
-        public PatientApointmentsViewModel()
+        public PatientApointmentsViewModel(String id)
         {
-            foreach(Appointment app in Controller.GetAppointmentsByPatientId("0105965123321"))
+            patientid = id;
+            foreach (Appointment app in Controller.GetAppointmentsByPatientId(patientid))
             {
                 AppointmentDates.Add(app.DateAndTime.Date);
             }
@@ -120,7 +121,7 @@ namespace ZdravoKlinika.ViewModel
 
         public void GetSelectedDateAppointments(DateTime date)
         {
-            SelectedDateAppointments = new ObservableCollection<Appointment> (controller.GetAppointmentsByPatientIdForDate("0105965123321", date));
+            SelectedDateAppointments = new ObservableCollection<Appointment> (controller.GetAppointmentsByPatientIdForDate(patientid, date));
             
         }
     }

@@ -27,6 +27,7 @@ namespace ZdravoKlinika.View
         RegisteredUser user;
 
         RegisteredUserController registeredUserController;
+        
 
         public RegisteredUser User { get => user; set => user = value; }
 
@@ -63,8 +64,7 @@ namespace ZdravoKlinika.View
             switch (viewModel.User.UserType)
             {
                 case UserType.Patient:
-                    View.PatientViewBase pvB = new View.PatientViewBase(viewModel.User.PersonalId);
-                    pvB.Show();
+                    PatientViewSpawn(viewModel.User.PersonalId);
                     break;
                 case UserType.Secretary:
                     Secretary.SecretaryMainWindow secretaryMainWindow = new Secretary.SecretaryMainWindow();
@@ -107,6 +107,18 @@ namespace ZdravoKlinika.View
                 show = false;
             }
         }
-
+        
+        private void PatientViewSpawn(String patientId)
+        {
+            if (!viewModel.RegisteredPatientController.IsBanned(viewModel.RegisteredPatientController.GetById(patientId)))
+            {
+                View.PatientViewBase pvB = new View.PatientViewBase(viewModel.User.PersonalId);
+                pvB.Show();
+            }
+            else
+            {
+                MessageBox.Show("Previse puta ste izmenili pregled, rad ce privremeno biti onemogucen obratite se sekretaru", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
