@@ -44,6 +44,11 @@ namespace ZdravoKlinika.Service
             return this.repository.GetPendingRequests();
         }
 
+        public List<MedApprovalRequest> GetDeniedRequests()
+        {
+            return this.repository.GetDeniedRequests();
+        }
+
         public List<MedApprovalRequest> GetPendingRequestsByReviewer(Doctor doctor)
         {
             return this.repository.GetPendingRequestsByReviewer(doctor);

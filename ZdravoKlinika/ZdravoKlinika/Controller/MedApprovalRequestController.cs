@@ -44,6 +44,11 @@ namespace ZdravoKlinika.Controller
             return this.service.GetPendingRequests();
         }
 
+        public List<MedApprovalRequest> GetDeniedRequests()
+        {
+            return this.service.GetDeniedRequests();
+        }
+
         public List<MedApprovalRequest> GetPendingRequestsByReviewer(String doctorId)
         {
             DoctorService doctorService = new DoctorService();

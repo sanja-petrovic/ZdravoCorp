@@ -10,9 +10,9 @@ public class Medication
     private string medicationCode;
     private String brandName;
     private string dosage;
-    private List<String> activeSubstances;
+    private List<String> activeSubstances; 
     private string form;
-    private String note;
+    private String note; 
     private List<string> allergens;
     private bool validated;
     [JsonConverter(typeof(MedicationConverter))]
@@ -76,8 +76,9 @@ public class Medication
         return medication;
     }
 
-    public string ToString()
+    public override string ToString()
     {
         return this.brandName + " " + this.dosage + ", " + this.form;
     }
+
 }

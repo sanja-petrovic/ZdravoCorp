@@ -116,6 +116,21 @@ namespace ZdravoKlinika.Repository
             return requests;
         }
 
+        public List<MedApprovalRequest> GetDeniedRequests()
+        {
+            List<MedApprovalRequest> requests = new List<MedApprovalRequest>();
+            foreach (MedApprovalRequest request in this.requests)
+            {
+                if (request.Pending == false && request.Comment != null)
+                {
+                    UpdateReferences(request);
+                    requests.Add(request);
+                }
+            }
+
+            return requests;
+        }
+
         public List<MedApprovalRequest> GetPendingRequestsByReviewer(Doctor doctor)
         {
             List<MedApprovalRequest> requests = new List<MedApprovalRequest>();

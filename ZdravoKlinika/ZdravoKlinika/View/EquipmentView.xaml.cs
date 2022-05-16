@@ -30,12 +30,6 @@ namespace ZdravoKlinika.View
             dataGridEquipment.ItemsSource = this.Equipment;
         }
 
-        private void Refresh_Display()
-        {
-            dataGridEquipment.ItemsSource = null;
-            dataGridEquipment.ItemsSource = this.equipmentController.GetAll();
-        }
-
         private void MoveEquipment_Click(object sender, RoutedEventArgs e)
         {
             EquipmentMoveView equipmentMoveView = new EquipmentMoveView();
@@ -58,11 +52,10 @@ namespace ZdravoKlinika.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int query = filteriComboBox.SelectedIndex;
             ObservableCollection<Equipment> expendableGoods = new ObservableCollection<Equipment>(this.equipmentController.GetByExpendability(true));
             ObservableCollection<Equipment> inexpendableGoods = new ObservableCollection<Equipment>(this.equipmentController.GetByExpendability(false));
             ObservableCollection<Equipment> expiringGoods = new ObservableCollection<Equipment>();
-            switch (query)
+            switch (filteriComboBox.SelectedIndex)
             {
                 case 0:
                     dataGridEquipment.ItemsSource = expendableGoods;

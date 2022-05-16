@@ -13,7 +13,7 @@ namespace ZdravoKlinika.Repository
         private MedicationDataHandler medicationDataHandler;
         private List<Medication> medications;
         private DoctorRepository doctorRepository;
-
+        private List<Medication> approvedValueList;
 
         public MedicationRepository()
         {
@@ -21,6 +21,7 @@ namespace ZdravoKlinika.Repository
             ReadDataFromFiles();
 
             this.doctorRepository = new DoctorRepository();
+            this.approvedValueList = new List<Medication>();
         }
 
         private void ReadDataFromFiles()
@@ -69,9 +70,6 @@ namespace ZdravoKlinika.Repository
             {
                 if(medication.MedicationId == id)
                 {
-                    //UpdateReferences(medication); (!)
-                    //causes stack overflow in case of a circular reference
-                    //instead if you need alternatives, call GetAlternatives(string medicationId)
                     UpdateDoctor(medication);
                     medicationToReturn = medication;
                     break;
@@ -80,7 +78,40 @@ namespace ZdravoKlinika.Repository
 
             return medicationToReturn;
         }
+      
+        public Medication GetByCodeAndName(string medicationCode, string brandName)
+        {
+            ReadDataFromFiles();
+            Medication? medicationToReturn = null;
+            foreach (Medication medication in medications)
+            {
+                if (medication.MedicationCode.Equals(medicationCode) && medication.BrandName.Equals(brandName))
+                {
+                    UpdateReferences(medication);
+                    medicationToReturn = medication;
+                    break;
+                }
+            }
 
+            return medicationToReturn;
+        }
+
+        public List<Medication> GetByApprovedValue(bool approved)
+        {
+            this.approvedValueList.Clear();
+
+            foreach (Medication m in this.medications)
+            {
+                UpdateReferences(m);
+                if (m.Validated == approved)
+                {
+                    approvedValueList.Add(m);
+                }
+            }
+
+            return this.approvedValueList;
+        }
+      
         public List<Medication> GetAlternatives(Medication medication)
         {
             UpdateReferences(medication);

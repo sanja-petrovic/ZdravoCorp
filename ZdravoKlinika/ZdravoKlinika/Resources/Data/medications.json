@@ -66,14 +66,14 @@
       " dekstrometorfan",
       " askorbinska kiselina"
     ],
-    "Validated": true,
+    "Validated": false,
     "Alternatives": [],
     "Classification": "dekongestiv, analgetik, antipiretik",
     "SideEffects": "Alergija, lupanje srca, gastrointestinalni poreme\u0107aji, ko\u017Ene reakcije, pove\u0107anje krvnog pritiska",
     "Indications": "Caffetin Cold se koristi za ubla\u017Eavanje simptoma prehlade i gripa (glavobolja, bolovi u mi\u0161i\u0107ima, bolovi u grlu, nazalna kongestija, groznica i suvi ka\u0161alj).",
     "DosageInstructions": "Odrasli i deca iznad 12 godina: 1-2 tbl. do 4 puta dnevno, sa minimalnim razmakom od \u010Detiri sata.  Ne preporu\u010Duje se za decu mla\u0111u od 12 godina.",
     "Amount": 192,
-    "Validator": "123"
+    "Validator": null
   },
   {
     "MedicationId": "4",

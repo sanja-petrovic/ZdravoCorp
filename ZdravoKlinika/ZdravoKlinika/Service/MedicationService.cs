@@ -27,6 +27,16 @@ namespace ZdravoKlinika.Service
             return this.medicationRepository.GetById(medId);
         }
 
+        public Medication GetByCodeAndName(string medicationCode, string brandName)
+        {
+            return this.medicationRepository.GetByCodeAndName(medicationCode, brandName);
+        }
+
+        public List<Medication> GetByApprovedValue(bool approved)
+        {
+            return this.medicationRepository.GetByApprovedValue(approved);
+        }
+
         public void CreateMedication(string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, string dosageInstructions, int amount)
         {         
             Medication m = new Medication(GenerateId().ToString(), medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, dosageInstructions, amount);
@@ -34,9 +44,9 @@ namespace ZdravoKlinika.Service
         }
 
         public void UpdateMedication(string medicationId, string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, string dosageInstructions, int amount)
+
         {
             Medication medication = new Medication(medicationId, medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, dosageInstructions, amount);
-
             this.medicationRepository.UpdateMedication(medication);
         }
 
