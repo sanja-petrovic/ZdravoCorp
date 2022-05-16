@@ -25,6 +25,7 @@ namespace ZdravoKlinika.View
         private MedicationController medicationController;
         private MedApprovalRequestController medApprovalRequestController;
         private Medication med;
+
         public ObservableCollection<Medication> Medications { get; set; }
         public ObservableCollection<MedApprovalRequest> DeniedApprovalRequests { get; set; }
 

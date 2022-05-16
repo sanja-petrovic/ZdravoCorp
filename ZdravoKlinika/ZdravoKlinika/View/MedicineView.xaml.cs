@@ -24,6 +24,13 @@ namespace ZdravoKlinika.View
         private MedApprovalRequestController medApprovalRequestController;
         public ObservableCollection<Medication> Medications { get; set; }
 
+        ObservableCollection<Medication> approvedMedication;
+        ObservableCollection<MedApprovalRequest> deniedRequests;
+        ObservableCollection<MedApprovalRequest> pendingRequests;
+        ObservableCollection<Medication> unapprovedMedication;
+        ObservableCollection<Medication> pendingMedication;
+
+
         public MedicineView()
         {
             InitializeComponent();
@@ -32,7 +39,7 @@ namespace ZdravoKlinika.View
             this.medApprovalRequestController = new MedApprovalRequestController();
             this.Medications = new ObservableCollection<Medication>(this.medicationController.GetAll());
             dataGridMedicine.ItemsSource = this.Medications;
-            EditMedicineButton.IsEnabled = false;
+            EditMedicineButton.IsEnabled = false;        
         }
 
         private void dataGridMedicine_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -60,11 +67,11 @@ namespace ZdravoKlinika.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ObservableCollection<Medication> approvedMedication = new ObservableCollection<Medication>(this.medicationController.GetByApprovedValue(true));
-            ObservableCollection<MedApprovalRequest> deniedRequests = new ObservableCollection<MedApprovalRequest>(this.medApprovalRequestController.GetDeniedRequests());
-            ObservableCollection<MedApprovalRequest> pendingRequests = new ObservableCollection<MedApprovalRequest>(this.medApprovalRequestController.GetPendingRequests());
-            ObservableCollection<Medication> unapprovedMedication = new ObservableCollection<Medication>();
-            ObservableCollection<Medication> pendingMedication = new ObservableCollection<Medication>();
+            approvedMedication = new ObservableCollection<Medication>(this.medicationController.GetByApprovedValue(true));
+            deniedRequests = new ObservableCollection<MedApprovalRequest>(this.medApprovalRequestController.GetDeniedRequests());
+            pendingRequests = new ObservableCollection<MedApprovalRequest>(this.medApprovalRequestController.GetPendingRequests());
+            unapprovedMedication = new ObservableCollection<Medication>();
+            pendingMedication = new ObservableCollection<Medication>();
 
             switch (filteriComboBox.SelectedIndex)
             {
@@ -72,9 +79,9 @@ namespace ZdravoKlinika.View
                     dataGridMedicine.ItemsSource = approvedMedication;
                     break;
                 case 1: //neodobreni
-                    foreach (MedApprovalRequest mar in deniedRequests)
+                    foreach (MedApprovalRequest mar in this.deniedRequests)
                     {
-                        unapprovedMedication.Add(mar.Medication);                       
+                        unapprovedMedication.Add(mar.Medication);
                     }
                     dataGridMedicine.ItemsSource = unapprovedMedication;
                     break;
@@ -84,7 +91,7 @@ namespace ZdravoKlinika.View
                         pendingMedication.Add(mar.Medication);
                     }
                     dataGridMedicine.ItemsSource = pendingMedication;
-                    break;             
+                    break;
                 default:
                     break;
             }

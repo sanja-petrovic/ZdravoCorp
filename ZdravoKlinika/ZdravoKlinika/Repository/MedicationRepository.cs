@@ -15,7 +15,6 @@ namespace ZdravoKlinika.Repository
         private DoctorRepository doctorRepository;
         private List<Medication> approvedValueList;
 
-
         public MedicationRepository()
         {
             medicationDataHandler = new MedicationDataHandler();
@@ -93,6 +92,7 @@ namespace ZdravoKlinika.Repository
 
             foreach (Medication m in this.medications)
             {
+                UpdateReferences(m);
                 if (m.Validated == approved)
                 {
                     approvedValueList.Add(m);

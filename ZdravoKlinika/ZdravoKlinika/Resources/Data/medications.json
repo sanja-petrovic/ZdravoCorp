@@ -78,26 +78,31 @@
     "MedicationCode": "R02AA",
     "Form": "sprej za usnu sluznicu, rastvor",
     "ActiveSubstances": [
-      "androgen"
+      "antibiotik"
     ],
     "Allergens": [
-      "antiparazitik"
+      "arachis ulje"
     ],
     "Validated": false,
     "Alternatives": [
       {
-        "MedicationId": "1",
-        "BrandName": "Brufen",
-        "Dosage": "200mg",
+        "MedicationId": "3",
+        "BrandName": "Caffetin cold",
+        "Dosage": "500mg\u002B30mg\u002B15mg\u002B60mg",
         "Note": "",
-        "MedicationCode": "M01AE01",
+        "MedicationCode": "N02BE51",
         "Form": "film tableta",
         "ActiveSubstances": [
-          "ibuprofen"
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
         ],
         "Allergens": [
-          "ibuprofen",
-          "brufen"
+          "paracetamol",
+          "pseudoefedrin",
+          "dekstrometorfan",
+          "askorbinska kiselina"
         ],
         "Validated": true,
         "Alternatives": [],
@@ -105,7 +110,7 @@
         "SideEffects": null,
         "Indications": null,
         "DosageInstructions": null,
-        "Amount": 222
+        "Amount": 192
       }
     ],
     "Classification": "adsadsdsadsa",
