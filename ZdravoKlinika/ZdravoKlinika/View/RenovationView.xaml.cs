@@ -70,7 +70,7 @@ namespace ZdravoKlinika.View
         {
             EntryList.Clear();
             textArea.Text = "Prostorija " + listBox.SelectedItem.ToString() + " ce biti renovirana datuma " +
-                dateTimePicker.SelectedDate.ToString() + ".";
+                dateTimePicker.Value.ToString() + ".";
             foreach (Room r in listBox.SelectedItems)
             {
                 foreach(Room r1 in Rooms)
@@ -87,7 +87,7 @@ namespace ZdravoKlinika.View
             if (textAmount.Text != "") { 
                 EntryList.Clear();
                 textArea.Text = "Prostorija " + listBox.SelectedItem.ToString() + " ce biti podeljena na " + textAmount.Text + " prostorija/e datuma " +
-                    dateTimePicker.SelectedDate.ToString() + ".";
+                    dateTimePicker.Value.ToString() + ".";
                 foreach (Room r in listBox.SelectedItems)
                 {
                     foreach (Room r1 in Rooms)
@@ -113,7 +113,7 @@ namespace ZdravoKlinika.View
             }
             textArea.Text = textArea.Text.Remove(textArea.Text.Length - 1);
             textArea.Text += " ce biti spojene datuma " +
-                dateTimePicker.SelectedDate.ToString() + ".";
+                dateTimePicker.Value.ToString() + ".";
             foreach (Room r in listBox.SelectedItems)
             {
                 foreach (Room r1 in Rooms)
@@ -127,7 +127,7 @@ namespace ZdravoKlinika.View
 
         private void ExecuteButton_Click(object sender, RoutedEventArgs e)
         {
-            this.renovationController.CreateRenovation(EntryList, numberOfExitRooms, dateTimePicker.SelectedDate);
+            this.renovationController.CreateRenovation(EntryList, numberOfExitRooms, (DateTime)dateTimePicker.Value);
             ExecuteButton.IsEnabled = false;
             textArea.Text = "";
         }

@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.ViewModel.SecretaryViewModel;
 
 namespace ZdravoKlinika.View.Secretary
 {
@@ -26,16 +27,17 @@ namespace ZdravoKlinika.View.Secretary
     {
         RegisteredPatientController registeredPatientController;
         PatientController patientController;
-        public SecretaryUpdateDeletePatientPage(String pid)
+        PatientViewModel patientViewModel;
+        public SecretaryUpdateDeletePatientPage(PatientViewModel viewModel)
         {
             InitializeComponent();
             registeredPatientController = new RegisteredPatientController();
             patientController = new PatientController();
-            
-            Patient pat = patientController.GetById(pid);
-            if (pat.GetPatientType() == PatientType.Registered)
+            patientViewModel = viewModel;
+
+            if (patientViewModel.SelectedPatient.GetPatientType() == PatientType.Registered)
             {
-                updateComponents(pid);
+                updateComponents(viewModel.SelectedPatient.GetPatientId());
             }
             else 
             {
@@ -135,6 +137,7 @@ namespace ZdravoKlinika.View.Secretary
             String profilePic = System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 3] + System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 2] + System.IO.Path.DirectorySeparatorChar + splitData[splitData.Length - 1];
 
             registeredPatientController.UpdatePatient(personalID, name, lastname, phone, password, profilePic, street, stnumber, city, country, bloodType, occupation, ECname, ECphone, allergies, diagnosis);
+            patientViewModel.UpdatePatient();
             NavigationService.RemoveBackEntry();
         }
         private void DeletePatient(object sender, RoutedEventArgs e)

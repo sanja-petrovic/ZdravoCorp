@@ -117,50 +117,15 @@ namespace ZdravoKlinika.Repository
             }
             set
             {
-                RemoveAllActionLog();
+                RemoveAll();
                 if (value != null)
                 {
                     foreach (Model.ActionLog oActionLog in value)
-                        AddActionLog(oActionLog);
+                        AddLog(oActionLog);
                 }
             }
         }
 
-        /// <summary>
-        /// Add a new Model.ActionLog in the collection
-        /// </summary>
-        /// <pdGenerated>Default Add</pdGenerated>
-        public void AddActionLog(Model.ActionLog newActionLog)
-        {
-            if (newActionLog == null)
-                return;
-            if (this.actionLogs == null)
-                this.actionLogs = new System.Collections.Generic.List<ActionLog>();
-            if (!this.actionLogs.Contains(newActionLog))
-                this.actionLogs.Add(newActionLog);
-        }
-
-        /// <summary>
-        /// Remove an existing Model.ActionLog from the collection
-        /// </summary>
-        /// <pdGenerated>Default Remove</pdGenerated>
-        public void RemoveActionLog(Model.ActionLog oldActionLog)
-        {
-            if (oldActionLog == null)
-                return;
-            if (this.actionLogs != null)
-                if (this.actionLogs.Contains(oldActionLog))
-                    this.actionLogs.Remove(oldActionLog);
-        }
-
-        /// <summary>
-        /// Remove all instances of Model.ActionLog from the collection
-        /// </summary>
-        /// <pdGenerated>Default removeAll</pdGenerated>
-        public void RemoveAllActionLog()
-        {
-            if (actionLogs != null)
-                actionLogs.Clear();
-        }
+        
     }
 }
