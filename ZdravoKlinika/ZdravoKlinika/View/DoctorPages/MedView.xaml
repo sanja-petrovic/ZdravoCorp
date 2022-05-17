@@ -14,19 +14,19 @@
             <StackPanel Orientation="Horizontal" Margin="0 0 0 15">
                 <StackPanel Orientation="Vertical">
                     <Label Content="Šifra leka" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBlock Visibility="Visible" TextWrapping="WrapWithOverflow" Margin="5 0 15 0" Text="{Binding Code}" FontSize="14" FontWeight="Regular" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left" />
+                    <TextBlock Visibility="Visible" TextWrapping="WrapWithOverflow" Margin="5 0 20 0" Text="{Binding Code}" FontSize="14" FontWeight="Regular" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label Content="Naziv leka" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock Visibility="Visible" TextWrapping="WrapWithOverflow" Margin="5 0 15 0" Text="{Binding BrandName}" FontSize="14" FontWeight="Regular" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left" />
+                    <TextBlock Visibility="Visible" TextWrapping="WrapWithOverflow" Margin="5 0 20 0" Text="{Binding BrandName}" FontSize="14" FontWeight="Regular" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label Content="Oblik" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBlock Visibility="Visible" TextWrapping="WrapWithOverflow" Text="{Binding Form}" Margin="5 0 15 0" FontSize="14" FontWeight="Regular" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left"/>
+                    <TextBlock Visibility="Visible" TextWrapping="WrapWithOverflow" Text="{Binding Form}" Margin="5 0 20 0" FontSize="14" FontWeight="Regular" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" MaxWidth="250">
                     <Label Content="Klasifikacija" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBlock Visibility="Visible"  TextWrapping="WrapWithOverflow" Text="{Binding Classification}" Margin="5 0 15 0" FontSize="14" FontWeight="Regular" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left"/>
+                    <TextBlock Visibility="Visible"  TextWrapping="WrapWithOverflow" Text="{Binding Classification}" Margin="5 0 20 0" FontSize="14" FontWeight="Regular" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left"/>
                 </StackPanel>
             </StackPanel>
 
@@ -34,11 +34,11 @@
 
                 <StackPanel Orientation="Vertical" MaxWidth="300">
                     <Label Content="Aktivne supstance" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBlock Visibility="Visible" x:Name="HiddenTb_Copy2" TextWrapping="Wrap" Text="{Binding Actives}" Margin="5 0 15 0" FontSize="14" FontWeight="Regular" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left"/>
+                    <TextBlock Visibility="Visible" x:Name="HiddenTb_Copy2" TextWrapping="Wrap" Text="{Binding Actives}" Margin="5 0 20 0" FontSize="14" FontWeight="Regular" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" MaxWidth="240">
                     <Label Content="Doza" FontWeight="Bold" FontSize="14"/>
-                    <TextBlock Visibility="Visible" x:Name="HiddenTb_Copy3" Margin="5 0 15 0" TextWrapping="Wrap" Text="{Binding Dosage}" FontSize="14" FontWeight="Regular" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left"/>
+                    <TextBlock Visibility="Visible" x:Name="HiddenTb_Copy3" Margin="5 0 20 0" TextWrapping="Wrap" Text="{Binding Dosage}" FontSize="14" FontWeight="Regular" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left"/>
                 </StackPanel>
 
             </StackPanel>

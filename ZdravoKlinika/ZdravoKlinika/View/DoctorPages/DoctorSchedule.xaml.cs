@@ -56,5 +56,11 @@ namespace ZdravoKlinika.View.DoctorPages
             timeOffRequestView.ShowDialog();
             TimeOffView.Load(doctor);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CreateApptSchedule createAppt = new CreateApptSchedule(doctor);
+            createAppt.ShowDialog();
+        }
     }
 }

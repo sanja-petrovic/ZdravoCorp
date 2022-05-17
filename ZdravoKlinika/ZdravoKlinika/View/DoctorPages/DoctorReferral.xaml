@@ -18,22 +18,14 @@
         <TextBlock HorizontalAlignment="Left" Margin="26,250,0,0" TextWrapping="Wrap" Text="Datum" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="230,250,0,0" TextWrapping="Wrap" Text="Vreme" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="324,250,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Border  Margin="303,340,40,95"
-            BorderBrush="Black"
-            BorderThickness="2"
-            CornerRadius="10">
-            <Border.Effect>
-                <DropShadowEffect Color="#5cff75" Opacity="0.5" Direction="0" ShadowDepth="0" BlurRadius="30"/>
-            </Border.Effect>
-        </Border>
-        <Button x:Name="ScheduleButton" Click="ScheduleButton_Click" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF01F176" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="301,336,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
+        <Button x:Name="ScheduleButton" Click="ScheduleButton_Click" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="301,336,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
             <Button.Style>
-                <StaticResource ResourceKey="fancyButtonStyle5"/>
+                <StaticResource ResourceKey="fancyButtonStyle4"/>
             </Button.Style>
         </Button>
         <ComboBox x:Name="DoctorCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" SelectionChanged="DoctorCB_SelectionChanged" Foreground="#555557" ItemsSource="{Binding DoctorsDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="230,113,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
@@ -85,5 +77,6 @@
             </TextBox.Resources>
         </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="357,200,0,0" TextWrapping="Wrap" Text="minuta" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock Name="SuccessTB" Visibility="Collapsed" HorizontalAlignment="Left" Margin="27,343,0,0" Foreground="#FF64CC87" TextWrapping="Wrap" Text="Uspešno ste zakazali termin!" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
     </Grid>
 </UserControl>

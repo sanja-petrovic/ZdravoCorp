@@ -489,7 +489,7 @@
                             <DataGridTemplateColumn Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Source="/Resources/Images/more.png" MouseLeftButtonUp="ApprovedMeds_MouseDoubleClick" Width="12" Height="12" HorizontalAlignment="Left"/>
+                                        <Image Source="/Resources/Images/more.png" MouseLeftButtonUp="ApprovedMeds_MouseDoubleClick" Width="12" Height="12" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

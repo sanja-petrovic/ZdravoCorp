@@ -105,23 +105,26 @@
     "MedicationId": "5",
     "BrandName": "Hemomycin",
     "Dosage": "250mg",
-    "Note": "",
+    "Note": "/",
     "MedicationCode": "J01FA10",
     "Form": "kapsula, tvrda",
     "ActiveSubstances": [
       "azitromicin"
     ],
     "Allergens": [
-      "azitromicin"
+      "azitromicin",
+      " eritromicin",
+      " makrolidni antibiotici",
+      " ketolidni antibiotici"
     ],
-    "Validated": false,
+    "Validated": true,
     "Alternatives": [],
     "Classification": "antibiotik",
-    "SideEffects": null,
-    "Indications": null,
-    "DosageInstructions": null,
+    "SideEffects": "Alergija, oboljenja jetre, kandidijaza, gastroenteritis, glavobolja, povra\u0107anje, mu\u010Dnina, dijareja",
+    "Indications": "Indikovan je u terapiji infekcija gornjih i donjih disajnih puteva, infekciju ko\u017Ee i potko\u017Eog tkiva, infekcije \u017Eeluca i dvanaestopala\u010Dnog creva uzrokovane bakterijom  Helicobacter pylori, i polno prenosivih bolesti. ",
+    "DosageInstructions": "U le\u010Denju infekcija gornjih i donjih disajnih puteva, kao i ko\u017Ee i mekih tkiva, ukupna doza azitromicina iznosi 1500mg, a daje se tokom 3 uzastopna dana (500 mg jedanput dnevno). U le\u010Denju acne vulgaris, preporu\u010Duje se 1x500mg jednom dnevno tokom tri dana, a posle 1x500mg jednom nedeljno tokom slede\u0107ih 9 nedelja. U le\u010Denju infekcija \u017Eeluca i dvanaestopala\u010Dnog creva, doza iznosi 1g na dan. Kod dece se sme primenjivati samo ako imaju telesnu masu ve\u0107u od 45kg.",
     "Amount": 215,
-    "Validator": null
+    "Validator": "123"
   },
   {
     "MedicationId": "6",

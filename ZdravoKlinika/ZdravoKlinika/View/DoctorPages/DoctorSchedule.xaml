@@ -42,7 +42,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Zakažite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="572,88,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="93" Height="33"  Foreground="#555557" >
+        <Button OverridesDefaultStyle="False"  Focusable="False" Click="Button_Click" Content="Zakažite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="572,88,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="93" Height="33"  Foreground="#555557" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
