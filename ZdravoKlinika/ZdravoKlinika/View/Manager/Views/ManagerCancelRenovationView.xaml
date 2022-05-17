@@ -11,6 +11,6 @@
       Title="ManagerCancelRenovationView">
 
     <Grid>
-        <TextBlock Text="22222" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="PLACEHOLDER" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
     </Grid>
 </Page>

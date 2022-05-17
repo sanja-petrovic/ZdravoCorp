@@ -245,7 +245,7 @@
             <TabItem Header="Otkazivanje renoviranja" Cursor="Hand">
                 <Frame Content="{Binding CancelRenovationViewModel}" NavigationUIVisibility="Hidden"/>
             </TabItem>
-            <TabItem Header="Premeštanje robe" Cursor="Hand">
+            <TabItem Header="Premeštanje opreme" Cursor="Hand">
                 <Frame Content="{Binding TransferEquipmentViewModel}" NavigationUIVisibility="Hidden"/>
             </TabItem>
         </TabControl>
