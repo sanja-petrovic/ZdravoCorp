@@ -6,14 +6,8 @@ using JsonConverters;
 
 public class RenovationDataHandler
 {
-    private String fileLocation;
-
-    public String FileLocation { get => fileLocation; set => fileLocation = value; }
-
-    public RenovationDataHandler(string fileLocation)
-    {
-        this.fileLocation = fileLocation;
-    }
+    private static String fileName = "renovation.json";
+    private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
 
     public void Write(List<Renovation> renovationList)
     {

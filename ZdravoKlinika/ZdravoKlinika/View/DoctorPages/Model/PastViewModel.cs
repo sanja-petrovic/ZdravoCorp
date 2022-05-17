@@ -14,6 +14,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string diagnosis;
         private string precription;
         private string opinion;
+        private Doctor doctor;
 
         public PastViewModel()
         {
@@ -23,12 +24,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void init(Appointment appointment)
         {
             this.appointmentId = appointment.AppointmentId;
+            this.Doctor = appointment.Doctor;
             this.title = appointment.DateAndTime.ToString("dd.MM.yyyy. HH:mm") + ", " + appointment.Doctor.ToString();
             this.diagnosis = appointment.Diagnoses;
-            foreach(Medication med in appointment.Prescriptions)
+            foreach(Prescription p in appointment.Prescriptions)
             {
-                this.precription += med.ToString() ;
-                if(appointment.Prescriptions.Last().MedicationId != med.MedicationId)
+                this.precription += p.ToString() ;
+                if(appointment.Prescriptions.Last().Id != p.Id)
                 {
                     this.precription += ", ";
                 }
@@ -41,5 +43,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Diagnosis { get => diagnosis; set => SetProperty(ref diagnosis, value); }
         public string Precription { get => precription; set => SetProperty(ref precription, value); }
         public string Opinion { get => opinion; set => SetProperty(ref opinion, value); }
+        public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
     }
 }

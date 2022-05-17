@@ -18,33 +18,43 @@ namespace ZdravoKlinika.View.DoctorPages
     public partial class DoctorSchedule : Page
     {
         private DateTime selected;
-        public DoctorSchedule()
+        private Doctor doctor;
+        public DoctorSchedule(Doctor doctor)
         {
             DataContext = this;
+            this.doctor = doctor;
             InitializeComponent();
             ApptTabPanel.Parent1 = this;
+            ApptTabPanel.Doctor = doctor;
+            ApptTabPanel.Selected = DateTime.Today;
+            TimeOffView.Load(doctor);
         }
 
         public DateTime Selected { get => selected; set => selected = value; }
+        public Doctor Doctor { get => doctor; set => doctor = value; }
 
         public void CalendarSelectionChanged(object sender, RoutedEventArgs e) {
 
             ApptTabPanel.Selected = (DateTime) Cal.SelectedDate;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
-            doctorMedicalRecord.PatientId = "0105965123321";
-            this.NavigationService.Navigate(doctorMedicalRecord);
-        }
-
         public void goToMedicalRecord(string patientId)
         {
-            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
+            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord(Doctor);
 
             doctorMedicalRecord.init(patientId);
             this.NavigationService.Navigate(doctorMedicalRecord);
+        }
+
+        private void ViewDaysOff(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void RequestButton_Click(object sender, RoutedEventArgs e)
+        {
+            TimeOffRequestView timeOffRequestView = new TimeOffRequestView(this.doctor);
+            timeOffRequestView.ShowDialog();
+            TimeOffView.Load(doctor);
         }
     }
 }

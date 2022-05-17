@@ -1,0 +1,36 @@
+[
+  {
+    "EducationLevel": "Doktor nauka",
+    "YearsOfService": 0,
+    "Working": true,
+    "UserType": "Manager",
+    "PersonalId": "8888888",
+    "Name": "Gregory",
+    "Lastname": "House",
+    "DateOfBirth": "1957-01-01T00:00:00",
+    "Gender": 1,
+    "Phone": "0612345679",
+    "Email": "m",
+    "Password": "m",
+    "ProfilePicture": "null",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": null
+  },
+  {
+    "EducationLevel": "Doktor nauka",
+    "YearsOfService": 0,
+    "Working": true,
+    "UserType": "Secretary",
+    "PersonalId": "9999999",
+    "Name": "Lisa",
+    "Lastname": "Cuddy",
+    "DateOfBirth": "1959-10-05T00:00:00",
+    "Gender": 0,
+    "Phone": "0612345678",
+    "Email": "s",
+    "Password": "s",
+    "ProfilePicture": "null",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": null
+  }
+]

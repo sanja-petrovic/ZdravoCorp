@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.Model" d:DataContext="{d:DesignInstance Type=model:ScheduleViewModel}"
-             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:ScheduleViewModel}"
+             mc:Ignorable="d"  
              Height="768" Width="1024">
     <UserControl.Resources>
         <Style x:Key="TabItemStyleApptInfo" TargetType="{x:Type TabItem}">
@@ -246,7 +246,7 @@
         <TabControl ItemsSource="{Binding Tabs}"  Name="TabTab" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleApptInfo}" Margin="688,167,57,237">
             
         </TabControl>
-        <TextBlock Visibility="Hidden" Name="HiddenTb" TextWrapping="WrapWithOverflow" Text="Nema zakazanih termina za ovaj dan." Margin="754,349,0,0" FontSize="14" FontWeight="Regular" FontFamily="OpenSans-Regular" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Center" Height="35" Width="147"/>
+        <TextBlock Visibility="Hidden" Name="HiddenTb" TextWrapping="WrapWithOverflow" Text="Nema zakazanih termina za ovaj dan." Margin="754,349,0,0" FontSize="14" FontWeight="Regular" Foreground="#555557" VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Center" Height="35" Width="147"/>
 
     </Grid>
 

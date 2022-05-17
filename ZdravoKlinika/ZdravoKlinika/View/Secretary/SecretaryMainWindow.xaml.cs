@@ -10,7 +10,11 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
+using ZdravoKlinika.Model;
+using ZdravoKlinika.ViewModel.SecretaryViewModel;
 
 namespace ZdravoKlinika.View.Secretary
 {
@@ -19,23 +23,18 @@ namespace ZdravoKlinika.View.Secretary
     /// </summary>
     public partial class SecretaryMainWindow : Window
     {
+        PatientViewModel PatientViewModel { get; set; }
         public SecretaryMainWindow()
         {
             InitializeComponent();
             MainContentFrame.Navigate(new SecretaryHomePage());
+            PatientViewModel = new PatientViewModel();
             Select(BorderHomePage);
+            Application.Current.MainWindow = this;
         }
 
         private void HambuergerMenuIcon_MouseLeftButtonUp(object sender, RoutedEventArgs e)
         {
-            /*
-            if (HamburgerMenuFrame.Visibility == Visibility.Visible) 
-            {
-                HamburgerMenuFrame.Visibility = Visibility.Collapsed;
-                return;
-            }
-            HamburgerMenuFrame.Visibility = Visibility.Visible;
-            */
             if (HamburgerMenuFrame.Visibility == Visibility.Collapsed)
                 HamburgerMenuFrame.Visibility = Visibility.Visible;
 
@@ -48,6 +47,11 @@ namespace ZdravoKlinika.View.Secretary
         }
 
         private void HomeChangePage(object sender, RoutedEventArgs e)
+        {
+            ChangeToHomePage();
+        }
+
+        private void ChangeToHomePage()
         {
             Select(BorderHomePage);
             if (MainContentFrame.CanGoBack)
@@ -69,14 +73,41 @@ namespace ZdravoKlinika.View.Secretary
 
         private void UpdatePatientPage(object sender, RoutedEventArgs e)
         {
+            if (PatientViewModel.SelectedPatient == null)
+            {
+                ChoosePatient();
+                return;
+            }
             Select(BorderUDPatient);
             if (MainContentFrame.CanGoBack)
                 MainContentFrame.RemoveBackEntry();
-            MainContentFrame.Navigate(new SecretaryChoosePatientUDPage());
+            MainContentFrame.Navigate(new SecretaryUpdateDeletePatientPage(PatientViewModel));
             MenuContentLabel.Content = "Azuriranje i brisanje pacijenta";
             HamburgerMenuFrame.IsChecked = false;
         }
-
+        private void CreateAppointmentPage(object sender, RoutedEventArgs e)
+        {
+            if (PatientViewModel.SelectedPatient == null)
+            {
+                ChoosePatient();
+                return;
+            }
+            Select(BorderCrAppointment);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryCreateAppointment(PatientViewModel));
+            MenuContentLabel.Content = "Kreiranje termina";
+            HamburgerMenuFrame.IsChecked = false;
+        }
+        private void OrderEquipmentPage(object sender, RoutedEventArgs e)
+        {
+            Select(BorderOrderEquipment);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryOrderEquipment());
+            MenuContentLabel.Content = "Narucivanje opreme";
+            HamburgerMenuFrame.IsChecked = false;
+        }
         private void Select(Border b)
         {
             // unselect every border first
@@ -84,6 +115,11 @@ namespace ZdravoKlinika.View.Secretary
             ChangeColorUnSelected(BorderUDPatient);
             ChangeColorUnSelected(BorderHomePage);
             ChangeColorUnSelected(BorderCrAppointment);
+            ChangeColorUnSelected(BorderOrderEquipment);
+            ChangeColorUnSelected(BorderChoosePatient);
+            ChangeColorUnSelected(BorderOrderEquipment);
+            ChangeColorUnSelected(BorderUpdateAppointment);
+            ChangeColorUnSelected(BorderCreateEMAppointment);
 
 
             // selected border
@@ -105,13 +141,53 @@ namespace ZdravoKlinika.View.Secretary
             b.BorderThickness = new Thickness(0, 0, 0, 0);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CheckPatient(object sender, RoutedEventArgs e)
         {
-            Select(BorderCrAppointment);
+            ChoosePatient();
+        }
+
+        private void ChoosePatient()
+        {
+            Select(BorderChoosePatient);
             if (MainContentFrame.CanGoBack)
                 MainContentFrame.RemoveBackEntry();
-            MainContentFrame.Navigate(new SecretaryCreateAppointment());
-            MenuContentLabel.Content = "Kreiranje termina";
+            MenuContentLabel.Content = "Biranje pacijenta";
+            HamburgerMenuFrame.IsChecked = false;
+            MainContentFrame.Navigate(new ChoosePatientPage(PatientViewModel));
+        }
+
+        private void UpdateAppointmentPage(object sender, RoutedEventArgs e)
+        {
+            if (PatientViewModel.SelectedPatient == null)
+            {
+                ChoosePatient();
+                return;
+            }
+            Select(BorderUpdateAppointment);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryUpdateAppointments(PatientViewModel));
+            MenuContentLabel.Content = "Azuriranje termina";
+            HamburgerMenuFrame.IsChecked = false;
+        }
+
+        public void ToHomePage() 
+        {
+            ChangeToHomePage();
+        }
+
+        private void CreateEmergencyAppointment(object sender, RoutedEventArgs e)
+        {
+            if (PatientViewModel.SelectedPatient == null)
+            {
+                ChoosePatient();
+                return;
+            }
+            Select(BorderCreateEMAppointment);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryCreateEmergencyAppointment(PatientViewModel));
+            MenuContentLabel.Content = "Kreiranje hitnih slucajeva";
             HamburgerMenuFrame.IsChecked = false;
         }
     }

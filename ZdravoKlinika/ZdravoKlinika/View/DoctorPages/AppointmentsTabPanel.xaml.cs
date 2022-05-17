@@ -25,11 +25,12 @@ namespace ZdravoKlinika.View.DoctorPages
         ScheduleViewModel viewModel;
         private string clickedPatientId;
         private DoctorSchedule parent;
+        private Doctor doctor;
 
         public AppointmentsTabPanel()
         {
             selected = DateTime.Today;
-            viewModel = new Model.ScheduleViewModel();
+            viewModel = new ScheduleViewModel();
             viewModel.Selected = selected;
             DataContext = viewModel;
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace ZdravoKlinika.View.DoctorPages
             {
                 this.selected = value;
                 viewModel.Selected = value;
+                viewModel.Doctor = this.doctor;
                 viewModel.infoChange();
                 TabTab.SelectedIndex = 0;
                 if(TabTab.Items.Count == 0)
@@ -59,6 +61,7 @@ namespace ZdravoKlinika.View.DoctorPages
 
         public DoctorSchedule Parent1 { get => parent; set => parent = value; }
         public string ClickedPatientId { get => clickedPatientId; set => clickedPatientId = value; }
+        public Doctor Doctor { get => doctor; set => doctor = value; }
 
         private void GoToRecord(object sender, RoutedEventArgs e)
         {

@@ -49,9 +49,11 @@ namespace ZdravoKlinika.View.Secretary
             else 
                 bloodType = (BloodType)ComboBoxBloodType.SelectedIndex;
             List<String> allergies = new List<String>();
-            allergies.Add(TextBoxAllergies.Text);
+            foreach (String allergy in TextBoxAllergies.Text.Split(","))
+                allergies.Add(allergy.Trim());
             List<String> diagnosis = new List<String>();
-            diagnosis.Add(TextBoxDiagnosis.Text);
+            foreach (String diagnose in TextBoxDiagnosis.Text.Split(","))
+                diagnosis.Add(diagnose.Trim());
 
             String ECname = TextBoxECName.Text;
             String ECphone = TextBoxECPhone.Text;

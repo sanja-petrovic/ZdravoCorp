@@ -26,46 +26,36 @@ namespace ZdravoKlinika.View.DoctorPages
         private string doctorId;
 
         private PrescriptionController prescriptionController;
-        private PrescriptionViewModel viewModel;
+        private TherapyTab viewModel;
 
         public PrescriptionView()
         {
+
             prescriptionController = new PrescriptionController();
             
         }
 
         public void init(string doctorId, string patientId)
         {
-            viewModel = new PrescriptionViewModel();
-            viewModel.init(doctorId, patientId);
-            DataContext = viewModel;
+            ViewModel = new TherapyTab();
+            ViewModel.LoadFromRecord(doctorId, patientId);
+            DataContext = this;
             InitializeComponent();
         }
 
         public string PatientId { get => patientId; set => patientId = value; }
         public string DoctorId { get => doctorId; set => doctorId = value; }
+        public TherapyTab ViewModel { get => viewModel; set => viewModel = value; }
 
         private void Confirm(object sender, RoutedEventArgs e)
         {
-            var selected = (String) RepeatCB.SelectedItem;
-            var note = (String)NoteTB.Text;
-            viewModel.Save(MedCB.SelectedIndex, selected, note);
+            viewModel.Save();
             this.Close();
         }
 
-        private void MedCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void GiveUpButton_Click(object sender, RoutedEventArgs e)
         {
-            if(viewModel.AllergyCheck(MedCB.SelectedIndex))
-            {
-                MedCB.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 87));
-                AllergyTB.Visibility = Visibility.Hidden;
-                ConfirmButton.IsEnabled = true;
-            } else
-            {
-                MedCB.Foreground = new SolidColorBrush(Color.FromRgb(254, 93, 122));
-                AllergyTB.Visibility = Visibility.Visible;
-                ConfirmButton.IsEnabled = false;
-            }
+            this.Close();
         }
     }
 }

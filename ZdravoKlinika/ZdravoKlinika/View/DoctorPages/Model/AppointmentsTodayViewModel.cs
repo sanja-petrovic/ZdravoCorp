@@ -4,11 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
     internal class AppointmentsTodayViewModel : ViewModelBase
     {
+        
         public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
         public int SelectedAppointmentId { get => selectedAppointmentId; set => SetProperty(ref selectedAppointmentId, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
@@ -18,7 +20,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Diagnoses { get => diagnoses; set => SetProperty(ref diagnoses, value); }
         public string Therapy { get => therapy; set => SetProperty(ref therapy, value); }
         public Appointment SelectedAppointment { get => selectedAppointment; set => SetProperty(ref selectedAppointment, value); }
+        public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
 
+        private Doctor doctor;
         AppointmentController appointmentController;
         Appointment selectedAppointment;
         private int selectedAppointmentId;
@@ -29,21 +33,25 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string diagnoses;
         private string therapy;
 
-        public AppointmentsTodayViewModel()
+        public AppointmentsTodayViewModel(Doctor doctor)
         {
             this.Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
-            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate("456", DateTime.Today);
+            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate(doctor.PersonalId, DateTime.Today);
 
-            foreach(Appointment appointment in appts)
+            foreach (Appointment appointment in appts)
             {
-                RegisteredPatient patient = (RegisteredPatient)appointment.Patient;
-                DateTime time = appointment.DateAndTime;
-                Room room = appointment.Room;
-                
+                {
 
-                if(!appointment.Over)
-                    this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.Name + " " + patient.Lastname, Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room.Name });
+                    Patient patient = appointment.Patient;
+                    DateTime time = appointment.DateAndTime;
+                    Room room = appointment.Room;
+
+
+                    if (!appointment.Over)
+                        this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.GetPatientFullName(), Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room.Name });
+                }
+
             }
         }
 
@@ -51,7 +59,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             this.Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
-            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate("456", DateTime.Today);
+            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate(doctor.PersonalId, DateTime.Today);
 
             foreach (Appointment appointment in appts)
             {
@@ -70,22 +78,25 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             SelectedAppointment = appointmentController.GetAppointmentById(selectedId);
             PatientName = SelectedAppointment.Patient.GetPatientFullName();
             PatientId = SelectedAppointment.Patient.GetPatientId();
-            RegisteredPatient patient = ((RegisteredPatient)SelectedAppointment.Patient);
-            DateOfBirth = patient.DateOfBirth.ToString("dd.MM.yyyy.");
-            Gender = patient.GenderToString();
-            Diagnoses = "";
-            foreach (string diagnosis in patient.MedicalRecord.Diagnoses)
+            Patient patient = SelectedAppointment.Patient;
+            if(patient.GetPatientType() == PatientType.Registered)
             {
-                Diagnoses += diagnosis;
-                if (patient.MedicalRecord.Diagnoses.Last() != diagnosis)
+                DateOfBirth = ((RegisteredPatient) patient).DateOfBirth.ToString("dd.MM.yyyy.");
+                Gender = ((RegisteredPatient)patient).GenderToString();
+                Diagnoses = "";
+                foreach (string diagnosis in ((RegisteredPatient)patient).MedicalRecord.Diagnoses)
                 {
-                    Diagnoses += ", ";
+                    Diagnoses += diagnosis;
+                    if (((RegisteredPatient) patient).MedicalRecord.Diagnoses.Last() != diagnosis)
+                    {
+                        Diagnoses += ", ";
+                    }
                 }
-            }
-            Therapy = "";
-            foreach (Medication prescription in patient.MedicalRecord.CurrentMedication)
-            {
-                Therapy += prescription.BrandName + " " + prescription.Dosage + "\n";
+                Therapy = "";
+                foreach (Medication prescription in ((RegisteredPatient)patient).MedicalRecord.CurrentMedication)
+                {
+                    Therapy += prescription.BrandName + " " + prescription.Dosage + "\n";
+                }
             }
         }
     }

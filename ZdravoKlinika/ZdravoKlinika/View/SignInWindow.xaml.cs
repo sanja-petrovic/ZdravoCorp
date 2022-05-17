@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Navigation;
+using ZdravoKlinika.Controller;
+using ZdravoKlinika.ViewModel;
 
 namespace ZdravoKlinika.View
 {
@@ -22,17 +24,63 @@ namespace ZdravoKlinika.View
     {
         private bool clicked = false;
         private bool show = false;
+        RegisteredUser user;
+
+        RegisteredUserController registeredUserController;
+        
+
+        public RegisteredUser User { get => user; set => user = value; }
+
+        public SignInViewModel viewModel;
+
         public SignInWindow()
         {
+            viewModel = new SignInViewModel();
+            DataContext = viewModel;
             InitializeComponent();
+            if (viewModel.SavedLogin())
+            {
+                this.LogIn();
+                this.Close();
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            View.DoctorPages.DoctorSchedule doctorSchedule = new View.DoctorPages.DoctorSchedule();
-            View.DoctorPages.DoctorHomePage doctorHomePage = new View.DoctorPages.DoctorHomePage();
-            MainFrame.Navigate(doctorHomePage);
+            if (viewModel.IsLoginSuccessful()) 
+            {
+                this.LogIn();
+                if(StayLoggedIn.IsChecked == true)
+                {
+                    viewModel.RememberUser();
+                }
 
+                this.Close();
+            }
+        }
+
+        public void LogIn()
+        {
+            switch (viewModel.User.UserType)
+            {
+                case UserType.Patient:
+                    PatientViewSpawn(viewModel.User.PersonalId);
+                    break;
+                case UserType.Secretary:
+                    Secretary.SecretaryMainWindow secretaryMainWindow = new Secretary.SecretaryMainWindow();
+                    secretaryMainWindow.Show();
+                    break;
+                case UserType.Doctor:
+                    DoctorPages.DoctorBasePage doctorBase = new DoctorPages.DoctorBasePage(viewModel.User);
+                    doctorBase.Show();
+                    break;
+                case UserType.Manager:
+                    UpravnikWindow upravnikWindow = new UpravnikWindow();
+                    upravnikWindow.Show();
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void TextBox_MouseDown(Object sender, RoutedEventArgs e)
@@ -59,11 +107,18 @@ namespace ZdravoKlinika.View
                 show = false;
             }
         }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        
+        private void PatientViewSpawn(String patientId)
         {
-            //https://stackoverflow.com/questions/40529684/how-to-store-login-info-of-a-wpf-application
-            //https://stackoverflow.com/questions/33294471/proper-way-to-save-previous-user-login-info
+            if (!viewModel.RegisteredPatientController.IsBanned(viewModel.RegisteredPatientController.GetById(patientId)))
+            {
+                View.PatientPages.PatientViewBase pvB = new View.PatientPages.PatientViewBase(viewModel.User.PersonalId);
+                pvB.Show();
+            }
+            else
+            {
+                MessageBox.Show("Previse puta ste izmenili pregled, rad ce privremeno biti onemogucen obratite se sekretaru", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

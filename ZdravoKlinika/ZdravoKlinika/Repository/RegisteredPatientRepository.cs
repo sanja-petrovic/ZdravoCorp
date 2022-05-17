@@ -7,44 +7,28 @@ public class RegisteredPatientRepository
     private RegisteredPatientDataHandler patientsDataHandler;
     private MedicalRecordRepository medicalRecordRepository;
     private List<RegisteredPatient> patients;
-    public List<RegisteredPatient> Patient
-    {
-        get
-        {
-            if (patients == null)
-                patients = new List<RegisteredPatient>();
-            return patients;
-        }
-        set
-        {
-            DeleteAllPatients();
-            if (value != null)
-            {
-                foreach (RegisteredPatient oPatient in value)
-                    CreatePatient(oPatient);
-            }
-        }
-    }
+
+
     public RegisteredPatientRepository() {
-        // init
         patientsDataHandler = new RegisteredPatientDataHandler();
         MedicalRecordRepository = new MedicalRecordRepository();
-        this.patients = patientsDataHandler.Read();
-        updateReferences();
+        ReadDataFromFiles();
     }
 
-    private void updateReferences()
+    private void ReadDataFromFiles()
     {
-       
-        foreach (RegisteredPatient pat in patients)
-        {
-            pat.MedicalRecord = MedicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId); 
-        }
+        Patients = patientsDataHandler.Read();
+        if (Patients == null) Patients = new List<RegisteredPatient>();
     }
 
-    public void recordUpdated(RegisteredPatient p)
+    private void UpdateReferences(RegisteredPatient pat)
     {
-        foreach (RegisteredPatient patient in this.patients)
+        pat.MedicalRecord = MedicalRecordRepository.GetById(pat.MedicalRecord.MedicalRecordId);
+    }
+
+    public void RecordUpdated(RegisteredPatient p)
+    {
+        foreach (RegisteredPatient patient in this.Patients)
         {
             if (patient.PersonalId.Equals(p.PersonalId))
             {
@@ -56,34 +40,42 @@ public class RegisteredPatientRepository
 
     public RegisteredPatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
     public MedicalRecordRepository MedicalRecordRepository { get => medicalRecordRepository; set => medicalRecordRepository = value; }
+    public List<RegisteredPatient> Patients { get => patients; set => patients = value; }
 
     public List<RegisteredPatient> GetAll()
     {
-        updateReferences();
-        return patients;
+        ReadDataFromFiles();
+        foreach (RegisteredPatient pat in Patients)
+        {
+            UpdateReferences(pat);
+        }
+        return Patients;
     }
 
     public RegisteredPatient? GetById(String id)
     {
-        updateReferences();
-        foreach (RegisteredPatient patient in this.patients) 
+        ReadDataFromFiles();
+        RegisteredPatient registeredPatientToReturn = null;
+        foreach (RegisteredPatient patient in this.Patients) 
         {
             if (patient.PersonalId.Equals(id)) 
             {
-                return patient;
+                UpdateReferences(patient);
+                registeredPatientToReturn = patient;
+                break;
             }
         }
-        return null;
+        return registeredPatientToReturn;
     }
 
     public void CreatePatient(RegisteredPatient patient)
     {
         if (patient == null)
             return;
-        if (this.patients == null)
-            this.patients = new List<RegisteredPatient>();
+        if (this.Patients == null)
+            this.Patients = new List<RegisteredPatient>();
 
-        foreach (RegisteredPatient pat in patients)
+        foreach (RegisteredPatient pat in Patients)
         {
             if (pat.PersonalId == patient.PersonalId)
             {
@@ -91,10 +83,10 @@ public class RegisteredPatientRepository
             }
         }
 
-        this.patients.Add(patient);
+        this.Patients.Add(patient);
 
         MedicalRecordRepository.CreateMedicalRecord(patient.MedicalRecord);
-        PatientsDataHandler.Write(patients);
+        PatientsDataHandler.Write(Patients);
         return;
     }
 
@@ -102,65 +94,79 @@ public class RegisteredPatientRepository
     {
         if (patient == null)
             return;
-        if (this.patients != null)
-            if (this.patients.Contains(patient))
-                this.patients.Remove(patient);
+        if (this.Patients != null)
+            if (this.Patients.Contains(patient))
+                this.Patients.Remove(patient);
 
         MedicalRecordRepository.DeleteMedicalRecord(patient.MedicalRecord);
-        PatientsDataHandler.Write(patients);
+        PatientsDataHandler.Write(Patients);
         return;
     }
     public void DeleteAllPatients()
     {
-        if (patients != null)
-            patients.Clear();
+        if (Patients != null)
+            Patients.Clear();
     }
 
     public void UpdatePatient(RegisteredPatient patient)
     {
+        int index = GetPatientIndex(patient);
+
+        if (index != -1)
+        {
+            Patients[index] = patient;
+
+            MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
+            PatientsDataHandler.Write(Patients);
+        }
+
+        return;
+    }
+    public int GetPatientIndex(RegisteredPatient patient)
+    {
         int index = -1;
-        foreach (RegisteredPatient patientObject in this.patients)
+        foreach (RegisteredPatient patientObject in this.Patients)
         {
             if (patientObject.PersonalId.Equals(patient.PersonalId))
             {
-                index = patients.IndexOf(patientObject);
+                index = Patients.IndexOf(patientObject);
             }
         }
-
-        if (index == -1)
-        {
-            Console.WriteLine("Error");
-            return;
-        }
-
-        patients[index] = patient;
-
-        MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
-        PatientsDataHandler.Write(patients);
-        
-        return;
+        return index;
     }
-
     public bool IsAllergic(Medication medication, RegisteredPatient patient)
     {
         List<string> allergies = patient.MedicalRecord.Allergies;
+        bool isAlergic = false;
         foreach(string allergy in allergies)
         {
             if(medication.BrandName.Equals(allergy))
             {
-                return true;
-            } else
+                isAlergic = true;
+                break;
+            } 
+            else
             {
                 foreach(string allergen in medication.Allergens)
                 {
                     if(allergen.Equals(allergy))
                     {
-                        return true;
+                        isAlergic = true;
+                        break;
                     }
                 }
+                if (isAlergic) break;
             }
         }
         return false;
     }
-
+    public bool IsBanned(RegisteredPatient patient)
+    {
+        return patient.Ban;
+    }
+    public void Ban(RegisteredPatient patient)
+    {
+        patient.Ban = true;
+        UpdatePatient(patient);
+    }
 }
