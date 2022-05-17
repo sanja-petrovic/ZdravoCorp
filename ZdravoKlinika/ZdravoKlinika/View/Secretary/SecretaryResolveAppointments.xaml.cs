@@ -25,6 +25,7 @@ namespace ZdravoKlinika.View.Secretary
     {
         PatientController patientContoller;
         AppointmentController appointmentContoller;
+        RoomController roomContoller;
         String specialitty;
         int duration;
         DoctorController doctorController;
@@ -39,9 +40,9 @@ namespace ZdravoKlinika.View.Secretary
             patientContoller = new PatientController();
             doctorController = new DoctorController();
             AppointmentContoller = new AppointmentController();
+            roomContoller = new RoomController();
 
             UpdateDataGrid();
-
         }
 
        
@@ -51,10 +52,22 @@ namespace ZdravoKlinika.View.Secretary
 
         private void LoadAppointmentsForRooms()
         {
-            throw new NotImplementedException();
+            AppointmentDataGrid.ItemsSource = null;
+            apps = new List<Appointment>();
+            foreach (Room room in roomContoller.GetAll())
+            {
+                if (room.Type == RoomType.operating)
+                {
+                    foreach (Appointment app in appointmentContoller.GetAppointmentsByRoomIdInSpecificTimeFrame(room.RoomId, DateTime.Now, DateTime.Now.AddHours(1).AddMinutes(duration)))
+                    {
+                        apps.Add(app);
+                    }
+                }    
+            }
+            AppointmentDataGrid.ItemsSource = apps;
         }
         private void LoadAppointmentsForDoctors()
-        {     
+        {
             AppointmentDataGrid.ItemsSource = null;
             apps = new List<Appointment>();
             foreach (Doctor doc in doctorController.GetBySpecialty(specialitty))

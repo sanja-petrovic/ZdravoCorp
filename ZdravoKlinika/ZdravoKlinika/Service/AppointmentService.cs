@@ -66,6 +66,19 @@ public class AppointmentService
         return updatedAppointmentList;
     }
 
+    public List<Appointment> GetAppointmentsByRoomIdInSpecificTimeFrame(string roomId, DateTime start, DateTime finish)
+    {
+        List<Appointment> updatedAppointmentList = new List<Appointment>();
+        foreach (Appointment appointment in GetAppointmentsByRoom(roomId))
+        {
+            if (appointment.DateAndTime.AddMinutes(appointment.Duration) > start && appointment.DateAndTime.AddMinutes(appointment.Duration) < finish)
+            {
+                updatedAppointmentList.Add(appointment);
+            }
+        }
+        return updatedAppointmentList;
+    }
+
     public Appointment GetAppointmentByDoctorDateTime(String doctorId, DateTime dateTime)
     {
         return this.appointmentRepository.GetAppointmentByDoctorDateTime(doctorId, dateTime);

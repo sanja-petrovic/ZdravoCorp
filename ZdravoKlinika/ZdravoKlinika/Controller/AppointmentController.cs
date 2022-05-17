@@ -58,9 +58,14 @@ public class AppointmentController
         return this.appointmentService.GetFreeDoctorsForTime(block,startHours,endHours);
     }
 
-    internal List<Appointment> GetAppointmentsByDoctorIdInSpecificTimeFrame(String id, DateTime start, DateTime finish)
+    public List<Appointment> GetAppointmentsByDoctorIdInSpecificTimeFrame(String id, DateTime start, DateTime finish)
     {
         return this.appointmentService.GetAppointmentsByDoctorIdInSpecificTimeFrame(id,start,finish);
+    }
+
+    public List<Appointment> GetAppointmentsByRoomIdInSpecificTimeFrame(string roomId, DateTime start, DateTime finish)
+    {
+        return this.appointmentService.GetAppointmentsByRoomIdInSpecificTimeFrame(roomId, start, finish);
     }
 
     public List<DateBlock> getFreeTimeForDoctor(DateTime date, int duration, Doctor doctor, int startHours, int endHours)
