@@ -50,5 +50,26 @@
       "317",
       "318"
     ]
+  },
+  {
+    "Id": "6",
+    "NumberOfExitRooms": 3,
+    "ScheduledDateTime": "2022-05-18T00:27:11",
+    "IsRenovationFinished": true,
+    "EntryRooms": [
+      "315"
+    ]
+  },
+  {
+    "Id": "7",
+    "NumberOfExitRooms": 1,
+    "ScheduledDateTime": "2022-05-18T00:44:15.43",
+    "IsRenovationFinished": true,
+    "EntryRooms": [
+      "315",
+      "316",
+      "317",
+      "318"
+    ]
   }
 ]
