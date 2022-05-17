@@ -14,18 +14,27 @@
     <None Remove="Resources\Images\2767194.png" />
     <None Remove="Resources\Images\add %281%29.png" />
     <None Remove="Resources\Images\add.png" />
+    <None Remove="Resources\Images\addPatient.png" />
     <None Remove="Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" />
     <None Remove="Resources\Images\bell %281%29.png" />
     <None Remove="Resources\Images\bell.png" />
     <None Remove="Resources\Images\calendar.png" />
     <None Remove="Resources\Images\comment.png" />
+    <None Remove="Resources\Images\delete.png" />
     <None Remove="Resources\Images\edit.png" />
+    <None Remove="Resources\Images\editPatient.png" />
+    <None Remove="Resources\Images\employees.png" />
+    <None Remove="Resources\Images\help.png" />
     <None Remove="Resources\Images\hide.png" />
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info %282%29.png" />
+    <None Remove="Resources\Images\inventory.png" />
     <None Remove="Resources\Images\medicine.png" />
     <None Remove="Resources\Images\more.png" />
+    <None Remove="Resources\Images\profile.png" />
     <None Remove="Resources\Images\pulse.png" />
+    <None Remove="Resources\Images\rooms.png" />
+    <None Remove="Resources\Images\schedule.png" />
     <None Remove="Resources\Images\search %281%29.png" />
     <None Remove="Resources\Images\search.png" />
     <None Remove="Resources\Images\settings.png" />
@@ -44,9 +53,18 @@
 
   <ItemGroup>
     <Content Include="Resources\Images\zdravoklinikaicon.ico" />
+    <Resource Include="Resources\Images\addPatient.png" />
+    <Resource Include="Resources\Images\delete.png" />
     <Resource Include="Resources\Images\bell.png" />
     <Resource Include="Resources\Images\edit.png" />
+    <Resource Include="Resources\Images\editPatient.png" />
+    <Resource Include="Resources\Images\employees.png" />
+    <Resource Include="Resources\Images\help.png" />
+    <Resource Include="Resources\Images\inventory.png" />
     <Resource Include="Resources\Images\more.png" />
+    <Resource Include="Resources\Images\profile.png" />
+    <Resource Include="Resources\Images\rooms.png" />
+    <Resource Include="Resources\Images\schedule.png" />
     <Resource Include="Resources\Images\search (1).png" />
     <Resource Include="Resources\Images\search.png" />
     <Resource Include="Resources\Images\settings.png" />
@@ -134,6 +152,15 @@
   <ItemGroup>
     <None Remove="Data Handler\MoveDataHandler.cs~RF6ed0908.TMP" />
     <None Remove="View\UpravnikWindow.xaml~RF9df3ab.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>

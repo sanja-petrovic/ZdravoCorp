@@ -74,6 +74,19 @@ public class RoomService
         this.roomRepository.UpdateRoom(r);
     }
 
+    public void UpdateRoom(String roomId, String name, RoomType type, RoomStatus status, int level, int number, bool free, List<Equipment> equipmentInRoom)
+    {
+        Room r = this.roomRepository.GetById(roomId);
+        r.Name = name;
+        r.Type = type;
+        r.Status = status;
+        r.Level = level;
+        r.Number = number;
+        r.Free = free;
+        r.EquipmentInRoom = equipmentInRoom;
+        this.roomRepository.UpdateRoom(r);
+    }
+
     public void DeleteRoom(String roomId)
     {
         Room r = this.roomRepository.GetById(roomId);
