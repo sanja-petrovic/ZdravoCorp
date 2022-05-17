@@ -11,6 +11,17 @@
       Title="Pocetna strana">
 
     <Grid>
-        
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Dobrodošli!" FontSize="30" FontWeight="Bold" Foreground="#FF7346F3" HorizontalAlignment="Center"/>
+            <Border Width="650" Height="300" BorderThickness="4" CornerRadius="50,50,50,50" Margin="0,30,0,0">
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" ColorInterpolationMode="ScRgbLinearInterpolation">
+                        <GradientStop Color="#FFC7C6F7" Offset="1"/>
+                        <GradientStop Color="#FF7346F3" Offset="0.6"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <Image Source="/Resources/Images/zdravoklinika.png" Height="300" Width="600"/>
+            </Border>
+        </StackPanel>
     </Grid>
 </Page>

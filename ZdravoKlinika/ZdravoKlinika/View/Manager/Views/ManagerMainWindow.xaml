@@ -50,40 +50,83 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <DockPanel>
-            <Menu DockPanel.Dock="Top" FontWeight="Bold" FontFamily="Verdana">
-                <Menu.Background>
-                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" ColorInterpolationMode="ScRgbLinearInterpolation">
-                        <GradientStop Color="#FFC7C6F7" Offset="1"/>
-                        <GradientStop Color="#FF5F5BF3" Offset="0.6"/>
-                    </LinearGradientBrush>
-                </Menu.Background>
-                <MenuItem Header="Zaposleni" Command="{Binding NavCommand}"
-                          CommandParameter="employees" Cursor="Hand"/>
-                <MenuItem Header="Prostorije" Command="{Binding NavCommand}"
-                          CommandParameter="rooms" Cursor="Hand"/>
-                <MenuItem Header="Inventar" Command="{Binding NavCommand}"
-                          CommandParameter="inventory" Cursor="Hand"/>
-                <MenuItem Header="Rasporedi" Command="{Binding NavCommand}"
-                          CommandParameter="schedules" Cursor="Hand"/>
-                <MenuItem Header="Pomoc(H)" Command="{Binding NavCommand}"
-                          CommandParameter="help" Cursor="Hand"/>
-                <MenuItem Header="Profil(L)" Command="{Binding NavCommand}"
-                          CommandParameter="profile" Cursor="Hand"/>
-            </Menu>
-            <DockPanel DockPanel.Dock="Bottom">
-                <Frame DockPanel.Dock="Top" Content="{Binding CurrentViewModel}" NavigationUIVisibility="Hidden"/>
-                <Grid DockPanel.Dock="Bottom" Height="25" VerticalAlignment="Bottom">
-                    <Grid.Background>
-                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" ColorInterpolationMode="ScRgbLinearInterpolation">
-                            <GradientStop Color="#FFC7C6F7" Offset="1"/>
-                            <GradientStop Color="#FF5F5BF3" Offset="0.6"/>
-                        </LinearGradientBrush>
-                    </Grid.Background>
-                    <TextBlock Text="{Binding Page}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="5,5,0,0"/>
-                    <TextBlock Text="{Binding CurrentTime}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="0,5,5,0" HorizontalAlignment="Right"/>
-                </Grid>
-            </DockPanel>
-        </DockPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Menu DockPanel.Dock="Top" FontWeight="Bold" Grid.Row="0">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" ColorInterpolationMode="ScRgbLinearInterpolation">
+                    <GradientStop Color="#FFC7C6F7" Offset="1"/>
+                    <GradientStop Color="#FF7346F3" Offset="0.6"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem Command="{Binding NavCommand}"
+                          CommandParameter="employees" Cursor="Hand">
+                <MenuItem.Header>
+                    <WrapPanel>
+                        <Image Width="20" Height="20" Source="/Resources/Images/employees.png"/>
+                        <TextBlock Text="Zaposleni" Margin="5,0,0,0" Height="15"/>
+                    </WrapPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Command="{Binding NavCommand}"
+                          CommandParameter="rooms" Cursor="Hand">
+                <MenuItem.Header>
+                    <WrapPanel>
+                        <Image Width="20" Height="20" Source="/Resources/Images/rooms.png"/>
+                        <TextBlock Text="Prostorije" Margin="5,0,0,0" Height="15"/>
+                    </WrapPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Command="{Binding NavCommand}"
+                          CommandParameter="inventory" Cursor="Hand">
+                <MenuItem.Header>
+                    <WrapPanel>
+                        <Image Width="20" Height="20" Source="/Resources/Images/inventory.png"/>
+                        <TextBlock Text="Inventar" Margin="5,0,0,0" Height="15"/>
+                    </WrapPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Command="{Binding NavCommand}"
+                          CommandParameter="schedules" Cursor="Hand">
+                <MenuItem.Header>
+                    <WrapPanel>
+                        <Image Width="20" Height="20" Source="/Resources/Images/schedule.png"/>
+                        <TextBlock Text="Rasporedi" Margin="5,0,0,0" Height="15"/>
+                    </WrapPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Command="{Binding NavCommand}"
+                          CommandParameter="help" Cursor="Hand">
+                <MenuItem.Header>
+                    <WrapPanel>
+                        <Image Width="20" Height="20" Source="/Resources/Images/help.png"/>
+                        <TextBlock Text="Pomoć(H)" Margin="5,0,0,0" Height="15"/>
+                    </WrapPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Command="{Binding NavCommand}"
+                          CommandParameter="profile" Cursor="Hand">
+                <MenuItem.Header>
+                    <WrapPanel>
+                        <Image Width="20" Height="20" Source="/Resources/Images/profile.png"/>
+                        <TextBlock Text="Profil(L)" Margin="5,0,0,0" Height="15"/>
+                    </WrapPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </Menu>
+        <Frame DockPanel.Dock="Top" Content="{Binding CurrentViewModel}" NavigationUIVisibility="Hidden" Background="#FFACFFF0" Grid.Row="1"/>
+        <Grid DockPanel.Dock="Bottom" Height="25" VerticalAlignment="Bottom" Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" ColorInterpolationMode="ScRgbLinearInterpolation">
+                    <GradientStop Color="#FFC7C6F7" Offset="1"/>
+                    <GradientStop Color="#FF7346F3" Offset="0.6"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock Text="{Binding Page}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="5,5,0,0"/>
+            <TextBlock Text="{Binding CurrentTime}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="0,5,5,0" HorizontalAlignment="Right"/>
+        </Grid>
     </Grid>
 </Window>

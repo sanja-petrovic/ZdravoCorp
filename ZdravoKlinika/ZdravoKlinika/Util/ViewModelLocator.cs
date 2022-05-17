@@ -36,9 +36,7 @@ namespace ZdravoKlinika.Util
 
             var viewType = d.GetType();
             string str = viewType.FullName;
-            System.Diagnostics.Debug.WriteLine(str);
             str = str.Replace(".Views", ".ViewModel");
-            System.Diagnostics.Debug.WriteLine(str);
             var viewTypeName = str;
 
             var viewModelTypeName = viewTypeName + "Model";

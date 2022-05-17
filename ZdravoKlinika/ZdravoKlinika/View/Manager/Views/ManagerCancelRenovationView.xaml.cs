@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace ZdravoKlinika.View.Manager.Views
 {
     /// <summary>
-    /// Interaction logic for ManagerRoomsView.xaml
+    /// Interaction logic for ManagerCancelRenovationView.xaml
     /// </summary>
-    public partial class ManagerRoomsView : Page
+    public partial class ManagerCancelRenovationView : Page
     {
-        public ManagerRoomsView()
+        public ManagerCancelRenovationView()
         {
             InitializeComponent();
         }
-
     }
 }

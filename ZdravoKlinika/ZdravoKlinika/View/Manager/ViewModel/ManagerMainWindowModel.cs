@@ -25,7 +25,7 @@ namespace ZdravoKlinika.View.Manager.ViewModel
         {
             NavCommand = new MyICommand<string>(OnNav);
             CurrentViewModel = homeViewModel;
-            Page = "Pocetna strana";
+            Page = "Početna strana";
             CurrentTime = DateTime.Now.ToShortTimeString();
             StartClock();
         }
@@ -73,12 +73,12 @@ namespace ZdravoKlinika.View.Manager.ViewModel
                     Page = "Inventar";
                     CurrentViewModel = inventoryViewModel;                  
                     break;
-                case "schedule":
+                case "schedules":
                     Page = "Rasporedi";
                     CurrentViewModel = scheduleViewModel;                   
                     break;
                 case "help":
-                    Page = "Pomoc";
+                    Page = "Pomoć";
                     CurrentViewModel = helpViewModel;                   
                     break;
                 case "profile":
