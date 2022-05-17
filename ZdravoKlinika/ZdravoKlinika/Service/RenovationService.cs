@@ -46,25 +46,6 @@ public class RenovationService
         this.NumberOfExitRooms = numberOfExitRooms;
         this.ScheduledDateTime = scheduledDateTime;
 
-        List<Renovation> renovations = this.renovationRepository.GetAll();
-        int newRenovationId;
-        if (renovations.Count > 0)
-        {
-            int maxId = 0;
-            int trenutniId = 0;
-            foreach (Renovation ren in renovations)
-            {
-                trenutniId = Int32.Parse(ren.Id);
-                if (trenutniId > maxId) maxId = trenutniId;
-            }
-
-            newRenovationId = maxId + 1;
-        }
-        else
-        {
-            newRenovationId = 1;
-        }
-
         RoomService roomService = new RoomService();
         rooms = roomService.GetAll();
 
@@ -90,7 +71,7 @@ public class RenovationService
 
         if (ok)
         {
-            Renovation r = new Renovation(newRenovationId.ToString(), numberOfExitRooms, scheduledDateTime, entryRooms, false);
+            Renovation r = new Renovation(GenerateId().ToString(), numberOfExitRooms, scheduledDateTime, entryRooms, false);
             this.renovationRepository.CreateRenovation(r);
             if (entryRooms.Count == 1 && numberOfExitRooms == 1)
             {
@@ -238,5 +219,28 @@ public class RenovationService
 
         timerMerge.Dispose();
         timerMerge.Dispose();
+    }
+
+    public int GenerateId()
+    {
+        List<Renovation> renovations = this.renovationRepository.GetAll();
+        int newRenovationId;
+        if (renovations.Count > 0)
+        {
+            int maxId = 0;
+            int trenutniId = 0;
+            foreach (Renovation ren in renovations)
+            {
+                trenutniId = Int32.Parse(ren.Id);
+                if (trenutniId > maxId) maxId = trenutniId;
+            }
+
+            newRenovationId = maxId + 1;
+        }
+        else
+        {
+            newRenovationId = 1;
+        }
+        return newRenovationId;
     }
 }
