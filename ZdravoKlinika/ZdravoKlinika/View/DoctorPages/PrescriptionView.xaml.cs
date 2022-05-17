@@ -53,5 +53,9 @@ namespace ZdravoKlinika.View.DoctorPages
             this.Close();
         }
 
+        private void GiveUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

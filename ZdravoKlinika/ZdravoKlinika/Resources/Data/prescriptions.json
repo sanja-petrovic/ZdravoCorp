@@ -258,5 +258,18 @@
     "Id": 20,
     "DateOfCreation": "0001-01-01T00:00:00",
     "Patient": "0105965123321,Registered"
+  },
+  {
+    "Medication": "2",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "123",
+    "Doctor": "123",
+    "Id": 21,
+    "DateOfCreation": "0001-01-01T00:00:00",
+    "Patient": "0105965123321,Registered"
   }
 ]
