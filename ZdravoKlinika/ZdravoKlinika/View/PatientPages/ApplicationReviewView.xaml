@@ -11,6 +11,34 @@
     <Page.Resources>
         <ResourceDictionary>
             <viewModel:RadioButtonDataConverter x:Key="RadioButtonDataConverter"></viewModel:RadioButtonDataConverter>
+            <Style TargetType="{x:Type Button}" x:Key="menuButton">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Width" Value="80" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                                <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="White" />
+                                <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentPresenter x:Name="myContentPresenter" TextBlock.Foreground="#6c63ff" Width="71" Height="25" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                                        <ContentPresenter.Content>
+                                            <Label x:Name="label" Content="{TemplateBinding Content}" HorizontalAlignment="Center"></Label>
+                                        </ContentPresenter.Content>
+                                    </ContentPresenter>
+                                </DockPanel>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Rectangle.Stroke" TargetName="rectangle" Value="#FFAD61FF"></Setter>
+                                    <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="#FFAD61FF"></Setter>
+                                    <Setter Property="Label.Foreground" TargetName="label" Value="White" ></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Page.Resources>
     <Page.DataContext>
@@ -34,7 +62,7 @@
                                     <TextBlock  Margin=" 12,0,0,12" Text="5"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <RadioButton GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_1" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                    <RadioButton Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_1" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
                                         <RadioButton.CommandParameter>
                                             <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
                                                 <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
@@ -43,7 +71,7 @@
                                         </RadioButton.CommandParameter>
                                     </RadioButton>
 
-                                    <RadioButton GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_2" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                    <RadioButton Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_2" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
                                         <RadioButton.CommandParameter>
                                             <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
                                                 <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
@@ -52,7 +80,7 @@
                                         </RadioButton.CommandParameter>
                                     </RadioButton>
 
-                                    <RadioButton GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_3" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                    <RadioButton Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_3" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
                                         <RadioButton.CommandParameter>
                                             <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
                                                 <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
@@ -61,7 +89,7 @@
                                         </RadioButton.CommandParameter>
                                     </RadioButton>
 
-                                    <RadioButton GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_4" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                    <RadioButton Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_4" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
                                         <RadioButton.CommandParameter>
                                             <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
                                                 <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
@@ -70,7 +98,7 @@
                                         </RadioButton.CommandParameter>
                                     </RadioButton>
 
-                                    <RadioButton GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_5" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                    <RadioButton  Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_5" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
                                         <RadioButton.CommandParameter>
                                             <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
                                                 <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
@@ -88,9 +116,8 @@
         </DataGrid>
 
         <Label Content="Polje za vaš komentar." HorizontalAlignment="Left" Margin="70,286,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="70,315,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Top" Width="690" Height="82"/>
-        <Button Content="Sačuvaj" Command="{Binding AddReviewCommand}" HorizontalAlignment="Left" Margin="70,402,0,0" VerticalAlignment="Top" Height="25" Width="63"/>
-        <Button Content="Obriši" HorizontalAlignment="Left" Margin="156,402,0,0" VerticalAlignment="Top" Height="25" Width="63"/>
+        <TextBox HorizontalAlignment="Left" Margin="70,315,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Top" Width="345" Height="82"/>
+        <Button Content="Sačuvaj" Style="{StaticResource menuButton}" Command="{Binding AddReviewCommand}" HorizontalAlignment="Left" Margin="70,402,0,0" VerticalAlignment="Top" Height="25" Width="63"/>
 
     </Grid>
 </Page>

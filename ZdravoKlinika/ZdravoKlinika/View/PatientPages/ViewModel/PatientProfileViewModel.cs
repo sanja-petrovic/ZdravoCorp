@@ -53,7 +53,7 @@ namespace ZdravoKlinika.PatientPages.ViewModel
                 this.FullName = patient.Name + " " + patient.Lastname;
                 if (patient.ProfilePicture != null)
                 {
-                    this.ProfilePictureLocation = ProfilePictureLocation;
+                    this.ProfilePictureLocation = "/Resources/Images/burger-bar.png";
                 }
                 else
                 {

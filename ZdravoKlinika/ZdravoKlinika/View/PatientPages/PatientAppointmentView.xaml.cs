@@ -129,7 +129,7 @@ namespace ZdravoKlinika.View.PatientPages
         private void calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             viewModel.GetSelectedDateAppointments(calendar.SelectedDate.Value);
-            dateLabel.Content = calendar.SelectedDate.ToString();
+            dateLabel.Content = (DateTime)calendar.SelectedDate.Value.Date;
             listBox.SelectedIndex = -1;
 
             if ((calendar.SelectedDate.Value - DateTime.Today.AddDays(2)).TotalDays <= 0)

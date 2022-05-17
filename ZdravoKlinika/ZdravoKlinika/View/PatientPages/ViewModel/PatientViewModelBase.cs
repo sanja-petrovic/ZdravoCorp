@@ -27,7 +27,7 @@ namespace ZdravoKlinika.PatientPages.ViewModel
 
 
         }
-        private ImageSource logoImageSource = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "PatientViewLogo.png"));
+        private ImageSource logoImageSource = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "zdravoklinika.png"));
         public ImageSource LogoImageSource 
         { 
             get 
