@@ -61,16 +61,20 @@ namespace ZdravoKlinika.View.DoctorPages
         private void EditAppointment(object sender, RoutedEventArgs e)
         {
             var selected = (PastViewModel)PastLB.SelectedItem;
-            if(selected.Doctor.PersonalId.Equals(this.doctor.PersonalId))
+            if(selected != null)
             {
-                EditAppointmentWindow editAppointmentWindow = new EditAppointmentWindow();
-                editAppointmentWindow.SelectedApptId = selected.AppointmentId;
-                editAppointmentWindow.Init();
-                editAppointmentWindow.Show();
-                editAppointmentWindow.Closed += (s, eventarg) =>
+
+                if (selected.Doctor.PersonalId.Equals(this.doctor.PersonalId))
                 {
-                    viewModel.Edited();
-                };
+                    EditAppointmentWindow editAppointmentWindow = new EditAppointmentWindow();
+                    editAppointmentWindow.SelectedApptId = selected.AppointmentId;
+                    editAppointmentWindow.Init();
+                    editAppointmentWindow.Show();
+                    editAppointmentWindow.Closed += (s, eventarg) =>
+                    {
+                        viewModel.Edited();
+                    };
+                }
             }
         }
 

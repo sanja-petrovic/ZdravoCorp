@@ -13,28 +13,9 @@ namespace ZdravoKlinika.Repository
         private List<Patient> patients;
         private RegisteredPatientRepository registeredPatientRepository;
         private GuestPatientRepository guestPatientRepository;
-
-        public List<Patient> Patients
-        {
-            get
-            {
-                if (patients == null)
-                    patients = new List<Patient>();
-                return patients;
-            }
-            set
-            {
-                RemoveAllPatient();
-                if (value != null)
-                {
-                    foreach (Patient oPatient in value)
-                        AddPatient(oPatient);
-                }
-            }
-        }
-
         public RegisteredPatientRepository RegisteredPatientRepository { get => registeredPatientRepository; set => registeredPatientRepository = value; }
         public GuestPatientRepository GuestPatientRepository { get => guestPatientRepository; set => guestPatientRepository = value; }
+        public List<Patient> Patients { get => patients; set => patients = value; }
 
         public PatientRepository()
         {
@@ -68,23 +49,23 @@ namespace ZdravoKlinika.Repository
         {
             if (newPatient == null)
                 return;
-            if (this.patients == null)
-                this.patients = new List<Patient>();
-            if (!this.patients.Contains(newPatient))
-                this.patients.Add(newPatient);
+            if (this.Patients == null)
+                this.Patients = new List<Patient>();
+            if (!this.Patients.Contains(newPatient))
+                this.Patients.Add(newPatient);
         }
         public void RemovePatient(Patient oldPatient)
         {
             if (oldPatient == null)
                 return;
-            if (this.patients != null)
-                if (this.patients.Contains(oldPatient))
-                    this.patients.Remove(oldPatient);
+            if (this.Patients != null)
+                if (this.Patients.Contains(oldPatient))
+                    this.Patients.Remove(oldPatient);
         }
         public void RemoveAllPatient()
         {
-            if (patients != null)
-                patients.Clear();
+            if (Patients != null)
+                Patients.Clear();
         }
         public Patient GetById(String id)
         {
@@ -98,14 +79,14 @@ namespace ZdravoKlinika.Repository
 
         public void CreateNewGuestPatient(GuestPatient guestPatient)
         {
-            patients.Add(guestPatient);
+            Patients.Add(guestPatient);
             GuestPatientRepository.AddGuestPatient(guestPatient);
             return;
         }
 
         public List<Patient> GetAll()
         {
-            return patients;
+            return Patients;
         }
     }
 }

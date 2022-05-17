@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKlinika.View" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:PrescriptionViewModel}"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages"
         mc:Ignorable="d"
-        Title="Prepisivanje leka" Height="369" Width="500" SizeToContent="WidthAndHeight"
+        Title="Prepisivanje leka" Height="507" Width="435" SizeToContent="WidthAndHeight"
     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" ResizeMode="NoResize">
     <Window.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF"/>
@@ -445,57 +445,8 @@
 
     </Window.Resources>
     <Grid>
-        <ComboBox Name="MedCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="40,114,0,0" VerticalAlignment="Top" Width="176" Text="Izaberite lek" Padding="5" Height="28" SelectionChanged="MedCB_SelectionChanged">
-            <ComboBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </ComboBox.Resources>
-        </ComboBox>
-        <TextBox Name="NoteTB" Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="40,198,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote}" VerticalAlignment="Top" Width="423" Height="28" BorderBrush="#FFAEAEC1">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Center" Margin="0,114,0,0" TextWrapping="Wrap" Text="{Binding Amount}" VerticalAlignment="Top" Width="58" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.467,0.43">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="189,155,0,0" TextWrapping="Wrap" Text="{Binding Frequency}" VerticalAlignment="Top" Width="74" Height="28" BorderBrush="#FFAEAEC1">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <ComboBox Name="RepeatCB" ItemsSource="{Binding RepeatDisplay}" Style="{DynamicResource ComboBoxStyle1}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="363,155,0,0" VerticalAlignment="Top" Width="100" Text="Izaberite lek" Padding="5" Height="28">
-
-        </ComboBox>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="95,155,0,0" TextWrapping="NoWrap" Text="{Binding Duration}" VerticalAlignment="Top" Width="88" Height="28" BorderBrush="#FFAEAEC1">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <CheckBox Content="Hitno"  Foreground="#555557" HorizontalAlignment="Left" Margin="412,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.585,0.502"/>
-        <CheckBox Content="Zabrana paralele" Foreground="#555557" HorizontalAlignment="Left" Margin="292,120,0,0" VerticalAlignment="Top"/>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="281,155,0,0" TextWrapping="Wrap" Text="{Binding SingleDose}" VerticalAlignment="Top" Width="78" Height="28" BorderBrush="#FFAEAEC1" SelectionBrush="#FF9E98FF">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <TextBlock  Foreground="#555557" HorizontalAlignment="Left"  Margin="268,161,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
-        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="40,161,0,0" TextWrapping="Wrap" Text="Doziranje:" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="55"/>
-        <TextBlock Name="AllergyTB"  Visibility="Hidden"  Foreground="#FE5D7A" HorizontalAlignment="Left" Margin="40,298,0,0" TextWrapping="Wrap" Text="Pacijent je alergičan na izabrani lek." VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="319" Height="27"/>
-        <Button Name="ConfirmButton"  Click="Confirm" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="385,291,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77">
+        <local:TherapyView DataContext="{Binding ViewModel}" Margin="3,21,0,80"></local:TherapyView>
+        <Button x:Name="ConfirmButton"  Click="Confirm" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="310,416,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -505,14 +456,15 @@
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="40,41,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="40,65,0,0" TextWrapping="Wrap" Text="{Binding PatientName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="40,81,0,0" TextWrapping="Wrap" Text="{Binding PatientId}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="181,41,0,0" TextWrapping="Wrap" Text="Doktor" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="181,65,0,0" TextWrapping="Wrap" Text="{Binding DoctorName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="122"/>
-        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="181,81,0,0" TextWrapping="Wrap" Text="{Binding DoctorSpecialty}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
-        <TextBlock  TextWrapping="Wrap" Text="Recept će se automatski generisati i biće dostupan u odseku 'Dokumenti'." Foreground="#555557" Height="55" Width="408" FontStyle="Italic" FontSize="11" Margin="40,231,52,67"/>
-
+        <Button Visibility="Visible" x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Click="GiveUpButton_Click" Margin="219,416,0,0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle4"/>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>

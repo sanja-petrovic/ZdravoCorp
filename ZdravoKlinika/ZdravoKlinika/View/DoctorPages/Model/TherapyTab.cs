@@ -77,7 +77,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.repeatDisplay.Add("nedeljno");
             this.repeatDisplay.Add("mesečno");
 
-            Medications = medicationController.GetAll();
+            Medications = medicationController.GetApproved();
             this.MedicationsDisplay = new List<String>();
             foreach (Medication m in this.medications)
             {
@@ -105,6 +105,17 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 return true;
             }
+        }
+
+        public void LoadFromRecord(string doctorId, string patientId)
+        {
+            DoctorController doctorController = new DoctorController();
+            
+            this.doctor = doctorController.GetById(doctorId);
+            this.patient = registeredPatientController.GetById(patientId);
+            this.patientId = this.patient.GetPatientId();
+            this.patientName = this.patient.GetPatientFullName();
+            this.doctorName = this.doctor.ToString();
         }
 
         public void Load()

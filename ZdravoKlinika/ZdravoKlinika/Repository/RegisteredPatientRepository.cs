@@ -7,24 +7,8 @@ public class RegisteredPatientRepository
     private RegisteredPatientDataHandler patientsDataHandler;
     private MedicalRecordRepository medicalRecordRepository;
     private List<RegisteredPatient> patients;
-    public List<RegisteredPatient> Patients
-    {
-        get
-        {
-            if (patients == null)
-                patients = new List<RegisteredPatient>();
-            return patients;
-        }
-        set
-        {
-            DeleteAllPatients();
-            if (value != null)
-            {
-                foreach (RegisteredPatient oPatient in value)
-                    CreatePatient(oPatient);
-            }
-        }
-    }
+
+
     public RegisteredPatientRepository() {
         patientsDataHandler = new RegisteredPatientDataHandler();
         MedicalRecordRepository = new MedicalRecordRepository();
@@ -44,7 +28,7 @@ public class RegisteredPatientRepository
 
     public void RecordUpdated(RegisteredPatient p)
     {
-        foreach (RegisteredPatient patient in this.patients)
+        foreach (RegisteredPatient patient in this.Patients)
         {
             if (patient.PersonalId.Equals(p.PersonalId))
             {
@@ -56,6 +40,7 @@ public class RegisteredPatientRepository
 
     public RegisteredPatientDataHandler PatientsDataHandler { get => patientsDataHandler; set => patientsDataHandler = value; }
     public MedicalRecordRepository MedicalRecordRepository { get => medicalRecordRepository; set => medicalRecordRepository = value; }
+    public List<RegisteredPatient> Patients { get => patients; set => patients = value; }
 
     public List<RegisteredPatient> GetAll()
     {
@@ -64,14 +49,14 @@ public class RegisteredPatientRepository
         {
             UpdateReferences(pat);
         }
-        return patients;
+        return Patients;
     }
 
     public RegisteredPatient? GetById(String id)
     {
         ReadDataFromFiles();
         RegisteredPatient registeredPatientToReturn = null;
-        foreach (RegisteredPatient patient in this.patients) 
+        foreach (RegisteredPatient patient in this.Patients) 
         {
             if (patient.PersonalId.Equals(id)) 
             {
@@ -87,10 +72,10 @@ public class RegisteredPatientRepository
     {
         if (patient == null)
             return;
-        if (this.patients == null)
-            this.patients = new List<RegisteredPatient>();
+        if (this.Patients == null)
+            this.Patients = new List<RegisteredPatient>();
 
-        foreach (RegisteredPatient pat in patients)
+        foreach (RegisteredPatient pat in Patients)
         {
             if (pat.PersonalId == patient.PersonalId)
             {
@@ -98,10 +83,10 @@ public class RegisteredPatientRepository
             }
         }
 
-        this.patients.Add(patient);
+        this.Patients.Add(patient);
 
         MedicalRecordRepository.CreateMedicalRecord(patient.MedicalRecord);
-        PatientsDataHandler.Write(patients);
+        PatientsDataHandler.Write(Patients);
         return;
     }
 
@@ -109,18 +94,18 @@ public class RegisteredPatientRepository
     {
         if (patient == null)
             return;
-        if (this.patients != null)
-            if (this.patients.Contains(patient))
-                this.patients.Remove(patient);
+        if (this.Patients != null)
+            if (this.Patients.Contains(patient))
+                this.Patients.Remove(patient);
 
         MedicalRecordRepository.DeleteMedicalRecord(patient.MedicalRecord);
-        PatientsDataHandler.Write(patients);
+        PatientsDataHandler.Write(Patients);
         return;
     }
     public void DeleteAllPatients()
     {
-        if (patients != null)
-            patients.Clear();
+        if (Patients != null)
+            Patients.Clear();
     }
 
     public void UpdatePatient(RegisteredPatient patient)
@@ -129,10 +114,10 @@ public class RegisteredPatientRepository
 
         if (index != -1)
         {
-            patients[index] = patient;
+            Patients[index] = patient;
 
             MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
-            PatientsDataHandler.Write(patients);
+            PatientsDataHandler.Write(Patients);
         }
 
         return;
@@ -140,11 +125,11 @@ public class RegisteredPatientRepository
     public int GetPatientIndex(RegisteredPatient patient)
     {
         int index = -1;
-        foreach (RegisteredPatient patientObject in this.patients)
+        foreach (RegisteredPatient patientObject in this.Patients)
         {
             if (patientObject.PersonalId.Equals(patient.PersonalId))
             {
-                index = patients.IndexOf(patientObject);
+                index = Patients.IndexOf(patientObject);
             }
         }
         return index;

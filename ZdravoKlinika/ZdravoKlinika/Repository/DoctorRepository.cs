@@ -1,7 +1,3 @@
-// File:    PatientRepository.cs
-// Author:  sanya
-// Created: Saturday, 9 April 2022 7:38:20 PM
-// Purpose: Definition of Class PatientRepository
 
 using System;
 using System.Collections.Generic;
