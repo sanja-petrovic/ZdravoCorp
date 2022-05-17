@@ -1,0 +1,89 @@
+﻿<Window x:Class="ZdravoKlinika.View.Manager.Views.ManagerMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.Manager.Views"
+        xmlns:vml="clr-namespace:ZdravoKlinika.Util"
+        vml:ViewModelLocator.AutoHookedUpViewModel="True"
+        xmlns:views="clr-namespace:ZdravoKlinika.View.Manager.Views"
+        xmlns:viewModel="clr-namespace:ZdravoKlinika.View.Manager.ViewModel"
+        mc:Ignorable="d"
+        Title="Zdravo Klinika" Height="600" Width="900">
+    <Window.Resources>
+        <Style TargetType="{x:Type MenuItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Header}" Margin="10 5 10 5" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter Property="Background" Value="#32bfa5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate DataType="{x:Type viewModel:ManagerHomeViewModel}">
+            <views:ManagerHomeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerRoomsViewModel}">
+            <views:ManagerRoomsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerEmployeesViewModel}">
+            <views:ManagerEmployeesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerInventoryViewModel}">
+            <views:ManagerInventoryView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerScheduleViewModel}">
+            <views:ManagerScheduleView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerHelpViewModel}">
+            <views:ManagerHelpView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerProfileViewModel}">
+            <views:ManagerProfileView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" FontWeight="Bold" FontFamily="Verdana">
+                <Menu.Background>
+                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" ColorInterpolationMode="ScRgbLinearInterpolation">
+                        <GradientStop Color="#FFC7C6F7" Offset="1"/>
+                        <GradientStop Color="#FF5F5BF3" Offset="0.6"/>
+                    </LinearGradientBrush>
+                </Menu.Background>
+                <MenuItem Header="Zaposleni" Command="{Binding NavCommand}"
+                          CommandParameter="employees" Cursor="Hand"/>
+                <MenuItem Header="Prostorije" Command="{Binding NavCommand}"
+                          CommandParameter="rooms" Cursor="Hand"/>
+                <MenuItem Header="Inventar" Command="{Binding NavCommand}"
+                          CommandParameter="inventory" Cursor="Hand"/>
+                <MenuItem Header="Rasporedi" Command="{Binding NavCommand}"
+                          CommandParameter="schedules" Cursor="Hand"/>
+                <MenuItem Header="Pomoc(H)" Command="{Binding NavCommand}"
+                          CommandParameter="help" Cursor="Hand"/>
+                <MenuItem Header="Profil(L)" Command="{Binding NavCommand}"
+                          CommandParameter="profile" Cursor="Hand"/>
+            </Menu>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Frame DockPanel.Dock="Top" Content="{Binding CurrentViewModel}" NavigationUIVisibility="Hidden"/>
+                <Grid DockPanel.Dock="Bottom" Height="25" VerticalAlignment="Bottom">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" ColorInterpolationMode="ScRgbLinearInterpolation">
+                            <GradientStop Color="#FFC7C6F7" Offset="1"/>
+                            <GradientStop Color="#FF5F5BF3" Offset="0.6"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <TextBlock Text="{Binding Page}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="5,5,0,0"/>
+                    <TextBlock Text="{Binding CurrentTime}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="0,5,5,0" HorizontalAlignment="Right"/>
+                </Grid>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>

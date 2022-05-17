@@ -44,6 +44,7 @@
             <Button x:Name="ScheduleRenovationButton" Content="Zakazi renoviranje" HorizontalAlignment="Left" Margin="636,176,0,0" VerticalAlignment="Top" Click="ScheduleRenovation_Click" Height="30" Width="110"/>
             <Button x:Name="MedicineViewButton" Content="Pregled lekova" HorizontalAlignment="Left" Margin="636,141,0,0" VerticalAlignment="Top" Click="MedicineView_Click" Height="30" Width="110"/>
             <Button x:Name="logoutButton" Content="Odjavi se" HorizontalAlignment="Left" Margin="636,244,0,0" VerticalAlignment="Top" Click="logoutButton_Click" Height="30" Width="110"/>
+            <Button x:Name="HCI" Content="HCI" HorizontalAlignment="Left" Margin="636,49,0,0" VerticalAlignment="Top" Click="hciButton_Click" Height="30" Width="110"/>
         </Grid>
-     </Grid>
+    </Grid>
 </Window>

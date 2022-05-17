@@ -195,5 +195,10 @@ namespace ZdravoKlinika.View
             this.Close();
         }
 
+        private void hciButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.Views.ManagerMainWindow mmw = new Manager.Views.ManagerMainWindow();
+            mmw.Show();
+        }
     }
 }
