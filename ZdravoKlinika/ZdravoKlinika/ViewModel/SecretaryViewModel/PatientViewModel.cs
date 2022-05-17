@@ -18,6 +18,7 @@ namespace ZdravoKlinika.ViewModel.SecretaryViewModel
 
         public int ChoosePatient(String id, String name, String lastname) 
         {
+            patientController = new PatientController();
             Patient patient = patientController.GetById(id);
             if (patient == null)
             {
@@ -38,15 +39,21 @@ namespace ZdravoKlinika.ViewModel.SecretaryViewModel
         {
             init();
         }
-        public void init() 
+        public void init()
         {
-            patientController = new PatientController();
             selectedPatient = null;
         }
         public void CreateGuest(String id, String name, String lastname) 
         {
             patientController.CreateNewGuestPatient(id, name, lastname);
             selectedPatient = patientController.GetById(id);
+        }
+
+        internal void UpdatePatient()
+        {
+            patientController = new PatientController();
+            Patient patient = patientController.GetById(SelectedPatient.GetPatientId());
+            selectedPatient = patient;
         }
     }
 }
