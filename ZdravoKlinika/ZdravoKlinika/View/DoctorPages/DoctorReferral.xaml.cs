@@ -66,6 +66,7 @@ namespace ZdravoKlinika.View.DoctorPages
             if(DataContext != null)
             {
                 ((ReferralTab)DataContext).SetDoctorComboBox(SpecialtyCB.SelectedIndex);
+                SuccessTB.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -74,6 +75,7 @@ namespace ZdravoKlinika.View.DoctorPages
             if(DataContext != null)
             {
                 ((ReferralTab)DataContext).Schedule();
+                SuccessTB.Visibility = Visibility.Visible;
             }
         }
 
@@ -82,6 +84,7 @@ namespace ZdravoKlinika.View.DoctorPages
             if(DataContext != null)
             {
                 ((ReferralTab)DataContext).SetTimes();
+                SuccessTB.Visibility = Visibility.Collapsed;
 
             }
         }
@@ -92,6 +95,7 @@ namespace ZdravoKlinika.View.DoctorPages
             {
                 ((ReferralTab)DataContext).SetDateTime(TimePicker.SelectedIndex);
                 ((ReferralTab)DataContext).SetRooms();
+                SuccessTB.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -100,6 +104,7 @@ namespace ZdravoKlinika.View.DoctorPages
             if (DataContext != null)
             {
                 ((ReferralTab)DataContext).SetSelectedDoctor(DoctorCB.SelectedIndex);
+                SuccessTB.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -108,6 +113,7 @@ namespace ZdravoKlinika.View.DoctorPages
             if (DataContext != null)
             {
                 ((ReferralTab)DataContext).SetRoom(RoomCB.SelectedIndex);
+                SuccessTB.Visibility = Visibility.Collapsed;
             }
         }
     }

@@ -77,5 +77,6 @@
             </TextBox.Resources>
         </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="357,200,0,0" TextWrapping="Wrap" Text="minuta" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock Name="SuccessTB" Visibility="Collapsed" HorizontalAlignment="Left" Margin="27,343,0,0" Foreground="#FF64CC87" TextWrapping="Wrap" Text="Uspešno ste zakazali termin!" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
     </Grid>
 </UserControl>

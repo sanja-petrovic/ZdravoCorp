@@ -30,31 +30,20 @@ namespace ZdravoKlinika.View.DoctorPages
             InitializeComponent();
             StartDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(1)));
             EndDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(1)));
+            if (this.IsInitialized)
+                Check();
 
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            if(this.viewModel.CheckDuplicate())
-            {
-                DuplicateWarning.Visibility = Visibility.Visible;
-                WarningImg.Visibility = Visibility.Visible;
-                ConfirmButton.IsEnabled = false;
-            } else if (this.viewModel.CheckRequests()) {
-
-                SpecialistsWarning.Visibility = Visibility.Visible;
-                WarningImg.Visibility = Visibility.Visible;
-                ConfirmButton.IsEnabled = false;
-            } else
-            {
-                this.viewModel.Save();
-                this.Close();
-            }
+            this.viewModel.Save();
+            this.Close();
         }
 
         private void StartDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (EndDatePicker != null)
+            if (EndDatePicker != null && this.IsInitialized)
             {
                 SpecialistsWarning.Visibility = Visibility.Collapsed;
                 AppointmentsWarning.Visibility = Visibility.Collapsed;
@@ -69,6 +58,7 @@ namespace ZdravoKlinika.View.DoctorPages
                 DateTime date = (DateTime)StartDatePicker.SelectedDate;
                 date = date.AddDays(-1);
                 EndDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, date));
+                Check();
             }
         }
 
@@ -76,38 +66,53 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             if(this.IsInitialized)
             {
-                if (this.viewModel.CheckAppointments())
-                {
-                    AppointmentsWarning.Visibility = Visibility.Visible;
-                    WarningImg.Visibility = Visibility.Visible;
-                    ConfirmButton.IsEnabled = false;
-                }
-                else if (this.viewModel.CheckDuplicate())
-                {
-                    DuplicateWarning.Visibility = Visibility.Visible;
-                    WarningImg.Visibility = Visibility.Visible;
-                    ConfirmButton.IsEnabled = false;
-                }
-                else
-                {
-                    SpecialistsWarning.Visibility = Visibility.Collapsed;
-                    AppointmentsWarning.Visibility = Visibility.Collapsed;
-                    WarningImg.Visibility = Visibility.Collapsed;
-                    ConfirmButton.IsEnabled = true;
-                }
+                Check();
+            }
+        }
+
+        private void Check()
+        {
+            if (this.viewModel.CheckAppointments())
+            {
+                AppointmentsWarning.Visibility = Visibility.Visible;
+                WarningImg.Visibility = Visibility.Visible;
+                ConfirmButton.IsEnabled = false;
+            }
+            else if (this.viewModel.CheckRequests())
+            {
+                SpecialistsWarning.Visibility = Visibility.Visible;
+                WarningImg.Visibility = Visibility.Visible;
+                ConfirmButton.IsEnabled = false;
+            }
+            else if (this.viewModel.CheckDuplicate())
+            {
+                DuplicateWarning.Visibility = Visibility.Visible;
+                WarningImg.Visibility = Visibility.Visible;
+                ConfirmButton.IsEnabled = false;
+            }
+            else
+            {
+                DuplicateWarning.Visibility = Visibility.Collapsed;
+                SpecialistsWarning.Visibility = Visibility.Collapsed;
+                AppointmentsWarning.Visibility = Visibility.Collapsed;
+                WarningImg.Visibility = Visibility.Collapsed;
+                ConfirmButton.IsEnabled = true;
             }
         }
 
         private void EmergencyCB_Checked(object sender, RoutedEventArgs e)
         {
-            SpecialistsWarning.Visibility = Visibility.Collapsed;
-            WarningImg.Visibility = Visibility.Collapsed;
-            ConfirmButton.IsEnabled = true;
+            Check();
         }
 
         private void GiveUpButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void EmergencyCB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Check();
         }
     }
 }

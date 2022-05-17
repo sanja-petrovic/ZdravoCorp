@@ -24,7 +24,7 @@ namespace ZdravoKlinika.View.DoctorPages
         private AppointmentViewModel viewModel;
         public CreateApptSchedule(Doctor doctor)
         {
-            viewModel = new AppointmentViewModel() { DoctorName = doctor.ToString() };
+            viewModel = new AppointmentViewModel() { _Doctor = doctor };
             DataContext = viewModel;
             InitializeComponent();
         }

@@ -10,7 +10,7 @@ namespace ZdravoKlinika.View
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
         {
@@ -22,6 +22,12 @@ namespace ZdravoKlinika.View
             }
             return false;
         }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
     
 }

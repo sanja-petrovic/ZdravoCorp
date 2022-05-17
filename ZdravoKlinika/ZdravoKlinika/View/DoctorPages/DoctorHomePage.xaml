@@ -27,7 +27,7 @@
         <Border BorderThickness="1" Grid.Row="0"
         CornerRadius="10,10,0,0" BorderBrush="Transparent" Background="White" Margin="274,122,42,592"/>
         <Grid>
-            <DataGrid SelectionChanged="RowSelectionChanged" SelectedIndex="0" Name="ScheduleDG" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding Appointments}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}"  Margin="275,125,42,274" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid SelectionChanged="RowSelectionChanged" SelectedIndex="0" Name="ScheduleDG" SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle2}" ItemsSource="{Binding Appointments}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}"  Margin="275,125,42,274" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ime i prezime" Binding="{Binding Name}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Tip" Binding="{Binding Type}"></DataGridTextColumn>
