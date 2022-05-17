@@ -13,7 +13,7 @@
       "ibuprofen",
       "brufen"
     ],
-    "Validated": true,
+    "Validated": false,
     "Alternatives": [
       "3"
     ],
@@ -22,7 +22,7 @@
     "Indications": "Za kratkotrajnu simptomatsku terapiju blagog do umerenog bola kao \u0161to su glavobolja, uklju\u010Duju\u0107i migrene, neuralgija, zubobolja, bolovi u mi\u0161i\u0107ima i zglobovima, bolovi u le\u0111ima, menstrualne bolovi i bolovi povezani sa prehladom. Za sni\u017Eavanje povi\u0161ene telesne temperature kao i za otklanjanje simptoma prehlade i gripa.",
     "DosageInstructions": "Maksimalna pojedina\u010Dna dnevna doza za odrasle i za adolescente ne treba da pre\u0111e 400 mg ibuprofena. Ne sme se prekora\u010Diti doza od 1200 mg u periodu od 24 sata. Minimalni interval izme\u0111u pojedina\u010Dnih doza je najmanje 4 sata. Lek nije namenjen deci mla\u0111oj od 12 godina. Lek je namenjen za kratkotrajnu primenu.",
     "Amount": 222,
-    "Validator": "123"
+    "Validator": null
   },
   {
     "MedicationId": "2",
@@ -56,24 +56,24 @@
     "Form": "film tableta",
     "ActiveSubstances": [
       "paracetamol",
-      " pseudoefedrin",
-      " dekstrometorfan",
-      " askorbinska kiselina"
+      "  pseudoefedrin",
+      "  dekstrometorfan",
+      "  askorbinska kiselina"
     ],
     "Allergens": [
       "paracetamol",
-      " pseudoefedrin",
-      " dekstrometorfan",
-      " askorbinska kiselina"
+      "  pseudoefedrin",
+      "  dekstrometorfan",
+      "  askorbinska kiselina"
     ],
-    "Validated": false,
+    "Validated": true,
     "Alternatives": [],
     "Classification": "dekongestiv, analgetik, antipiretik",
     "SideEffects": "Alergija, lupanje srca, gastrointestinalni poreme\u0107aji, ko\u017Ene reakcije, pove\u0107anje krvnog pritiska",
     "Indications": "Caffetin Cold se koristi za ubla\u017Eavanje simptoma prehlade i gripa (glavobolja, bolovi u mi\u0161i\u0107ima, bolovi u grlu, nazalna kongestija, groznica i suvi ka\u0161alj).",
     "DosageInstructions": "Odrasli i deca iznad 12 godina: 1-2 tbl. do 4 puta dnevno, sa minimalnim razmakom od \u010Detiri sata.  Ne preporu\u010Duje se za decu mla\u0111u od 12 godina.",
     "Amount": 192,
-    "Validator": null
+    "Validator": "123"
   },
   {
     "MedicationId": "4",
@@ -114,14 +114,14 @@
     "Allergens": [
       "azitromicin"
     ],
-    "Validated": true,
+    "Validated": false,
     "Alternatives": [],
-    "Classification": null,
+    "Classification": "antibiotik",
     "SideEffects": null,
     "Indications": null,
     "DosageInstructions": null,
     "Amount": 215,
-    "Validator": "123"
+    "Validator": null
   },
   {
     "MedicationId": "6",

@@ -42,7 +42,7 @@ namespace ZdravoKlinika
         {
             /*View.PatientView patientView = new View.PatientView();
             patientView.Show();*/
-            View.PatientViewBase pvB = new View.PatientViewBase("123");
+            View.PatientPages.PatientViewBase pvB = new View.PatientPages.PatientViewBase("123");
             pvB.Show();
         }
 

@@ -1,0 +1,123 @@
+﻿<Page x:Class="ZdravoKlinika.View.PatientPages.ApplicationReviewView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKlinika.View.PatientPages"
+      xmlns:viewModel="clr-namespace:ZdravoKlinika.View.PatientPages.ViewModel" d:DataContext="{d:DesignInstance Type=viewModel:PatientApplicationReviewViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ApplicationReviewView">
+    <Page.Resources>
+        <ResourceDictionary>
+            <viewModel:RadioButtonDataConverter x:Key="RadioButtonDataConverter"></viewModel:RadioButtonDataConverter>
+            <Style TargetType="{x:Type Button}" x:Key="menuButton">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Width" Value="80" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                                <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="White" />
+                                <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentPresenter x:Name="myContentPresenter" TextBlock.Foreground="#6c63ff" Width="71" Height="25" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                                        <ContentPresenter.Content>
+                                            <Label x:Name="label" Content="{TemplateBinding Content}" HorizontalAlignment="Center"></Label>
+                                        </ContentPresenter.Content>
+                                    </ContentPresenter>
+                                </DockPanel>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Rectangle.Stroke" TargetName="rectangle" Value="#FFAD61FF"></Setter>
+                                    <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="#FFAD61FF"></Setter>
+                                    <Setter Property="Label.Foreground" TargetName="label" Value="White" ></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Page.DataContext>
+        <viewModel:PatientApplicationReviewViewModel></viewModel:PatientApplicationReviewViewModel>
+    </Page.DataContext>
+    <Grid>
+        <Label x:Name="title" Content="Utisci&#xD;&#xA;" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" Height="32"/>
+        <Label Content="Vaše mišljenje o aplikaciji možete iskazati ispod." HorizontalAlignment="Left" Margin="70,47,0,0" VerticalAlignment="Top"/>
+        <DataGrid Margin="70,76,40,177" x:Name="questionsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding QuestionsAndGroups}" EnableRowVirtualization="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Pitanje" Binding="{Binding Content}" Width="4*" IsReadOnly="True"/>
+                <DataGridTemplateColumn Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock  Margin=" 12,0,0,12" Text="1"/>
+                                    <TextBlock  Margin=" 12,0,0,12" Text="2"/>
+                                    <TextBlock  Margin=" 12,0,0,12" Text="3"/>
+                                    <TextBlock  Margin=" 12,0,0,12" Text="4"/>
+                                    <TextBlock  Margin=" 12,0,0,12" Text="5"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <RadioButton Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_1" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                        <RadioButton.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
+                                                <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
+                                                <Binding Path="Name" RelativeSource="{RelativeSource Self}"/>
+                                            </MultiBinding>
+                                        </RadioButton.CommandParameter>
+                                    </RadioButton>
+
+                                    <RadioButton Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_2" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                        <RadioButton.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
+                                                <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
+                                                <Binding Path="Name" RelativeSource="{RelativeSource Self}"/>
+                                            </MultiBinding>
+                                        </RadioButton.CommandParameter>
+                                    </RadioButton>
+
+                                    <RadioButton Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_3" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                        <RadioButton.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
+                                                <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
+                                                <Binding Path="Name" RelativeSource="{RelativeSource Self}"/>
+                                            </MultiBinding>
+                                        </RadioButton.CommandParameter>
+                                    </RadioButton>
+
+                                    <RadioButton Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_4" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                        <RadioButton.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
+                                                <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
+                                                <Binding Path="Name" RelativeSource="{RelativeSource Self}"/>
+                                            </MultiBinding>
+                                        </RadioButton.CommandParameter>
+                                    </RadioButton>
+
+                                    <RadioButton  Margin="0,0,3,0" GroupName="{Binding RadioGroup, Mode=OneWay}" x:Name="_5" Command="{Binding DataContext.RadioButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}">
+                                        <RadioButton.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource RadioButtonDataConverter}">
+                                                <Binding Path="GroupName" RelativeSource="{RelativeSource Self}"/>
+                                                <Binding Path="Name" RelativeSource="{RelativeSource Self}"/>
+                                            </MultiBinding>
+                                        </RadioButton.CommandParameter>
+                                    </RadioButton>
+
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Polje za vaš komentar." HorizontalAlignment="Left" Margin="70,286,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="70,315,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Top" Width="345" Height="82"/>
+        <Button Content="Sačuvaj" Style="{StaticResource menuButton}" Command="{Binding AddReviewCommand}" HorizontalAlignment="Left" Margin="70,402,0,0" VerticalAlignment="Top" Height="25" Width="63"/>
+
+    </Grid>
+</Page>

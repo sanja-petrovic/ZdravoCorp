@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 
-namespace ZdravoKlinika.ViewModel
+namespace ZdravoKlinika.PatientPages.ViewModel
 {
     internal class PatientProfileViewModel : INotifyPropertyChanged
     {
@@ -53,7 +53,7 @@ namespace ZdravoKlinika.ViewModel
                 this.FullName = patient.Name + " " + patient.Lastname;
                 if (patient.ProfilePicture != null)
                 {
-                    this.ProfilePictureLocation = ProfilePictureLocation;
+                    this.ProfilePictureLocation = "/Resources/Images/burger-bar.png";
                 }
                 else
                 {

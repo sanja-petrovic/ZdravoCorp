@@ -42,13 +42,39 @@
     "Phone": "0638962241",
     "Email": "rosgeller@zdravo.com",
     "Password": "ross",
-    "ProfilePicture": "file:///C:/Users/asd/Documents/GitHub/ZdravoCorp/ZdravoKlinika/ZdravoKlinika/Resources/Images/dots.png",
+    "ProfilePicture": "\\Resources\\Images\\undraw_medicine_b1ol.png",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": {
       "Street": "Balzakova",
       "Number": "3",
       "City": "Novi Sad",
       "Country": "Srbija"
+    }
+  },
+  {
+    "BloodType": "APositive",
+    "Occupation": "asd",
+    "EmergencyContactName": "asd",
+    "EmergencyContactPhone": "asd",
+    "MedicalRecord": "12345",
+    "PatientType": "Registered",
+    "Ban": false,
+    "UserType": "Patient",
+    "PersonalId": "12345",
+    "Name": "asd",
+    "Lastname": "asd",
+    "DateOfBirth": "2022-04-27T00:00:00",
+    "Gender": "Female",
+    "Phone": "asd",
+    "Email": "asd",
+    "Password": "asd",
+    "ProfilePicture": "\\Resources\\Images\\1430453.png",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "asd",
+      "Number": "asd",
+      "City": "asd",
+      "Country": "asd"
     }
   }
 ]
