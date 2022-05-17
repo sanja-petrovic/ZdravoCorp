@@ -81,7 +81,7 @@ namespace ZdravoKlinika.View.Secretary
             Select(BorderUDPatient);
             if (MainContentFrame.CanGoBack)
                 MainContentFrame.RemoveBackEntry();
-            MainContentFrame.Navigate(new SecretaryUpdateDeletePatientPage(PatientViewModel.SelectedPatient.GetPatientId()));
+            MainContentFrame.Navigate(new SecretaryUpdateDeletePatientPage(PatientViewModel));
             MenuContentLabel.Content = "Azuriranje i brisanje pacijenta";
             HamburgerMenuFrame.IsChecked = false;
         }

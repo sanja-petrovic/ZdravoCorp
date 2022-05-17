@@ -53,6 +53,19 @@ public class AppointmentService
         return this.appointmentRepository.GetAppointmentsByDoctor(id);
     }
 
+    public List<Appointment> GetAppointmentsByDoctorIdInSpecificTimeFrame(String id, DateTime start, DateTime finish)
+    {
+        List<Appointment> updatedAppointmentList = new List<Appointment>();
+        foreach (Appointment appointment in GetAppointmentsByDoctorId(id))
+        {
+            if (appointment.DateAndTime.AddMinutes(appointment.Duration) > start && appointment.DateAndTime.AddMinutes(appointment.Duration) < finish)
+            { 
+                updatedAppointmentList.Add(appointment);
+            }
+        }
+        return updatedAppointmentList;
+    }
+
     public Appointment GetAppointmentByDoctorDateTime(String doctorId, DateTime dateTime)
     {
         return this.appointmentRepository.GetAppointmentByDoctorDateTime(doctorId, dateTime);
@@ -220,13 +233,27 @@ public class AppointmentService
     public List<Doctor> GetFreeDoctorsBySpecialityForNextHour(int duration, String specialitty)
     { 
         List<Doctor> docs = new List<Doctor>();
-        docs = GetFreeDoctorsForTime(new DateBlock(DateTime.Now,duration),DateTime.Now.Hour,DateTime.Now.AddHours(1).Hour);
+        //docs = GetFreeDoctorsForTime(new DateBlock(DateTime.Now,duration),DateTime.Now.Hour,DateTime.Now.AddHours(1).Hour);
+        DateTime dateNow = DateTime.Now.Date;
+        dateNow = dateNow.AddHours(DateTime.Now.ToLocalTime().Hour);
+
+        if (DateTime.Now.Minute < 15 && DateTime.Now.Minute > 0)
+            dateNow = dateNow.AddMinutes(15);
+        else if (DateTime.Now.Minute < 30)
+            dateNow = dateNow.AddMinutes(30);
+        else if (DateTime.Now.Minute < 45)
+            dateNow = dateNow.AddMinutes(45);
+        else
+            dateNow = dateNow.AddHours(1);
+
+        docs = GetFreeDoctorsForTime(new DateBlock(dateNow, duration),8,20);
         docs = PruneDoctorsBySpecialitty(docs, specialitty);
-        docs = PruneDoctorsByFreeRooms(docs, duration);
-
         if (docs.Count == 0)
-            throw new Exception("Nema termina");
+            throw new Exception("1");
 
+        docs = PruneDoctorsByFreeRooms(docs, duration);
+        if (docs.Count == 0)
+            throw new Exception("2");
 
         return docs;
     }
@@ -236,7 +263,7 @@ public class AppointmentService
 
         foreach (Doctor doctor in doctors)
         {
-            foreach (DateBlock dateBlock in GetFreeTimeForDoctor(DateTime.Now.Date, duration, doctor, DateTime.Now.Hour, DateTime.Now.AddHours(1).Hour))
+            foreach (DateBlock dateBlock in GetFreeTimeForDoctor(DateTime.Now.Date, duration, doctor, DateTime.Now.Hour, DateTime.Now.AddHours(1).AddMinutes(duration).Hour))
             {
                 if (roomRepository.GetFreeRooms(dateBlock.Start, RoomType.operating).Count > 0)
                 {

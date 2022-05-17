@@ -114,9 +114,12 @@ namespace ZdravoKlinika.View.Secretary
                 {
                     ComboBoxAddDoctor.ItemsSource = appointmentContoller.GetFreeDoctorsBySpecialityForNextHour(holder, ComboBoxAddType.SelectedValue.ToString());
                 }
-                catch (Exception)
-                { 
-                    
+                catch (Exception e)
+                {
+                    if (e.Message.Equals("1"))
+                        this.NavigationService.Navigate(new SecretaryResolveAppointments(ComboBoxAddType.SelectedValue.ToString(),holder,true));
+                    else
+                        this.NavigationService.Navigate(new SecretaryResolveAppointments(ComboBoxAddType.SelectedValue.ToString(), holder, false));
                 }
             }
             
