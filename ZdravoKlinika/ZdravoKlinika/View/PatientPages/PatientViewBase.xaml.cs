@@ -11,15 +11,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKlinika.PatientPages.ViewModel;
 
-namespace ZdravoKlinika.View
+namespace ZdravoKlinika.View.PatientPages
 {
     /// <summary>
     /// Interaction logic for PatientViewBase.xaml
     /// </summary>
     public partial class PatientViewBase : Window
     {
-        private ViewModel.PatientViewModelBase viewModel;
+        private PatientViewModelBase viewModel;
         private String id;
 
         public string Id { get => id; set => id = value; }
@@ -29,7 +30,7 @@ namespace ZdravoKlinika.View
             
             InitializeComponent();
             id = personalId;
-            viewModel = new ViewModel.PatientViewModelBase(id);
+            viewModel = new PatientViewModelBase(id);
             this.DataContext = viewModel;
             mainFrame.Navigate(viewModel.ProfilePage);
             
@@ -46,9 +47,18 @@ namespace ZdravoKlinika.View
         }
         public void refreshAppointmentView()
         {
-            //TODO remove hardcoded patientID value
             viewModel.PatientApointmentView = new PatientAppointmentView(id);
             mainFrame.Navigate(viewModel.PatientApointmentView);
+        }
+        public void refreshProfileView()
+        {
+            mainFrame.Navigate(viewModel.ProfilePage);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            viewModel.ApplicationReviewView = new ApplicationReviewView(id);
+            mainFrame.Navigate(viewModel.ApplicationReviewView);
         }
     }
 }

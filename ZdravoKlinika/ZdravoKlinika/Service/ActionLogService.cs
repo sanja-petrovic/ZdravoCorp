@@ -28,7 +28,7 @@ namespace ZdravoKlinika.Service
         public void RemoveLog(String id)
         {
             ActionLog log = ActionLogRepository.GetById(id);
-            actionLogRepository.RemoveActionLog(log);
+            actionLogRepository.RemoveLog(log);
         }
 
         public void RemoveAll()

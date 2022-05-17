@@ -14,8 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.PatientPages.ViewModel;
 
-namespace ZdravoKlinika.ViewModel
+namespace ZdravoKlinika.View.PatientPages
 {
     /// <summary>
     /// Interaction logic for PatientProfile.xaml

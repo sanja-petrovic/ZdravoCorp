@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 
-namespace ZdravoKlinika.ViewModel
+namespace ZdravoKlinika.PatientPages.ViewModel
 {
     internal class PatientProfileViewModel : INotifyPropertyChanged
     {

@@ -112,7 +112,7 @@ namespace ZdravoKlinika.View
         {
             if (!viewModel.RegisteredPatientController.IsBanned(viewModel.RegisteredPatientController.GetById(patientId)))
             {
-                View.PatientViewBase pvB = new View.PatientViewBase(viewModel.User.PersonalId);
+                View.PatientPages.PatientViewBase pvB = new View.PatientPages.PatientViewBase(viewModel.User.PersonalId);
                 pvB.Show();
             }
             else

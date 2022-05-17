@@ -9,8 +9,9 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ZdravoKlinika.View;
+using ZdravoKlinika.View.PatientPages;
 
-namespace ZdravoKlinika.ViewModel
+namespace ZdravoKlinika.PatientPages.ViewModel
 {
     internal class PatientViewModelBase : INotifyPropertyChanged
     {
@@ -22,7 +23,9 @@ namespace ZdravoKlinika.ViewModel
             this.patientId = patientId;
             profilePage = new PatientProfile(patientId);
             patientApointmentView = new PatientAppointmentView(patientId);
-           
+            applicationReviewView = new ApplicationReviewView(patientId);
+
+
         }
         private ImageSource logoImageSource = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "PatientViewLogo.png"));
         public ImageSource LogoImageSource 
@@ -95,7 +98,9 @@ namespace ZdravoKlinika.ViewModel
             set { this.patientApointmentView = value; }
         }
 
+        private ApplicationReviewView applicationReviewView;
         public string PatientId { get => patientId; set => patientId = value; }
+        public ApplicationReviewView ApplicationReviewView { get => applicationReviewView; set => applicationReviewView = value; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
