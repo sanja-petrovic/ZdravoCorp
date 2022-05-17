@@ -88,7 +88,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Note = medication.Note;
             if(medication.Validated)
             {
-                Reviewer = "";
+                Reviewer = medication.Validator.ToString();
             } else
             {
                 Reviewer = "/";

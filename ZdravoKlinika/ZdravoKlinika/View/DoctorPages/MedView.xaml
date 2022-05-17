@@ -5,32 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:MedViewModel}"
         mc:Ignorable="d"
-        Title="Pregled leka" Height="768" Width="598">
+        Title="Pregled leka" Height="780" Width="598">
     <Grid>
 
-        <Button x:Name="ConfirmButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Odobrite" HorizontalAlignment="Left"  Margin="482,682,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-            <Button.Style>
-                <StaticResource ResourceKey="fancyButtonStyle3"/>
-            </Button.Style>
-        </Button>
-        <Button x:Name="EditButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odbijte" HorizontalAlignment="Left"  Margin="385,682,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="83">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-            <Button.Style>
-                <StaticResource ResourceKey="fancyButtonStyle4"/>
-            </Button.Style>
-        </Button>
 
 
-        <StackPanel Orientation="Vertical" Margin="40">
+        <StackPanel Orientation="Vertical" Margin="40,40,40,23">
             <StackPanel Orientation="Horizontal" Margin="0 0 0 15">
                 <StackPanel Orientation="Vertical">
                     <Label Content="Šifra leka" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -76,6 +56,5 @@
             <Label Content="Lekar koji je odobrio lek:" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBlock Margin="5 0 0 15"  Visibility="Visible" TextWrapping="WrapWithOverflow" Text="{Binding Reviewer}" FontSize="14" FontWeight="Regular" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#555557" TextAlignment="Left"/>
         </StackPanel>
-
     </Grid>
 </Window>

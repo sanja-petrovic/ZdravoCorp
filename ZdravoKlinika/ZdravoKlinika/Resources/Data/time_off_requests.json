@@ -88,5 +88,35 @@
     "Emergency": true,
     "DateOfCreation": "2022-05-16T00:00:00+02:00",
     "Doctor": "123"
+  },
+  {
+    "Id": 10,
+    "StartDate": "2022-06-03T00:00:00",
+    "EndDate": "2022-06-03T00:00:00",
+    "Reason": "1234",
+    "State": "Pending",
+    "Emergency": true,
+    "DateOfCreation": "2022-05-17T00:00:00+02:00",
+    "Doctor": "123"
+  },
+  {
+    "Id": 11,
+    "StartDate": "2022-06-02T00:00:00",
+    "EndDate": "2022-06-02T00:00:00",
+    "Reason": "1234",
+    "State": "Pending",
+    "Emergency": true,
+    "DateOfCreation": "2022-05-17T00:00:00+02:00",
+    "Doctor": "123"
+  },
+  {
+    "Id": 12,
+    "StartDate": "2022-05-19T00:00:00+02:00",
+    "EndDate": "2022-05-19T00:00:00+02:00",
+    "Reason": null,
+    "State": "Pending",
+    "Emergency": true,
+    "DateOfCreation": "2022-05-17T00:00:00+02:00",
+    "Doctor": "456"
   }
 ]

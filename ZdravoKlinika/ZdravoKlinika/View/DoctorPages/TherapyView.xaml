@@ -53,15 +53,13 @@
         <TextBlock Foreground="#555557" HorizontalAlignment="Left"  Margin="118,147,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
         <TextBlock  HorizontalAlignment="Left" Margin="34,51,0,0" TextWrapping="Wrap" Text="Naziv leka" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="81"/>
 
-        <Button Name="AddButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Dodajte na listu" HorizontalAlignment="Left"  Margin="271,281,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="118" Click="AddButton_Click">
+        <Label Margin="286,270,43,0" Content="Dodajte na listu" VerticalAlignment="Top" FontSize="12" Foreground="#FF9E98FF" FontWeight="Bold"></Label>
+        <Button Name="AddButton" OverridesDefaultStyle="False" Focusable="False" Background="Transparent" BorderBrush="Transparent" Foreground="#FF9E98FF" FontWeight="DemiBold" Style="{StaticResource fancyButtonStyle7}" Margin="280,268,44,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Click="AddButton_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
-            <Button.Style>
-                <StaticResource ResourceKey="fancyButtonStyle4"/>
-            </Button.Style>
         </Button>
         <ListBox Name="MedLB" BorderBrush="#FFAEAEC1" Style="{DynamicResource ListBoxStyle1}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" ItemsSource="{Binding PrescribedList, UpdateSourceTrigger=PropertyChanged}" Margin="34,324,43,-32">
             <ListBox.Resources>
