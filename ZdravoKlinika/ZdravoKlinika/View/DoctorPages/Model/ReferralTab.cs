@@ -85,6 +85,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void SetRooms()
         {
+            RoomsDisplay.Clear();
             RoomController roomController = new RoomController();
             if(Type == "Pregled")
             {
@@ -112,7 +113,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void SetSelectedDoctor(int selected)
         {
-            this.doctor = this.Doctors[selected];
+            if(selected != -1)
+            {
+                this.doctor = this.Doctors[selected];
+            }
         }
 
         public void SetDateTime(int selected)
@@ -129,6 +133,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void SetTimes()
         {
+            Times.Clear();
             if(Doctor != null)
             {
                 List<DateBlock> list = this.appointmentController.getFreeTimeForDoctor(Date, Duration, Doctor, 8, 20);
