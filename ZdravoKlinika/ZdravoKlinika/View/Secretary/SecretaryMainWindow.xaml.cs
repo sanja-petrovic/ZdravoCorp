@@ -119,6 +119,8 @@ namespace ZdravoKlinika.View.Secretary
             ChangeColorUnSelected(BorderChoosePatient);
             ChangeColorUnSelected(BorderOrderEquipment);
             ChangeColorUnSelected(BorderUpdateAppointment);
+            ChangeColorUnSelected(BorderCreateEMAppointment);
+
 
             // selected border
             ChangeColorSelected(b);
@@ -172,6 +174,21 @@ namespace ZdravoKlinika.View.Secretary
         public void ToHomePage() 
         {
             ChangeToHomePage();
+        }
+
+        private void CreateEmergencyAppointment(object sender, RoutedEventArgs e)
+        {
+            if (PatientViewModel.SelectedPatient == null)
+            {
+                ChoosePatient();
+                return;
+            }
+            Select(BorderCreateEMAppointment);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryCreateEmergencyAppointment(PatientViewModel));
+            MenuContentLabel.Content = "Kreiranje hitnih slucajeva";
+            HamburgerMenuFrame.IsChecked = false;
         }
     }
 }

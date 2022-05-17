@@ -16,6 +16,7 @@ public class AppointmentService
     private ZdravoKlinika.Util.DateBlock dateBlock = new ZdravoKlinika.Util.DateBlock();
     private ActionLogService actionLogService;
     private RegisteredPatientRepository registeredPatientRepository;
+    private RoomService roomService;
 
     public AppointmentService()
     {
@@ -147,6 +148,21 @@ public class AppointmentService
         return result;
     }
 
+    internal List<DateBlock> GetDateBlocksForDoctorInNextHour(int duration, Doctor doc)
+    {
+        List<DateBlock> freeBlocks = new List<DateBlock>();
+
+        foreach (DateBlock dateBlock in GetFreeTimeForDoctor(DateTime.Now.Date, duration, doc, DateTime.Now.Hour, DateTime.Now.AddHours(1).Hour))
+        {
+            if (roomRepository.GetFreeRooms(dateBlock.Start, RoomType.operating).Count > 0)
+            {
+                freeBlocks.Add(dateBlock);
+            }
+        }
+
+        return freeBlocks;
+    }
+
     //TODO these 2 need code cleanup, they can become one-ish ? 
     public List<DateBlock> GetFreeTimeForDoctor(DateTime date,int duration, Doctor doctor, int startHours, int endHours)
     {
@@ -200,6 +216,49 @@ public class AppointmentService
             }
             return result;
         }
+    }
+    public List<Doctor> GetFreeDoctorsBySpecialityForNextHour(int duration, String specialitty)
+    { 
+        List<Doctor> docs = new List<Doctor>();
+        docs = GetFreeDoctorsForTime(new DateBlock(DateTime.Now,duration),DateTime.Now.Hour,DateTime.Now.AddHours(1).Hour);
+        docs = PruneDoctorsBySpecialitty(docs, specialitty);
+        docs = PruneDoctorsByFreeRooms(docs, duration);
+
+        if (docs.Count == 0)
+            throw new Exception("Nema termina");
+
+
+        return docs;
+    }
+    private List<Doctor> PruneDoctorsByFreeRooms(List<Doctor> doctors, int duration) 
+    {
+        List<Doctor> prunedList = new List<Doctor>();
+
+        foreach (Doctor doctor in doctors)
+        {
+            foreach (DateBlock dateBlock in GetFreeTimeForDoctor(DateTime.Now.Date, duration, doctor, DateTime.Now.Hour, DateTime.Now.AddHours(1).Hour))
+            {
+                if (roomRepository.GetFreeRooms(dateBlock.Start, RoomType.operating).Count > 0)
+                {
+                    prunedList.Add(doctor);
+                    break;
+                }
+            }
+        }
+        return prunedList;
+    }
+
+    private List<Doctor> PruneDoctorsBySpecialitty(List<Doctor> doctors,String specialitty) 
+    {
+        List<Doctor> prunedList = new List<Doctor>();
+        foreach (Doctor doctor in doctors)
+        {
+            if (doctor.Specialty.Equals(specialitty))
+            {
+                prunedList.Add(doctor);
+            }
+        }
+        return prunedList;
     }
     public List<DateBlock> GetFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
     {
