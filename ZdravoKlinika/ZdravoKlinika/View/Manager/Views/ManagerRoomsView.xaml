@@ -134,34 +134,103 @@
                         <ColumnDefinition Width="80"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Name="AddButton" Width="74" Height="25" Margin="-5,0,0,0">
+                    <Button Name="AddButton" Width="74" Height="25" Margin="-5,0,0,0" Background="#FF7346F3">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
                         <Button.Content>
                             <WrapPanel>
                                 <Image Width="20" Height="20" Source="/Resources/Images/addPatient.png" Margin="-12,0,0,0"/>
-                                <TextBlock Text="Dodaj" Margin="8,0,-10,0" Height="15"/>
+                                <TextBlock Text="Dodaj" Margin="8,0,-10,0" Height="15" FontWeight="Bold"/>
                             </WrapPanel>
                         </Button.Content>
                     </Button>
-                    <Button Name="EditButton" Width="74" Height="25" Grid.Column="1" Margin="-1,0,0,0">
+                    <Button Name="EditButton" Width="74" Height="25" Grid.Column="1" Margin="-1,0,0,0" Background="#FF7346F3">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
                         <Button.Content>
                             <WrapPanel>
                                 <Image Width="20" Height="20" Source="/Resources/Images/editPatient.png" Margin="-12,0,0,0"/>
-                                <TextBlock Text="Izmeni" Margin="6,0,-10,0" Height="15"/>
+                                <TextBlock Text="Izmeni" Margin="6,0,-10,0" Height="15" FontWeight="Bold"/>
                             </WrapPanel>
                         </Button.Content>
                     </Button>
-                    <Button Name="DeleteButton" Width="74" Height="25" Grid.Column="2" Margin="4,0,0,0">
+                    <Button Name="DeleteButton" Width="74" Height="25" Grid.Column="2" Margin="4,0,0,0" Background="#FF7346F3">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
                         <Button.Content>
                             <WrapPanel>
                                 <Image Width="20" Height="20" Source="/Resources/Images/delete.png" Margin="-12,0,0,0"/>
-                                <TextBlock Text="Obriši" Margin="8,0,-12,0" Height="15"/>
+                                <TextBlock Text="Obriši" Margin="8,0,-12,0" Height="15" FontWeight="Bold"/>
                             </WrapPanel>
                         </Button.Content>
                     </Button>
-                    <DataGrid Grid.Row="1" Grid.ColumnSpan="5" CellStyle="{DynamicResource DataGridCellStyle}" RowHeaderWidth="0" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" x:Name="dataGridRooms" GridLinesVisibility="None"  ItemsSource="{Binding Rooms}" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="750"  AutoGenerateColumns="False" SelectedIndex="-1" Height="310" CanUserAddRows="False" CanUserSortColumns="False" FontFamily="Verdana">
+                    <DataGrid Grid.Row="1" IsReadOnly="true" Grid.ColumnSpan="5" CellStyle="{DynamicResource DataGridCellStyle}" RowHeaderWidth="0" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" x:Name="dataGridRooms" GridLinesVisibility="None"  ItemsSource="{Binding Rooms}" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="750"  AutoGenerateColumns="False" SelectedIndex="-1" Height="310" CanUserAddRows="False" CanUserSortColumns="False" FontFamily="Verdana">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Šifra" Binding="{Binding RoomId}" Width="*"/>
-                            <DataGridTextColumn Header="Tip sobe" Binding="{Binding Type}" Width="*"/>
+                            <DataGridTextColumn Header="Tip" Binding="{Binding Type}" Width="*"/>
                             <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="*"/>
                             <DataGridTextColumn Header="Sprat" Binding="{Binding Level}" Width="*"/>
                             <DataGridTextColumn Header="Broj" Binding="{Binding Number}" Width="*"/>
