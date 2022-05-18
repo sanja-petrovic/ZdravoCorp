@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ZdravoKlinika.View.DoctorPages.DoctorReferral"
+<UserControl x:Class="ZdravoKlinika.View.DoctorPages.DoctorReferral"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -44,7 +44,7 @@
         </ComboBox>
         <CheckBox Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="143,199,269,242"/>
 
-        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Loaded="DatePicker_Loaded"  SelectedDateChanged="DatePicker_SelectedDateChanged" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="26,274,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday"/>
+        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Loaded="DatePicker_Loaded" SelectedDateChanged="DatePicker_SelectedDateChanged" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="26,274,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday"/>
         <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" SelectionChanged="TimePicker_SelectionChanged" Margin="230,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
