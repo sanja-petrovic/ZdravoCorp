@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -22,7 +22,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public String Type { get => type; set => SetProperty(ref type, value); }
         public bool Emergency { get => emergency; set => SetProperty(ref emergency, value); }
         public DateTime Date { get => date; set => SetProperty(ref date, value); }
-        public List<string> Times { get => times; set => SetProperty(ref times, value); }
         public List<Room> Rooms { get => rooms; set => SetProperty(ref rooms, value); }
         public DoctorController DoctorController { get => doctorController; set => doctorController = value; }
         public ObservableCollection<string> Types { get => types; set => SetProperty(ref types, value); }
@@ -34,7 +33,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private bool emergency;
         private DateTime date;
         private int duration;
-        private List<String> times;
+        public ObservableCollection<String> Times { get; set; }
         public ObservableCollection<String> RoomsDisplay { get; set; }
         public DateTime DateAndTime { get => dateAndTime; set => SetProperty(ref dateAndTime, value); }
         public int Duration { get => duration; set => SetProperty(ref duration, value); }
@@ -45,7 +44,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private Room room;
 
         private List<Room> rooms;
-        private ObservableCollection<String> types;
+        public ObservableCollection<String> types;
         private DateTime dateAndTime;
 
         private DoctorController doctorController;
@@ -61,11 +60,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.DoctorController = new DoctorController();
             this.Specialties = DoctorController.GetAllSpecialties();
             this.Emergency = false;
-            this.Date = DateTime.Today;
+            this.Date = DateTime.Today.Date;
             this.Doctors = new List<Doctor>();
             this.DoctorsDisplay = new ObservableCollection<String>();
             this.RoomsDisplay = new ObservableCollection<string>();
-            this.Times = new List<String>();
+            this.Times = new ObservableCollection<string>();
             this.Rooms = new List<Room>();
             this.types = new ObservableCollection<string>();
             this.types.Add("Pregled");
@@ -117,17 +116,21 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 this.doctor = this.Doctors[selected];
             }
+            SetTimes();
         }
 
         public void SetDateTime(int selected)
         {
-            string[] time = Times[selected].Split(":");
-            int hours;
-            Int32.TryParse(time[0], out hours);
-            int minutes;
-            Int32.TryParse(time[1], out minutes);
+            if(Times.Count > 0)
+            {
+                string[] time = Times[selected].Split(":");
+                int hours;
+                Int32.TryParse(time[0], out hours);
+                int minutes;
+                Int32.TryParse(time[1], out minutes);
 
-            DateAndTime = new DateTime(this.date.Year, this.date.Month, this.date.Day, hours, minutes, 0);
+                DateAndTime = new DateTime(this.date.Year, this.date.Month, this.date.Day, hours, minutes, 0);
+            }
         }
         
 
@@ -136,17 +139,21 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Times.Clear();
             if(Doctor != null)
             {
-                List<DateBlock> list = this.appointmentController.getFreeTimeForDoctor(Date, Duration, Doctor, 8, 20);
+                List<DateBlock> list = this.appointmentController.getFreeTimeForDoctor(Date, Duration, Doctor, 12, 20);
                 foreach(DateBlock block in list)
                 {
                     Times.Add(block.Start.ToShortTimeString());
                 }
             }
+
         }
 
         public void SetRoom(int selected)
         {
-            Room = this.rooms[selected];
+            if(selected != -1)
+            {
+                Room = this.rooms[selected];
+            }
         }
 
         public void Schedule()
