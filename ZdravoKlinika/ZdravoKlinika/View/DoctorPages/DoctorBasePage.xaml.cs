@@ -25,6 +25,7 @@ namespace ZdravoKlinika.View.DoctorPages
     {
         Model.DoctorViewModel viewModel;
 
+        private bool settingsVisible = false;
         private DoctorHomePage doctorHomePage;
         private DoctorSchedule doctorSchedule;
         private DoctorMedicationsView doctorMedicationsView;
@@ -82,6 +83,12 @@ namespace ZdravoKlinika.View.DoctorPages
             SignInWindow signInWindow = new SignInWindow();
             signInWindow.Show();
             this.Close();
+        }
+
+        private void ShowSettings(object sender, MouseButtonEventArgs e)
+        {
+            Settings.Visibility = settingsVisible ? Visibility.Collapsed : Visibility.Visible;
+            settingsVisible = !settingsVisible;
         }
     }
 }
