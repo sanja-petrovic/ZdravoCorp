@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 public class RegisteredUser
 {
@@ -27,6 +28,11 @@ public class RegisteredUser
     public string ProfilePicture { get => profilePicture; set => profilePicture = value; }
     public DateTime LastLogin { get => lastLogin; set => lastLogin = value; }
     public Address Address { get => address; set => address = value; }
+
+    public string GetFullName()
+    {
+        return this.name + " " + this.lastname;
+    }
 
     public string GenderToString()
     {

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:Util="clr-namespace:ZdravoKlinika.Util" x:Class="ZdravoKlinika.View.DoctorPages.DoctorCreateAppointmentWindow"
         mc:Ignorable="d"
         xml:lang="sr-Latn-RS" 
@@ -231,27 +231,16 @@
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
-            <ComboBoxItem Content="Pregled"/>
-            <ComboBoxItem Content="Operacija"/>
         </ComboBox>
-        <ComboBox x:Name="EmergencyCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="246,143,0,0" VerticalAlignment="Top" Width="105" Padding="5" Height="28">
-            <ComboBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </ComboBox.Resources>
-            <ComboBoxItem Content="Da"/>
-            <ComboBoxItem Content="Ne"/>
-        </ComboBox>
-        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}"  Loaded="DatePicker_Loaded" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="44,218,0,0" VerticalAlignment="Top" Width="132" Height="28"/>
-        <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="246,218,0,0" VerticalAlignment="Top" Width="105" Padding="5" Height="28">
+        <DatePicker DisplayDateStart="{x:Static sys:DateTime.Today}" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}"  Loaded="DatePicker_Loaded" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="44,218,0,0" VerticalAlignment="Top" Width="132" Height="28"/>
+        <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemsSource="{Binding Times}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="246,218,0,0" VerticalAlignment="Top" Width="105" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <ComboBox x:Name="TimePicker_Copy" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="44,285,0,0" VerticalAlignment="Top" Width="105" Padding="5" Height="28">
+        <ComboBox x:Name="TimePicker_Copy" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Rooms}" HorizontalAlignment="Left" Margin="44,285,0,0" VerticalAlignment="Top" Width="105" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

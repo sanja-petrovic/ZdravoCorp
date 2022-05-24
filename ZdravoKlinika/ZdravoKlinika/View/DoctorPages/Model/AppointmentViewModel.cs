@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Util;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -27,12 +28,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private bool emergency;
         private int duration;
         private DateTime date;
+        private DateBlock _time;
 
         public ObservableCollection<RegisteredPatient> Patients { get; set; }
         public ObservableCollection<Doctor> Doctors { get; set; }
         public ObservableCollection<string> Types { get; set; }
-        public ObservableCollection<string> Times { get; set; }
-        public ObservableCollection<string> Rooms { get; set; }
+        public ObservableCollection<DateBlock> Times { get; set; }
+        public ObservableCollection<Room> Rooms { get; set; }
 
         private MyICommand CreateCommand;
 
@@ -40,6 +42,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private RegisteredPatientController patientController;
         private DoctorController doctorController;
         private AppointmentController appointmentController;
+        private RoomController roomController;
 
         public AppointmentViewModel()
         {
@@ -50,11 +53,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Types = new ObservableCollection<string>();
             Types.Add("Pregled");
             Types.Add("Operacija");
-            Times = new ObservableCollection<string>();
-            Rooms = new ObservableCollection<string>();
+            Times = new ObservableCollection<DateBlock>();
+            Rooms = new ObservableCollection<Room>();
+            Date = DateTime.Today.AddDays(1);
 
             CreateCommand = new MyICommand(OnCreate);
             this.appointmentController = new AppointmentController();
+            this.roomController = new RoomController();
         }
 
         public string Name { get => name; set => SetProperty(ref name, value); }
@@ -73,15 +78,19 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string DoctorId { get => doctorId; set => SetProperty(ref doctorId, value); }
         public Doctor _Doctor { get => _doctor; set => SetProperty(ref _doctor, value); }
         public Patient _Patient { get => _patient; set => SetProperty(ref _patient, value); }
-
-        public void SetTimes()
-        {
-
-        }
+        public DateBlock Time1 { get => _time; set => SetProperty(ref _time, value); }
 
         public void SetRooms()
         {
+            //foreach(Room room in this.roomController.GetFreeRooms(new DateTime(Date.Year, Date.Month, Date.Day, Time1.)
+            DateTime datetime = new DateTime(Date.Year, Date.Month, Date.Day, Time1.Start.Hour, Time1.Start.Minute, 0);
+            RoomType roomType = Type.Equals("Pregled") ? RoomType.checkup : RoomType.operating;
+            Rooms = new ObservableCollection<Room>(this.roomController.GetFreeRooms(datetime, roomType));
+        }
 
+        public void SetTimes()
+        {
+            Times = new ObservableCollection<DateBlock>(this.appointmentController.GetFreeTime(DoctorId, PatientId, new DateBlock(Date, Duration)));
         }
 
        private void OnCreate()

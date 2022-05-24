@@ -28,5 +28,15 @@ namespace ZdravoKlinika.View.DoctorPages
             DataContext = viewModel;
             InitializeComponent();
         }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            viewModel.SetTimes();
+        }
+
+        private void TimePicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            viewModel.SetRooms();
+        }
     }
 }

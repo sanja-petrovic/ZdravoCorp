@@ -45,6 +45,22 @@ namespace ZdravoKlinika.Util
             }
             return result;
         }
+
+        static public List<DateBlock> GetIntervals(DateTime start, DateTime end)
+        {
+
+            List<DateBlock> result = new List<DateBlock>();
+            int numOfIntervals = (int)((end - start).TotalMinutes / minInterval);
+            if (numOfIntervals > 0)
+            {
+                for (int i = 0; i < numOfIntervals; i++)
+                {
+                    result.Add(new DateBlock(start.AddMinutes(i * minInterval), start.AddMinutes(i * minInterval + minInterval)));
+                }
+            }
+            return result;
+        }
+
         public static List<DateBlock> getIntervals(DateBlock block)
         {
             List<DateBlock> result = new List<DateBlock>();
@@ -145,6 +161,11 @@ namespace ZdravoKlinika.Util
 
             }
             return false;
+        }
+
+        public override string ToString()
+        {
+            return Start.ToShortTimeString();
         }
     }
 }

@@ -162,4 +162,12 @@ public class AppointmentController
         return appointmentService.GetDateBlocksForDoctorInNextHour(duration, doc);
     }
 
+    public List<DateBlock> GetFreeTime(string doctorId, string patientId, DateBlock block)
+    {
+        PatientController patientController = new PatientController();
+        DoctorController doctorController = new DoctorController();
+        return this.appointmentService.GetFreeTime(doctorController.GetById(doctorId), patientController.GetById(patientId), block);
+
+    }
+
 }

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Controller;
+using ZdravoKlinika.Util;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -27,6 +28,8 @@ namespace ZdravoKlinika.View.DoctorPages
         private DoctorHomePage doctorHomePage;
         private DoctorSchedule doctorSchedule;
         private DoctorMedicationsView doctorMedicationsView;
+        private DoctorProfileView doctorProfileView;
+        private DoctorAllPatientsView doctorAllPatientsView;
 
         public DoctorBasePage(RegisteredUser doctor)
         {
@@ -36,7 +39,13 @@ namespace ZdravoKlinika.View.DoctorPages
             doctorHomePage = new DoctorHomePage(viewModel.Doctor);
             doctorSchedule = new DoctorSchedule(this.viewModel.Doctor);
             doctorMedicationsView = new DoctorMedicationsView(this.viewModel.Doctor);
+            doctorProfileView = new DoctorProfileView(this.viewModel.Doctor);
+            doctorAllPatientsView = new DoctorAllPatientsView(this.viewModel.Doctor);
             MainFrame.Navigate(doctorHomePage);
+            AppointmentService service = new AppointmentService();
+            DoctorService doctorService = new DoctorService();
+            PatientController patientController = new PatientController();
+            List<DateBlock> blocks = service.GetFreeTime(doctorService.GetById("123"), patientController.GetById("0105965123321"), new DateBlock(DateTime.Today, 30));
 
         }
 
@@ -54,6 +63,16 @@ namespace ZdravoKlinika.View.DoctorPages
         private void GoToMeds(object sender, MouseButtonEventArgs e)
         {
             MainFrame.Navigate(doctorMedicationsView);
+        }
+
+        private void GoToProfile(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Navigate(doctorProfileView);
+        }
+
+        private void GoToPatients(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Navigate(doctorAllPatientsView);
         }
 
         private void SignOut(object sender, MouseButtonEventArgs e)

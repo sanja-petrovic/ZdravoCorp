@@ -405,7 +405,7 @@
         <Rectangle HorizontalAlignment="Left" Height="154" Margin="760,276,0,0"  VerticalAlignment="Top" Width="212" Fill="White"  RadiusX="10" RadiusY="10"/>
         <Rectangle HorizontalAlignment="Left" Height="154" Margin="517,276,0,0"  VerticalAlignment="Top" Width="211" Fill="White"  RadiusX="10" RadiusY="10"/>
         <Label Content="Dijagnoze" Margin="271,240,355,468" FontSize="18" FontWeight="Bold"/>
-        <Label Content="Lekovi, alergije" Margin="517,240,303,468" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Terapija" Margin="517,240,303,468" FontSize="18" FontWeight="Bold"/>
         <Label Content="Dokumenti" Margin="760,240,-134,468" FontSize="18" FontWeight="Bold"/>
         <Border  Margin="657,249,297,498"
             BorderBrush="Black"
