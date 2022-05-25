@@ -145,6 +145,8 @@ namespace ZdravoKlinika.View.PatientPages
             listBox.ItemsSource = viewModel.SelectedDateAppointments;
             popUpFrame.Navigate(null);
             popUpFrame.Visibility = Visibility.Hidden;
+            popUpFrame2.Navigate(null);
+            popUpFrame2.Visibility = Visibility.Hidden;
         }
         private void resetButtons()
         {
@@ -165,7 +167,7 @@ namespace ZdravoKlinika.View.PatientPages
                 roomLabel.Content = selectedInList.Room.Name.ToString();
                 typeLabel.Content = selectedInList.Type.ToString();
 
-                if ((calendar.SelectedDate.Value - DateTime.Now).TotalSeconds > 0)
+                if ((calendar.SelectedDate.Value - DateTime.Now).TotalSeconds > 0) //Future appointment
                 {
                     buttonAdd.IsEnabled = false;
                     buttonEdit.IsEnabled = true;
@@ -173,10 +175,14 @@ namespace ZdravoKlinika.View.PatientPages
                     buttonComment.IsEnabled = false;
                     buttonDocuments.IsEnabled = false;
                 }
-                else
+                else //past appointment
                 {
+                    PatientDiagnosisView diagnosisView = new PatientDiagnosisView(selectedInList);
+                    popUpFrame.Navigate(diagnosisView);
+                    popUpFrame.Visibility = Visibility.Visible;
+
                     buttonAdd.IsEnabled = false;
-                    buttonEdit.IsEnabled = false; //testing
+                    buttonEdit.IsEnabled = false; 
                     buttonRemove.IsEnabled = false;
                     if (selectedInList.Grading == null)
                     {
@@ -199,8 +205,8 @@ namespace ZdravoKlinika.View.PatientPages
         private void buttonComment_Click(object sender, RoutedEventArgs e)
         {
             PatientAppointmentReviewView reviewView = new PatientAppointmentReviewView(selectedInList.AppointmentId);
-            popUpFrame.Navigate(reviewView);
-            popUpFrame.Visibility = Visibility.Visible;
+            popUpFrame2.Navigate(reviewView);
+            popUpFrame2.Visibility = Visibility.Visible;
         }
     }
     public class LookupConvertor : IMultiValueConverter
@@ -210,6 +216,7 @@ namespace ZdravoKlinika.View.PatientPages
             var date = (DateTime)values[0];
             var dates = values[1] as List<DateTime>;
             return dates.Contains(date);
+            //return null;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

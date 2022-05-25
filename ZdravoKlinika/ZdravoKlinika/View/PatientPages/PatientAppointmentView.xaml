@@ -67,9 +67,9 @@
         </Style>
     </Page.Resources>
     <ScrollViewer VerticalAlignment="Center" Height="442">
-        <Grid Height="676" Style="{StaticResource regularBackground}">
+        <Grid Height="1000" Style="{StaticResource regularBackground}">
             <Label x:Name="title" Content="Pregledi" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top" FontSize="22"/>
-            <Grid Margin="40,54,95,358" >
+            <Grid Margin="40,54,95,680" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -140,7 +140,8 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
-            <Frame x:Name="popUpFrame" NavigationUIVisibility="Hidden" Margin="40,322,95,0" BorderBrush="Black" BorderThickness="1" Visibility="Hidden" MinHeight ="219" MaxHeight="344" VerticalAlignment="Top" />
+            <Frame x:Name="popUpFrame" NavigationUIVisibility="Hidden" Margin="40,322,95,0" BorderBrush="Black" BorderThickness="1" Visibility="Hidden" Height="250" VerticalAlignment="Top" />
+            <Frame x:Name="popUpFrame2" NavigationUIVisibility="Hidden" Margin="40,600,95,0" BorderBrush="Black" BorderThickness="1" Visibility="Hidden" MinHeight ="219" MaxHeight="344" VerticalAlignment="Top" />
         </Grid>
     </ScrollViewer>
 
