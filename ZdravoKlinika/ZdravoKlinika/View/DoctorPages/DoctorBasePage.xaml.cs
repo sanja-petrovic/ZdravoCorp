@@ -31,6 +31,7 @@ namespace ZdravoKlinika.View.DoctorPages
         private DoctorMedicationsView doctorMedicationsView;
         private DoctorProfileView doctorProfileView;
         private DoctorAllPatientsView doctorAllPatientsView;
+        private FeedbackView feedbackView;
 
         public DoctorBasePage()
         {
@@ -42,6 +43,7 @@ namespace ZdravoKlinika.View.DoctorPages
             doctorMedicationsView = new DoctorMedicationsView();
             doctorProfileView = new DoctorProfileView();
             doctorAllPatientsView = new DoctorAllPatientsView();
+            feedbackView = new FeedbackView();
             MainFrame.Navigate(doctorHomePage);
         }
 
@@ -69,6 +71,11 @@ namespace ZdravoKlinika.View.DoctorPages
         private void GoToPatients(object sender, MouseButtonEventArgs e)
         {
             MainFrame.Navigate(doctorAllPatientsView);
+        }
+
+        private void GoToFeedback(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Navigate(feedbackView);
         }
 
         private void SignOut(object sender, MouseButtonEventArgs e)
