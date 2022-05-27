@@ -143,5 +143,21 @@ namespace ZdravoKlinika.Repository
             return retVal;
         }
 
+        public List<string> GetDiagnosesAndAllergies(MedicalRecord medicalRecord)
+        {
+            List<string> list = new List<string>();
+
+            foreach(string allergy in medicalRecord.Allergies)
+            {
+                list.Add("Alergija: " + allergy);
+            }
+            foreach(string diagnosis in medicalRecord.Diagnoses)
+            {
+                list.Add(diagnosis);
+            }
+
+            return list;
+        }
+
     }
 }

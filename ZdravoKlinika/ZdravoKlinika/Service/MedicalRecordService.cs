@@ -27,5 +27,11 @@ namespace ZdravoKlinika.Service
         {
             this.medicalRecordRepository.AddCurrentMedication(id, medication);
         }
+
+
+        public List<string> GetDiagnosesAndAllergies(MedicalRecord medicalRecord)
+        {
+            return this.medicalRecordRepository.GetDiagnosesAndAllergies(medicalRecord);
+        }
     }
 }

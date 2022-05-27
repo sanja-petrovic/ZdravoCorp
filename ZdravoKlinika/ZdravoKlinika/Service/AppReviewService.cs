@@ -70,5 +70,6 @@ namespace ZdravoKlinika.Service
             }
             return returnVal;
         }
+
     }
 }

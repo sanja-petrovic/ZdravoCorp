@@ -18,8 +18,6 @@ namespace ZdravoKlinika.Controller
             userService = new RegisteredUserService();
         }
 
-        
-
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password)
         {
             return UserService.GetUserByEmailAndPassword(email, password);
@@ -39,6 +37,11 @@ namespace ZdravoKlinika.Controller
         public void ForgetUser()
         {
             this.userService.ForgetUser();
+        }
+
+        public static Doctor UserToDoctor(RegisteredUser user)
+        {
+            return RegisteredUserService.UserToDoctor(user);
         }
     }
 }

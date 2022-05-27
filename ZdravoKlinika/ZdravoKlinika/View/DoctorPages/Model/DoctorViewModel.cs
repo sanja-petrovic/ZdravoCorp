@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Controller;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -11,19 +12,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private Doctor doctor;
         private string name;
         private string specialty;
-        private DoctorController controller;
 
-        public DoctorViewModel(RegisteredUser doctor)
+        public DoctorViewModel()
         {
-            controller = new DoctorController();
-            Doctor = controller.GetByEmail(doctor.Email);
-            Name = Doctor.ToString();
-            specialty = Doctor.Specialty;
+            Doctor = RegisteredUserController.UserToDoctor(App.User);
             
         }
 
-        public string Name { get => name; set => SetProperty(ref name, value); }
-        public string Specialty { get => specialty; set => SetProperty(ref specialty, value); }
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
     }
 }

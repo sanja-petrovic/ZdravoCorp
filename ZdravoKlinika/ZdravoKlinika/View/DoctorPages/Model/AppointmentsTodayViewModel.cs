@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
@@ -33,12 +34,12 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string diagnoses;
         private string therapy;
 
-        public AppointmentsTodayViewModel(Doctor doctor)
+        public AppointmentsTodayViewModel()
         {
+            this.doctor = RegisteredUserController.UserToDoctor(App.User);
             this.Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
             List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate(doctor.PersonalId, DateTime.Today);
-
             foreach (Appointment appointment in appts)
             {
                 {

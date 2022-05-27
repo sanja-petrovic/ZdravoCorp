@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,6 +16,16 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public ObservableCollection<ScheduleTabItem> Tabs { get; set; }
         public DateTime Selected { get => selected; set => SetProperty(ref selected, value); }
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
+        private DelegateCommand recordCommand;
+        RegisteredPatient regPatient;
+        public DelegateCommand RecordCommand => recordCommand ?? (recordCommand = new DelegateCommand(ExecuteGoToRecord));
+
+        public RegisteredPatient RegPatient { get => regPatient; set => SetProperty(ref regPatient, value); }
+
+        private void ExecuteGoToRecord()
+        {
+            
+        }
 
         public ScheduleViewModel()
         {
@@ -39,7 +50,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 string prescriptions = "";
                 if(patient.GetPatientType() == PatientType.Registered)
                 {
-                    patient = patientController.GetById(patient.GetPatientId());
+                    RegPatient = patientController.GetById(patient.GetPatientId());
                     foreach (string diagnosis in ((RegisteredPatient) patient).MedicalRecord.Diagnoses)
                     {
                         diagnoses += diagnosis;
@@ -59,10 +70,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 }
 
                 string lastDate = "Nema";
-                /*if (patient.MedicalRecord.)
-                {
-                    lastDate = patient.MedicalRecord.PastAppointments.Last().DateAndTime.ToShortDateString();
-                }*/
                 Tabs.Add(new ScheduleTabItem { Time = appointment.DateAndTime.ToShortTimeString(), AppointmentType = appointment.getTranslatedType(), PatientId = patient.GetPatientId(), PatientName = patient.GetPatientFullName(), Room = appointment.Room.RoomId, Diagnoses = diagnoses, LastDate = lastDate, Prescriptions = prescriptions });
 
             }

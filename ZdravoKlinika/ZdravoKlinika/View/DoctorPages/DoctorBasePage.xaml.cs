@@ -32,22 +32,17 @@ namespace ZdravoKlinika.View.DoctorPages
         private DoctorProfileView doctorProfileView;
         private DoctorAllPatientsView doctorAllPatientsView;
 
-        public DoctorBasePage(RegisteredUser doctor)
+        public DoctorBasePage()
         {
-            this.viewModel = new Model.DoctorViewModel(doctor);
+            this.viewModel = new Model.DoctorViewModel();
             DataContext = this.viewModel;
             InitializeComponent();
-            doctorHomePage = new DoctorHomePage(viewModel.Doctor);
-            doctorSchedule = new DoctorSchedule(this.viewModel.Doctor);
-            doctorMedicationsView = new DoctorMedicationsView(this.viewModel.Doctor);
-            doctorProfileView = new DoctorProfileView(this.viewModel.Doctor);
-            doctorAllPatientsView = new DoctorAllPatientsView(this.viewModel.Doctor);
+            doctorHomePage = new DoctorHomePage();
+            doctorSchedule = new DoctorSchedule();
+            doctorMedicationsView = new DoctorMedicationsView();
+            doctorProfileView = new DoctorProfileView();
+            doctorAllPatientsView = new DoctorAllPatientsView();
             MainFrame.Navigate(doctorHomePage);
-            AppointmentService service = new AppointmentService();
-            DoctorService doctorService = new DoctorService();
-            PatientController patientController = new PatientController();
-            List<DateBlock> blocks = service.GetFreeTime(doctorService.GetById("123"), patientController.GetById("0105965123321"), new DateBlock(DateTime.Today, 30));
-
         }
 
         private void GoToSchedule(object sender, MouseButtonEventArgs e)

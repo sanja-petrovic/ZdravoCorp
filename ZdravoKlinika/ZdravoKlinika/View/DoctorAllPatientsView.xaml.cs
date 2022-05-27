@@ -22,7 +22,7 @@ namespace ZdravoKlinika.View
     public partial class DoctorAllPatientsView : UserControl
     {
         private AllPatientsViewModel viewModel;
-        public DoctorAllPatientsView(Doctor doctor)
+        public DoctorAllPatientsView()
         {
             viewModel = new AllPatientsViewModel();
             DataContext = viewModel;

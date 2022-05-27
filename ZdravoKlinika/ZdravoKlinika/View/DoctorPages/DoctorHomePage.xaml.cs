@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
 using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
@@ -23,13 +24,17 @@ namespace ZdravoKlinika.View.DoctorPages
     {
         private int selectedAppointmentId;
         private AppointmentsTodayViewModel viewModel;
-        private Doctor doctor;
-        public DoctorHomePage(Doctor doctor)
+        public DoctorHomePage()
         {
-            viewModel = new AppointmentsTodayViewModel(doctor);
+            
+            viewModel = new AppointmentsTodayViewModel();
             DataContext = viewModel;
-            this.doctor = doctor;
             InitializeComponent();
+            DialogHelper.DialogService ds = new DialogHelper.DialogService();
+            ds.ShowDialog("CreateApptSchedule", result =>
+            {
+                var test = result;
+            });
             
         }
 
@@ -50,7 +55,7 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord(doctor);
+            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
             doctorMedicalRecord.init(viewModel.PatientId);
             this.NavigationService.Navigate(doctorMedicalRecord);
         }

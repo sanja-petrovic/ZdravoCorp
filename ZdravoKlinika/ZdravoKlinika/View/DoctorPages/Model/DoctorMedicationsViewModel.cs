@@ -21,9 +21,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private MedicationController medicationController;
         private MedApprovalRequestController medApprovalRequestController;
 
-        public DoctorMedicationsViewModel(Doctor doctor)
+        public DoctorMedicationsViewModel()
         {
-            this.doctor = doctor;
+            this.doctor = RegisteredUserController.UserToDoctor(App.User);
             medicationController = new MedicationController();
             medApprovalRequestController = new MedApprovalRequestController();
             ApprovedMeds = new ObservableCollection<MedViewModel>();

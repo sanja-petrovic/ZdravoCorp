@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -20,7 +22,7 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class DoctorProfileView : UserControl
     {
-        public DoctorProfileView(Doctor doctor)
+        public DoctorProfileView()
         {
             InitializeComponent();
         }

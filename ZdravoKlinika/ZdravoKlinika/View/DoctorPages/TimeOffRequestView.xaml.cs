@@ -23,9 +23,9 @@ namespace ZdravoKlinika.View.DoctorPages
     {
         private TimeOffRequestViewModel viewModel;
 
-        public TimeOffRequestView(Doctor doctor)
+        public TimeOffRequestView()
         {
-            this.viewModel = new TimeOffRequestViewModel(doctor);
+            this.viewModel = new TimeOffRequestViewModel();
             DataContext = this.viewModel;
             InitializeComponent();
             StartDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(1)));

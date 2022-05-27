@@ -22,9 +22,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         private TimeOffRequestController controller;
 
-        public TimeOffRequestViewModel(Doctor doctor)
+        public TimeOffRequestViewModel()
         {
-            this.doctor = doctor;
+            this.doctor = RegisteredUserController.UserToDoctor(App.User);
             this.start = DateTime.Today.AddDays(2);
             this.end = DateTime.Today.AddDays(2);
             this.controller = new TimeOffRequestController();

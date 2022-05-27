@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -30,6 +31,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private DateTime date;
         private DateBlock _time;
 
+        private DialogHelper.DialogService dialogService;
+
         public ObservableCollection<RegisteredPatient> Patients { get; set; }
         public ObservableCollection<Doctor> Doctors { get; set; }
         public ObservableCollection<string> Types { get; set; }
@@ -46,6 +49,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public AppointmentViewModel()
         {
+            dialogService = new DialogHelper.DialogService();
             patientController = new RegisteredPatientController();
             Patients = new ObservableCollection<RegisteredPatient>(patientController.GetAll());
             doctorController = new DoctorController();
@@ -79,7 +83,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public Doctor _Doctor { get => _doctor; set => SetProperty(ref _doctor, value); }
         public Patient _Patient { get => _patient; set => SetProperty(ref _patient, value); }
         public DateBlock Time1 { get => _time; set => SetProperty(ref _time, value); }
-
         public void SetRooms()
         {
             //foreach(Room room in this.roomController.GetFreeRooms(new DateTime(Date.Year, Date.Month, Date.Day, Time1.)

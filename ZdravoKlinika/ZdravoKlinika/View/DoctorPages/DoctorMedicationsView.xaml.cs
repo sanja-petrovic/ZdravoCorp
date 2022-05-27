@@ -22,9 +22,9 @@ namespace ZdravoKlinika.View.DoctorPages
     public partial class DoctorMedicationsView : UserControl
     {
         DoctorMedicationsViewModel viewModel;
-        public DoctorMedicationsView(Doctor doctor)
+        public DoctorMedicationsView()
         {
-            this.viewModel = new DoctorMedicationsViewModel(doctor);
+            this.viewModel = new DoctorMedicationsViewModel();
             DataContext = this.viewModel;
             InitializeComponent();
         }

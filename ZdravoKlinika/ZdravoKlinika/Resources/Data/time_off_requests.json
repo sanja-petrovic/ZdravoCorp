@@ -138,5 +138,15 @@
     "Emergency": false,
     "DateOfCreation": "2022-05-18T00:00:00+02:00",
     "Doctor": "123"
+  },
+  {
+    "Id": 15,
+    "StartDate": "2022-11-25T00:00:00",
+    "EndDate": "2022-11-25T00:00:00",
+    "Reason": "1234",
+    "State": "Pending",
+    "Emergency": true,
+    "DateOfCreation": "2022-05-26T00:00:00+02:00",
+    "Doctor": "123"
   }
 ]

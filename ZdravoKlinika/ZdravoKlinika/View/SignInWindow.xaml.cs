@@ -61,6 +61,7 @@ namespace ZdravoKlinika.View
 
         public void LogIn()
         {
+            App.User = viewModel.User;
             switch (viewModel.User.UserType)
             {
                 case UserType.Patient:
@@ -71,7 +72,7 @@ namespace ZdravoKlinika.View
                     secretaryMainWindow.Show();
                     break;
                 case UserType.Doctor:
-                    DoctorPages.DoctorBasePage doctorBase = new DoctorPages.DoctorBasePage(viewModel.User);
+                    DoctorPages.DoctorBasePage doctorBase = new DoctorPages.DoctorBasePage();
                     doctorBase.Show();
                     break;
                 case UserType.Manager:

@@ -32,7 +32,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Requests.Clear();
             foreach (TimeOffRequest request in Controller.GetRequestsByDoctor(doctor.PersonalId))
             {
-                Requests.Add(new TimeOffRequestViewModel(Doctor) { Doctor = request.Doctor, Emergency = request.Emergency, Reason = request.Reason, End = request.EndDate, EndString = request.EndDate.ToString("dd.MM.yyyy."), Start = request.StartDate, StartString = request.StartDate.ToString("dd.MM.yyyy."), Status = request.StateToString(request.State) });
+                Requests.Add(new TimeOffRequestViewModel() { Doctor = request.Doctor, Emergency = request.Emergency, Reason = request.Reason, End = request.EndDate, EndString = request.EndDate.ToString("dd.MM.yyyy."), Start = request.StartDate, StartString = request.StartDate.ToString("dd.MM.yyyy."), Status = request.StateToString(request.State) });
             }
 
             

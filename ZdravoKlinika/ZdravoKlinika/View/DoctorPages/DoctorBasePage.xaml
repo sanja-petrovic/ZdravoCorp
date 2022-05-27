@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  Title="Zdravo klinika"
       xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:DoctorViewModel}" WindowStartupLocation="CenterScreen"
-             mc:Ignorable="d"  ResizeMode="NoResize"
+             mc:Ignorable="d"  ResizeMode="NoResize" UseLayoutRounding="True"
       Background="#F8F9FE" Width="1024" Height="768" Cursor="Arrow" SizeToContent="WidthAndHeight"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:system="clr-namespace:System;assembly=netstandard">
     <Window.Resources>
@@ -132,17 +132,15 @@
             <ListBoxItem Content="Mesečni raspored" FontSize="14" Padding="50 15 15 15" PreviewMouseLeftButtonDown="GoToSchedule"/>
             <ListBoxItem Content="Ocenite aplikaciju" FontSize="14" Padding="50 15 15 15"/>
         </ListBox>
-        <Ellipse HorizontalAlignment="Left" Height="46" Margin="16,37,0,0" VerticalAlignment="Top" Width="44">
+        <Ellipse UseLayoutRounding="True" HorizontalAlignment="Left" Height="44" Margin="16,37,0,0" VerticalAlignment="Top" Width="44">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="\Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" Stretch="Fill"></ImageBrush>
+                <ImageBrush ImageSource="{Binding Doctor.ProfilePicture}" RenderOptions.BitmapScalingMode="NearestNeighbor"  Stretch="UniformToFill"></ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <!--<TextBlock Text="{Binding DoctorsName}" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="72,58,0,0" VerticalAlignment="Top" FontFamily="SF Pro Display" FontWeight="DemiBold" FontSize="18" Width="156"/>
-        <TextBlock Text="{Binding DoctorsTitle}" Margin="72,82,804,643" Foreground="#FF5F5F5F"/>-->
-        <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="76,37,75,644" Width="144">
-            <Run FontWeight="Bold" FontSize="16" Text="{Binding Name}" /><LineBreak></LineBreak>
-            <Run Text="{Binding Specialty}"/>
-        </TextBlock>
+        <StackPanel Orientation="Vertical" Margin="76,37,804,661">
+            <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" FontWeight="Bold" FontSize="16" Text="{Binding Doctor, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock Text="{Binding Doctor.Specialty}"></TextBlock>
+        </StackPanel>
         <Rectangle Fill="#F8F9FE" Height="1" Margin="13,107,801,660"/>
         <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Margin="0,0,0,0" />
 

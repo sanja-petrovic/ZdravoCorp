@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKlinika.Model;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -19,8 +21,11 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class PrescribedView : Window
     {
-        public PrescribedView()
+        private PrescriptionViewModel viewModel;
+        public PrescribedView(Prescription prescription)
         {
+            viewModel = new PrescriptionViewModel(prescription);
+            //viewModel.Load(prescription);
             InitializeComponent();
         }
     }

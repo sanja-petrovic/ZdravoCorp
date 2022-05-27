@@ -13,7 +13,7 @@
     "Phone": "0612345679",
     "Email": "drhouse@zdravo.com",
     "Password": "houses",
-    "ProfilePicture": "null",
+    "ProfilePicture": "\\Resources\\Images\\docpfp.jpg",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": null
   },
@@ -31,7 +31,7 @@
     "Phone": "0612345678",
     "Email": "lisacuddy@zdravo.com",
     "Password": "lisa123",
-    "ProfilePicture": "null",
+    "ProfilePicture": "\\Resources\\Images\\docpfp.jpg",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": null
   },
@@ -50,7 +50,7 @@
     "Phone": "123456798",
     "Email": "gugma@gugmar.com",
     "Password": "123",
-    "ProfilePicture": "null",
+    "ProfilePicture": "\\Resources\\Images\\docpfp.jpg",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": null
   }

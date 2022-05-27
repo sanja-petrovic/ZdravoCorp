@@ -1,7 +1,7 @@
 <Application x:Class="ZdravoKlinika.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ZdravoKlinika" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna"
+             xmlns:local="clr-namespace:ZdravoKlinika" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:system="clr-namespace:System;assembly=netstandard"
              StartupUri="View/SignInWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -1665,6 +1665,7 @@
             <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
             <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="Transparent"/>
             <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
+
                 <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
                 <Setter Property="BorderThickness" Value="1"/>

@@ -13,11 +13,10 @@ public class Doctor : Employee
 
     public string Specialty { get => specialty; set => specialty = value; }
     public string NameAndLast { get => Name + " " + Lastname + " " + PersonalId; }
-    //public string Education { get => education; set => education = value; }
 
     public bool IsSpecialist()
     {
-        throw new NotImplementedException();
+        return !Specialty.Equals("Opšta praksa");
     }
 
     public static Doctor Parse(string id)

@@ -38,5 +38,13 @@ namespace ZdravoKlinika.Service
             this.userRepository.ForgetUser();
         }
 
+
+        public static Doctor UserToDoctor(RegisteredUser user)
+        {
+            DoctorRepository doctorRepository = new DoctorRepository();
+            return doctorRepository.GetByEmail(user.Email);
+
+        }
+
     }
 }

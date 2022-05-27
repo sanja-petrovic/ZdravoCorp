@@ -24,11 +24,9 @@ namespace ZdravoKlinika.View.DoctorPages
         Model.DoctorMedicalRecordViewModel viewModel;
         string patientId;
         List<PastAppointmentView> pastAppointmentViews;
-        private Doctor doctor;
-        public DoctorMedicalRecord(Doctor doctor)
+        public DoctorMedicalRecord()
         {
             pastAppointmentViews = new List<PastAppointmentView>();
-            this.doctor = doctor;
         }
 
         public void init(string patientId)
@@ -44,13 +42,13 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PrescriptionView prescriptionView = new PrescriptionView();
+            /*PrescriptionView prescriptionView = new PrescriptionView();
             prescriptionView.init(doctor.PersonalId, viewModel.Id);
             prescriptionView.Show();
             prescriptionView.Closed += (s, eventarg) =>
             {
                 viewModel.MedicationAdded();
-            };
+            };*/
         }
 
         public void MedicationAdded()
@@ -64,7 +62,7 @@ namespace ZdravoKlinika.View.DoctorPages
             if(selected != null)
             {
 
-                if (selected.Doctor.PersonalId.Equals(this.doctor.PersonalId))
+                /*if (selected.Doctor.PersonalId.Equals(this.doctor.PersonalId))
                 {
                     EditAppointmentWindow editAppointmentWindow = new EditAppointmentWindow();
                     editAppointmentWindow.SelectedApptId = selected.AppointmentId;
@@ -74,7 +72,7 @@ namespace ZdravoKlinika.View.DoctorPages
                     {
                         viewModel.Edited();
                     };
-                }
+                }*/
             }
         }
 
@@ -82,6 +80,11 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             DoctorCreateAppointmentWindow doctorCreateAppointmentWindow = new DoctorCreateAppointmentWindow();
             doctorCreateAppointmentWindow.ShowDialog();
+        }
+
+        private void TextBlock_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

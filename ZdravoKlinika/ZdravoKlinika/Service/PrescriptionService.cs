@@ -40,6 +40,11 @@ namespace ZdravoKlinika.Service
             return this.prescriptionRepository.GetAll();
         }
 
+        public List<Prescription> GetByPatient(RegisteredPatient patient)
+        {
+            return this.prescriptionRepository.GetByPatient(patient);
+        }
+
         public Prescription GetById(int id)
         {
             return this.prescriptionRepository.GetById(id);

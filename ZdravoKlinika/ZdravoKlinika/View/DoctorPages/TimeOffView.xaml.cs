@@ -34,7 +34,7 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TimeOffRequestView timeOffRequestView = new TimeOffRequestView(this.doctor);
+            TimeOffRequestView timeOffRequestView = new TimeOffRequestView();
             timeOffRequestView.ShowDialog();
             this.viewModel.Load();
         }

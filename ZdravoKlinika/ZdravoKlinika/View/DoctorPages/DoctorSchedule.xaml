@@ -20,6 +20,10 @@
         </Style>
     </Page.Resources>
 
+    <Page.InputBindings>
+        <KeyBinding Key="Z" Modifiers="Alt" Command="{Binding ShowCreateDialog}"/>
+        <KeyBinding Key="P" Modifiers="Alt" Command="{Binding ShowTimeOffDialog}"/>
+    </Page.InputBindings>
     <Grid>
 
         <local:AppointmentsTabPanel x:Name="ApptTabPanel" Margin="0, -145, 0, 0"/>
@@ -42,7 +46,8 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button OverridesDefaultStyle="False"  Focusable="False" Click="Button_Click" Content="Zakažite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="572,88,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="93" Height="33"  Foreground="#555557" >
+        <Button OverridesDefaultStyle="False" Focusable="False" Command="{Binding ShowCreateDialog}" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="572,88,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="93" Height="33"  Foreground="#555557" >
+            <AccessText>_Zakažite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -70,7 +75,8 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button x:Name="RequestButton" OverridesDefaultStyle="False"  Focusable="False" Content="Podnesite zahtev" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="822,474,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="144" Height="32"  Foreground="#555557" Click="RequestButton_Click">
+        <Button x:Name="RequestButton" OverridesDefaultStyle="False"  Focusable="False" Command="{Binding ShowTimeOffDialog}" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="822,474,0,0" VerticalAlignment="Top" FontSize="14" Background="White"  Padding="7" Width="144" Height="32"  Foreground="#555557">
+            <AccessText>_Podnesite zahtev</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

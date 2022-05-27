@@ -2,10 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <ApplicationIcon>Resources\Images\zdravoklinikaicon.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -15,12 +14,13 @@
     <None Remove="Resources\Images\add %281%29.png" />
     <None Remove="Resources\Images\add.png" />
     <None Remove="Resources\Images\addPatient.png" />
-    <None Remove="Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" />
     <None Remove="Resources\Images\bell %281%29.png" />
     <None Remove="Resources\Images\bell.png" />
     <None Remove="Resources\Images\calendar.png" />
     <None Remove="Resources\Images\comment.png" />
     <None Remove="Resources\Images\delete.png" />
+    <None Remove="Resources\Images\docpfp.jpg" />
+    <None Remove="Resources\Images\drhouse.jpg" />
     <None Remove="Resources\Images\edit.png" />
     <None Remove="Resources\Images\editPatient.png" />
     <None Remove="Resources\Images\employees.png" />
@@ -29,7 +29,9 @@
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info %282%29.png" />
     <None Remove="Resources\Images\inventory.png" />
+    <None Remove="Resources\Images\lisacuddy.jpg" />
     <None Remove="Resources\Images\medicine.png" />
+    <None Remove="Resources\Images\monica.png" />
     <None Remove="Resources\Images\more.png" />
     <None Remove="Resources\Images\profile.png" />
     <None Remove="Resources\Images\pulse.png" />
@@ -52,6 +54,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\drhouse.jpg" />
+    <Resource Include="Resources\Images\monica.png" />
     <Content Include="Resources\Images\zdravoklinikaicon.ico" />
     <Resource Include="Resources\Images\addPatient.png" />
     <Resource Include="Resources\Images\delete.png" />
@@ -61,6 +65,7 @@
     <Resource Include="Resources\Images\employees.png" />
     <Resource Include="Resources\Images\help.png" />
     <Resource Include="Resources\Images\inventory.png" />
+    <Resource Include="Resources\Images\lisacuddy.jpg" />
     <Resource Include="Resources\Images\more.png" />
     <Resource Include="Resources\Images\profile.png" />
     <Resource Include="Resources\Images\rooms.png" />
@@ -85,7 +90,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" />
+    <Resource Include="Resources\Images\docpfp.jpg" />
     <Resource Include="Resources\Images\hide.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -160,13 +165,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="17.2.32505.113" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.3.0" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
 
   <ItemGroup>
