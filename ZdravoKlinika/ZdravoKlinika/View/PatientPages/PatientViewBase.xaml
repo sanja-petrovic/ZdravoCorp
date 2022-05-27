@@ -65,7 +65,7 @@
             <Image Margin="39,8,740,17" Source="{Binding Path=LogoImageSource}"/>
             <Button Content="Profil" HorizontalAlignment="Left" Margin="244,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click" Style="{StaticResource menuButton}"/>
             <Button Content="Pregledi" HorizontalAlignment="Left" Margin="349,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click_1" Style="{StaticResource menuButton}"/>
-            <Button Content="Terapija" HorizontalAlignment="Left" Margin="454,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Style="{StaticResource menuButton}"/>
+            <Button Content="Terapija" HorizontalAlignment="Left" Margin="454,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Style="{StaticResource menuButton}" Click="Button_Terapija_Click"/>
             <Button Content="Vaši utisci" HorizontalAlignment="Left" Margin="559,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_Click_2" Style="{StaticResource menuButton}"/>
             <Button Content="Odjava" HorizontalAlignment="Left" Margin="664,67,0,0" VerticalAlignment="Top" Width="100" Height="25" Style="{StaticResource menuButton}" />
             <ComboBox HorizontalAlignment="Left" Margin="838,67,0,0" VerticalAlignment="Top" Width="80" SelectedIndex="0" Height="25">

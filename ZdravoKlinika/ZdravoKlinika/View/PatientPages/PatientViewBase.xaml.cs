@@ -60,5 +60,11 @@ namespace ZdravoKlinika.View.PatientPages
             viewModel.ApplicationReviewView = new ApplicationReviewView(id);
             mainFrame.Navigate(viewModel.ApplicationReviewView);
         }
+
+        private void Button_Terapija_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.PatientTherapyView = new PatientTherapyView(id);
+            mainFrame.Navigate(viewModel.PatientTherapyView);
+        }
     }
 }
