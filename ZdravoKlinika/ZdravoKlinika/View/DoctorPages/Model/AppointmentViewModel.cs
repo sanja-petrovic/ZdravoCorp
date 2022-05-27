@@ -49,6 +49,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public AppointmentViewModel()
         {
+            _Doctor = RegisteredUserController.UserToDoctor(App.User);
+            DoctorId = _Doctor.PersonalId;
             dialogService = new DialogHelper.DialogService();
             patientController = new RegisteredPatientController();
             Patients = new ObservableCollection<RegisteredPatient>(patientController.GetAll());

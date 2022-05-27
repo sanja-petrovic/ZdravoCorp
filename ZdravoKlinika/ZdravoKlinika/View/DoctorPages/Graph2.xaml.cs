@@ -30,7 +30,7 @@ namespace ZdravoKlinika.View.DoctorPages
             {
                 new LineSeries
                 {
-                    Title = "Pacijenti",
+                    Title = "",
                     Values = new ChartValues<int> { 10, 6, 3, 0, 1, 5, 3, 10, 13, 5, 2, 7, 10, 14, 15, 16, 17, 0, 3, 5, 7, 12, 0, 0, 5, 0, 2, 5, 0, 0 }
                 }
             };

@@ -142,7 +142,7 @@
             <TextBlock Text="{Binding Doctor.Specialty}"></TextBlock>
         </StackPanel>
         <Rectangle Fill="#F8F9FE" Height="1" Margin="13,107,801,660"/>
-        <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Margin="0,0,0,0" />
+        <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Margin="0,0,0,0"/>
 
         <Image Margin="893,4,111,728" Source="/Resources/Images/bell (1).png" Stretch="Uniform"/>
         <Image Margin="932,4,72,728" Source="/Resources/Images/info (2).png" Stretch="Uniform"/>

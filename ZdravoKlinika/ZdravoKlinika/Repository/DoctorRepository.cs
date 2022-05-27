@@ -11,20 +11,20 @@ public class DoctorRepository
     public DoctorDataHandler DoctorDataHandler { get => doctorDataHandler; set => doctorDataHandler = value; }
 
     public DoctorRepository()
-    { 
+    {
         DoctorDataHandler = new DoctorDataHandler();
         DoctorList = DoctorDataHandler.Read();
         if (DoctorList == null) DoctorList = new List<Doctor>();
     }
 
-   
-   public List<Doctor> GetAll()
-   {
+
+    public List<Doctor> GetAll()
+    {
         return DoctorList;
-   }
-   
-   public Doctor GetById(String id)
-   {
+    }
+
+    public Doctor GetById(String id)
+    {
 
         foreach (Doctor doctor in DoctorList)
         {
@@ -42,20 +42,21 @@ public class DoctorRepository
         {
             if (doctor.Email == email)
             {
+
                 return doctor;
             }
         }
         return null;
     }
-   
-   public void CreateDoctor(Doctor doctor)
-   {
+
+    public void CreateDoctor(Doctor doctor)
+    {
         DoctorList.Add(doctor);
         DoctorDataHandler.Write(DoctorList);
     }
-   
-   public void DeleteDoctor(Doctor doctor)
-   {
+
+    public void DeleteDoctor(Doctor doctor)
+    {
         var d = DoctorList.Find(x => x.PersonalId.Equals(doctor.PersonalId));
         DoctorList.Remove(d);
         DoctorDataHandler.Write(DoctorList);
@@ -63,10 +64,30 @@ public class DoctorRepository
 
     public void UpdateDoctor(Doctor doctor)
     {
-        DeleteDoctor(doctor);
-        CreateDoctor(doctor);
+        if (doctor == null)
+            return;
+        if (this.doctorList != null)
+        {
+            int index = GetIndex(doctor);
+            this.doctorList[index] = doctor;
+            doctorDataHandler.Write(this.doctorList);
+        }
     }
 
+    public int GetIndex(Doctor doctor)
+    {
+        int index = -1;
+        for (int i = 0; i < this.doctorList.Count; i++)
+        {
+            if (this.doctorList[i].PersonalId.Equals(doctor.PersonalId))
+            {
+                index = i;
+                break;
+            }
+        }
+
+        return index;
+    }
 
     public List<Doctor> GetBySpecialty(string specialty)
     {
@@ -86,9 +107,9 @@ public class DoctorRepository
     {
         List<String> specialties = new List<String>();
 
-        foreach(Doctor doctor in this.DoctorList)
+        foreach (Doctor doctor in this.DoctorList)
         {
-            if(!specialties.Contains(doctor.Specialty))
+            if (!specialties.Contains(doctor.Specialty))
             {
                 specialties.Add(doctor.Specialty);
             }

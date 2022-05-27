@@ -14,16 +14,20 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
     /// Interaction logic for DoctorProfileView.xaml
     /// </summary>
-    public partial class DoctorProfileView : UserControl
+    public partial class DoctorProfileView : Page
     {
+        private DoctorViewModel viewModel;
         public DoctorProfileView()
         {
+            viewModel = new DoctorViewModel();
+            DataContext = viewModel;
             InitializeComponent();
         }
     }
