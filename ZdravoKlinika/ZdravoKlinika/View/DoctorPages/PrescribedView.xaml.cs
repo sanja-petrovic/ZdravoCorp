@@ -45,45 +45,8 @@ namespace ZdravoKlinika.View.DoctorPages
         public void idk()
         {
             AnamnesisView anamnesisView = new AnamnesisView();
-            FixedDocument fixedDoc = new FixedDocument();
-            PageContent pageContent = new PageContent();
-            FixedPage fixedPage = new FixedPage();
-            fixedPage.Children.Add(anamnesisView);
-            ((System.Windows.Markup.IAddChild)pageContent).AddChild(fixedPage);
-            fixedDoc.Pages.Add(pageContent);
-            //Create any other required pages here
-
-            //View the document
-            /*Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-            dlg.FileName = "MyReport"; // Default file name
-            dlg.DefaultExt = ".xps"; // Default file extension
-            dlg.Filter = "XPS Documents (.xps)|*.xps"; // Filter files by extension
-
-            // Show save file dialog box
-            Nullable<bool> result = dlg.ShowDialog();*/
-            string filename = "myreport.xps";
-            // Process save file dialog box results
-            FixedDocument doc = fixedDoc;
-            String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + System.IO.Path.DirectorySeparatorChar + "Resources" + System.IO.Path.DirectorySeparatorChar + "Documents" + System.IO.Path.DirectorySeparatorChar + filename;
-            XpsDocument xpsd = new XpsDocument(fileLocation, FileAccess.ReadWrite);
-            System.Windows.Xps.XpsDocumentWriter xw = XpsDocument.CreateXpsDocumentWriter(xpsd);
-            xw.Write(doc);
-            xpsd.Close();
-            PdfDocument document = new PdfDocument();
-            PdfPage page = document.AddPage();
-            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-            dlg.FileName = "MojRecept"; // Default file name
-            dlg.DefaultExt = ".pdf"; // Default file extension
-            dlg.Filter = "PDF files (.pdf)|*.pdf";
-            Nullable<bool> result = dlg.ShowDialog();
-                if(result == true)
-            {
-                String fileName2 = dlg.FileName;
-                String fileLocation2 = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + System.IO.Path.DirectorySeparatorChar + "Resources" + System.IO.Path.DirectorySeparatorChar + "Documents" + System.IO.Path.DirectorySeparatorChar + fileName2;
-                document.Save(fileName2);
-                PdfSharp.Xps.XpsConverter.Convert(fileLocation, fileName2, 0);
-                File.Delete(fileLocation);
-            }
+            ZdravoKlinika.Util.PdfCreator pdfCreator = new Util.PdfCreator();
+            pdfCreator.CreatePdf(anamnesisView);
 
         }
     }
