@@ -37,7 +37,7 @@
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn IsReadOnly="False"></DataGridCheckBoxColumn>
                     <DataGridTextColumn Header="Naziv" Binding="{Binding Prescription.Medication.BrandName}" Width="2*" IsReadOnly="True"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Vreme" Binding="{Binding TriggerTime}" Width="1*" IsReadOnly="True"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Vreme" Binding="{Binding TriggerTime.TimeOfDay}" Width="1*" IsReadOnly="True"></DataGridTextColumn>
                     <DataGridTextColumn Header="Količina"  Binding="{Binding Prescription.Amount}" Width="1*" IsReadOnly="True"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
@@ -50,7 +50,15 @@
             <Label Content="Vreme:" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Text="{Binding SelectedNotification.Prescription.Medication.BrandName}" Margin="92,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
             <TextBlock HorizontalAlignment="Left" Text="{Binding SelectedNotification.Prescription.Amount}" Margin="92,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-            <ComboBox HorizontalAlignment="Left" Margin="92,102,0,0" VerticalAlignment="Top" Width="82"/>
+            <ComboBox HorizontalAlignment="Left" Margin="92,102,0,0" ItemsSource="{Binding NotificationTimes}" VerticalAlignment="Top" Width="82">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding TimeOfDay}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Button Content="Sačuvaj" HorizontalAlignment="Left" Margin="133,131,0,0" VerticalAlignment="Top"/>
         </Grid>
 

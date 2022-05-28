@@ -15,11 +15,13 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
     {
         private String patientId;
         private List<DateTime> notificationDates = new List<DateTime>();
+        private List<DateTime> notificationTimes = new List<DateTime>();
         private PatientMedicationNotificationController controller;
         private DateTime selectedDate;
         private PatientMedicationNotification selectedNotification;
         private DateTime currentDate;
         private MyICommand loadNotificationsCommand;
+        private MyICommand loadTimesCommand;
         private ObservableCollection<PatientMedicationNotification> notifications;
         public PatientTherapyViewModel(String id)
         {
@@ -28,6 +30,7 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
             Controller = new PatientMedicationNotificationController();
             NotificationDates = Controller.GetNotificationDatesForPatient(PatientId);
             LoadNotificationsCommand = new MyICommand(LoadNotifications, CanExecuteLoadNotifications);
+            LoadTimesCommand = new MyICommand(LoadTimes, CanExecuteLoadTimes);
         }
 
         private void OnPropertyChanged(String propertyName)
@@ -64,10 +67,16 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
             set
             {
                 selectedNotification = value;
+                
+                LoadTimesCommand.RaiseCanExecuteChanged();
+                LoadTimesCommand.Execute(this);
                 OnPropertyChanged("");
             }
         
         }
+
+        public List<DateTime> NotificationTimes { get => notificationTimes; set => notificationTimes = value; }
+        public MyICommand LoadTimesCommand { get => loadTimesCommand; set => loadTimesCommand = value; }
 
         public void LoadNotifications(object data)
         {
@@ -84,9 +93,18 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
             return retVal;
         }
 
-        public void Calendar_Executed(object sender, ExecutedRoutedEventArgs e)
+        public void LoadTimes(object data)
         {
-
+            notificationTimes = controller.GetPossibleTriggerTimes(selectedNotification);
+        }
+        public bool CanExecuteLoadTimes(object data)
+        {
+            bool retVal = false;
+            if(selectedNotification != null)
+            {
+                retVal = true;  
+            }
+            return retVal;
         }
     }
 }

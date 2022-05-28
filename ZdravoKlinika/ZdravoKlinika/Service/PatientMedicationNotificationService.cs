@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Util;
 
 namespace ZdravoKlinika.Service
 {
@@ -122,6 +123,42 @@ namespace ZdravoKlinika.Service
             for (int currDay = 1; currDay <= notification.Prescription.Duration; currDay++) // curr day starts with 1 so that he starts taking therapy the day after perscribingDate
             {
                 retVal.Add(notification.Prescription.DateOfCreation.Date.AddDays(currDay));
+            }
+            return retVal;
+        }
+
+        public List<DateTime> GetPossibleTriggerTimes(PatientMedicationNotification notification)
+        {
+            List<DateTime> retVal = new List<DateTime>();   
+            if (notification != null && notification.Prescription.Repeat != null )
+            {
+                if (notification.Prescription.Repeat.Equals("dnevno"))
+                {
+                    retVal = GetPossibleDailyTimes(notification);
+                }
+                else if (notification.Prescription.Repeat.Equals("nedeljno"))
+                {
+                    //TODO finish
+                }
+                else
+                {
+                    //err
+                }
+            }
+            return retVal;
+        }
+
+        private List<DateTime> GetPossibleDailyTimes(PatientMedicationNotification notification)
+        {
+            List<DateTime> retVal = new List<DateTime>();
+            switch (notification.Prescription.Frequency)
+            {
+                case 1: //using DateTime.MinValue since the date part has no use, use .TimeOfDay or custom Parse when calculating when to trigger and display 
+                    retVal = DateBlock.GetHourlyIntervals(DateTime.MinValue.Date.AddHours(8), DateTime.MinValue.Date.AddHours(20)); //can pick anytime that he wants to consume the medicine
+                    break;
+                case 2: case 3:
+                    retVal = DateBlock.GetHourlyIntervals(DateTime.MinValue.Date.AddHours(8), DateTime.MinValue.Date.AddHours(12)); // anything before noon, the second dose is 12 hours into the future, or 6 and then another 6 in case od 3 times a day
+                    break;
             }
             return retVal;
         }

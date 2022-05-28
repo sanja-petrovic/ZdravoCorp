@@ -32,6 +32,10 @@ namespace ZdravoKlinika.Controller
         {
             return notificationService.GetNotificationDatesForPatient(id);
         }
+        public List<DateTime> GetPossibleTriggerTimes(PatientMedicationNotification notification)
+        {
+            return notificationService.GetPossibleTriggerTimes(notification);
+        }
         public void CreateNotification(RegisteredUser sender,RegisteredUser reciver, String notificationText, Prescription prescription, String note, DateTime time)
         {
             this.notificationService.CreateNotification(new PatientMedicationNotification(-1,sender,reciver,notificationText,prescription,note,time));
