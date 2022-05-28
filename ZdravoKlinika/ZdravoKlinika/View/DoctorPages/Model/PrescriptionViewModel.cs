@@ -15,8 +15,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public PrescriptionViewModel(Prescription prescription)
         {
-            this.prescription = prescription;
-            this.usage = "Količina: " + prescription.Amount + ", "
+            Prescription = prescription;
+            Usage = "Količina: " + prescription.Amount + ", "
                 + prescription.Frequency + "X" + prescription.SingleDose + " " + prescription.Repeat + ", "
                 + prescription.Duration + " dan(a)" + ", " + prescription.DoctorsNote; ;
             

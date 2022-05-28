@@ -16,6 +16,7 @@ namespace ZdravoKlinika
         public static RegisteredUser User;
         public App()
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
     }
 
