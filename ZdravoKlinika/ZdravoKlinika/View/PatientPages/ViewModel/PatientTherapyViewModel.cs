@@ -23,6 +23,8 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
         private MyICommand loadNotificationsCommand;
         private MyICommand loadTimesCommand;
         private ObservableCollection<PatientMedicationNotification> notifications;
+        private String note;
+        private List<DateTime> personalNoteTimes = new List<DateTime>();
         public PatientTherapyViewModel(String id)
         {
             selectedDate = DateTime.Now.Date;
@@ -77,6 +79,8 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
 
         public List<DateTime> NotificationTimes { get => notificationTimes; set => notificationTimes = value; }
         public MyICommand LoadTimesCommand { get => loadTimesCommand; set => loadTimesCommand = value; }
+        public string Note { get => note; set => note = value; }
+        public List<DateTime> PersonalNoteTimes { get => personalNoteTimes; set => personalNoteTimes = value; }
 
         public void LoadNotifications(object data)
         {

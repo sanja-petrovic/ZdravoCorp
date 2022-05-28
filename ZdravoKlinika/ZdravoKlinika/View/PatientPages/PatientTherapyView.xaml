@@ -43,7 +43,7 @@
             </DataGrid>
         </Grid>
 
-        <Grid Margin="70,291,68,0">
+        <Grid Margin="70,291,472,0">
             <Label Content="Izmena vremena obaveštenja" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <Label Content="Naziv leka:" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
             <Label Content="Količina:" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
@@ -61,8 +61,5 @@
             </ComboBox>
             <Button Content="Sačuvaj" HorizontalAlignment="Left" Margin="133,131,0,0" VerticalAlignment="Top"/>
         </Grid>
-
-
-
     </Grid>
 </Page>

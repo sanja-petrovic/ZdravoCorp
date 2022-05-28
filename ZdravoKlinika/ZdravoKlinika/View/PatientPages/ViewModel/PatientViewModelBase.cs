@@ -93,6 +93,7 @@ namespace ZdravoKlinika.PatientPages.ViewModel
 
         private PatientAppointmentView patientApointmentView;
         private PatientTherapyView patientTherapyView;
+        private PatientNotesView patientNotesView;
         public PatientAppointmentView PatientApointmentView
         {
             get { return this.patientApointmentView; }
@@ -103,6 +104,7 @@ namespace ZdravoKlinika.PatientPages.ViewModel
         public string PatientId { get => patientId; set => patientId = value; }
         public ApplicationReviewView ApplicationReviewView { get => applicationReviewView; set => applicationReviewView = value; }
         public PatientTherapyView PatientTherapyView { get => patientTherapyView; set => patientTherapyView = value; }
+        public PatientNotesView PatientNotesView { get => patientNotesView; set => patientNotesView = value; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)

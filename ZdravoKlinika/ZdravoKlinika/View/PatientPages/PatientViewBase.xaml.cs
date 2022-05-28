@@ -66,5 +66,11 @@ namespace ZdravoKlinika.View.PatientPages
             viewModel.PatientTherapyView = new PatientTherapyView(id);
             mainFrame.Navigate(viewModel.PatientTherapyView);
         }
+
+        private void Button_Beleske_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.PatientNotesView = new PatientNotesView(id);
+            mainFrame.Navigate(viewModel.PatientNotesView);
+        }
     }
 }

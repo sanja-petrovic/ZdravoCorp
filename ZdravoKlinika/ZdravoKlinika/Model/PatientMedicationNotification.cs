@@ -11,11 +11,9 @@ namespace ZdravoKlinika.Model
         private Prescription prescription;
         private String note;
         private DateTime triggerTime;
-        private int timesTaken;
         public Prescription Prescription { get => prescription; set => prescription = value; }
         public string Note { get => note; set => note = value; }
         public DateTime TriggerTime { get => triggerTime; set => triggerTime = value; }
-        public int TimesTaken { get => timesTaken; set => timesTaken = value; }
 
         public String generateNotification()
         {
@@ -25,7 +23,7 @@ namespace ZdravoKlinika.Model
         {
 
         }
-        public PatientMedicationNotification(int id, RegisteredUser sender, RegisteredUser reciever,string notificationText, Prescription prescription, String note, DateTime time)
+        public PatientMedicationNotification(int id, RegisteredUser sender, RegisteredUser reciever, string notificationText, Prescription prescription, String note, DateTime time)
         {
             this.NotificationId = id;
             this.Sender = sender;
@@ -34,7 +32,6 @@ namespace ZdravoKlinika.Model
             this.Prescription = prescription;
             this.note = note;
             this.triggerTime = time;
-            this.timesTaken = 0;
         }
     }
 }

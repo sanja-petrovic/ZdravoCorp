@@ -72,7 +72,6 @@ namespace ZdravoKlinika.Repository
             }
             return userToReturn;
         }
-
         private void AddUser(RegisteredUser newUser)
         {
             if (newUser == null)
