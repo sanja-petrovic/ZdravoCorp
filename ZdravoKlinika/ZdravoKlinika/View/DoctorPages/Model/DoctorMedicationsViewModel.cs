@@ -11,11 +11,15 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 {
     public class DoctorMedicationsViewModel : ViewModelBase
     {
-        public ObservableCollection<MedViewModel> ApprovedMeds { get; set; }
-        public ObservableCollection<MedViewModel> PendingMeds { get; set; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
-        public bool SelectAll { get => selectAll; set => selectAll = value; }
+        public bool SelectAll { get => selectAll; set => SetProperty(ref selectAll, value); }
+        public ObservableCollection<MedViewModel> PendingMeds { get => _pendingMeds; set => SetProperty(ref _pendingMeds, value); }
+        public ObservableCollection<MedViewModel> ApprovedMeds { get => _approvedMeds; set => SetProperty(ref _approvedMeds, value); }
 
+        private ObservableCollection<MedViewModel> _pendingMeds;
+        private ObservableCollection<MedViewModel> _approvedMeds;
+
+        private static bool needsUpdating;
         private bool selectAll;
         private Doctor doctor;
         private MedicationController medicationController;
@@ -44,6 +48,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 MedViewModel mViewModel = new MedViewModel();
                 mViewModel.LoadMed(m);
+                mViewModel.ParentViewModel = this;
                 ApprovedMeds.Add(mViewModel);
             }
         }
@@ -55,8 +60,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 MedViewModel mViewModel = new MedViewModel();
                 mViewModel.LoadRequest(r);
+                mViewModel.ParentViewModel = this;
                 PendingMeds.Add(mViewModel);
             }
         }
+
     }
 }

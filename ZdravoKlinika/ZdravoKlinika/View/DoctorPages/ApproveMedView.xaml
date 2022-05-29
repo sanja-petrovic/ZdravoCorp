@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:MedViewModel}"
         mc:Ignorable="d"
         Title="" Height="768" Width="846" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.InputBindings>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding Approve}"/>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding Deny}"/>
+        <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding Edit}"/>
+        <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding GiveUp}" />
+    </Window.InputBindings>
     <Grid>
         <Label Content="Naziv leka" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="159,39,0,0" VerticalAlignment="Top"/>
         <Label Content="Aktivne supstance" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="56,304,0,0" VerticalAlignment="Top"/>
@@ -17,7 +23,8 @@
         <Label Content="Šifra leka" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="50,39,0,0" VerticalAlignment="Top"/>
         <Label Content="Doza" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="56,406,0,0" VerticalAlignment="Top"/>
         <Label Content="Oblik" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="56,124,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ConfirmButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Odobrite" HorizontalAlignment="Left"  Margin="715,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Click="ConfirmButton_Click">
+        
+        <Button x:Name="ConfirmButton"  Visibility="{Binding Visibility1}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Odobrite" HorizontalAlignment="Left"  Margin="715,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Command="{Binding Approve}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -26,8 +33,12 @@
             <Button.Style>
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
+            <Button.InputBindings>
+                <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding Approve}"/>
+            </Button.InputBindings>
+            
         </Button>
-        <Button Visibility="Collapsed" x:Name="OkButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="715,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Click="OkButton_Click">
+        <Button Visibility="{Binding Visibility2}" x:Name="OkButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="715,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Command="{Binding Deny}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -36,8 +47,11 @@
             <Button.Style>
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
+            <Button.InputBindings>
+                <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding Deny}"/>
+            </Button.InputBindings>
         </Button>
-        <Button x:Name="EditButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Izmenite" HorizontalAlignment="Left"  Margin="616,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Click="EditButton_Click">
+        <Button x:Name="EditButton" Visibility="{Binding Visibility1}" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Izmenite" HorizontalAlignment="Left"  Margin="616,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding Edit}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -46,8 +60,11 @@
             <Button.Style>
                 <StaticResource ResourceKey="fancyButtonStyle4"/>
             </Button.Style>
+            <Button.InputBindings>
+                <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding Edit}"/>
+            </Button.InputBindings>
         </Button>
-        <Button Visibility="Collapsed" x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  Margin="616,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Click="GiveUpButton_Click">
+        <Button  Visibility="{Binding Visibility2}" x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  Margin="616,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding GiveUp}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -56,11 +73,14 @@
             <Button.Style>
                 <StaticResource ResourceKey="fancyButtonStyle4"/>
             </Button.Style>
+            <Button.InputBindings>
+                <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding GiveUp}"/>
+            </Button.InputBindings>
         </Button>
         <Label Content="Napomena" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="50,488,0,0" VerticalAlignment="Top"/>
         <Label Content="Komentar" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="56,590,0,0" VerticalAlignment="Top"/>
 
-        <Grid Name="TextBoxGrid" IsEnabled="False">
+        <Grid Name="TextBoxGrid" IsEnabled="{Binding Editable}">
             <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="56,522,0,0" TextWrapping="Wrap" Text="{Binding Note, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="52" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">

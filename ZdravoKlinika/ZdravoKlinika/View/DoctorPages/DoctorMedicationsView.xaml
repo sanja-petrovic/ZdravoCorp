@@ -509,7 +509,7 @@
             </TabItem>
             <TabItem Header="Neodobreni lekovi">
                 <Grid>
-                    <DataGrid HorizontalContentAlignment="Left" Name="UnapprovedMeds"  SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False" ItemsSource="{Binding PendingMeds, UpdateSourceTrigger=PropertyChanged}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,0,0,-322">
+                    <DataGrid HorizontalContentAlignment="Left" Name="UnapprovedMeds" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False" ItemsSource="{Binding PendingMeds,  UpdateSourceTrigger=PropertyChanged}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None"  CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,0,0,-322">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Naziv leka" Width="*" MaxWidth="200" Binding="{Binding BrandName}">
                                 <DataGridTextColumn.ElementStyle>
@@ -550,7 +550,7 @@
                             <DataGridTemplateColumn Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="AuthorizeButton" Click="AuthorizeButton_Click" OverridesDefaultStyle="False"  Focusable="False" Content="Odobrite" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="White" Foreground="#FF9E98FF" Padding="7" Width="80" Height="29"  >
+                                        <Button Name="AuthorizeButton" Command="{Binding Authorize}" OverridesDefaultStyle="False"  Focusable="True" Content="Odobrite" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="White" Foreground="#FF9E98FF" Padding="7" Width="80" Height="29"  >
                                             <Button.Resources>
                                                 <Style TargetType="{x:Type Border}">
                                                     <Setter Property="CornerRadius" Value="10"/>
@@ -559,12 +559,14 @@
                                             <Button.Style>
                                                 <StaticResource ResourceKey="fancyButtonStyle4"/>
                                             </Button.Style>
+                                            <Button.InputBindings>
+                                                <KeyBinding Key="O" Command="{Binding Authorize}" Modifiers="Ctrl"></KeyBinding>
+                                            </Button.InputBindings>
                                         </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
-
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
