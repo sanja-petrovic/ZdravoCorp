@@ -58,5 +58,13 @@ namespace ZdravoKlinika.Model
         {
             return this.medication.ToString();
         }
+
+        public string FullPrescriptionToString()
+        {
+            return this.medication.ToString() + "\n"
+                + "Količina: " + this.amount +
+                "\n" + "Upotreba: " + this.duration + " dan(a) " + this.frequency + " x " + this.singleDose + " " + this.repeat +
+                " " + this.doctorsNote + "\n";
+        }
     }
 }

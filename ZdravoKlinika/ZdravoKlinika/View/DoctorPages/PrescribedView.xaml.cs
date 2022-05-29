@@ -32,21 +32,7 @@ namespace ZdravoKlinika.View.DoctorPages
         private PrescriptionViewModel viewModel;
         public PrescribedView()
         {
-            PrescriptionController pc = new PrescriptionController();
-            Prescription prescription = pc.GetById(1);
-            viewModel = new PrescriptionViewModel(prescription);
-            DataContext = viewModel;
-            //viewModel.Load(prescription);
             InitializeComponent();
-            idk();
-
-        }
-
-        public void idk()
-        {
-            AnamnesisView anamnesisView = new AnamnesisView();
-            ZdravoKlinika.Util.PdfCreator pdfCreator = new Util.PdfCreator();
-            pdfCreator.CreatePdf(anamnesisView);
 
         }
     }

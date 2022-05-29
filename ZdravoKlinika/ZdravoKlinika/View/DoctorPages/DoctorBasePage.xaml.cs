@@ -46,8 +46,6 @@ namespace ZdravoKlinika.View.DoctorPages
             doctorAllPatientsView = new DoctorAllPatientsView();
             feedbackView = new FeedbackView();
             MainFrame.Navigate(doctorHomePage);
-            prescribedView = new PrescribedView();
-            prescribedView.Show();
         }
 
         private void GoToSchedule(object sender, MouseButtonEventArgs e)

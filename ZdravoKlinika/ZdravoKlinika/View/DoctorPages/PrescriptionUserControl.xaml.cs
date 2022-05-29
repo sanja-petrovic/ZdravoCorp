@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Model;
 using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
@@ -21,10 +22,19 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class PrescriptionUserControl : UserControl
     {
-        private TherapyTab viewModel;
+        private PrescriptionViewModel viewModel;
+
         public PrescriptionUserControl()
         {
+            this.viewModel = new PrescriptionViewModel();
+            DataContext = this.viewModel;
+            InitializeComponent();
+        }
 
+        public PrescriptionUserControl(PrescriptionViewModel model)
+        {
+            this.viewModel = model;
+            DataContext = this.viewModel;
             InitializeComponent();
         }
     }

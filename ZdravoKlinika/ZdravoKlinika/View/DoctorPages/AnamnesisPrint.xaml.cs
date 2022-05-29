@@ -17,26 +17,19 @@ using ZdravoKlinika.View.DoctorPages.Model;
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
-    /// Interaction logic for AnamnesisView.xaml
+    /// Interaction logic for AnamnesisPrint.xaml
     /// </summary>
-    public partial class AnamnesisView : UserControl
+    public partial class AnamnesisPrint : UserControl
     {
-        private AnamnesisTab viewModel;
-        private int selectedAppointmentId;
-        public AnamnesisView()
+        public AnamnesisPrint()
         {
             InitializeComponent();
         }
 
-        public AnamnesisView(AnamnesisTab model)
+        public AnamnesisPrint(PastViewModel viewModel)
         {
-            this.viewModel = model;
-            this.viewModel.Load();
-            DataContext = model;
+            DataContext = viewModel;
             InitializeComponent();
         }
-
-        public int SelectedAppointmentId { get => selectedAppointmentId; set => selectedAppointmentId = value; }
-        public AnamnesisTab ViewModel { get => viewModel; set => viewModel = value; }
     }
 }

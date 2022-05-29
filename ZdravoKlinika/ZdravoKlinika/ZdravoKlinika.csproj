@@ -20,6 +20,7 @@
     <None Remove="Resources\Images\comment.png" />
     <None Remove="Resources\Images\delete.png" />
     <None Remove="Resources\Images\docpfp.jpg" />
+    <None Remove="Resources\Images\download.png" />
     <None Remove="Resources\Images\drhouse.jpg" />
     <None Remove="Resources\Images\edit.png" />
     <None Remove="Resources\Images\editPatient.png" />
@@ -56,6 +57,7 @@
   <ItemGroup>
     <Resource Include="Resources\Images\drhouse.jpg" />
     <Resource Include="Resources\Images\monica.png" />
+    <Resource Include="Resources\Images\download.png" />
     <Content Include="Resources\Images\zdravoklinikaicon.ico" />
     <Resource Include="Resources\Images\addPatient.png" />
     <Resource Include="Resources\Images\delete.png" />

@@ -7,7 +7,6 @@
       mc:Ignorable="d"  ShowsNavigationUI="False"
              Height="768" Width="1024" >
     <Page.Resources>
-
         <Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
             <Setter Property="Foreground" Value="#555557"/>
             <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -51,6 +50,58 @@
                                 <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Border}"/>
                                 <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ListBoxItemStyle2" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Foreground" Value="#555557"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="10" Margin="15, 0, 15, 0" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.MouseOver.Border}"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Border}"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Border}"/>
                                 <Setter Property="Foreground" Value="Black"/>
                             </MultiTrigger>
                             <Trigger Property="IsEnabled" Value="False">
@@ -468,7 +519,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Content="Prepišite" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Click="Button_Click">
+        <Button Content="Prepišite" KeyboardNavigation.TabIndex="1" OverridesDefaultStyle="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -489,7 +540,7 @@
                     <Setter Property="HorizontalAlignment" Value="Right"/>
                 </Style>
             </TabControl.Resources>
-            <TabItem Header="Prošli">
+            <TabItem KeyboardNavigation.TabIndex="3" Header="Prošli">
                 <ListBox Name="PastLB" ItemsSource="{Binding PastAppointments}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="Transparent" BorderBrush="Transparent" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -501,13 +552,18 @@
                                 <TextBlock Text="{Binding Precription}" Margin="57,39,-5,54" Grid.ColumnSpan="2"></TextBlock>
                                 <Label FontSize="12" FontWeight="Bold" Content="Nalaz i mišljenje doktora:" Margin="0,48,0,7" Grid.ColumnSpan="2"/>
                                 <TextBlock TextWrapping="Wrap" Text="{Binding Opinion}" Margin="5,68,-1,12" Grid.ColumnSpan="2"></TextBlock>
+                                <Image Source="/Resources/Images/download.png" Margin="0 0 0 0" HorizontalAlignment="Right" Width="12" Height="12" Cursor="Hand">
+                                    <Image.InputBindings>
+                                        <MouseBinding Gesture="LeftClick" Command="{Binding DownloadAnamnesis, Mode=OneTime}" />
+                                    </Image.InputBindings>
+                                </Image>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </TabItem>
-            <TabItem Header="Predstojeći">
-                <ListBox Name="UpcomingTb" ItemsSource="{Binding UpcomingAppointments}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="Transparent" BorderBrush="Transparent" >
+            <TabItem KeyboardNavigation.TabIndex="4" Header="Predstojeći">
+                <ListBox KeyboardNavigation.TabIndex="5" Name="UpcomingTb" ItemsSource="{Binding UpcomingAppointments}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="Transparent" BorderBrush="Transparent" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0 0 0 -50">
@@ -532,7 +588,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Content="Dodajte" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="413,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White">
+        <Button KeyboardNavigation.TabIndex="0" Content="Dodajte" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="413,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -553,7 +609,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Content="Zakaži novi" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="380,455,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Click="Button_Click_1" >
+        <Button KeyboardNavigation.TabIndex="6" Content="Zakaži novi" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="380,455,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Click="Button_Click_1" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -568,7 +624,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Name="EditButton" Content="Izmeni odabrani" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="480,455,0,0" VerticalAlignment="Top" Width="103" Height="23" Background="White" Click="EditAppointment" >
+        <Button KeyboardNavigation.TabIndex="7" Name="EditButton" Content="Izmeni odabrani" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="480,455,0,0" VerticalAlignment="Top" Width="103" Height="23" Background="White" Click="EditAppointment" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -583,7 +639,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Content="Obriši odabrani" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="600,455,0,0" VerticalAlignment="Top" Width="103" Height="23" Background="White" >
+        <Button KeyboardNavigation.TabIndex="8" Content="Obriši odabrani" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="600,455,0,0" VerticalAlignment="Top" Width="103" Height="23" Background="White" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -591,10 +647,18 @@
             </Button.Resources>
         </Button>
 
-        <ListBox ItemsSource="{Binding Prescriptions}" Background="Transparent" Style="{StaticResource ListBoxStyle1}" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" Margin="761,278,54,339">
+        <ListBox KeyboardNavigation.TabIndex="2" ItemsSource="{Binding Prescriptions}" Background="Transparent" Style="{StaticResource ListBoxStyle1}" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle2}" Margin="761,278,54,339">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Prescription}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Prescription}" Margin="0 0 5 0" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" FontFamily="Nunito Sans"/>
+                        <Image Source="/Resources/Images/download.png" Margin="0 0 0 0" HorizontalAlignment="Right" Width="12" Height="12" Cursor="Hand">
+                            <Image.InputBindings>
+                                <MouseBinding Gesture="LeftClick" Command="{Binding DownloadPrescription, Mode=OneTime}" />
+                                <KeyBinding Command="{Binding DownloadPrescription}" Key="D" Modifiers="Shift" />
+                            </Image.InputBindings>
+                        </Image>
+                    </WrapPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
             <ListBox.Resources>
@@ -602,11 +666,15 @@
             </ListBox.Resources>
         </ListBox>
 
-        <ListBox ItemsSource="{Binding Diagnoses}" Background="Transparent" Style="{StaticResource ListBoxStyle1}" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" Margin="276,278,539,339">
+        <ListBox Focusable="False" FontWeight="Regular" FontSize="12" FontFamily="Nunito Sans" ItemsSource="{Binding Diagnoses}" Background="Transparent" Style="{StaticResource ListBoxStyle1}" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle2}" Margin="276,278,539,339">
             <ListBox.Resources>
                 <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">5</system:Double>
             </ListBox.Resources>
         </ListBox>
 
     </Grid>
+
+    <Page.InputBindings>
+        <KeyBinding Key="D" Modifiers="Shift" Command="{Binding DownloadPrescription}"/>
+    </Page.InputBindings>
 </Page>

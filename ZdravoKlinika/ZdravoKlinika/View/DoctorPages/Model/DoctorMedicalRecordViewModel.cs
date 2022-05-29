@@ -31,12 +31,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         string bloodType;
         string emergencyContactName;
         string emergencyContactPhone;
-        private List<String> medicationDisplay;
-        List<string> diagnosisDisplay;
-        public MyICommand SeePrescription;
-        private Prescription selectedPrescription;
 
+        private PrescriptionViewModel selectedPrescription;
 
+        public MyICommand DownloadPrescription { get; set; }
+        public MyICommand SelectFirstPrescription { get; set; }
 
 
         public string Name { get => name; set => SetProperty(ref name, value); }
@@ -50,8 +49,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string EmergencyContactName { get => emergencyContactName; set => SetProperty(ref emergencyContactName, value); }
         public string EmergencyContactPhone { get => emergencyContactPhone; set => SetProperty(ref emergencyContactPhone, value); }
         public RegisteredPatientController PatientController { get => patientController; set => patientController = value; }
-        public Prescription SelectedPrescription { get => selectedPrescription; set => SetProperty(ref selectedPrescription, value); }
         public RegisteredPatient Patient { get => patient; set => SetProperty(ref patient, value); }
+        public PrescriptionViewModel SelectedPrescription { get => selectedPrescription; set => SetProperty(ref selectedPrescription, value); }
 
         public DoctorMedicalRecordViewModel()
         {
@@ -62,12 +61,23 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.prescriptionController = new PrescriptionController();
             this.medicalRecordController = new MedicalRecordController();
             Prescriptions = new ObservableCollection<PrescriptionViewModel>();
-            SeePrescription = new MyICommand(OnClick);
+            DownloadPrescription = new MyICommand(ExecuteDownload);
+            SelectFirstPrescription = new MyICommand(ExecuteSelectFirst);
         }
 
-        public void OnClick()
+        public void ExecuteDownload()
         {
+            if(SelectedPrescription == null)
+            {
+                SelectedPrescription = Prescriptions[0];
+            }
 
+            SelectedPrescription.ExecuteExport();
+        }
+
+        public void ExecuteSelectFirst()
+        {
+            SelectedPrescription = Prescriptions[0];
         }
 
         public void init(string patientId)
@@ -87,7 +97,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             foreach (Appointment a in this.appointmentController.GetPatientsPastAppointments(Patient))
             {
                 PastViewModel past = new PastViewModel();
-                past.init(a);
+                past.Init(a);
                 PastAppointments.Add(past);
             }
 
@@ -124,7 +134,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             foreach (Appointment a in this.appointmentController.GetPatientsPastAppointments(Patient))
             {
                 PastViewModel past = new PastViewModel();
-                past.init(a);
+                past.Init(a);
                 pastNew.Add(past);
             }
 
