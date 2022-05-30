@@ -11,6 +11,8 @@ public class MoveService
     private DateTime scheduledDateTime;
     private List<Equipment> equipmentToMove;
     private Timer timer;
+    private RoomService roomService;
+    private List<Room> rooms;
 
     public MoveService()
     {
@@ -33,30 +35,25 @@ public class MoveService
         return this.moveRepository.GetById(id);
     }
 
-    public void CreateMove(Room sourceRoom, Room destinationRoom, List<Equipment> equipmentToMove, DateTime scheduledDateTime)
+    public void CreateMove(Move move)
     {
-        this.SourceRoom = sourceRoom;
-        this.DestinationRoom = destinationRoom;
-        this.EquipmentToMove = equipmentToMove;
-        this.ScheduledDateTime = scheduledDateTime;
-
+        SaveMoveValues(move);
+        
         TimeSpan fireInterval = scheduledDateTime - DateTime.Now;
         timer.Interval = fireInterval.TotalMilliseconds;
         timer.Elapsed += ExecuteMove;
         timer.AutoReset = false;
         timer.Start();
 
-        Move m = new Move(GenerateId().ToString(), sourceRoom, destinationRoom, scheduledDateTime, equipmentToMove);
-        this.moveRepository.CreateMove(m);
+        this.moveRepository.CreateMove(new Move(GenerateMoveId().ToString(), SourceRoom, DestinationRoom, ScheduledDateTime, EquipmentToMove));
     }
 
     private void ExecuteMove(object? sender, ElapsedEventArgs e)
     {
-        RoomService roomService = new RoomService();
-        List<Room> rooms = roomService.GetAll();
+        FetchRooms();
 
        /* 
-        * 1.NADJI SOURCE ROOM
+        1.NADJI SOURCE ROOM
         2.KOPIRAJ EQUIPMENT LISTU SOURCE ROOM
         3.UZMI LISTU EQUIPMENT TO MOVE
         4.PRODJI KROZ LISTU EQUIPMENT TO MOVE I ODUZMI KOLICINU AMOUNT IZ LISTE EQUIPMENT
@@ -92,14 +89,11 @@ public class MoveService
         timer.Dispose();
     }
 
-    public void UpdateMove(String moveId, Room sourceRoom, Room destinationRoom, List<Equipment> equipmentToMove, DateTime scheduledDateTime)
+    public void UpdateMove(Move changedMove)
     {
-        Move m = this.moveRepository.GetById(moveId);
-        m.SourceRoom = sourceRoom;
-        m.DestinationRoom = destinationRoom;
-        m.ScheduledDateTime = scheduledDateTime;
-        m.EquipmentToMove = equipmentToMove;
-        this.moveRepository.UpdateMove(m);
+        Move move = this.moveRepository.GetById(changedMove.MoveId);
+        UpdateMoveValues(move, changedMove);
+        this.moveRepository.UpdateMove(move);
     }
 
     public void DeleteMove(String moveId)
@@ -108,7 +102,7 @@ public class MoveService
         this.moveRepository.DeleteMove(m);
     }
 
-    public int GenerateId()
+    private int GenerateMoveId()
     {
         List<Move> moves = this.moveRepository.GetAll();
         int newMoveId;
@@ -131,4 +125,25 @@ public class MoveService
         return newMoveId;
     }
 
+    private void SaveMoveValues(Move move)
+    {
+        this.SourceRoom = move.SourceRoom;
+        this.DestinationRoom = move.DestinationRoom;
+        this.EquipmentToMove = move.EquipmentToMove;
+        this.ScheduledDateTime = move.ScheduledDateTime;
+    }
+
+    private void FetchRooms()
+    {
+        this.roomService = new RoomService();
+        this.rooms = roomService.GetAll();
+    }
+
+    private void UpdateMoveValues(Move moveToBeUpdated, Move updatedValues)
+    {
+        moveToBeUpdated.SourceRoom = updatedValues.SourceRoom;
+        moveToBeUpdated.DestinationRoom = updatedValues.DestinationRoom;
+        moveToBeUpdated.ScheduledDateTime = updatedValues.ScheduledDateTime;
+        moveToBeUpdated.EquipmentToMove = updatedValues.EquipmentToMove;
+    }
 }

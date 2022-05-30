@@ -10,48 +10,52 @@ public class EquipmentRepository
     private EquipmentDataHandler equipmentDataHandler;
     private OrderDataHandler orderDataHandler;
     private List<Equipment> equipment;
-    private List<Equipment> expendabilityList;
-    
+    private List<Equipment> expendabilityList; //contains either expendable or unexpendable equipment
+                                               //based on param bool expendable
     public EquipmentDataHandler EquipmentDataHandler { get => equipmentDataHandler; set => equipmentDataHandler = value; }
+    public OrderDataHandler OrderDataHandler { get => orderDataHandler; set => orderDataHandler = value; }
+
 
     public EquipmentRepository()
     {
-        this.EquipmentDataHandler = new EquipmentDataHandler();
+        EquipmentDataHandler = new EquipmentDataHandler();
         OrderDataHandler = new OrderDataHandler();
 
         this.equipment = EquipmentDataHandler.Read();
         this.expendabilityList = new List<Equipment>();
-
+        
         UpdateStorageForOrders();
     }
 
     private void UpdateStorageForOrders()
     {
-        // goes thorugh all the orders and checks if theres any that got into storage
+        // goes through all the orders and checks if theres any that got into storage
         List<Order> orders = OrderDataHandler.Read();
         if (orders != null) 
         {
             foreach (Order order in orders)
             {
-                if (order.IsOrderFinished)
-                {
-                    continue;
-                }
-                DateTime deliveryDate = order.CreationDate.AddDays(3);
-                if (deliveryDate < DateTime.Now)
-                {
-                    AddNewEqupment(order);
-                    order.IsOrderFinished = true;
-                }
+                FinalizeOrder(order);
             }
             OrderDataHandler.Write(orders);
             EquipmentDataHandler.Write(equipment);
         }
-       
-        
     }
 
-    private void AddNewEqupment(Order order)
+    private void FinalizeOrder(Order order)
+    {
+        if (!order.IsOrderFinished)
+        {
+            DateTime deliveryDate = order.CreationDate.AddDays(3);
+            if (deliveryDate < DateTime.Now)
+            {
+                AddEquipmentInOrder(order);
+                order.IsOrderFinished = true;
+            }
+        } 
+    }
+
+    private void AddEquipmentInOrder(Order order)
     {
         List<Equipment> equipmentToAdd = order.EquipmentToOrder;
         foreach (Equipment equipmentInOrder in equipmentToAdd)
@@ -86,8 +90,7 @@ public class EquipmentRepository
         }
     }
 
-    public OrderDataHandler OrderDataHandler { get => orderDataHandler; set => orderDataHandler = value; }
-
+   
     public void AddEquipment(Equipment newEquipment)
     {
         if (newEquipment == null)
@@ -120,21 +123,20 @@ public class EquipmentRepository
 
     public Equipment GetById(String id)
     {
+        Equipment? returnValue = null;
         foreach (Equipment eq in this.equipment)
         {
             if (eq.Id.Equals(id))
             {
-                return eq;
+                returnValue = eq;
             }
         }
-
-        return null;
+        return returnValue;
     }
 
     public List<Equipment> GetByExpendability(bool expendable)
     {
         this.expendabilityList.Clear();
-
         foreach (Equipment eq in this.equipment)
         {
             if(eq.Expendable == expendable)
@@ -142,14 +144,13 @@ public class EquipmentRepository
                 expendabilityList.Add(eq);
             }
         }
-
         return this.expendabilityList;
     }
 
     public void CreateEquipment(Equipment eq)
     {
         this.equipment.Add(eq);
-        equipmentDataHandler.Write(this.equipment);
+        EquipmentDataHandler.Write(this.equipment);
     }
 
     public void DeleteEquipment(Equipment eq)
@@ -159,7 +160,7 @@ public class EquipmentRepository
         if (this.equipment != null)
             if (this.equipment.Contains(eq))
                 this.equipment.Remove(eq);
-        equipmentDataHandler.Write(this.equipment);
+        EquipmentDataHandler.Write(this.equipment);
     }
 
     public void UpdateEquipment(Equipment eq)
@@ -171,12 +172,17 @@ public class EquipmentRepository
             {
                 if (eqIterate.Id.Equals(eq.Id))
                 {
-                    eqIterate.Name = eq.Name;
-                    eqIterate.Amount = eq.Amount;
-                    eqIterate.Expendable = eq.Expendable;
+                    UpdateEquipmentValues(eqIterate, eq);
                 }
             }
-        equipmentDataHandler.Write(this.equipment);
+        EquipmentDataHandler.Write(this.equipment);
+    }
+
+    private void UpdateEquipmentValues(Equipment equipmentToBeUpdated, Equipment updatingValues)
+    {
+        equipmentToBeUpdated.Name = updatingValues.Name;
+        equipmentToBeUpdated.Amount = updatingValues.Amount;
+        equipmentToBeUpdated.Expendable = updatingValues.Expendable;
     }
 
 }
