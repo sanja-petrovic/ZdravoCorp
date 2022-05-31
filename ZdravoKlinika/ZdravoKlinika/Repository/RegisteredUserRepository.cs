@@ -17,6 +17,7 @@ namespace ZdravoKlinika.Repository
         
         public RegisteredPatientRepository RegisteredPatientRepository { get => registeredPatientRepository; set => registeredPatientRepository = value; }
         public DoctorRepository DoctorRepository { get => doctorRepository; set => doctorRepository = value; }
+
         public EmployeeRepository EmployeeRepository { get => employeeRepository; set => employeeRepository = value; }
         public List<RegisteredUser> RegisteredUsers { get => registeredUsers; set => registeredUsers = value; }
 
@@ -103,5 +104,18 @@ namespace ZdravoKlinika.Repository
             dataHandler.Clear();
         }
 
+        public RegisteredUser? GetUserById(string id)
+        {
+            RegisteredUser? userToReturn = null;
+            foreach (RegisteredUser user in RegisteredUsers)
+            {
+                if (user.PersonalId.Equals(id))
+                {
+                    userToReturn = user;
+                    break;
+                }
+            }
+            return userToReturn;
+        }
     }
 }
