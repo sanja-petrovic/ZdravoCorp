@@ -10,22 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ZdravoKlinika.View.DoctorPages.Model;
 
-namespace ZdravoKlinika.View
+namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
-    /// Interaction logic for DoctorAllPatientsView.xaml
+    /// Interaction logic for DoctorMainWindow.xaml
     /// </summary>
-    public partial class DoctorAllPatientsView : UserControl
+    public partial class DoctorMainWindow : Window
     {
-        private AllPatientsViewModel viewModel;
-        public DoctorAllPatientsView()
+        public ViewModelBase SelectedVM { get; set; }
+        public DoctorMainWindow()
         {
-            viewModel = new AllPatientsViewModel();
-            DataContext = viewModel;
+            DataContext = this;
             InitializeComponent();
         }
     }

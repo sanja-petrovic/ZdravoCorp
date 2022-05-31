@@ -20,7 +20,7 @@ namespace ZdravoKlinika.View.DoctorPages
     /// <summary>
     /// Interaction logic for DoctorHomePage.xaml
     /// </summary>
-    public partial class DoctorHomePage : Page
+    public partial class DoctorHomePage : UserControl
     {
         private int selectedAppointmentId;
         private AppointmentsTodayViewModel viewModel;
@@ -57,7 +57,7 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
             doctorMedicalRecord.init(viewModel.PatientId);
-            this.NavigationService.Navigate(doctorMedicalRecord);
+            //this.NavigationService.Navigate(doctorMedicalRecord);
         }
     }
 }

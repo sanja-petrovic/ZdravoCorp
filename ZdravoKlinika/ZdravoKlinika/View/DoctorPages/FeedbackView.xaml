@@ -7,6 +7,9 @@
       xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="ZdravoKlinika.View.DoctorPages.FeedbackView"
       mc:Ignorable="d" Width="1024" Height="768"
       Title="FeedbackView">
+    <Page.InputBindings>
+        <KeyBinding Key="Enter" Modifiers="Ctrl" Command="{Binding Confirm}"/>
+    </Page.InputBindings>
     <Page.Resources>
         <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
             <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -265,29 +268,58 @@
     </Page.Resources>
 
     <Grid>
+        <Border  Margin="287,132,100,95"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Rectangle HorizontalAlignment="Left" Height="558" Margin="275,125,0,0"  VerticalAlignment="Top" Width="655" Fill="White"  RadiusX="10" RadiusY="10"/>
+        <Label Content="Ocenite aplikaciju" Margin="271,75,355,643" FontSize="24" FontWeight="Bold"/>
 
-        <Label Content="Voleli bismo da čujemo Vaše mišljenje!" Margin="261,176,254,542" FontSize="24" FontWeight="Bold"/>
-        <TextBlock Text="Kako biste ocenili aplikaciju?" FontSize="16" FontWeight="Bold" Margin="266,226,249,501"/>
-        <Slider Ticks="1, 2, 3, 4, 5, 6, 7, 8, 9, 10" Style="{DynamicResource SliderStyle1}" Minimum="1" Maximum="10" TickFrequency="1" Margin="266,272,504,448" TickPlacement="BottomRight" IsSnapToTickEnabled="True"></Slider>
-        <TextBlock Text="Ukoliko imate neki komentar, možete ga napisati u polju ispod." FontSize="14" FontWeight="Regular" Margin="266,343,249,384" Foreground="#555557"/>
-        <TextBox Style="{StaticResource TextBoxStyle1}" Margin="266,374,249,197" TextWrapping="Wrap" BorderBrush="#FFAEAEC1">
+
+        <Label Content="Voleli bismo da čujemo Vaše mišljenje!" Margin="302,149,214,569" FontSize="24" FontWeight="Bold"/>
+        <TextBlock Text="Kako biste ocenili aplikaciju?" FontSize="16" FontWeight="Bold" Margin="308,217,207,510"/>
+        <Slider Ticks="1, 2, 3, 4, 5, 6, 7, 8, 9, 10" Style="{DynamicResource SliderStyle1}" Minimum="1" Maximum="10" TickFrequency="1" Margin="308,252,122,468" TickPlacement="BottomRight" IsSnapToTickEnabled="True"></Slider>
+        <TextBlock Text="Ukoliko imate neki komentar, možete ga napisati u polju ispod." FontSize="14" FontWeight="Regular" Margin="308,343,207,384" Foreground="#555557"/>
+        <TextBox Style="{StaticResource TextBoxStyle1}" Margin="308,384,122,154" TextWrapping="Wrap" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBlock Text="1" Margin="271,300,744,451"></TextBlock>
-        <TextBlock Text="2" Margin="297,300,718,451"/>
-        <TextBlock Text="3" Margin="323,300,692,451"/>
-        <TextBlock Text="4" Margin="350,300,666,451"/>
-        <TextBlock Text="5" Margin="376,300,640,451"/>
-        <TextBlock Text="6" Margin="402,300,614,451"/>
-        <TextBlock Text="7" Margin="428,300,588,452"/>
-        <TextBlock Text="8" Margin="455,300,561,452"/>
-        <TextBlock Text="9" Margin="481,300,535,452"/>
-        <TextBlock Text="10" Margin="504,300,504,451"/>
+        <Grid Margin="308,285,115,430">
+            <TextBlock Text="1" Margin="4,0,0,0"></TextBlock>
+            <TextBlock Text="2" Margin="69,0,0,0"/>
+            <TextBlock Text="3" Margin="134,0,0,0"/>
+            <TextBlock Text="4" Margin="197,0,0,0"/>
+            <TextBlock Text="5" Margin="262,0,0,0" />
+            <TextBlock Text="6" Margin="325,0,0,0" />
+            <TextBlock Text="7" Margin="390,0,0,0"/>
+            <TextBlock Text="8" Margin="454,0,0,0"/>
+            <TextBlock Text="9" Margin="518,0,0,0"/>
+            <TextBlock Text="10" Margin="578,0,0,0" />
+        </Grid>
 
-
+        <Button OverridesDefaultStyle="False" Focusable="True" Background="#FF9E98FF" Foreground="White" FontWeight="Bold" Content="Pošaljite" HorizontalAlignment="Left"  Margin="757,632,0,0" VerticalAlignment="Top" FontSize="14" Padding="7" Height="30" Width="145" Command="{Binding Confirm}">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle3"/>
+            </Button.Style>
+            <Button.InputBindings>
+                <KeyBinding Key="Enter" Modifiers="Ctrl" Command="{Binding Confirm}"/>
+            </Button.InputBindings>
+        </Button>
+        <Grid Name="ThanksGrid" Visibility="Collapsed" Margin="275,125,94,85">
+            <Rectangle HorizontalAlignment="Left" Height="558"  VerticalAlignment="Top" Width="655" Fill="White"  RadiusX="10" RadiusY="10"/>
+            <Label Content="Hvala Vam na iskazanom mišljenju!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+        </Grid>
     </Grid>
 </Page>

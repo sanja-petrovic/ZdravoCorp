@@ -21,7 +21,7 @@ namespace ZdravoKlinika.View.DoctorPages
     /// <summary>
     /// Interaction logic for DoctorProfileView.xaml
     /// </summary>
-    public partial class DoctorProfileView : Page
+    public partial class DoctorProfileView : UserControl
     {
         private DoctorViewModel viewModel;
         public DoctorProfileView()

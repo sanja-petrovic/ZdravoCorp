@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,23 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ZdravoKlinika.Controller;
-using ZdravoKlinika.Util;
 using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
-    /// Interaction logic for DoctorBasePage.xaml
+    /// Interaction logic for DoctorAllPatientsView.xaml
     /// </summary>
-    public partial class DoctorBasePage : Window
+    public partial class DoctorAllPatientsView : UserControl
     {
-        Model.MainViewModel viewModel;
-
-        public DoctorBasePage()
+        private AllPatientsViewModel viewModel;
+        public DoctorAllPatientsView()
         {
-            this.viewModel = new Model.MainViewModel();
-            DataContext = this.viewModel;
+            viewModel = new AllPatientsViewModel();
+            DataContext = viewModel;
             InitializeComponent();
         }
     }

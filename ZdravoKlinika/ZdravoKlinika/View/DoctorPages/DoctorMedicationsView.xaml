@@ -425,7 +425,6 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-
         <Border Margin="276,162,35,69"
             BorderBrush="Black"
             BorderThickness="2"
