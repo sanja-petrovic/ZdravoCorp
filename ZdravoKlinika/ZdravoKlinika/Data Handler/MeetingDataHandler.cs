@@ -5,31 +5,32 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Data_Handler
 {
-    public class EmployeeNotificationDataHandler
+    public class MeetingDataHandler
     {
-        private static String fileName = "employee_notifications.json";
+        private static String fileName = "meetings.json";
         private static String fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Data" + Path.DirectorySeparatorChar + fileName;
-        public void Write(List<EmployeeNotification> notifications)
+
+        public static string FileLocation { get => fileLocation; set => fileLocation = value; }
+
+        public void Write(List<Meeting> meetings)
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
-            options.Converters.Add(new JsonStringEnumConverter());
-            options.Converters.Add(new RegisteredUserConverter());
             options.WriteIndented = true;
-            var jsonList = JsonSerializer.Serialize(notifications, options);
-            File.WriteAllText(fileLocation, jsonList);
+            options.Converters.Add(new RegisteredUserConverter());
+            var json = JsonSerializer.Serialize(meetings, options);
+            File.WriteAllText(fileLocation, json);
         }
 
-        public List<EmployeeNotification> Read()
+        public List<Meeting> Read()
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.Converters.Add(new RegisteredUserConverter());
-            return JsonSerializer.Deserialize<List<EmployeeNotification>>(File.ReadAllText(fileLocation), options);
+            return JsonSerializer.Deserialize<List<Meeting>>(File.ReadAllText(fileLocation), options);
         }
     }
 }

@@ -77,6 +77,7 @@ namespace ZdravoKlinika.Repository
                 if (notification.NotificationId.Equals(notificationId))
                 { 
                     indexToRemove = employeeNotifications.IndexOf(notification);
+                    break;
                 }
             }
 

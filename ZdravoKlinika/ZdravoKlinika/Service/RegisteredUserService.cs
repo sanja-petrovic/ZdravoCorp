@@ -43,5 +43,9 @@ namespace ZdravoKlinika.Service
             this.userRepository.ForgetUser();
         }
 
+        public List<RegisteredUser> GetAll()
+        {
+            return userRepository.GetAll();
+        }
     }
 }
