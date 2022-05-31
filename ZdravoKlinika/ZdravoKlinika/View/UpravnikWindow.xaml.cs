@@ -16,7 +16,6 @@ namespace ZdravoKlinika.View
 {
     public partial class UpravnikWindow : Window
     {
-        private int selectedIndex = -1;
         private RoomController roomController;
         public ObservableCollection<Room> Rooms { get; set; }
 
@@ -32,9 +31,6 @@ namespace ZdravoKlinika.View
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            String naziv = NazivTextBox.Text;
-            int sprat = Int32.Parse(SpratTextBox.Text);
-            int broj = Int32.Parse(BrojTextBox.Text);
             RoomType tip = 0;
             switch (TipComboBox.SelectedIndex)
             {
@@ -65,16 +61,12 @@ namespace ZdravoKlinika.View
                 default:
                     break;
             }
-            this.roomController.CreateRoom(naziv, tip, status, sprat, broj, true);
+            this.roomController.CreateRoom(NazivTextBox.Text, tip, status, Int32.Parse(SpratTextBox.Text), Int32.Parse(BrojTextBox.Text), true);
             Refresh_Display();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            String sifra = SifraTextBox.Text;
-            String naziv = NazivTextBox.Text;
-            int sprat = Int32.Parse(SpratTextBox.Text);
-            int broj = Int32.Parse(BrojTextBox.Text);
             RoomType tip = 0;
             switch (TipComboBox.SelectedIndex)
             {
@@ -105,7 +97,7 @@ namespace ZdravoKlinika.View
                 default:
                     break;
             }
-            this.roomController.UpdateRoom(sifra, naziv, tip, status, sprat, broj, true);
+            this.roomController.UpdateRoom(SifraTextBox.Text, NazivTextBox.Text, tip, status, Int32.Parse(SpratTextBox.Text), Int32.Parse(BrojTextBox.Text), true);
             Refresh_Display();
         }
 
@@ -125,7 +117,6 @@ namespace ZdravoKlinika.View
         {
             var dg = sender as DataGrid;
             if (dg == null) return;
-            this.selectedIndex = dg.SelectedIndex;
 
             Room r = (Room)dg.SelectedItem;
             if (r != null)
