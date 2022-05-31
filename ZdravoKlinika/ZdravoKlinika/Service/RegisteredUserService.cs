@@ -18,6 +18,11 @@ namespace ZdravoKlinika.Service
             userRepository = new RegisteredUserRepository();
         }
 
+        public RegisteredUser? GetUserById(String id) 
+        {
+            return UserRepository.GetUserById(id);
+        }
+
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password)
         {
             return UserRepository.GetUserByEmailAndPassword(email, password);
