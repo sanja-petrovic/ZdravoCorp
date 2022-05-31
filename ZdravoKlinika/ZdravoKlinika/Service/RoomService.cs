@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using ZdravoKlinika.Util;
 
 public class RoomService
 {
@@ -30,6 +32,32 @@ public class RoomService
     public List<Room> GetRenovatableRooms()
     {
         return this.roomRepository.GetRenovatableRooms();
+    }
+
+
+    public List<Room> GetOccupiedRooms(DateBlock period, RoomType roomType)
+    {
+        List<Room> rooms = this.GetAll().FindAll(r => r.Type.Equals(roomType));
+        AppointmentRepository appointmentRepository = new AppointmentRepository();
+
+        foreach (Appointment appointment in appointmentRepository.GetAppointmentsOnDate(period.Start.Date).OrderBy(o => o.DateAndTime).ToList())
+        {
+            DateBlock apptDateBlock = new DateBlock(appointment.DateAndTime, appointment.DateAndTime.AddMinutes(appointment.Duration));
+            if (period.End < apptDateBlock.Start)
+            {
+                break;
+            }
+            if (period.Start < apptDateBlock.End && apptDateBlock.Start < period.End)
+            {
+                Room r = rooms.Find(x => x.RoomId.Equals(appointment.Room.RoomId));
+                if(r != null)
+                {
+                    rooms.Remove(r);
+                }
+            }
+        }
+
+        return rooms;
     }
 
     public int GenerateId()

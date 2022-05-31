@@ -27,10 +27,20 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Prescriptions { get => prescriptions; set => SetProperty(ref prescriptions, value); }
         public string AppointmentType { get => appointmentType; set => SetProperty(ref appointmentType, value); }
 
+        public DoctorMedicalRecordViewModel RecordViewModel { get => recordViewModel; set => SetProperty(ref recordViewModel, value); }
+        public MyICommand RecordCommand { get; set; }
+        private DoctorMedicalRecordViewModel recordViewModel;
 
         public ScheduleTabItem()
         {
+            RecordCommand = new MyICommand(ExecuteGoToRecord);
+        }
 
+        public void ExecuteGoToRecord()
+        {
+            DoctorMedicalRecordViewModel doctorMedicalRecordViewModel = new DoctorMedicalRecordViewModel();
+            doctorMedicalRecordViewModel.init(PatientId);
+            RecordViewModel = recordViewModel;
         }
 
 

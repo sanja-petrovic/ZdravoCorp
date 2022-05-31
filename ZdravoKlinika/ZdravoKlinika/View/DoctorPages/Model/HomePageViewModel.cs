@@ -4,12 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
-    internal class AppointmentsTodayViewModel : ViewModelBase
+    public class HomePageViewModel : ViewModelBase
     {
         
         public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
@@ -22,6 +23,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Therapy { get => therapy; set => SetProperty(ref therapy, value); }
         public Appointment SelectedAppointment { get => selectedAppointment; set => SetProperty(ref selectedAppointment, value); }
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
+        public Visibility AboutVisibility { get => aboutVisibility; set => SetProperty(ref aboutVisibility, value); }
+
+        private Visibility aboutVisibility;
+
+        public MyICommand LogAppointment { get; set; }
 
         private Doctor doctor;
         AppointmentController appointmentController;
@@ -34,8 +40,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string diagnoses;
         private string therapy;
 
-        public AppointmentsTodayViewModel()
+        public HomePageViewModel()
         {
+            LogAppointment = new MyICommand(ExecuteLog);
             this.doctor = RegisteredUserController.UserToDoctor(App.User);
             this.Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
@@ -50,10 +57,17 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
 
                     if (!appointment.Over)
-                        this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.GetPatientFullName(), Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room.Name });
+                        this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.GetPatientFullName(), Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room });
                 }
 
             }
+            AboutVisibility = Appointments.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public void ExecuteLog()
+        {
+            DialogHelper.DialogService dialogService = new DialogHelper.DialogService();
+            dialogService.ShowLogApptDialog(SelectedAppointmentId);
         }
 
         public void infoChange()
@@ -69,7 +83,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 Room room = appointment.Room;
 
 
-                this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.Name + " " + patient.Lastname, Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room.Name });
+                this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.Name + " " + patient.Lastname, Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room });
             }
         }
 

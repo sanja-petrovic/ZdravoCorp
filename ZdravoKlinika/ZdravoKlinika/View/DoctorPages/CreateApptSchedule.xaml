@@ -12,7 +12,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="32,203,0,0" TextWrapping="Wrap" Text="Datum" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="236,203,0,0" TextWrapping="Wrap" Text="Vreme" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="330,203,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Button x:Name="ScheduleButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="307,289,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
+        <Button x:Name="ScheduleButton" Command="{Binding CreateAppointment}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="307,289,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -44,7 +44,7 @@
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <ComboBox x:Name="RoomCB" Style="{DynamicResource ComboBoxStyle1}" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="330,227,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+        <ComboBox x:Name="RoomCB" Style="{DynamicResource ComboBoxStyle1}" SelectedItem="{Binding Room}" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="330,227,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -53,7 +53,7 @@
 
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="32,42,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <ComboBox x:Name="PatientsCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Patients}" HorizontalAlignment="Left" Margin="32,66,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
+        <ComboBox x:Name="PatientsCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Patients}" SelectedItem="{Binding _Patient}" HorizontalAlignment="Left" Margin="32,66,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

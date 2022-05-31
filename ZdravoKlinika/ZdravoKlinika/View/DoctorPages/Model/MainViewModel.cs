@@ -51,7 +51,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void GoToHome()
         {
-            SelectedVm = new AppointmentsTodayViewModel();
+            SelectedVm = new HomePageViewModel();
             Index = 0;
         }
 
@@ -75,7 +75,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void GoToSchedule()
         {
-
+            SelectedVm = new MonthlyViewModel();
             Index = 4;
         }
 
@@ -89,8 +89,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             Controller.RegisteredUserController registeredUserController = new Controller.RegisteredUserController();
             registeredUserController.ForgetUser();
-            DialogHelper.DialogService dialogService = new DialogHelper.DialogService();
-            dialogService.CloseMainAndOpenSignIn();
+            DialogHelper.DialogService.CloseMainAndOpenSignIn();
         }
 
         public bool CanExecuteSignOut()

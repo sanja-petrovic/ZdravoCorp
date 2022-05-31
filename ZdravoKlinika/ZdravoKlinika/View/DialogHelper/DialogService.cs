@@ -26,12 +26,14 @@ namespace ZdravoKlinika.View.DialogHelper
         public void ShowCreateApptScheduleDialog()
         {
             CreateApptSchedule createApptSchedule = new CreateApptSchedule();
+            OpenDialog = createApptSchedule;
             createApptSchedule.ShowDialog();
         }
 
         public void ShowTimeOffDialog()
         {
             TimeOffRequestView timeOffRequestView = new TimeOffRequestView();
+            OpenDialog = timeOffRequestView;
             timeOffRequestView.ShowDialog();
         }
 
@@ -47,7 +49,15 @@ namespace ZdravoKlinika.View.DialogHelper
            OpenDialog.Close();
         }
 
-        public void CloseMainAndOpenSignIn()
+        public void ShowLogApptDialog(int apptId)
+        {
+            LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog { SelectedAppointmentId = apptId };
+            logAppointmentDialog.Init();
+            logAppointmentDialog.ShowDialog();
+            OpenDialog = logAppointmentDialog;
+        }
+
+        public static void CloseMainAndOpenSignIn()
         {
             SignInWindow signInWindow = new SignInWindow();
             signInWindow.Show();
@@ -55,7 +65,7 @@ namespace ZdravoKlinika.View.DialogHelper
             MainWindow = signInWindow;
         }
 
-        public void ShowDoctorWindow()
+        public static void ShowDoctorWindow()
         {
             DoctorBasePage doctorBasePage = new DoctorBasePage();
             doctorBasePage.Show();

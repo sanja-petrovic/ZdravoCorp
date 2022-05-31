@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
@@ -19,16 +20,24 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private DelegateCommand recordCommand;
         RegisteredPatient regPatient;
         public DelegateCommand RecordCommand => recordCommand ?? (recordCommand = new DelegateCommand(ExecuteGoToRecord));
+        private DoctorMedicalRecordViewModel recordViewModel;
+        private Visibility recordVisibility;
 
         public RegisteredPatient RegPatient { get => regPatient; set => SetProperty(ref regPatient, value); }
+        public DoctorMedicalRecordViewModel RecordViewModel { get => recordViewModel; set => SetProperty(ref recordViewModel, value); }
+        public Visibility RecordVisibility { get => recordVisibility; set => SetProperty(ref recordVisibility, value); }
 
-        private void ExecuteGoToRecord()
+        public void ExecuteGoToRecord()
         {
-            
+            DoctorMedicalRecordViewModel doctorMedicalRecordViewModel = new DoctorMedicalRecordViewModel();
+            doctorMedicalRecordViewModel.init(regPatient.PersonalId);
+            RecordViewModel = recordViewModel;
+            RecordVisibility = Visibility.Visible;
         }
 
         public ScheduleViewModel()
         {
+            RecordVisibility = Visibility.Collapsed;
             Tabs = new ObservableCollection<ScheduleTabItem>();
             selected = DateTime.Today;
             //infoChange();

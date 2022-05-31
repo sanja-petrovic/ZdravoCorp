@@ -216,15 +216,6 @@ public class RoomRepository
         return freeRooms;
     }
 
-    public List<Room> GetOccupiedRooms(DateTime dateAndTime, RoomType type)
-    {
-        List<Room> rooms = new List<Room>();
-
-        AppointmentRepository appointmentRepository = new AppointmentRepository();
-
-        return rooms;
-    }
-
     public RoomType GetRoomTypeForAppointmentType(AppointmentType type)
     {
         RoomType result;

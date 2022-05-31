@@ -10,7 +10,7 @@
         <DataTemplate DataType="{x:Type model:DoctorMedicationsViewModel}">
             <local:DoctorMedicationsView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type model:AppointmentsTodayViewModel}">
+        <DataTemplate DataType="{x:Type model:HomePageViewModel}">
             <local:DoctorHomePage/>
         </DataTemplate>
     </Window.Resources>

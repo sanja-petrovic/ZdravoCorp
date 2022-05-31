@@ -31,6 +31,7 @@ namespace ZdravoKlinika.Util
         {
             this.start = start;
             this.duration = duration;
+            this.end = start.AddMinutes(duration);
         }
         static public List<DateBlock> getIntervals(DateTime start, DateTime end)
         {

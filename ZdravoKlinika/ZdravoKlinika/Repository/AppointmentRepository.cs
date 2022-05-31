@@ -123,16 +123,18 @@ public class AppointmentRepository
     public List<Appointment> GetAppointmentsOnDate(DateTime date)
     {
         List<Appointment> appointments = new List<Appointment>();
-        foreach(Appointment appointment in this.appointments)
+        foreach(Appointment appointment in this.appointmentDataHandler.Read())
         {
             if(appointment.DateAndTime.Date == date.Date)
             {
+                UpdateReferences(appointment);
                 appointments.Add(appointment);
             }
         }
 
         return appointments;
     }
+
 
     public Appointment? GetAppointmentById(int id)
     {

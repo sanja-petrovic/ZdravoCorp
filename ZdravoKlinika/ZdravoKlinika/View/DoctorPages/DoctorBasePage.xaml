@@ -22,7 +22,7 @@
         <DataTemplate DataType="{x:Type model:DoctorMedicationsViewModel}">
             <local:DoctorMedicationsView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type model:AppointmentsTodayViewModel}">
+        <DataTemplate DataType="{x:Type model:HomePageViewModel}">
             <local:DoctorHomePage/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type model:DoctorViewModel}">
@@ -30,6 +30,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type model:FeedbackViewModel}">
             <local:FeedbackView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:MonthlyViewModel}">
+            <local:DoctorSchedule/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type model:AllPatientsViewModel}">
             <local:DoctorAllPatientsView/>
@@ -151,12 +154,36 @@
         <Rectangle HorizontalAlignment="Left" Height="768" VerticalAlignment="Center" Width="238" Fill="White" Margin="-1,0,0,0" />
 
         <ListBox SelectedIndex="{Binding Index}" Focusable="False" KeyboardNavigation.TabNavigation="None" Margin="0,130,786,0" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
-            <ListBoxItem Content="Početna stranica" FontSize="14" Padding="50 15 15 15" IsSelected="True" />
-            <ListBoxItem Content="Profil" FontSize="14" Padding="50 15 15 15"/>
-            <ListBoxItem Content="Pacijenti" FontSize="14" Padding="50 15 15 15" />
-            <ListBoxItem Content="Baza lekova" FontSize="14" Padding="50 15 15 15" />
-            <ListBoxItem Content="Mesečni raspored" FontSize="14" Padding="50 15 15 15"/>
-            <ListBoxItem Content="Ocenite aplikaciju" FontSize="14" Padding="50 15 15 15"/>
+            <ListBoxItem Content="Početna stranica" FontSize="14" Padding="50 15 15 15" IsSelected="True">
+                <ListBoxItem.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding HomeCommand}"/>
+                </ListBoxItem.InputBindings>
+            </ListBoxItem>
+            <ListBoxItem Content="Profil" FontSize="14" Padding="50 15 15 15">
+                <ListBoxItem.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding ProfileCommand}"/>
+                </ListBoxItem.InputBindings>
+            </ListBoxItem>
+            <ListBoxItem Content="Pacijenti" FontSize="14" Padding="50 15 15 15">
+                <ListBoxItem.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding PatientsCommand}"/>
+                </ListBoxItem.InputBindings>
+            </ListBoxItem>
+            <ListBoxItem Content="Baza lekova" FontSize="14" Padding="50 15 15 15">
+                <ListBoxItem.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding MedicationsCommand}"/>
+                </ListBoxItem.InputBindings>
+            </ListBoxItem>
+            <ListBoxItem Content="Mesečni raspored" FontSize="14" Padding="50 15 15 15">
+                <ListBoxItem.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding ScheduleCommand}"/>
+                </ListBoxItem.InputBindings>
+            </ListBoxItem>
+            <ListBoxItem Content="Ocenite aplikaciju" FontSize="14" Padding="50 15 15 15">
+                <ListBoxItem.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding FeedbackCommand}"/>
+                </ListBoxItem.InputBindings>
+            </ListBoxItem>
         </ListBox>
         <Ellipse UseLayoutRounding="True" HorizontalAlignment="Left" Height="44" Margin="16,37,0,0" VerticalAlignment="Top" Width="44">
             <Ellipse.Fill>
@@ -199,7 +226,11 @@
 
             <ListBox Focusable="True" Background="Transparent" Style="{StaticResource ListBoxStyle1}" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" Margin="816,63,0,588">
                 <ListBoxItem HorizontalContentAlignment="Left" Content="Veličina slova" FontSize="14" Padding="15" Width="205"/>
-                <ListBoxItem HorizontalContentAlignment="Left" Content="Odjava" FontSize="14" Padding="15" Width="205" IsSelected="False"/>
+                <ListBoxItem HorizontalContentAlignment="Left" Content="Odjava" FontSize="14" Padding="15" Width="205" IsSelected="False">
+                    <ListBoxItem.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding SignOut}"/>
+                    </ListBoxItem.InputBindings>
+                </ListBoxItem>
             </ListBox>
         </Grid>
     </Grid>

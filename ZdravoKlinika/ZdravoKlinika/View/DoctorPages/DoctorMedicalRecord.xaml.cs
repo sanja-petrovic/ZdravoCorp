@@ -19,7 +19,7 @@ namespace ZdravoKlinika.View.DoctorPages
     /// <summary>
     /// Interaction logic for DoctorMedicalRecord.xaml
     /// </summary>
-    public partial class DoctorMedicalRecord : Page
+    public partial class DoctorMedicalRecord : UserControl
     {
         Model.DoctorMedicalRecordViewModel viewModel;
         string patientId;
@@ -29,9 +29,8 @@ namespace ZdravoKlinika.View.DoctorPages
             pastAppointmentViews = new List<PastAppointmentView>();
         }
 
-        public void init(string patientId)
+        public void Init(string patientId)
         {
-            
             viewModel = new Model.DoctorMedicalRecordViewModel();
             DataContext = viewModel;
             viewModel.init(patientId);

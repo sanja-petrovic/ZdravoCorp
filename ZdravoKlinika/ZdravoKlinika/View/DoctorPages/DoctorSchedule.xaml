@@ -1,13 +1,12 @@
-﻿<Page x:Class="ZdravoKlinika.View.DoctorPages.DoctorSchedule"
+﻿<UserControl x:Class="ZdravoKlinika.View.DoctorPages.DoctorSchedule"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
+      xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model"  
       xml:lang="sr-Latn-RS" 
       mc:Ignorable="d"  Width="1024" Height="768" Cursor="Arrow">
-    <Page.Resources>
-
+    <UserControl.Resources>
 
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -18,15 +17,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Page.Resources>
+    </UserControl.Resources>
 
-    <Page.InputBindings>
+    <UserControl.InputBindings>
         <KeyBinding Key="Z" Modifiers="Alt" Command="{Binding ShowCreateDialog}"/>
         <KeyBinding Key="P" Modifiers="Alt" Command="{Binding ShowTimeOffDialog}"/>
-    </Page.InputBindings>
+    </UserControl.InputBindings>
     <Grid>
 
-        <local:AppointmentsTabPanel x:Name="ApptTabPanel" Margin="0, -145, 0, 0"/>
         <Border  Margin="294,136,363,318"
             BorderBrush="Black"
             BorderThickness="2"
@@ -87,5 +85,6 @@
             </Button.Style>
         </Button>
         <local:TimeOffView x:Name="TimeOffView"></local:TimeOffView>
+        <local:AppointmentsTabPanel x:Name="ApptTabPanel" Margin="0, -145, 0, 0"/>
     </Grid>
-</Page>
+</UserControl>

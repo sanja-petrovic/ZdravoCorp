@@ -17,7 +17,7 @@ using ZdravoKlinika.Controller;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
-    public partial class DoctorSchedule : Page
+    public partial class DoctorSchedule : UserControl
     {
         private DateTime selected;
         private Doctor doctor;
@@ -60,8 +60,8 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
 
-            doctorMedicalRecord.init(patientId);
-            this.NavigationService.Navigate(doctorMedicalRecord);
+            doctorMedicalRecord.Init(patientId);
+            //this.NavigationService.Navigate(doctorMedicalRecord);
         }
 
 

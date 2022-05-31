@@ -72,8 +72,7 @@ namespace ZdravoKlinika.View
                     secretaryMainWindow.Show();
                     break;
                 case UserType.Doctor:
-                    DialogHelper.DialogService dialogService = new DialogHelper.DialogService();
-                    dialogService.ShowDoctorWindow();
+                    DialogHelper.DialogService.ShowDoctorWindow();
                     break;
                 case UserType.Manager:
                     UpravnikWindow upravnikWindow = new UpravnikWindow();
