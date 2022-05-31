@@ -17,6 +17,7 @@ public class Appointment
     private List<Prescription> prescriptions;
     private bool over;
     private int[]? grading;
+    private String patientNotes;
 
     public Appointment() { }
 
@@ -32,6 +33,7 @@ public class Appointment
         this.dateAndTime = dateTime;
         this.Over = false;
         this.Grading = null;
+        this.PatientNotes = "";
     }
 
 
@@ -61,5 +63,5 @@ public class Appointment
     public bool Over { get => over; set => over = value; }
     public List<Prescription> Prescriptions { get => prescriptions; set => prescriptions = value; }
     public int[]? Grading { get => grading; set => grading = value; }
-    //public List<Medication> Prescriptions { get => prescriptions; set => prescriptions = value; }
+    public string PatientNotes { get => patientNotes; set => patientNotes = value; }
 }

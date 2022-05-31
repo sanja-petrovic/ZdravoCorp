@@ -67,6 +67,17 @@ namespace ZdravoKlinika.Util
             }
             return result;
         }
+        static public List<DateTime> GetHourlyIntervals(DateTime start, DateTime end) // includes both start and end [start, end]
+        {
+            List<DateTime> retVal = new List<DateTime>();
+            int currHour = 0;
+            while((start.AddHours(currHour) - end).TotalHours <= 0)
+            {
+                retVal.Add(start.AddHours(currHour));
+                currHour++;
+            }
+            return retVal;
+        }
         public static List<DateBlock> getIntersection(DateBlock a, DateBlock b)
         {
             List<DateBlock> result= new List<DateBlock>();
