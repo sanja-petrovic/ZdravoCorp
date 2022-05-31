@@ -65,5 +65,15 @@ namespace ZdravoKlinika.Controller
             return appointmentService.HasScheduledAppointments(doctorId, period);
         }
 
+        public void ProcessRequest(int requestId, String comment, RequestState state)
+        {
+            TimeOffRequest req = new TimeOffRequest();
+            req.Comment = comment;
+            req.Id = requestId;
+            req.State = state;
+            service.ProcessRequest(req);
+            return;
+        }
+
     }
 }

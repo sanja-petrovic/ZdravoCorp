@@ -50,12 +50,6 @@ namespace ZdravoKlinika.Repository
             this.dataHandler.Write(this.requests);
         }
 
-        public void ChangeState(TimeOffRequest request, RequestState state)
-        {
-            request.State = state;
-        }
-
-
         public void UpdateReferences(TimeOffRequest request)
         {
             DoctorRepository doctorRepository = new DoctorRepository();
@@ -93,5 +87,22 @@ namespace ZdravoKlinika.Repository
             return requests;
         }
 
+        public void EditRequest(TimeOffRequest requestInDatabase)
+        {
+            int index = -1;
+            foreach (TimeOffRequest request in requests)
+            {
+                if (request.Id == requestInDatabase.Id)
+                {
+                    index = requests.IndexOf(request);
+                }
+            }
+            if (index == -1)
+            {
+                throw new Exception("Request does not exist");
+            }
+            requests[index] = requestInDatabase;
+            dataHandler.Write(requests);
+        }
     }
 }
