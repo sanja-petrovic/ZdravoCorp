@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKlinika.PatientPages.ViewModel;
+using ZdravoKlinika.Util;
 
 namespace ZdravoKlinika.View.PatientPages
 {
@@ -85,6 +86,19 @@ namespace ZdravoKlinika.View.PatientPages
                 case 1:
                     this.Resources["menuBackgroundActive"] = this.FindResource("menuBackgroundLight");
                     theme = 0;
+                    break;
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (languageComboBox.SelectedIndex)
+            {
+                case 0: //EN
+                    TranslationSource.SetLanguage("en");
+                    break;
+                case 1: //SRB
+                    TranslationSource.SetLanguage("el-GR");
                     break;
             }
         }
