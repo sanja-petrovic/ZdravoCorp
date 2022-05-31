@@ -40,5 +40,10 @@ namespace ZdravoKlinika.Controller
         {
             this.userService.ForgetUser();
         }
+
+        public List<RegisteredUser> GetAll()
+        {
+            return userService.GetAll();
+        }
     }
 }

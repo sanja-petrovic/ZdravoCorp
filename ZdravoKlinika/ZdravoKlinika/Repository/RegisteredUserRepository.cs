@@ -60,6 +60,12 @@ namespace ZdravoKlinika.Repository
             }
         }
 
+        public  List<RegisteredUser> GetAll()
+        {
+            LoadAllRegisteredUsers();
+            return RegisteredUsers;
+        }
+
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password) 
         {
             RegisteredUser? userToReturn = null;
