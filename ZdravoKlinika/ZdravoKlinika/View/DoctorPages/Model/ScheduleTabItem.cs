@@ -38,9 +38,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void ExecuteGoToRecord()
         {
-            DoctorMedicalRecordViewModel doctorMedicalRecordViewModel = new DoctorMedicalRecordViewModel();
-            doctorMedicalRecordViewModel.init(PatientId);
-            RecordViewModel = recordViewModel;
+            Navigation.Navigator navigator = new Navigation.Navigator();
+            navigator.ShowMedicalRecord(PatientId);
         }
 
 

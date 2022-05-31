@@ -16,8 +16,7 @@ namespace ZdravoKlinika.View.Navigation
         public Navigator()
         {
         }
-
-
+        
         public static void CloseMainAndOpenSignIn()
         {
             SignInWindow signInWindow = new SignInWindow();

@@ -47,7 +47,7 @@ namespace ZdravoKlinika.View.DoctorPages
                 this.selected = value;
                 viewModel.Selected = value;
                 viewModel.Doctor = this.doctor;
-                viewModel.infoChange();
+                viewModel.InfoChange();
                 TabTab.SelectedIndex = 0;
                 if(TabTab.Items.Count == 0)
                 {

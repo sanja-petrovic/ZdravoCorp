@@ -94,7 +94,5 @@
             <TextBlock Foreground="#555557" Text="{Binding Diagnoses, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Margin="633,588,283,126"></TextBlock>
             <TextBlock Foreground="#555557" Text="{Binding Therapy, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Margin="773,588,92,126"></TextBlock>
         </Grid>
-
-        <Frame Content="{Binding Hmm}"/>
     </Grid>
 </UserControl>
