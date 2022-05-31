@@ -12,7 +12,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 {
     public class HomePageViewModel : ViewModelBase
     {
-        
+
         public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
         public int SelectedAppointmentId { get => selectedAppointmentId; set => SetProperty(ref selectedAppointmentId, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
@@ -28,6 +28,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private Visibility aboutVisibility;
 
         public MyICommand LogAppointment { get; set; }
+        public Prism.Commands.DelegateCommand RecordCommand { get; set; }
 
         private Doctor doctor;
         AppointmentController appointmentController;
@@ -42,6 +43,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public HomePageViewModel()
         {
+            RecordCommand = new Prism.Commands.DelegateCommand(ExecuteRecord);
             LogAppointment = new MyICommand(ExecuteLog);
             this.doctor = RegisteredUserController.UserToDoctor(App.User);
             this.Appointments = new ObservableCollection<AppointmentViewModel>();
@@ -62,6 +64,12 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
             }
             AboutVisibility = Appointments.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public void ExecuteRecord()
+        {
+            Navigation.Navigator navigator = new Navigation.Navigator();
+            navigator.ShowMedicalRecord(PatientId);
         }
 
         public void ExecuteLog()

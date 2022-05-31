@@ -13,10 +13,8 @@ namespace ZdravoKlinika.View.DialogHelper
     public class DialogService
     {
         private static List<Window> openDialogs;
-        private static Window mainWindow;
 
         public List<Window> OpenDialogs { get => openDialogs; set => openDialogs = value; }
-        public static Window MainWindow { get => mainWindow; set => mainWindow = value; }
 
         public DialogService()
         {
@@ -72,19 +70,5 @@ namespace ZdravoKlinika.View.DialogHelper
             OpenDialogs.Add(logAppointmentDialog);
         }
 
-        public static void CloseMainAndOpenSignIn()
-        {
-            SignInWindow signInWindow = new SignInWindow();
-            signInWindow.Show();
-            MainWindow.Close();
-            MainWindow = signInWindow;
-        }
-
-        public static void ShowDoctorWindow()
-        {
-            DoctorBasePage doctorBasePage = new DoctorBasePage();
-            doctorBasePage.Show();
-            MainWindow = doctorBasePage;
-        }
     }
 }

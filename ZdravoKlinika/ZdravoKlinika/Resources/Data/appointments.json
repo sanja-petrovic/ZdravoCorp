@@ -513,7 +513,7 @@
   },
   {
     "AppointmentId": 41,
-    "DateAndTime": "2022-06-02T08:00:00",
+    "DateAndTime": "2022-06-01T08:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",

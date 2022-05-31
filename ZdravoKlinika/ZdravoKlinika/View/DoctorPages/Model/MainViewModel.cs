@@ -89,7 +89,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             Controller.RegisteredUserController registeredUserController = new Controller.RegisteredUserController();
             registeredUserController.ForgetUser();
-            DialogHelper.DialogService.CloseMainAndOpenSignIn();
+            Navigation.Navigator.CloseMainAndOpenSignIn();
         }
 
         public bool CanExecuteSignOut()

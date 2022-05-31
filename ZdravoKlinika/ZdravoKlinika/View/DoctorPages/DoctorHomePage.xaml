@@ -72,7 +72,7 @@
             </Border>
             <Rectangle HorizontalAlignment="Left" Height="178" Margin="275,505,0,0"  VerticalAlignment="Top" Width="697" Fill="White"  RadiusX="10" RadiusY="10"/>
             <Label Content="O pacijentu" Margin="275,457,351,251" FontSize="24" FontWeight="Bold" Panel.ZIndex="1"/>
-            <Button Name="RecordButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="298,632,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="148" Height="34" Click="Button_Click_1">
+            <Button Name="RecordButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="298,632,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="148" Height="34" Command="{Binding RecordCommand}">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -94,5 +94,7 @@
             <TextBlock Foreground="#555557" Text="{Binding Diagnoses, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Margin="633,588,283,126"></TextBlock>
             <TextBlock Foreground="#555557" Text="{Binding Therapy, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Margin="773,588,92,126"></TextBlock>
         </Grid>
+
+        <Frame Content="{Binding Hmm}"/>
     </Grid>
 </UserControl>

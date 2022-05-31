@@ -27,6 +27,8 @@ namespace ZdravoKlinika.View.DoctorPages
         public DoctorMedicalRecord()
         {
             pastAppointmentViews = new List<PastAppointmentView>();
+            
+            InitializeComponent();
         }
 
         public void Init(string patientId)

@@ -28,9 +28,11 @@ namespace ZdravoKlinika.View.DoctorPages
 
         public DoctorBasePage()
         {
-            this.viewModel = new Model.MainViewModel();
-            DataContext = this.viewModel;
+            this.ViewModel = new Model.MainViewModel();
+            DataContext = this.ViewModel;
             InitializeComponent();
         }
+
+        public MainViewModel ViewModel { get => viewModel; set => viewModel = value; }
     }
 }

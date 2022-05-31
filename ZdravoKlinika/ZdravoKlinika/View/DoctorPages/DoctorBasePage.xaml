@@ -37,6 +37,9 @@
         <DataTemplate DataType="{x:Type model:AllPatientsViewModel}">
             <local:DoctorAllPatientsView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type model:DoctorMedicalRecordViewModel}">
+            <local:DoctorMedicalRecord/>
+        </DataTemplate>
         
         <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
             <Setter Property="Background" Value="White"/>
