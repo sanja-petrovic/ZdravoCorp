@@ -88,6 +88,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             DateTime datetime = new DateTime(Date.Year, Date.Month, Date.Day, Time1.Start.Hour, Time1.Start.Minute, 0);
             this.appointmentController.CreateAppointment(DoctorId, _Patient.GetPatientId(), datetime, Emergency, Type.Equals("Pregled") ? AppointmentType.Regular : AppointmentType.Surgery, Room.RoomId, Duration);
+            DialogHelper.DialogService dialogService = new DialogHelper.DialogService();
+            dialogService.CloseDialog(this);
 
         }
         public bool CanExecuteCreate()

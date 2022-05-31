@@ -10,51 +10,66 @@ using System.ComponentModel;
 
 namespace ZdravoKlinika.View.DialogHelper
 {
-    public class DialogService : IDialogService
+    public class DialogService
     {
-        private static Window openDialog;
+        private static List<Window> openDialogs;
         private static Window mainWindow;
 
-        public Window OpenDialog { get => openDialog; set => openDialog = value; }
+        public List<Window> OpenDialogs { get => openDialogs; set => openDialogs = value; }
         public static Window MainWindow { get => mainWindow; set => mainWindow = value; }
 
-        public void ShowDialog(string name, Action<string> callback)
+        public DialogService()
         {
-            
+            if(openDialogs == null) openDialogs = new List<Window>();
         }
 
         public void ShowCreateApptScheduleDialog()
         {
             CreateApptSchedule createApptSchedule = new CreateApptSchedule();
-            OpenDialog = createApptSchedule;
-            createApptSchedule.ShowDialog();
+            createApptSchedule.Show();
+            openDialogs.Add(createApptSchedule);
+        }
+
+        public void CloseDialog(ViewModelBase viewModel)
+        {
+            int index = -1;
+            foreach (Window w in openDialogs)
+            {
+                if(w.DataContext == viewModel)
+                {
+                    w.Close();
+                    index = openDialogs.IndexOf(w);
+                    break;
+                }
+            }
+
+            if (index != -1)
+            {
+                openDialogs.RemoveAt(index);
+            }
         }
 
         public void ShowTimeOffDialog()
         {
             TimeOffRequestView timeOffRequestView = new TimeOffRequestView();
-            OpenDialog = timeOffRequestView;
-            timeOffRequestView.ShowDialog();
+            timeOffRequestView.Show();
+            OpenDialogs.Add(timeOffRequestView);
         }
 
         public void ShowMedRequestDialog(int requestId)
         {
             ApproveMedView approveMedView = new ApproveMedView(requestId);
-            OpenDialog = approveMedView;
-            approveMedView.ShowDialog();
+            approveMedView.Show();
+            OpenDialogs.Add(approveMedView);
         }
 
-        public void CloseDialog()
-        {
-           OpenDialog.Close();
-        }
 
         public void ShowLogApptDialog(int apptId)
         {
             LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog { SelectedAppointmentId = apptId };
             logAppointmentDialog.Init();
-            logAppointmentDialog.ShowDialog();
-            OpenDialog = logAppointmentDialog;
+            logAppointmentDialog.Show();
+            OpenDialogs.Add(logAppointmentDialog);
         }
 
         public static void CloseMainAndOpenSignIn()

@@ -13,14 +13,14 @@
       "ibuprofen",
       " brufen"
     ],
-    "Validated": true,
+    "Validated": false,
     "Alternatives": [],
     "Classification": "analgetik, antipiretik",
     "SideEffects": "Naj\u010De\u0161\u0107e: Alergijska reakcija, stoma\u010Dni problemi.",
     "Indications": "Za kratkotrajnu simptomatsku terapiju blagog do umerenog bola kao \u0161to su glavobolja, uklju\u010Duju\u0107i migrene, neuralgija, zubobolja, bolovi u mi\u0161i\u0107ima i zglobovima, bolovi u le\u0111ima, menstrualne bolovi i bolovi povezani sa prehladom. Za sni\u017Eavanje povi\u0161ene telesne temperature kao i za otklanjanje simptoma prehlade i gripa.",
     "DosageInstructions": "Maksimalna pojedina\u010Dna dnevna doza za odrasle i za adolescente ne treba da pre\u0111e 400 mg ibuprofena. Ne sme se prekora\u010Diti doza od 1200 mg u periodu od 24 sata. Minimalni interval izme\u0111u pojedina\u010Dnih doza je najmanje 4 sata. Lek nije namenjen deci mla\u0111oj od 12 godina. Lek je namenjen za kratkotrajnu primenu.",
     "Amount": 222,
-    "Validator": "123"
+    "Validator": null
   },
   {
     "MedicationId": "2",

@@ -495,5 +495,35 @@
     "Over": false,
     "Prescriptions": null,
     "Grading": null
+  },
+  {
+    "AppointmentId": 40,
+    "DateAndTime": "2022-06-08T08:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null
+  },
+  {
+    "AppointmentId": 41,
+    "DateAndTime": "2022-06-02T08:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "12345,Registered",
+    "Room": "5",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null
   }
 ]

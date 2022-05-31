@@ -78,7 +78,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void ExecuteClose()
         {
             ParentViewModel.Load();
-            DialogService.CloseDialog();
+            DialogService.CloseDialog(this);
         }
 
         public string Id { get => id; set => SetProperty(ref id, value); }

@@ -30,11 +30,6 @@ namespace ZdravoKlinika.View.DoctorPages
             viewModel = new HomePageViewModel();
             DataContext = viewModel;
             InitializeComponent();
-            DialogHelper.DialogService ds = new DialogHelper.DialogService();
-            ds.ShowDialog("CreateApptSchedule", result =>
-            {
-                var test = result;
-            });
             
         }
 
