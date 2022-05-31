@@ -22,6 +22,7 @@ namespace ZdravoKlinika.View.PatientPages
     {
         private PatientViewModelBase viewModel;
         private String id;
+        private int theme;
 
         public string Id { get => id; set => id = value; }
 
@@ -33,7 +34,7 @@ namespace ZdravoKlinika.View.PatientPages
             viewModel = new PatientViewModelBase(id);
             this.DataContext = viewModel;
             mainFrame.Navigate(viewModel.ProfilePage);
-            
+            theme = 0;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -71,6 +72,21 @@ namespace ZdravoKlinika.View.PatientPages
         {
             viewModel.PatientNotesView = new PatientNotesView(id);
             mainFrame.Navigate(viewModel.PatientNotesView);
+        }
+
+        private void Button_Theme_Click(object sender, RoutedEventArgs e)
+        {
+            switch (theme)
+            {
+                case 0:
+                    this.Resources["menuBackgroundActive"] = this.FindResource("menuBackgroundDark");
+                    theme = 1;
+                    break;
+                case 1:
+                    this.Resources["menuBackgroundActive"] = this.FindResource("menuBackgroundLight");
+                    theme = 0;
+                    break;
+            }
         }
     }
 }
