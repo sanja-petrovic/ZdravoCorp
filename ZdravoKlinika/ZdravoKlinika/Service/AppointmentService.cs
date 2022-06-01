@@ -408,6 +408,11 @@ public class AppointmentService
        
     }
 
+    public void AddPatientNote(Appointment appointment, String note)
+    {
+        /*appointment.PatientNotes = note;
+        EditAppointment(appointment);*/
+    }
 
     public void CreateAppointment(Appointment appointment)
     {

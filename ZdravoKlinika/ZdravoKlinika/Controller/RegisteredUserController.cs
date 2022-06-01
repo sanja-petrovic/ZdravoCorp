@@ -39,6 +39,11 @@ namespace ZdravoKlinika.Controller
             this.userService.ForgetUser();
         }
 
+        public List<RegisteredUser> GetAll()
+        {
+            return userService.GetAll();
+        }
+
         public static Doctor UserToDoctor(RegisteredUser user)
         {
             return RegisteredUserService.UserToDoctor(user);

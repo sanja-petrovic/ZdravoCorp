@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View"
       mc:Ignorable="d" 
-      d:DesignHeight="219" d:DesignWidth="778"
+      d:DesignHeight="250" d:DesignWidth="778"
       Title="PatientAddView">
     <Page.Resources>
         <Style TargetType="Grid" x:Key="regularBackground">
@@ -74,7 +74,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="151,184,0,0" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource regularButton}"/>
+        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="151,215,0,0" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource regularButton}"/>
         <Label x:Name="errorLabel" Content="Label" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" FontSize="10" Visibility="Hidden" Foreground="#FF640000"/>
 
     </Grid>

@@ -87,6 +87,10 @@ public class AppointmentController
 
         return list;
     }
+    public void AddPatientNote(Appointment appointment, String note)
+    {
+        this.appointmentService.AddPatientNote(appointment, note);
+    }
     public void CreateAppointment(String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         PatientController patientController = new PatientController();

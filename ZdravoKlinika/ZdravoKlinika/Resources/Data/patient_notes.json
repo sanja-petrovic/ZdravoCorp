@@ -1,0 +1,30 @@
+[
+  {
+    "Trigger": "2022-05-28T15:25:45.9054356+02:00",
+    "NotificationId": 1,
+    "NotificationText": "sugumiraj",
+    "Reciver": "0105965123321",
+    "Sender": "0105965123321"
+  },
+  {
+    "Trigger": "2022-05-28T15:34:52.1816882+02:00",
+    "NotificationId": 2,
+    "NotificationText": "sdasda",
+    "Reciver": "0105965123321",
+    "Sender": "0105965123321"
+  },
+  {
+    "Trigger": "2022-05-28T16:12:53.2155092+02:00",
+    "NotificationId": 3,
+    "NotificationText": "DAGUGMER",
+    "Reciver": "0105965123321",
+    "Sender": "0105965123321"
+  },
+  {
+    "Trigger": "2022-06-19T16:12:53.215+02:00",
+    "NotificationId": 4,
+    "NotificationText": "GUSAR",
+    "Reciver": "0105965123321",
+    "Sender": "0105965123321"
+  }
+]
