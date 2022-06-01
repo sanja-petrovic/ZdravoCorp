@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:ZdravoKlinika.View" xmlns:viewmodel="clr-namespace:ZdravoKlinika.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:SignInViewModel}" WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="Zdravo klinika" Height="768" Width="1024" SizeToContent="WidthAndHeight" d:DesignHeight="768" d:DesignWidth="1024" >
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding LogInCommand}"/>
+        <KeyBinding Key="R" Modifiers="Shift" Command="{Binding RememberMe}"/>
+    </Window.InputBindings>
     <Window.Resources>
         <Style x:Key="fancyButtonStyle" TargetType="Button">
             <Setter Property="Effect">
@@ -175,15 +179,19 @@
         <Canvas>
             <Image  Name="PasswordViewControl" Height="20" Canvas.Left="898" Source="/Resources/Images/show.png" Stretch="Fill" Canvas.Top="432" Width="20" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="ShowPassword"/>
         </Canvas>
-        <CheckBox Name="StayLoggedIn" Style="{DynamicResource CheckBoxStyle1}" Content="Ostanite prijavljeni" Margin="684,463,96,289" Cursor="Arrow"  Foreground="#FF5F5F5F"></CheckBox>
+        <CheckBox Focusable="True" Name="StayLoggedIn" Style="{DynamicResource CheckBoxStyle1}" Content="Ostanite prijavljeni" IsChecked="{Binding Remember}" Margin="684,463,96,289" Cursor="Arrow"  Foreground="#FF5F5F5F"></CheckBox>
         <Label Content="Dobrodošli!" HorizontalAlignment="Left" Margin="676,250,0,0" VerticalAlignment="Top"  FontSize="36" FontWeight="Bold" Cursor="Arrow"/>
         <Label Content="Korisničko ime" HorizontalAlignment="Left" Margin="680,317,0,0" VerticalAlignment="Top"  FontWeight="Normal" Foreground="#FF5F5F5F" FontSize="18" Cursor="Arrow"/>
-        <Button  Style="{StaticResource ResourceKey=fancyButtonStyle}"  HorizontalAlignment="Left" Margin="688,496,0,0" VerticalAlignment="Top"   Foreground="White"  Width="240" BorderThickness="0" Padding="4" Height="36" FontSize="20" Click="Button_Click" Content="Prijavite se">
+        <Button  Style="{StaticResource ResourceKey=fancyButtonStyle}"  HorizontalAlignment="Left" Margin="688,496,0,0" VerticalAlignment="Top"   Foreground="White"  Width="240" BorderThickness="0" Padding="4" Height="36" FontSize="20" Command="{Binding LogInCommand}" Content="Prijavite se">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
                 </Style>
             </Button.Resources>
+            <Button.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding LogInCommand}"/>
+                <MouseBinding Gesture="LeftClick" Command="{Binding LogInCommand}"/>
+            </Button.InputBindings>
         </Button>
         <TextBox  Name="UsernameTB" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Padding="7 0 0 0" Margin="683,352,97,387" TextWrapping="Wrap" Width="244" Height="29"  BorderBrush="#FFC8C8C8"  FontSize="12" Foreground="Gray" PreviewMouseDown="TextBox_MouseDown" SelectionBrush="#FF6C63FF">
             <TextBox.Resources>

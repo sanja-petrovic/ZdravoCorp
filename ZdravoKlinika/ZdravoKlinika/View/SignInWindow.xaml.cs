@@ -14,12 +14,10 @@ using System.Windows.Shapes;
 using System.Windows.Navigation;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.ViewModel;
+using ZdravoKlinika.View.Navigation;
 
 namespace ZdravoKlinika.View
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
     public partial class SignInWindow : Window
     {
         private bool clicked = false;
@@ -27,7 +25,6 @@ namespace ZdravoKlinika.View
         RegisteredUser user;
 
         RegisteredUserController registeredUserController;
-        
 
         public RegisteredUser User { get => user; set => user = value; }
 
@@ -35,52 +32,11 @@ namespace ZdravoKlinika.View
 
         public SignInWindow()
         {
+            if(Navigator.MainWindow == null)
+                Navigator.MainWindow = this;
             viewModel = new SignInViewModel();
             DataContext = viewModel;
             InitializeComponent();
-            if (viewModel.SavedLogin())
-            {
-                this.LogIn();
-                this.Close();
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (viewModel.IsLoginSuccessful()) 
-            {
-                this.LogIn();
-                if(StayLoggedIn.IsChecked == true)
-                {
-                    viewModel.RememberUser();
-                }
-
-                this.Close();
-            }
-        }
-
-        public void LogIn()
-        {
-            App.User = viewModel.User;
-            switch (viewModel.User.UserType)
-            {
-                case UserType.Patient:
-                    PatientViewSpawn(viewModel.User.PersonalId);
-                    break;
-                case UserType.Secretary:
-                    Secretary.SecretaryMainWindow secretaryMainWindow = new Secretary.SecretaryMainWindow();
-                    secretaryMainWindow.Show();
-                    break;
-                case UserType.Doctor:
-                    Navigation.Navigator.ShowDoctorWindow();
-                    break;
-                case UserType.Manager:
-                    UpravnikWindow upravnikWindow = new UpravnikWindow();
-                    upravnikWindow.Show();
-                    break;
-                default:
-                    break;
-            }
         }
 
         public void TextBox_MouseDown(Object sender, RoutedEventArgs e)
@@ -108,17 +64,5 @@ namespace ZdravoKlinika.View
             }
         }
         
-        private void PatientViewSpawn(String patientId)
-        {
-            if (!viewModel.RegisteredPatientController.IsBanned(viewModel.RegisteredPatientController.GetById(patientId)))
-            {
-                View.PatientPages.PatientViewBase pvB = new View.PatientPages.PatientViewBase(viewModel.User.PersonalId);
-                pvB.Show();
-            }
-            else
-            {
-                MessageBox.Show("Previse puta ste izmenili pregled, rad ce privremeno biti onemogucen obratite se sekretaru", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
     }
 }

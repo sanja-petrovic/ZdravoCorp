@@ -15,7 +15,11 @@
                 </lvc:ColorsCollection>
             </lvc:CartesianChart.SeriesColors>
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Labels="{Binding Labels}" ShowLabels="False" ></lvc:Axis>
+                <lvc:Axis Labels="{Binding Labels}" ShowLabels="True" >
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Step="1" />
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis MinValue="0" MaxValue="30" LabelFormatter="{Binding Formatter}"></lvc:Axis>

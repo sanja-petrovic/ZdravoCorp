@@ -29,7 +29,39 @@ namespace ZdravoKlinika.View.Navigation
         {
             DoctorBasePage doctorBasePage = new DoctorBasePage();
             doctorBasePage.Show();
+            MainWindow.Close();
             MainWindow = doctorBasePage;
+        }
+
+        public static void ShowManagerWindow()
+        {
+            UpravnikWindow upravnikWindow = new UpravnikWindow();
+            upravnikWindow.Show();
+            MainWindow.Close();
+            MainWindow = upravnikWindow;
+        }
+
+        public static void ShowSecretaryWindow()
+        {
+            Secretary.SecretaryMainWindow secretaryMainWindow = new Secretary.SecretaryMainWindow();
+            secretaryMainWindow.Show();
+            MainWindow.Close();
+            MainWindow = secretaryMainWindow;
+        }
+
+        public static void ShowPatientWindow(RegisteredPatientController controller)
+        {
+            if (!controller.IsBanned(App.User.PersonalId))
+            {
+                View.PatientPages.PatientViewBase pvB = new View.PatientPages.PatientViewBase(App.User.PersonalId);
+                MainWindow.Close();
+                pvB.Show();
+                MainWindow = pvB;
+            }
+            else
+            {
+                MessageBox.Show("Previse puta ste izmenili pregled, rad ce privremeno biti onemogucen obratite se sekretaru", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void ShowMedicalRecord(String patientId)

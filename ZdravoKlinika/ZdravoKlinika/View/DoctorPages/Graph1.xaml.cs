@@ -17,9 +17,6 @@ using LiveCharts.Wpf;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
-    /// <summary>
-    /// Interaction logic for Graph1.xaml
-    /// </summary>
     public partial class Graph1 : UserControl
     {
         public Graph1()
@@ -33,14 +30,8 @@ namespace ZdravoKlinika.View.DoctorPages
                 }
             };
 
-            //adding series will update and animate the chart automatically
-
-            //also adding values updates and animates the chart automatically
-
-            Labels = new[] { "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak" };
+            Labels = new[] { "Pon", "Uto", "Sre", "Čet", "Pet" };
             Formatter = value => value.ToString();
-
-            
 
             DataContext = this;
             InitializeComponent();

@@ -22,6 +22,7 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class Graph2 : UserControl
     {
+        private string xAxisLabel;
         public Graph2()
         {
             InitializeComponent(); InitializeComponent();
@@ -35,11 +36,12 @@ namespace ZdravoKlinika.View.DoctorPages
                 }
             };
             Labels = new string[30];
-            for(int i = 0; i < 31; i++)
+            for (int i = 0; i < 30; i++)
             {
-                Labels.Append(DateTime.Today.AddDays(-i).ToString("dd.MM.yyyy."));
+                Labels[29 - i] = DateTime.Today.AddDays(-i).ToString("dd.MM.");
             }
             YFormatter = value => value.ToString();
+            XAxisLabel = "\n" + DateTime.Today.AddDays(-29).ToString("dd.MM.yyyy.") + " – " + DateTime.Today.ToString("dd.MM.yyyy.");
 
             DataContext = this;
         }
@@ -47,5 +49,7 @@ namespace ZdravoKlinika.View.DoctorPages
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
+        public string XAxisLabel { get => xAxisLabel; set => xAxisLabel = value; }
     }
 }
+

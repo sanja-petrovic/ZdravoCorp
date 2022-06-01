@@ -17,11 +17,12 @@
     <None Remove="Resources\Images\bell %281%29.png" />
     <None Remove="Resources\Images\bell.png" />
     <None Remove="Resources\Images\calendar.png" />
+    <None Remove="Resources\Images\chandler.png" />
     <None Remove="Resources\Images\comment.png" />
     <None Remove="Resources\Images\delete.png" />
     <None Remove="Resources\Images\docpfp.jpg" />
     <None Remove="Resources\Images\download.png" />
-    <None Remove="Resources\Images\drhouse.jpg" />
+    <None Remove="Resources\Images\drhouse.png" />
     <None Remove="Resources\Images\edit.png" />
     <None Remove="Resources\Images\editPatient.png" />
     <None Remove="Resources\Images\employees.png" />
@@ -30,13 +31,18 @@
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info %282%29.png" />
     <None Remove="Resources\Images\inventory.png" />
+    <None Remove="Resources\Images\joey.png" />
     <None Remove="Resources\Images\lisacuddy.jpg" />
     <None Remove="Resources\Images\medicine.png" />
     <None Remove="Resources\Images\monica.png" />
     <None Remove="Resources\Images\more.png" />
+    <None Remove="Resources\Images\phoebe.jpg" />
     <None Remove="Resources\Images\profile.png" />
     <None Remove="Resources\Images\pulse.png" />
+    <None Remove="Resources\Images\rachel.jpg" />
+    <None Remove="Resources\Images\rachel.png" />
     <None Remove="Resources\Images\rooms.png" />
+    <None Remove="Resources\Images\ross.png" />
     <None Remove="Resources\Images\schedule.png" />
     <None Remove="Resources\Images\search %281%29.png" />
     <None Remove="Resources\Images\search.png" />
@@ -55,9 +61,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\drhouse.jpg" />
+    <Resource Include="Resources\Images\chandler.png" />
     <Resource Include="Resources\Images\monica.png" />
     <Resource Include="Resources\Images\download.png" />
+    <Resource Include="Resources\Images\joey.png" />
+    <Resource Include="Resources\Images\ross.png" />
+    <Resource Include="Resources\Images\drhouse.png" />
     <Content Include="Resources\Images\zdravoklinikaicon.ico" />
     <Resource Include="Resources\Images\addPatient.png" />
     <Resource Include="Resources\Images\delete.png" />
@@ -69,7 +78,9 @@
     <Resource Include="Resources\Images\inventory.png" />
     <Resource Include="Resources\Images\lisacuddy.jpg" />
     <Resource Include="Resources\Images\more.png" />
+    <Resource Include="Resources\Images\phoebe.jpg" />
     <Resource Include="Resources\Images\profile.png" />
+    <Resource Include="Resources\Images\rachel.png" />
     <Resource Include="Resources\Images\rooms.png" />
     <Resource Include="Resources\Images\schedule.png" />
     <Resource Include="Resources\Images\search (1).png" />

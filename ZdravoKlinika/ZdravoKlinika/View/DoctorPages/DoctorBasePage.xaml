@@ -190,7 +190,7 @@
         </ListBox>
         <Ellipse UseLayoutRounding="True" HorizontalAlignment="Left" Height="44" Margin="16,37,0,0" VerticalAlignment="Top" Width="44">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="{Binding Doctor.ProfilePicture}" RenderOptions.BitmapScalingMode="NearestNeighbor"  Stretch="UniformToFill"></ImageBrush>
+                <ImageBrush ImageSource="{Binding Doctor.ProfilePicture}" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased"></ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
         <StackPanel Orientation="Vertical" Margin="76,37,804,661">

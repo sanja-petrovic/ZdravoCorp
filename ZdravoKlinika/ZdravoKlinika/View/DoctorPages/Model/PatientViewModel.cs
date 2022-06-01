@@ -30,7 +30,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void GoToRecord()
         {
-            //https://stackoverflow.com/questions/22793164/wpf-navigate-through-views-using-mvvm-pattern
+            Navigation.Navigator navigator = new Navigation.Navigator();
+            navigator.ShowMedicalRecord(Id);
         }
     }
 }
