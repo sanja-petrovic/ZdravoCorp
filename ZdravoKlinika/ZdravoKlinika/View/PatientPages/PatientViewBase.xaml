@@ -13,16 +13,16 @@
     </Window.Resources>
     <Grid>
         <Grid.Style>
-            <DynamicResource ResourceKey="regularBackground"></DynamicResource>
+            <DynamicResource ResourceKey="regularBackgroundActive"></DynamicResource>
         </Grid.Style>
         <Grid x:Name="menuBarGrid" Margin="0,0,0,483" Style="{DynamicResource menuBackgroundActive}">
             <Image Margin="39,8,740,17" Source="{Binding Path=LogoImageSource}"/>
-            <Button Content="{util:Localization profile}" HorizontalAlignment="Left" Margin="226,67,0,0" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource menuButtonLight}"/>
-            <Button Content="{util:Localization appointments}" HorizontalAlignment="Left" Margin="326,67,0,0" VerticalAlignment="Top" Click="Button_Click_1" Style="{StaticResource menuButtonLight}"/>
-            <Button Content="{util:Localization medication}" HorizontalAlignment="Left" Margin="426,67,0,0" VerticalAlignment="Top"  Style="{StaticResource menuButtonLight}" Click="Button_Terapija_Click"/>
-            <Button Content="{util:Localization feedback}" HorizontalAlignment="Left" Margin="526,67,0,0" VerticalAlignment="Top" Click="Button_Click_2" Style="{StaticResource menuButtonLight}"/>
-            <Button Content="{util:Localization notes}" HorizontalAlignment="Left" Margin="626,67,0,0" VerticalAlignment="Top" Style="{StaticResource menuButtonLight}" Click="Button_Beleske_Click" />
-            <Button Content="{util:Localization logout}" HorizontalAlignment="Left" Margin="726,68,0,0" VerticalAlignment="Top" Style="{StaticResource menuButtonLight}" />
+            <Button Content="{util:Localization profile}" HorizontalAlignment="Left" Margin="226,67,0,0" VerticalAlignment="Top" Click="Button_Click" Style="{DynamicResource menuButtonActive}"/>
+            <Button Content="{util:Localization appointments}" HorizontalAlignment="Left" Margin="326,67,0,0" VerticalAlignment="Top" Click="Button_Click_1" Style="{DynamicResource menuButtonActive}"/>
+            <Button Content="{util:Localization medication}" HorizontalAlignment="Left" Margin="426,67,0,0" VerticalAlignment="Top"  Style="{DynamicResource menuButtonActive}" Click="Button_Terapija_Click"/>
+            <Button Content="{util:Localization feedback}" HorizontalAlignment="Left" Margin="526,67,0,0" VerticalAlignment="Top" Click="Button_Click_2" Style="{DynamicResource menuButtonActive}"/>
+            <Button Content="{util:Localization notes}" HorizontalAlignment="Left" Margin="626,67,0,0" VerticalAlignment="Top" Style="{DynamicResource menuButtonActive}" Click="Button_Beleske_Click" />
+            <Button Content="{util:Localization logout}" HorizontalAlignment="Left" Margin="726,68,0,0" VerticalAlignment="Top" Style="{DynamicResource menuButtonActive}" />
             <ComboBox Name="languageComboBox" HorizontalAlignment="Left" Margin="831,68,0,0" VerticalAlignment="Top" Width="102" SelectedIndex="0" Height="25" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBoxItem>
                     <StackPanel Orientation="Horizontal">

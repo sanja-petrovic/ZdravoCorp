@@ -9,25 +9,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PatientProfile">
     <Page.Resources>
-        <SolidColorBrush x:Key="backgroundWhite" Color="White"/>
-        <Style TargetType="Grid" x:Key="regularBackground">
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush>
-                        <GradientStop Color="#FFC9C6FF" Offset="0.0" />
-                        <GradientStop Color="#FFE9D5FF" Offset="1" />
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </Page.Resources>
     <ScrollViewer>
-        <Grid Style="{StaticResource regularBackground}">
-            <Label x:Name="title" Content="{Binding Path=FullName}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.434,-0.058"/>
-            <Label Content="{util:Localization basicData}" HorizontalAlignment="Left" Margin="70,70,0,0" VerticalAlignment="Top"/>
+        <Grid>
+            <Label x:Name="title" Content="{Binding Path=FullName}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.434,-0.058"/>
+            <Label Content="{util:Localization basicData}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="70,70,0,0" VerticalAlignment="Top"/>
 
             <Image Source="{Binding ProfilePictureLocation}"  HorizontalAlignment="Left" Height="129" Margin="70,101,0,0" VerticalAlignment="Top" Width="118"/>
-            <ItemsControl Margin="577,101,50,-28" BorderBrush="Black" BorderThickness="1" ItemsSource="{Binding Path = NotificationTexts}" Background="{StaticResource backgroundWhite}">
+            <ItemsControl Margin="577,101,50,-28" BorderBrush="Black" BorderThickness="1" ItemsSource="{Binding Path = NotificationTexts}" Background="{DynamicResource backgroundActive}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="1">
@@ -44,11 +33,11 @@
                 </ItemsControl.ItemTemplate>
 
             </ItemsControl>
-            <ItemsControl HorizontalAlignment="Left" Height="127" Margin="70,441,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding Diagnoses }" Background="{StaticResource backgroundWhite}"/>
-            <ItemsControl HorizontalAlignment="Left" Height="127" Margin="318,441,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding Alergies}" Background="{StaticResource backgroundWhite}"/>
-            <Label Content="{util:Localization alergies}" HorizontalAlignment="Left" Margin="318,400,0,0" VerticalAlignment="Top"/>
-            <Label Content="{util:Localization history}" HorizontalAlignment="Left" Margin="70,400,0,0" VerticalAlignment="Top"/>
-            <Label Content="{util:Localization notifications}" HorizontalAlignment="Left" Margin="577,70,0,0" VerticalAlignment="Top"/>
+            <ItemsControl HorizontalAlignment="Left" Height="127" Margin="70,441,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding Diagnoses }" Background="{DynamicResource backgroundActive}"/>
+            <ItemsControl HorizontalAlignment="Left" Height="127" Margin="318,441,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding Alergies}" Background="{DynamicResource backgroundActive}"/>
+            <Label Content="{util:Localization alergies}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="318,400,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization history}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="70,400,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization notifications}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="577,70,0,0" VerticalAlignment="Top"/>
 
             <ScrollViewer HorizontalAlignment="Left" Height="294" Margin="190,101,0,0" VerticalAlignment="Top" Width="343">
                 <Grid>
@@ -92,7 +81,7 @@
                     <Label Grid.Column="1" Grid.Row="9"  x:Name="labelEmail" Content="{Binding Email}" VerticalAlignment="Center"/>
                 </Grid>
             </ScrollViewer>
-            <Rectangle HorizontalAlignment="Left" Height="294" Margin="70,101,0,0" Stroke="Black" VerticalAlignment="Top" Width="463" Fill="{StaticResource backgroundWhite}" Panel.ZIndex="-1"/>
+            <Rectangle HorizontalAlignment="Left" Height="294" Margin="70,101,0,0" Stroke="Black" VerticalAlignment="Top" Width="463" Fill="{DynamicResource backgroundActive}" Panel.ZIndex="-1"/>
 
         </Grid>
     </ScrollViewer>

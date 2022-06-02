@@ -29,6 +29,62 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type Button}" x:Key="menuButtonDark">
+        <Setter Property="Background" Value="SlateGray" />
+        <Setter Property="Width" Value="95" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="SlateGray" />
+                        <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter x:Name="myContentPresenter" TextBlock.Foreground="#00A7FF" Width="85" Height="25" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                                <ContentPresenter.Content>
+                                    <Label x:Name="label" Content="{TemplateBinding Content}" HorizontalAlignment="Center"></Label>
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
+                        </DockPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Rectangle.Stroke" TargetName="rectangle" Value="#6897F8"></Setter>
+                            <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="#6897F8"></Setter>
+                            <Setter Property="Label.Foreground" TargetName="label" Value="Black" ></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="menuButtonActive">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Width" Value="95" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="White" />
+                        <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter x:Name="myContentPresenter" TextBlock.Foreground="#6c63ff" Width="85" Height="25" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                                <ContentPresenter.Content>
+                                    <Label x:Name="label" Content="{TemplateBinding Content}" HorizontalAlignment="Center"></Label>
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
+                        </DockPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Rectangle.Stroke" TargetName="rectangle" Value="#FFAD61FF"></Setter>
+                            <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="#FFAD61FF"></Setter>
+                            <Setter Property="Label.Foreground" TargetName="label" Value="White" ></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style TargetType="{x:Type Button}" x:Key="sliderButtonActive">
         <Setter Property="Background" Value="White" />
@@ -105,13 +161,12 @@
         </Setter>
     </Style>
 
-
     <Style TargetType="Grid" x:Key="menuBackgroundLight">
         <Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush>
-                    <GradientStop Color="#FFAD61FF" Offset="0.0" />
-                    <GradientStop Color="#FFE9D5FF" Offset="1" />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#FFAD61FF" Offset="1" />
+                    <GradientStop Color="#FFE9D5FF" Offset="0.0" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -120,9 +175,9 @@
     <Style TargetType="Grid" x:Key="menuBackgroundDark">
         <Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientStop Color="#FF6F6F6F" Offset="0.0" />
-                    <GradientStop Color="#FF3B2E4A" Offset="1" />
+                    <GradientStop Color="#FF6C5388" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -131,15 +186,25 @@
     <Style TargetType="Grid" x:Key="menuBackgroundActive">
         <Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush>
-                    <GradientStop Color="#FFAD61FF" Offset="0.0" />
-                    <GradientStop Color="#FFE9D5FF" Offset="1" />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#FFAD61FF" Offset="1" />
+                    <GradientStop Color="#FFE9D5FF" Offset="0.0" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style TargetType="Grid" x:Key="regularBackground">
+    <Style TargetType="Grid" x:Key="regularBackgroundActive">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FFC9C6FF" Offset="0.0" />
+                    <GradientStop Color="#FFE9D5FF" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Grid" x:Key="regularBackgroundLight">
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush>
@@ -153,11 +218,19 @@
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush>
-                    <GradientStop Color="#FF6F6F6F" Offset="0.0" />
-                    <GradientStop Color="#FF3B2E4A" Offset="1" />
+                    <GradientStop Color="#FF39384C" Offset="0.0" />
+                    <GradientStop Color="#FF4C4554" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
     </Style>
+
+    <SolidColorBrush x:Key="backgroundActive" Color="White"/>
+    <SolidColorBrush x:Key="backgroundLight" Color="White"/>
+    <SolidColorBrush x:Key="backgroundDark" Color="SlateGray"/>
+
+    <SolidColorBrush x:Key="titleActive" Color="Black"/>
+    <SolidColorBrush x:Key="titleLight" Color="Black"/>
+    <SolidColorBrush x:Key="titleDark" Color="#FFCCF0FF"/>
 
 </ResourceDictionary>

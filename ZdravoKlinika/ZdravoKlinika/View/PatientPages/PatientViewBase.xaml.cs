@@ -81,15 +81,23 @@ namespace ZdravoKlinika.View.PatientPages
             switch (theme)
             {
                 case 0:
-                    this.Resources["menuBackgroundActive"] = this.FindResource("menuBackgroundDark");
-                    this.Resources["sliderButtonActive"] = this.FindResource("sliderButtonOff");
+                    Application.Current.Resources["menuBackgroundActive"] = FindResource("menuBackgroundDark");
+                    Application.Current.Resources["sliderButtonActive"] = FindResource("sliderButtonOff");
                     lightBulb.Source = viewModel.LightbulbBlack;
+                    Application.Current.Resources["menuButtonActive"] = FindResource("menuButtonDark");
+                    Application.Current.Resources["regularBackgroundActive"] = FindResource("regularBackgroundDark");
+                    Application.Current.Resources["backgroundActive"] = FindResource("backgroundDark");
+                    Application.Current.Resources["titleActive"] = FindResource("titleDark");
                     theme = 1;
                     break;
                 case 1:
-                    this.Resources["menuBackgroundActive"] = this.FindResource("menuBackgroundLight");
-                    this.Resources["sliderButtonActive"] = this.FindResource("sliderButtonOn");
+                    Application.Current.Resources["menuBackgroundActive"] = FindResource("menuBackgroundLight");
+                    Application.Current.Resources["sliderButtonActive"] = FindResource("sliderButtonOn");
                     lightBulb.Source = viewModel.LightbulbWhite;
+                    Application.Current.Resources["menuButtonActive"] = FindResource("menuButtonLight");
+                    Application.Current.Resources["regularBackgroundActive"] = FindResource("regularBackgroundLight");
+                    Application.Current.Resources["backgroundActive"] = FindResource("backgroundLight");
+                    Application.Current.Resources["titleActive"] = FindResource("titleLight");
                     theme = 0;
                     break;
             }
