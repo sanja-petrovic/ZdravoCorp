@@ -27,6 +27,7 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         private int selectedMeetingEmployeeIndex;
         private DateTime selectedMeetingDate;
         private String selectedMeetingTime;
+        private RegisteredUser thisUser;
 
         public ObservableCollection<RegisteredUser> Employees { get; set; }
         public ICommand AddCommand { 
@@ -81,6 +82,9 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         public string SelectedMeetingTime { get => selectedMeetingTime; set => SetProperty(ref selectedMeetingTime, value); }
         public MeetingController MeetingController { get => meetingController; set => meetingController = value; }
         public EmployeeNotificationController NotificationController { get => notificationController; set => notificationController = value; }
+        public List<RegisteredUser> Required { get => required; set => required = value; }
+        public List<RegisteredUser> Optional { get => optional; set => optional = value; }
+        public RegisteredUser ThisUser { get => thisUser; set => thisUser = value; }
 
         public class RegisteredUserPrint
         {
@@ -97,7 +101,7 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
             public string Type { get => type; set => type = value; }
         }
 
-        public MeetingViewModel() 
+        public MeetingViewModel(RegisteredUser user) 
         {
             registeredUserController = new RegisteredUserController();
             MeetingController = new MeetingController();
@@ -111,8 +115,9 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
             selectedMeetingEmployeeIndex = -1;
             selectedMeetingDate = DateTime.Now.Date;
 
-            required = new List<RegisteredUser>();
-            optional = new List<RegisteredUser>();
+            Required = new List<RegisteredUser>();
+            Optional = new List<RegisteredUser>();
+            ThisUser = user;
         }
 
         private void AddToMeeting()
@@ -125,12 +130,12 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
             string text;
             if (RequiredRadio == true)
             {
-                required.Add(Employees[selectedEmployeeIndex]);
+                Required.Add(Employees[selectedEmployeeIndex]);
                 text = "Obavezan";
             }
             else
             {
-                optional.Add(Employees[selectedEmployeeIndex]);
+                Optional.Add(Employees[selectedEmployeeIndex]);
                 text = "Opcionalan";
             }
             RegisteredUserPrint usr = new RegisteredUserPrint(Employees[selectedEmployeeIndex], text);
@@ -150,11 +155,11 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
 
             if (text.Equals("Obavezan"))
             {
-                required.Remove(usr);
+                Required.Remove(usr);
             }
             else 
             {
-                optional.Remove(usr);
+                Optional.Remove(usr);
             }
 
             MeetingData.RemoveAt(SelectedMeetingEmployeeIndex);
@@ -181,10 +186,21 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
             if (date < DateTime.Now)
                 return;
 
-            meetingController.CreateMeeting(date, required, optional);
+            meetingController.CreateMeeting(date, Required, Optional);
+            // sending notifications
+            foreach (RegisteredUser user in Required)
+            {
+                notificationController.CreateNotification(ThisUser.PersonalId, user.PersonalId, "Novi sastanak!", "Pozvani ste na sastanak " + SelectedMeetingDate.Day + "." + SelectedMeetingDate.Month + "." + SelectedMeetingDate.Year + " u " + hours+":"+minutes+", prisustvo obavezno.", "MeetingCreated");
+            }
+            foreach (RegisteredUser user in Optional)
+            {
+                notificationController.CreateNotification(ThisUser.PersonalId, user.PersonalId, "Novi sastanak!", "Pozvani ste na sastanak " + SelectedMeetingDate.Day + "."+ SelectedMeetingDate.Month + "." + SelectedMeetingDate.Year + " u " + hours + ":" + minutes + ", prisustvo opcionalno.", "MeetingCreated");
+            }
 
             SelectedMeetingTime = "";
             SelectedMeetingDate = DateTime.Now.Date;
+
+            
 
             foreach (RegisteredUserPrint usr in MeetingData)
             {
@@ -192,8 +208,8 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
             }
 
             MeetingData.Clear();
-            required.Clear();
-            optional.Clear();
+            Required.Clear();
+            Optional.Clear();
             
         }
     }

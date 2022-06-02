@@ -24,9 +24,11 @@ namespace ZdravoKlinika.View.Secretary
     public partial class SecretaryMainWindow : Window
     {
         PatientViewModel PatientViewModel { get; set; }
-        public SecretaryMainWindow()
+        RegisteredUser thisUser;
+        public SecretaryMainWindow(RegisteredUser user)
         {
             InitializeComponent();
+            thisUser = user;
             MainContentFrame.Navigate(new SecretaryHomePage());
             PatientViewModel = new PatientViewModel();
             Select(BorderHomePage);
@@ -197,7 +199,7 @@ namespace ZdravoKlinika.View.Secretary
             Select(BorderCreateMeeting);
             if (MainContentFrame.CanGoBack)
                 MainContentFrame.RemoveBackEntry();
-            MainContentFrame.Navigate(new SecretaryCreateMeeting());
+            MainContentFrame.Navigate(new SecretaryCreateMeeting(thisUser));
             MenuContentLabel.Content = "Kreiranje sastanaka";
             HamburgerMenuFrame.IsChecked = false;
         }

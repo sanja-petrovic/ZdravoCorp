@@ -29,6 +29,7 @@ namespace ZdravoKlinika.Data_Handler
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.Converters.Add(new RegisteredUserConverter());
+            options.Converters.Add(new JsonStringEnumConverter());
             return JsonSerializer.Deserialize<List<EmployeeNotification>>(File.ReadAllText(fileLocation), options);
         }
     }
