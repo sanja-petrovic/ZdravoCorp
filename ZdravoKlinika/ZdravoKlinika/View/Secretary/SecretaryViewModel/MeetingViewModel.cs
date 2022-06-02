@@ -18,7 +18,10 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         private List<RegisteredUser> optional;
         private bool requiredRadio;
         private ICommand addCommand;
+        private ICommand deleteCommand;
+        private ICommand finishCommand;
         private int selectedEmployeeIndex;
+        private int selectedMeetingEmployeeIndex;
 
         public ObservableCollection<RegisteredUser> Employees { get; set; }
         public ICommand AddCommand { 
@@ -27,6 +30,23 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
                 return addCommand ?? (addCommand = new MyICommand(() => AddToMeeting(), () => AddCanExecute)); 
             } 
         }
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return deleteCommand ?? (deleteCommand = new MyICommand(() => DeleteFromMeeting(), () => DeleteCanExecute));
+            }
+        }
+
+
+        public ICommand FinishCommand
+        {
+            get
+            {
+                return addCommand ?? (addCommand = new MyICommand(() => FinishMeeting(), () => FinishCanExecute));
+            }
+        }
+
 
         public bool AddCanExecute {
             get 
@@ -34,9 +54,28 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
                 return true;
             }
         }
+        public bool DeleteCanExecute {
+            get
+            {
+                return true;
+            }
+        }
+        public bool FinishCanExecute
+        {
+            get
+            {
+                if (MeetingData.Count >= 2)
+                { 
+                    return true;
+                }
+                return false;
+            }
+        }
+
         public ObservableCollection<RegisteredUserPrint> MeetingData { get; set; }
         public bool RequiredRadio { get => requiredRadio; set => requiredRadio = value; }
-        public int SelectedEmployeeIndex { get => selectedEmployeeIndex; set => selectedEmployeeIndex = value; }
+        public int SelectedEmployeeIndex { get => selectedEmployeeIndex; set => SetProperty(ref selectedEmployeeIndex, value); }
+        public int SelectedMeetingEmployeeIndex { get => selectedMeetingEmployeeIndex; set => SetProperty(ref selectedMeetingEmployeeIndex, value); }
 
         public class RegisteredUserPrint
         {
@@ -61,38 +100,62 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
             MeetingData = new ObservableCollection<RegisteredUserPrint>();
             RequiredRadio = true;
             SelectedEmployeeIndex = -1;
+            selectedMeetingEmployeeIndex = -1;
 
             required = new List<RegisteredUser>();
             optional = new List<RegisteredUser>();
         }
 
-        private void UpdateMeetingList()
-        {
-        }
-
-        public void Test(object target, ExecutedRoutedEventArgs e)
-        {
-            required.Add(employees[0]);
-            UpdateMeetingList();
-        }
         private void AddToMeeting()
         {
-            string ab;
-            if (RequiredRadio == true)
-            {
-                ab = "Obavezan";
-            }
-            else { 
-                ab = "Opcionalan";
-            }
-            if (selectedEmployeeIndex == -1)
+            if (SelectedEmployeeIndex == -1)
             {
                 return;
             }
 
-            RegisteredUserPrint a = new RegisteredUserPrint(Employees[selectedEmployeeIndex], ab);
-            MeetingData.Add(a);
+            string text;
+            if (RequiredRadio == true)
+            {
+                required.Add(Employees[selectedEmployeeIndex]);
+                text = "Obavezan";
+            }
+            else
+            {
+                optional.Add(Employees[selectedEmployeeIndex]);
+                text = "Opcionalan";
+            }
+            RegisteredUserPrint usr = new RegisteredUserPrint(Employees[selectedEmployeeIndex], text);
+            MeetingData.Add(usr);
             Employees.RemoveAt(selectedEmployeeIndex);
+        }
+
+        private void DeleteFromMeeting()
+        {
+            if (SelectedMeetingEmployeeIndex == -1)
+            {
+                return;
+            }
+
+            RegisteredUser usr = MeetingData[selectedMeetingEmployeeIndex].User;
+            String text = MeetingData[selectedMeetingEmployeeIndex].Type;
+
+            if (text.Equals("Obavezan"))
+            {
+                required.Remove(usr);
+            }
+            else 
+            {
+                optional.Remove(usr);
+            }
+
+            MeetingData.RemoveAt(SelectedMeetingEmployeeIndex);
+            Employees.Add(usr);
+
+        }
+
+        private void FinishMeeting()
+        {
+            throw new NotImplementedException();
         }
     }
 }
