@@ -23,7 +23,12 @@
             <Button Content="{util:Localization feedback}" HorizontalAlignment="Left" Margin="526,67,0,0" VerticalAlignment="Top" Click="Button_Click_2" Style="{DynamicResource menuButtonActive}"/>
             <Button Content="{util:Localization notes}" HorizontalAlignment="Left" Margin="626,67,0,0" VerticalAlignment="Top" Style="{DynamicResource menuButtonActive}" Click="Button_Beleske_Click" />
             <Button Content="{util:Localization logout}" HorizontalAlignment="Left" Margin="726,68,0,0" VerticalAlignment="Top" Style="{DynamicResource menuButtonActive}" />
-            <ComboBox Name="languageComboBox" HorizontalAlignment="Left" Margin="831,68,0,0" VerticalAlignment="Top" Width="102" SelectedIndex="0" Height="25" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox Name="languageComboBox" Background="{DynamicResource backgroundActive}" HorizontalAlignment="Left" Margin="831,68,0,0" VerticalAlignment="Top" Width="102" SelectedIndex="0" Height="25" SelectionChanged="ComboBox_SelectionChanged" BorderBrush="{DynamicResource ComboBox.Disabled.Background}">
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="{DynamicResource backgroundActive}"/>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
                 <ComboBoxItem>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding Path=SrbFlagImageSource}" />

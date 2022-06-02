@@ -88,6 +88,7 @@ namespace ZdravoKlinika.View.PatientPages
                     Application.Current.Resources["regularBackgroundActive"] = FindResource("regularBackgroundDark");
                     Application.Current.Resources["backgroundActive"] = FindResource("backgroundDark");
                     Application.Current.Resources["titleActive"] = FindResource("titleDark");
+                    Application.Current.Resources["regularButtonActive"] = FindResource("regularButtonDark");
                     theme = 1;
                     break;
                 case 1:
@@ -98,6 +99,7 @@ namespace ZdravoKlinika.View.PatientPages
                     Application.Current.Resources["regularBackgroundActive"] = FindResource("regularBackgroundLight");
                     Application.Current.Resources["backgroundActive"] = FindResource("backgroundLight");
                     Application.Current.Resources["titleActive"] = FindResource("titleLight");
+                    Application.Current.Resources["regularButtonActive"] = FindResource("regularButtonLight");
                     theme = 0;
                     break;
             }

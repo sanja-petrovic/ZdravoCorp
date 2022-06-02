@@ -11,47 +11,31 @@
     <Page.Resources>
         <ResourceDictionary>
             <viewModel:RadioButtonDataConverter x:Key="RadioButtonDataConverter"></viewModel:RadioButtonDataConverter>
-            <Style TargetType="{x:Type Button}" x:Key="regularButton">
-                <Setter Property="Background" Value="White" />
-                <Setter Property="Width" Value="80" />
-                <Setter Property="Margin" Value="10" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                                <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="#6c63ff" RadiusX="20" RadiusY="20" StrokeThickness="2" Fill="White" />
-                                <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <ContentPresenter x:Name="myContentPresenter" TextBlock.Foreground="#6c63ff" Width="71" Height="25" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
-                                        <ContentPresenter.Content>
-                                            <Label x:Name="label" Content="{TemplateBinding Content}" HorizontalAlignment="Center"></Label>
-                                        </ContentPresenter.Content>
-                                    </ContentPresenter>
-                                </DockPanel>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Rectangle.Stroke" TargetName="rectangle" Value="#FFAD61FF"></Setter>
-                                    <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="#FFAD61FF"></Setter>
-                                    <Setter Property="Label.Foreground" TargetName="label" Value="White" ></Setter>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Rectangle.Stroke" TargetName="rectangle" Value="DarkGray"></Setter>
-                                    <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="DarkGray"></Setter>
-                                    <Setter Property="Label.Foreground" TargetName="label" Value="White" ></Setter>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
         </ResourceDictionary>
     </Page.Resources>
     <Page.DataContext>
         <viewModel:PatientAppointmentReviewViewModel></viewModel:PatientAppointmentReviewViewModel>
     </Page.DataContext>
-    <Grid Background="white">
-        <Label Content="{util:Localization comment}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <DataGrid Margin="10,51,10,74" Name="questionsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding QuestionsAndGroups }" EnableRowVirtualization="False">
+    <Grid Background="{DynamicResource backgroundActive}">
+        <Label Content="{util:Localization comment}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <DataGrid Margin="10,51,10,74" Name="questionsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding QuestionsAndGroups }" EnableRowVirtualization="False" Background="{DynamicResource backgroundActive}">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="{DynamicResource backgroundActive}"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.RowHeaderStyle>
+                <Style TargetType="DataGridRowHeader">
+                    <Setter Property="Background" Value="{DynamicResource backgroundActive}"/>
+                </Style>
+            </DataGrid.RowHeaderStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="{DynamicResource backgroundActive}"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{util:Localization question}" Binding="{Binding Content}" Width="4*" IsReadOnly="True"></DataGridTextColumn>
                 <DataGridTemplateColumn Width="1*">
@@ -118,7 +102,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="{util:Localization save}" Command="{Binding AddCommand}" Style="{StaticResource regularButton}" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top" Height="23" Width="52"/>
+        <Button Content="{util:Localization save}" Command="{Binding AddCommand}" Style="{DynamicResource regularButtonActive}" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top" Height="23" Width="52"/>
 
     </Grid>
 </Page>
