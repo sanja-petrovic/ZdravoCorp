@@ -26,5 +26,12 @@
     "NotificationText": "GUSAR",
     "Reciver": "0105965123321",
     "Sender": "0105965123321"
+  },
+  {
+    "Trigger": "2022-05-31T09:58:04.6358176+02:00",
+    "NotificationId": 5,
+    "NotificationText": "sasdasdasda",
+    "Reciver": "1510963123321",
+    "Sender": "1510963123321"
   }
 ]

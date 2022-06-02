@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.PatientPages" 
+      xmlns:util="clr-namespace:ZdravoKlinika.Util"
       xmlns:viewModel="clr-namespace:ZdravoKlinika.View.PatientPages.ViewModel" d:DataContext="{d:DesignInstance Type=viewModel:PatientTherapyViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -27,7 +28,7 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
-        <Label x:Name="title" Content="Terapija" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" Height="32"/>
+        <Label x:Name="title" Content="{util:Localization medication}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" Height="32"/>
         <Grid Margin="70,47,67,176">
             <Viewbox Stretch="Fill" StretchDirection="UpOnly" HorizontalAlignment="Left" Width="260">
                 <Calendar Height="159" CalendarDayButtonStyle="{DynamicResource CalendarHighlightDaysStyle}" SelectedDate="{Binding SelectedDate}" DisplayDate="{Binding SelectedDate}" />
@@ -36,18 +37,18 @@
             <DataGrid ItemsSource="{Binding Path=Notifications}" SelectedItem="{Binding SelectedNotification, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="False" HorizontalAlignment="Left" Width="398" Margin="265,5,0,0">
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn IsReadOnly="False"></DataGridCheckBoxColumn>
-                    <DataGridTextColumn Header="Naziv" Binding="{Binding Prescription.Medication.BrandName}" Width="2*" IsReadOnly="True"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Vreme" Binding="{Binding TriggerTime.TimeOfDay}" Width="1*" IsReadOnly="True"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Količina"  Binding="{Binding Prescription.Amount}" Width="1*" IsReadOnly="True"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{util:Localization medicationName}" Binding="{Binding Prescription.Medication.BrandName}" Width="2*" IsReadOnly="True"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{util:Localization time}" Binding="{Binding TriggerTime.TimeOfDay}" Width="1*" IsReadOnly="True"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{util:Localization amount}"  Binding="{Binding Prescription.Amount}" Width="1*" IsReadOnly="True"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
 
         <Grid Margin="70,291,472,0">
-            <Label Content="Izmena vremena obaveštenja" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <Label Content="Naziv leka:" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
-            <Label Content="Količina:" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
-            <Label Content="Vreme:" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization editNotifTime}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization medicationName}" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization amount}" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization time}" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Text="{Binding SelectedNotification.Prescription.Medication.BrandName}" Margin="92,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
             <TextBlock HorizontalAlignment="Left" Text="{Binding SelectedNotification.Prescription.Amount}" Margin="92,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
             <ComboBox HorizontalAlignment="Left" Margin="92,102,0,0" ItemsSource="{Binding NotificationTimes}" VerticalAlignment="Top" Width="82">
@@ -59,7 +60,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Content="Sačuvaj" HorizontalAlignment="Left" Margin="133,131,0,0" VerticalAlignment="Top"/>
+            <Button Content="{util:Localization save}" HorizontalAlignment="Left" Margin="133,131,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Page>

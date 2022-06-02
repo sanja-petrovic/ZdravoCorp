@@ -63,14 +63,14 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
         public void LoadQuestions()
         {
             List<Question> questions = new List<Question>();
-            questions.Add(new Question("1. Lekar je bio ljubazan.","_1"));
-            questions.Add(new Question("2. Lekar je bio profesionalan.", "_2"));
-            questions.Add(new Question("3. Lekar mi je pomogao sa mojim problemom.", "_3"));
-            questions.Add(new Question("4. Ordinacija je bila adekvatno opremljena.", "_4"));
-            questions.Add(new Question("5. Higijena prostorije i opreme je zadovoljavajuca.", "_5"));
-            questions.Add(new Question("6. Pregled je obavljen u zakazano vreme uz minimalno čekanje.", "_6"));
-            questions.Add(new Question("7. Zadovoljan sam uslugom lekara.", "_7"));
-            questions.Add(new Question("8. Zadovoljan sam uslugom bolnice.", "_8"));
+            questions.Add(new Question(Resources.Localisation.Resources.appointmentQ1,"_1"));
+            questions.Add(new Question(Resources.Localisation.Resources.appointmentQ2, "_2"));
+            questions.Add(new Question(Resources.Localisation.Resources.appointmentQ3, "_3"));
+            questions.Add(new Question(Resources.Localisation.Resources.appointmentQ4, "_4"));
+            questions.Add(new Question(Resources.Localisation.Resources.appointmentQ5, "_5"));
+            questions.Add(new Question(Resources.Localisation.Resources.appointmentQ6, "_6"));
+            questions.Add(new Question(Resources.Localisation.Resources.appointmentQ7, "_7"));
+            questions.Add(new Question(Resources.Localisation.Resources.appointmentQ8, "_8"));
             questionsAndGroups = questions;
             grades = new int[questions.Count];
             for(int i = 0; i < grades.Count(); i++)

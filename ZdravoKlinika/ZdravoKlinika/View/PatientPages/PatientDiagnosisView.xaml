@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.PatientPages"
+      xmlns:util="clr-namespace:ZdravoKlinika.Util"
       xmlns:viewModel="clr-namespace:ZdravoKlinika.View.PatientPages.ViewModel" d:DataContext="{d:DesignInstance Type=viewModel:PatientDiagnosisViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="250" d:DesignWidth="778"
@@ -46,13 +47,13 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="White">
-        <Label Content="Anamneza" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Label Content="Dijagnoza:" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top"/>
-        <Label Content="Beleške lekara:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization anamnesis}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Label Content="{util:Localization diagnosis}" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization docNotes}" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="130,56,0,0" TextWrapping="Wrap" Text="{Binding Diagnosis, Mode=OneWay}" VerticalAlignment="Top" Width="225"/>
         <TextBlock HorizontalAlignment="Left" Margin="130,85,0,0" TextWrapping="Wrap" Text="{Binding DoctorNote, Mode=OneWay}" VerticalAlignment="Top" Width="400" Height="47"/>
-        <Label Content="Vaša beleška:" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="130,0,0,0" TextWrapping="Wrap" Text="{Binding PatientNote,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="400" Height="48"/>
-        <Button Content="Sacuvaj" Style="{StaticResource regularButton}" Command="{Binding SaveCommand}" HorizontalAlignment="Left" Margin="478,217,0,0" VerticalAlignment="Top" Height="23" Width="52"/>
+        <Label Content="{util:Localization yourNotes}" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="130,160,0,0" TextWrapping="Wrap" Text="{Binding PatientNote,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="400" Height="48"/>
+        <Button Content="{util:Localization save}" Style="{StaticResource regularButton}" Command="{Binding SaveCommand}" HorizontalAlignment="Left" Margin="478,217,0,0" VerticalAlignment="Top" Height="23" Width="52"/>
     </Grid>
 </Page>

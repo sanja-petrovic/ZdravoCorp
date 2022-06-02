@@ -117,10 +117,187 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="word1" xml:space="preserve">
-    <value>Engrish</value>
+  <data name="add" xml:space="preserve">
+    <value>Додај</value>
   </data>
-  <data name="word2" xml:space="preserve">
-    <value>SUGOMER</value>
+  <data name="alergies" xml:space="preserve">
+    <value>Алергени</value>
+  </data>
+  <data name="amount" xml:space="preserve">
+    <value>Количина</value>
+  </data>
+  <data name="anamnesis" xml:space="preserve">
+    <value>Анамнеза</value>
+  </data>
+  <data name="appFeedbackQ1" xml:space="preserve">
+    <value>Особљле је пријатно, професионално и увек на услузи.</value>
+  </data>
+  <data name="appFeedbackQ2" xml:space="preserve">
+    <value>Просторије за преглед су чисте и опремљене.</value>
+  </data>
+  <data name="appFeedbackQ3" xml:space="preserve">
+    <value>Чекаонице су пријатне и простране.</value>
+  </data>
+  <data name="appFeedbackQ4" xml:space="preserve">
+    <value>Музика у чекаоницама је пријатна и умирујућа.</value>
+  </data>
+  <data name="appFeedbackQ5" xml:space="preserve">
+    <value>Боравак у просторијама и коришћење услуга Здраво корпорације је на мене оставило позитиван утицај.</value>
+  </data>
+  <data name="appFeedbackQ6" xml:space="preserve">
+    <value>У будућности ћу се поново определити за услуге Здраво корпорације.</value>
+  </data>
+  <data name="appFeedbackQ7" xml:space="preserve">
+    <value>Апликација Здраво корпорације је адекватна.</value>
+  </data>
+  <data name="appointmentQ1" xml:space="preserve">
+    <value>Лекар је био љубазан.</value>
+  </data>
+  <data name="appointmentQ2" xml:space="preserve">
+    <value>Лекар је био професионалан.</value>
+  </data>
+  <data name="appointmentQ3" xml:space="preserve">
+    <value>Лекар ми је помогао са мојим проблемом.</value>
+  </data>
+  <data name="appointmentQ4" xml:space="preserve">
+    <value>Ординација је била адекватно опремљена.</value>
+  </data>
+  <data name="appointmentQ5" xml:space="preserve">
+    <value>Хигијена просторије и опрема је задовољавајућа.</value>
+  </data>
+  <data name="appointmentQ6" xml:space="preserve">
+    <value>Преглед је обављен у заказано време уз минимално чеканје.</value>
+  </data>
+  <data name="appointmentQ7" xml:space="preserve">
+    <value>Задовољан сам услугом лекара.</value>
+  </data>
+  <data name="appointmentQ8" xml:space="preserve">
+    <value>Задовољан сам услугом болнице.</value>
+  </data>
+  <data name="appointments" xml:space="preserve">
+    <value>Прегледи</value>
+  </data>
+  <data name="appointmentType" xml:space="preserve">
+    <value>Тип прегледа:</value>
+  </data>
+  <data name="basicData" xml:space="preserve">
+    <value>Основни подаци</value>
+  </data>
+  <data name="bloodType" xml:space="preserve">
+    <value>Крвна група:</value>
+  </data>
+  <data name="comment" xml:space="preserve">
+    <value>Коментар</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Датум:</value>
+  </data>
+  <data name="dateAndTime" xml:space="preserve">
+    <value>Датум и време</value>
+  </data>
+  <data name="dateOfBirth" xml:space="preserve">
+    <value>Датум рођења:</value>
+  </data>
+  <data name="diagnosis" xml:space="preserve">
+    <value>Дијагноза:</value>
+  </data>
+  <data name="docNotes" xml:space="preserve">
+    <value>Белешке лекара:</value>
+  </data>
+  <data name="doctor" xml:space="preserve">
+    <value>Доктор:</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Измени</value>
+  </data>
+  <data name="editAppointment" xml:space="preserve">
+    <value>Измена термина</value>
+  </data>
+  <data name="editNotifTime" xml:space="preserve">
+    <value>Измена времена обавештења</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>Адреса е-поште:</value>
+  </data>
+  <data name="emContact" xml:space="preserve">
+    <value>Контакт за хитне случајеве:</value>
+  </data>
+  <data name="emNumber" xml:space="preserve">
+    <value>Број за хитне случајеве:</value>
+  </data>
+  <data name="feedback" xml:space="preserve">
+    <value>Ваши утисци</value>
+  </data>
+  <data name="feedbackField" xml:space="preserve">
+    <value>Поље за ваш коментар.</value>
+  </data>
+  <data name="feedbackTitle" xml:space="preserve">
+    <value>Ваше мишљење о апликацији можете исказати испод.</value>
+  </data>
+  <data name="gender" xml:space="preserve">
+    <value>Пол:</value>
+  </data>
+  <data name="history" xml:space="preserve">
+    <value>Историја болести</value>
+  </data>
+  <data name="lastname" xml:space="preserve">
+    <value>Презиме:</value>
+  </data>
+  <data name="logout" xml:space="preserve">
+    <value>Одјава</value>
+  </data>
+  <data name="makeAppointment" xml:space="preserve">
+    <value>Заказивање термина</value>
+  </data>
+  <data name="medication" xml:space="preserve">
+    <value>Терапије</value>
+  </data>
+  <data name="medicationName" xml:space="preserve">
+    <value>Назив лека:</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Име:</value>
+  </data>
+  <data name="note" xml:space="preserve">
+    <value>Белешка</value>
+  </data>
+  <data name="notes" xml:space="preserve">
+    <value>Белешке</value>
+  </data>
+  <data name="notifications" xml:space="preserve">
+    <value>Обавештења</value>
+  </data>
+  <data name="ocupation" xml:space="preserve">
+    <value>Занимање:</value>
+  </data>
+  <data name="phoneNumber" xml:space="preserve">
+    <value>Број телефона:</value>
+  </data>
+  <data name="prio" xml:space="preserve">
+    <value>Приоритет:</value>
+  </data>
+  <data name="profile" xml:space="preserve">
+    <value>Профил</value>
+  </data>
+  <data name="question" xml:space="preserve">
+    <value>Питање</value>
+  </data>
+  <data name="remove" xml:space="preserve">
+    <value>Уклони</value>
+  </data>
+  <data name="room" xml:space="preserve">
+    <value>Соба:</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Сачувај</value>
+  </data>
+  <data name="time" xml:space="preserve">
+    <value>Време:</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Здраво Корпорација</value>
+  </data>
+  <data name="yourNotes" xml:space="preserve">
+    <value>Ваша белешка:</value>
   </data>
 </root>

@@ -29,6 +29,8 @@
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info %282%29.png" />
     <None Remove="Resources\Images\inventory.png" />
+    <None Remove="Resources\Images\lightbulbBlack.png" />
+    <None Remove="Resources\Images\lightbulbWhite.png" />
     <None Remove="Resources\Images\medicine.png" />
     <None Remove="Resources\Images\more.png" />
     <None Remove="Resources\Images\profile.png" />
@@ -40,6 +42,8 @@
     <None Remove="Resources\Images\settings.png" />
     <None Remove="Resources\Images\show %281%29.png" />
     <None Remove="Resources\Images\show.png" />
+    <None Remove="Resources\Images\sliderOff.png" />
+    <None Remove="Resources\Images\sliderOn.png" />
     <None Remove="Resources\Images\star.png" />
     <None Remove="Resources\Images\stethoscope.png" />
     <None Remove="Resources\Images\trash.png" />
@@ -52,6 +56,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\lightbulbBlack.png" />
+    <Resource Include="Resources\Images\lightbulbWhite.png" />
+    <Resource Include="Resources\Images\sliderOn.png" />
     <Content Include="Resources\Images\zdravoklinikaicon.ico" />
     <Resource Include="Resources\Images\addPatient.png" />
     <Resource Include="Resources\Images\delete.png" />
@@ -75,6 +82,7 @@
     <Resource Include="Resources\Images\add (1).png" />
     <Resource Include="Resources\Images\bell (1).png" />
     <Resource Include="Resources\Images\info (2).png" />
+    <Resource Include="Resources\Images\sliderOff.png" />
     <Resource Include="Resources\Images\trash.png" />
     <Resource Include="Resources\Images\warning.png" />
     <Resource Include="Resources\Images\zdravoklinika.png" />

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View"
+      xmlns:util="clr-namespace:ZdravoKlinika.Util"
       mc:Ignorable="d" 
       d:DesignHeight="250" d:DesignWidth="778"
       Title="PatientAddView">
@@ -54,13 +55,13 @@
 
     </Page.Resources>
     <Grid Background="White">
-        <Label Content="Zakazivanje termina" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Label Content="Datum:" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization makeAppointment}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Label Content="{util:Localization date}" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="datePicker"  HorizontalAlignment="Left" Margin="111,56,0,0" VerticalAlignment="Top" Width="120" SelectedDateChanged="datePicker_SelectedDateChanged"/>
-        <Label Content="Prioditet" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization prio}" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="priorityComboBox" HorizontalAlignment="Left" Margin="111,82,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="priorityComboBox_SelectionChanged"/>
-        <Label Content="Vreme pocetka:" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doktor:" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization time}" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization doctor}" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="timeComboBox" HorizontalAlignment="Left" Margin="111,110,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="timeComboBox_SelectionChanged"/>
         <ComboBox x:Name="doctorComboBox" HorizontalAlignment="Left" Margin="111,141,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="doctorComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
@@ -74,7 +75,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="151,215,0,0" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource regularButton}"/>
+        <Button Content="{util:Localization save}" HorizontalAlignment="Left" Margin="151,215,0,0" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource regularButton}"/>
         <Label x:Name="errorLabel" Content="Label" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" FontSize="10" Visibility="Hidden" Foreground="#FF640000"/>
 
     </Grid>

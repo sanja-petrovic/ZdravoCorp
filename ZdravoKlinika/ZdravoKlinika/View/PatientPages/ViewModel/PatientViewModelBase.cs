@@ -25,8 +25,9 @@ namespace ZdravoKlinika.PatientPages.ViewModel
             patientApointmentView = new PatientAppointmentView(patientId);
             applicationReviewView = new ApplicationReviewView(patientId);
 
-
         }
+        private BitmapImage lightbulbWhite = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "lightbulbWhite.png"));
+        private BitmapImage lightbulbBlack = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "lightbulbBlack.png"));
         private ImageSource logoImageSource = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + Path.DirectorySeparatorChar + "Resources" + Path.DirectorySeparatorChar + "Images" + Path.DirectorySeparatorChar + "zdravoklinika.png"));
         public ImageSource LogoImageSource 
         { 
@@ -105,6 +106,8 @@ namespace ZdravoKlinika.PatientPages.ViewModel
         public ApplicationReviewView ApplicationReviewView { get => applicationReviewView; set => applicationReviewView = value; }
         public PatientTherapyView PatientTherapyView { get => patientTherapyView; set => patientTherapyView = value; }
         public PatientNotesView PatientNotesView { get => patientNotesView; set => patientNotesView = value; }
+        public BitmapImage LightbulbWhite { get => lightbulbWhite; set => lightbulbWhite = value; }
+        public BitmapImage LightbulbBlack { get => lightbulbBlack; set => lightbulbBlack = value; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)

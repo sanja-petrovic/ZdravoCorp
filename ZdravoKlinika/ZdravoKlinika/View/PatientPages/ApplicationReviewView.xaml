@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.PatientPages"
+      xmlns:util="clr-namespace:ZdravoKlinika.Util"
       xmlns:viewModel="clr-namespace:ZdravoKlinika.View.PatientPages.ViewModel" d:DataContext="{d:DesignInstance Type=viewModel:PatientApplicationReviewViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -45,11 +46,11 @@
         <viewModel:PatientApplicationReviewViewModel></viewModel:PatientApplicationReviewViewModel>
     </Page.DataContext>
     <Grid>
-        <Label x:Name="title" Content="Utisci&#xD;&#xA;" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" Height="32"/>
-        <Label Content="Vaše mišljenje o aplikaciji možete iskazati ispod." HorizontalAlignment="Left" Margin="70,47,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="title" Content="{util:Localization feedback}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" Height="32"/>
+        <Label Content="{util:Localization feedbackTitle}" HorizontalAlignment="Left" Margin="70,47,0,0" VerticalAlignment="Top"/>
         <DataGrid Margin="70,76,40,177" x:Name="questionsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding QuestionsAndGroups}" EnableRowVirtualization="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Pitanje" Binding="{Binding Content}" Width="4*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="{util:Localization question}" Binding="{Binding Content}" Width="4*" IsReadOnly="True"/>
                 <DataGridTemplateColumn Width="1*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -115,9 +116,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Polje za vaš komentar." HorizontalAlignment="Left" Margin="70,286,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization feedbackField}" HorizontalAlignment="Left" Margin="70,286,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="70,315,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Top" Width="345" Height="82"/>
-        <Button Content="Sačuvaj" Style="{StaticResource menuButton}" Command="{Binding AddReviewCommand}" HorizontalAlignment="Left" Margin="70,402,0,0" VerticalAlignment="Top" Height="25" Width="63"/>
+        <Button Content="{util:Localization save}" Style="{StaticResource menuButton}" Command="{Binding AddReviewCommand}" HorizontalAlignment="Left" Margin="70,402,0,0" VerticalAlignment="Top" Height="25" Width="63"/>
 
     </Grid>
 </Page>

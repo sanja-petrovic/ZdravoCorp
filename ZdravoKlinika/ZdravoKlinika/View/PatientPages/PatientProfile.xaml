@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.PatientPages.ViewModel" d:DataContext="{d:DesignInstance Type=local:PatientProfileViewModel}"
+      xmlns:util="clr-namespace:ZdravoKlinika.Util"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PatientProfile">
@@ -23,7 +24,7 @@
     <ScrollViewer>
         <Grid Style="{StaticResource regularBackground}">
             <Label x:Name="title" Content="{Binding Path=FullName}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.434,-0.058"/>
-            <Label Content="Osnovni Podaci" HorizontalAlignment="Left" Margin="70,70,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization basicData}" HorizontalAlignment="Left" Margin="70,70,0,0" VerticalAlignment="Top"/>
 
             <Image Source="{Binding ProfilePictureLocation}"  HorizontalAlignment="Left" Height="129" Margin="70,101,0,0" VerticalAlignment="Top" Width="118"/>
             <ItemsControl Margin="577,101,50,-28" BorderBrush="Black" BorderThickness="1" ItemsSource="{Binding Path = NotificationTexts}" Background="{StaticResource backgroundWhite}">
@@ -45,9 +46,9 @@
             </ItemsControl>
             <ItemsControl HorizontalAlignment="Left" Height="127" Margin="70,441,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding Diagnoses }" Background="{StaticResource backgroundWhite}"/>
             <ItemsControl HorizontalAlignment="Left" Height="127" Margin="318,441,0,0" VerticalAlignment="Top" Width="215" ItemsSource="{Binding Alergies}" Background="{StaticResource backgroundWhite}"/>
-            <Label Content="Alergeni" HorizontalAlignment="Left" Margin="318,400,0,0" VerticalAlignment="Top"/>
-            <Label Content="Istorija bolesti" HorizontalAlignment="Left" Margin="70,400,0,0" VerticalAlignment="Top"/>
-            <Label Content="Obavestenja" HorizontalAlignment="Left" Margin="577,70,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization alergies}" HorizontalAlignment="Left" Margin="318,400,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization history}" HorizontalAlignment="Left" Margin="70,400,0,0" VerticalAlignment="Top"/>
+            <Label Content="{util:Localization notifications}" HorizontalAlignment="Left" Margin="577,70,0,0" VerticalAlignment="Top"/>
 
             <ScrollViewer HorizontalAlignment="Left" Height="294" Margin="190,101,0,0" VerticalAlignment="Top" Width="343">
                 <Grid>
@@ -67,16 +68,16 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Column="0" Grid.Row="0" Content="Ime" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <Label Grid.Column="0" Grid.Row="1" Content="Prezime" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <Label Grid.Column="0" Grid.Row="2" Content="Datum rodjenja" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Label Grid.Column="0" Grid.Row="3" Content="Pol" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Label Grid.Column="0" Grid.Row="4" Content="Krvna grupa" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Label Grid.Column="0" Grid.Row="5" Content="Zanimanje" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Label Grid.Column="0" Grid.Row="6" Content="Kontakt za hitne slucajve" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <Label Grid.Column="0" Grid.Row="7" Content="Broj za hitne slucajeve" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <Label Grid.Column="0" Grid.Row="8" Content="E-mail" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <Label Grid.Column="0" Grid.Row="9" Content="Broj telefona" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="0" Content="{util:Localization name}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <Label Grid.Column="0" Grid.Row="1" Content="{util:Localization lastname}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <Label Grid.Column="0" Grid.Row="2" Content="{util:Localization dateOfBirth}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="3" Content="{util:Localization gender}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="4" Content="{util:Localization bloodType}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="5" Content="{util:Localization ocupation}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Label Grid.Column="0" Grid.Row="6" Content="{util:Localization emContact}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <Label Grid.Column="0" Grid.Row="7" Content="{util:Localization history}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <Label Grid.Column="0" Grid.Row="8" Content="{util:Localization email}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <Label Grid.Column="0" Grid.Row="9" Content="{util:Localization phoneNumber}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
 
                     <Label Grid.Column="1" Grid.Row="0" x:Name="labelName" Content="{Binding Name}" VerticalAlignment="Center"/>

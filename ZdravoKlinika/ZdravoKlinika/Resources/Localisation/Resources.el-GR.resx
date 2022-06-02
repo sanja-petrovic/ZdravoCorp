@@ -117,10 +117,187 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="word1" xml:space="preserve">
-    <value>gugmer</value>
+  <data name="add" xml:space="preserve">
+    <value>Add</value>
   </data>
-  <data name="word2" xml:space="preserve">
-    <value>gugmer2</value>
+  <data name="alergies" xml:space="preserve">
+    <value>Alergies</value>
+  </data>
+  <data name="amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="anamnesis" xml:space="preserve">
+    <value>Anamnesis</value>
+  </data>
+  <data name="appFeedbackQ1" xml:space="preserve">
+    <value>Staff is pleasant, professional and helpfull.</value>
+  </data>
+  <data name="appFeedbackQ2" xml:space="preserve">
+    <value>Exam rooms are clean and adequately equiped.</value>
+  </data>
+  <data name="appFeedbackQ3" xml:space="preserve">
+    <value>Waiting rooms are pleasant and spacious.</value>
+  </data>
+  <data name="appFeedbackQ4" xml:space="preserve">
+    <value>Music in the waiting rooms is pleasant and calming.</value>
+  </data>
+  <data name="appFeedbackQ5" xml:space="preserve">
+    <value>Using Zdrvo corp. services was pleasant and positive.</value>
+  </data>
+  <data name="appFeedbackQ6" xml:space="preserve">
+    <value>In the future I will consider using Zdravo Corp. services.</value>
+  </data>
+  <data name="appFeedbackQ7" xml:space="preserve">
+    <value>Usability of Zdravo Corp. application is adequate.</value>
+  </data>
+  <data name="appointmentQ1" xml:space="preserve">
+    <value>Doctor was kind.</value>
+  </data>
+  <data name="appointmentQ2" xml:space="preserve">
+    <value>Doctor was profesional.</value>
+  </data>
+  <data name="appointmentQ3" xml:space="preserve">
+    <value>Doctor helped me with my contition.</value>
+  </data>
+  <data name="appointmentQ4" xml:space="preserve">
+    <value>Examination room was adequately equiped.</value>
+  </data>
+  <data name="appointmentQ5" xml:space="preserve">
+    <value>Exam room and equipment hygiene was adequate.</value>
+  </data>
+  <data name="appointmentQ6" xml:space="preserve">
+    <value>Exam was done with minimal waiting.</value>
+  </data>
+  <data name="appointmentQ7" xml:space="preserve">
+    <value>I'm satisfied with doctors service.</value>
+  </data>
+  <data name="appointmentQ8" xml:space="preserve">
+    <value>I'm satisfied with hospitals service.</value>
+  </data>
+  <data name="appointments" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="appointmentType" xml:space="preserve">
+    <value>Appointment type:</value>
+  </data>
+  <data name="basicData" xml:space="preserve">
+    <value>Patient data</value>
+  </data>
+  <data name="bloodType" xml:space="preserve">
+    <value>Blood type:</value>
+  </data>
+  <data name="comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="dateAndTime" xml:space="preserve">
+    <value>Date and time:</value>
+  </data>
+  <data name="dateOfBirth" xml:space="preserve">
+    <value>Date of birth:</value>
+  </data>
+  <data name="diagnosis" xml:space="preserve">
+    <value>Diagnosis:</value>
+  </data>
+  <data name="docNotes" xml:space="preserve">
+    <value>Doctor's notes</value>
+  </data>
+  <data name="doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="editAppointment" xml:space="preserve">
+    <value>Edit appointment</value>
+  </data>
+  <data name="editNotifTime" xml:space="preserve">
+    <value>Edit time</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>E-mail:</value>
+  </data>
+  <data name="emContact" xml:space="preserve">
+    <value>Emergancy contanct:</value>
+  </data>
+  <data name="emNumber" xml:space="preserve">
+    <value>Emergancy number:</value>
+  </data>
+  <data name="feedback" xml:space="preserve">
+    <value>Your feedback</value>
+  </data>
+  <data name="feedbackField" xml:space="preserve">
+    <value>Feedback field</value>
+  </data>
+  <data name="feedbackTitle" xml:space="preserve">
+    <value>Express your feedback below.</value>
+  </data>
+  <data name="gender" xml:space="preserve">
+    <value>Sex:</value>
+  </data>
+  <data name="history" xml:space="preserve">
+    <value>Medical history:</value>
+  </data>
+  <data name="lastname" xml:space="preserve">
+    <value>Lastname:</value>
+  </data>
+  <data name="logout" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="makeAppointment" xml:space="preserve">
+    <value>Make appointment</value>
+  </data>
+  <data name="medication" xml:space="preserve">
+    <value>Medication</value>
+  </data>
+  <data name="medicationName" xml:space="preserve">
+    <value>Medication name:</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="note" xml:space="preserve">
+    <value>Note:</value>
+  </data>
+  <data name="notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="ocupation" xml:space="preserve">
+    <value>Ocupation:</value>
+  </data>
+  <data name="phoneNumber" xml:space="preserve">
+    <value>Phone number:</value>
+  </data>
+  <data name="prio" xml:space="preserve">
+    <value>Priority:</value>
+  </data>
+  <data name="profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="question" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="room" xml:space="preserve">
+    <value>Room:</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="time" xml:space="preserve">
+    <value>Start time:</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Zdravo Corp.</value>
+  </data>
+  <data name="yourNotes" xml:space="preserve">
+    <value>Your notes:</value>
   </data>
 </root>

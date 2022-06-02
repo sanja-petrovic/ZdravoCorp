@@ -35,6 +35,7 @@ namespace ZdravoKlinika.View.PatientPages
             viewModel = new PatientViewModelBase(id);
             this.DataContext = viewModel;
             mainFrame.Navigate(viewModel.ProfilePage);
+            //lightBulb.Source = viewModel.LightbulbWhite;
             theme = 0;
         }
 
@@ -81,10 +82,14 @@ namespace ZdravoKlinika.View.PatientPages
             {
                 case 0:
                     this.Resources["menuBackgroundActive"] = this.FindResource("menuBackgroundDark");
+                    this.Resources["sliderButtonActive"] = this.FindResource("sliderButtonOff");
+                    lightBulb.Source = viewModel.LightbulbBlack;
                     theme = 1;
                     break;
                 case 1:
                     this.Resources["menuBackgroundActive"] = this.FindResource("menuBackgroundLight");
+                    this.Resources["sliderButtonActive"] = this.FindResource("sliderButtonOn");
+                    lightBulb.Source = viewModel.LightbulbWhite;
                     theme = 0;
                     break;
             }

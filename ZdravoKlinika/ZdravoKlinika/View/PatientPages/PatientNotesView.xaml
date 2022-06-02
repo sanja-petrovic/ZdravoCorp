@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.PatientPages"
-      xmlns:Util="clr-namespace:ZdravoKlinika.Util" x:Class="ZdravoKlinika.View.PatientPages.PatientNotesView"
+      xmlns:util="clr-namespace:ZdravoKlinika.Util" x:Class="ZdravoKlinika.View.PatientPages.PatientNotesView"
       xmlns:viewModel="clr-namespace:ZdravoKlinika.View.PatientPages.ViewModel" d:DataContext="{d:DesignInstance Type=viewModel:PatientNotesViewModel}"
       xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"  
       mc:Ignorable="d" 
@@ -12,19 +12,19 @@
       Title="PatientNotesView">
 
     <Grid>
-        <Label x:Name="title" Content="Beleske" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" Height="32"/>
+        <Label x:Name="title" Content="{util:Localization notes}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" Height="32"/>
         <DataGrid ItemsSource="{Binding Path=PatientNotes}" SelectedItem="{Binding SelectedNote}" AutoGenerateColumns="False" CanUserAddRows="False" Margin="70,47,80,139">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Datum i vreme" Binding="{Binding Trigger}" Width="1*"/>
-                <DataGridTextColumn Header="Beleska" Binding="{Binding NotificationText}" Width="5*"/>
+                <DataGridTextColumn Header="{util:Localization dateAndTime}" Binding="{Binding Trigger}" Width="1*"/>
+                <DataGridTextColumn Header="{util:Localization note}" Binding="{Binding NotificationText}" Width="5*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Datum i vreme" HorizontalAlignment="Left" Margin="70,340,0,0" VerticalAlignment="Top"/>
-        <Label Content="Beleska" HorizontalAlignment="Left" Margin="70,369,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization dateAndTime}" HorizontalAlignment="Left" Margin="70,340,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization note}" HorizontalAlignment="Left" Margin="70,369,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="163,375,0,0" TextWrapping="Wrap" Text="{Binding SelectedNote.NotificationText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="232" Height="45"/>
-        <Button Content="Dodaj" Command="{Binding AddNotesCommand}" HorizontalAlignment="Left" Margin="351,425,0,0" VerticalAlignment="Top"/>
+        <Button Content="{util:Localization add}" Command="{Binding AddNotesCommand}" HorizontalAlignment="Left" Margin="351,425,0,0" VerticalAlignment="Top"/>
         <wpfTool:DateTimePicker x:Name="dateTimePicker" Margin="163,340,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232" Height="30" Value="{Binding SelectedNote.Trigger, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></wpfTool:DateTimePicker>
-        <Button Content="Izmeni" Command="{Binding EditNotesCommand}" HorizontalAlignment="Left" Margin="302,425,0,0" VerticalAlignment="Top"/>
-        <Button Content="Ukloni" Command="{Binding RemoveNotesCommand}" HorizontalAlignment="Left" Margin="253,425,0,0" VerticalAlignment="Top"/>
+        <Button Content="{util:Localization edit}" Command="{Binding EditNotesCommand}" HorizontalAlignment="Left" Margin="302,425,0,0" VerticalAlignment="Top"/>
+        <Button Content="{util:Localization remove}" Command="{Binding RemoveNotesCommand}" HorizontalAlignment="Left" Margin="253,425,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

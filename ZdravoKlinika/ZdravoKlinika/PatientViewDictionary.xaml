@@ -3,7 +3,7 @@
 
     <Style TargetType="{x:Type Button}" x:Key="menuButtonLight">
         <Setter Property="Background" Value="White" />
-        <Setter Property="Width" Value="80" />
+        <Setter Property="Width" Value="95" />
         <Setter Property="Margin" Value="10" />
         <Setter Property="Template">
             <Setter.Value>
@@ -11,7 +11,7 @@
                     <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
                         <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="White" />
                         <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <ContentPresenter x:Name="myContentPresenter" TextBlock.Foreground="#6c63ff" Width="71" Height="25" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                            <ContentPresenter x:Name="myContentPresenter" TextBlock.Foreground="#6c63ff" Width="85" Height="25" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
                                 <ContentPresenter.Content>
                                     <Label x:Name="label" Content="{TemplateBinding Content}" HorizontalAlignment="Center"></Label>
                                 </ContentPresenter.Content>
@@ -24,6 +24,81 @@
                             <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="#FFAD61FF"></Setter>
                             <Setter Property="Label.Foreground" TargetName="label" Value="White" ></Setter>
                         </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="sliderButtonActive">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Width" Value="60" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="White" />
+                        <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter x:Name="myContentPresenter" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                                <ContentPresenter.Content>
+                                    <Image Source="/Resources/Images/sliderOn.png"></Image>
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
+                        </DockPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type Button}" x:Key="sliderButtonOn">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Width" Value="60" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="White" />
+                        <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter x:Name="myContentPresenter" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                                <ContentPresenter.Content>
+                                    <Image Source="/Resources/Images/sliderOn.png"></Image>
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
+                        </DockPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="sliderButtonOff">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Width" Value="60" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="White" />
+                        <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter x:Name="myContentPresenter" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                                <ContentPresenter.Content>
+                                    <Image Source="/Resources/Images/sliderOff.png"></Image>
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
+                        </DockPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                       <Trigger Property="IsMouseOver" Value="True"/>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

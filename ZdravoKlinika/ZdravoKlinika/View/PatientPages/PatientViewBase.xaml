@@ -15,34 +15,34 @@
         <Grid.Style>
             <DynamicResource ResourceKey="regularBackground"></DynamicResource>
         </Grid.Style>
-        <Grid x:Name="menuBarGrid" Margin="0,0,0,491" Style="{DynamicResource menuBackgroundActive}">
+        <Grid x:Name="menuBarGrid" Margin="0,0,0,483" Style="{DynamicResource menuBackgroundActive}">
             <Image Margin="39,8,740,17" Source="{Binding Path=LogoImageSource}"/>
-            <Button Content="{util:Localization word1}" HorizontalAlignment="Left" Margin="244,67,0,0" VerticalAlignment="Top" Width="85" Height="25" Click="Button_Click" Style="{StaticResource menuButtonLight}"/>
-            <Button Content="Pregledi" HorizontalAlignment="Left" Margin="334,67,0,0" VerticalAlignment="Top" Width="85" Height="25" Click="Button_Click_1" Style="{StaticResource menuButtonLight}"/>
-            <Button Content="Terapija" HorizontalAlignment="Left" Margin="424,67,0,0" VerticalAlignment="Top" Width="85" Height="25" Style="{StaticResource menuButtonLight}" Click="Button_Terapija_Click"/>
-            <Button Content="Vaši utisci" HorizontalAlignment="Left" Margin="514,67,0,0" VerticalAlignment="Top" Width="85" Height="25" Click="Button_Click_2" Style="{StaticResource menuButtonLight}"/>
-            <Button Content="Beleske" HorizontalAlignment="Left" Margin="604,67,0,0" VerticalAlignment="Top" Width="85" Height="25" Style="{StaticResource menuButtonLight}" Click="Button_Beleske_Click" />
-            <Button Content="Odjava" HorizontalAlignment="Left" Margin="694,67,0,0" VerticalAlignment="Top" Width="85" Height="25" Style="{StaticResource menuButtonLight}" />
-            <ComboBox Name="languageComboBox" HorizontalAlignment="Left" Margin="838,67,0,0" VerticalAlignment="Top" Width="80" SelectedIndex="0" Height="25" SelectionChanged="ComboBox_SelectionChanged">
-                <ComboBoxItem>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding Path=UkFlagImageSource}" />
-                        <TextBlock>EN</TextBlock>
-                    </StackPanel>
-                </ComboBoxItem>
+            <Button Content="{util:Localization profile}" HorizontalAlignment="Left" Margin="226,67,0,0" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource menuButtonLight}"/>
+            <Button Content="{util:Localization appointments}" HorizontalAlignment="Left" Margin="326,67,0,0" VerticalAlignment="Top" Click="Button_Click_1" Style="{StaticResource menuButtonLight}"/>
+            <Button Content="{util:Localization medication}" HorizontalAlignment="Left" Margin="426,67,0,0" VerticalAlignment="Top"  Style="{StaticResource menuButtonLight}" Click="Button_Terapija_Click"/>
+            <Button Content="{util:Localization feedback}" HorizontalAlignment="Left" Margin="526,67,0,0" VerticalAlignment="Top" Click="Button_Click_2" Style="{StaticResource menuButtonLight}"/>
+            <Button Content="{util:Localization notes}" HorizontalAlignment="Left" Margin="626,67,0,0" VerticalAlignment="Top" Style="{StaticResource menuButtonLight}" Click="Button_Beleske_Click" />
+            <Button Content="{util:Localization logout}" HorizontalAlignment="Left" Margin="726,68,0,0" VerticalAlignment="Top" Style="{StaticResource menuButtonLight}" />
+            <ComboBox Name="languageComboBox" HorizontalAlignment="Left" Margin="831,68,0,0" VerticalAlignment="Top" Width="102" SelectedIndex="0" Height="25" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBoxItem>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding Path=SrbFlagImageSource}" />
                         <TextBlock>SRB</TextBlock>
                     </StackPanel>
                 </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Path=UkFlagImageSource}" />
+                        <TextBlock>EN</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
             </ComboBox>
-            <Button Content="Theme" HorizontalAlignment="Left" Margin="878,44,0,0" VerticalAlignment="Top" Click="Button_Theme_Click"/>
-
+            <Button HorizontalAlignment="Left" Name="themeButton" Margin="867,32,0,0" VerticalAlignment="Top" Style="{DynamicResource sliderButtonActive}" Click="Button_Theme_Click" Width="66"/>
+            <Image Name="lightBulb" Margin="823,19,78,57" Source="/Resources/Images/lightbulbWhite.png" Stretch="Uniform" RenderTransformOrigin="0.105,-0.109"></Image>
         </Grid>
 
 
-        <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Margin="0,143,0,10"/>
+        <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Margin="0,151,0,10"/>
 
 
     </Grid>
