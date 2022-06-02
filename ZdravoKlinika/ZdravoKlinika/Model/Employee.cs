@@ -9,4 +9,9 @@ public class Employee : RegisteredUser
     public int YearsOfService { get => yearsOfService; set => yearsOfService = value; }
     public string EducationLevel { get => educationLevel; set => educationLevel = value; }
     public bool Working { get => working; set => working = value; }
+
+    public override string ToString()
+    {
+        return Name + " " + Lastname;
+    }
 }

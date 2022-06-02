@@ -20,8 +20,10 @@ namespace ZdravoKlinika.View.Secretary
     /// </summary>
     public partial class SecretaryCreateMeeting : Page
     {
+        
         public SecretaryCreateMeeting()
         {
+            DataContext = new SecretaryViewModel.MeetingViewModel();
             InitializeComponent();
         }
     }
