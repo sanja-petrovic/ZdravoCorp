@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ZdravoKlinika.Controller;
@@ -13,6 +14,8 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
     {
         private ObservableCollection<RegisteredUser> employees;
         private RegisteredUserController registeredUserController;
+        private MeetingController meetingController;
+        private EmployeeNotificationController notificationController;
         private ObservableCollection<RegisteredUserPrint> meetingData;
         private List<RegisteredUser> required;
         private List<RegisteredUser> optional;
@@ -22,6 +25,8 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         private ICommand finishCommand;
         private int selectedEmployeeIndex;
         private int selectedMeetingEmployeeIndex;
+        private DateTime selectedMeetingDate;
+        private String selectedMeetingTime;
 
         public ObservableCollection<RegisteredUser> Employees { get; set; }
         public ICommand AddCommand { 
@@ -43,7 +48,7 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         {
             get
             {
-                return addCommand ?? (addCommand = new MyICommand(() => FinishMeeting(), () => FinishCanExecute));
+                return finishCommand ?? (finishCommand = new MyICommand(() => FinishMeeting(), () => FinishCanExecute));
             }
         }
 
@@ -64,11 +69,7 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         {
             get
             {
-                if (MeetingData.Count >= 2)
-                { 
-                    return true;
-                }
-                return false;
+                return true;
             }
         }
 
@@ -76,6 +77,10 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         public bool RequiredRadio { get => requiredRadio; set => requiredRadio = value; }
         public int SelectedEmployeeIndex { get => selectedEmployeeIndex; set => SetProperty(ref selectedEmployeeIndex, value); }
         public int SelectedMeetingEmployeeIndex { get => selectedMeetingEmployeeIndex; set => SetProperty(ref selectedMeetingEmployeeIndex, value); }
+        public DateTime SelectedMeetingDate { get => selectedMeetingDate; set => SetProperty(ref selectedMeetingDate, value); }
+        public string SelectedMeetingTime { get => selectedMeetingTime; set => SetProperty(ref selectedMeetingTime, value); }
+        public MeetingController MeetingController { get => meetingController; set => meetingController = value; }
+        public EmployeeNotificationController NotificationController { get => notificationController; set => notificationController = value; }
 
         public class RegisteredUserPrint
         {
@@ -95,12 +100,16 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         public MeetingViewModel() 
         {
             registeredUserController = new RegisteredUserController();
+            MeetingController = new MeetingController();
+            notificationController = new EmployeeNotificationController();
+
             Employees = new ObservableCollection<RegisteredUser>(registeredUserController.GetAllEmployees());
 
             MeetingData = new ObservableCollection<RegisteredUserPrint>();
             RequiredRadio = true;
             SelectedEmployeeIndex = -1;
             selectedMeetingEmployeeIndex = -1;
+            selectedMeetingDate = DateTime.Now.Date;
 
             required = new List<RegisteredUser>();
             optional = new List<RegisteredUser>();
@@ -155,7 +164,37 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
 
         private void FinishMeeting()
         {
-            throw new NotImplementedException();
+            if (MeetingData.Count < 2)
+                return;
+            if (selectedMeetingDate.Date < DateTime.Now.Date)
+                return;
+            Regex regex = new Regex("[0-9]{1,2}[:][0-9]{2}");
+            if (!regex.IsMatch(selectedMeetingTime))
+              return;
+            int hours = Int32.Parse(selectedMeetingTime.Split(":")[0]);
+            int minutes = Int32.Parse(selectedMeetingTime.Split(":")[1]);
+            if (hours > 24 || minutes > 60)
+                return;
+            DateTime date = selectedMeetingDate.Date;
+            date = date.AddHours(hours);
+            date = date.AddMinutes(minutes);
+            if (date < DateTime.Now)
+                return;
+
+            meetingController.CreateMeeting(date, required, optional);
+
+            SelectedMeetingTime = "";
+            SelectedMeetingDate = DateTime.Now.Date;
+
+            foreach (RegisteredUserPrint usr in MeetingData)
+            {
+                Employees.Add(usr.User);
+            }
+
+            MeetingData.Clear();
+            required.Clear();
+            optional.Clear();
+            
         }
     }
 }
