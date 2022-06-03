@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class PatientMedicationNotificationRepository
+    public class PatientMedicationNotificationRepository : Interfaces.IPatientMedicationNotificationRepository
     {
         private PatientMedicationNotificationDataHandler patientMedicationNotificationDataHandler;
         private PrescriptionRepository prescriptionRepository;

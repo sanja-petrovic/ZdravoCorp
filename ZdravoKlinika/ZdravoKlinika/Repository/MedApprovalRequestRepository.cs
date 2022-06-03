@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class MedApprovalRequestRepository
+    public class MedApprovalRequestRepository : Interfaces.IMedApprovalRequestRepository
     {
 
         private MedApprovalRequestDataHandler dataHandler;
@@ -178,6 +178,15 @@ namespace ZdravoKlinika.Repository
             return index;
         }
 
+        public void Remove(MedApprovalRequest item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

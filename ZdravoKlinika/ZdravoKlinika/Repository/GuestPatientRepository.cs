@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class GuestPatientRepository
+    public class GuestPatientRepository : Interfaces.IGuestPatientRepository
     {
         private GuestPatientDataHandler guestPatientDataHandler;
         private List<GuestPatient> guests;
@@ -82,6 +82,11 @@ namespace ZdravoKlinika.Repository
                 }
             }
             return guestToReturn;
+        }
+
+        public void Update(GuestPatient item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

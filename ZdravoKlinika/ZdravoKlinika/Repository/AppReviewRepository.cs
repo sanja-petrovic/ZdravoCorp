@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    internal class AppReviewRepository
+    internal class AppReviewRepository : Interfaces.IAppReviewRepository
     {
         private AppReviewDataHandler appReviewDataHandler;
         private RegisteredPatientRepository registeredPatientRepository;
@@ -103,6 +103,11 @@ namespace ZdravoKlinika.Repository
         {
             if (appReviews != null)
                 appReviews.Clear();
+        }
+
+        public void Update(AppReview item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class PatientNotesRepository
+    public class PatientNotesRepository : Interfaces.IPatientNotesRepository
     {
         private PatientNotesDataHandler dataHandler;
         private List<PatientNotes> notes;
