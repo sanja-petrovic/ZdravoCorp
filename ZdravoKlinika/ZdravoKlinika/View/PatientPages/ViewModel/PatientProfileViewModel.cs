@@ -32,7 +32,10 @@ namespace ZdravoKlinika.PatientPages.ViewModel
         private RegisteredPatientController controller;
         private MedicalRecordController medicalRecordController;
         private Controller.PatientMedicationNotificationController notifController;
+        private Controller.PatientNotesController notesController;
         private List<PatientMedicationNotification> notifs;
+        private RegisteredPatient patient;
+        private List<PatientNotes> notes;
 
         private ObservableCollection<String> notificationTexts;
         public PatientProfileViewModel(String patientId)
@@ -40,18 +43,19 @@ namespace ZdravoKlinika.PatientPages.ViewModel
             controller = new RegisteredPatientController();
             medicalRecordController = new MedicalRecordController();
             notifController = new Controller.PatientMedicationNotificationController();
+            notesController = new Controller.PatientNotesController();
             notificationTexts = new ObservableCollection<string>();
-            RegisteredPatient patient = controller.GetById(patientId);
-            if(patient != null)
+            Patient = controller.GetById(patientId);
+            if(Patient != null)
             {
-                this.Name = patient.Name;
-                this.LastName = patient.Lastname;
-                this.DateOfBirth = patient.DateOfBirth.ToString();
-                this.Gender = patient.Gender.ToString();
-                this.PhoneNumber = patient.Phone;
-                this.Email = patient.Email;
-                this.FullName = patient.Name + " " + patient.Lastname;
-                if (patient.ProfilePicture != null)
+                this.Name = Patient.Name;
+                this.LastName = Patient.Lastname;
+                this.DateOfBirth = Patient.DateOfBirth.ToString();
+                this.Gender = Patient.Gender.ToString();
+                this.PhoneNumber = Patient.Phone;
+                this.Email = Patient.Email;
+                this.FullName = Patient.Name + " " + Patient.Lastname;
+                if (Patient.ProfilePicture != null)
                 {
                     this.ProfilePictureLocation = "/Resources/Images/burger-bar.png";
                 }
@@ -59,10 +63,10 @@ namespace ZdravoKlinika.PatientPages.ViewModel
                 {
                     this.ProfilePictureLocation = null;
                 }
-                this.BloodType = patient.BloodType.ToString();
-                this.Ocupation = patient.Occupation.ToString();
-                this.EmergacyContact = patient.EmergencyContactName;
-                this.EmergencyNumber = patient.EmergencyContactPhone;
+                this.BloodType = Patient.BloodType.ToString();
+                this.Ocupation = Patient.Occupation.ToString();
+                this.EmergacyContact = Patient.EmergencyContactName;
+                this.EmergencyNumber = Patient.EmergencyContactPhone;
                 this.alergies = medicalRecordController.GetById(patientId).Allergies;
                 this.diagnoses = medicalRecordController.GetById(patientId).Diagnoses;
 
@@ -100,6 +104,9 @@ namespace ZdravoKlinika.PatientPages.ViewModel
         public string FullName { get => fullName; set => fullName = value; }
         public List<string> Alergies { get => alergies; set => alergies = value; }
         public List<string> Diagnoses { get => diagnoses; set => diagnoses = value; }
+        public PatientNotesController NotesController { get => notesController; set => notesController = value; }
+        public List<PatientNotes> Notes { get => notes; set => notes = value; }
+        public RegisteredPatient Patient { get => patient; set => patient = value; }
         internal PatientMedicationNotificationController NotifController { get => notifController; set => notifController = value; }
 
         public event PropertyChangedEventHandler? PropertyChanged;

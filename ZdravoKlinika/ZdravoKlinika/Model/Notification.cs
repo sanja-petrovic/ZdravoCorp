@@ -14,9 +14,10 @@ namespace ZdravoKlinika.Model
         private RegisteredUser reciver;
         private RegisteredUser sender;
 
+
         public int NotificationId { get => notificationId; set => notificationId = value; }
         public string NotificationText { get => notificationText; set => notificationText = value; }
         public RegisteredUser Reciver { get => reciver; set => reciver = value; }
         public RegisteredUser Sender { get => sender; set => sender = value; }
-    }
+    } 
 }
