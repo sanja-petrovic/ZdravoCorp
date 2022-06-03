@@ -191,5 +191,17 @@ namespace ZdravoKlinika.View
             Manager.Views.ManagerMainWindow mmw = new Manager.Views.ManagerMainWindow();
             mmw.Show();
         }
+
+        private void SystemStatisticsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SystemStatisticsView ssv = new SystemStatisticsView();
+            ssv.Show();
+        }
+
+        private void DoctorStatisticsButton_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorStatisticsView dsv = new DoctorStatisticsView();
+            dsv.Show();
+        }
     }
 }
