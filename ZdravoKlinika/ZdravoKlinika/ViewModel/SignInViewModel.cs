@@ -42,7 +42,8 @@ namespace ZdravoKlinika.ViewModel
             {
                 User = registeredUserController.GetRememberedUser();
                 LogIn();
-            } else
+            }
+            else
             {
                 User = new RegisteredUser();
             }
@@ -61,7 +62,6 @@ namespace ZdravoKlinika.ViewModel
 
         public void LogIn()
         {
-            if(!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password) && IsLoginSuccessful())
             {
                 App.User = User;
                 switch (User.UserType)
@@ -85,6 +85,7 @@ namespace ZdravoKlinika.ViewModel
                 {
                     RememberUser();
                 }
+
             }
         }
 

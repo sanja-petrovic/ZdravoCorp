@@ -33,7 +33,7 @@ namespace ZdravoKlinika.View.DoctorPages
             ApptTabPanel.Parent1 = this;
             ApptTabPanel.Doctor = doctor;
             ApptTabPanel.Selected = DateTime.Today;
-            TimeOffView.Load(doctor);
+            TimeOffView.Load();
         }
         private DelegateCommand showCreateDialog;
         private DelegateCommand showTimeOffDialog;
@@ -69,12 +69,13 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             TimeOffRequestView timeOffRequestView = new TimeOffRequestView();
             timeOffRequestView.ShowDialog();
-            TimeOffView.Load(doctor);
+            TimeOffView.Load();
         }
 
         private void ExecuteShowTimeOffDialog()
         {
             dialogService.ShowTimeOffDialog();
+            TimeOffView.Load();
         }
 
         private void ExecuteShowCreateDialog()

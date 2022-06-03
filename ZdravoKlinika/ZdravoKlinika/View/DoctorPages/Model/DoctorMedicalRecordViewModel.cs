@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.View.DialogHelper;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -17,9 +18,12 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private PrescriptionController prescriptionController;
         private MedicalRecordController medicalRecordController;
         public ObservableCollection<PastViewModel> PastAppointments { get; set; }
-        public ObservableCollection<UpcomingViewModel> UpcomingAppointments { get; set; }
+        private ObservableCollection<UpcomingViewModel> upcomingAppointments;
+        public ObservableCollection<UpcomingViewModel> UpcomingAppointments { get => upcomingAppointments; set => SetProperty(ref upcomingAppointments, value); }
         public ObservableCollection<PrescriptionViewModel> Prescriptions { get; set; }
-        public ObservableCollection<string> Diagnoses { get; set; }
+
+        private ObservableCollection<string> diagnoses;
+        public ObservableCollection<string> Diagnoses { get => diagnoses; set => SetProperty(ref diagnoses, value); }
         public ObservableCollection<Medication> Medications { get; set; }
         string name;
         string id;
@@ -36,6 +40,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public MyICommand DownloadPrescription { get; set; }
         public MyICommand SelectFirstPrescription { get; set; }
+        public MyICommand AddDiagnosis { get; set; }
+        DialogHelper.DialogService dialogService;
 
 
         public string Name { get => name; set => SetProperty(ref name, value); }
@@ -51,6 +57,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public RegisteredPatientController PatientController { get => patientController; set => patientController = value; }
         public RegisteredPatient Patient { get => patient; set => SetProperty(ref patient, value); }
         public PrescriptionViewModel SelectedPrescription { get => selectedPrescription; set => SetProperty(ref selectedPrescription, value); }
+        public DialogService DialogService { get => dialogService; set => dialogService = value; }
 
         public DoctorMedicalRecordViewModel()
         {
@@ -63,6 +70,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Prescriptions = new ObservableCollection<PrescriptionViewModel>();
             DownloadPrescription = new MyICommand(ExecuteDownload);
             SelectFirstPrescription = new MyICommand(ExecuteSelectFirst);
+            DialogService = new DialogService();
+            AddDiagnosis = new MyICommand(ExecuteAddDiagnosis);
         }
 
         public void ExecuteDownload()
@@ -78,6 +87,12 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void ExecuteSelectFirst()
         {
             SelectedPrescription = Prescriptions[0];
+        }
+
+        public void ExecuteAddDiagnosis()
+        {
+            DialogService.ShowAddDiagnosis(Id);
+            DiagnosisAdded();
         }
 
         public void init(string patientId)
@@ -105,6 +120,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 UpcomingViewModel upcoming = new UpcomingViewModel();
                 upcoming.init(a);
+                upcoming.Parent = this;
                 UpcomingAppointments.Add(upcoming);
             }
 
@@ -119,6 +135,24 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         }
 
+        public void RemoveFromUpcoming(int appointmentId)
+        {
+            int index = -1;
+            for(int i = 0; i < UpcomingAppointments.Count; i++)
+            {
+                if (UpcomingAppointments[i].AppointmentId == appointmentId)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if(index != -1)
+            {
+                UpcomingAppointments.RemoveAt(index);
+            }
+        }
+
         public void MedicationAdded()
         {
             /*foreach (Medication m in Patient.MedicalRecord.CurrentMedication)
@@ -126,6 +160,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 newMedList.Add(m.ToString());
             }*/
 
+        }
+
+        public void DiagnosisAdded()
+        {
+            Diagnoses = new ObservableCollection<string> (this.medicalRecordController.GetDiagnosesAndAllergies(Id));
         }
 
         public void Edited()

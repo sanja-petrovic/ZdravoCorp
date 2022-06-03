@@ -22,8 +22,7 @@
     "Allergies": [
       ""
     ],
-    "CurrentMedication": [
-    ],
+    "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "1510963123321"
@@ -48,8 +47,7 @@
       "Ma\u010Dja dlaka",
       "penicilin"
     ],
-    "CurrentMedication": [
-    ],
+    "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "0105965123321"
@@ -58,10 +56,8 @@
     "Diagnoses": [
       " "
     ],
-    "Allergies": [
-    ],
-    "CurrentMedication": [
-    ],
+    "Allergies": [],
+    "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "1207965123321"
@@ -70,22 +66,18 @@
     "Diagnoses": [
       " "
     ],
-    "Allergies": [
-    ],
-    "CurrentMedication": [
-    ],
+    "Allergies": [],
+    "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "0304965123321"
   },
   {
     "Diagnoses": [
-      " "
+      "Diagnosis1"
     ],
-    "Allergies": [
-    ],
-    "CurrentMedication": [
-    ],
+    "Allergies": [],
+    "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "2901967123321"
@@ -94,10 +86,8 @@
     "Diagnoses": [
       " "
     ],
-    "Allergies": [
-    ],
-    "CurrentMedication": [
-    ],
+    "Allergies": [],
+    "CurrentMedication": [],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "3007967123321"

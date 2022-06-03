@@ -31,8 +31,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private DateTime date;
         private DateBlock _time;
 
-        private DialogHelper.DialogService dialogService;
-
         public ObservableCollection<RegisteredPatient> Patients { get; set; }
         public ObservableCollection<Doctor> Doctors { get; set; }
         public ObservableCollection<string> Types { get; set; }
@@ -68,7 +66,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             CreateAppointment = new MyICommand(ExecuteCreate);
             _Doctor = RegisteredUserController.UserToDoctor(App.User);
             DoctorId = _Doctor.PersonalId;
-            dialogService = new DialogHelper.DialogService();
             patientController = new RegisteredPatientController();
             Patients = new ObservableCollection<RegisteredPatient>(patientController.GetAll());
             doctorController = new DoctorController();
@@ -88,8 +85,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             DateTime datetime = new DateTime(Date.Year, Date.Month, Date.Day, Time1.Start.Hour, Time1.Start.Minute, 0);
             this.appointmentController.CreateAppointment(DoctorId, _Patient.GetPatientId(), datetime, Emergency, Type.Equals("Pregled") ? AppointmentType.Regular : AppointmentType.Surgery, Room.RoomId, Duration);
-            DialogHelper.DialogService dialogService = new DialogHelper.DialogService();
-            dialogService.CloseDialog(this);
+            DialogHelper.DialogService.CloseDialog(this);
 
         }
         public bool CanExecuteCreate()

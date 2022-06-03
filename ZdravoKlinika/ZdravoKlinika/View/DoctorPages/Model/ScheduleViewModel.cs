@@ -71,7 +71,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                     }
                 }
 
-                string lastDate = "Nema";
+                var past = controller.GetPatientsLatestAppointment(patient.GetPatientId());
+                string lastDate = past != null ? past.DateAndTime.ToString("dd.MM.yyyy.") : "/";
+                
                 Tabs.Add(new ScheduleTabItem { Time = appointment.DateAndTime.ToShortTimeString(), AppointmentType = appointment.getTranslatedType(), PatientId = patient.GetPatientId(), PatientName = patient.GetPatientFullName(), Room = appointment.Room.RoomId, Diagnoses = diagnoses, LastDate = lastDate, Prescriptions = prescriptions });
 
             }

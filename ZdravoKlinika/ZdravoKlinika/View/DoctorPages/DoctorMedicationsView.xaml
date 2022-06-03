@@ -488,8 +488,14 @@
                             <DataGridTemplateColumn Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Source="/Resources/Images/more.png" MouseLeftButtonUp="ApprovedMeds_MouseDoubleClick" Width="12" Height="12" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                        <Image Focusable="True" Source="/Resources/Images/more.png" Width="12" Height="12" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                            <Image.InputBindings>
+                                                <MouseBinding Gesture="LeftClick" Command="{Binding View}"/>
+                                                <KeyBinding Key="V" Modifiers="Shift" Command="{Binding View}"/>
+                                            </Image.InputBindings>
+                                        </Image>
                                     </DataTemplate>
+                                    
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>

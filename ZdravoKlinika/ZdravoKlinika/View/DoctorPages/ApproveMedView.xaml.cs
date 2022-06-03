@@ -25,7 +25,7 @@ namespace ZdravoKlinika.View.DoctorPages
         public ApproveMedView(int requestId)
         {
             viewModel = new MedViewModel();
-            viewModel.Doctor = Controller.RegisteredUserController.UserToDoctor(App.User);
+            //viewModel.Doctor = Controller.RegisteredUserController.UserToDoctor(App.User);
             viewModel.LoadRequest(requestId);
             DataContext = viewModel;
             InitializeComponent();

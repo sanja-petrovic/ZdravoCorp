@@ -28,6 +28,11 @@ namespace ZdravoKlinika.Controller
             return service.GetById(id);
         }
 
+        public List<TimeOffRequest> GetAllSorted()
+        {
+            return this.service.GetAllSorted();
+        }
+
         public void CreateRequest(Doctor doctor, DateTime start, DateTime end, String reason, RequestState state, bool emergency)
         {
             TimeOffRequest request = new TimeOffRequest(-1, doctor, DateTime.Today, start, end, reason, state, emergency);

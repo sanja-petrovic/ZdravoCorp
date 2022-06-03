@@ -59,7 +59,7 @@ namespace ZdravoKlinika.Service
             if(patient.GetPatientType().Equals(PatientType.Registered))
             {
                 RegisteredPatient reg = registeredPatientRepository.GetById(patient.GetPatientId());
-                medicalRecordRepository.AddCurrentMedication(reg.MedicalRecord.MedicalRecordId, medication);
+                medicalRecordRepository.AddCurrentMedication(reg.MedicalRecord, medication);
                 this.registeredPatientRepository.RecordUpdated(reg);
                 //patientMedicationNotificationService.CreateNotification(doctor, reg, "prepisan lek", prescription);
             }
@@ -75,7 +75,7 @@ namespace ZdravoKlinika.Service
             {
 
                 RegisteredPatient reg = registeredPatientRepository.GetById(prescription.Patient.GetPatientId());
-                medicalRecordRepository.AddCurrentMedication(reg.MedicalRecord.MedicalRecordId, prescription.Medication);
+                medicalRecordRepository.AddCurrentMedication(reg.MedicalRecord, prescription.Medication);
                 this.registeredPatientRepository.RecordUpdated(reg);
                 //patientMedicationNotificationService.CreateNotification(prescription.Doctor, reg, "prepisan lek", prescription);
             }

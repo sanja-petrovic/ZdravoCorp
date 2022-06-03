@@ -23,6 +23,11 @@ namespace ZdravoKlinika.Service
             return this.repository.GetAll();
         }
 
+        public List<TimeOffRequest> GetAllSorted()
+        {
+            return this.repository.GetAllSorted();
+        }
+
         public TimeOffRequest GetById(int id)
         {
             return this.repository.GetById(id);

@@ -23,11 +23,8 @@ namespace ZdravoKlinika.View.DoctorPages
     {
         Model.DoctorMedicalRecordViewModel viewModel;
         string patientId;
-        List<PastAppointmentView> pastAppointmentViews;
         public DoctorMedicalRecord()
         {
-            pastAppointmentViews = new List<PastAppointmentView>();
-            
             InitializeComponent();
         }
 

@@ -25,5 +25,10 @@ namespace ZdravoKlinika.Controller
         {
             return this.medicalRecordService.GetDiagnosesAndAllergies(this.medicalRecordService.GetById(id));
         }
+
+        public void AddDiagnosis(String diagnosis, String medicalRecordId)
+        {
+            this.medicalRecordService.AddDiagnosis(diagnosis, this.medicalRecordService.GetById(medicalRecordId));
+        }
     }
 }

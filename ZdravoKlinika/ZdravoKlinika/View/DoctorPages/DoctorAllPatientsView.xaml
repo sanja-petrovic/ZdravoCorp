@@ -107,7 +107,7 @@
     </UserControl.Resources>
     <Grid>
 
-        <Border Margin="276,126,44,331"
+        <Border Margin="276,126,44,85"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">

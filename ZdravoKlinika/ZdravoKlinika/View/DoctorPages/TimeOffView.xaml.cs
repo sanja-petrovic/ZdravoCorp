@@ -19,15 +19,18 @@ namespace ZdravoKlinika.View.DoctorPages
     public partial class TimeOffView : UserControl
     {
         private AllRequestsViewModel viewModel;
-        private Doctor doctor;
         public TimeOffView()
         {
+
+            this.viewModel = new AllRequestsViewModel();
+            DataContext = this.viewModel;
+            InitializeComponent();
         }
 
-        public void Load(Doctor doctor)
+
+        public void Load()
         {
-            this.doctor = doctor;
-            this.viewModel = new AllRequestsViewModel(doctor);
+            this.viewModel = new AllRequestsViewModel();
             DataContext = this.viewModel;
             InitializeComponent();
         }

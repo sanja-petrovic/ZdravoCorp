@@ -544,20 +544,36 @@
                 <ListBox Name="PastLB" ItemsSource="{Binding PastAppointments}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="Transparent" BorderBrush="Transparent" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="0 0 0 -10">
-                                <Label FontSize="14" FontWeight="Bold" Content="{Binding Title}" Grid.ColumnSpan="2"/>
-                                <Label FontSize="12" FontWeight="Bold" Content="Dijagnoza:" Margin="0,20,0,33" Grid.ColumnSpan="2"/>
-                                <TextBlock Text="{Binding Diagnosis}" Margin="70,25,262,71"/>
-                                <Label FontSize="12" FontWeight="Bold" Content="Terapija:" Margin="0,34,0,21" Grid.ColumnSpan="2"/>
-                                <TextBlock Text="{Binding Precription}" Margin="57,39,-5,54" Grid.ColumnSpan="2"></TextBlock>
-                                <Label FontSize="12" FontWeight="Bold" Content="Nalaz i mišljenje doktora:" Margin="0,48,0,7" Grid.ColumnSpan="2"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Opinion}" Margin="5,68,-1,12" Grid.ColumnSpan="2"></TextBlock>
-                                <Image Source="/Resources/Images/download.png" Margin="0 0 0 0" HorizontalAlignment="Right" Width="12" Height="12" Cursor="Hand">
-                                    <Image.InputBindings>
-                                        <MouseBinding Gesture="LeftClick" Command="{Binding DownloadAnamnesis, Mode=OneTime}" />
-                                    </Image.InputBindings>
-                                </Image>
-                            </Grid>
+                            <StackPanel Orientation="Vertical" Margin="10 0 0 15">
+                                <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Title}"/>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Text="Dijagnoza:" Margin="0 0 10 0"/>
+                                    <TextBlock Text="{Binding Diagnosis}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Text="Terapija:" Margin="0 0 10 0"/>
+                                    <TextBlock Text="{Binding Precription}" ></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Text="Nalaz i mišljenje doktora:" Margin="0 0 10 0"/>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Opinion}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                                    <Image Source="/Resources/Images/download.png" HorizontalAlignment="Left" Width="12" Height="12" Cursor="Hand" Margin="0 0 10 0">
+                                        <Image.InputBindings>
+                                            <MouseBinding Gesture="LeftClick" Command="{Binding DownloadAnamnesis, Mode=OneTime}" />
+                                            <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding DownloadAnamnesis}"/>
+                                        </Image.InputBindings>
+                                    </Image>
+                                    <Image Cursor="Hand"  Source="/Resources/Images/edit.png" Width="12" Height="12">
+
+                                        <Image.InputBindings>
+                                            <MouseBinding Gesture="LeftClick" Command="{Binding EditCommand, Mode=OneTime}" />
+                                            <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding EditCommand}"/>
+                                        </Image.InputBindings>
+                                    </Image>
+                                </StackPanel>
+                            </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
@@ -566,19 +582,39 @@
                 <ListBox KeyboardNavigation.TabIndex="5" Name="UpcomingTb" ItemsSource="{Binding UpcomingAppointments}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="Transparent" BorderBrush="Transparent" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="0 0 0 -50">
-                                <Label FontSize="14" FontWeight="Bold" Content="{Binding Title}" Grid.ColumnSpan="2"/>
-                                <Label FontSize="12" FontWeight="Bold" Content="Tip:" Margin="0,20,0,33" Grid.ColumnSpan="2"/>
-                                <TextBlock Text="{Binding Type}" Margin="30,25,262,71"/>
-                                <Label FontSize="12" FontWeight="Bold" Content="Soba:" Margin="0,34,0,21" Grid.ColumnSpan="2"/>
-                                <TextBlock Text="{Binding Room}" Margin="40,39,-5,10" Grid.ColumnSpan="2"></TextBlock>
-                            </Grid>
+                            <StackPanel Orientation="Vertical" Margin="10 0 0 15">
+                                
+                                <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Title}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Text="Tip:"  Margin="0 0 10 0"/>
+                                    <TextBlock Text="{Binding Type}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Text="Soba:"  Margin="0 0 10 0"/>
+                                    <TextBlock Text="{Binding Room}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"  Margin="0 10 0 0">
+                                    <Image  Cursor="Hand" Source="/Resources/Images/edit.png" Width="12" Height="12"  Margin="0 0 10 0">
+                                        <Image.InputBindings>
+                                            <MouseBinding Gesture="LeftClick" Command="{Binding EditCommand, Mode=OneTime}" />
+                                            <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding EditCommand}"/>
+                                        </Image.InputBindings>
+                                    </Image>
+                                    <Image Cursor="Hand" Source="/Resources/Images/time-delete.png" Width="12" Height="12">
+
+                                        <Image.InputBindings>
+                                            <MouseBinding Gesture="LeftClick" Command="{Binding DeleteCommand, Mode=OneTime}" />
+                                            <KeyBinding Key="Delete" Modifiers="Ctrl" Command="{Binding DeleteCommand}"/>
+                                        </Image.InputBindings>
+                                    </Image>
+                                </StackPanel>
+                            </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </TabItem>
         </TabControl>
-        
+
         <Label Content="Termini" Margin="274,444,352,264" FontSize="24" FontWeight="Bold"/>
         <Border  Margin="415,249,541,498"
             BorderBrush="Black"
@@ -588,7 +624,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button KeyboardNavigation.TabIndex="0" Content="Dodajte" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="413,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White">
+        <Button KeyboardNavigation.TabIndex="0" Content="Dodajte" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="413,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Command="{Binding AddDiagnosis}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -601,7 +637,7 @@
         <ListBox  Cursor="Arrow" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle1}" Style="{DynamicResource ListBoxStyle1}" ItemsSource="{Binding Medications}" Margin="528,289,308,352">
 
         </ListBox>
-        <Border  Margin="382,457,572,292"
+        <Border  Margin="382,457,575,292"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -609,37 +645,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button KeyboardNavigation.TabIndex="6" Content="Zakaži novi" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="380,455,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Click="Button_Click_1" >
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Border  Margin="482,457,441,292"
-            BorderBrush="Black"
-            BorderThickness="2"
-            CornerRadius="10">
-            <Border.Effect>
-                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
-            </Border.Effect>
-        </Border>
-        <Button KeyboardNavigation.TabIndex="7" Name="EditButton" Content="Izmeni odabrani" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="480,455,0,0" VerticalAlignment="Top" Width="103" Height="23" Background="White" Click="EditAppointment" >
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Border  Margin="602,457,323,292"
-            BorderBrush="Black"
-            BorderThickness="2"
-            CornerRadius="10">
-            <Border.Effect>
-                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
-            </Border.Effect>
-        </Border>
-        <Button KeyboardNavigation.TabIndex="8" Content="Obriši odabrani" OverridesDefaultStyle="False"  Focusable="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="600,455,0,0" VerticalAlignment="Top" Width="103" Height="23" Background="White" >
+        <Button KeyboardNavigation.TabIndex="6" Content="Zakažite" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="380,455,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

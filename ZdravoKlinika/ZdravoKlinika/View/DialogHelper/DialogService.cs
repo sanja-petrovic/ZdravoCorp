@@ -7,6 +7,7 @@ using ZdravoKlinika.View.DoctorPages;
 using ZdravoKlinika.Controller;
 using System.Windows;
 using System.ComponentModel;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DialogHelper
 {
@@ -28,7 +29,7 @@ namespace ZdravoKlinika.View.DialogHelper
             openDialogs.Add(createApptSchedule);
         }
 
-        public void CloseDialog(ViewModelBase viewModel)
+        public static void CloseDialog(ViewModelBase viewModel)
         {
             int index = -1;
             foreach (Window w in openDialogs)
@@ -50,8 +51,8 @@ namespace ZdravoKlinika.View.DialogHelper
         public void ShowTimeOffDialog()
         {
             TimeOffRequestView timeOffRequestView = new TimeOffRequestView();
-            timeOffRequestView.Show();
             OpenDialogs.Add(timeOffRequestView);
+            timeOffRequestView.ShowDialog();
         }
 
         public void ShowMedRequestDialog(int requestId)
@@ -68,6 +69,35 @@ namespace ZdravoKlinika.View.DialogHelper
             logAppointmentDialog.Init();
             logAppointmentDialog.Show();
             OpenDialogs.Add(logAppointmentDialog);
+        }
+
+        public void ShowEditAnamnesisDialog(PastViewModel viewModel)
+        {
+            EditAnamnesisWindow editAnamnesisWindow = new EditAnamnesisWindow(viewModel);
+            editAnamnesisWindow.Show();
+            OpenDialogs.Add(editAnamnesisWindow);
+        }
+
+        public void ShowPrompt(string title, string message, Action action)
+        {
+            PromptDialog promptDialog = new PromptDialog(new PromptViewModel(title, message, action));
+            OpenDialogs.Add(promptDialog);
+            promptDialog.ShowDialog();
+        }
+
+        public void ShowMedication(MedViewModel viewModel)
+        {
+            MedView medView = new MedView(viewModel);
+            medView.Show();
+            OpenDialogs.Add(medView);
+
+        }
+
+        public void ShowAddDiagnosis(String medicalRecordId)
+        {
+            AddDiagnosisView diagnosisView = new AddDiagnosisView(medicalRecordId);
+            OpenDialogs.Add(diagnosisView);
+            diagnosisView.ShowDialog();
         }
 
     }

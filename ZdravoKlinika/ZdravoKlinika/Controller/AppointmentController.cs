@@ -120,6 +120,14 @@ public class AppointmentController
     {
         this.appointmentService.EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
     }
+
+    public void UpdateAnamnesis(int appointmentId, string note, string diagnosis)
+    {
+        Appointment a = GetAppointmentById(appointmentId);
+        a.DoctorsNotes = note;
+        a.Diagnoses = diagnosis;
+        this.appointmentService.EditAppointment(a);
+    }
     public void PatientEditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     { 
         try
@@ -171,7 +179,12 @@ public class AppointmentController
         PatientController patientController = new PatientController();
         DoctorController doctorController = new DoctorController();
         return this.appointmentService.GetFreeTime(doctorController.GetById(doctorId), patientController.GetById(patientId), block);
+    }
 
+    public Appointment GetPatientsLatestAppointment(String patientId)
+    {
+        RegisteredPatientController patientController = new RegisteredPatientController();
+        return this.appointmentService.GetPatientsLatestAppointment(patientController.GetById(patientId));
     }
 
 }

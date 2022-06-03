@@ -18,6 +18,7 @@ namespace ZdravoKlinika.View
             _TargetExecuteMethod = executeMethod;
         }
 
+
         public MyICommand(Action executeMethod, Func<bool> canExecuteMethod)
         {
             _TargetExecuteMethod = executeMethod;

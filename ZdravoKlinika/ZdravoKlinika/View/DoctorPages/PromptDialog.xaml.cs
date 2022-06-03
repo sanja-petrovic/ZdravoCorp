@@ -11,21 +11,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
-    /// Interaction logic for EditAppointmentWindow.xaml
+    /// Interaction logic for PromptDialog.xaml
     /// </summary>
-    public partial class EditAnamnesisWindow : Window
+    public partial class PromptDialog : Window
     {
-
-        public EditAnamnesisWindow(PastViewModel viewModel)
+        public PromptDialog(Model.PromptViewModel viewModel)
         {
             DataContext = viewModel;
             InitializeComponent();
         }
-
     }
 }

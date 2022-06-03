@@ -22,11 +22,6 @@ namespace ZdravoKlinika.View
     {
         private bool clicked = false;
         private bool show = false;
-        RegisteredUser user;
-
-        RegisteredUserController registeredUserController;
-
-        public RegisteredUser User { get => user; set => user = value; }
 
         public SignInViewModel viewModel;
 

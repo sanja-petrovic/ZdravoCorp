@@ -27,6 +27,9 @@ public class AppointmentRepository
         
     }
 
+
+
+
     private void ReadDataFromFile()
     {
         appointments = appointmentDataHandler.Read();
@@ -329,6 +332,8 @@ public class AppointmentRepository
 
         return appointmentsByRoom;
     }
+
+    
 
 
 }

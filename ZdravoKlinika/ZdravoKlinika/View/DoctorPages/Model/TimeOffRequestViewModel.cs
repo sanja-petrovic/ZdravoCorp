@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Util;
+using ZdravoKlinika.View.DialogHelper;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -21,24 +22,56 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string status;
 
         private TimeOffRequestController controller;
+        public MyICommand ConfirmCommand { get; set; }
+        public MyICommand GiveUpCommand { get; set; }
+        public MyICommand CheckCommand { get; set; }
 
         public TimeOffRequestViewModel()
         {
-            this.doctor = RegisteredUserController.UserToDoctor(App.User);
+            Doctor = RegisteredUserController.UserToDoctor(App.User);
             this.start = DateTime.Today.AddDays(2);
             this.end = DateTime.Today.AddDays(2);
             this.controller = new TimeOffRequestController();
+            GiveUpCommand = new MyICommand(ExecuteGiveUp);
+            ConfirmCommand = new MyICommand(ExecuteConfirm);
+            CheckCommand = new MyICommand(ExecuteCheck);
+        }
+
+        public void ExecuteCheck()
+        {
+            Emergency = !Emergency;
         }
 
         public DateTime Start { get => start; set => SetProperty(ref start, value); }
         public DateTime End { get => end; set => SetProperty(ref end, value);  }
         public bool Emergency { get { return emergency; } set { SetProperty(ref emergency, value); SetEmergencyString(); } }
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
-        public string Reason { get => reason; set => SetProperty(ref reason, value); }
+        public string Reason { get { return reason; } set { SetProperty(ref reason, value); ConfirmCommand.RaiseCanExecuteChanged(); } }
         public string EmergencyString { get => emergencyString; set => SetProperty(ref emergencyString, value); }
         public string StartString { get => startString; set => SetProperty(ref startString, value); }
         public string EndString { get => endString; set => SetProperty(ref endString, value); }
         public string Status { get => status; set => SetProperty(ref status, value); }
+
+        public void ExecuteConfirm()
+        {
+            CreateRequest();
+            DialogService.CloseDialog(this);
+        }
+
+        public bool CanExecuteConfirm()
+        {
+            return string.IsNullOrEmpty(Reason) == false && CheckDuplicate() == false && CheckAppointments() == false && CheckRequests() == false;
+        }
+
+        public void ExecuteGiveUp()
+        {
+            DialogService.CloseDialog(this);
+        }
+
+        public void SetEnd()
+        {
+
+        }
 
         public void CreateRequest()
         {

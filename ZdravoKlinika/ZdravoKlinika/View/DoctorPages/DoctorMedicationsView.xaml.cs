@@ -51,7 +51,7 @@ namespace ZdravoKlinika.View.DoctorPages
             
             if(m != null)
             {
-                MedView med = new MedView(this.ViewModel.Doctor, m.Id);
+                MedView med = new MedView(m.Id);
                 med.Show();
             }
         }

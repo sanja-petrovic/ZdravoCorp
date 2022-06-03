@@ -174,6 +174,7 @@ public class AppointmentService
         return result;
     }
 
+
     public List<DateBlock> GetFreeTime(Doctor doctor, Patient patient, DateBlock block)
     {
         List<DateBlock> times = new List<DateBlock>();
@@ -505,5 +506,20 @@ public class AppointmentService
     {
        Room room = RoomRepository.GetById(roomId);
        return this.appointmentRepository.GetAppointmentsByRoom(room);
+    }
+
+    public void EditAppointment(Appointment a)
+    {
+        this.appointmentRepository.EditAppointment(a);
+    }
+
+    public Appointment GetPatientsLatestAppointment(RegisteredPatient patient)
+    {
+        List<Appointment> patientsPastAppointments = this.GetPatientsPastAppointments(patient);
+        Appointment a = null;
+        if(patientsPastAppointments.Count > 0)
+            a = patientsPastAppointments.OrderBy(appointment => appointment.DateAndTime).ToList().Last();
+
+        return a;
     }
 }
