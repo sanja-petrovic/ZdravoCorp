@@ -176,20 +176,20 @@ namespace ZdravoKlinika.Service
                 newId = 1;
             }
             notification.NotificationId = newId;
-            patientMedicationNotificationRepository.CreateNotification( notification );
+            patientMedicationNotificationRepository.Add( notification );
         }
         public void DeleteNotification(int id)
         {
-            patientMedicationNotificationRepository.DeleteNotification(patientMedicationNotificationRepository.GetById(id));
+            patientMedicationNotificationRepository.Remove(patientMedicationNotificationRepository.GetById(id));
         }
         public void DeleteAllNotifications()
         {
-            patientMedicationNotificationRepository.DeleteAllNotifications();
+            patientMedicationNotificationRepository.RemoveAll();
         }
         
         public void UpdateNotification(PatientMedicationNotification notification)
         { 
-            patientMedicationNotificationRepository.UpdateNotification( notification );
+            patientMedicationNotificationRepository.Update( notification );
         }
     }
     

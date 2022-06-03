@@ -27,11 +27,11 @@ namespace ZdravoKlinika.Repository
             DoctorRepository = new DoctorRepository();
             EmployeeRepository = new EmployeeRepository();
 
-            LoadAllRegisteredUsers();
+            ReadDataFromFile();
 
         }
 
-        private void LoadAllRegisteredUsers()
+        private void ReadDataFromFile()
         {
 
             List<RegisteredPatient> rpats = RegisteredPatientRepository.GetAll();
@@ -39,7 +39,7 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (RegisteredPatient pat in rpats)
                 {
-                    this.AddUser(pat);
+                    this.Add(pat);
                 }
             }
             List<Doctor> docs = DoctorRepository.GetAll();
@@ -47,7 +47,7 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (Doctor doc in docs)
                 {
-                    this.AddUser(doc);
+                    this.Add(doc);
                 }
             }
             List<Employee> emps = EmployeeRepository.GetAll();
@@ -55,14 +55,14 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (Employee emp in emps)
                 {
-                    this.AddUser(emp);
+                    this.Add(emp);
                 }
             }
         }
 
         public  List<RegisteredUser> GetAll()
         {
-            LoadAllRegisteredUsers();
+            ReadDataFromFile();
             return RegisteredUsers;
         }
 
@@ -79,7 +79,7 @@ namespace ZdravoKlinika.Repository
             }
             return userToReturn;
         }
-        private void AddUser(RegisteredUser newUser)
+        private void Add(RegisteredUser newUser)
         {
             if (newUser == null)
                 return;
@@ -110,7 +110,7 @@ namespace ZdravoKlinika.Repository
             dataHandler.Clear();
         }
 
-        public RegisteredUser? GetUserById(string id)
+        public RegisteredUser? GetById(string id)
         {
             RegisteredUser? userToReturn = null;
             foreach (RegisteredUser user in RegisteredUsers)

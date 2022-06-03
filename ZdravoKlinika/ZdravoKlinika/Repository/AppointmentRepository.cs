@@ -217,13 +217,13 @@ public class AppointmentRepository
 
         return appointments;
     }
-    public void CreateAppointment(Appointment appointment)
+    public void Add(Appointment appointment)
     {
         this.appointments.Add(appointment);
         appointmentDataHandler.Write(this.appointments);
     }
 
-    public void DeleteAppointment(Appointment appointment)
+    public void Delete(Appointment appointment)
     {
 
         var a = this.appointments.Find(x => x.AppointmentId == appointment.AppointmentId);
@@ -231,7 +231,7 @@ public class AppointmentRepository
         appointmentDataHandler.Write(appointments);
     }
 
-    public void EditAppointment(Appointment appointment)
+    public void Update(Appointment appointment)
     {
         int index = -1;
         foreach (Appointment a in this.appointments)
@@ -254,27 +254,6 @@ public class AppointmentRepository
 
     }
 
-    public void LogAppointment(Appointment appointment)
-    {
-        int index = -1;
-        foreach(Appointment a in this.appointments)
-        {
-            if (a.AppointmentId == appointment.AppointmentId)
-            {
-                index = this.appointments.IndexOf(a);
-            }
-        }
-
-        if (index == -1)
-        {
-            throw new Exception("BAD");
-        }
-
-        appointments[index] = appointment;
-        appointmentDataHandler.Write(appointments);
-
-        return;
-    }
 
     public void AddGrading(Appointment appointment, int[] grades)
     {
@@ -327,6 +306,5 @@ public class AppointmentRepository
 
         return appointmentsByRoom;
     }
-
 
 }

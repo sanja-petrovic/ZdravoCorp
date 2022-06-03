@@ -376,13 +376,13 @@ public class AppointmentService
         int newAppointmentId = appointments.Count > 0 ? appointments.Last().AppointmentId + 1 : 1;
         appointment.AppointmentId = newAppointmentId;
 
-        this.appointmentRepository.CreateAppointment(appointment);
+        this.appointmentRepository.Add(appointment);
     }
 
     public void DeleteAppointment(int id)
     {
         Appointment appointment = appointmentRepository.GetAppointmentById(id);
-        this.appointmentRepository.DeleteAppointment(appointment);
+        this.appointmentRepository.Delete(appointment);
     }
     public void PatientDeleteAppointment(int id, String patientId)
     {
@@ -417,7 +417,7 @@ public class AppointmentService
                 appointment.Doctor = doc;
                 appointment.Room = room;
 
-                this.appointmentRepository.EditAppointment(appointment);
+                this.appointmentRepository.Update(appointment);
                 return;
             }
         }
@@ -440,7 +440,7 @@ public class AppointmentService
         appointment.Diagnoses = diagnoses;
         appointment.DoctorsNotes = doctorsNote;
         appointment.Over = true;
-        this.appointmentRepository.LogAppointment(appointment);
+        this.appointmentRepository.Update(appointment);
     }
     public void AddGrading(int appointmentId, int[] grades)
     {

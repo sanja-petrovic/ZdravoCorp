@@ -25,12 +25,12 @@ namespace ZdravoKlinika.Repository
             }
             set
             {
-                DeleteAllNotes();
+                RemoveAll();
                 if(value != null)
                 {
                     foreach(PatientNotes note in value)
                     {
-                        CreateNote(note);
+                        Add(note);
                     }
                 }
             }
@@ -41,10 +41,10 @@ namespace ZdravoKlinika.Repository
         public PatientNotesRepository()
         {
             DataHandler = new PatientNotesDataHandler();
-            ReadDataFromFiles();
+            ReadDataFromFile();
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             notes = DataHandler.Read();
             if(notes == null) Notes = new List<PatientNotes>(); 
@@ -52,7 +52,7 @@ namespace ZdravoKlinika.Repository
 
         public List<PatientNotes> GetAll()
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             return notes;
         }
 
@@ -69,7 +69,7 @@ namespace ZdravoKlinika.Repository
             }
             return retVal;
         }
-        public void CreateNote(PatientNotes note)
+        public void Add(PatientNotes note)
         {
             if(note != null)
             {
@@ -85,7 +85,7 @@ namespace ZdravoKlinika.Repository
             }
         }
 
-        public void DeleteNote(PatientNotes note)
+        public void Remove(PatientNotes note)
         {
             if(Notes != null)
             {
@@ -99,14 +99,14 @@ namespace ZdravoKlinika.Repository
                 DataHandler.Write(Notes);
             }
         }
-        public void DeleteAllNotes()
+        public void RemoveAll()
         {
             if (Notes != null)
             {
                 Notes.Clear();
             }
         }
-        public void UpdateNote(PatientNotes note)
+        public void Update(PatientNotes note)
         {
             PatientNotes old = Notes.Find(item => item.NotificationId == note.NotificationId);
 

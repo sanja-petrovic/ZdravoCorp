@@ -85,7 +85,7 @@ public class RegisteredPatientRepository
 
         this.Patients.Add(patient);
 
-        MedicalRecordRepository.CreateMedicalRecord(patient.MedicalRecord);
+        MedicalRecordRepository.Add(patient.MedicalRecord);
         PatientsDataHandler.Write(Patients);
         return;
     }
@@ -98,7 +98,7 @@ public class RegisteredPatientRepository
             if (this.Patients.Contains(patient))
                 this.Patients.Remove(patient);
 
-        MedicalRecordRepository.DeleteMedicalRecord(patient.MedicalRecord);
+        MedicalRecordRepository.Remove(patient.MedicalRecord);
         PatientsDataHandler.Write(Patients);
         return;
     }
@@ -116,7 +116,7 @@ public class RegisteredPatientRepository
         {
             Patients[index] = patient;
 
-            MedicalRecordRepository.UpdateMedicalRecord(patient.MedicalRecord);
+            MedicalRecordRepository.Update(patient.MedicalRecord);
             PatientsDataHandler.Write(Patients);
         }
 

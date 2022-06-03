@@ -147,13 +147,13 @@ public class EquipmentRepository
         return this.expendabilityList;
     }
 
-    public void CreateEquipment(Equipment eq)
+    public void Add(Equipment eq)
     {
         this.equipment.Add(eq);
         EquipmentDataHandler.Write(this.equipment);
     }
 
-    public void DeleteEquipment(Equipment eq)
+    public void Remove(Equipment eq)
     {
         if (eq == null)
             return;
@@ -163,7 +163,7 @@ public class EquipmentRepository
         EquipmentDataHandler.Write(this.equipment);
     }
 
-    public void UpdateEquipment(Equipment eq)
+    public void Update(Equipment eq)
     {
         if (eq == null)
             return;

@@ -79,13 +79,13 @@ public class MoveRepository
         return returnValue;
     }
 
-    public void CreateMove(Move move)
+    public void Add(Move move)
     {
         this.moves.Add(move);
         moveDataHandler.Write(this.moves);
     }
 
-    public void DeleteMove(Move move)
+    public void Remove(Move move)
     {
         if (move == null)
             return;
@@ -95,7 +95,7 @@ public class MoveRepository
         moveDataHandler.Write(this.moves);
     }
 
-    public void UpdateMove(Move move)
+    public void Update(Move move)
     {
         if (move == null)
             return;

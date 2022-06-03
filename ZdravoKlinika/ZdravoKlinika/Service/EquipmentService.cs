@@ -30,20 +30,20 @@ public class EquipmentService
 
     public void CreateEquipment(Equipment eq)
     {
-        this.EquipmentRepository.CreateEquipment(new Equipment(GenerateEquipmentId().ToString(), eq.Name, eq.Amount, eq.Expendable));
+        this.EquipmentRepository.Add(new Equipment(GenerateEquipmentId().ToString(), eq.Name, eq.Amount, eq.Expendable));
     }
 
     public void UpdateEquipment(Equipment changedEquipment)
     {
         Equipment equipment = this.equipmentRepository.GetById(changedEquipment.Id);
         UpdateEquipmentValues(equipment, changedEquipment);      
-        this.equipmentRepository.UpdateEquipment(equipment);
+        this.equipmentRepository.Update(equipment);
     }
 
     public void DeleteEquipment(String id)
     {
         Equipment eq = this.equipmentRepository.GetById(id);
-        this.equipmentRepository.DeleteEquipment(eq);
+        this.equipmentRepository.Remove(eq);
     }
 
     private void UpdateEquipmentValues(Equipment equipmentToBeUpdated, Equipment updatingValues)

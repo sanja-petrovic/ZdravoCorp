@@ -24,10 +24,10 @@ namespace ZdravoKlinika.Repository
             EquipmentRepository = new EquipmentRepository();
 
             OrderDataHandler = new OrderDataHandler();
-            ReadDataFromFiles();
+            ReadDataFromFile();
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             Orders = OrderDataHandler.Read();
             if (Orders == null) Orders = new List<Order>();
@@ -43,9 +43,9 @@ namespace ZdravoKlinika.Repository
             }
         }
 
-        public List<Order> GetAllOrders()
+        public List<Order> GetAll()
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             foreach (Order order in Orders)
             {
                 UpdateReferences(order);
@@ -68,7 +68,7 @@ namespace ZdravoKlinika.Repository
             return orderToReturn;
         }
 
-        public void CreateNewOrder(Order newOrder)
+        public void Add(Order newOrder)
         {
             Orders.Add(newOrder);
             OrderDataHandler.Write(Orders);

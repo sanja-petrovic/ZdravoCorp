@@ -23,18 +23,18 @@ namespace ZdravoKlinika.Service
         }
         public void AddReview(RegisteredPatient user, DateTime time, int[] grades, String comment)
         {
-            AppReviewRepository.AddAppReview(new AppReview(GetUniqueId(), user, time, grades, comment));
+            AppReviewRepository.Add(new AppReview(GetUniqueId(), user, time, grades, comment));
         }
 
         public void RemoveReview(String id)
         {
             AppReview review = AppReviewRepository.GetById(id);
-            AppReviewRepository.RemoveAppReview(review);
+            AppReviewRepository.Remove(review);
         }
 
         public void RemoveAll()
         {
-            AppReviewRepository.RemoveAllAppReviews();
+            AppReviewRepository.RemoveAll();
         }
 
         public AppReview GetById(String id)

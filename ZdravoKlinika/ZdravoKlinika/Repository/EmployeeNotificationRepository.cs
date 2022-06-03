@@ -16,16 +16,16 @@ namespace ZdravoKlinika.Repository
         public EmployeeNotificationRepository()
         { 
             dataHandler = new EmployeeNotificationDataHandler();
-            ReadData();
+            ReadDataFromFile();
         }
 
-        public void CreateNotification(EmployeeNotification notification)
+        public void Add(EmployeeNotification notification)
         {
             employeeNotifications.Add(notification);
             dataHandler.Write(employeeNotifications);
         }
 
-        private void ReadData() 
+        private void ReadDataFromFile() 
         {
             employeeNotifications = dataHandler.Read();
             if (employeeNotifications == null)
@@ -36,13 +36,13 @@ namespace ZdravoKlinika.Repository
 
         public List<EmployeeNotification> GetAll()
         {
-            ReadData();
+            ReadDataFromFile();
             return employeeNotifications;
         }
 
         public List<EmployeeNotification> GetAllPersonalNotifications(RegisteredUser user)
         {
-            ReadData();
+            ReadDataFromFile();
             List<EmployeeNotification> notifsToReturn = new List<EmployeeNotification>();
             foreach (EmployeeNotification notif in employeeNotifications)
             {
@@ -56,7 +56,7 @@ namespace ZdravoKlinika.Repository
 
         public List<EmployeeNotification> GetSpecificTypeOfNotifications(RegisteredUser user, EmployeeNotificationType type)
         {
-            ReadData();
+            ReadDataFromFile();
             List<EmployeeNotification> notifsToReturn = new List<EmployeeNotification>();
             foreach (EmployeeNotification notif in employeeNotifications)
             {
@@ -68,9 +68,9 @@ namespace ZdravoKlinika.Repository
             return notifsToReturn;
         }
 
-        public void DeleteNotification(string notificationId)
+        public void Delete(string notificationId)
         {
-            ReadData();
+            ReadDataFromFile();
             int indexToRemove = -1;
             foreach (EmployeeNotification notification in employeeNotifications)
             {

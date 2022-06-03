@@ -79,13 +79,13 @@ public class RenovationRepository
         return returnValue;
     }
 
-    public void CreateRenovation(Renovation renovation)
+    public void Add(Renovation renovation)
     {
         this.renovations.Add(renovation);
         renovationDataHandler.Write(this.renovations);
     }
 
-    public void DeleteRenovation(Renovation renovation)
+    public void Remove(Renovation renovation)
     {
         if (renovation == null)
             return;
@@ -95,7 +95,7 @@ public class RenovationRepository
         renovationDataHandler.Write(this.renovations);
     }
 
-    public void UpdateRenovation(Renovation renovation)
+    public void Update(Renovation renovation)
     {
         if (renovation == null)
             return;

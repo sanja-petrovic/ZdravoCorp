@@ -19,12 +19,12 @@ namespace ZdravoKlinika.Repository
         public MedicalRecordRepository()
         {
             MedicalRecordDataHandler = new MedicalRecordDataHandler();
-            ReadDataFromFiles();
+            ReadDataFromFile();
 
             medicationRepository = new MedicationRepository();
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             MedicalRecords = MedicalRecordDataHandler.Read();
             if (MedicalRecords == null) MedicalRecords = new List<MedicalRecord>();
@@ -42,7 +42,7 @@ namespace ZdravoKlinika.Repository
             }      
         }
 
-        public void CreateMedicalRecord(MedicalRecord medicalRecord)
+        public void Add(MedicalRecord medicalRecord)
         {
             if (medicalRecord == null)
                 return;
@@ -61,7 +61,7 @@ namespace ZdravoKlinika.Repository
             MedicalRecordDataHandler.Write(MedicalRecords);
             return;
         }
-        public void UpdateMedicalRecord(MedicalRecord medicalRecord)
+        public void Update(MedicalRecord medicalRecord)
         {
             int index = -1;
             foreach (MedicalRecord recordObject in this.MedicalRecords)
@@ -81,13 +81,13 @@ namespace ZdravoKlinika.Repository
             MedicalRecordDataHandler.Write(MedicalRecords);
             return;
         }
-        public void DeleteAllMedicalRecord()
+        public void RemoveAll()
         {
             if (MedicalRecords != null)
                 MedicalRecords.Clear();
         }
 
-        public void DeleteMedicalRecord(MedicalRecord record)
+        public void Remove(MedicalRecord record)
         {
             if (record == null)
                 return;
@@ -100,7 +100,7 @@ namespace ZdravoKlinika.Repository
 
         public MedicalRecord? GetById(String id)
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             MedicalRecord? medicalRecordToReturn = null;
             foreach (MedicalRecord record in this.MedicalRecords)
             {

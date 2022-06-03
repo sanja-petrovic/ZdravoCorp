@@ -29,12 +29,12 @@ namespace ZdravoKlinika.Repository
             }
             set
             {
-                DeleteAllNotifications();
+                RemoveAll();
                 if (value != null)
                 {
                     foreach (PatientMedicationNotification notification in value)
                     {
-                        CreateNotification(notification);
+                        Add(notification);
                     }
                 }
             }
@@ -44,11 +44,11 @@ namespace ZdravoKlinika.Repository
         {
             PatientMedicationNotificationDataHandler = new PatientMedicationNotificationDataHandler();
             PrescriptionRepository = new PrescriptionRepository();
-            ReadDataFromFiles();
+            ReadDataFromFile();
             
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             notifications = PatientMedicationNotificationDataHandler.Read();
             if (notifications == null) notifications = new List<PatientMedicationNotification>();
@@ -60,7 +60,7 @@ namespace ZdravoKlinika.Repository
         }
         public List<PatientMedicationNotification> GetAll()
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             foreach (PatientMedicationNotification notification in Notifications)
             {
                 UpdateReferences(notification);
@@ -81,21 +81,14 @@ namespace ZdravoKlinika.Repository
             }
             return notificationToReturn;
         }
-        public void CreateNotification(PatientMedicationNotification notification)
+        public void Add(PatientMedicationNotification notification)
         {
             if(notification != null)
             {
                 if (Notifications == null)
                 {
                     Notifications = new List<PatientMedicationNotification>();
-                }/*
-                foreach (PatientMedicationNotification notif in Notifications)
-                {
-                    if (notif.NotificationId != notification.NotificationId)
-                    {
-                        return;
-                    }
-                }*/
+                }
                 if (GetById(notification.NotificationId)==null)
                 {
                     Notifications.Add(notification);
@@ -104,7 +97,7 @@ namespace ZdravoKlinika.Repository
             }
             
         }
-        public void DeleteNotification(PatientMedicationNotification notification)
+        public void Remove(PatientMedicationNotification notification)
         {
             if (notification == null)
             {
@@ -119,7 +112,7 @@ namespace ZdravoKlinika.Repository
             }
             PatientMedicationNotificationDataHandler.Write(Notifications);
         }
-        public void DeleteAllNotifications()
+        public void RemoveAll()
         {
             if(Notifications != null)
             {
@@ -127,7 +120,7 @@ namespace ZdravoKlinika.Repository
             }
         }
         //can be trimmed down look at patientNotes
-        public void UpdateNotification(PatientMedicationNotification notification)
+        public void Update(PatientMedicationNotification notification)
         {
             int index = -1;
             foreach(PatientMedicationNotification notif in Notifications)

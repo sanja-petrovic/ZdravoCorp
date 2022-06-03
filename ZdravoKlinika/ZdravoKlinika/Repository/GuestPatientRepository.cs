@@ -23,11 +23,11 @@ namespace ZdravoKlinika.Repository
             }
             set
             {
-                RemoveAllGuestPatient();
+                RemoveAll();
                 if (value != null)
                 {
                     foreach (GuestPatient oGuests in value)
-                        AddGuestPatient(oGuests);
+                        Add(oGuests);
                 }
             }
         }
@@ -39,7 +39,7 @@ namespace ZdravoKlinika.Repository
             guests = GuestPatientDataHandler.Read();
         }
 
-        public void AddGuestPatient(GuestPatient newGuest)
+        public void Add(GuestPatient newGuest)
         {
             if (newGuest == null)
                 return;
@@ -49,7 +49,7 @@ namespace ZdravoKlinika.Repository
                 this.guests.Add(newGuest);
             GuestPatientDataHandler.Write(Guests);
         }
-        public void RemoveGuestPatient(GuestPatient oldGuest)
+        public void Remove(GuestPatient oldGuest)
         {
             if (oldGuest == null)
                 return;
@@ -58,7 +58,7 @@ namespace ZdravoKlinika.Repository
                     this.guests.Remove(oldGuest);
             GuestPatientDataHandler.Write(Guests);
         }
-        public void RemoveAllGuestPatient()
+        public void RemoveAll()
         {
             if (guests != null)
                 guests.Clear();

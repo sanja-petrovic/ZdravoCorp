@@ -18,13 +18,13 @@ namespace ZdravoKlinika.Repository
         public MedicationRepository()
         {
             medicationDataHandler = new MedicationDataHandler();
-            ReadDataFromFiles();
+            ReadDataFromFile();
 
             this.doctorRepository = new DoctorRepository();
             this.approvedValueList = new List<Medication>();
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             medications = medicationDataHandler.Read();
             if (medications == null) medications = new List<Medication>();
@@ -53,7 +53,7 @@ namespace ZdravoKlinika.Repository
 
         public List<Medication> GetAll()
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             foreach (Medication medication in this.medicationDataHandler.Read())
             {
                 UpdateReferences(medication);
@@ -64,7 +64,7 @@ namespace ZdravoKlinika.Repository
 
         public Medication GetById(String id)
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             Medication? medicationToReturn = null;
             foreach (Medication medication in medications)
             {
@@ -81,7 +81,7 @@ namespace ZdravoKlinika.Repository
       
         public Medication GetByCodeAndName(string medicationCode, string brandName)
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             Medication? medicationToReturn = null;
             foreach (Medication medication in medications)
             {
@@ -118,13 +118,13 @@ namespace ZdravoKlinika.Repository
             return medication.Alternatives;
         }
 
-        public void CreateMedication(Medication medication)
+        public void Add(Medication medication)
         {
             this.medications.Add(medication);
             medicationDataHandler.Write(this.medications);
         }
 
-        public void DeleteMedication(Medication medication)
+        public void Remove(Medication medication)
         {
             if (medication == null)
                 return;
@@ -134,7 +134,7 @@ namespace ZdravoKlinika.Repository
             medicationDataHandler.Write(this.medications);
         }
 
-        public void UpdateMedication(Medication medication)
+        public void Update(Medication medication)
         {
             if (medication == null)
                 return;

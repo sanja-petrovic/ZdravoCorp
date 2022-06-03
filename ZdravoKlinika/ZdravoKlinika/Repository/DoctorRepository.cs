@@ -48,23 +48,23 @@ public class DoctorRepository
         return null;
     }
    
-   public void CreateDoctor(Doctor doctor)
+   public void Add(Doctor doctor)
    {
         DoctorList.Add(doctor);
         DoctorDataHandler.Write(DoctorList);
     }
    
-   public void DeleteDoctor(Doctor doctor)
+   public void Delete(Doctor doctor)
    {
         var d = DoctorList.Find(x => x.PersonalId.Equals(doctor.PersonalId));
         DoctorList.Remove(d);
         DoctorDataHandler.Write(DoctorList);
     }
 
-    public void UpdateDoctor(Doctor doctor)
+    public void Update(Doctor doctor)
     {
-        DeleteDoctor(doctor);
-        CreateDoctor(doctor);
+        Delete(doctor);
+        Add(doctor);
     }
 
 

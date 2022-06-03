@@ -32,7 +32,7 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (RegisteredPatient patient in regPatients)
                 {
-                    this.AddPatient(patient);
+                    this.Add(patient);
                 }
             }      
             List<GuestPatient> guestPatients = GuestPatientRepository.GetAll();
@@ -40,12 +40,12 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (GuestPatient patient in guestPatients)
                 {
-                    this.AddPatient(patient);
+                    this.Add(patient);
                 }
             }
         }
 
-        public void AddPatient(Patient newPatient)
+        public void Add(Patient newPatient)
         {
             if (newPatient == null)
                 return;
@@ -54,7 +54,7 @@ namespace ZdravoKlinika.Repository
             if (!this.Patients.Contains(newPatient))
                 this.Patients.Add(newPatient);
         }
-        public void RemovePatient(Patient oldPatient)
+        public void Remove(Patient oldPatient)
         {
             if (oldPatient == null)
                 return;
@@ -62,7 +62,7 @@ namespace ZdravoKlinika.Repository
                 if (this.Patients.Contains(oldPatient))
                     this.Patients.Remove(oldPatient);
         }
-        public void RemoveAllPatient()
+        public void RemoveAll()
         {
             if (Patients != null)
                 Patients.Clear();
@@ -80,7 +80,7 @@ namespace ZdravoKlinika.Repository
         public void CreateNewGuestPatient(GuestPatient guestPatient)
         {
             Patients.Add(guestPatient);
-            GuestPatientRepository.AddGuestPatient(guestPatient);
+            GuestPatientRepository.Add(guestPatient);
             return;
         }
 

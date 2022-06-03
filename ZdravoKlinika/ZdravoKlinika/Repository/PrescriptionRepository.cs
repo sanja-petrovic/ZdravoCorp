@@ -21,7 +21,7 @@ namespace ZdravoKlinika.Repository
         public PrescriptionRepository()
         {
             prescriptionDataHandler = new PrescriptionDataHandler();
-            ReadDataFromFiles();
+            ReadDataFromFile();
            
             medicationRepository = new MedicationRepository();
             registeredPatientRepository = new RegisteredPatientRepository();
@@ -29,7 +29,7 @@ namespace ZdravoKlinika.Repository
             doctorRepository = new DoctorRepository();
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             prescriptions = prescriptionDataHandler.Read();
             if (prescriptions == null) prescriptions = new List<Prescription>();
@@ -37,7 +37,7 @@ namespace ZdravoKlinika.Repository
 
         public List<Prescription> GetAll()
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             foreach (Prescription p in prescriptions)
             {
                 UpdateReferences(p);
@@ -47,7 +47,7 @@ namespace ZdravoKlinika.Repository
 
         public Prescription? GetById(int id)
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             Prescription? prescriptionToReturn = null;
             foreach(Prescription p in prescriptions)
             {

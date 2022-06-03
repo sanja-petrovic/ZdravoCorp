@@ -20,7 +20,7 @@ namespace ZdravoKlinika.Service
         public void SendNotification(EmployeeNotification notification) 
         {
             notification.NotificationId = GetFreeNotificationId();
-            notificationRepository.CreateNotification(notification);
+            notificationRepository.Add(notification);
         }
 
         public List<EmployeeNotification> GetAll() 
@@ -40,7 +40,7 @@ namespace ZdravoKlinika.Service
 
         public void DeleteNotification(String notificationId)
         {
-            notificationRepository.DeleteNotification(notificationId);
+            notificationRepository.Delete(notificationId);
         }
 
         private String GetFreeNotificationId()
