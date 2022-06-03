@@ -12,7 +12,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
     public class AppointmentViewModel : ViewModelBase
     {
         private Doctor _doctor;
-        private Patient _patient;
+        private IPatient _patient;
         private string doctorName;
         private int id;
         private string patientId;
@@ -72,7 +72,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
         public string DoctorId { get => doctorId; set => SetProperty(ref doctorId, value); }
         public Doctor _Doctor { get => _doctor; set => SetProperty(ref _doctor, value); }
-        public Patient _Patient { get => _patient; set => SetProperty(ref _patient, value); }
+        public IPatient _Patient { get => _patient; set => SetProperty(ref _patient, value); }
 
         public void SetTimes()
         {

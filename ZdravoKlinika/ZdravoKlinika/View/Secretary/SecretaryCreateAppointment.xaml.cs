@@ -38,7 +38,7 @@ namespace ZdravoKlinika.View.Secretary
             doctorController = new DoctorController();
             LoadAppointments(patientViewModel.SelectedPatient.GetPatientId());
 
-            Patient pat = patientViewModel.SelectedPatient;
+            IPatient pat = patientViewModel.SelectedPatient;
             if (pat.GetPatientType() == PatientType.Registered)
             {
                 RegisteredPatient rpat;
@@ -137,7 +137,7 @@ namespace ZdravoKlinika.View.Secretary
 
             AppointmentType type = (AppointmentType)ComboBoxAddType.SelectedIndex;
             Doctor doc = doctorController.GetById(ab[2]);
-            Patient pat = patientContoller.GetById(LabelPID.Content.ToString());
+            IPatient pat = patientContoller.GetById(LabelPID.Content.ToString());
 
             List<DateBlock> t = DateBlock.getIntersection(AppointmentContoller.getFreeTimeForDoctor(date.Date, duration, doc, 8, 20), AppointmentContoller.getFreeTimeForPatient(date.Date, duration, pat, 8, 20));
             

@@ -7,7 +7,7 @@ using ZdravoKlinika.Data_Handler;
 
 namespace ZdravoKlinika.Repository
 {
-    public class RegisteredUserRepository
+    public class RegisteredUserRepository : Interfaces.IRegisteredUserRepository
     {
         List<RegisteredUser> registeredUsers;
         RegisteredPatientRepository registeredPatientRepository;
@@ -79,7 +79,7 @@ namespace ZdravoKlinika.Repository
             }
             return userToReturn;
         }
-        private void Add(RegisteredUser newUser)
+        public void Add(RegisteredUser newUser)
         {
             if (newUser == null)
                 return;
@@ -123,5 +123,45 @@ namespace ZdravoKlinika.Repository
             }
             return userToReturn;
         }
+
+        public void Remove(RegisteredUser item)
+        {
+            if (registeredUsers != null)
+                registeredUsers.Remove(item);
+        }
+
+        public void Update(RegisteredUser item)
+        {
+            int index = GetIndex(item.PersonalId);
+            if (index != -1)
+            {
+                registeredUsers[index] = item;
+            }
+        }
+
+        public void RemoveAll()
+        {
+            if (registeredUsers != null)
+                registeredUsers.Clear();
+        }
+        private int GetIndex(String id)
+        {
+            int indexToRemove = -1;
+            foreach (RegisteredUser user in registeredUsers)
+            {
+                if (user.PersonalId.Equals(id))
+                {
+                    indexToRemove = registeredUsers.IndexOf(user);
+                    break;
+                }
+            }
+
+            if (indexToRemove == -1)
+            {
+                throw new Exception("User does not exist");
+            }
+            return indexToRemove;
+        }
+
     }
 }

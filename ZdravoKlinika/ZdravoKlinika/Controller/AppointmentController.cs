@@ -72,7 +72,7 @@ public class AppointmentController
     {
         return this.appointmentService.GetFreeTimeForDoctor(date, duration, doctor, startHours, endHours);
     }
-    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
+    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, IPatient patient, int startHours, int endHours)
     {
         return this.appointmentService.GetFreeTimeForPatient(date, duration, patient, startHours, endHours);
     }

@@ -300,7 +300,7 @@ public class AppointmentService
         }
         return prunedList;
     }
-    public List<DateBlock> GetFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
+    public List<DateBlock> GetFreeTimeForPatient(DateTime date, int duration, IPatient patient, int startHours, int endHours)
     {
         List<DateBlock> result = new List<DateBlock>();
         List<Appointment> appointments = new List<Appointment>();
@@ -403,7 +403,7 @@ public class AppointmentService
 
         Doctor doc = doctorRepository.GetById(doctorId);
         Room room = roomRepository.GetById(roomId);
-        Patient pat = patientRepository.GetById(patientId);
+        IPatient pat = patientRepository.GetById(patientId);
 
         List<DateBlock> t = DateBlock.getIntersection(GetFreeTimeForDoctor(dateAndTime.Date, duration, doc, 8, 20), GetFreeTimeForPatient(dateAndTime.Date, duration, pat, 8, 20));
 

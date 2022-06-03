@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Model
 {
-    public interface Patient
+    public interface IPatient
     {
         public PatientType GetPatientType() 
         {
@@ -35,7 +35,7 @@ namespace ZdravoKlinika.Model
             return null;
         }
 
-        public static Patient Parse(String data)
+        public static IPatient Parse(String data)
         {
             String[] splitData = data.Split(',');
             if (splitData[1].Equals(PatientType.Registered.ToString()))

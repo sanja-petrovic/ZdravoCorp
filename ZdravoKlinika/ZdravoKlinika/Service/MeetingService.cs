@@ -30,7 +30,12 @@ namespace ZdravoKlinika.Service
 
         public void DeleteMeeting(String meetingId)
         {
-            meetingRepository.Remove(meetingId);
+            meetingRepository.Remove(GetById(meetingId));
+        }
+
+        public Meeting GetById(String id)
+        {
+            return meetingRepository.GetById(id);
         }
 
         private String GetFreeMeetingId()

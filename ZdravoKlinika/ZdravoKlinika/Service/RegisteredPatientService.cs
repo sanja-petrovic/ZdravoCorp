@@ -32,7 +32,7 @@ public class RegisteredPatientService
         Address address = new Address(street,stnumber,city,country);
         RegisteredPatient patient = new RegisteredPatient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
         
-        registeredPatientRepository.CreatePatient(patient);
+        registeredPatientRepository.Add(patient);
     }
 
     public void UpdatePatient(String personalId, String name, String lastname, String phone, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> allergies, List<String> diagnosis)
@@ -56,12 +56,12 @@ public class RegisteredPatientService
         pat.MedicalRecord.Allergies = allergies;
         pat.MedicalRecord.Diagnoses = diagnosis;
 
-        registeredPatientRepository.UpdatePatient(pat);
+        registeredPatientRepository.Update(pat);
     }
 
     public void DeletePatient(String patientId)
     {
-        registeredPatientRepository.DeletePatient(this.GetById(patientId));
+        registeredPatientRepository.Remove(this.GetById(patientId));
         return;
     }
 

@@ -86,7 +86,31 @@ namespace ZdravoKlinika.Repository
 
         public void Update(GuestPatient item)
         {
-            throw new NotImplementedException();
+            int index = GetIndex(item.PersonalId);
+            if (index != -1)
+            {
+                guests[index] = item;
+                guestPatientDataHandler.Write(guests);
+            }
+        }
+
+        private int GetIndex(String id)
+        {
+            int indexToRemove = -1;
+            foreach (GuestPatient guest in guests)
+            {
+                if (guest.PersonalId.Equals(id))
+                {
+                    indexToRemove = guests.IndexOf(guest);
+                    break;
+                }
+            }
+
+            if (indexToRemove == -1)
+            {
+                throw new Exception("Patient does not exist");
+            }
+            return indexToRemove;
         }
     }
 }

@@ -43,7 +43,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private List<String> medicationsDisplay;
         private List<String> repeatDisplay;
         private Doctor doctor;
-        private Patient patient;
+        private IPatient patient;
         public ObservableCollection<Medication> PrescribedMedList { get; set; }
         public ObservableCollection<Prescription> PrescribedList { get; set; } 
 
@@ -63,7 +63,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public List<Medication> Medications { get => medications; set => medications = value; }
         public List<string> MedicationsDisplay { get => medicationsDisplay; set => medicationsDisplay = value; }
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
-        public Patient Patient { get => patient; set => SetProperty(ref patient, value); }
+        public IPatient Patient { get => patient; set => SetProperty(ref patient, value); }
         public List<string> RepeatDisplay { get => repeatDisplay; set => SetProperty(ref repeatDisplay, value); }
 
         public TherapyTab()

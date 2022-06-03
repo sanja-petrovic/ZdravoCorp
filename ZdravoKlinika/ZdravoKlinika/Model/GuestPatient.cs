@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Model
 {
-    public class GuestPatient : Patient
+    public class GuestPatient : IPatient
     {
         private PatientType patientType;
         private UserType userType;

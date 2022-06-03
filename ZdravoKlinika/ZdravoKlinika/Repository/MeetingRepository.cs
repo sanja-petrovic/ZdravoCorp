@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class MeetingRepository
+    public class MeetingRepository : Interfaces.IMeetingRepository
     {
         private MeetingDataHandler dataHandler;
         private List<Meeting> meetings;
@@ -42,10 +42,10 @@ namespace ZdravoKlinika.Repository
             return meetings;
         }
 
-        public void Remove(String id)
+        public void Remove(Meeting meeting)
         {
             ReadDataFromFile();
-            int indexToRemove = GetIndex(id);
+            int indexToRemove = GetIndex(meeting.MeetingId);
             meetings.RemoveAt(indexToRemove);
             dataHandler.Write(meetings);
             return;
@@ -70,5 +70,26 @@ namespace ZdravoKlinika.Repository
             return indexToRemove;
         }
 
+        public Meeting GetById(string id)
+        {
+            return meetings.Find(x => x.MeetingId.Equals(id));
+        }
+
+        public void Update(Meeting item)
+        {
+            int index = GetIndex(item.MeetingId);
+            if (index != -1)
+            {
+                meetings[index] = item;
+                dataHandler.Write(meetings);
+            }
+        }
+
+        public void RemoveAll()
+        {
+            if (meetings != null)
+                meetings.Clear();
+            dataHandler.Write(meetings);
+        }
     }
 }

@@ -80,17 +80,17 @@ namespace JsonConverters
             JsonSerializerOptions options) =>
                 writer.WriteStringValue(patient.PersonalId);
     }
-    public class PatientConverter : JsonConverter<Patient>
+    public class PatientConverter : JsonConverter<IPatient>
     {
-        public override Patient Read(
+        public override IPatient Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options) =>
-                Patient.Parse(reader.GetString());
+                IPatient.Parse(reader.GetString());
 
         public override void Write(
             Utf8JsonWriter writer,
-            Patient patient,
+            IPatient patient,
             JsonSerializerOptions options) =>
                 writer.WriteStringValue(patient.GetPatientId() + "," + patient.GetPatientType());
     }

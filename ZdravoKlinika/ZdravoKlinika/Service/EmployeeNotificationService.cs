@@ -38,9 +38,14 @@ namespace ZdravoKlinika.Service
             return notificationRepository.GetSpecificTypeOfNotifications(user, type);
         }
 
-        public void DeleteNotification(String notificationId)
+        public void Remove(String notificationId)
         {
-            notificationRepository.Delete(notificationId);
+            notificationRepository.Remove(GetById(notificationId));
+        }
+
+        public EmployeeNotification GetById(String id)
+        {
+            return notificationRepository.GetById(id);
         }
 
         private String GetFreeNotificationId()

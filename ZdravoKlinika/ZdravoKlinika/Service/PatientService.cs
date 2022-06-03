@@ -20,7 +20,7 @@ namespace ZdravoKlinika.Service
             patientRepository = new PatientRepository();
         }
 
-        public Patient GetById(String id)
+        public IPatient GetById(String id)
         {
             return PatientRepository.GetById(id);
         }

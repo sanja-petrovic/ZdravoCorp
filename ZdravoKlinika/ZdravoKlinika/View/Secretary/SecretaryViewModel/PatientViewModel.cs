@@ -10,16 +10,16 @@ namespace ZdravoKlinika.ViewModel.SecretaryViewModel
 {
     public class PatientViewModel : View.ViewModelBase
     {
-        Patient selectedPatient;
+        IPatient selectedPatient;
         PatientController patientController;
 
-        public Patient SelectedPatient { get => selectedPatient; set => selectedPatient = value; }
+        public IPatient SelectedPatient { get => selectedPatient; set => selectedPatient = value; }
         public PatientController PatientController { get => patientController; set => patientController = value; }
 
         public int ChoosePatient(String id, String name, String lastname) 
         {
             patientController = new PatientController();
-            Patient patient = patientController.GetById(id);
+            IPatient patient = patientController.GetById(id);
             if (patient == null)
             {
                 return 2;
@@ -52,7 +52,7 @@ namespace ZdravoKlinika.ViewModel.SecretaryViewModel
         internal void UpdatePatient()
         {
             patientController = new PatientController();
-            Patient patient = patientController.GetById(SelectedPatient.GetPatientId());
+            IPatient patient = patientController.GetById(SelectedPatient.GetPatientId());
             selectedPatient = patient;
         }
     }

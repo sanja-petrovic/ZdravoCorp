@@ -45,7 +45,7 @@ namespace ZdravoKlinika.Service
             return this.prescriptionRepository.GetById(id);
         }
 
-        public void Prescribe(Doctor doctor, Patient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote)
+        public void Prescribe(Doctor doctor, IPatient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote)
         {
             int prescriptionId = (this.prescriptionRepository.GetAll().Count > 0) ? this.prescriptionRepository.GetAll().Last().Id + 1 : 1;
 
