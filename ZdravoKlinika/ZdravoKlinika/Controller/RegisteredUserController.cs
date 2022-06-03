@@ -31,6 +31,11 @@ namespace ZdravoKlinika.Controller
             this.userService.RememberUser(user);
         }
 
+        public List<RegisteredUser> GetAllEmployees()
+        {
+            return userService.GetAllEmployees();
+        }
+
         public RegisteredUser GetRememberedUser()
         {
             return this.userService.GetRememberedUser();
@@ -39,6 +44,11 @@ namespace ZdravoKlinika.Controller
         public void ForgetUser()
         {
             this.userService.ForgetUser();
+        }
+
+        public List<RegisteredUser> GetAll()
+        {
+            return userService.GetAll();
         }
     }
 }

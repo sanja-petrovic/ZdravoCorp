@@ -18,6 +18,11 @@ namespace ZdravoKlinika.Service
             userRepository = new RegisteredUserRepository();
         }
 
+        public RegisteredUser? GetUserById(String id) 
+        {
+            return UserRepository.GetUserById(id);
+        }
+
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password)
         {
             return UserRepository.GetUserByEmailAndPassword(email, password);
@@ -26,6 +31,21 @@ namespace ZdravoKlinika.Service
         public void RememberUser(RegisteredUser user)
         {
             this.userRepository.RememberUser(user);
+        }
+
+        internal List<RegisteredUser> GetAllEmployees()
+        {
+            List<RegisteredUser> employees = new List<RegisteredUser>();
+
+            foreach (RegisteredUser user in GetAll())
+            {
+                if (user.UserType != UserType.Patient)
+                {
+                    employees.Add(user);
+                }
+            }
+
+            return employees;
         }
 
         public RegisteredUser GetRememberedUser()
@@ -38,5 +58,9 @@ namespace ZdravoKlinika.Service
             this.userRepository.ForgetUser();
         }
 
+        public List<RegisteredUser> GetAll()
+        {
+            return userRepository.GetAll();
+        }
     }
 }

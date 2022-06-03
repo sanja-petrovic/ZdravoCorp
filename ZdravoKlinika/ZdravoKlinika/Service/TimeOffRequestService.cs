@@ -98,6 +98,14 @@ namespace ZdravoKlinika.Service
             return result;
         }
 
+        public void ProcessRequest(TimeOffRequest req)
+        {
+            TimeOffRequest requestInDatabase = GetById(req.Id);
+            requestInDatabase.Comment = req.Comment;
+            requestInDatabase.State = req.State;
+            repository.EditRequest(requestInDatabase);
+        }
+
         public bool HasAlreadyMadeRequest(DateBlock period, String doctorId)
         {
             bool result = false;

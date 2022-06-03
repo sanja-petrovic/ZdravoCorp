@@ -67,7 +67,7 @@ namespace ZdravoKlinika.View
                     PatientViewSpawn(viewModel.User.PersonalId);
                     break;
                 case UserType.Secretary:
-                    Secretary.SecretaryMainWindow secretaryMainWindow = new Secretary.SecretaryMainWindow();
+                    Secretary.SecretaryMainWindow secretaryMainWindow = new Secretary.SecretaryMainWindow(viewModel.User);
                     secretaryMainWindow.Show();
                     break;
                 case UserType.Doctor:

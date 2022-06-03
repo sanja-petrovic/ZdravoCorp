@@ -83,24 +83,26 @@ namespace ZdravoKlinika.Repository
         }
         public void CreateNotification(PatientMedicationNotification notification)
         {
-            if(notification == null)
+            if(notification != null)
             {
-                return;
-            }
-            if(Notifications == null)
-            {
-                Notifications = new List<PatientMedicationNotification>();
-            }
-            foreach(PatientMedicationNotification notif in Notifications)
-            {
-                if(notif.NotificationId == notification.NotificationId)
+                if (Notifications == null)
                 {
-                    return;
+                    Notifications = new List<PatientMedicationNotification>();
+                }/*
+                foreach (PatientMedicationNotification notif in Notifications)
+                {
+                    if (notif.NotificationId != notification.NotificationId)
+                    {
+                        return;
+                    }
+                }*/
+                if (GetById(notification.NotificationId)==null)
+                {
+                    Notifications.Add(notification);
+                    PatientMedicationNotificationDataHandler.Write(Notifications);
                 }
             }
-            Notifications.Add(notification);
-            PatientMedicationNotificationDataHandler.Write(Notifications);
-            return;
+            
         }
         public void DeleteNotification(PatientMedicationNotification notification)
         {
@@ -124,7 +126,7 @@ namespace ZdravoKlinika.Repository
                 Notifications.Clear();
             }
         }
-
+        //can be trimmed down look at patientNotes
         public void UpdateNotification(PatientMedicationNotification notification)
         {
             int index = -1;
