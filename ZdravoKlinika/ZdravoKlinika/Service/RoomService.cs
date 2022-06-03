@@ -6,13 +6,16 @@ using ZdravoKlinika.Util;
 public class RoomService
 {
     private RoomRepository roomRepository;
+    private AppointmentRepository appointmentRepository;
 
     public RoomService()
     {
         this.roomRepository = new RoomRepository();
+        this.appointmentRepository = new AppointmentRepository();
     }
 
     public RoomRepository RoomRepository { get => roomRepository; set => roomRepository = value; }
+    public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
 
     public List<Room> GetAll()
     {
@@ -35,25 +38,18 @@ public class RoomService
     }
 
 
-    public List<Room> GetOccupiedRooms(DateBlock period, RoomType roomType)
+    public List<Room> GetAvailableRooms(DateBlock period, RoomType roomType)
     {
         List<Room> rooms = this.GetAll().FindAll(r => r.Type.Equals(roomType));
-        AppointmentRepository appointmentRepository = new AppointmentRepository();
 
-        foreach (Appointment appointment in appointmentRepository.GetAppointmentsOnDate(period.Start.Date).OrderBy(o => o.DateAndTime).ToList())
+        foreach (Appointment appointment in AppointmentRepository.GetAppointmentsOnDate(period.Start.Date).OrderBy(o => o.DateAndTime).ToList())
         {
             DateBlock apptDateBlock = new DateBlock(appointment.DateAndTime, appointment.DateAndTime.AddMinutes(appointment.Duration));
-            if (period.End < apptDateBlock.Start)
-            {
-                break;
-            }
-            if (period.Start < apptDateBlock.End && apptDateBlock.Start < period.End)
+            if (DateBlock.DateBlocksIntersect(period, apptDateBlock))
             {
                 Room r = rooms.Find(x => x.RoomId.Equals(appointment.Room.RoomId));
-                if(r != null)
-                {
+                if (r != null)
                     rooms.Remove(r);
-                }
             }
         }
 

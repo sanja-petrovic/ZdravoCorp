@@ -24,6 +24,7 @@
     <None Remove="Resources\Images\download.png" />
     <None Remove="Resources\Images\drhouse.png" />
     <None Remove="Resources\Images\edit.png" />
+    <None Remove="Resources\Images\edit2.png" />
     <None Remove="Resources\Images\editPatient.png" />
     <None Remove="Resources\Images\employees.png" />
     <None Remove="Resources\Images\help.png" />
@@ -52,6 +53,7 @@
     <None Remove="Resources\Images\star.png" />
     <None Remove="Resources\Images\stethoscope.png" />
     <None Remove="Resources\Images\time-delete.png" />
+    <None Remove="Resources\Images\time-delete2.png" />
     <None Remove="Resources\Images\trash.png" />
     <None Remove="Resources\Images\treatment.png" />
     <None Remove="Resources\Images\undraw_medicine_b1ol.png" />
@@ -63,6 +65,7 @@
 
   <ItemGroup>
     <Resource Include="Resources\Images\chandler.png" />
+    <Resource Include="Resources\Images\edit2.png" />
     <Resource Include="Resources\Images\monica.png" />
     <Resource Include="Resources\Images\download.png" />
     <Resource Include="Resources\Images\joey.png" />
@@ -95,6 +98,7 @@
     <Resource Include="Resources\Images\add (1).png" />
     <Resource Include="Resources\Images\bell (1).png" />
     <Resource Include="Resources\Images\info (2).png" />
+    <Resource Include="Resources\Images\time-delete2.png" />
     <Resource Include="Resources\Images\trash.png" />
     <Resource Include="Resources\Images\warning.png" />
     <Resource Include="Resources\Images\zdravoklinika.png" />

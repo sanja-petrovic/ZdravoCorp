@@ -24,5 +24,83 @@
     "Id": 2,
     "DateOfCreation": "2022-05-09T23:34:41.537121+02:00",
     "Patient": "0105965123321,Registered"
+  },
+  {
+    "Medication": "2",
+    "Amount": 1,
+    "Duration": 10,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "po potrebi",
+    "Doctor": "123",
+    "Id": 3,
+    "DateOfCreation": "0001-01-01T00:00:00",
+    "Patient": "0105965123321,Registered"
+  },
+  {
+    "Medication": "5",
+    "Amount": 1,
+    "Duration": 3,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "uz obrok",
+    "Doctor": "123",
+    "Id": 4,
+    "DateOfCreation": "0001-01-01T00:00:00",
+    "Patient": "0105965123321,Registered"
+  },
+  {
+    "Medication": "3",
+    "Amount": 1,
+    "Duration": 5,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "po potrebi",
+    "Doctor": "123",
+    "Id": 5,
+    "DateOfCreation": "0001-01-01T00:00:00",
+    "Patient": "1510963123321,Registered"
+  },
+  {
+    "Medication": "4",
+    "Amount": 1,
+    "Duration": 3,
+    "Frequency": 3,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "po potrebi",
+    "Doctor": "123",
+    "Id": 6,
+    "DateOfCreation": "0001-01-01T00:00:00",
+    "Patient": "1207965123321,Registered"
+  },
+  {
+    "Medication": "4",
+    "Amount": 1,
+    "Duration": 3,
+    "Frequency": 3,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "p.p.",
+    "Doctor": "123",
+    "Id": 7,
+    "DateOfCreation": "2022-06-03T05:31:39.9709983+02:00",
+    "Patient": "0304965123321,Registered"
+  },
+  {
+    "Medication": "4",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "123",
+    "Doctor": "123",
+    "Id": 8,
+    "DateOfCreation": "2022-06-03T05:40:09.2200261+02:00",
+    "Patient": "3007967123321,Registered"
   }
 ]

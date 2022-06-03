@@ -31,7 +31,7 @@
         </ComboBox>
         <CheckBox Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="149,152,263,189"/>
 
-        <DatePicker SelectedDateChanged="DatePicker_SelectedDateChanged" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}"   Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="32,227,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday">
+        <DatePicker SelectedDateChanged="DatePicker_SelectedDateChanged" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date}" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="32,227,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday">
 
             <DatePicker.BlackoutDates>
                 <CalendarDateRange Start="{x:Static sys:DateTime.MinValue}" End="{x:Static sys:DateTime.Today}"/>

@@ -92,6 +92,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             return DoctorId != null && PatientId != null  && Type != null && Room != null && Duration != null;
         }
+
         public string Name { get => name; set => SetProperty(ref name, value); }
         public string Type { get => type; set => SetProperty(ref type, value); }
         public string Time { get => time; set => SetProperty(ref time, value); }
@@ -101,20 +102,21 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Prescriptions { get => prescriptions; set => SetProperty(ref prescriptions, value); }
         public string Opinion { get => opinion; set => SetProperty(ref opinion, value); }
         public string DoctorName { get => doctorName; set => SetProperty(ref doctorName, value); }
-        public bool Emergency { get => emergency; set => SetProperty(ref emergency, value); }
-        public int Duration { get => duration; set => SetProperty(ref duration, value); }
-        public DateTime Date { get => date; set => SetProperty(ref date, value); }
+        public bool Emergency { get => emergency; set { SetProperty(ref emergency, value); CreateAppointment.RaiseCanExecuteChanged(); } }
+        public int Duration { get => duration; set { SetProperty(ref duration, value); CreateAppointment.RaiseCanExecuteChanged(); SetTimes(); } }
+        public DateTime Date { get => date; set  { SetProperty(ref date, value); CreateAppointment.RaiseCanExecuteChanged(); SetTimes(); }  }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
         public string DoctorId { get => doctorId; set => SetProperty(ref doctorId, value); }
         public Doctor _Doctor { get => _doctor; set => SetProperty(ref _doctor, value); }
-        public Patient _Patient { get => _patient; set => SetProperty(ref _patient, value); }
-        public DateBlock Time1 { get => _time; set => SetProperty(ref _time, value); }
+        public Patient _Patient { get => _patient; set { SetProperty(ref _patient, value); CreateAppointment.RaiseCanExecuteChanged(); SetTimes(); } }
+        public DateBlock Time1 { get => _time; set { SetProperty(ref _time, value); CreateAppointment.RaiseCanExecuteChanged(); SetRooms(); } }
 
 
         public void SetRooms()
         {
             if(Date != null && Time1 != null)
             {
+                Room = null;
                 DateTime datetime = new DateTime(Date.Year, Date.Month, Date.Day, Time1.Start.Hour, Time1.Start.Minute, 0);
                 RoomType roomType = Type.Equals("Pregled") ? RoomType.checkup : RoomType.operating;
                 Rooms = new ObservableCollection<Room>(this.roomController.GetOccupiedRooms(datetime, Duration, roomType));
@@ -122,10 +124,17 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             }
         }
 
+        public void Set()
+        {
+            SetTimes();
+            SetRooms();
+        }
+
         public void SetTimes()
         {
             if (_Patient != null)
             {
+                Time1 = null;
                 Times = new ObservableCollection<DateBlock>(this.appointmentController.GetFreeTime(DoctorId, _Patient.GetPatientId(), new DateBlock(Date, Duration)));
                 CreateAppointment.RaiseCanExecuteChanged();
             }

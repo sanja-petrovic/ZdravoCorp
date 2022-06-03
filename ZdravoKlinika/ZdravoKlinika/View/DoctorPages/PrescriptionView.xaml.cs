@@ -22,40 +22,14 @@ namespace ZdravoKlinika.View.DoctorPages
     public partial class PrescriptionView : Window
     {
 
-        private string patientId;
-        private string doctorId;
-
         private PrescriptionController prescriptionController;
-        private TherapyTab viewModel;
 
-        public PrescriptionView()
+        public PrescriptionView(TherapyTab viewModel)
         {
-
+            DataContext = viewModel;
             prescriptionController = new PrescriptionController();
-            
-        }
-
-        public void init(string doctorId, string patientId)
-        {
-            ViewModel = new TherapyTab();
-            ViewModel.LoadFromRecord(doctorId, patientId);
-            DataContext = this;
             InitializeComponent();
         }
 
-        public string PatientId { get => patientId; set => patientId = value; }
-        public string DoctorId { get => doctorId; set => doctorId = value; }
-        public TherapyTab ViewModel { get => viewModel; set => viewModel = value; }
-
-        private void Confirm(object sender, RoutedEventArgs e)
-        {
-            viewModel.Save();
-            this.Close();
-        }
-
-        private void GiveUpButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

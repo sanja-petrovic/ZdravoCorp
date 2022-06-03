@@ -121,13 +121,14 @@
         CornerRadius="10,10,0,0" BorderBrush="Transparent" Background="White" Margin="274,122,42,592"/>
 
 
-        <DataGrid Name="Patients" HorizontalContentAlignment="Left" ItemsSource="{Binding Patients}" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}" Style="{DynamicResource DataGridStyle2}" IsReadOnly="True" AutoGenerateColumns="False" Margin="276,126,43,-320">
+        <DataGrid Name="Patients" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" ItemsSource="{Binding Patients}" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}" Style="{DynamicResource DataGridStyle2}" IsReadOnly="True" AutoGenerateColumns="False" Margin="276,126,43,-320">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ime i prezime" Binding="{Binding FullName}">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                             <Setter Property="TextBlock.HorizontalAlignment" Value="Left"/>
+                            <Setter Property="TextBlock.VerticalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -136,6 +137,7 @@
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                             <Setter Property="TextBlock.HorizontalAlignment" Value="Left" />
+                            <Setter Property="TextBlock.VerticalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -144,13 +146,14 @@
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                             <Setter Property="TextBlock.HorizontalAlignment" Value="Left" />
+                            <Setter Property="TextBlock.VerticalAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Više">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button  OverridesDefaultStyle="False" Focusable="False" Command="{Binding RecordCommand}" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="140">
+                            <Button  OverridesDefaultStyle="False" Focusable="False" Command="{Binding RecordCommand}" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" Padding="7" Height="30" Width="140">
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>

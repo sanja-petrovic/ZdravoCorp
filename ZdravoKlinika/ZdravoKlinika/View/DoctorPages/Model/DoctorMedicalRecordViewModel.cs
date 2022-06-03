@@ -20,11 +20,12 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public ObservableCollection<PastViewModel> PastAppointments { get; set; }
         private ObservableCollection<UpcomingViewModel> upcomingAppointments;
         public ObservableCollection<UpcomingViewModel> UpcomingAppointments { get => upcomingAppointments; set => SetProperty(ref upcomingAppointments, value); }
-        public ObservableCollection<PrescriptionViewModel> Prescriptions { get; set; }
-
+        private ObservableCollection<PrescriptionViewModel> prescriptions;
+        public ObservableCollection<PrescriptionViewModel> Prescriptions { get => prescriptions; set => SetProperty(ref prescriptions, value); }
         private ObservableCollection<string> diagnoses;
         public ObservableCollection<string> Diagnoses { get => diagnoses; set => SetProperty(ref diagnoses, value); }
-        public ObservableCollection<Medication> Medications { get; set; }
+        private ObservableCollection<Medication> medications;
+        public ObservableCollection<Medication> Medications { get => medications; set => SetProperty(ref medications, value); }
         string name;
         string id;
         string gender;
@@ -41,6 +42,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public MyICommand DownloadPrescription { get; set; }
         public MyICommand SelectFirstPrescription { get; set; }
         public MyICommand AddDiagnosis { get; set; }
+        public MyICommand PrescribeCommand { get; set; }
         DialogHelper.DialogService dialogService;
 
 
@@ -72,6 +74,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             SelectFirstPrescription = new MyICommand(ExecuteSelectFirst);
             DialogService = new DialogService();
             AddDiagnosis = new MyICommand(ExecuteAddDiagnosis);
+            PrescribeCommand = new MyICommand(ExecutePrescribe);
+        }
+
+        public void ExecutePrescribe()
+        {
+            DialogService.ShowPrescribeDialog(Id);
+            MedicationAdded();
         }
 
         public void ExecuteDownload()
@@ -155,11 +164,16 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void MedicationAdded()
         {
-            /*foreach (Medication m in Patient.MedicalRecord.CurrentMedication)
+            Medications = new ObservableCollection<Medication>(this.medicalRecordController.GetById(Id).CurrentMedication);
+            if(patient.GetPatientType() == PatientType.Registered)
             {
-                newMedList.Add(m.ToString());
-            }*/
-
+                Prescriptions.Clear();
+                foreach (Prescription p in this.prescriptionController.GetByPatient(Id))
+                {
+                    PrescriptionViewModel prescriptionViewModel = new PrescriptionViewModel(p);
+                    Prescriptions.Add(prescriptionViewModel);
+                }
+            }
         }
 
         public void DiagnosisAdded()

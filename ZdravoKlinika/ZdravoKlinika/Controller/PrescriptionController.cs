@@ -43,6 +43,7 @@ namespace ZdravoKlinika.Controller
 
         public void Prescribe(Prescription prescription)
         {
+            prescription.DateOfCreation = DateTime.Now;
             this.prescriptionService.Prescribe(prescription);
         }
 

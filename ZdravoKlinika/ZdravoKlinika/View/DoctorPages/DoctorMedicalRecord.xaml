@@ -519,7 +519,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Content="Prepišite" KeyboardNavigation.TabIndex="1" OverridesDefaultStyle="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Click="Button_Click">
+        <Button Content="Prepišite" KeyboardNavigation.TabIndex="1" OverridesDefaultStyle="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Command="{Binding PrescribeCommand}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -634,8 +634,13 @@
                 <StaticResource ResourceKey="fancyButtonStyle2"/>
             </Button.Style>
         </Button>
-        <ListBox  Cursor="Arrow" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle1}" Style="{DynamicResource ListBoxStyle1}" ItemsSource="{Binding Medications}" Margin="528,289,308,352">
+        <ListBox  Cursor="Arrow" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ListBoxItemStyle2}" Style="{DynamicResource ListBoxStyle1}" ItemsSource="{Binding Medications}" Margin="518,278,296,339">
 
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding}" Margin="0 0 5 0" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" FontFamily="Nunito Sans"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
         <Border  Margin="382,457,575,292"
             BorderBrush="Black"
@@ -658,7 +663,7 @@
                 <DataTemplate>
                     <WrapPanel Orientation="Horizontal">
                         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Prescription}" Margin="0 0 5 0" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" FontFamily="Nunito Sans"/>
-                        <Image Source="/Resources/Images/download.png" Margin="0 0 0 0" HorizontalAlignment="Right" Width="12" Height="12" Cursor="Hand">
+                        <Image Source="/Resources/Images/download.png" HorizontalAlignment="Left" Margin="0 0 0 0" Width="12" Height="12" Cursor="Hand">
                             <Image.InputBindings>
                                 <MouseBinding Gesture="LeftClick" Command="{Binding DownloadPrescription, Mode=OneTime}" />
                                 <KeyBinding Command="{Binding DownloadPrescription}" Key="D" Modifiers="Shift" />

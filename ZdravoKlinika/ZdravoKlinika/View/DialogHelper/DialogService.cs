@@ -100,5 +100,14 @@ namespace ZdravoKlinika.View.DialogHelper
             diagnosisView.ShowDialog();
         }
 
+        public void ShowPrescribeDialog(String patientId)
+        {
+            TherapyTab viewModel = new TherapyTab();
+            viewModel.LoadFromRecord(patientId);
+            PrescriptionView prescriptionView = new PrescriptionView(viewModel);
+            OpenDialogs.Add(prescriptionView);
+            prescriptionView.ShowDialog();
+        }
+
     }
 }

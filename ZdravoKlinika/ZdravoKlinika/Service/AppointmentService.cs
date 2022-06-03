@@ -177,9 +177,7 @@ public class AppointmentService
 
     public List<DateBlock> GetFreeTime(Doctor doctor, Patient patient, DateBlock block)
     {
-        List<DateBlock> times = new List<DateBlock>();
-        block.End = block.Start.AddMinutes(block.Duration);
-        times = DateBlock.GetIntervals(new DateTime(block.Start.Date.Year, block.Start.Date.Month, block.Start.Date.Day, 8, 0, 0), new DateTime(block.Start.Date.Year, block.Start.Date.Month, block.Start.Date.Day, 20, 0, 0));
+        List<DateBlock> times = DateBlock.GetIntervals(new DateTime(block.Start.Date.Year, block.Start.Date.Month, block.Start.Date.Day, 8, 0, 0), new DateTime(block.Start.Date.Year, block.Start.Date.Month, block.Start.Date.Day, 20, 0, 0), block.Duration);
 
         foreach(Appointment appointment in this.appointmentRepository.GetAppointmentsOnDate(block.Start.Date).OrderBy(o => o.DateAndTime).ToList())
         {
@@ -188,30 +186,12 @@ public class AppointmentService
                 
                 for(int i = 0; i < times.Count; i++)
                 {
-                    if (dateBlock.End <= times[i].Start)
-                    {
-                        break;
-                    }// a.start < b.end && b.start < a.end;
-                    if (times[i].Start <= dateBlock.End && dateBlock.Start <= times[i].End)
+                    if(DateBlock.DateBlocksIntersect(dateBlock, times[i]))
                     {
                         times.RemoveAt(i);
                         i--;
                     }
                 }
-            }
-        }
-
-        for(int i = 0; i < times.Count; i++)
-        {
-            if (times[i].End <= block.Start)
-            {
-                break;
-            }
-
-            if (times[i].Start <= block.End && block.Start <= times[i].End)
-            {
-                times.RemoveAt(i);
-                i--;
             }
         }
 

@@ -19,9 +19,21 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Šifra propisanog leka" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Margin="38,269,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Prescription.Medication.MedicationCode}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Foreground="#FF5F5F5F" Margin="38,293,0,0" Width="228" Height="24"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Rp." VerticalAlignment="Top" FontWeight="Bold" FontSize="40" Margin="38,333,0,0" />
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Prescription.Medication}" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Margin="128,333,0,0" Height="75" Width="277"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Usage, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" FontWeight="Regular" FontSize="16" Foreground="#FF5F5F5F" Margin="129,413,0,0" Width="255" Height="173"/>
-        <Rectangle HorizontalAlignment="Left" Height="253" Margin="116,333,0,0" Stroke="Black" Fill="Black" VerticalAlignment="Top" Width="2"/>
+        <StackPanel Orientation="Vertical" Margin="136,333,23,118">
+
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Prescription.Medication}" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Margin="0 0 0 10"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Usage, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" FontWeight="Regular" FontSize="16" Foreground="#FF5F5F5F" />
+        </StackPanel>
+        <Rectangle HorizontalAlignment="Left" Margin="113,333,0,0" Stroke="Black" Fill="Black" VerticalAlignment="Top"  Width="2" Height="296" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Potpis farmaceuta" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Margin="266,644,0,0"/>
     </Grid>
 </UserControl>
