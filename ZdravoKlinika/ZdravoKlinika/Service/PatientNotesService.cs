@@ -30,7 +30,15 @@ namespace ZdravoKlinika.Service
         {
            return repository.GetAll().FindAll(items => items.Reciver.PersonalId == id);
         }
-        public void CreateNote(PatientNotes note)
+        public List<PatientNotes> GetForDate(string id, DateTime date)
+        {
+            return this.GetByPatientId(id).FindAll(items => items.Trigger.Date.Equals(date.Date));
+        }
+        public List<PatientNotes> GetUpcommingNotes(String id, int hours)
+        {
+            return this.GetForDate(id, DateTime.Now).FindAll(items => items.Trigger > DateTime.Now && items.Trigger < DateTime.Now.AddHours(hours));
+        }
+        public void CreateNote(PatientNotes note) 
         {
             note.NotificationId = GetAvailableId();
             repository.CreateNote(note);
