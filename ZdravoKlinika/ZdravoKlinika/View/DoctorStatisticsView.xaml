@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKlinika.View"
         mc:Ignorable="d"
-        Title="Statistika doktora" Height="450" Width="800">
+        Title="Statistika doktora" Height="350" Width="800">
     <Grid>
-        
+        <ComboBox x:Name="doctorsComboBox" HorizontalAlignment="Left" Margin="198,17,0,0" VerticalAlignment="Top" Width="191" Height="25" SelectionChanged="doctorsComboBox_SelectionChanged"/>
+        <Label Content="Izaberite doktora:" HorizontalAlignment="Left" Margin="67,19,0,0" VerticalAlignment="Top"/>
+        <Label Content="1. Lekar je bio ljubazan." HorizontalAlignment="Left" Margin="67,106,0,0" VerticalAlignment="Top"/>
+        <Label Content="2. Lekar je bio profesionalan." HorizontalAlignment="Left" Margin="67,136,0,0" VerticalAlignment="Top"/>
+        <Label Content="3. Lekar mi je pomogao sa mojim problemom." HorizontalAlignment="Left" Margin="67,166,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Ocene:" HorizontalAlignment="Left" Margin="420,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="1" HorizontalAlignment="Left" Margin="480,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="2" HorizontalAlignment="Left" Margin="510,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="3" HorizontalAlignment="Left" Margin="540,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="4" HorizontalAlignment="Left" Margin="570,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="5" HorizontalAlignment="Left" Margin="600,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prosek" HorizontalAlignment="Left" Margin="630,80,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="firstQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,106,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,106,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,106,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,106,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,106,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,106,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="secondQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,136,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,136,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,136,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,136,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,136,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,136,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="thirdQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,166,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,166,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,166,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,166,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,166,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,166,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -14,6 +14,7 @@
         <Label Content="5. Korišćenje usluga Zdravo korporacije je na mene ostavilo pozitivan uticaj." HorizontalAlignment="Left" Margin="23,180,0,0" VerticalAlignment="Top"/>
         <Label Content="6. U budućnosti ću se ponovo opredeliti za usluge Zdravo korporacije." HorizontalAlignment="Left" Margin="23,210,0,0" VerticalAlignment="Top"/>
         <Label Content="7. Aplikacija Zdravo korporacije je adekvatna." HorizontalAlignment="Left" Margin="23,240,0,0" VerticalAlignment="Top"/>
+        
         <Label Content="Ocene:" HorizontalAlignment="Left" Margin="420,20,0,0" VerticalAlignment="Top"/>
         <Label Content="1" HorizontalAlignment="Left" Margin="480,20,0,0" VerticalAlignment="Top"/>
         <Label Content="2" HorizontalAlignment="Left" Margin="510,20,0,0" VerticalAlignment="Top"/>
