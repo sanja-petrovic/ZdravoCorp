@@ -21,9 +21,9 @@ namespace ZdravoKlinika.View.Secretary
     /// </summary>
     public partial class SecretaryProcessTimeOffRequests : Page
     {
-        public SecretaryProcessTimeOffRequests()
+        public SecretaryProcessTimeOffRequests(RegisteredUser usr)
         {
-            DataContext = new TimeOffViewModel();
+            DataContext = new TimeOffViewModel(usr);
             InitializeComponent();
         }
     }

@@ -210,7 +210,7 @@ namespace ZdravoKlinika.View.Secretary
             Select(BorderProcessRequests);
             if (MainContentFrame.CanGoBack)
                 MainContentFrame.RemoveBackEntry();
-            MainContentFrame.Navigate(new SecretaryProcessTimeOffRequests());
+            MainContentFrame.Navigate(new SecretaryProcessTimeOffRequests(thisUser));
             MenuContentLabel.Content = "Obrada zahteva";
             HamburgerMenuFrame.IsChecked = false;
         }
