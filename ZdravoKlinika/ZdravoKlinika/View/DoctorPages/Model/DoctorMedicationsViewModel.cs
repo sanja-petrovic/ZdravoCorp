@@ -40,7 +40,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void LoadApproved()
         {
             ApprovedMeds = new ObservableCollection<MedViewModel>();
-            foreach (Medication m in medicationController.GetApproved())
+            foreach (Medication m in medicationController.GetByApprovedValue(true))
             {
                 MedViewModel mViewModel = new MedViewModel();
                 mViewModel.LoadMed(m);

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Model;
 
 public class RegisteredPatientService
 {

@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Data_Handler;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class MedicalRecordRepository
+    public class MedicalRecordRepository : IMedicalRecordRepository
     {
         private MedicalRecordDataHandler medicalRecordDataHandler;
         private MedicationRepository medicationRepository;
@@ -31,7 +32,7 @@ namespace ZdravoKlinika.Repository
             if (MedicalRecords == null) MedicalRecords = new List<MedicalRecord>();
         }
 
-        public void UpdateReferences(MedicalRecord medicalRecord)
+        private void UpdateReferences(MedicalRecord medicalRecord)
         {
             for(int i = 0; i < medicalRecord.CurrentMedication.Count; i++)
             {
@@ -99,7 +100,7 @@ namespace ZdravoKlinika.Repository
             MedicalRecordDataHandler.Write(MedicalRecords);
         }
 
-        public MedicalRecord? GetById(String id)
+        public MedicalRecord GetById(String id)
         {
             ReadDataFromFile();
             MedicalRecord? medicalRecordToReturn = null;
@@ -129,7 +130,7 @@ namespace ZdravoKlinika.Repository
 
         }
 
-        public int FindIndexInList(string id)
+        private int FindIndexInList(string id)
         {
             int retVal = -1;
             for(int i = 0; i < this.MedicalRecords.Count(); i++)
@@ -142,6 +143,17 @@ namespace ZdravoKlinika.Repository
             }
 
             return retVal;
+        }
+
+        public List<MedicalRecord> GetAll()
+        {
+            ReadDataFromFile();
+            foreach (MedicalRecord record in this.medicalRecords)
+            {
+                UpdateReferences(record);
+            }
+
+            return this.medicalRecords;
         }
 
     }

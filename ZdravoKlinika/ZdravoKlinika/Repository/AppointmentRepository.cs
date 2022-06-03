@@ -4,8 +4,9 @@ using System.IO;
 using System.Linq;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class AppointmentRepository
+public class AppointmentRepository : IAppointmentRepository
 {
     private AppointmentDataHandler appointmentDataHandler;
     private DoctorRepository doctorRepository;
@@ -43,11 +44,11 @@ public class AppointmentRepository
         }
         set
         {
-            RemoveAllAppointment();
+            RemoveAll();
             if (value != null)
             {
                 foreach (Appointment oAppointment in value)
-                    AddAppointment(oAppointment);
+                    Add(oAppointment);
             }
         }
     }
@@ -81,7 +82,7 @@ public class AppointmentRepository
         }
     }
 
-    public void AddAppointment(Appointment newAppointment)
+    public void Add(Appointment newAppointment)
     {
         if (newAppointment == null)
             return;
@@ -90,7 +91,7 @@ public class AppointmentRepository
         if (!this.appointments.Contains(newAppointment))
             this.appointments.Add(newAppointment);
     }
-    public void RemoveAppointment(Appointment oldAppointment)
+    public void Remove(Appointment oldAppointment)
     {
         if (oldAppointment == null)
             return;
@@ -98,7 +99,7 @@ public class AppointmentRepository
             if (this.appointments.Contains(oldAppointment))
                 this.appointments.Remove(oldAppointment);
     }
-    public void RemoveAllAppointment()
+    public void RemoveAll()
     {
         if (appointments != null)
             appointments.Clear();
@@ -134,7 +135,7 @@ public class AppointmentRepository
         return appointments;
     }
 
-    public Appointment? GetAppointmentById(int id)
+    public Appointment? GetById(int id)
     {
         Appointment? appointmentToReturn = null;
         foreach(Appointment appointment in this.appointments)
@@ -217,19 +218,7 @@ public class AppointmentRepository
 
         return appointments;
     }
-    public void Add(Appointment appointment)
-    {
-        this.appointments.Add(appointment);
-        appointmentDataHandler.Write(this.appointments);
-    }
 
-    public void Delete(Appointment appointment)
-    {
-
-        var a = this.appointments.Find(x => x.AppointmentId == appointment.AppointmentId);
-        this.appointments.Remove(a);
-        appointmentDataHandler.Write(appointments);
-    }
 
     public void Update(Appointment appointment)
     {

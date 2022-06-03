@@ -77,7 +77,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.repeatDisplay.Add("nedeljno");
             this.repeatDisplay.Add("mesečno");
 
-            Medications = medicationController.GetApproved();
+            Medications = medicationController.GetByApprovedValue(true);
             this.MedicationsDisplay = new List<String>();
             foreach (Medication m in this.medications)
             {

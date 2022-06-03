@@ -40,7 +40,7 @@ public class AppointmentService
 
     public Appointment GetAppointmentById(int id)
     {
-        return this.appointmentRepository.GetAppointmentById(id);
+        return this.appointmentRepository.GetById(id);
     }
 
     public List<Appointment> GetAppointmentsByPatientId(String id)
@@ -381,8 +381,8 @@ public class AppointmentService
 
     public void DeleteAppointment(int id)
     {
-        Appointment appointment = appointmentRepository.GetAppointmentById(id);
-        this.appointmentRepository.Delete(appointment);
+        Appointment appointment = appointmentRepository.GetById(id);
+        this.appointmentRepository.Remove(appointment);
     }
     public void PatientDeleteAppointment(int id, String patientId)
     {
@@ -399,7 +399,7 @@ public class AppointmentService
     }
     public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        Appointment appointment = this.appointmentRepository.GetAppointmentById(appointmentId); 
+        Appointment appointment = this.appointmentRepository.GetById(appointmentId); 
 
         Doctor doc = doctorRepository.GetById(doctorId);
         Room room = roomRepository.GetById(roomId);
@@ -444,7 +444,7 @@ public class AppointmentService
     }
     public void AddGrading(int appointmentId, int[] grades)
     {
-        this.appointmentRepository.AddGrading(this.appointmentRepository.GetAppointmentById(appointmentId), grades);
+        this.appointmentRepository.AddGrading(this.appointmentRepository.GetById(appointmentId), grades);
     }
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {

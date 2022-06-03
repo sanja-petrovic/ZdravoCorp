@@ -75,9 +75,5 @@ namespace ZdravoKlinika.Service
             return this.medicationRepository.GetAlternatives(medication);
         }
 
-        public List<Medication> GetApproved()
-        {
-            return this.medicationRepository.GetApproved();
-        }
     }
 }

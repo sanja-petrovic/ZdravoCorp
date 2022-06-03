@@ -5,6 +5,8 @@
 
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository;
 
 public class DoctorService
 {

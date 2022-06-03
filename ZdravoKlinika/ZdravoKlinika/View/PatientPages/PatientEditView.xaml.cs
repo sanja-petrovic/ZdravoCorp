@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Util;
 using ZdravoKlinika.ViewModel;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.PatientPages
 {
