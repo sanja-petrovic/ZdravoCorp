@@ -18,10 +18,12 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private DelegateCommand recordCommand;
         RegisteredPatient regPatient;
         private Visibility recordVisibility;
+        private int selectedIndex;
 
         public RegisteredPatient RegPatient { get => regPatient; set => SetProperty(ref regPatient, value); }
         public Visibility RecordVisibility { get => recordVisibility; set => SetProperty(ref recordVisibility, value); }
         public DelegateCommand RecordCommand { get => recordCommand; set => recordCommand = value; }
+        public int SelectedIndex { get => selectedIndex; set => SetProperty(ref selectedIndex, value); }
 
         public void ExecuteGoToRecord()
         {
@@ -33,7 +35,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             RecordVisibility = Visibility.Collapsed;
             Tabs = new ObservableCollection<ScheduleTabItem>();
             selected = DateTime.Today;
-            //infoChange();
+            SelectedIndex = Tabs.Count > 0 ? 0 : -1;
         }
 
         public void InfoChange()
@@ -43,10 +45,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             AppointmentController controller = new AppointmentController();
             List<Appointment> appointments = controller.GetAppointmentsByDoctorDate(doctor.PersonalId, Selected);
             RegisteredPatientController patientController = new RegisteredPatientController();
+            appointments = appointments.OrderBy(a => a.DateAndTime).ToList();
 
             foreach (Appointment appointment in appointments)
             {
-                
                 Patient patient = appointment.Patient;
                 string diagnoses = "";
                 string prescriptions = "";
@@ -75,8 +77,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 string lastDate = past != null ? past.DateAndTime.ToString("dd.MM.yyyy.") : "/";
                 Visibility v = appointment.DateAndTime >= DateTime.Today ? Visibility.Visible : Visibility.Collapsed;
 
-                Tabs.Add(new ScheduleTabItem { ApptId = appointment.AppointmentId, Visible = v, Parent = this, Time = appointment.DateAndTime.ToString("HH:mm"), AppointmentType = appointment.getTranslatedType(), PatientId = patient.GetPatientId(), PatientName = patient.GetPatientFullName(), Room = appointment.Room.RoomId, Diagnoses = diagnoses, LastDate = lastDate, Prescriptions = prescriptions, Duration = appointment.Duration + " minuta", Emergency = appointment.Emergency }) ;
-
+                Tabs.Add(new ScheduleTabItem { ApptId = appointment.AppointmentId, Visible = v, Parent = this, Time = appointment.DateAndTime.ToString("HH:mm"), AppointmentType = appointment.getTranslatedType(), PatientId = patient.GetPatientId(), PatientName = patient.GetPatientFullName(), Room = appointment.Room.RoomId, Diagnoses = diagnoses, LastDate = lastDate, Prescriptions = prescriptions, Duration = appointment.Duration + " minuta", Emergency = appointment.Emergency });
+                
             }
 
         }

@@ -641,6 +641,9 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding}" Margin="0 0 5 0" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" FontFamily="Nunito Sans"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.Resources>
+                <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">5</system:Double>
+            </ListBox.Resources>
         </ListBox>
         <Border  Margin="382,457,575,292"
             BorderBrush="Black"

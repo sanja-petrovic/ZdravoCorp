@@ -29,6 +29,7 @@ namespace ZdravoKlinika.View.DoctorPages
             DataContext = this;
             dialogService = new DialogHelper.DialogService();
             this.doctor = RegisteredUserController.UserToDoctor(App.User);
+            Selected = DateTime.Today;
             InitializeComponent();
             ApptTabPanel.Parent1 = this;
             ApptTabPanel.Doctor = doctor;
@@ -37,40 +38,13 @@ namespace ZdravoKlinika.View.DoctorPages
         }
         private DelegateCommand showCreateDialog;
         private DelegateCommand showTimeOffDialog;
-        private DelegateCommand recordCommand;
 
-        public DateTime Selected { get => selected; set => selected = value; }
+        public DateTime Selected { get => selected; set { selected = value; if(ApptTabPanel != null) ApptTabPanel.Selected = Selected; } }
         public Doctor Doctor { get => doctor; set => doctor = value; }
         public DelegateCommand ShowCreateDialog => showCreateDialog ?? (showCreateDialog = new DelegateCommand(ExecuteShowCreateDialog));
         public DelegateCommand ShowTimeOffDialog => showTimeOffDialog ?? (showTimeOffDialog = new DelegateCommand(ExecuteShowTimeOffDialog));
-        public DelegateCommand RecordCommand => recordCommand ?? (recordCommand = new DelegateCommand(ExecuteGoToRecord));
 
 
-        private void ExecuteGoToRecord()
-        {
-
-        }
-
-        public void CalendarSelectionChanged(object sender, RoutedEventArgs e) {
-
-            ApptTabPanel.Selected = (DateTime) Cal.SelectedDate;
-        }
-
-        public void goToMedicalRecord(string patientId)
-        {
-            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
-
-            doctorMedicalRecord.Init(patientId);
-            //this.NavigationService.Navigate(doctorMedicalRecord);
-        }
-
-
-        private void RequestButton_Click(object sender, RoutedEventArgs e)
-        {
-            TimeOffRequestView timeOffRequestView = new TimeOffRequestView();
-            timeOffRequestView.ShowDialog();
-            TimeOffView.Load();
-        }
 
         private void ExecuteShowTimeOffDialog()
         {
@@ -80,13 +54,10 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void ExecuteShowCreateDialog()
         {
-            dialogService.ShowCreateApptScheduleDialog();
+            dialogService.ShowCreateApptScheduleDialog(ApptTabPanel.Selected);
+            ApptTabPanel.ViewModel.InfoChange();
+            ApptTabPanel.HiddenTb.Visibility = ApptTabPanel.TabTab.Items.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            CreateApptSchedule createAppt = new CreateApptSchedule();
-            createAppt.ShowDialog();
-        }
     }
 }

@@ -22,11 +22,11 @@ namespace ZdravoKlinika.View.DialogHelper
             if(openDialogs == null) openDialogs = new List<Window>();
         }
 
-        public void ShowCreateApptScheduleDialog()
+        public void ShowCreateApptScheduleDialog(DateTime selectedDate)
         {
-            CreateApptSchedule createApptSchedule = new CreateApptSchedule();
-            createApptSchedule.Show();
+            CreateApptSchedule createApptSchedule = new CreateApptSchedule(selectedDate);
             openDialogs.Add(createApptSchedule);
+            createApptSchedule.ShowDialog();
         }
 
         public void ShowCreateApptRecordDialog(String id)

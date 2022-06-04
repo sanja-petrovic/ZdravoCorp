@@ -142,7 +142,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public Patient _Patient { get => _patient; set { SetProperty(ref _patient, value); CreateAppointment.RaiseCanExecuteChanged(); SetTimes(); } }
         public DateBlock Time1 { get => _time; set { SetProperty(ref _time, value); CreateAppointment.RaiseCanExecuteChanged(); SetRooms(); } }
 
-        public ViewModelBase Parent { get => parent; set => parent = value; }
+        public ViewModelBase Parent { get => parent; set => SetProperty(ref parent, value); }
 
         public void SetRooms()
         {

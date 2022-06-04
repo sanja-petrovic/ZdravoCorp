@@ -34,7 +34,7 @@
             </Border.Effect>
         </Border>
         <Viewbox Stretch="Uniform" Margin="289,18,359,200">
-            <Calendar SelectedDatesChanged="CalendarSelectionChanged" Name="Cal" Style="{DynamicResource CalendarStyle1}" CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}"/>
+            <Calendar SelectedDate="{Binding Selected}" Name="Cal" Style="{DynamicResource CalendarStyle1}" CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}"/>
         </Viewbox>
         <Border  Margin="576,90,362,650"
             BorderBrush="Black"

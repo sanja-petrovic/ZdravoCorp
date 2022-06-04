@@ -24,21 +24,12 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private AppointmentViewModel viewModel;
 
-        public CreateApptSchedule()
+        public CreateApptSchedule(DateTime selected)
         {
-            viewModel = new AppointmentViewModel() { _Doctor = RegisteredUserController.UserToDoctor(App.User) };
+            viewModel = new AppointmentViewModel() { _Doctor = RegisteredUserController.UserToDoctor(App.User), Date = selected > DateTime.Today ? selected : DateTime.Today.AddDays(1) };
             DataContext = viewModel;
             InitializeComponent();
         }
 
-        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            viewModel.SetTimes();
-        }
-
-        private void TimePicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            viewModel.SetRooms();
-        }
     }
 }
