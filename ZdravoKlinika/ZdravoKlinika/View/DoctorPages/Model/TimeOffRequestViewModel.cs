@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Util;
 using ZdravoKlinika.View.DialogHelper;
@@ -20,6 +21,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string startString;
         private string endString;
         private string status;
+        private string comment;
+        private SolidColorBrush colorBg;
+        private SolidColorBrush colorText;
 
         private TimeOffRequestController controller;
         public MyICommand ConfirmCommand { get; set; }
@@ -35,6 +39,30 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             GiveUpCommand = new MyICommand(ExecuteGiveUp);
             ConfirmCommand = new MyICommand(ExecuteConfirm);
             CheckCommand = new MyICommand(ExecuteCheck);
+            SetColor();
+            
+        }
+
+        public void SetColor()
+        {
+            if (!string.IsNullOrEmpty(status))
+            {
+                if (status.StartsWith('N'))
+                {
+                    ColorBg = (SolidColorBrush)new BrushConverter().ConvertFrom("#fff7cd");
+                    ColorText = (SolidColorBrush)new BrushConverter().ConvertFrom("#F29339");
+                }
+                else if (status.Contains("Odbijen:"))
+                {
+                    ColorBg = (SolidColorBrush)new BrushConverter().ConvertFrom("#fddfea");
+                    ColorText = (SolidColorBrush)new BrushConverter().ConvertFrom("#f20d62");
+                }
+                else
+                {
+                    ColorBg = (SolidColorBrush)new BrushConverter().ConvertFrom("#d9ffea");
+                    ColorText = (SolidColorBrush)new BrushConverter().ConvertFrom("#00e068");
+                }
+            }
         }
 
         public void ExecuteCheck()
@@ -50,7 +78,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string EmergencyString { get => emergencyString; set => SetProperty(ref emergencyString, value); }
         public string StartString { get => startString; set => SetProperty(ref startString, value); }
         public string EndString { get => endString; set => SetProperty(ref endString, value); }
-        public string Status { get => status; set => SetProperty(ref status, value); }
+        public string Status { get => status; set { SetProperty(ref status, value); SetColor(); } }
+        public string Comment { get => comment; set => SetProperty(ref comment, value); }
+        public SolidColorBrush ColorBg { get => colorBg; set => colorBg = value; }
+        public SolidColorBrush ColorText { get => colorText; set => colorText = value; }
 
         public void ExecuteConfirm()
         {

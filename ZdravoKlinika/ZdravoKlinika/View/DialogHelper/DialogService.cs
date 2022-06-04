@@ -29,6 +29,13 @@ namespace ZdravoKlinika.View.DialogHelper
             openDialogs.Add(createApptSchedule);
         }
 
+        public void ShowCreateApptRecordDialog(String id)
+        {
+            CreateApptRecord createApptRecord = new CreateApptRecord(id);
+            openDialogs.Add(createApptRecord);
+            createApptRecord.ShowDialog();
+        }
+
         public static void CloseDialog(ViewModelBase viewModel)
         {
             int index = -1;
@@ -109,5 +116,11 @@ namespace ZdravoKlinika.View.DialogHelper
             prescriptionView.ShowDialog();
         }
 
+        public void ShowEditAppt(AppointmentViewModel viewModel)
+        {
+            EditUpcomingAppt editView = new EditUpcomingAppt(viewModel);
+            OpenDialogs.Add(editView);
+            editView.ShowDialog();
+        }
     }
 }

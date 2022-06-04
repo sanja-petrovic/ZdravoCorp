@@ -192,7 +192,7 @@ namespace ZdravoKlinika.Util
 
         public override string ToString()
         {
-            return Start.ToShortTimeString();
+            return Start.ToString("HH:mm");
         }
     }
 }

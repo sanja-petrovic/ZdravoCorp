@@ -30,6 +30,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private int duration;
         private DateTime date;
         private DateBlock _time;
+        private ViewModelBase parent;
 
         public ObservableCollection<RegisteredPatient> Patients { get; set; }
         public ObservableCollection<Doctor> Doctors { get; set; }
@@ -54,6 +55,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         }
 
         public MyICommand CreateAppointment { get; set; }
+        public MyICommand EditAppointment { get; set; }
+        public MyICommand GiveUpCommand { get; set; }
 
 
         private RegisteredPatientController patientController;
@@ -64,6 +67,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public AppointmentViewModel()
         {
             CreateAppointment = new MyICommand(ExecuteCreate);
+            EditAppointment = new MyICommand(ExecuteEdit);
+            GiveUpCommand = new MyICommand(ExecuteGiveUp);
             _Doctor = RegisteredUserController.UserToDoctor(App.User);
             DoctorId = _Doctor.PersonalId;
             patientController = new RegisteredPatientController();
@@ -79,6 +84,32 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
             this.appointmentController = new AppointmentController();
             this.roomController = new RoomController();
+        }
+
+        public void LoadForEdit(Appointment a)
+        {
+            Id = a.AppointmentId;
+            _Doctor = a.Doctor;
+            _Patient = a.Patient;
+            Name = a.Patient.ToString();
+            Type = a.Type == AppointmentType.Regular ? "Pregled" : "Operacija";
+            Date = a.DateAndTime.Date;
+            Duration = a.Duration;
+            Emergency = a.Emergency;
+            Room = a.Room;
+
+        }
+
+        public void ExecuteGiveUp()
+        {
+            DialogHelper.DialogService.CloseDialog(this);
+        }
+
+        public void ExecuteEdit()
+        {
+            DateTime datetime = new DateTime(Date.Year, Date.Month, Date.Day, Time1.Start.Hour, Time1.Start.Minute, 0);
+            appointmentController.EditAppointment(Id, _Doctor, _Patient, datetime, Emergency, Type.Equals("Pregled") ? AppointmentType.Regular : AppointmentType.Surgery, Room, Duration);
+            DialogHelper.DialogService.CloseDialog(this);
         }
 
         public void ExecuteCreate()
@@ -105,12 +136,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public bool Emergency { get => emergency; set { SetProperty(ref emergency, value); CreateAppointment.RaiseCanExecuteChanged(); } }
         public int Duration { get => duration; set { SetProperty(ref duration, value); CreateAppointment.RaiseCanExecuteChanged(); SetTimes(); } }
         public DateTime Date { get => date; set  { SetProperty(ref date, value); CreateAppointment.RaiseCanExecuteChanged(); SetTimes(); }  }
-        public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
+        public string PatientId { get => patientId; set { SetProperty(ref patientId, value); _Patient = patientController.GetById(patientId); Name = _Patient.ToString(); } }
         public string DoctorId { get => doctorId; set => SetProperty(ref doctorId, value); }
         public Doctor _Doctor { get => _doctor; set => SetProperty(ref _doctor, value); }
         public Patient _Patient { get => _patient; set { SetProperty(ref _patient, value); CreateAppointment.RaiseCanExecuteChanged(); SetTimes(); } }
         public DateBlock Time1 { get => _time; set { SetProperty(ref _time, value); CreateAppointment.RaiseCanExecuteChanged(); SetRooms(); } }
 
+        public ViewModelBase Parent { get => parent; set => parent = value; }
 
         public void SetRooms()
         {

@@ -19,7 +19,12 @@
                     <DataTemplate>
                         <Grid Name="ApptInfo" HorizontalAlignment="Left" Height="309" Margin="0" VerticalAlignment="Top" Width="261" RenderTransformOrigin="0.646,0.344">
 
-                            <Image Visibility="{Binding Visible}" Margin="243,8,-2,281" Source="/Resources/Images/edit2.png" Stretch="Fill" Cursor="Hand" Width="20" Height="20"/>
+                            <Image Visibility="{Binding Visible}" Margin="243,8,-2,281" Source="/Resources/Images/edit2.png" Stretch="Fill" Cursor="Hand" Width="20" Height="20">
+
+                                <Image.InputBindings>
+                                    <MouseBinding Gesture="LeftClick" Command="{Binding EditCommand}"/>
+                                </Image.InputBindings>
+                            </Image>
                             <Image Visibility="{Binding Visible}" Source="/Resources/Images/time-delete2.png" Stretch="Fill" Cursor="Hand" Margin="218,8,23,281">
                                 <Image.InputBindings>
                                     <MouseBinding Gesture="LeftClick" Command="{Binding CancelCommand}"/>

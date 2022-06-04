@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Royale" xmlns:System="clr-namespace:System;assembly=netstandard" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model"
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Royale" xmlns:System="clr-namespace:System;assembly=netstandard" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" Height="768" Width="1024" d:DataContext="{d:DesignInstance Type=model:AllRequestsViewModel}">
 
     <Grid>
@@ -15,28 +15,60 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-
+        
         <Rectangle Fill="White" Margin="289,512,58,39" RadiusX="10" RadiusY="10">
         </Rectangle>
-        <DataGrid Background="Transparent" x:Name="DaysOffDG" CanUserReorderColumns="False"  CanUserResizeColumns="True" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding Requests}" RowStyle="{DynamicResource DataGridRowStyle1}" VerticalScrollBarVisibility="Visible" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}" Style="{DynamicResource DataGridStyle2}" IsReadOnly="True" AutoGenerateColumns="False" Margin="289,512,58,-27">
+        <DataGrid ScrollViewer.CanContentScroll="False" RowHeight="{x:Static sys:Double.NaN}" Background="Transparent" x:Name="DaysOffDG" CanUserReorderColumns="False"  CanUserResizeColumns="False" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" ItemsSource="{Binding Requests}" RowStyle="{DynamicResource DataGridRowStyle2}" VerticalScrollBarVisibility="Visible" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle2}" Style="{DynamicResource DataGridStyle2}" IsReadOnly="True" AutoGenerateColumns="False" Margin="289,520,58,-72" >
 
             <DataGrid.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
+                    <Setter Property="CornerRadius" Value="5"/>
                 </Style>
                 <System:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">10</System:Double>
 
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Datum početka" Binding="{Binding StartString}"/>
-                <DataGridTextColumn Header="Datum kraja" Binding="{Binding EndString}"/>
-                <DataGridTextColumn Header="Razlog" Binding="{Binding Reason}">
+                <DataGridTextColumn Header="Datum početka" Binding="{Binding StartString}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.VerticalAlignment" Value="Top"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Hitno" Binding="{Binding EmergencyString}"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="Datum kraja" Binding="{Binding EndString}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.VerticalAlignment" Value="Top"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Razlog" MinWidth="150" MaxWidth="190" Binding="{Binding Reason}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.VerticalAlignment" Value="Top"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Status" MaxWidth="220" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <WrapPanel>
+                                    <Border CornerRadius="10" BorderThickness="4" BorderBrush="{Binding ColorBg}">
+                                        <TextBlock Text="{Binding Status}" TextWrapping="Wrap" Foreground="{Binding ColorText}" Background="{Binding ColorBg}" Padding="5 3 5 3" FontWeight="Bold" VerticalAlignment="Center">
+                                        </TextBlock>
+                                    </Border>
+                                </WrapPanel>
+                            </Grid>
+                        </DataTemplate>
+                        
+                    </DataGridTemplateColumn.CellTemplate>
+                    
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Rectangle Fill="#F8F9FE" Height="1" Margin="308,562,89,205"/>
     </Grid>
 </UserControl>

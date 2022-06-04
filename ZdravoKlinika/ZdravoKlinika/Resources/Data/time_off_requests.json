@@ -151,7 +151,7 @@
     "Emergency": false,
     "DateOfCreation": "2022-05-18T00:00:00+02:00",
     "Doctor": "123",
-    "Comment": ""
+    "Comment": ":/"
   },
   {
     "Id": 15,
@@ -213,7 +213,7 @@
     "StartDate": "2022-06-06T00:00:00",
     "EndDate": "2022-06-06T00:00:00",
     "Reason": "5",
-    "State": "Pending",
+    "State": "Approved",
     "Emergency": false,
     "DateOfCreation": "2022-06-03T00:00:00+02:00",
     "Doctor": "123",
@@ -224,10 +224,10 @@
     "StartDate": "2022-10-12T00:00:00",
     "EndDate": "2022-10-15T00:00:00",
     "Reason": "123",
-    "State": "Pending",
-    "Emergency": true,
+    "State": "Denied",
+    "Emergency": false,
     "DateOfCreation": "2022-06-03T00:00:00+02:00",
     "Doctor": "123",
-    "Comment": ""
+    "Comment": "Zbog manjka radnog osoblja"
   }
 ]

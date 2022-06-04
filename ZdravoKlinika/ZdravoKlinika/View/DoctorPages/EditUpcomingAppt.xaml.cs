@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -19,8 +20,9 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class EditUpcomingAppt : Window
     {
-        public EditUpcomingAppt()
+        public EditUpcomingAppt(AppointmentViewModel viewModel)
         {
+            DataContext = viewModel;
             InitializeComponent();
         }
     }

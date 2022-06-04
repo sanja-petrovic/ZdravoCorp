@@ -25,10 +25,10 @@ namespace ZdravoKlinika.View.Secretary
     {
         PatientViewModel PatientViewModel { get; set; }
         RegisteredUser thisUser;
-        public SecretaryMainWindow(RegisteredUser user)
+        public SecretaryMainWindow()
         {
             InitializeComponent();
-            thisUser = user;
+            thisUser = App.User;
             MainContentFrame.Navigate(new SecretaryHomePage());
             PatientViewModel = new PatientViewModel();
             Select(BorderHomePage);

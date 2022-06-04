@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -61,6 +61,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             RecordCommand = new MyICommand(ExecuteGoToRecord);
             CancelCommand = new MyICommand(ExecuteCancel);
+            EditCommand = new MyICommand(ExecuteEdit);
             this.appointmentController = new AppointmentController();
             this.dialogService = new DialogService();
         }
@@ -68,6 +69,14 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void ExecuteCancel()
         {
             DialogService.ShowPrompt("Otkazivanje pregleda", "Da li ste sigurni da želite da otkažete termin " + Time + "?", DeleteAppointment);
+        }
+
+        public void ExecuteEdit()
+        {
+            Appointment a = this.appointmentController.GetAppointmentById(ApptId);
+            AppointmentViewModel avm = new AppointmentViewModel();
+            avm.LoadForEdit(a);
+            DialogService.ShowEditAppt(avm);
         }
 
         public void DeleteAppointment()

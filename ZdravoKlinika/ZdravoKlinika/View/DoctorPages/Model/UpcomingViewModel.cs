@@ -17,6 +17,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string type;
         private string room;
         public MyICommand DeleteCommand { get; set; }
+        public MyICommand EditCommand { get; set; }
         private DialogHelper.DialogService dialogService; 
         private AppointmentController controller;
         private string patient;
@@ -29,7 +30,18 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             DialogService = new DialogService();
             Controller = new AppointmentController();
             DeleteCommand = new MyICommand(ExecuteDelete);
+            EditCommand = new MyICommand(ExecuteEdit);
             Visibility = cancelled ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        public void ExecuteEdit()
+        {
+            AppointmentController appointmentController = new AppointmentController();
+            Appointment a = appointmentController.GetAppointmentById(appointmentId);
+            AppointmentViewModel avm = new AppointmentViewModel();
+            avm.LoadForEdit(a);
+            DialogService.ShowEditAppt(avm);
+            parent.EditedUpcoming();
         }
 
         public void ExecuteDelete()

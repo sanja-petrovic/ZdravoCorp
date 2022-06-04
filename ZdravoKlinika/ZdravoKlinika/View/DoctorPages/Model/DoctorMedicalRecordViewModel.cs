@@ -17,13 +17,18 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private RegisteredPatient patient;
         private PrescriptionController prescriptionController;
         private MedicalRecordController medicalRecordController;
+
         public ObservableCollection<PastViewModel> PastAppointments { get; set; }
+
         private ObservableCollection<UpcomingViewModel> upcomingAppointments;
         public ObservableCollection<UpcomingViewModel> UpcomingAppointments { get => upcomingAppointments; set => SetProperty(ref upcomingAppointments, value); }
+
         private ObservableCollection<PrescriptionViewModel> prescriptions;
         public ObservableCollection<PrescriptionViewModel> Prescriptions { get => prescriptions; set => SetProperty(ref prescriptions, value); }
+
         private ObservableCollection<string> diagnoses;
         public ObservableCollection<string> Diagnoses { get => diagnoses; set => SetProperty(ref diagnoses, value); }
+
         private ObservableCollection<Medication> medications;
         public ObservableCollection<Medication> Medications { get => medications; set => SetProperty(ref medications, value); }
         string name;
@@ -43,6 +48,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public MyICommand SelectFirstPrescription { get; set; }
         public MyICommand AddDiagnosis { get; set; }
         public MyICommand PrescribeCommand { get; set; }
+        public MyICommand CreateAppointment { get; set; }
         DialogHelper.DialogService dialogService;
 
 
@@ -66,7 +72,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.patientController = new RegisteredPatientController();
             this.appointmentController = new AppointmentController();
             PastAppointments = new ObservableCollection<PastViewModel>();
-            this.UpcomingAppointments = new ObservableCollection<UpcomingViewModel>();
+            UpcomingAppointments = new ObservableCollection<UpcomingViewModel>();
             this.prescriptionController = new PrescriptionController();
             this.medicalRecordController = new MedicalRecordController();
             Prescriptions = new ObservableCollection<PrescriptionViewModel>();
@@ -75,6 +81,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             DialogService = new DialogService();
             AddDiagnosis = new MyICommand(ExecuteAddDiagnosis);
             PrescribeCommand = new MyICommand(ExecutePrescribe);
+            CreateAppointment = new MyICommand(ExecuteCreate);
+        }
+
+        public void ExecuteCreate()
+        {
+            DialogService.ShowCreateApptRecordDialog(Id);
+            EditedUpcoming();
         }
 
         public void ExecutePrescribe()
@@ -192,6 +205,20 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             }
 
             PastAppointments = pastNew;
+        }
+
+        public void EditedUpcoming()
+        {
+            ObservableCollection<UpcomingViewModel> u = new ObservableCollection<UpcomingViewModel>();
+            foreach (Appointment a in this.appointmentController.GetPatientsUpcomingAppointments(Patient))
+            {
+                UpcomingViewModel upcoming = new UpcomingViewModel();
+                upcoming.init(a);
+                upcoming.Parent = this;
+                u.Add(upcoming);
+            }
+            UpcomingAppointments = u;
+
         }
 
     }

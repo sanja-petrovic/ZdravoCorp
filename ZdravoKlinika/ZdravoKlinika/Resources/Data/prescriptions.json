@@ -102,5 +102,31 @@
     "Id": 8,
     "DateOfCreation": "2022-06-03T05:40:09.2200261+02:00",
     "Patient": "3007967123321,Registered"
+  },
+  {
+    "Medication": "3",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "1",
+    "Doctor": "123",
+    "Id": 9,
+    "DateOfCreation": "2022-06-04T02:16:32.5443705+02:00",
+    "Patient": "0105965123321,Registered"
+  },
+  {
+    "Medication": "3",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "124",
+    "Doctor": "123",
+    "Id": 10,
+    "DateOfCreation": "2022-06-04T05:28:58.2988351+02:00",
+    "Patient": "0105965123321,Registered"
   }
 ]

@@ -4,32 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
-        xmlns:System="clr-namespace:System;assembly=System.Runtime" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:ScheduleTabItem}" x:Class="ZdravoKlinika.View.DoctorPages.EditUpcomingAppt"
+        xmlns:System="clr-namespace:System;assembly=System.Runtime" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentViewModel}" x:Class="ZdravoKlinika.View.DoctorPages.EditUpcomingAppt"
         mc:Ignorable="d"
-        Title="Izmena termina" Height="362" Width="446" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+        Title="Izmena termina" Height="362" Width="446" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Height="362" Width="446">
         <TextBlock HorizontalAlignment="Left" Margin="36,31,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="36,55,0,0" TextWrapping="Wrap" Text="{Binding PatientName}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" MaxWidth="110"/>
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="36,55,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" />
         <TextBlock HorizontalAlignment="Left" Margin="36,88,0,0" TextWrapping="Wrap" Text="Tip" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
         <TextBlock HorizontalAlignment="Left" Margin="171,125,0,0" TextWrapping="Wrap" Text="Hitno?" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
         <TextBlock HorizontalAlignment="Left" Margin="38,168,0,0" TextWrapping="Wrap" Text="Datum" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="242,168,0,0" TextWrapping="Wrap" Text="Vreme" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="336,168,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <ComboBox x:Name="TypeCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" SelectedItem="{Binding AppointmentType}" HorizontalAlignment="Left" Margin="36,121,0,0" VerticalAlignment="Top" Width="102" Padding="5" Height="28">
+        <ComboBox x:Name="TypeCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"  ItemsSource="{Binding Types}" Foreground="#555557" SelectedItem="{Binding Type}"  HorizontalAlignment="Left" Margin="36,121,0,0" VerticalAlignment="Top" Width="102" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
-            <ComboBoxItem Name="Pregled"></ComboBoxItem>
-            <ComboBoxItem Name="Operacija"></ComboBoxItem>
         </ComboBox>
         <CheckBox x:Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="149,125,218,219"/>
         <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}"   x:Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="36,196,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday">
-
-            <DatePicker.BlackoutDates>
-                <CalendarDateRange Start="{x:Static System:DateTime.MinValue}" End="{x:Static System:DateTime.Today}"/>
-            </DatePicker.BlackoutDates>
         </DatePicker>
         <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Time1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="242,196,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
@@ -55,6 +49,33 @@
             </TextBox.Resources>
         </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="369,125,0,0" TextWrapping="Wrap" Text="minuta" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"   VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77" Command="{Binding EditAppointment}" Margin="329,276,0,0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.InputBindings>
+                <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding SaveCommand}"/>
+                <MouseBinding Gesture="LeftClick" Command="{Binding SaveCommand}"/>
+            </Button.InputBindings>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle3"/>
+            </Button.Style>
+        </Button>
+        <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding GiveUpCommand}" Margin="236,276,0,0" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle4"/>
+            </Button.Style>
+            <Button.InputBindings>
+                <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding GiveUpCommand}"/>
+            </Button.InputBindings>
+        </Button>
 
     </Grid>
 </Window>

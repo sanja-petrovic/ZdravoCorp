@@ -121,6 +121,12 @@ public class AppointmentController
         this.appointmentService.EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
     }
 
+    public void EditAppointment(int appointmentId, Doctor doctor, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, Room room, int duration)
+    {
+        Appointment a = new Appointment(appointmentId, doctor, patient, room, duration, emergency, type, dateAndTime);
+        this.appointmentService.EditAppointment(a);
+    }
+
     public void UpdateAnamnesis(int appointmentId, string note, string diagnosis)
     {
         Appointment a = GetAppointmentById(appointmentId);

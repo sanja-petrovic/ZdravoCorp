@@ -1,0 +1,71 @@
+﻿<Window x:Class="ZdravoKlinika.View.DoctorPages.CreateApptRecord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xml:lang="sr-Latn-RS"  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentViewModel}" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        mc:Ignorable="d"
+        Title="CreateApptSchedule" Height="380" Width="446">
+    <Grid Height="380" Width="446" >
+        <TextBlock HorizontalAlignment="Left" Margin="33,118,0,0" TextWrapping="Wrap" Text="Tip" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="171,152,0,0" TextWrapping="Wrap" Text="Hitno?" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock HorizontalAlignment="Left" Margin="32,203,0,0" TextWrapping="Wrap" Text="Datum" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="236,203,0,0" TextWrapping="Wrap" Text="Vreme" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="330,203,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="ScheduleButton" Command="{Binding CreateAppointment}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="307,289,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle3"/>
+            </Button.Style>
+        </Button>
+        <ComboBox x:Name="TypeCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" ItemsSource="{Binding Types, UpdateSourceTrigger=PropertyChanged}" Foreground="#555557" SelectedItem="{Binding Type}" HorizontalAlignment="Left" Margin="32,146,0,0" VerticalAlignment="Top" Width="102" Padding="5" Height="28">
+            <ComboBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </ComboBox.Resources>
+        </ComboBox>
+        <CheckBox Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="149,152,263,189"/>
+
+        <DatePicker SelectedDateChanged="DatePicker_SelectedDateChanged" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date}" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="32,227,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday">
+
+            <DatePicker.BlackoutDates>
+                <CalendarDateRange Start="{x:Static sys:DateTime.MinValue}" End="{x:Static sys:DateTime.Today}"/>
+            </DatePicker.BlackoutDates>
+        </DatePicker>
+        <ComboBox SelectionChanged="TimePicker_SelectionChanged" x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Time1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="236,227,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+            <ComboBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </ComboBox.Resources>
+        </ComboBox>
+        <ComboBox x:Name="RoomCB" Style="{DynamicResource ComboBoxStyle1}" SelectedItem="{Binding Room}" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="330,227,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+            <ComboBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </ComboBox.Resources>
+
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="32,42,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="33,71,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" />
+        <TextBlock HorizontalAlignment="Left" Margin="236,118,0,0" TextWrapping="Wrap" Text="Trajanje" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
+        <TextBox x:Name="TypeCB_Copy" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource TextBoxStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="236,147,0,0" VerticalAlignment="Top" Width="114" Padding="5" Height="28">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" Margin="363,153,0,0" TextWrapping="Wrap" Text="minuta" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
+        <TextBlock HorizontalAlignment="Left" Margin="236,42,0,0" TextWrapping="Wrap" Text="Doktor" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+
+        <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="236,71,0,0" TextWrapping="Wrap" Text="{Binding _Doctor}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="164"/>
+    </Grid>
+</Window>

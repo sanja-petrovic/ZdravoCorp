@@ -238,15 +238,7 @@ public class AppointmentRepository
 
     public void EditAppointment(Appointment appointment)
     {
-        int index = -1;
-        foreach (Appointment a in this.appointments)
-        {
-            if (a.AppointmentId == appointment.AppointmentId)
-            {
-                index = this.appointments.IndexOf(a);
-                break;
-            }
-        }
+        int index = this.appointments.FindIndex(a => a.AppointmentId == appointment.AppointmentId);
 
         if (index == -1)
         {
@@ -291,7 +283,7 @@ public class AppointmentRepository
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {
         List<Appointment> pastAppointments = new List<Appointment>();
-        foreach(Appointment appointment in this.appointments)
+        foreach(Appointment appointment in this.GetAll())
         {
             if(appointment.Patient.GetPatientId().Equals(patient.PersonalId) && appointment.Over)
             {
@@ -306,9 +298,9 @@ public class AppointmentRepository
     public List<Appointment> GetPatientsUpcomingAppointments(RegisteredPatient patient)
     {
         List<Appointment> upcomingAppointments = new List<Appointment>();
-        foreach (Appointment appointment in this.appointments)
+        foreach (Appointment appointment in this.GetAll())
         {
-            if (appointment.Patient.GetPatientId().Equals(patient.PersonalId) && !appointment.Over)
+            if (appointment.Patient.GetPatientId().Equals(patient.PersonalId) && appointment.DateAndTime >= DateTime.Today)
             {
                 UpdateReferences(appointment);
                 upcomingAppointments.Add(appointment);
