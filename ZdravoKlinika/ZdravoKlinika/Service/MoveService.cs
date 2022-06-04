@@ -6,6 +6,7 @@ using System.Timers;
 public class MoveService
 {
     private MoveRepository moveRepository;
+    private List<Move> moves;
     private Room sourceRoom;
     private Room destinationRoom;
     private DateTime scheduledDateTime;
@@ -14,11 +15,14 @@ public class MoveService
     private RoomService roomService;
     private List<Room> rooms;
     private List<string> idList;
+    private String generatedId;
 
     public MoveService()
     {
         this.moveRepository = new MoveRepository();
+        this.moves = this.moveRepository.GetAll();
         this.timer = new Timer();
+        FetchRooms();
     }
 
     public Room SourceRoom { get => sourceRoom; set => sourceRoom = value; }
@@ -39,20 +43,19 @@ public class MoveService
     public void CreateMove(Move move)
     {
         SaveMoveValues(move);
-        
+
         TimeSpan fireInterval = scheduledDateTime - DateTime.Now;
         timer.Interval = fireInterval.TotalMilliseconds;
         timer.Elapsed += ExecuteMove;
         timer.AutoReset = false;
         timer.Start();
 
-        this.moveRepository.CreateMove(new Move(GenerateMoveId().ToString(), SourceRoom, DestinationRoom, ScheduledDateTime, EquipmentToMove));
+        generatedId = GenerateMoveId().ToString();
+        this.moveRepository.CreateMove(new Move(generatedId, SourceRoom, DestinationRoom, ScheduledDateTime, EquipmentToMove));
     }
 
     private void ExecuteMove(object? sender, ElapsedEventArgs e)
     {
-        FetchRooms();
-        
         foreach (Room r in this.rooms)
         {
             if (r.RoomId.Equals(this.SourceRoom.RoomId))
@@ -66,7 +69,8 @@ public class MoveService
             }
         }
 
-        SaveChangesToRooms();
+        FinishMove(this.generatedId);
+        SaveChangesToRooms();       
         DestroyTimer();
     }
 
@@ -153,6 +157,25 @@ public class MoveService
         timer.Dispose();
     }
 
+    private void FinishMove(String moveId)
+    {
+        FetchMoves();
+        foreach(Move m in this.moves)
+        {
+            if (m.MoveId.Equals(moveId))
+            {
+                m.IsMoveFinished = true;
+            }
+        }
+        SaveChangesToMoves();
+    }
+
+    private void SaveChangesToMoves()
+    {
+        MoveDataHandler moveDataHandler = new MoveDataHandler();
+        moveDataHandler.Write(this.moves);
+    }
+
     public void UpdateMove(Move changedMove)
     {
         Move move = this.moveRepository.GetById(changedMove.MoveId);
@@ -201,6 +224,11 @@ public class MoveService
     {
         this.roomService = new RoomService();
         this.rooms = roomService.GetAll();
+    }
+
+    private void FetchMoves()
+    {
+        this.moves = this.GetAll();
     }
 
     private void UpdateMoveValues(Move moveToBeUpdated, Move updatedValues)

@@ -135,7 +135,7 @@ namespace JsonConverters
             Utf8JsonWriter writer,
             Equipment eq,
             JsonSerializerOptions options) =>
-                writer.WriteStringValue(eq.Id + "," + eq.Amount);
+                writer.WriteStringValue(eq.Id + "," + eq.Name + "," + eq.Amount + "," + eq.Expendable);
     }
     
     public class PrescriptionConverter : JsonConverter<Prescription>

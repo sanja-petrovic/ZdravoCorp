@@ -17,6 +17,7 @@ public class RenovationService
     private List<Room> entryRooms;
     private int numberOfExitRooms;
     private DateTime scheduledDateTime;
+    private string generatedId;
 
     public RenovationService()
     {
@@ -27,6 +28,8 @@ public class RenovationService
         this.appointments = new List<Appointment>();
         this.renovations = new List<Renovation>();
         this.roomFree = true;
+
+        FetchRooms();
     }
 
     public RenovationRepository RenovationRepository { get => renovationRepository; set => renovationRepository = value; }
@@ -55,7 +58,8 @@ public class RenovationService
 
         if (roomFree)
         {
-            this.renovationRepository.CreateRenovation(new Renovation(GenerateRenovationId().ToString(), numberOfExitRooms, scheduledDateTime, entryRooms, false));
+            generatedId = GenerateRenovationId().ToString();
+            this.renovationRepository.CreateRenovation(new Renovation(generatedId, numberOfExitRooms, scheduledDateTime, entryRooms, false));
             DetermineRenovationType();
             //TO-DO: OVDE UPDATE TABELU SOBA(?)
 
@@ -81,8 +85,6 @@ public class RenovationService
 
     public void RenovateTheRoom()
     {
-        FetchRooms();
-
         foreach (Room r in rooms)
         {
             if (r.RoomId.Equals(entryRooms[0].RoomId))
@@ -100,8 +102,6 @@ public class RenovationService
 
     private void ExecuteRenovation(object? sender, ElapsedEventArgs e)
     {
-        FetchRooms();
-
         foreach (Room r in rooms)
         {
             if (r.RoomId.Equals(entryRooms[0].RoomId))
@@ -109,17 +109,13 @@ public class RenovationService
                 roomService.FreeRoom(r.RoomId);
             }
         }
-
-        FinishRenovation();
-
+        FinishRenovation(generatedId);
         timerRenovation.Stop();
         timerRenovation.Dispose();
     }
 
     public void SplitTheRoom()
     {
-        FetchRooms();
-
         foreach (Room r in rooms)
         {
             if (r.RoomId.Equals(entryRooms[0].RoomId))
@@ -136,24 +132,18 @@ public class RenovationService
 
     private void ExecuteSplit(object? sender, ElapsedEventArgs e)
     {
-        this.roomService = new RoomService();
-
         roomService.DeleteRoom(entryRooms[0].RoomId);
         for (int i = 0; i < numberOfExitRooms; i++)
         {
             roomService.CreateRoom(new Room("placeholder", "placeholder", RoomType.checkup, 1, 1, RoomStatus.available, true));
         }
-
-        FinishRenovation();
-
+        FinishRenovation(generatedId);
         timerSplit.Stop();
         timerSplit.Dispose();
     }
 
     private void MergeTheRooms()
     {
-        FetchRooms();
-
         foreach (Room r in rooms)
         {
             foreach (Room r1 in EntryRooms)
@@ -173,16 +163,12 @@ public class RenovationService
 
     private void ExecuteMerge(object? sender, ElapsedEventArgs e)
     {
-        this.roomService = new RoomService();
-
         foreach (Room r in EntryRooms)
         {
             roomService.DeleteRoom(r.RoomId);
         }
         roomService.CreateRoom(new Room("placeholder", "placeholder", RoomType.checkup, 1, 1, RoomStatus.available, true));
-
-        FinishRenovation();
-
+        FinishRenovation(generatedId);
         timerMerge.Dispose();
         timerMerge.Dispose();
     }
@@ -275,15 +261,27 @@ public class RenovationService
         this.rooms = roomService.GetAll();
     }
 
-    //TO-DO: FIND BUG
-    private void FinishRenovation()
+    private void FetchRenovations()
     {
-        foreach(Renovation r in this.renovations)
+        this.renovations = this.GetAll();
+    }
+
+    private void FinishRenovation(String id)
+    {
+        FetchRenovations();
+        foreach (Renovation r in this.renovations)
         {
-            if (r.EntryRooms.Equals(EntryRooms) && r.NumberOfExitRooms.Equals(NumberOfExitRooms) && r.IsRenovationFinished == false)
+            if (r.Id.Equals(id))
             {
-                UpdateRenovation(new Renovation(r.Id, r.NumberOfExitRooms, r.ScheduledDateTime, r.EntryRooms, true));
+                r.IsRenovationFinished = true;
             }
         }
+        SaveChangesToRenovations();
+    }
+
+    private void SaveChangesToRenovations()
+    {
+        RenovationDataHandler renovationDataHandler = new RenovationDataHandler();
+        renovationDataHandler.Write(this.renovations);
     }
 }
