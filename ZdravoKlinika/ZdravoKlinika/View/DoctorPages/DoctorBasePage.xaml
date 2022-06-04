@@ -194,7 +194,7 @@
             </Ellipse.Fill>
         </Ellipse>
         <StackPanel Orientation="Vertical" Margin="76,37,804,661">
-            <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" FontWeight="Bold" FontSize="16" Text="{Binding Doctor, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" FontWeight="Bold" FontSize="16" Text="{Binding Doctor, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="{Binding Doctor.Specialty}"></TextBlock>
         </StackPanel>
         <Rectangle Fill="#F8F9FE" Height="1" Margin="13,107,801,660"/>

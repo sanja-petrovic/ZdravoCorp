@@ -3,9 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:DoctorMedicationsViewModel}" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:DoctorMedicationsViewModel}" xmlns:sys="clr-namespace:System;assembly=mscorlib"  
              mc:Ignorable="d"  Height="768" Width="1024">
 
+    <UserControl.InputBindings>
+        <KeyBinding Key="O" Command="{Binding Authorize}" Modifiers="Ctrl"></KeyBinding>
+        <KeyBinding Key="M" Command="{Binding View}" Modifiers="Ctrl" />
+        <KeyBinding Key="T" Command="{Binding SwitchTab}" Modifiers="Shift"/>
+    </UserControl.InputBindings>
     <UserControl.Resources>
         <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -433,10 +438,10 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <TabControl Name="MedsTab" SelectionChanged="TabControl_SelectionChanged" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="274,126,28,63">
-            <TabItem Header="Odobreni lekovi">
+        <TabControl  SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="MedsTab" SelectionChanged="TabControl_SelectionChanged" Style="{DynamicResource TabControlStyle1}" ItemContainerStyle="{DynamicResource TabItemStyleLogAppt}" Margin="274,126,28,63">
+            <TabItem  TabIndex="0" Name="Approved" Header="Odobreni lekovi">
                 <Grid>
-                    <DataGrid Name="ApprovedMeds" HorizontalContentAlignment="Left" ItemsSource="{Binding ApprovedMeds, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,0,0,-322">
+                    <DataGrid SelectedItem="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="ApprovedMeds" HorizontalContentAlignment="Left" ItemsSource="{Binding ApprovedMeds, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None" CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,0,0,-322">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" MinWidth="10" ElementStyle="{StaticResource CheckBoxStyle1}">
                                 <DataGridCheckBoxColumn.Header>
@@ -512,9 +517,9 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Neodobreni lekovi">
+            <TabItem TabIndex="1" Name="Pending" Header="Neodobreni lekovi">
                 <Grid>
-                    <DataGrid HorizontalContentAlignment="Left" Name="UnapprovedMeds" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False" ItemsSource="{Binding PendingMeds,  UpdateSourceTrigger=PropertyChanged}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None"  CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,0,0,-322">
+                    <DataGrid SelectedItem="{Binding RequestSelected}" HorizontalContentAlignment="Left" Name="UnapprovedMeds" SelectionMode="Extended" SelectionUnit="FullRow" CanUserReorderColumns="False"  CanUserResizeColumns="False" ItemsSource="{Binding PendingMeds,  UpdateSourceTrigger=PropertyChanged}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" GridLinesVisibility="None"  CellStyle="{DynamicResource DataGridCellStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,0,0,-322">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Naziv leka" Width="*" MaxWidth="200" Binding="{Binding BrandName}">
                                 <DataGridTextColumn.ElementStyle>

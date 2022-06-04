@@ -8,14 +8,14 @@
         mc:Ignorable="d"
         Title="Izmena termina" Height="362" Width="446" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Height="362" Width="446">
-        <TextBlock HorizontalAlignment="Left" Margin="36,31,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="36,31,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="36,55,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" />
         <TextBlock HorizontalAlignment="Left" Margin="36,88,0,0" TextWrapping="Wrap" Text="Tip" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
         <TextBlock HorizontalAlignment="Left" Margin="171,125,0,0" TextWrapping="Wrap" Text="Hitno?" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>
         <TextBlock HorizontalAlignment="Left" Margin="38,168,0,0" TextWrapping="Wrap" Text="Datum" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="242,168,0,0" TextWrapping="Wrap" Text="Vreme" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="336,168,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <ComboBox x:Name="TypeCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}"  ItemsSource="{Binding Types}" Foreground="#555557" SelectedItem="{Binding Type}"  HorizontalAlignment="Left" Margin="36,121,0,0" VerticalAlignment="Top" Width="102" Padding="5" Height="28">
+        <ComboBox  x:Name="TypeCB" FontFamily="Nunito Sans" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" BorderBrush="#FFAEAEC1"  ItemsSource="{Binding Types}" Foreground="#555557" SelectedItem="{Binding Type}"  HorizontalAlignment="Left" Margin="36,121,0,0" VerticalAlignment="Top" Width="102" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -23,16 +23,16 @@
             </ComboBox.Resources>
         </ComboBox>
         <CheckBox x:Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="149,125,218,219"/>
-        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}"   x:Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="36,196,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday">
+        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}"   x:Name="DatePicker" Style="{DynamicResource MaterialDesignDatePicker}" BorderBrush="#FFAEAEC1" HorizontalAlignment="Left" Margin="36,196,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday">
         </DatePicker>
-        <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Time1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="242,196,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+        <ComboBox x:Name="TimePicker" FontFamily="Nunito Sans"  Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" BorderBrush="#FFAEAEC1" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Time1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="242,196,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <ComboBox x:Name="RoomCB" Style="{DynamicResource ComboBoxStyle1}" SelectedItem="{Binding Room}" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="336,196,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+        <ComboBox x:Name="RoomCB" FontFamily="Nunito Sans"  Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" BorderBrush="#FFAEAEC1" SelectedItem="{Binding Room}" ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged}"  Foreground="#555557" HorizontalAlignment="Left" Margin="336,196,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -41,7 +41,7 @@
 
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="242,88,0,0" TextWrapping="Wrap" Text="Trajanje" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
-        <TextBox x:Name="TypeCB_Copy" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource TextBoxStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="242,119,0,0" VerticalAlignment="Top" Width="114" Padding="5" Height="28">
+        <TextBox x:Name="TypeCB_Copy" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignTextBox}" BorderBrush="#FFAEAEC1" Foreground="#555557" HorizontalAlignment="Left" Margin="242,119,0,0" VerticalAlignment="Top" Width="114" Padding="5" Height="28">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

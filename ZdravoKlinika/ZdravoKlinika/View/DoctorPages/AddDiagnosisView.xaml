@@ -31,7 +31,7 @@
             </Button.InputBindings>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="40,51,0,0" TextWrapping="Wrap" Text="Dijagnoza" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox Text="{Binding Diagnosis, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="371" Height="74" BorderBrush="#FFAEAEC1">
+        <TextBox Foreground="#555557" Text="{Binding Diagnosis, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" HorizontalAlignment="Center" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="371" Height="74" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

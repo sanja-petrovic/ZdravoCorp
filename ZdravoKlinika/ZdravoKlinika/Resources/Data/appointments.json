@@ -716,16 +716,16 @@
   {
     "AppointmentId": 44,
     "DateAndTime": "2022-06-04T08:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
+    "Diagnoses": "a",
+    "DoctorsNotes": "a",
     "Type": "Regular",
     "Emergency": true,
     "Duration": 60,
     "Doctor": "123",
     "Patient": "0105965123321,Registered",
     "Room": "314",
-    "Over": false,
-    "Prescriptions": null,
+    "Over": true,
+    "Prescriptions": [],
     "Grading": null,
     "PatientNotes": ""
   },
@@ -859,7 +859,7 @@
   },
   {
     "AppointmentId": 54,
-    "DateAndTime": "2022-06-08T14:00:00",
+    "DateAndTime": "2022-06-04T14:00:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
@@ -875,7 +875,7 @@
   },
   {
     "AppointmentId": 55,
-    "DateAndTime": "2022-06-07T09:30:00",
+    "DateAndTime": "2022-06-04T09:30:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
@@ -891,7 +891,7 @@
   },
   {
     "AppointmentId": 56,
-    "DateAndTime": "2022-06-08T14:45:00",
+    "DateAndTime": "2022-06-04T14:45:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",

@@ -13,7 +13,7 @@
     </Window.InputBindings>
     <Grid Height="384" Width="529">
         <TextBlock HorizontalAlignment="Left" Margin="46,180,0,0" TextWrapping="Wrap" Text="Razlog" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox Name="ReasonTB" VerticalContentAlignment="Center" Padding="7 0 0 0" Style="{DynamicResource TextBoxStyle1}" Text="{Binding Reason, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.5,0.5">
+        <TextBox Foreground="#555557" Name="ReasonTB" VerticalContentAlignment="Center" Padding="7 0 0 0" Style="{DynamicResource MaterialDesignTextBox}" Text="{Binding Reason, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.5,0.5">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -80,9 +80,9 @@
 
         <Rectangle Fill="#FE5D7A" Margin="46,337,39,55" RadiusX="10" RadiusY="10" Visibility="Collapsed"/>
         <TextBlock Name="SpecialistsWarning"  Visibility="Collapsed"  Foreground="#FE5D7A" FontWeight="Bold" HorizontalAlignment="Left" Margin="46,139,0,0" TextWrapping="Wrap" Text="Više od jednog lekara Vaše specijalnosti je već podnelo zahtev za slobodne dane u ovom periodu. Ukoliko nije hitan slučaj, nije moguće podneti zahtev." VerticalAlignment="Top"  FontSize="12" Width="477" Height="35"/>
-        <DatePicker Name="StartDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}"  Style="{DynamicResource DatePickerStyle1}"  SelectedDate="{Binding Start, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top" Width="216" SelectedDateChanged="StartDatePicker_SelectedDateChanged">
+        <DatePicker Foreground="#555557" BorderBrush="#FFAEAEC1" Name="StartDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}"  Style="{DynamicResource MaterialDesignDatePicker}"  SelectedDate="{Binding Start, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top" Width="216" SelectedDateChanged="StartDatePicker_SelectedDateChanged">
 
         </DatePicker>
-        <DatePicker  SelectedDateChanged="EndDatePicker_SelectedDateChanged" Name="EndDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" Style="{DynamicResource DatePickerStyle1}"   SelectedDate="{Binding End, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="278,104,0,0" VerticalAlignment="Top" Width="216"/>
+        <DatePicker  BorderBrush="#FFAEAEC1" SelectedDateChanged="EndDatePicker_SelectedDateChanged" Name="EndDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" Style="{DynamicResource MaterialDesignDatePicker}" Foreground="#555557"   SelectedDate="{Binding End, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="278,104,0,0" VerticalAlignment="Top" Width="216"/>
     </Grid>
 </Window>

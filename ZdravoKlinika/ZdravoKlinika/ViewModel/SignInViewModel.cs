@@ -44,7 +44,7 @@ namespace ZdravoKlinika.ViewModel
             if (SavedLogin())
             {
                 User = registeredUserController.GetRememberedUser();
-                LogIn();
+                ExecuteLogIn();
             }
             else
             {
@@ -68,28 +68,7 @@ namespace ZdravoKlinika.ViewModel
             {
                 if(IsLoginSuccessful())
                 {
-                    App.User = User;
-                    switch (User.UserType)
-                    {
-                        case UserType.Patient:
-                            Navigator.ShowPatientWindow(RegisteredPatientController);
-                            break;
-                        case UserType.Secretary:
-                            Navigator.ShowSecretaryWindow();
-                            break;
-                        case UserType.Doctor:
-                            Navigator.ShowDoctorWindow();
-                            break;
-                        case UserType.Manager:
-                            Navigator.ShowManagerWindow();
-                            break;
-                        default:
-                            break;
-                    }
-                    if (Remember)
-                    {
-                        RememberUser();
-                    }
+                    ExecuteLogIn();
                 } else
                 {
                     VisibleError = Visibility.Visible;
@@ -103,8 +82,35 @@ namespace ZdravoKlinika.ViewModel
             return registeredUserController.GetRememberedUser() != null;
         }
 
+        public void ExecuteLogIn()
+        {
+            App.User = User;
+            switch (User.UserType)
+            {
+                case UserType.Patient:
+                    Navigator.ShowPatientWindow(RegisteredPatientController);
+                    break;
+                case UserType.Secretary:
+                    Navigator.ShowSecretaryWindow();
+                    break;
+                case UserType.Doctor:
+                    Navigator.ShowDoctorWindow();
+                    break;
+                case UserType.Manager:
+                    Navigator.ShowManagerWindow();
+                    break;
+                default:
+                    break;
+            }
+            if (Remember)
+            {
+                RememberUser();
+            }
+        }
+
         public bool IsLoginSuccessful()
         {
+
             User = registeredUserController.GetUserByEmailAndPassword(Username.Trim(), Password);
             return User != null;
         }

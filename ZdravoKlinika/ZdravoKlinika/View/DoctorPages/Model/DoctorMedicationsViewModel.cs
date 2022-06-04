@@ -15,9 +15,20 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public bool SelectAll { get => selectAll; set => SetProperty(ref selectAll, value); }
         public ObservableCollection<MedViewModel> PendingMeds { get => _pendingMeds; set => SetProperty(ref _pendingMeds, value); }
         public ObservableCollection<MedViewModel> ApprovedMeds { get => _approvedMeds; set => SetProperty(ref _approvedMeds, value); }
+        public MedViewModel Selected { get => selected; set => SetProperty(ref selected, value); }
+
+        private MedViewModel selected;
+        private MedViewModel requestSelected;
+        private int selectedTabIndex;
 
         private ObservableCollection<MedViewModel> _pendingMeds;
         private ObservableCollection<MedViewModel> _approvedMeds;
+
+        public MyICommand Authorize { get; set; }
+        public MyICommand View { get; set; }
+        public MyICommand SwitchTab { get; set; }
+        public MedViewModel RequestSelected { get => requestSelected; set => SetProperty(ref requestSelected, value); }
+        public int SelectedTabIndex { get => selectedTabIndex; set => SetProperty(ref selectedTabIndex, value); }
 
         private static bool needsUpdating;
         private bool selectAll;
@@ -27,12 +38,34 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public DoctorMedicationsViewModel()
         {
+            SelectedTabIndex = 0;
             this.doctor = RegisteredUserController.UserToDoctor(App.User);
             medicationController = new MedicationController();
             medApprovalRequestController = new MedApprovalRequestController();
             ApprovedMeds = new ObservableCollection<MedViewModel>();
             PendingMeds = new ObservableCollection<MedViewModel>();
+            Authorize = new MyICommand(ExecuteAuthorize);
+            View = new MyICommand(ExecuteView);
+            SwitchTab = new MyICommand(ExecuteSwitch);
             Load();
+        }
+
+        public void ExecuteSwitch()
+        {
+            SelectedTabIndex = Math.Abs(SelectedTabIndex - 1);
+        }
+
+        public void ExecuteView()
+        {
+            Selected.ExecuteView();
+        }
+
+        public void ExecuteAuthorize()
+        {
+            if(RequestSelected != null)
+            {
+                RequestSelected.ExecuteAuthorization();
+            }
         }
 
         public void Load()
@@ -51,6 +84,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 mViewModel.ParentViewModel = this;
                 ApprovedMeds.Add(mViewModel);
             }
+            Selected = ApprovedMeds.First();
         }
 
         public void LoadPending()
@@ -63,6 +97,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 mViewModel.ParentViewModel = this;
                 PendingMeds.Add(mViewModel);
             }
+            RequestSelected = PendingMeds.First();
         }
 
     }

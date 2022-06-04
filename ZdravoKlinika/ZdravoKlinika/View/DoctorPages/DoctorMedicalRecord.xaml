@@ -562,14 +562,14 @@
                                     <Image Source="/Resources/Images/download.png" HorizontalAlignment="Left" Width="12" Height="12" Cursor="Hand" Margin="0 0 10 0">
                                         <Image.InputBindings>
                                             <MouseBinding Gesture="LeftClick" Command="{Binding DownloadAnamnesis, Mode=OneTime}" />
-                                            <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding DownloadAnamnesis}"/>
+                                            <KeyBinding Key="D" Modifiers="Shift" Command="{Binding DownloadAnamnesis}"/>
                                         </Image.InputBindings>
                                     </Image>
                                     <Image Cursor="Hand"  Source="/Resources/Images/edit.png" Width="12" Height="12">
 
                                         <Image.InputBindings>
                                             <MouseBinding Gesture="LeftClick" Command="{Binding EditCommand, Mode=OneTime}" />
-                                            <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding EditCommand}"/>
+                                            <KeyBinding Key="I" Modifiers="Alt" Command="{Binding EditCommand}"/>
                                         </Image.InputBindings>
                                     </Image>
                                 </StackPanel>
@@ -583,7 +583,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" Margin="10 0 0 15">
-                                
+
                                 <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Title}"/>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock FontSize="12" FontWeight="Bold" Text="Tip:"  Margin="0 0 10 0"/>
@@ -597,14 +597,14 @@
                                     <Image  Cursor="Hand" Source="/Resources/Images/edit.png" Width="12" Height="12"  Margin="0 0 10 0">
                                         <Image.InputBindings>
                                             <MouseBinding Gesture="LeftClick" Command="{Binding EditCommand, Mode=OneTime}" />
-                                            <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding EditCommand}"/>
+                                            <KeyBinding Key="I" Modifiers="Alt" Command="{Binding EditCommand}"/>
                                         </Image.InputBindings>
                                     </Image>
                                     <Image Cursor="Hand" Source="/Resources/Images/time-delete.png" Width="12" Height="12">
 
                                         <Image.InputBindings>
                                             <MouseBinding Gesture="LeftClick" Command="{Binding DeleteCommand, Mode=OneTime}" />
-                                            <KeyBinding Key="Delete" Modifiers="Ctrl" Command="{Binding DeleteCommand}"/>
+                                            <KeyBinding Key="Delete" Modifiers="Alt" Command="{Binding DeleteCommand}"/>
                                         </Image.InputBindings>
                                     </Image>
                                 </StackPanel>
@@ -687,8 +687,4 @@
         </ListBox>
 
     </Grid>
-
-    <UserControl.InputBindings>
-        <KeyBinding Key="D" Modifiers="Shift" Command="{Binding DownloadPrescription}"/>
-    </UserControl.InputBindings>
 </UserControl>

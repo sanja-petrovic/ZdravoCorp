@@ -27,11 +27,12 @@ namespace ZdravoKlinika.View.DoctorPages
             ViewModel = new DoctorMedicationsViewModel();
             DataContext = ViewModel;
             InitializeComponent();
+            MedsTab.Focus();
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.Source is TabControl)
+            if (e.Source is TabControl && MedsTab.IsInitialized)
             {
                 if(MedsTab.SelectedIndex == 0)
                 {

@@ -300,7 +300,7 @@ public class AppointmentRepository
         List<Appointment> upcomingAppointments = new List<Appointment>();
         foreach (Appointment appointment in this.GetAll())
         {
-            if (appointment.Patient.GetPatientId().Equals(patient.PersonalId) && appointment.DateAndTime >= DateTime.Today)
+            if (appointment.Patient.GetPatientId().Equals(patient.PersonalId) && appointment.DateAndTime >= DateTime.Today && appointment.Over == false)
             {
                 UpdateReferences(appointment);
                 upcomingAppointments.Add(appointment);

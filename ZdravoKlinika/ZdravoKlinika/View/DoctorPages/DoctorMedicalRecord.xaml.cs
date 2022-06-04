@@ -38,51 +38,11 @@ namespace ZdravoKlinika.View.DoctorPages
 
         public string PatientId { get => patientId; set => patientId = value; }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            /*PrescriptionView prescriptionView = new PrescriptionView();
-            prescriptionView.init(doctor.PersonalId, viewModel.Id);
-            prescriptionView.Show();
-            prescriptionView.Closed += (s, eventarg) =>
-            {
-                viewModel.MedicationAdded();
-            };*/
-        }
-
         public void MedicationAdded()
         {
             viewModel.MedicationAdded();
         }
 
-        private void EditAppointment(object sender, RoutedEventArgs e)
-        {
-            var selected = (PastViewModel)PastLB.SelectedItem;
-            if(selected != null)
-            {
 
-                /*if (selected.Doctor.PersonalId.Equals(this.doctor.PersonalId))
-                {
-                    EditAppointmentWindow editAppointmentWindow = new EditAppointmentWindow();
-                    editAppointmentWindow.SelectedApptId = selected.AppointmentId;
-                    editAppointmentWindow.Init();
-                    editAppointmentWindow.Show();
-                    editAppointmentWindow.Closed += (s, eventarg) =>
-                    {
-                        viewModel.Edited();
-                    };
-                }*/
-            }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            DoctorCreateAppointmentWindow doctorCreateAppointmentWindow = new DoctorCreateAppointmentWindow();
-            doctorCreateAppointmentWindow.ShowDialog();
-        }
-
-        private void TextBlock_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
     }
 }

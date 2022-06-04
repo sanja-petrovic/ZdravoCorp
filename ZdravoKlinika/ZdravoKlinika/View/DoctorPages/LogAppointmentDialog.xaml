@@ -233,5 +233,18 @@ Background="#F8F9FE" ResizeMode="CanMinimize" WindowStartupLocation="CenterScree
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
         </Button>
+        <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="116" Command="{Binding GiveUpCommand}" Margin="0,578,0,0" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle4"/>
+            </Button.Style>
+            <Button.InputBindings>
+                <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding GiveUpCommand}"/>
+            </Button.InputBindings>
+        </Button>
     </Grid>
 </Window>

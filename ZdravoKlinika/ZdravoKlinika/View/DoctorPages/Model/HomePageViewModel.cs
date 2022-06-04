@@ -12,8 +12,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 {
     public class HomePageViewModel : ViewModelBase
     {
-
-        public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
+        private ObservableCollection<AppointmentViewModel> appointments;
         public int SelectedAppointmentId { get => selectedAppointmentId; set => SetProperty(ref selectedAppointmentId, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
         public string PatientName { get => patientName; set => SetProperty(ref patientName, value); }
@@ -29,6 +28,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public MyICommand LogAppointment { get; set; }
         public Prism.Commands.DelegateCommand RecordCommand { get; set; }
+        public ObservableCollection<AppointmentViewModel> Appointments { get => appointments; set => SetProperty(ref appointments, value); }
 
         private Doctor doctor;
         AppointmentController appointmentController;
