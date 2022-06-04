@@ -31,22 +31,7 @@ namespace ZdravoKlinika.Service
 
         public void CreateNewOrder(List<Equipment> equipmentToOrder)
         {
-            bool orderIsUnique = false;
-            String newId = "";
-            while (!orderIsUnique)
-            { 
-                List<Order> orders = orderRepository.GetAll();
-                newId = Util.IdGenerator.Generate();
-                orderIsUnique = true;
-                foreach (Order order in orders)
-                {
-                    if (order.OrderId.Equals(newId))
-                    { 
-                        orderIsUnique = false;
-                        break;
-                    }
-                }
-            }
+            String newId = GetFreeId();
             Order orderToAdd = new Order(newId);
             orderToAdd.EquipmentToOrder = equipmentToOrder;
 
@@ -54,5 +39,25 @@ namespace ZdravoKlinika.Service
             return;
         }
 
+        private String GetFreeId() 
+        {
+            bool orderIsUnique = false;
+            String newId = "";
+            while (!orderIsUnique)
+            {
+                List<Order> orders = orderRepository.GetAll();
+                newId = Util.IdGenerator.Generate();
+                orderIsUnique = true;
+                foreach (Order order in orders)
+                {
+                    if (order.OrderId.Equals(newId))
+                    {
+                        orderIsUnique = false;
+                        break;
+                    }
+                }
+            }
+            return newId;
+        }
     }
 }

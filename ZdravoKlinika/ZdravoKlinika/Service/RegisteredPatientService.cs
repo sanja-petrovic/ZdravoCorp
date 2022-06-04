@@ -11,8 +11,8 @@ public class RegisteredPatientService
     public RegisteredPatientRepository PatientRepository { get => registeredPatientRepository; set => registeredPatientRepository = value; }
 
 
-    public RegisteredPatientService() { 
-        // init
+    public RegisteredPatientService() 
+    { 
         this.registeredPatientRepository = new RegisteredPatientRepository();
     }
 
@@ -26,38 +26,37 @@ public class RegisteredPatientService
         return registeredPatientRepository.GetById(id);
     }
 
-    public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> allergies, List<String> diagnosis)
+    public void CreatePatient(RegisteredPatient patient)
     {
-        Console.WriteLine("service");
-        MedicalRecord record = new MedicalRecord(personalId, diagnosis, allergies);
-        Address address = new Address(street,stnumber,city,country);
-        RegisteredPatient patient = new RegisteredPatient( personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
-        
-        registeredPatientRepository.Add(patient);
+        if (IsPersonalIdFree(patient.PersonalId))
+            registeredPatientRepository.Add(patient);
+        else throw new Exception("ID in use");
     }
 
-    public void UpdatePatient(String personalId, String name, String lastname, String phone, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> allergies, List<String> diagnosis)
+    public void UpdatePatient(RegisteredPatient pat)
     {
-        RegisteredPatient pat = this.GetById(personalId);
-        pat.Name = name;
-        pat.Lastname = lastname;
-        pat.Phone = phone;
-        pat.Password = password;
-        pat.ProfilePicture = profilePicture;
-        pat.Occupation = occupation;
-        pat.Address.Street = street;
-        pat.Address.Number = stnumber;
-        pat.Address.City = city;
-        pat.Address.Country = country;
-        pat.BloodType = bloodType;
+        RegisteredPatient? patientInDatabase = this.GetById(pat.PersonalId);
+        if (patientInDatabase == null)
+            throw new Exception("Patient does not exist");
 
-        pat.EmergencyContactName = emergencyContactName;
-        pat.EmergencyContactPhone = emergencyContactPhone;
+        patientInDatabase.Name = pat.Name;
+        patientInDatabase.Lastname = pat.Lastname;
+        patientInDatabase.Phone = pat.Phone;
+        patientInDatabase.Password = pat.Password;
+        patientInDatabase.ProfilePicture = pat.ProfilePicture;
+        patientInDatabase.Occupation = pat.Occupation;
+        patientInDatabase.Address.Street = pat.Address.Street;
+        patientInDatabase.Address.Number = pat.Address.Number;
+        patientInDatabase.Address.City = pat.Address.City;
+        patientInDatabase.Address.Country = pat.Address.Country;
+        patientInDatabase.BloodType = pat.BloodType;
 
-        pat.MedicalRecord.Allergies = allergies;
-        pat.MedicalRecord.Diagnoses = diagnosis;
+        patientInDatabase.EmergencyContactName = pat.EmergencyContactName;
+        patientInDatabase.EmergencyContactPhone = pat.EmergencyContactPhone;
 
-        registeredPatientRepository.Update(pat);
+        patientInDatabase.MedicalRecord.Allergies = pat.MedicalRecord.Allergies;
+        patientInDatabase.MedicalRecord.Diagnoses = pat.MedicalRecord.Diagnoses;
+        registeredPatientRepository.Update(patientInDatabase);
     }
 
     public void DeletePatient(String patientId)
@@ -96,5 +95,13 @@ public class RegisteredPatientService
     public bool IsBanned(RegisteredPatient patient)
     {
         return this.registeredPatientRepository.IsBanned(patient);
+    }
+    private bool IsPersonalIdFree(String personalId)
+    {
+        bool isIdFree = true;
+        RegisteredPatient? pat = this.GetById(personalId);
+        if (pat != null)
+            isIdFree = false;
+        return isIdFree;
     }
 }
