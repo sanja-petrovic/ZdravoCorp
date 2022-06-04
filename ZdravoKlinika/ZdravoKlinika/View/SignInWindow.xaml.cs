@@ -58,6 +58,26 @@ namespace ZdravoKlinika.View
                 show = false;
             }
         }
-        
+
+
+        private void UsernameTB_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (!clicked)
+            {
+                UsernameTB.Clear();
+                clicked = true;
+                UsernameTB.Foreground = Brushes.Black;
+            }
+        }
+
+        private void UsernameTB_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (!clicked)
+            {
+                UsernameTB.Clear();
+                clicked = true;
+                UsernameTB.Foreground = Brushes.Black;
+            }
+        }
     }
 }

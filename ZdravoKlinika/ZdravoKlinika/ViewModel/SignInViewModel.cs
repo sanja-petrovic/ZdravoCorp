@@ -7,6 +7,7 @@ using ZdravoKlinika.Controller;
 using ZdravoKlinika.View;
 using ZdravoKlinika.View.Navigation;
 using GalaSoft.MvvmLight.CommandWpf;
+using System.Windows;
 
 namespace ZdravoKlinika.ViewModel
 {
@@ -15,6 +16,7 @@ namespace ZdravoKlinika.ViewModel
         private RegisteredUser user;
         private RegisteredUserController registeredUserController;
         private RegisteredPatientController registeredPatientController;
+        private Visibility visibleError;
 
         private string username;
         private string password;
@@ -24,15 +26,16 @@ namespace ZdravoKlinika.ViewModel
 
         public RegisteredUser User { get => user; set => SetProperty(ref user, value); }
         public RegisteredUserController RegisteredUserController { get => registeredUserController; set => registeredUserController = value; }
-        public string Username { get => username; set => SetProperty(ref username, value); }
-        public string Password { get => password; set => SetProperty(ref password, value); }
+        public string Username { get => username; set { SetProperty(ref username, value); VisibleError = Visibility.Collapsed; } }
+        public string Password { get => password; set { SetProperty(ref password, value); VisibleError = Visibility.Collapsed; }
+    }
         public bool Remember { get => remember; set => SetProperty(ref remember, value); }
         public RegisteredPatientController RegisteredPatientController { get => registeredPatientController; set => registeredPatientController = value; }
-
-
+        public Visibility VisibleError { get => visibleError; set => SetProperty(ref visibleError, value); }
 
         public SignInViewModel()
         {
+            VisibleError = Visibility.Collapsed;
             LogInCommand = new GalaSoft.MvvmLight.CommandWpf.RelayCommand(LogIn, CanLogIn);
             RememberMe = new MyICommand(ExecuteRemember);
             username = "Npr. vaseime@zdravo.com";
@@ -57,33 +60,39 @@ namespace ZdravoKlinika.ViewModel
 
         public bool CanLogIn()
         {
-            return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password) && IsLoginSuccessful();
+            return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password);
         }
 
         public void LogIn()
         {
             {
-                App.User = User;
-                switch (User.UserType)
+                if(IsLoginSuccessful())
                 {
-                    case UserType.Patient:
-                        Navigator.ShowPatientWindow(RegisteredPatientController);
-                        break;
-                    case UserType.Secretary:
-                        Navigator.ShowSecretaryWindow();
-                        break;
-                    case UserType.Doctor:
-                        Navigator.ShowDoctorWindow();
-                        break;
-                    case UserType.Manager:
-                        Navigator.ShowManagerWindow();
-                        break;
-                    default:
-                        break;
-                }
-                if (Remember)
+                    App.User = User;
+                    switch (User.UserType)
+                    {
+                        case UserType.Patient:
+                            Navigator.ShowPatientWindow(RegisteredPatientController);
+                            break;
+                        case UserType.Secretary:
+                            Navigator.ShowSecretaryWindow();
+                            break;
+                        case UserType.Doctor:
+                            Navigator.ShowDoctorWindow();
+                            break;
+                        case UserType.Manager:
+                            Navigator.ShowManagerWindow();
+                            break;
+                        default:
+                            break;
+                    }
+                    if (Remember)
+                    {
+                        RememberUser();
+                    }
+                } else
                 {
-                    RememberUser();
+                    VisibleError = Visibility.Visible;
                 }
 
             }

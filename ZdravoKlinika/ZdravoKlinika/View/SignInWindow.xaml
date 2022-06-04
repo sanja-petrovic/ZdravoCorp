@@ -170,7 +170,7 @@
 
     </Window.Resources>
 
-    <Grid Margin="0,0,0,0" VerticalAlignment="Center" Height="768" Cursor="Hand">
+    <Grid Margin="0,0,0,0" VerticalAlignment="Center" Height="768" Width="1024" Cursor="Hand">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -193,7 +193,7 @@
                 <MouseBinding Gesture="LeftClick" Command="{Binding LogInCommand}"/>
             </Button.InputBindings>
         </Button>
-        <TextBox  Name="UsernameTB" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Padding="7 0 0 0" Margin="683,352,97,387" TextWrapping="Wrap" Width="244" Height="29"  BorderBrush="#FFC8C8C8"  FontSize="12" Foreground="Gray" PreviewMouseDown="TextBox_MouseDown" SelectionBrush="#FF6C63FF">
+        <TextBox  Name="UsernameTB" GotFocus="UsernameTB_GotFocus" GotKeyboardFocus="UsernameTB_GotKeyboardFocus" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalAlignment="Left" Padding="7 0 0 0" Margin="683,352,97,387" TextWrapping="Wrap" Width="244" Height="29"  BorderBrush="#FFC8C8C8"  FontSize="12" Foreground="Gray" PreviewMouseDown="TextBox_MouseDown" SelectionBrush="#FF6C63FF">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -209,6 +209,11 @@
             </TextBox.Resources>
         </TextBox>
         <Image Margin="190,132,634,538" Source="/Resources/Images/zdravoklinika.png" Stretch="Fill" Width="200"/>
+        <Border Visibility="{Binding VisibleError, UpdateSourceTrigger=PropertyChanged}" Margin="686,548,97,161"  CornerRadius="5" BorderThickness="10" BorderBrush="#fddfea">
+            <TextBlock Text="Uneli ste pogrešno korisničko ime i/ili šifru. Molimo pokušajte ponovo." TextWrapping="Wrap" Foreground="#f20d62" Background="#fddfea" Padding="10" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Width="234" Height="54">
+            </TextBlock>
+        </Border>
+
 
     </Grid>
 </Window>
