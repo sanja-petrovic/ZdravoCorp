@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class MoveRepository
+public class MoveRepository : IMoveRepository
 {
     private MoveDataHandler moveDataHandler;
     private List<Move> moves;
@@ -117,4 +118,10 @@ public class MoveRepository
         moveToBeUpdated.ScheduledDateTime = updatedValues.ScheduledDateTime;
     }
 
+    public void RemoveAll()
+    {
+        this.moves.Clear();
+        this.moveDataHandler.Write(this.moves);
+
+    }
 }

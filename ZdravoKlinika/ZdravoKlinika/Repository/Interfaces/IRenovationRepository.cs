@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Repository.Interfaces
 {
-    internal class IRenovationRepository
+    internal interface IRenovationRepository : IRepositoryBase<Renovation, String>
     {
+
     }
 }

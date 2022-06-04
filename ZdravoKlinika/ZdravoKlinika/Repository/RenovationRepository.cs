@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class RenovationRepository
+public class RenovationRepository : IRenovationRepository
 {
     private RenovationDataHandler renovationDataHandler;
     private List<Renovation> renovations;
@@ -116,6 +117,12 @@ public class RenovationRepository
         renovationToBeUpdated.NumberOfExitRooms = updatingValues.NumberOfExitRooms;
         renovationToBeUpdated.ScheduledDateTime = updatingValues.ScheduledDateTime;
         renovationToBeUpdated.IsRenovationFinished = updatingValues.IsRenovationFinished;
+    }
+
+    public void RemoveAll()
+    {
+        this.renovations.Clear();
+        this.renovationDataHandler.Write(this.renovations);
     }
 
 }

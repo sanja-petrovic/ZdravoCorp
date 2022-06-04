@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Repository.Interfaces
 {
-    internal class IEquipmentRepository
+    internal interface IEquipmentRepository : IRepositoryBase<Equipment, String>
     {
+        public List<Equipment> GetByExpendability(bool expendable);
     }
 }

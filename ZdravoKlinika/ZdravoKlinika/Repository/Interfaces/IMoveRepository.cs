@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.Repository.Interfaces
 {
-    internal class IMoveRepository
+    internal interface IMoveRepository : IRepositoryBase<Move, String>
     {
+
     }
 }

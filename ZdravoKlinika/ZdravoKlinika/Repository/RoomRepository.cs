@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class RoomRepository
+public class RoomRepository : IRoomRepository
 {
     private RoomDataHandler roomDataHandler;
     private RenovationDataHandler renovationDataHandler;
@@ -328,5 +329,11 @@ public class RoomRepository
         {
             freeRooms.Add(r);
         }
+    }
+
+    public void RemoveAll()
+    {
+        this.rooms.Clear();
+        this.roomDataHandler.Write(this.rooms);
     }
 }
