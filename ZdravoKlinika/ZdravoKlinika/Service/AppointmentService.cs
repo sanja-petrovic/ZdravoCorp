@@ -247,17 +247,7 @@ public class AppointmentService
     public List<Doctor> GetFreeDoctorsBySpecialityForNextHour(int duration, String specialitty)
     { 
         List<Doctor> docs = new List<Doctor>();
-        DateTime dateNow = DateTime.Now.Date;
-        dateNow = dateNow.AddHours(DateTime.Now.ToLocalTime().Hour);
-
-        if (DateTime.Now.Minute < 15 && DateTime.Now.Minute > 0)
-            dateNow = dateNow.AddMinutes(15);
-        else if (DateTime.Now.Minute < 30)
-            dateNow = dateNow.AddMinutes(30);
-        else if (DateTime.Now.Minute < 45)
-            dateNow = dateNow.AddMinutes(45);
-        else
-            dateNow = dateNow.AddHours(1);
+        DateTime dateNow = GetCurrentTimeFormated();
 
         docs = GetFreeDoctorsForTime(new DateBlock(dateNow, duration),8,20);
         docs = PruneDoctorsBySpecialitty(docs, specialitty);
@@ -269,6 +259,21 @@ public class AppointmentService
             throw new Exception("2");
 
         return docs;
+    }
+
+    private DateTime GetCurrentTimeFormated()
+    {
+        DateTime dateNow = DateTime.Now.Date;
+        dateNow = dateNow.AddHours(DateTime.Now.ToLocalTime().Hour);
+        if (DateTime.Now.Minute < 15 && DateTime.Now.Minute > 0)
+            dateNow = dateNow.AddMinutes(15);
+        else if (DateTime.Now.Minute < 30)
+            dateNow = dateNow.AddMinutes(30);
+        else if (DateTime.Now.Minute < 45)
+            dateNow = dateNow.AddMinutes(45);
+        else
+            dateNow = dateNow.AddHours(1);
+        return dateNow;
     }
     private List<Doctor> PruneDoctorsByFreeRooms(List<Doctor> doctors, int duration) 
     {
