@@ -39,6 +39,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private RegisteredPatientController registeredPatientController;
         private MedicationController medicationController;
         private PrescriptionController prescriptionController;
+        private PatientMedicationNotificationController notificationController;
         private List<Medication> medications;
         private List<String> medicationsDisplay;
         private List<String> repeatDisplay;
@@ -75,6 +76,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.medicationController = new MedicationController();
             this.registeredPatientController = new RegisteredPatientController();
             this.prescriptionController = new PrescriptionController();
+            this.notificationController = new PatientMedicationNotificationController();
             this.repeatDisplay = new List<string>();
             this.repeatDisplay.Add("dnevno");
             this.repeatDisplay.Add("nedeljno");
@@ -109,6 +111,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             foreach(Prescription p in PrescribedList)
             {
                 this.prescriptionController.Prescribe(p);
+                this.notificationController.CreateNotification(p.Doctor, registeredPatientController.GetById(p.Patient.GetPatientId()), "", p, "", DateTime.Now.AddHours(1));
             }
         }
 

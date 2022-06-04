@@ -105,7 +105,7 @@ namespace ZdravoKlinika.View.Secretary
                 a.Add(doc.NameAndLast);
             }
 
-            foreach (DateBlock block in AppointmentContoller.getFreeTimeForPatient(((DateTime)DatePickerAdd.SelectedDate).Date, Int32.Parse(TextBoxDurationAdd.Text), patientContoller.GetById(LabelPID.Content.ToString()), 8, 20))
+            foreach (DateBlock block in AppointmentContoller.GetFreeTimeForPatient(((DateTime)DatePickerAdd.SelectedDate).Date, Int32.Parse(TextBoxDurationAdd.Text), patientContoller.GetById(LabelPID.Content.ToString()), 8, 20))
             {
                 b.Add(block.Start.TimeOfDay.ToString());
             }
@@ -139,7 +139,7 @@ namespace ZdravoKlinika.View.Secretary
             Doctor doc = doctorController.GetById(ab[2]);
             IPatient pat = patientContoller.GetById(LabelPID.Content.ToString());
 
-            List<DateBlock> t = DateBlock.getIntersection(AppointmentContoller.getFreeTimeForDoctor(date.Date, duration, doc, 8, 20), AppointmentContoller.getFreeTimeForPatient(date.Date, duration, pat, 8, 20));
+            List<DateBlock> t = DateBlock.getIntersection(AppointmentContoller.GetFreeTimeForUser(new DateBlock(date.Date, duration), doc, new int[] { 8, 20 }), AppointmentContoller.GetFreeTimeForPatient(date.Date, duration, pat, 8, 20));
             
 
             foreach (DateBlock block in t)

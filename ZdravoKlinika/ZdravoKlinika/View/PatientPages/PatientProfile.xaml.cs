@@ -29,7 +29,7 @@ namespace ZdravoKlinika.View.PatientPages
             viewModel = new PatientProfileViewModel(patientId);
             InitializeComponent();
             this.DataContext = viewModel;
-            //UpdateNotificationsField();
+            UpdateNotificationsField();
 
             Timer execute = new Timer();
             TimeSpan fireInterval = new TimeSpan(0, 0, 15);

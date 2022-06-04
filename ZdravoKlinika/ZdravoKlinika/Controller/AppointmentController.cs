@@ -74,11 +74,7 @@ public class AppointmentController
         return this.appointmentService.GetAppointmentsByRoomIdInSpecificTimeFrame(roomId, start, finish);
     }
 
-    public List<DateBlock> getFreeTimeForDoctor(DateTime date, int duration, Doctor doctor, int startHours, int endHours)
-    {
-        return this.appointmentService.GetFreeTimeForDoctor(date, duration, doctor, startHours, endHours);
-    }
-    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, IPatient patient, int startHours, int endHours)
+    public List<DateBlock> GetFreeTimeForPatient(DateTime date, int duration, IPatient patient, int startHours, int endHours)
     {
         return this.appointmentService.GetFreeTimeForPatient(date, duration, patient, startHours, endHours);
     }
@@ -86,7 +82,10 @@ public class AppointmentController
     {
         return this.appointmentService.GetFreeDoctorsBySpecialityForNextHour(duration, specialitty);
     }
-
+    public List<DateBlock> GetFreeTimeForUser(DateBlock appointmentTime, RegisteredUser user, int[] workHorus)
+    {
+        return this.appointmentService.GetFreeTimeForUser(appointmentTime, user, workHorus);
+    }
     public List<String> ConvertDateBlockToString()
     {
         List<String> list = new List<String>();
