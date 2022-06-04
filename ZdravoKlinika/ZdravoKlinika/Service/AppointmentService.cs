@@ -366,8 +366,8 @@ public class AppointmentService
 
     public void AddPatientNote(Appointment appointment, String note)
     {
-        /*appointment.PatientNotes = note;
-        EditAppointment(appointment);*/
+        appointment.PatientNotes = note;
+        appointmentRepository.Update(appointment);
     }
 
     public void CreateAppointment(Appointment appointment)
@@ -422,17 +422,17 @@ public class AppointmentService
         }
     }
 
-    public void PatientEditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public void PatientEditAppointment(Appointment app)
     {
-        if (actionLogService.IsUserBannable(patientId))
+        if (actionLogService.IsUserBannable(app.Patient.GetPatientId()))
         {
-            registeredPatientRepository.Ban(registeredPatientRepository.GetById(patientId));
+            registeredPatientRepository.Ban(registeredPatientRepository.GetById(app.Patient.GetPatientId()));
             throw new Exception("Ban");
         }
         else
         {
-            //EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
-            actionLogService.AddLog(DateTime.Now, "Edit Appointment", registeredPatientRepository.GetById(patientId));
+            EditAppointment(app);
+            actionLogService.AddLog(DateTime.Now, "Edit Appointment", registeredPatientRepository.GetById(app.Patient.GetPatientId()));
         }
     }
     public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)

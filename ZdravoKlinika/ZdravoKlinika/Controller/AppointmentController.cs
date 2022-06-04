@@ -136,10 +136,19 @@ public class AppointmentController
         this.appointmentService.EditAppointment(appointment);
     }
     public void PatientEditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
-    { 
+    {
+        Appointment appointment = new Appointment();
+        appointment.AppointmentId = appointmentId;
+        appointment.Patient = patientService.GetById(patientId);
+        appointment.Doctor = doctorService.GetById(doctorId);
+        appointment.DateAndTime = dateAndTime;
+        appointment.Emergency = emergency;
+        appointment.Type = type;
+        appointment.Room = roomService.GetById(roomId);
+        appointment.Duration = duration;
         try
         {
-            this.appointmentService.PatientEditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
+            this.appointmentService.PatientEditAppointment(appointment);
         }
         catch (Exception ex)
         {
