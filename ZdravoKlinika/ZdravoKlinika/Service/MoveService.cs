@@ -51,39 +51,73 @@ public class MoveService
     private void ExecuteMove(object? sender, ElapsedEventArgs e)
     {
         FetchRooms();
-
-       /* 
-        1.NADJI SOURCE ROOM
-        2.KOPIRAJ EQUIPMENT LISTU SOURCE ROOM
-        3.UZMI LISTU EQUIPMENT TO MOVE
-        4.PRODJI KROZ LISTU EQUIPMENT TO MOVE I ODUZMI KOLICINU AMOUNT IZ LISTE EQUIPMENT
-        5. ?
-       */
-
-        /*//ITERIRAJ KROZ SVE SOBE 
-        foreach(Room r in rooms)
+        
+        //ITERIRAJ KROZ SVE SOBE 
+        foreach (Room r in this.rooms)
         {
-            //NADJI SOURCE ROOM
+            //ODUZIMANJE IZ SOURCE ROOM
             if (r.RoomId.Equals(this.SourceRoom.RoomId))
             {
-                List<Equipment> equipmentHolder = new List<Equipment>();
-                //NASAO SI SOURCE ROOM r, PRODJI KROZ SAV EQUIPMENT U TOJ SOBI
-                foreach(Equipment equipment in r.EquipmentInRoom)
+                foreach (Equipment equipment in r.EquipmentInRoom)
                 {
-                    foreach(Equipment equ in this.EquipmentToMove)
+                    foreach (Equipment equ in this.EquipmentToMove)
                     {
                         if (equipment.Id.Equals(equ.Id))
                         {
-                            equipment.Amount = equipment.Amount - equ.Amount;     
+                            equipment.Amount = equipment.Amount - equ.Amount;
                         }
-                        
+
                     }
-                    equipmentHolder.Add(equipment);
                 }
-                                
-                roomService.UpdateRoom(r.RoomId, r.Name, r.Type, r.Status, r.Level, r.Number, r.Free, equipmentHolder);
+
             }
-        }*/
+
+            //DODAVANJE U DESTINATION ROOM
+            if (r.RoomId.Equals(this.DestinationRoom.RoomId))
+            {              
+                if (r.EquipmentInRoom.Count != 0) // DA LI JE SOBA PRAZNA
+                {
+                    List<string> idList = new List<string>();
+                    foreach (Equipment equipment in r.EquipmentInRoom)
+                    {
+                        idList.Add(equipment.Id);
+                    }
+
+                    foreach (Equipment equ in this.EquipmentToMove)
+                    {
+
+                        if (idList.Contains(equ.Id))
+                        {
+                            //POSTOJI ARTIKAL U TOJ SOBI --> DODAJ NA STANJE
+                            foreach (Equipment equipment in r.EquipmentInRoom)
+                            {
+                                if (equipment.Id.Equals(equ.Id))
+                                {
+                                    equipment.Amount = equipment.Amount + equ.Amount;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //NE POSTOJI ARTIKAL U TOJ SOBI --> DODAJ NOVI                          
+                             r.AddEquipmentInRoom(equ);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Equipment equipment in this.EquipmentToMove)
+                    {
+                        r.AddEquipmentInRoom(equipment);
+                    }
+                }
+                
+            }
+
+        }
+
+        RoomDataHandler roomDataHandler = new RoomDataHandler();
+        roomDataHandler.Write(this.rooms);
 
         timer.Stop();
         timer.Dispose();
@@ -127,10 +161,10 @@ public class MoveService
 
     private void SaveMoveValues(Move move)
     {
-        this.SourceRoom = move.SourceRoom;
-        this.DestinationRoom = move.DestinationRoom;
-        this.EquipmentToMove = move.EquipmentToMove;
-        this.ScheduledDateTime = move.ScheduledDateTime;
+        SourceRoom = move.SourceRoom;
+        DestinationRoom = move.DestinationRoom;
+        EquipmentToMove = move.EquipmentToMove;
+        ScheduledDateTime = move.ScheduledDateTime;
     }
 
     private void FetchRooms()
