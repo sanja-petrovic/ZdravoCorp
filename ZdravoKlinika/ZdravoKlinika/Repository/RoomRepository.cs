@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class RoomRepository
+public class RoomRepository : IRoomRepository
 {
     private RoomDataHandler roomDataHandler;
     private RenovationDataHandler renovationDataHandler;
@@ -79,11 +80,11 @@ public class RoomRepository
 
     private void FinalizeSplit(Renovation r)
     {
-        this.DeleteRoom(this.GetById(r.EntryRooms[0].RoomId));
+        this.Remove(this.GetById(r.EntryRooms[0].RoomId));
         for (int i = 0; i < r.NumberOfExitRooms; i++)
         {
             Room r1 = new Room(GenerateRoomId().ToString(), "R" + GenerateRoomId(), RoomType.checkup, 1, 1, RoomStatus.available, true);
-            this.CreateRoom(r1);
+            this.Add(r1);
         }
         r.IsRenovationFinished = true;
     }
@@ -92,10 +93,10 @@ public class RoomRepository
     {
         foreach (Room room in r.EntryRooms)
         {
-            this.DeleteRoom(this.GetById(room.RoomId));
+            this.Remove(this.GetById(room.RoomId));
         }
         Room r1 = new Room(GenerateRoomId().ToString(), "R" + GenerateRoomId(), RoomType.checkup, 1, 1, RoomStatus.available, true);
-        this.CreateRoom(r1);
+        this.Add(r1);
         r.IsRenovationFinished = true;
     }
 
@@ -207,13 +208,13 @@ public class RoomRepository
         return renovatableRooms;
     }
 
-    public void CreateRoom(Room room)
+    public void Add(Room room)
     {
         this.rooms.Add(room);
         roomDataHandler.Write(this.rooms);
     }
 
-    public void DeleteRoom(Room room)
+    public void Remove(Room room)
     {
         if (room == null)
             return;
@@ -223,7 +224,7 @@ public class RoomRepository
         roomDataHandler.Write(this.rooms);
     }
 
-    public void UpdateRoom(Room room)
+    public void Update(Room room)
     {
         if (room == null)
             return;
@@ -244,7 +245,7 @@ public class RoomRepository
             return;
         room.Status = RoomStatus.occupied;
         room.Free = false;
-        UpdateRoom(room);
+        Update(room);
     }
 
     public void FreeRoom(Room room)
@@ -253,7 +254,7 @@ public class RoomRepository
             return;
         room.Status = RoomStatus.available;
         room.Free = true;
-        UpdateRoom(room);
+        Update(room);
     }
 
     public void RenovateRoom(Room room)
@@ -262,7 +263,7 @@ public class RoomRepository
             return;
         room.Status = RoomStatus.renovation;
         room.Free = false;
-        UpdateRoom(room);
+        Update(room);
     }
 
     private int GenerateRoomId()
@@ -328,5 +329,11 @@ public class RoomRepository
         {
             freeRooms.Add(r);
         }
+    }
+
+    public void RemoveAll()
+    {
+        this.rooms.Clear();
+        this.roomDataHandler.Write(this.rooms);
     }
 }

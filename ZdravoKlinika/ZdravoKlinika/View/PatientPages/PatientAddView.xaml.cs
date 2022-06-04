@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Util;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.PatientPages
 {

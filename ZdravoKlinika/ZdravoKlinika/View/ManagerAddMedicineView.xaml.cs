@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKlinika.Controller;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View
 {
@@ -64,8 +65,8 @@ namespace ZdravoKlinika.View
 
         private void InitializeDoctorsComboBox()
         {           
-            DoctorRepository doctorRepository = new DoctorRepository();
-            List<Doctor> doctors = doctorRepository.GetAll();
+            DoctorController doctorController = new DoctorController();
+            List<Doctor> doctors = doctorController.GetAll();
             doctorsComboBox.ItemsSource = doctors;
         }
 

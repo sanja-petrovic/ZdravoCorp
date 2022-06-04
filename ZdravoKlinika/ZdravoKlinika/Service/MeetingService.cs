@@ -20,7 +20,7 @@ namespace ZdravoKlinika.Service
         public void CreateMeeting(Meeting meeting)
         { 
             meeting.MeetingId = GetFreeMeetingId();
-            meetingRepository.CreateMeeting(meeting);
+            meetingRepository.Add(meeting);
         }
 
         public List<Meeting> GetAll()
@@ -30,7 +30,12 @@ namespace ZdravoKlinika.Service
 
         public void DeleteMeeting(String meetingId)
         {
-            meetingRepository.DeleteMeeting(meetingId);
+            meetingRepository.Remove(GetById(meetingId));
+        }
+
+        public Meeting GetById(String id)
+        {
+            return meetingRepository.GetById(id);
         }
 
         private String GetFreeMeetingId()

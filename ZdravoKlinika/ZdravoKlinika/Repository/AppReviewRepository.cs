@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    internal class AppReviewRepository
+    internal class AppReviewRepository : Interfaces.IAppReviewRepository
     {
         private AppReviewDataHandler appReviewDataHandler;
         private RegisteredPatientRepository registeredPatientRepository;
@@ -58,10 +58,6 @@ namespace ZdravoKlinika.Repository
 
         public System.Collections.Generic.List<AppReview> appReviews;
 
-        /// <summary>
-        /// Property for collection of AppReview
-        /// </summary>
-        /// <pdGenerated>Default opposite class collection property</pdGenerated>
         public System.Collections.Generic.List<AppReview> AppReviews
         {
             get
@@ -72,20 +68,16 @@ namespace ZdravoKlinika.Repository
             }
             set
             {
-                RemoveAllAppReviews();
+                RemoveAll();
                 if (value != null)
                 {
                     foreach (AppReview oAppReview in value)
-                        AddAppReview(oAppReview);
+                        Add(oAppReview);
                 }
             }
         }
 
-        /// <summary>
-        /// Add a new AppReview in the collection
-        /// </summary>
-        /// <pdGenerated>Default Add</pdGenerated>
-        public void AddAppReview(AppReview newAppReview)
+        public void Add(AppReview newAppReview)
         {
             if (newAppReview == null)
                 return;
@@ -98,11 +90,7 @@ namespace ZdravoKlinika.Repository
             }
         }
 
-        /// <summary>
-        /// Remove an existing AppReview from the collection
-        /// </summary>
-        /// <pdGenerated>Default Remove</pdGenerated>
-        public void RemoveAppReview(AppReview oldAppReview)
+        public void Remove(AppReview oldAppReview)
         {
             if (oldAppReview == null)
                 return;
@@ -111,14 +99,15 @@ namespace ZdravoKlinika.Repository
                     this.appReviews.Remove(oldAppReview);
         }
 
-        /// <summary>
-        /// Remove all instances of AppReview from the collection
-        /// </summary>
-        /// <pdGenerated>Default removeAll</pdGenerated>
-        public void RemoveAllAppReviews()
+        public void RemoveAll()
         {
             if (appReviews != null)
                 appReviews.Clear();
+        }
+
+        public void Update(AppReview item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

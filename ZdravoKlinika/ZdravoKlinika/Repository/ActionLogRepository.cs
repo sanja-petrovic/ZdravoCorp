@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    internal class ActionLogRepository
+    internal class ActionLogRepository : Interfaces.IActionLogRepository
     {
         private ActionLogDataHandler actionLogDataHandler;
         private RegisteredPatientRepository registeredPatientRepository;
@@ -25,12 +25,12 @@ namespace ZdravoKlinika.Repository
             if (actionLogs == null) actionLogs = new List<ActionLog>();
         }
 
-        public void UpdateReferences(ActionLog log)
+        private void UpdateReferences(ActionLog log)
         {
             if (log.RegisteredPatient != null)
                 log.RegisteredPatient = registeredPatientRepository.GetById(log.RegisteredPatient.GetPatientId());
         }
-        public void AddLog(Model.ActionLog log)
+        public void Add(Model.ActionLog log)
         {
 
             if (log == null)
@@ -45,7 +45,7 @@ namespace ZdravoKlinika.Repository
            
         }
 
-        public void RemoveLog(Model.ActionLog log)
+        public void Remove(Model.ActionLog log)
         {
             if (log == null)
                 return;
@@ -101,6 +101,11 @@ namespace ZdravoKlinika.Repository
             return returnValue;
         }
 
+        public void Update(ActionLog item)
+        {
+            throw new NotImplementedException();
+        }
+
         public System.Collections.Generic.List<ActionLog> actionLogs;
 
         /// <summary>
@@ -121,7 +126,7 @@ namespace ZdravoKlinika.Repository
                 if (value != null)
                 {
                     foreach (Model.ActionLog oActionLog in value)
-                        AddLog(oActionLog);
+                        Add(oActionLog);
                 }
             }
         }

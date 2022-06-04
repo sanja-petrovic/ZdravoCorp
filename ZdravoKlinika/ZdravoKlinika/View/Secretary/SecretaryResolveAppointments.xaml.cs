@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Util;
 using ZdravoKlinika.ViewModel.SecretaryViewModel;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.Secretary
 {

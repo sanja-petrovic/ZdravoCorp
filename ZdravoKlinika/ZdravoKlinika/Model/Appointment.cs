@@ -12,7 +12,7 @@ public class Appointment
     private bool emergency;
     private int duration;
     private Doctor doctor;
-    private Patient patient;
+    private IPatient patient;
     private Room room;
     private List<Prescription> prescriptions;
     private bool over;
@@ -21,7 +21,7 @@ public class Appointment
 
     public Appointment() { }
 
-    public Appointment(int appointmentId, Doctor doctor, Patient patient, Room room, int duration, bool emergency, AppointmentType type, DateTime dateTime)
+    public Appointment(int appointmentId, Doctor doctor, IPatient patient, Room room, int duration, bool emergency, AppointmentType type, DateTime dateTime)
     {
         this.appointmentId = appointmentId;
         this.doctor = doctor;
@@ -58,7 +58,7 @@ public class Appointment
     public bool Emergency { get => emergency; set => emergency = value; }
     public int Duration { get => duration; set => duration = value; }
     public Doctor Doctor { get => doctor; set => doctor = value; }
-    public Patient Patient { get => patient; set => patient = value; }
+    public IPatient Patient { get => patient; set => patient = value; }
     public Room Room { get => room; set => room = value; }
     public bool Over { get => over; set => over = value; }
     public List<Prescription> Prescriptions { get => prescriptions; set => prescriptions = value; }

@@ -2,6 +2,7 @@ using JsonConverters;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ZdravoKlinika.Model;
 using ZdravoKlinika.Util;
 
 public class Medication

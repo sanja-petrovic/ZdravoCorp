@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using ZdravoKlinika.Model;
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
     internal class DoctorViewModel : ViewModelBase

@@ -86,7 +86,7 @@ namespace ZdravoKlinika.Controller
 
         public void DeleteNotification(String notificationId)
         {
-            notificationService.DeleteNotification(notificationId);
+            notificationService.Remove(notificationId);
         }
 
     }

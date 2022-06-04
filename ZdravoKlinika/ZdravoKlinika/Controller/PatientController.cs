@@ -19,7 +19,7 @@ namespace ZdravoKlinika.Controller
             patientService = new PatientService();
         }
 
-        public Patient GetById(String id)
+        public IPatient GetById(String id)
         {
             return PatientService.GetById(id);
         }
