@@ -33,6 +33,21 @@ namespace ZdravoKlinika.Service
             this.userRepository.RememberUser(user);
         }
 
+        internal List<RegisteredUser> GetAllEmployees()
+        {
+            List<RegisteredUser> employees = new List<RegisteredUser>();
+
+            foreach (RegisteredUser user in GetAll())
+            {
+                if (user.UserType != UserType.Patient)
+                {
+                    employees.Add(user);
+                }
+            }
+
+            return employees;
+        }
+
         public RegisteredUser GetRememberedUser()
         {
             return this.userRepository.GetRememberedUser();

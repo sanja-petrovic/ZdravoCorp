@@ -79,7 +79,7 @@ public class RegisteredPatient : RegisteredUser, Patient
     }
 
     
-    public override string ToString()
+    public string ToString()
     {
         return this.GetPatientFullName() + ", " + this.GetPatientId();
     }

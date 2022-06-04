@@ -41,5 +41,15 @@ namespace ZdravoKlinika.Controller
         {
            return appReviewService.GetAll();
         }
+
+        public int CountNumberOfGrades(int questionNumber, int gradeToCount)
+        {
+            return appReviewService.CountNumberOfGrades(questionNumber, gradeToCount);
+        }
+
+        public double GetAverageGrade(int questionNumber)
+        {
+            return appReviewService.GetAverageGrade(questionNumber);
+        }
     }
 }

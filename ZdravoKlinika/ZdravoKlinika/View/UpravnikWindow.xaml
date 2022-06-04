@@ -45,6 +45,8 @@
             <Button x:Name="MedicineViewButton" Content="Pregled lekova" HorizontalAlignment="Left" Margin="636,141,0,0" VerticalAlignment="Top" Click="MedicineView_Click" Height="30" Width="110"/>
             <Button x:Name="logoutButton" Content="Odjavi se" HorizontalAlignment="Left" Margin="636,244,0,0" VerticalAlignment="Top" Click="logoutButton_Click" Height="30" Width="110"/>
             <Button x:Name="HCI" Content="HCI" HorizontalAlignment="Left" Margin="636,49,0,0" VerticalAlignment="Top" Click="hciButton_Click" Height="30" Width="110"/>
+            <Button x:Name="SystemStatisticsButton" Content="Statistika sistema" HorizontalAlignment="Left" Margin="50,49,0,0" VerticalAlignment="Top" Click="SystemStatisticsButton_Click" Height="30" Width="110"/>
+            <Button x:Name="DoctorStatisticsButton" Content="Statistika doktora" HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top" Click="DoctorStatisticsButton_Click" Height="30" Width="110"/>
         </Grid>
     </Grid>
 </Window>

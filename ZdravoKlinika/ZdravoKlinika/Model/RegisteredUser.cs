@@ -16,6 +16,23 @@ public class RegisteredUser
     private Address address;
 
     public UserType UserType { get => userType; set => userType = value; }
+    public String UserTypeString
+    {
+        get 
+        {
+            String value = "";
+            if (userType == UserType.Doctor)
+                value = "Doktor";
+            else if (userType == UserType.Manager)
+                value = "Menadzer";
+            else if (userType == UserType.Secretary)
+                value = "Sekretar";
+            else if (userType == UserType.Patient)
+                value = "Pacijent";
+
+            return value;
+        }
+            }
     public string PersonalId { get => personalId; set => personalId = value; }
     public string Name { get => name; set => name = value; }
     public string Lastname { get => lastname; set => lastname = value; }
@@ -53,4 +70,5 @@ public class RegisteredUser
         user.Email = email;
         return user;
     }
+
 }

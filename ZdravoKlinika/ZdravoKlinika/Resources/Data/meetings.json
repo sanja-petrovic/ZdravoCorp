@@ -1,3 +1,12 @@
-﻿[
-
+[
+  {
+    "Date": "2022-06-30T12:00:00",
+    "Required": [
+      "9999999",
+      "qwer",
+      "123"
+    ],
+    "Optional": [],
+    "MeetingId": "sSO9uNQs"
+  }
 ]

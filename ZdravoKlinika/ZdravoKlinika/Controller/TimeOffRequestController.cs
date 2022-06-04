@@ -23,6 +23,11 @@ namespace ZdravoKlinika.Controller
             return this.service.GetAll();
         }
 
+        public List<TimeOffRequest> GetAllUnprocessed()
+        {
+            return this.service.GetAllUnprocessed();
+        }
+
         public TimeOffRequest GetById(int id)
         {
             return service.GetById(id);

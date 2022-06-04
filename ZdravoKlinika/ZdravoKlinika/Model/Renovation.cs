@@ -10,14 +10,6 @@ public class Renovation
 
     private List<Room> entryRooms;
 
-    public string Id { get => id; set => id = value; }
-    public int NumberOfExitRooms { get => numberOfExitRooms; set => numberOfExitRooms = value; }
-    public DateTime ScheduledDateTime { get => scheduledDateTime; set => scheduledDateTime = value; }
-
-    public bool IsRenovationFinished { get => isRenovationFinished; set => isRenovationFinished = value; }
-
-    public List<Room> EntryRooms { get => entryRooms; set => entryRooms = value; }
-
     public Renovation(string id, int numberOfExitRooms, DateTime scheduledDateTime, List<Room> entryRooms, bool isRenovationFinished)
     {
         this.id = id;
@@ -30,6 +22,14 @@ public class Renovation
     public Renovation()
     {
     }
+
+    public string Id { get => id; set => id = value; }
+    public int NumberOfExitRooms { get => numberOfExitRooms; set => numberOfExitRooms = value; }
+    public DateTime ScheduledDateTime { get => scheduledDateTime; set => scheduledDateTime = value; }
+
+    public bool IsRenovationFinished { get => isRenovationFinished; set => isRenovationFinished = value; }
+
+    public List<Room> EntryRooms { get => entryRooms; set => entryRooms = value; }
 
     public void AddEntryRooms(Room newRoom)
     {
@@ -55,11 +55,11 @@ public class Renovation
         if (EntryRooms != null)
             EntryRooms.Clear();
     }
+
     public static Renovation Parse(String id)
     {
         Renovation r = new Renovation();
         r.Id = id;
         return r;
     }
-
 }

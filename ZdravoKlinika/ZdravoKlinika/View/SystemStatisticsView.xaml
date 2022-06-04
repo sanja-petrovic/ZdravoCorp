@@ -1,0 +1,75 @@
+﻿<Window x:Class="ZdravoKlinika.View.SystemStatisticsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.View"
+        mc:Ignorable="d"
+        Title="Statistika sistema" Height="350" Width="800">
+    <Grid>
+        <Label Content="1. Osoblje je prijatno, profesionalno i uvek na usluzi." HorizontalAlignment="Left" Margin="23,60,0,0" VerticalAlignment="Top"/>
+        <Label Content="2. Prostorije za pregled su čiste i opremljene." HorizontalAlignment="Left" Margin="23,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="3. Čekaonice su prijatne i prostrane." HorizontalAlignment="Left" Margin="23,120,0,0" VerticalAlignment="Top"/>
+        <Label Content="4. Muzika u čekaonicama je prijatna i umirujuca." HorizontalAlignment="Left" Margin="23,150,0,0" VerticalAlignment="Top"/>
+        <Label Content="5. Korišćenje usluga Zdravo korporacije je na mene ostavilo pozitivan uticaj." HorizontalAlignment="Left" Margin="23,180,0,0" VerticalAlignment="Top"/>
+        <Label Content="6. U budućnosti ću se ponovo opredeliti za usluge Zdravo korporacije." HorizontalAlignment="Left" Margin="23,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="7. Aplikacija Zdravo korporacije je adekvatna." HorizontalAlignment="Left" Margin="23,240,0,0" VerticalAlignment="Top"/>
+        
+        <Label Content="Ocene:" HorizontalAlignment="Left" Margin="420,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="1" HorizontalAlignment="Left" Margin="480,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="2" HorizontalAlignment="Left" Margin="510,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="3" HorizontalAlignment="Left" Margin="540,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="4" HorizontalAlignment="Left" Margin="570,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="5" HorizontalAlignment="Left" Margin="600,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prosek" HorizontalAlignment="Left" Margin="630,20,0,0" VerticalAlignment="Top"/>
+        
+        <Label x:Name="firstQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,60,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,60,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,60,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,60,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,60,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="firstQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,60,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="secondQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="secondQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,90,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="thirdQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="thirdQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,120,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="fourthQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fourthQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fourthQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fourthQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fourthQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fourthQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,150,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="fifthQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fifthQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fifthQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fifthQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fifthQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="fifthQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,180,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="sixthQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,210,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="sixthQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,210,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="sixthQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,210,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="sixthQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,210,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="sixthQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,210,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="sixthQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,210,0,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="seventhQuestionFirstField" Content="" HorizontalAlignment="Left" Margin="480,240,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="seventhQuestionSecondField" Content="" HorizontalAlignment="Left" Margin="510,240,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="seventhQuestionThirdField" Content="" HorizontalAlignment="Left" Margin="540,240,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="seventhQuestionFourthField" Content="" HorizontalAlignment="Left" Margin="570,240,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="seventhQuestionFifthField" Content="" HorizontalAlignment="Left" Margin="600,240,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="seventhQuestionAverage" Content="" HorizontalAlignment="Left" Margin="640,240,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

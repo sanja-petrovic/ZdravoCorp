@@ -166,4 +166,13 @@ public class AppointmentController
         return appointmentService.GetDateBlocksForDoctorInNextHour(duration, doc);
     }
 
+    public int CountNumberOfGradesForDoctor(int questionNumber, int gradeToCount, Doctor doctor)
+    {
+        return appointmentService.CountNumberOfGradesForDoctor(questionNumber, gradeToCount, doctor);
+    }
+
+    public double GetAverageGradeForDoctor(int questionNumber, Doctor doctor)
+    {
+        return appointmentService.GetAverageGradeForDoctor(questionNumber, doctor);
+    }
 }

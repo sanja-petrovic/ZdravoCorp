@@ -17,7 +17,7 @@ namespace ZdravoKlinika.Service
 
         public PatientMedicationNotificationService()
         {
-        this.patientMedicationNotificationRepository = new PatientMedicationNotificationRepository();
+            this.patientMedicationNotificationRepository = new PatientMedicationNotificationRepository();
 
         }
 
@@ -31,8 +31,8 @@ namespace ZdravoKlinika.Service
         }
         public List<PatientMedicationNotification> GetByPatientId(String id)
         {
-            List <PatientMedicationNotification> retVal =  new List<PatientMedicationNotification>();
-            foreach(PatientMedicationNotification notification in this.GetAll())
+            List<PatientMedicationNotification> retVal = new List<PatientMedicationNotification>();
+            foreach (PatientMedicationNotification notification in this.GetAll())
             {
                 if (notification.Prescription.Patient.GetPatientId().Equals(id))
                 {
@@ -44,7 +44,7 @@ namespace ZdravoKlinika.Service
         public List<PatientMedicationNotification> GetByPatientForDate(String id, DateTime date)
         {
             List<PatientMedicationNotification> retVal = new List<PatientMedicationNotification>();
-            foreach(PatientMedicationNotification notification in this.GetByPatientId(id))
+            foreach (PatientMedicationNotification notification in this.GetByPatientId(id))
             {
                 if (notification.Prescription.Repeat != null)
                 {
@@ -65,15 +65,15 @@ namespace ZdravoKlinika.Service
                         //err
                     }
                 }
-                
+
             }
             return retVal;
         }
 
         private PatientMedicationNotification GetDailyNotifications(PatientMedicationNotification notification, DateTime date)
         {
-           PatientMedicationNotification retVal = null;
-           for (int currDay = 1; currDay <= notification.Prescription.Duration; currDay++)
+            PatientMedicationNotification retVal = null;
+            for (int currDay = 1; currDay <= notification.Prescription.Duration; currDay++)
             {
                 if (notification.Prescription.DateOfCreation.AddDays(currDay).Date.Equals(date.Date))
                 {
@@ -83,14 +83,9 @@ namespace ZdravoKlinika.Service
             }
             return retVal;
         }
+
         private List<PatientMedicationNotification> GetWeeklyNotifications()
         {
-            // frequency values corespodention to days:
-            // frequency 1, every monday
-            // frequency 2, every monday and thursday
-            // frequency 3, every monday wednesday and sunday
-            // frequency 4, every monday, wednesday, friday and sunday
-            // frequency 5, 
             return null;
         }
         public List<DateTime> GetNotificationDatesForPatient(String id)
@@ -129,8 +124,8 @@ namespace ZdravoKlinika.Service
 
         public List<DateTime> GetPossibleTriggerTimes(PatientMedicationNotification notification)
         {
-            List<DateTime> retVal = new List<DateTime>();   
-            if (notification != null && notification.Prescription.Repeat != null )
+            List<DateTime> retVal = new List<DateTime>();
+            if (notification != null && notification.Prescription.Repeat != null)
             {
                 if (notification.Prescription.Repeat.Equals("dnevno"))
                 {
@@ -162,6 +157,57 @@ namespace ZdravoKlinika.Service
             }
             return retVal;
         }
+
+        public List<PatientMedicationNotification> GetUpcomingNotifications(string id, int hours)
+        {
+            List<PatientMedicationNotification> retVal = new List<PatientMedicationNotification>(); 
+            foreach(PatientMedicationNotification notif in this.GetByPatientForDate(id, DateTime.Now.Date))
+            {
+
+                if (notif.Prescription.Repeat.Equals("dnevno"))
+                {
+                    retVal.Add(GetUpcomingDailyNotifications(id,notif,hours));
+                }
+                else if (notif.Prescription.Repeat.Equals("nedeljno"))
+                {
+                    //TODO finish
+                }
+                else
+                {
+                    //err
+                }
+               
+            }
+            return retVal;
+        }
+        public PatientMedicationNotification GetUpcomingDailyNotifications(string id,PatientMedicationNotification notification, int hours)
+        {
+           PatientMedicationNotification retVal = new PatientMedicationNotification();
+            switch (notification.Prescription.Frequency)
+            {
+                case 1:
+                    if (notification.TriggerTime > DateTime.Now && notification.TriggerTime < DateTime.Now.AddHours(hours))
+                    {
+                        retVal = notification;
+                    }
+                    break;
+                case 2:
+                    if ((notification.TriggerTime > DateTime.Now && notification.TriggerTime < DateTime.Now.AddHours(hours)) || (notification.TriggerTime.AddHours(12) > DateTime.Now && notification.TriggerTime.AddHours(12) < DateTime.Now.AddHours(hours)))
+                    {
+                        retVal = notification;
+                    }
+                    break;
+                case 3:
+                    if ((notification.TriggerTime > DateTime.Now && notification.TriggerTime < DateTime.Now.AddHours(hours)) || (notification.TriggerTime.AddHours(6) > DateTime.Now && notification.TriggerTime.AddHours(6) < DateTime.Now.AddHours(hours)) || (notification.TriggerTime.AddHours(12) > DateTime.Now && notification.TriggerTime.AddHours(12) < DateTime.Now.AddHours(hours)))
+                    {
+                        retVal = notification;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return retVal;
+        }
         public void CreateNotification(PatientMedicationNotification notification)
         {
             List<PatientMedicationNotification> notifications = new List<PatientMedicationNotification>();
@@ -186,7 +232,11 @@ namespace ZdravoKlinika.Service
         {
             patientMedicationNotificationRepository.DeleteAllNotifications();
         }
-        
+        public void UpdateTriggerTime(PatientMedicationNotification notification,DateTime newTriggerTime)
+        {   
+            notification.TriggerTime = newTriggerTime;
+            patientMedicationNotificationRepository.UpdateNotification(notification);
+        }
         public void UpdateNotification(PatientMedicationNotification notification)
         { 
             patientMedicationNotificationRepository.UpdateNotification( notification );

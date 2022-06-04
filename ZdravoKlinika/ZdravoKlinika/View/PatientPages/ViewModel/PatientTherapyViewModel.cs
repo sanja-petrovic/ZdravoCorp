@@ -22,9 +22,11 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
         private DateTime currentDate;
         private MyICommand loadNotificationsCommand;
         private MyICommand loadTimesCommand;
+        private MyICommand editTimeCommand;
         private ObservableCollection<PatientMedicationNotification> notifications;
         private String note;
         private List<DateTime> personalNoteTimes = new List<DateTime>();
+        private DateTime selectedInCombo;
         public PatientTherapyViewModel(String id)
         {
             selectedDate = DateTime.Now.Date;
@@ -33,6 +35,7 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
             NotificationDates = Controller.GetNotificationDatesForPatient(PatientId);
             LoadNotificationsCommand = new MyICommand(LoadNotifications, CanExecuteLoadNotifications);
             LoadTimesCommand = new MyICommand(LoadTimes, CanExecuteLoadTimes);
+            EditTimeCommand = new MyICommand(EditTime, CanExecuteEditTime);
         }
 
         private void OnPropertyChanged(String propertyName)
@@ -81,6 +84,8 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
         public MyICommand LoadTimesCommand { get => loadTimesCommand; set => loadTimesCommand = value; }
         public string Note { get => note; set => note = value; }
         public List<DateTime> PersonalNoteTimes { get => personalNoteTimes; set => personalNoteTimes = value; }
+        public DateTime SelectedInCombo { get => selectedInCombo; set => selectedInCombo = value; }
+        public MyICommand EditTimeCommand { get => editTimeCommand; set => editTimeCommand = value; }
 
         public void LoadNotifications(object data)
         {
@@ -107,6 +112,19 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
             if(selectedNotification != null)
             {
                 retVal = true;  
+            }
+            return retVal;
+        }
+        public void EditTime(object data)
+        {
+            controller.UpdateTriggerTime(selectedNotification.NotificationId, SelectedInCombo);
+        }
+        public bool CanExecuteEditTime(object data)
+        {
+            bool retVal = false;
+            if(selectedInCombo != null)
+            {
+                retVal = true;
             }
             return retVal;
         }
