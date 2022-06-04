@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class MoveRepository
+public class MoveRepository : IMoveRepository
 {
     private MoveDataHandler moveDataHandler;
     private List<Move> moves;
@@ -79,13 +80,13 @@ public class MoveRepository
         return returnValue;
     }
 
-    public void CreateMove(Move move)
+    public void Add(Move move)
     {
         this.moves.Add(move);
         moveDataHandler.Write(this.moves);
     }
 
-    public void DeleteMove(Move move)
+    public void Remove(Move move)
     {
         if (move == null)
             return;
@@ -95,7 +96,7 @@ public class MoveRepository
         moveDataHandler.Write(this.moves);
     }
 
-    public void UpdateMove(Move move)
+    public void Update(Move move)
     {
         if (move == null)
             return;
@@ -117,4 +118,10 @@ public class MoveRepository
         moveToBeUpdated.ScheduledDateTime = updatedValues.ScheduledDateTime;
     }
 
+    public void RemoveAll()
+    {
+        this.moves.Clear();
+        this.moveDataHandler.Write(this.moves);
+
+    }
 }

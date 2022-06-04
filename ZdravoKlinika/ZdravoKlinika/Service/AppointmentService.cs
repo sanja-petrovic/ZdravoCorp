@@ -40,7 +40,7 @@ public class AppointmentService
 
     public Appointment GetAppointmentById(int id)
     {
-        return this.appointmentRepository.GetAppointmentById(id);
+        return this.appointmentRepository.GetById(id);
     }
 
     public List<Appointment> GetAppointmentsByPatientId(String id)
@@ -300,7 +300,7 @@ public class AppointmentService
         }
         return prunedList;
     }
-    public List<DateBlock> GetFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
+    public List<DateBlock> GetFreeTimeForPatient(DateTime date, int duration, IPatient patient, int startHours, int endHours)
     {
         List<DateBlock> result = new List<DateBlock>();
         List<Appointment> appointments = new List<Appointment>();
@@ -376,13 +376,13 @@ public class AppointmentService
         int newAppointmentId = appointments.Count > 0 ? appointments.Last().AppointmentId + 1 : 1;
         appointment.AppointmentId = newAppointmentId;
 
-        this.appointmentRepository.CreateAppointment(appointment);
+        this.appointmentRepository.Add(appointment);
     }
 
     public void DeleteAppointment(int id)
     {
-        Appointment appointment = appointmentRepository.GetAppointmentById(id);
-        this.appointmentRepository.DeleteAppointment(appointment);
+        Appointment appointment = appointmentRepository.GetById(id);
+        this.appointmentRepository.Remove(appointment);
     }
     public void PatientDeleteAppointment(int id, String patientId)
     {
@@ -399,11 +399,11 @@ public class AppointmentService
     }
     public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        Appointment appointment = this.appointmentRepository.GetAppointmentById(appointmentId); 
+        Appointment appointment = this.appointmentRepository.GetById(appointmentId); 
 
         Doctor doc = doctorRepository.GetById(doctorId);
         Room room = roomRepository.GetById(roomId);
-        Patient pat = patientRepository.GetById(patientId);
+        IPatient pat = patientRepository.GetById(patientId);
 
         List<DateBlock> t = DateBlock.getIntersection(GetFreeTimeForDoctor(dateAndTime.Date, duration, doc, 8, 20), GetFreeTimeForPatient(dateAndTime.Date, duration, pat, 8, 20));
 
@@ -417,7 +417,7 @@ public class AppointmentService
                 appointment.Doctor = doc;
                 appointment.Room = room;
 
-                this.appointmentRepository.EditAppointment(appointment);
+                this.appointmentRepository.Update(appointment);
                 return;
             }
         }
@@ -440,11 +440,11 @@ public class AppointmentService
         appointment.Diagnoses = diagnoses;
         appointment.DoctorsNotes = doctorsNote;
         appointment.Over = true;
-        this.appointmentRepository.LogAppointment(appointment);
+        this.appointmentRepository.Update(appointment);
     }
     public void AddGrading(int appointmentId, int[] grades)
     {
-        this.appointmentRepository.AddGrading(this.appointmentRepository.GetAppointmentById(appointmentId), grades);
+        this.appointmentRepository.AddGrading(this.appointmentRepository.GetById(appointmentId), grades);
     }
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {

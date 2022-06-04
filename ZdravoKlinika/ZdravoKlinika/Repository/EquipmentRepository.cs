@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using ZdravoKlinika.Data_Handler;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class EquipmentRepository
+public class EquipmentRepository : IEquipmentRepository
 {
     private EquipmentDataHandler equipmentDataHandler;
     private OrderDataHandler orderDataHandler;
@@ -147,13 +148,13 @@ public class EquipmentRepository
         return this.expendabilityList;
     }
 
-    public void CreateEquipment(Equipment eq)
+    public void Add(Equipment eq)
     {
         this.equipment.Add(eq);
         EquipmentDataHandler.Write(this.equipment);
     }
 
-    public void DeleteEquipment(Equipment eq)
+    public void Remove(Equipment eq)
     {
         if (eq == null)
             return;
@@ -163,7 +164,7 @@ public class EquipmentRepository
         EquipmentDataHandler.Write(this.equipment);
     }
 
-    public void UpdateEquipment(Equipment eq)
+    public void Update(Equipment eq)
     {
         if (eq == null)
             return;
@@ -183,6 +184,13 @@ public class EquipmentRepository
         equipmentToBeUpdated.Name = updatingValues.Name;
         equipmentToBeUpdated.Amount = updatingValues.Amount;
         equipmentToBeUpdated.Expendable = updatingValues.Expendable;
+    }
+
+    public void RemoveAll()
+    {
+        this.equipment.Clear();
+        this.equipmentDataHandler.Write(this.equipment);
+
     }
 
 }

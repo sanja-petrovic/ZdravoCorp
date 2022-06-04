@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class EmployeeNotificationRepository
+    public class EmployeeNotificationRepository : Interfaces.IEmployeeNotificationRepository
     {
         private EmployeeNotificationDataHandler dataHandler;
         private List<EmployeeNotification> employeeNotifications;
@@ -16,16 +16,16 @@ namespace ZdravoKlinika.Repository
         public EmployeeNotificationRepository()
         { 
             dataHandler = new EmployeeNotificationDataHandler();
-            ReadData();
+            ReadDataFromFile();
         }
 
-        public void CreateNotification(EmployeeNotification notification)
+        public void Add(EmployeeNotification notification)
         {
             employeeNotifications.Add(notification);
             dataHandler.Write(employeeNotifications);
         }
 
-        private void ReadData() 
+        private void ReadDataFromFile() 
         {
             employeeNotifications = dataHandler.Read();
             if (employeeNotifications == null)
@@ -36,13 +36,13 @@ namespace ZdravoKlinika.Repository
 
         public List<EmployeeNotification> GetAll()
         {
-            ReadData();
+            ReadDataFromFile();
             return employeeNotifications;
         }
 
         public List<EmployeeNotification> GetAllPersonalNotifications(RegisteredUser user)
         {
-            ReadData();
+            ReadDataFromFile();
             List<EmployeeNotification> notifsToReturn = new List<EmployeeNotification>();
             foreach (EmployeeNotification notif in employeeNotifications)
             {
@@ -56,7 +56,7 @@ namespace ZdravoKlinika.Repository
 
         public List<EmployeeNotification> GetSpecificTypeOfNotifications(RegisteredUser user, EmployeeNotificationType type)
         {
-            ReadData();
+            ReadDataFromFile();
             List<EmployeeNotification> notifsToReturn = new List<EmployeeNotification>();
             foreach (EmployeeNotification notif in employeeNotifications)
             {
@@ -68,14 +68,21 @@ namespace ZdravoKlinika.Repository
             return notifsToReturn;
         }
 
-        public void DeleteNotification(string notificationId)
+        public void Remove(EmployeeNotification notification)
         {
-            ReadData();
+            ReadDataFromFile();
+            int indexToRemove = GetIndex(notification.NotificationId);
+            employeeNotifications.RemoveAt(indexToRemove);
+            dataHandler.Write(employeeNotifications);
+            return;
+        }
+        private int GetIndex(String id) 
+        {
             int indexToRemove = -1;
             foreach (EmployeeNotification notification in employeeNotifications)
             {
-                if (notification.NotificationId.Equals(notificationId))
-                { 
+                if (notification.NotificationId.Equals(id))
+                {
                     indexToRemove = employeeNotifications.IndexOf(notification);
                     break;
                 }
@@ -85,10 +92,29 @@ namespace ZdravoKlinika.Repository
             {
                 throw new Exception("Notification does not exist");
             }
+            return indexToRemove;
+        }
 
-            employeeNotifications.RemoveAt(indexToRemove);
+        public EmployeeNotification GetById(string id)
+        {
+            return employeeNotifications.Find(notif => notif.NotificationId.Equals(id));
+        }
+
+        public void Update(EmployeeNotification item)
+        {
+            int index = GetIndex(item.NotificationId);
+            if (index != -1)
+            {
+                employeeNotifications[index] = item;
+                dataHandler.Write(employeeNotifications);
+            }
+        }
+
+        public void RemoveAll()
+        {
+            if (employeeNotifications != null)
+                employeeNotifications.Clear();
             dataHandler.Write(employeeNotifications);
-            return;
         }
     }
 }

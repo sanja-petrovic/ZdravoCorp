@@ -45,7 +45,7 @@ public class MoveService
         timer.AutoReset = false;
         timer.Start();
 
-        this.moveRepository.CreateMove(new Move(GenerateMoveId().ToString(), SourceRoom, DestinationRoom, ScheduledDateTime, EquipmentToMove));
+        this.moveRepository.Add(new Move(GenerateMoveId().ToString(), SourceRoom, DestinationRoom, ScheduledDateTime, EquipmentToMove));
     }
 
     private void ExecuteMove(object? sender, ElapsedEventArgs e)
@@ -93,13 +93,13 @@ public class MoveService
     {
         Move move = this.moveRepository.GetById(changedMove.MoveId);
         UpdateMoveValues(move, changedMove);
-        this.moveRepository.UpdateMove(move);
+        this.moveRepository.Update(move);
     }
 
     public void DeleteMove(String moveId)
     {
         Move m = moveRepository.GetById(moveId);
-        this.moveRepository.DeleteMove(m);
+        this.moveRepository.Remove(m);
     }
 
     private int GenerateMoveId()

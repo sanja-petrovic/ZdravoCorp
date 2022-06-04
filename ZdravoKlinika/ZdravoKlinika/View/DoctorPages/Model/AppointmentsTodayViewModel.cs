@@ -43,7 +43,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 {
 
-                    Patient patient = appointment.Patient;
+                    IPatient patient = appointment.Patient;
                     DateTime time = appointment.DateAndTime;
                     Room room = appointment.Room;
 
@@ -78,7 +78,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             SelectedAppointment = appointmentController.GetAppointmentById(selectedId);
             PatientName = SelectedAppointment.Patient.GetPatientFullName();
             PatientId = SelectedAppointment.Patient.GetPatientId();
-            Patient patient = SelectedAppointment.Patient;
+            IPatient patient = SelectedAppointment.Patient;
             if(patient.GetPatientType() == PatientType.Registered)
             {
                 DateOfBirth = ((RegisteredPatient) patient).DateOfBirth.ToString("dd.MM.yyyy.");

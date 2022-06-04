@@ -55,7 +55,7 @@ public class RenovationService
 
         if (roomFree)
         {
-            this.renovationRepository.CreateRenovation(new Renovation(GenerateRenovationId().ToString(), numberOfExitRooms, scheduledDateTime, entryRooms, false));
+            this.renovationRepository.Add(new Renovation(GenerateRenovationId().ToString(), numberOfExitRooms, scheduledDateTime, entryRooms, false));
             DetermineRenovationType();
             //TO-DO: OVDE UPDATE TABELU SOBA(?)
 
@@ -70,13 +70,13 @@ public class RenovationService
     {
         Renovation renovation = this.renovationRepository.GetById(changedRenovation.Id);
         UpdateRenovationValues(renovation, changedRenovation);
-        this.renovationRepository.UpdateRenovation(renovation);
+        this.renovationRepository.Update(renovation);
     }
 
     public void DeleteRenovation(String id)
     {
         Renovation r = this.renovationRepository.GetById(id);
-        this.renovationRepository.DeleteRenovation(r);
+        this.renovationRepository.Remove(r);
     }
 
     public void RenovateTheRoom()

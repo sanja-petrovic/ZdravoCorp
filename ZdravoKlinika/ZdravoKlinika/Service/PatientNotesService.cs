@@ -41,19 +41,19 @@ namespace ZdravoKlinika.Service
         public void CreateNote(PatientNotes note) 
         {
             note.NotificationId = GetAvailableId();
-            repository.CreateNote(note);
+            repository.Add(note);
         }
         public void DeleteNote(int id)
         {
-            repository.DeleteNote(repository.GetById(id));
+            repository.Remove(repository.GetById(id));
         }
         public void DeleteAllNotes()
         {
-            repository.DeleteAllNotes();
+            repository.RemoveAll();
         }
         public void UpdateNote(PatientNotes note)
         {
-            repository.UpdateNote(note);
+            repository.Update(note);
         }
         private int GetAvailableId()
         {

@@ -2,7 +2,7 @@ using System;
 using System.Text.Json.Serialization;
 using ZdravoKlinika.Model;
 
-public class RegisteredPatient : RegisteredUser, Patient
+public class RegisteredPatient : RegisteredUser, IPatient
 {
     private PatientType patientType;
     private BloodType bloodType;

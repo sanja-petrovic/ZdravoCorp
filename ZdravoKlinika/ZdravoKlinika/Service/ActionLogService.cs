@@ -22,13 +22,13 @@ namespace ZdravoKlinika.Service
 
         public void AddLog(DateTime time, String action, RegisteredPatient user)
         {
-            ActionLogRepository.AddLog(new ActionLog(GetUniqueId(), time, action, user));
+            ActionLogRepository.Add(new ActionLog(GetUniqueId(), time, action, user));
         }
         
         public void RemoveLog(String id)
         {
             ActionLog log = ActionLogRepository.GetById(id);
-            actionLogRepository.RemoveLog(log);
+            actionLogRepository.Remove(log);
         }
 
         public void RemoveAll()

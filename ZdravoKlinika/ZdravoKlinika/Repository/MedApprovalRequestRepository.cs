@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class MedApprovalRequestRepository
+    public class MedApprovalRequestRepository : Interfaces.IMedApprovalRequestRepository
     {
 
         private MedApprovalRequestDataHandler dataHandler;
@@ -149,13 +149,13 @@ namespace ZdravoKlinika.Repository
             return requests;
         }
 
-        public void CreateRequest(MedApprovalRequest request)
+        public void Add(MedApprovalRequest request)
         {
             this.requests.Add(request);
             this.dataHandler.Write(requests);
         }
 
-        public void UpdateRequest(MedApprovalRequest request)
+        public void Update(MedApprovalRequest request)
         {
             int index = this.GetIndex(request);
             this.requests[index] = request;
@@ -163,7 +163,7 @@ namespace ZdravoKlinika.Repository
             this.dataHandler.Write(this.requests);
         }
 
-        public int GetIndex(MedApprovalRequest request)
+        private int GetIndex(MedApprovalRequest request)
         {
             int index = -1;
             for (int i = 0; i < this.requests.Count; i++)
@@ -178,6 +178,15 @@ namespace ZdravoKlinika.Repository
             return index;
         }
 
+        public void Remove(MedApprovalRequest item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
