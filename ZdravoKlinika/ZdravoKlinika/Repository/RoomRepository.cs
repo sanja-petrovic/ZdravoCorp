@@ -7,11 +7,25 @@ public class RoomRepository : IRoomRepository
 {
     private RoomDataHandler roomDataHandler;
     private RenovationDataHandler renovationDataHandler;
+    private MoveDataHandler moveDataHandler;
     private List<Room> rooms;
     private List<Room> freeRooms;
     private List<Room> renovatableRooms;
     private RenovationRepository renovationRepository;
     private List<Renovation> renovations;
+    private MoveRepository moveRepository;
+    private List<Move> moves;
+
+    private Room sourceRoom;
+    private Room destinationRoom;
+    private DateTime scheduledDateTime;
+    private List<Equipment> equipmentToMove;
+    private List<string> idList;
+
+    public Room SourceRoom { get => sourceRoom; set => sourceRoom = value; }
+    public Room DestinationRoom { get => destinationRoom; set => destinationRoom = value; }
+    public DateTime ScheduledDateTime { get => scheduledDateTime; set => scheduledDateTime = value; }
+    public List<Equipment> EquipmentToMove { get => equipmentToMove; set => equipmentToMove = value; }
 
     public RoomRepository()
     {
@@ -25,7 +39,12 @@ public class RoomRepository : IRoomRepository
         this.renovationDataHandler = new RenovationDataHandler();
         this.renovations = this.renovationRepository.GetAll();
 
+        this.moveRepository = new MoveRepository();
+        this.moveDataHandler = new MoveDataHandler();
+        this.moves = this.moveRepository.GetAll();
+
         UpdateFinishedRenovations();
+        UpdateFinishedMoves();
     }
 
     private void UpdateFinishedRenovations()
@@ -39,6 +58,18 @@ public class RoomRepository : IRoomRepository
             this.renovationDataHandler.Write(this.renovations);
         }
 
+    }
+
+    private void UpdateFinishedMoves()
+    {
+        if(this.moves != null)
+        {
+            foreach(Move m in this.moves)
+            {
+                FinalizeMove(m);
+            }
+            this.moveDataHandler.Write(this.moves);
+        }
     }
 
     private void Finalize(Renovation r)
@@ -63,6 +94,99 @@ public class RoomRepository : IRoomRepository
                     FinalizeMerge(r);                 
                 }
             }
+        }
+    }
+
+    private void FinalizeMove(Move m)
+    {
+        if (!m.IsMoveFinished)
+        {
+            SaveMoveValues(m);
+            foreach (Room r in this.rooms)
+            {
+                if (r.RoomId.Equals(this.SourceRoom.RoomId))
+                {
+                    SubstractEquipmentFromSourceRoom(r);
+                }
+
+                if (r.RoomId.Equals(this.DestinationRoom.RoomId))
+                {
+                    AddEquipmentToDestinationRoom(r);
+                }
+            }
+            SaveChangesToRooms();
+        }
+        m.IsMoveFinished = true;
+    }
+
+    private void SubstractEquipmentFromSourceRoom(Room r)
+    {
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            foreach (Equipment equ in this.EquipmentToMove)
+            {
+                if (equipment.Id.Equals(equ.Id))
+                {
+                    equipment.Amount = equipment.Amount - equ.Amount;
+                }
+            }
+        }
+    }
+
+    private void AddEquipmentToDestinationRoom(Room r)
+    {
+        if (r.EquipmentInRoom.Count != 0)
+        {
+            GetAllEquipmentInRoomIds(r);
+
+            foreach (Equipment equ in this.EquipmentToMove)
+            {
+                AddEquipmentToNonEmptyRoom(r, equ);
+            }
+        }
+        else
+        {
+            AddEquipmentToEmptyRoom(r);
+        }
+    }
+
+    private void AddEquipmentToNonEmptyRoom(Room r, Equipment equ)
+    {
+        if (idList.Contains(equ.Id))
+        {
+            AddAmountToExistingEquipmentInRoom(r, equ);
+        }
+        else
+        {
+            r.AddEquipmentInRoom(equ);
+        }
+    }
+
+    private void AddAmountToExistingEquipmentInRoom(Room r, Equipment equ)
+    {
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            if (equipment.Id.Equals(equ.Id))
+            {
+                equipment.Amount = equipment.Amount + equ.Amount;
+            }
+        }
+    }
+
+    private void AddEquipmentToEmptyRoom(Room r)
+    {
+        foreach (Equipment equipment in this.EquipmentToMove)
+        {
+            r.AddEquipmentInRoom(equipment);
+        }
+    }
+
+    private void GetAllEquipmentInRoomIds(Room r)
+    {
+        idList = new List<string>();
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            idList.Add(equipment.Id);
         }
     }
 
@@ -118,7 +242,7 @@ public class RoomRepository : IRoomRepository
             }
         }
     }
-   
+
     public void AddRoom(Room newRoom)
     {
         if (newRoom == null)
@@ -335,5 +459,19 @@ public class RoomRepository : IRoomRepository
     {
         this.rooms.Clear();
         this.roomDataHandler.Write(this.rooms);
+    }
+
+    private void SaveMoveValues(Move move)
+    {
+        SourceRoom = move.SourceRoom;
+        DestinationRoom = move.DestinationRoom;
+        EquipmentToMove = move.EquipmentToMove;
+        ScheduledDateTime = move.ScheduledDateTime;
+    }
+
+    private void SaveChangesToRooms()
+    {
+        RoomDataHandler roomDataHandler = new RoomDataHandler();
+        roomDataHandler.Write(this.rooms);
     }
 }

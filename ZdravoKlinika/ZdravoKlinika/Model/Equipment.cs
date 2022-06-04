@@ -30,7 +30,17 @@ public class Equipment
         String[] splitData = data.Split(",");
         Equipment eq = new Equipment();
         eq.Id = splitData[0];
-        eq.amount = int.Parse(splitData[1]);
+        eq.Name = splitData[1];
+        eq.amount = int.Parse(splitData[2]);
+        switch (splitData[3])
+        {
+            case "True":
+                eq.Expendable = true;
+                break;
+            case "False":
+                eq.Expendable = false;
+                break;
+        }
         return eq;
     }
 }
