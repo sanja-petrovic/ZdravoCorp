@@ -235,7 +235,7 @@ namespace ZdravoKlinika.Service
         public void UpdateTriggerTime(PatientMedicationNotification notification,DateTime newTriggerTime)
         {   
             notification.TriggerTime = newTriggerTime;
-            patientMedicationNotificationRepository.UpdateNotification(notification);
+            patientMedicationNotificationRepository.Update(notification);
         }
         public void UpdateNotification(PatientMedicationNotification notification)
         { 
