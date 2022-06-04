@@ -1,12 +1,3 @@
 [
-  {
-    "EquipmentToMove": [
-      "1,5"
-    ],
-    "MoveId": "1",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-05-18T00:42:28",
-    "IsMoveFinished": false
-  }
+
 ]

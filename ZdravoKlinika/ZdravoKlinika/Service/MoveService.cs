@@ -6,6 +6,7 @@ using System.Timers;
 public class MoveService
 {
     private MoveRepository moveRepository;
+    private List<Move> moves;
     private Room sourceRoom;
     private Room destinationRoom;
     private DateTime scheduledDateTime;
@@ -13,11 +14,15 @@ public class MoveService
     private Timer timer;
     private RoomService roomService;
     private List<Room> rooms;
+    private List<string> idList;
+    private String generatedId;
 
     public MoveService()
     {
         this.moveRepository = new MoveRepository();
+        this.moves = this.moveRepository.GetAll();
         this.timer = new Timer();
+        FetchRooms();
     }
 
     public Room SourceRoom { get => sourceRoom; set => sourceRoom = value; }
@@ -38,55 +43,137 @@ public class MoveService
     public void CreateMove(Move move)
     {
         SaveMoveValues(move);
-        
+
         TimeSpan fireInterval = scheduledDateTime - DateTime.Now;
         timer.Interval = fireInterval.TotalMilliseconds;
         timer.Elapsed += ExecuteMove;
         timer.AutoReset = false;
         timer.Start();
 
-        this.moveRepository.Add(new Move(GenerateMoveId().ToString(), SourceRoom, DestinationRoom, ScheduledDateTime, EquipmentToMove));
+        generatedId = GenerateMoveId().ToString();
+        this.moveRepository.Add(new Move(generatedId, SourceRoom, DestinationRoom, ScheduledDateTime, EquipmentToMove));
     }
 
     private void ExecuteMove(object? sender, ElapsedEventArgs e)
     {
-        FetchRooms();
-
-       /* 
-        1.NADJI SOURCE ROOM
-        2.KOPIRAJ EQUIPMENT LISTU SOURCE ROOM
-        3.UZMI LISTU EQUIPMENT TO MOVE
-        4.PRODJI KROZ LISTU EQUIPMENT TO MOVE I ODUZMI KOLICINU AMOUNT IZ LISTE EQUIPMENT
-        5. ?
-       */
-
-        /*//ITERIRAJ KROZ SVE SOBE 
-        foreach(Room r in rooms)
+        foreach (Room r in this.rooms)
         {
-            //NADJI SOURCE ROOM
             if (r.RoomId.Equals(this.SourceRoom.RoomId))
             {
-                List<Equipment> equipmentHolder = new List<Equipment>();
-                //NASAO SI SOURCE ROOM r, PRODJI KROZ SAV EQUIPMENT U TOJ SOBI
-                foreach(Equipment equipment in r.EquipmentInRoom)
-                {
-                    foreach(Equipment equ in this.EquipmentToMove)
-                    {
-                        if (equipment.Id.Equals(equ.Id))
-                        {
-                            equipment.Amount = equipment.Amount - equ.Amount;     
-                        }
-                        
-                    }
-                    equipmentHolder.Add(equipment);
-                }
-                                
-                roomService.UpdateRoom(r.RoomId, r.Name, r.Type, r.Status, r.Level, r.Number, r.Free, equipmentHolder);
+                SubstractEquipmentFromSourceRoom(r);
             }
-        }*/
 
+            if (r.RoomId.Equals(this.DestinationRoom.RoomId))
+            {
+                AddEquipmentToDestinationRoom(r);
+            }
+        }
+
+        FinishMove(this.generatedId);
+        SaveChangesToRooms();       
+        DestroyTimer();
+    }
+
+    private void SubstractEquipmentFromSourceRoom(Room r)
+    {
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            foreach (Equipment equ in this.EquipmentToMove)
+            {
+                if (equipment.Id.Equals(equ.Id))
+                {
+                    equipment.Amount = equipment.Amount - equ.Amount;
+                }
+            }
+        }
+    }
+
+    private void AddEquipmentToDestinationRoom(Room r)
+    {
+        if (r.EquipmentInRoom.Count != 0)
+        {          
+            GetAllEquipmentInRoomIds(r);
+
+            foreach (Equipment equ in this.EquipmentToMove)
+            {
+                AddEquipmentToNonEmptyRoom(r, equ);
+            }
+        }
+        else
+        {
+            AddEquipmentToEmptyRoom(r);
+        }
+    }
+
+    private void AddEquipmentToNonEmptyRoom(Room r, Equipment equ)
+    {
+        if (idList.Contains(equ.Id))
+        {           
+            AddAmountToExistingEquipmentInRoom(r, equ);
+        }
+        else
+        {                         
+            r.AddEquipmentInRoom(equ);
+        }
+    }
+
+    private void AddAmountToExistingEquipmentInRoom(Room r, Equipment equ)
+    {
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            if (equipment.Id.Equals(equ.Id))
+            {
+                equipment.Amount = equipment.Amount + equ.Amount;
+            }
+        }
+    }
+
+    private void AddEquipmentToEmptyRoom(Room r)
+    {
+        foreach (Equipment equipment in this.EquipmentToMove)
+        {
+            r.AddEquipmentInRoom(equipment);
+        }
+    }
+
+    private void GetAllEquipmentInRoomIds(Room r)
+    {
+        idList = new List<string>();
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            idList.Add(equipment.Id);
+        }
+    }
+
+    private void SaveChangesToRooms()
+    {
+        RoomDataHandler roomDataHandler = new RoomDataHandler();
+        roomDataHandler.Write(this.rooms);
+    }
+
+    private void DestroyTimer()
+    {
         timer.Stop();
         timer.Dispose();
+    }
+
+    private void FinishMove(String moveId)
+    {
+        FetchMoves();
+        foreach(Move m in this.moves)
+        {
+            if (m.MoveId.Equals(moveId))
+            {
+                m.IsMoveFinished = true;
+            }
+        }
+        SaveChangesToMoves();
+    }
+
+    private void SaveChangesToMoves()
+    {
+        MoveDataHandler moveDataHandler = new MoveDataHandler();
+        moveDataHandler.Write(this.moves);
     }
 
     public void UpdateMove(Move changedMove)
@@ -127,16 +214,21 @@ public class MoveService
 
     private void SaveMoveValues(Move move)
     {
-        this.SourceRoom = move.SourceRoom;
-        this.DestinationRoom = move.DestinationRoom;
-        this.EquipmentToMove = move.EquipmentToMove;
-        this.ScheduledDateTime = move.ScheduledDateTime;
+        SourceRoom = move.SourceRoom;
+        DestinationRoom = move.DestinationRoom;
+        EquipmentToMove = move.EquipmentToMove;
+        ScheduledDateTime = move.ScheduledDateTime;
     }
 
     private void FetchRooms()
     {
         this.roomService = new RoomService();
         this.rooms = roomService.GetAll();
+    }
+
+    private void FetchMoves()
+    {
+        this.moves = this.GetAll();
     }
 
     private void UpdateMoveValues(Move moveToBeUpdated, Move updatedValues)
