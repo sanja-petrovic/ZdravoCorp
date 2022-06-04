@@ -20,6 +20,12 @@ namespace ZdravoKlinika.Repository
             this.requests = this.dataHandler.Read();
         }
 
+
+        public List<TimeOffRequest> GetAllSorted()
+        {
+            return this.GetAll().OrderBy(request => request.StartDate).ToList();
+        }
+
         public List<TimeOffRequest> GetAll()
         {
             foreach(TimeOffRequest request in this.requests)
@@ -61,7 +67,7 @@ namespace ZdravoKlinika.Repository
         {
             List<TimeOffRequest> requests = new List<TimeOffRequest>();
 
-            foreach(TimeOffRequest request in this.dataHandler.Read())
+            foreach (TimeOffRequest request in this.dataHandler.Read().OrderBy(request => request.StartDate))
             {
                 if(request.Doctor.PersonalId.Equals(doctor.PersonalId) && request.EndDate.CompareTo(DateTime.Today) >= 0)
                 {

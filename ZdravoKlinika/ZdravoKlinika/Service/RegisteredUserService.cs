@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Service
 {
@@ -62,5 +63,13 @@ namespace ZdravoKlinika.Service
         {
             return userRepository.GetAll();
         }
+
+        public static Doctor UserToDoctor(RegisteredUser user)
+        {
+            DoctorRepository doctorRepository = new DoctorRepository();
+            return doctorRepository.GetByEmail(user.Email);
+
+        }
+
     }
 }

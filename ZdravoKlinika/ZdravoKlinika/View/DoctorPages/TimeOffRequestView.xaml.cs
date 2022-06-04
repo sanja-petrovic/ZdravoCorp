@@ -24,9 +24,9 @@ namespace ZdravoKlinika.View.DoctorPages
     {
         private TimeOffRequestViewModel viewModel;
 
-        public TimeOffRequestView(Doctor doctor)
+        public TimeOffRequestView()
         {
-            this.viewModel = new TimeOffRequestViewModel(doctor);
+            this.viewModel = new TimeOffRequestViewModel();
             DataContext = this.viewModel;
             InitializeComponent();
             StartDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(1)));
@@ -34,12 +34,6 @@ namespace ZdravoKlinika.View.DoctorPages
             if (this.IsInitialized)
                 Check();
 
-        }
-
-        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.viewModel.Save();
-            this.Close();
         }
 
         private void StartDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -78,16 +72,22 @@ namespace ZdravoKlinika.View.DoctorPages
                 AppointmentsWarning.Visibility = Visibility.Visible;
                 WarningImg.Visibility = Visibility.Visible;
                 ConfirmButton.IsEnabled = false;
+                DuplicateWarning.Visibility = Visibility.Collapsed;
+                SpecialistsWarning.Visibility = Visibility.Collapsed;
             }
             else if (this.viewModel.CheckRequests())
             {
                 SpecialistsWarning.Visibility = Visibility.Visible;
                 WarningImg.Visibility = Visibility.Visible;
+                DuplicateWarning.Visibility = Visibility.Collapsed;
+                AppointmentsWarning.Visibility = Visibility.Collapsed;
                 ConfirmButton.IsEnabled = false;
             }
             else if (this.viewModel.CheckDuplicate())
             {
                 DuplicateWarning.Visibility = Visibility.Visible;
+                SpecialistsWarning.Visibility = Visibility.Collapsed;
+                AppointmentsWarning.Visibility = Visibility.Collapsed;
                 WarningImg.Visibility = Visibility.Visible;
                 ConfirmButton.IsEnabled = false;
             }

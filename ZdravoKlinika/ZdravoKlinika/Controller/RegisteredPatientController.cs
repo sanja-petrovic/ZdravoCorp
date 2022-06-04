@@ -73,4 +73,9 @@ public class RegisteredPatientController
         return this.patientService.IsBanned(patient);
     }
 
+    public bool IsBanned(String patientId)
+    {
+        return this.patientService.IsBanned(GetById(patientId));
+    }
+
 }

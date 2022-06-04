@@ -22,6 +22,12 @@ namespace ZdravoKlinika.Controller
             return this.prescriptionService.GetAll();
         }
 
+        public List<Prescription> GetByPatient(string patientId)
+        {
+            RegisteredPatientController registeredPatientController = new RegisteredPatientController();
+
+            return this.prescriptionService.GetByPatient(registeredPatientController.GetById(patientId));
+        }
 
         public Prescription GetById(int id)
         {
@@ -37,6 +43,7 @@ namespace ZdravoKlinika.Controller
 
         public void Prescribe(Prescription prescription)
         {
+            prescription.DateOfCreation = DateTime.Now;
             this.prescriptionService.Prescribe(prescription);
         }
 

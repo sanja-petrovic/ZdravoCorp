@@ -46,6 +46,22 @@ namespace ZdravoKlinika.Repository
             return prescriptions;
         }
 
+        public List<Prescription> GetByPatient(RegisteredPatient patient)
+        {
+            List<Prescription> patientsPrescriptions = new List<Prescription>();
+
+            foreach(Prescription prescription in this.prescriptions)
+            {
+                UpdateReferences(prescription);
+                if(prescription.Patient.GetPatientId().Equals(patient.PersonalId))
+                {
+                    patientsPrescriptions.Add(prescription);
+                }
+            }
+
+            return patientsPrescriptions;
+        }
+
         public Prescription? GetById(int id)
         {
             ReadDataFromFile();

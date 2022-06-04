@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.View.DialogHelper;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
     public class MedViewModel : ViewModelBase
     {
+        private static DoctorMedicationsViewModel parentViewModel;
         private bool isChecked;
         private string id;
         private string brandName;
@@ -24,17 +24,64 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string code;
         private string note;
         private string reviewer;
-        private Doctor doctor;
         private string comment;
         private int amount;
         private MedicationController medicationController;
         private MedApprovalRequestController approvalRequestController;
         private int requestId;
 
+        public MyICommand View { get; set; }
+        public MyICommand Authorize { get; set; }
+
+        public MyICommand Approve { get; set; }
+        public MyICommand Deny { get; set; }
+        public MyICommand Edit { get; set; }
+        public MyICommand GiveUp { get; set; }
+
+        private DialogHelper.DialogService dialogService;
+
+        private Visibility visibility1;
+        private Visibility visibility2;
+        private bool editable;
+
         public MedViewModel()
         {
             this.MedicationController = new MedicationController();
+            DialogService = new DialogHelper.DialogService();
             this.ApprovalRequestController = new MedApprovalRequestController();
+            Authorize = new MyICommand(ExecuteAuthorization);
+            Approve = new MyICommand(ApproveRequest);
+            Deny = new MyICommand(DenyRequest);
+            Edit = new MyICommand(ExecuteEdit);
+            GiveUp = new MyICommand(ExecuteClose);
+            View = new MyICommand(ExecuteView);
+            Visibility1 = Visibility.Visible;
+            Visibility2 = Visibility.Collapsed;
+            Editable = false;
+
+        }
+
+        public void ExecuteView()
+        {
+            DialogService.ShowMedication(this);
+        }
+
+        public void ExecuteAuthorization()
+        {
+            DialogService.ShowMedRequestDialog(requestId);
+        }
+
+        public void ExecuteEdit()
+        {
+            Visibility2 = Visibility.Visible;
+            Visibility1 = Visibility.Collapsed;
+            Editable = true;
+        }
+
+        public void ExecuteClose()
+        {
+            ParentViewModel.Load();
+            DialogService.CloseDialog(this);
         }
 
         public string Id { get => id; set => SetProperty(ref id, value); }
@@ -51,12 +98,16 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Note { get => note; set => SetProperty(ref note, value); }
         public string Reviewer { get => reviewer; set => SetProperty(ref reviewer, value); }
         public MedApprovalRequestController ApprovalRequestController { get => approvalRequestController; set => approvalRequestController = value; }
-        public Doctor Doctor { get => doctor; set => doctor = value; }
         public string Comment { get => comment; set => SetProperty(ref comment, value); }
         public int Amount { get => amount; set => SetProperty(ref amount, value); }
         public bool IsChecked { get => isChecked; set => SetProperty(ref isChecked, value); }
         public int RequestId { get => requestId; set => SetProperty(ref requestId, value); }
         internal MedicationController MedicationController { get => medicationController; set => medicationController = value; }
+        public Visibility Visibility1 { get => visibility1; set => SetProperty(ref visibility1, value); }
+        public Visibility Visibility2 { get => visibility2; set => SetProperty(ref visibility2, value); }
+        public bool Editable { get => editable; set => SetProperty(ref editable, value); }
+        public DialogService DialogService { get => dialogService; set => dialogService = value; }
+        public DoctorMedicationsViewModel ParentViewModel { get => parentViewModel; set => parentViewModel = value; }
 
         public void LoadMed(Medication medication)
         {
@@ -129,11 +180,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             this.medicationController.UpdateMedication(Id, Code, BrandName, Dosage, GetActivesAsList(), Form, Note, GetAllergensAsList(), false, Classification, Indications, SideEffects, Instructions, Amount);
             this.approvalRequestController.DenyRequest(RequestId, Comment);
+            ExecuteClose();
         }
 
         public void ApproveRequest()
         {
             this.approvalRequestController.ApproveRequest(RequestId);
+            ExecuteClose();
         }
     }
 }

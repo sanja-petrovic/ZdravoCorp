@@ -36,6 +36,14 @@ public class DoctorController
         doctorService.UpdateDoctor(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, speciality, education);
     }
 
+    public void UpdateDoctor(Doctor doctor, string phone, string street, string number, string city, string country)
+    {
+        doctor.Phone = phone;
+        Address a = new Address(street, number, city, country);
+        doctor.Address = a;
+        doctorService.UpdateDoctor(doctor);
+    }
+
     public void DeleteDoctor(String personalId)
     {
         doctorService.DeleteDoctor(personalId);

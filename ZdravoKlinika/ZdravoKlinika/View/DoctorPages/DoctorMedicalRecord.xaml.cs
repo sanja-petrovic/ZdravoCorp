@@ -20,21 +20,17 @@ namespace ZdravoKlinika.View.DoctorPages
     /// <summary>
     /// Interaction logic for DoctorMedicalRecord.xaml
     /// </summary>
-    public partial class DoctorMedicalRecord : Page
+    public partial class DoctorMedicalRecord : UserControl
     {
         Model.DoctorMedicalRecordViewModel viewModel;
         string patientId;
-        List<PastAppointmentView> pastAppointmentViews;
-        private Doctor doctor;
-        public DoctorMedicalRecord(Doctor doctor)
+        public DoctorMedicalRecord()
         {
-            pastAppointmentViews = new List<PastAppointmentView>();
-            this.doctor = doctor;
+            InitializeComponent();
         }
 
-        public void init(string patientId)
+        public void Init(string patientId)
         {
-            
             viewModel = new Model.DoctorMedicalRecordViewModel();
             DataContext = viewModel;
             viewModel.init(patientId);
@@ -43,46 +39,11 @@ namespace ZdravoKlinika.View.DoctorPages
 
         public string PatientId { get => patientId; set => patientId = value; }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PrescriptionView prescriptionView = new PrescriptionView();
-            prescriptionView.init(doctor.PersonalId, viewModel.Id);
-            prescriptionView.Show();
-            prescriptionView.Closed += (s, eventarg) =>
-            {
-                viewModel.MedicationAdded();
-            };
-        }
-
         public void MedicationAdded()
         {
             viewModel.MedicationAdded();
         }
 
-        private void EditAppointment(object sender, RoutedEventArgs e)
-        {
-            var selected = (PastViewModel)PastLB.SelectedItem;
-            if(selected != null)
-            {
 
-                if (selected.Doctor.PersonalId.Equals(this.doctor.PersonalId))
-                {
-                    EditAppointmentWindow editAppointmentWindow = new EditAppointmentWindow();
-                    editAppointmentWindow.SelectedApptId = selected.AppointmentId;
-                    editAppointmentWindow.Init();
-                    editAppointmentWindow.Show();
-                    editAppointmentWindow.Closed += (s, eventarg) =>
-                    {
-                        viewModel.Edited();
-                    };
-                }
-            }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            DoctorCreateAppointmentWindow doctorCreateAppointmentWindow = new DoctorCreateAppointmentWindow();
-            doctorCreateAppointmentWindow.ShowDialog();
-        }
     }
 }

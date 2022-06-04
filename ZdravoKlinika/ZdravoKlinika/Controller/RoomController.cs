@@ -27,6 +27,11 @@ public class RoomController
         return this.roomService.GetFreeRooms(enteredTime, roomType);
     }
 
+    public List<Room> GetOccupiedRooms(DateTime enteredTime, int duration, RoomType roomType)
+    {
+        return this.roomService.GetAvailableRooms(new ZdravoKlinika.Util.DateBlock(enteredTime, duration), roomType);
+    }
+
     public List<Room> GetRenovatableRooms() 
     {
         return this.roomService.GetRenovatableRooms();

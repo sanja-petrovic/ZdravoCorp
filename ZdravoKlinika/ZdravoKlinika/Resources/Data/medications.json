@@ -11,12 +11,10 @@
     ],
     "Allergens": [
       "ibuprofen",
-      "brufen"
+      " brufen"
     ],
     "Validated": false,
-    "Alternatives": [
-      "3"
-    ],
+    "Alternatives": [],
     "Classification": "analgetik, antipiretik",
     "SideEffects": "Naj\u010De\u0161\u0107e: Alergijska reakcija, stoma\u010Dni problemi.",
     "Indications": "Za kratkotrajnu simptomatsku terapiju blagog do umerenog bola kao \u0161to su glavobolja, uklju\u010Duju\u0107i migrene, neuralgija, zubobolja, bolovi u mi\u0161i\u0107ima i zglobovima, bolovi u le\u0111ima, menstrualne bolovi i bolovi povezani sa prehladom. Za sni\u017Eavanje povi\u0161ene telesne temperature kao i za otklanjanje simptoma prehlade i gripa.",

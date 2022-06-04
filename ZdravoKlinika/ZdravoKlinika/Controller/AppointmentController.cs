@@ -135,6 +135,20 @@ public class AppointmentController
         appointment.Duration = duration;
         this.appointmentService.EditAppointment(appointment);
     }
+
+    public void EditAppointment(int appointmentId, Doctor doctor, IPatient patient, DateTime dateAndTime, bool emergency, AppointmentType type, Room room, int duration)
+    {
+        Appointment a = new Appointment(appointmentId, doctor, patient, room, duration, emergency, type, dateAndTime);
+        this.appointmentService.EditAppointment(a);
+    }
+
+    public void UpdateAnamnesis(int appointmentId, string note, string diagnosis)
+    {
+        Appointment a = GetAppointmentById(appointmentId);
+        a.DoctorsNotes = note;
+        a.Diagnoses = diagnosis;
+        this.appointmentService.EditAppointment(a);
+    }
     public void PatientEditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         Appointment appointment = new Appointment();
@@ -199,4 +213,17 @@ public class AppointmentController
     {
         return appointmentService.GetAverageGradeForDoctor(questionNumber, doctor);
     }
+    public List<DateBlock> GetFreeTime(string doctorId, string patientId, DateBlock block)
+    {
+        PatientController patientController = new PatientController();
+        DoctorController doctorController = new DoctorController();
+        return this.appointmentService.GetFreeTime(doctorController.GetById(doctorId), patientController.GetById(patientId), block);
+    }
+
+    public Appointment GetPatientsLatestAppointment(String patientId)
+    {
+        RegisteredPatientController patientController = new RegisteredPatientController();
+        return this.appointmentService.GetPatientsLatestAppointment(patientController.GetById(patientId));
+    }
+
 }

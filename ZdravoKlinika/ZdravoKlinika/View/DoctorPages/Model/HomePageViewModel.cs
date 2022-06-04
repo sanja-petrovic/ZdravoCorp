@@ -4,14 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
-    internal class AppointmentsTodayViewModel : ViewModelBase
+    public class HomePageViewModel : ViewModelBase
     {
-        
-        public ObservableCollection<AppointmentViewModel> Appointments { get; set; }
+        private ObservableCollection<AppointmentViewModel> appointments;
         public int SelectedAppointmentId { get => selectedAppointmentId; set => SetProperty(ref selectedAppointmentId, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
         public string PatientName { get => patientName; set => SetProperty(ref patientName, value); }
@@ -21,6 +22,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Therapy { get => therapy; set => SetProperty(ref therapy, value); }
         public Appointment SelectedAppointment { get => selectedAppointment; set => SetProperty(ref selectedAppointment, value); }
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
+        public Visibility AboutVisibility { get => aboutVisibility; set => SetProperty(ref aboutVisibility, value); }
+
+        private Visibility aboutVisibility;
+
+        public MyICommand LogAppointment { get; set; }
+        public Prism.Commands.DelegateCommand RecordCommand { get; set; }
+        public ObservableCollection<AppointmentViewModel> Appointments { get => appointments; set => SetProperty(ref appointments, value); }
 
         private Doctor doctor;
         AppointmentController appointmentController;
@@ -33,12 +41,14 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string diagnoses;
         private string therapy;
 
-        public AppointmentsTodayViewModel(Doctor doctor)
+        public HomePageViewModel()
         {
+            RecordCommand = new Prism.Commands.DelegateCommand(ExecuteRecord);
+            LogAppointment = new MyICommand(ExecuteLog);
+            this.doctor = RegisteredUserController.UserToDoctor(App.User);
             this.Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
             List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate(doctor.PersonalId, DateTime.Today);
-
             foreach (Appointment appointment in appts)
             {
                 {
@@ -49,10 +59,23 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
 
                     if (!appointment.Over)
-                        this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.GetPatientFullName(), Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room.Name });
+                        this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.GetPatientFullName(), Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room });
                 }
 
             }
+            AboutVisibility = Appointments.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public void ExecuteRecord()
+        {
+            Navigation.Navigator navigator = new Navigation.Navigator();
+            navigator.ShowMedicalRecord(PatientId);
+        }
+
+        public void ExecuteLog()
+        {
+            DialogHelper.DialogService dialogService = new DialogHelper.DialogService();
+            dialogService.ShowLogApptDialog(SelectedAppointmentId);
         }
 
         public void infoChange()
@@ -68,7 +91,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 Room room = appointment.Room;
 
 
-                this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.Name + " " + patient.Lastname, Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room.Name });
+                this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.Name + " " + patient.Lastname, Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room });
             }
         }
 

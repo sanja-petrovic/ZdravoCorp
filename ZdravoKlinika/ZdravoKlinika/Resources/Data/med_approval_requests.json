@@ -26,5 +26,12 @@
     "Pending": false,
     "Comment": "Izmenjeni podaci o alergenima i dodati ostali nedostaju\u0107i podaci.",
     "Id": 4
+  },
+  {
+    "Medication": "1",
+    "Reviewer": "123",
+    "Pending": true,
+    "Comment": null,
+    "Id": 5
   }
 ]

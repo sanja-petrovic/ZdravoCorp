@@ -4,54 +4,55 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:TherapyTab}"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
              Height="390" Width="432" Background="White">
     <Grid Margin="0,-30,0,55">
-        <ComboBox x:Name="MedCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="34,75,0,0" VerticalAlignment="Top" Width="174" Text="Izaberite lek" Padding="5" Height="28" SelectionChanged="MedCB_SelectionChanged">
+
+        <ComboBox  FontFamily="Nunito Sans" x:Name="MedCB" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" BorderBrush="#FFAEAEC1"  Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="34,75,0,0" VerticalAlignment="Top" Width="174" Text="Izaberite lek" Padding="5" Height="28" SelectionChanged="MedCB_SelectionChanged">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <TextBox x:Name="MedNoteTB" Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="37,234,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="352" Height="28" BorderBrush="#FFAEAEC1">
+        <TextBox Foreground="#555557"  FontFamily="Nunito Sans" x:Name="MedNoteTB" Style="{StaticResource MaterialDesignTextBox}" Padding="5" HorizontalAlignment="Left" Margin="37,234,0,0" TextWrapping="Wrap" Text="{Binding DoctorsNote, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="352" Height="28" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="223,75,0,0" TextWrapping="Wrap" Text="{Binding Amount}" VerticalAlignment="Top" Width="58" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.467,0.43">
+        <TextBox Foreground="#555557" FontFamily="Nunito Sans" Style="{StaticResource MaterialDesignTextBox}" Padding="5" HorizontalAlignment="Left" Margin="223,75,0,0" TextWrapping="Wrap" Text="{Binding Amount}" VerticalAlignment="Top" Width="58" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.467,0.43">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="35,141,0,0" TextWrapping="Wrap" Text="{Binding Frequency}" VerticalAlignment="Top" Width="68" Height="28" BorderBrush="#FFAEAEC1">
+        <TextBox Foreground="#555557" FontFamily="Nunito Sans" Style="{StaticResource MaterialDesignTextBox}" Padding="5" HorizontalAlignment="Left" Margin="35,141,0,0" TextWrapping="Wrap" Text="{Binding Frequency}" VerticalAlignment="Top" Width="68" Height="28" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <ComboBox SelectedItem="{Binding Repeat}"  IsEditable="True" x:Name="RepeatCB" ItemsSource="{Binding RepeatDisplay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ComboBoxStyle1}"  ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="223,143,0,0" VerticalAlignment="Top" Width="166" Padding="5" Height="28"/>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="289,75,0,0" TextWrapping="NoWrap" Text="{Binding Duration}" VerticalAlignment="Top" Width="99" Height="29" BorderBrush="#FFAEAEC1">
+        <ComboBox  FontFamily="Nunito Sans" SelectedItem="{Binding Repeat}"  IsEditable="True" x:Name="RepeatCB" ItemsSource="{Binding RepeatDisplay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" BorderBrush="#FFAEAEC1" Foreground="#555557" HorizontalAlignment="Left" Margin="223,143,0,0" VerticalAlignment="Top" Width="166" Padding="5" Height="28"/>
+        <TextBox Foreground="#555557"  FontFamily="Nunito Sans" Style="{StaticResource MaterialDesignTextBox}" Padding="5" HorizontalAlignment="Left" Margin="289,75,0,0" TextWrapping="NoWrap" Text="{Binding Duration}" VerticalAlignment="Top" Width="99" Height="29" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" Padding="5" HorizontalAlignment="Left" Margin="141,141,0,0" TextWrapping="Wrap" Text="{Binding SingleDose}" VerticalAlignment="Top" Width="68" Height="28" BorderBrush="#FFAEAEC1" SelectionBrush="#FF9E98FF">
+        <TextBox Foreground="#555557" FontFamily="Nunito Sans" Style="{StaticResource MaterialDesignTextBox}" Padding="5" HorizontalAlignment="Left" Margin="141,141,0,0" TextWrapping="Wrap" Text="{Binding SingleDose}" VerticalAlignment="Top" Width="68" Height="28" BorderBrush="#FFAEAEC1" SelectionBrush="#FF9E98FF">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBlock Foreground="#555557" HorizontalAlignment="Left"  Margin="118,147,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
-        <TextBlock  HorizontalAlignment="Left" Margin="34,51,0,0" TextWrapping="Wrap" Text="Naziv leka" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="81"/>
+        <TextBlock  FontFamily="Nunito Sans" Foreground="#555557" HorizontalAlignment="Left"  Margin="118,147,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" RenderTransformOrigin="0.47,0.532"/>
+        <TextBlock   FontFamily="Nunito Sans" HorizontalAlignment="Left" Margin="34,51,0,0" TextWrapping="Wrap" Text="Naziv leka" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="81"/>
 
         <Label Margin="286,270,43,0" Content="Dodajte na listu" VerticalAlignment="Top" FontSize="12" Foreground="#FF9E98FF" FontWeight="Bold"></Label>
         <Button Name="AddButton" OverridesDefaultStyle="False" Focusable="False" Background="Transparent" BorderBrush="Transparent" Foreground="#FF9E98FF" FontWeight="DemiBold" Style="{StaticResource fancyButtonStyle7}" Margin="280,268,44,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Click="AddButton_Click">

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
-    public class ApprovedMedsTab : ViewModelBase
+    public class MonthlyViewModel : ViewModelBase
     {
-
     }
 }

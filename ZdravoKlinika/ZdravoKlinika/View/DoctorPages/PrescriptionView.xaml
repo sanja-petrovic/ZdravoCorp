@@ -3,11 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model"
         mc:Ignorable="d"
         Title="Prepisivanje leka" Height="507" Width="435" SizeToContent="WidthAndHeight"
-    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" ResizeMode="NoResize">
+    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" d:DataContext="{d:DesignInstance Type=model:TherapyTab}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
+        <DataTemplate DataType="{x:Type model:TherapyTab}">
+            <local:TherapyView/>
+        </DataTemplate>
         <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF"/>
 
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
@@ -445,8 +448,8 @@
 
     </Window.Resources>
     <Grid>
-        <local:TherapyView DataContext="{Binding ViewModel}" Margin="3,21,0,80"></local:TherapyView>
-        <Button x:Name="ConfirmButton"  Click="Confirm" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="310,416,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82">
+        <local:TherapyView Margin="3,26,0,75"/>
+        <Button x:Name="ConfirmButton"  OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="310,416,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding ConfirmCommand}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -456,7 +459,7 @@
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
         </Button>
-        <Button Visibility="Visible" x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Click="GiveUpButton_Click" Margin="219,416,0,0">
+        <Button Visibility="Visible" x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82"  Margin="219,416,0,0" Command="{Binding GiveUpCommand}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

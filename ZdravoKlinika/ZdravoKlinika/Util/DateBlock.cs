@@ -31,6 +31,7 @@ namespace ZdravoKlinika.Util
         {
             this.start = start;
             this.duration = duration;
+            this.end = start.AddMinutes(duration);
         }
         static public List<DateBlock> getIntervals(DateTime start, DateTime end)
         {
@@ -45,6 +46,22 @@ namespace ZdravoKlinika.Util
             }
             return result;
         }
+
+        static public List<DateBlock> GetIntervals(DateTime start, DateTime end, int interval=15)
+        {
+
+            List<DateBlock> result = new List<DateBlock>();
+            int numOfIntervals = (int)((end - start).TotalMinutes / interval);
+            if (numOfIntervals > 0)
+            {
+                for (int i = 0; i < numOfIntervals; i++)
+                {
+                    result.Add(new DateBlock(start.AddMinutes(i * interval), start.AddMinutes(i * interval + interval)));
+                }
+            }
+            return result;
+        }
+
         public static List<DateBlock> getIntervals(DateBlock block)
         {
             List<DateBlock> result = new List<DateBlock>();
@@ -156,6 +173,26 @@ namespace ZdravoKlinika.Util
 
             }
             return false;
+        }
+
+        public static bool DateBlocksIntersect(DateBlock a, DateBlock b) 
+        {//period - a apptdateblock - b
+            bool retVal = false;
+            if (a.End < b.Start)
+            {
+                retVal = false;
+            }
+            if (a.Start < b.End && b.Start < a.End)
+            {
+                retVal = true;
+            }
+
+            return retVal;
+        }
+
+        public override string ToString()
+        {
+            return Start.ToString("HH:mm");
         }
     }
 }

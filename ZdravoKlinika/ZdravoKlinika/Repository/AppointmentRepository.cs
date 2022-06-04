@@ -28,6 +28,9 @@ public class AppointmentRepository : IAppointmentRepository
         
     }
 
+
+
+
     private void ReadDataFromFile()
     {
         appointments = appointmentDataHandler.Read();
@@ -124,10 +127,11 @@ public class AppointmentRepository : IAppointmentRepository
     public List<Appointment> GetAppointmentsOnDate(DateTime date)
     {
         List<Appointment> appointments = new List<Appointment>();
-        foreach(Appointment appointment in this.appointments)
+        foreach(Appointment appointment in this.appointmentDataHandler.Read())
         {
             if(appointment.DateAndTime.Date == date.Date)
             {
+                UpdateReferences(appointment);
                 appointments.Add(appointment);
             }
         }
@@ -222,15 +226,7 @@ public class AppointmentRepository : IAppointmentRepository
 
     public void Update(Appointment appointment)
     {
-        int index = -1;
-        foreach (Appointment a in this.appointments)
-        {
-            if (a.AppointmentId == appointment.AppointmentId)
-            {
-                index = this.appointments.IndexOf(a);
-                break;
-            }
-        }
+        int index = this.appointments.FindIndex(a => a.AppointmentId == appointment.AppointmentId);
 
         if (index == -1)
         {
@@ -254,7 +250,7 @@ public class AppointmentRepository : IAppointmentRepository
     public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient)
     {
         List<Appointment> pastAppointments = new List<Appointment>();
-        foreach(Appointment appointment in this.appointments)
+        foreach(Appointment appointment in this.GetAll())
         {
             if(appointment.Patient.GetPatientId().Equals(patient.PersonalId) && appointment.Over)
             {
@@ -269,9 +265,9 @@ public class AppointmentRepository : IAppointmentRepository
     public List<Appointment> GetPatientsUpcomingAppointments(RegisteredPatient patient)
     {
         List<Appointment> upcomingAppointments = new List<Appointment>();
-        foreach (Appointment appointment in this.appointments)
+        foreach (Appointment appointment in this.GetAll())
         {
-            if (appointment.Patient.GetPatientId().Equals(patient.PersonalId) && !appointment.Over)
+            if (appointment.Patient.GetPatientId().Equals(patient.PersonalId) && appointment.DateAndTime >= DateTime.Today && appointment.Over == false)
             {
                 UpdateReferences(appointment);
                 upcomingAppointments.Add(appointment);

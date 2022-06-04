@@ -174,6 +174,31 @@ public class AppointmentService
         return result;
     }
 
+
+    public List<DateBlock> GetFreeTime(Doctor doctor, IPatient patient, DateBlock block)
+    {
+        List<DateBlock> times = DateBlock.GetIntervals(new DateTime(block.Start.Date.Year, block.Start.Date.Month, block.Start.Date.Day, 8, 0, 0), new DateTime(block.Start.Date.Year, block.Start.Date.Month, block.Start.Date.Day, 20, 0, 0), block.Duration);
+
+        foreach(Appointment appointment in this.appointmentRepository.GetAppointmentsOnDate(block.Start.Date).OrderBy(o => o.DateAndTime).ToList())
+        {
+            if(appointment.Doctor.PersonalId.Equals(doctor.PersonalId) || appointment.Patient.GetPatientId().Equals(patient.GetPatientId())) {
+                DateBlock dateBlock = new DateBlock(appointment.DateAndTime, appointment.DateAndTime.AddMinutes(appointment.Duration));
+                
+                for(int i = 0; i < times.Count; i++)
+                {
+                    if(DateBlock.DateBlocksIntersect(dateBlock, times[i]))
+                    {
+                        times.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+        }
+
+        return times;
+    }
+
+
     internal List<DateBlock> GetDateBlocksForDoctorInNextHour(int duration, Doctor doc)
     {
         List<DateBlock> freeBlocks = new List<DateBlock>();
@@ -466,6 +491,21 @@ public class AppointmentService
     {
        Room room = RoomRepository.GetById(roomId);
        return this.appointmentRepository.GetAppointmentsByRoom(room);
+    }
+
+    public void UpdateAppointment(Appointment a)
+    {
+        this.appointmentRepository.Update(a);
+    }
+
+    public Appointment GetPatientsLatestAppointment(RegisteredPatient patient)
+    {
+        List<Appointment> patientsPastAppointments = this.GetPatientsPastAppointments(patient);
+        Appointment a = null;
+        if(patientsPastAppointments.Count > 0)
+            a = patientsPastAppointments.OrderBy(appointment => appointment.DateAndTime).ToList().Last();
+
+        return a;
     }
 
     public int CountNumberOfGradesForDoctor(int questionNumber, int gradeToCount, Doctor doctor)

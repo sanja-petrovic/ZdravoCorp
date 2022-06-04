@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using ZdravoKlinika.Util;
 
 public class RoomService
 {
     private RoomRepository roomRepository;
+    private AppointmentRepository appointmentRepository;
 
     public RoomService()
     {
         this.roomRepository = new RoomRepository();
+        this.appointmentRepository = new AppointmentRepository();
     }
 
     public RoomRepository RoomRepository { get => roomRepository; set => roomRepository = value; }
+    public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
 
     public List<Room> GetAll()
     {
@@ -30,6 +35,25 @@ public class RoomService
     public List<Room> GetRenovatableRooms()
     {
         return this.roomRepository.GetRenovatableRooms();
+    }
+
+
+    public List<Room> GetAvailableRooms(DateBlock period, RoomType roomType)
+    {
+        List<Room> rooms = this.GetAll().FindAll(r => r.Type.Equals(roomType));
+
+        foreach (Appointment appointment in AppointmentRepository.GetAppointmentsOnDate(period.Start.Date).OrderBy(o => o.DateAndTime).ToList())
+        {
+            DateBlock apptDateBlock = new DateBlock(appointment.DateAndTime, appointment.DateAndTime.AddMinutes(appointment.Duration));
+            if (DateBlock.DateBlocksIntersect(period, apptDateBlock))
+            {
+                Room r = rooms.Find(x => x.RoomId.Equals(appointment.Room.RoomId));
+                if (r != null)
+                    rooms.Remove(r);
+            }
+        }
+
+        return rooms;
     }
 
     public void CreateRoom(Room room)

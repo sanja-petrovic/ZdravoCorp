@@ -6,9 +6,14 @@
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:TimeOffRequestViewModel}"
         mc:Ignorable="d" xml:lang="sr-Latn-RS" 
         Title="Zahtev za slobodne dane" Height="384" Width="529" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight">
+    <Window.InputBindings>
+        <KeyBinding Key="P" Modifiers="Alt" Command="{Binding ConfirmCommand}"/>
+        <KeyBinding Key="O" Modifiers="Alt" Command="{Binding GiveUpCommand}"/>
+        <KeyBinding Key="H" Modifiers="Alt" Command="{Binding CheckCommand}"/>
+    </Window.InputBindings>
     <Grid Height="384" Width="529">
         <TextBlock HorizontalAlignment="Left" Margin="46,180,0,0" TextWrapping="Wrap" Text="Razlog" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox Name="ReasonTB" VerticalContentAlignment="Center" Padding="7 0 0 0" Style="{DynamicResource TextBoxStyle1}" Text="{Binding Reason, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.5,0.5">
+        <TextBox Foreground="#555557" Name="ReasonTB" VerticalContentAlignment="Center" Padding="7 0 0 0" Style="{DynamicResource MaterialDesignTextBox}" Text="{Binding Reason, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.5,0.5">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -46,7 +51,7 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Name="ConfirmButton" OverridesDefaultStyle="False" IsEnabled="False"  Focusable="False" FontWeight="DemiBold" Content="Podnesite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="394,286,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="100" Height="33" Click="ConfirmButton_Click" >
+        <Button Name="ConfirmButton" OverridesDefaultStyle="False" IsEnabled="False"  Focusable="True" FontWeight="DemiBold" Content="Podnesite" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="394,286,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="100" Height="33" Command="{Binding ConfirmCommand}" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -56,7 +61,7 @@
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
         </Button>
-        <Button Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left" BorderBrush="#FF9E98FF" Margin="279,286,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="100" Height="33" Click="GiveUpButton_Click">
+        <Button Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left" BorderBrush="#FF9E98FF" Margin="279,286,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="100" Height="33" Command="{Binding GiveUpCommand}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -75,9 +80,9 @@
 
         <Rectangle Fill="#FE5D7A" Margin="46,337,39,55" RadiusX="10" RadiusY="10" Visibility="Collapsed"/>
         <TextBlock Name="SpecialistsWarning"  Visibility="Collapsed"  Foreground="#FE5D7A" FontWeight="Bold" HorizontalAlignment="Left" Margin="46,139,0,0" TextWrapping="Wrap" Text="Više od jednog lekara Vaše specijalnosti je već podnelo zahtev za slobodne dane u ovom periodu. Ukoliko nije hitan slučaj, nije moguće podneti zahtev." VerticalAlignment="Top"  FontSize="12" Width="477" Height="35"/>
-        <DatePicker Name="StartDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}"  Style="{DynamicResource DatePickerStyle1}"  SelectedDate="{Binding Start, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top" Width="216" SelectedDateChanged="StartDatePicker_SelectedDateChanged">
+        <DatePicker Foreground="#555557" BorderBrush="#FFAEAEC1" Name="StartDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}"  Style="{DynamicResource MaterialDesignDatePicker}"  SelectedDate="{Binding Start, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top" Width="216" SelectedDateChanged="StartDatePicker_SelectedDateChanged">
 
         </DatePicker>
-        <DatePicker  SelectedDateChanged="EndDatePicker_SelectedDateChanged" Name="EndDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" Style="{DynamicResource DatePickerStyle1}"   SelectedDate="{Binding End, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="278,104,0,0" VerticalAlignment="Top" Width="216"/>
+        <DatePicker  BorderBrush="#FFAEAEC1" SelectedDateChanged="EndDatePicker_SelectedDateChanged" Name="EndDatePicker" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" Style="{DynamicResource MaterialDesignDatePicker}" Foreground="#555557"   SelectedDate="{Binding End, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="278,104,0,0" VerticalAlignment="Top" Width="216"/>
     </Grid>
 </Window>

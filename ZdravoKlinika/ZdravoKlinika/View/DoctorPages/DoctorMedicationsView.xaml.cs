@@ -17,34 +17,30 @@ using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
-    /// <summary>
-    /// Interaction logic for DoctorMedicationsView.xaml
-    /// </summary>
     public partial class DoctorMedicationsView : UserControl
     {
-        DoctorMedicationsViewModel viewModel;
-        public DoctorMedicationsView(Doctor doctor)
+        private static DoctorMedicationsViewModel viewModel;
+
+        public DoctorMedicationsViewModel ViewModel { get => viewModel; set => viewModel = value; }
+
+        public DoctorMedicationsView()
         {
-            this.viewModel = new DoctorMedicationsViewModel(doctor);
-            DataContext = this.viewModel;
+            ViewModel = new DoctorMedicationsViewModel();
+            DataContext = ViewModel;
             InitializeComponent();
+            MedsTab.Focus();
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.Source is TabControl)
+            if (e.Source is TabControl && MedsTab.IsInitialized)
             {
                 if(MedsTab.SelectedIndex == 0)
                 {
                     SupplyRequestButton.Visibility = Visibility.Visible;
                     SupplyShadow.Visibility = Visibility.Visible;
-                    //AuthorizeButton.Visibility = Visibility.Hidden;
-                    //AuthorizeShadow.Visibility = Visibility.Hidden;
                 } else
                 {
-
-                    //AuthorizeButton.Visibility = Visibility.Visible;
-                    //AuthorizeShadow.Visibility = Visibility.Visible;
                     SupplyRequestButton.Visibility = Visibility.Hidden;
                     SupplyShadow.Visibility = Visibility.Hidden;
                 }
@@ -57,14 +53,14 @@ namespace ZdravoKlinika.View.DoctorPages
             
             if(m != null)
             {
-                MedView med = new MedView(this.viewModel.Doctor, m.Id);
+                MedView med = new MedView(m.Id);
                 med.Show();
             }
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            foreach(MedViewModel vm in viewModel.ApprovedMeds)
+            foreach(MedViewModel vm in ViewModel.ApprovedMeds)
             {
                 vm.IsChecked = true;
             }
@@ -72,7 +68,7 @@ namespace ZdravoKlinika.View.DoctorPages
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            foreach (MedViewModel vm in viewModel.ApprovedMeds)
+            foreach (MedViewModel vm in ViewModel.ApprovedMeds)
             {
                 vm.IsChecked = false; ;
             }
@@ -84,12 +80,12 @@ namespace ZdravoKlinika.View.DoctorPages
             if(s != null)
             {
 
-                ApproveMedView approveMedView = new ApproveMedView(this.viewModel.Doctor, s.RequestId);
+                ApproveMedView approveMedView = new ApproveMedView(s.RequestId);
                 approveMedView.ShowDialog();
-                this.viewModel.LoadApproved();
-                this.viewModel.LoadPending();
+                this.ViewModel.LoadApproved();
+                this.ViewModel.LoadPending();
                 DataContext = null;
-                DataContext = this.viewModel;
+                DataContext = this.ViewModel;
             }
         }
     }

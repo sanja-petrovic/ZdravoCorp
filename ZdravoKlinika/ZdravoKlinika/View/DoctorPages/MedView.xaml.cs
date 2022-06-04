@@ -16,17 +16,19 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
-    /// <summary>
-    /// Interaction logic for MedView.xaml
-    /// </summary>
     public partial class MedView : Window
     {
 
         private MedViewModel viewModel;
-        public MedView(Doctor doctor, String id)
+        public MedView(MedViewModel viewModel)
+        {
+            DataContext = viewModel;
+            InitializeComponent();
+            this.Title = viewModel.BrandName + " " + viewModel.Dosage + ", " + viewModel.Form;
+        }
+        public MedView(String id)
         {
             viewModel = new MedViewModel();
-            viewModel.Doctor = doctor;
             viewModel.LoadMed(id);
             DataContext = viewModel;
             InitializeComponent();

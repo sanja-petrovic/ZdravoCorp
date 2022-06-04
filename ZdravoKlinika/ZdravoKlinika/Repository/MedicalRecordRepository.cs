@@ -104,7 +104,7 @@ namespace ZdravoKlinika.Repository
         {
             ReadDataFromFile();
             MedicalRecord? medicalRecordToReturn = null;
-            foreach (MedicalRecord record in this.MedicalRecords)
+            foreach (MedicalRecord record in this.medicalRecordDataHandler.Read())
             {
                 if (record.MedicalRecordId.Equals(id))
                 {
@@ -116,21 +116,32 @@ namespace ZdravoKlinika.Repository
             return medicalRecordToReturn;
         }
 
-        public void AddCurrentMedication(String medicalRecordId, Medication medication)
+        public void AddCurrentMedication(MedicalRecord record, Medication medication)
         {
-            MedicalRecord medicalRecord = this.GetById(medicalRecordId);
-            if(!medicalRecord.CurrentMedication.Contains(medication))
+            if(!record.CurrentMedication.Contains(medication))
             {
-                medicalRecord.AddCurrentMedication(medication);
+                record.AddCurrentMedication(medication);
             }
-            int i = FindIndexInList(medicalRecordId);
-            this.MedicalRecords[i] = medicalRecord;
+            int i = FindIndexInList(record.MedicalRecordId);
+            this.MedicalRecords[i] = record;
 
             MedicalRecordDataHandler.Write(MedicalRecords);
 
         }
 
-        private int FindIndexInList(string id)
+        public void AddDiagnosis(String diagnosis, MedicalRecord record)
+        {
+            if(record != null)
+            {
+                record.Diagnoses.Add(diagnosis);
+            }
+            int i = FindIndexInList(record.MedicalRecordId);
+            MedicalRecords[i] = record;
+
+            MedicalRecordDataHandler.Write(MedicalRecords);
+        }
+
+        public int FindIndexInList(string id)
         {
             int retVal = -1;
             for(int i = 0; i < this.MedicalRecords.Count(); i++)
@@ -143,6 +154,22 @@ namespace ZdravoKlinika.Repository
             }
 
             return retVal;
+        }
+
+        public List<string> GetDiagnosesAndAllergies(MedicalRecord medicalRecord)
+        {
+            List<string> list = new List<string>();
+
+            foreach(string allergy in medicalRecord.Allergies)
+            {
+                list.Add("Alergija: " + allergy);
+            }
+            foreach(string diagnosis in medicalRecord.Diagnoses)
+            {
+                list.Add(diagnosis);
+            }
+
+            return list;
         }
 
         public List<MedicalRecord> GetAll()

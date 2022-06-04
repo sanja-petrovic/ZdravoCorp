@@ -1,8 +1,9 @@
 [
   {
     "Specialty": "Dijagnosti\u010Dar",
-    "EducationLevel": "Doktor nauka",
-    "YearsOfService": 0,
+    "NameAndLast": "Gregory House 456",
+    "YearsOfService": 23,
+    "EducationLevel": "Doktor medicine, specijalista nefrologije, Medicinski fakultet, Univerzitet u Novom Sadu",
     "Working": true,
     "UserType": 0,
     "PersonalId": "456",
@@ -13,14 +14,20 @@
     "Phone": "0612345679",
     "Email": "drhouse@zdravo.com",
     "Password": "houses",
-    "ProfilePicture": "null",
+    "ProfilePicture": "\\Resources\\Images\\drhouse.png",
     "LastLogin": "0001-01-01T00:00:00",
-    "Address": null
+    "Address": {
+      "Street": "A",
+      "Number": "B",
+      "City": "C",
+      "Country": "D"
+    }
   },
   {
     "Specialty": "Endokrinolog",
-    "EducationLevel": "Doktor nauka",
-    "YearsOfService": 0,
+    "NameAndLast": "Lisa Cuddy 123",
+    "YearsOfService": 26,
+    "EducationLevel": "Doktor medicine, specijalista endokrinologije, Medicinski fakultet, Univerzitet u Novom Sadu",
     "Working": true,
     "UserType": 0,
     "PersonalId": "123",
@@ -31,15 +38,20 @@
     "Phone": "0612345678",
     "Email": "lisacuddy@zdravo.com",
     "Password": "lisa123",
-    "ProfilePicture": "null",
+    "ProfilePicture": "\\Resources\\Images\\lisacuddy.jpg",
     "LastLogin": "0001-01-01T00:00:00",
-    "Address": null
+    "Address": {
+      "Street": "Mi\u0161e Dimitrijevi\u0107a",
+      "Number": "26",
+      "City": "Novi Sad",
+      "Country": "Srbija"
+    }
   },
   {
     "Specialty": "Endokrinolog",
-    "Education": "123",
+    "NameAndLast": "wqer wer qwer",
     "YearsOfService": 0,
-    "EducationLevel": null,
+    "EducationLevel": "Doktor medicine, specijalista endokrinologije, Medicinski fakultet, Univerzitet u Novom Sadu",
     "Working": false,
     "UserType": 0,
     "PersonalId": "qwer",
@@ -50,8 +62,13 @@
     "Phone": "123456798",
     "Email": "gugma@gugmar.com",
     "Password": "123",
-    "ProfilePicture": "null",
+    "ProfilePicture": "\\Resources\\Images\\docpfp.jpg",
     "LastLogin": "0001-01-01T00:00:00",
-    "Address": null
+    "Address": {
+      "Street": "A",
+      "Number": "B",
+      "City": "C",
+      "Country": "D"
+    }
   }
 ]

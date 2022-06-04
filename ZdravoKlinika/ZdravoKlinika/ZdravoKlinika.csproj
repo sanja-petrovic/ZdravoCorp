@@ -2,10 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <ApplicationIcon>Resources\Images\zdravoklinikaicon.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -15,13 +14,17 @@
     <None Remove="Resources\Images\add %281%29.png" />
     <None Remove="Resources\Images\add.png" />
     <None Remove="Resources\Images\addPatient.png" />
-    <None Remove="Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" />
     <None Remove="Resources\Images\bell %281%29.png" />
     <None Remove="Resources\Images\bell.png" />
     <None Remove="Resources\Images\calendar.png" />
+    <None Remove="Resources\Images\chandler.png" />
     <None Remove="Resources\Images\comment.png" />
     <None Remove="Resources\Images\delete.png" />
+    <None Remove="Resources\Images\docpfp.jpg" />
+    <None Remove="Resources\Images\download.png" />
+    <None Remove="Resources\Images\drhouse.png" />
     <None Remove="Resources\Images\edit.png" />
+    <None Remove="Resources\Images\edit2.png" />
     <None Remove="Resources\Images\editPatient.png" />
     <None Remove="Resources\Images\employees.png" />
     <None Remove="Resources\Images\help.png" />
@@ -29,11 +32,18 @@
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info %282%29.png" />
     <None Remove="Resources\Images\inventory.png" />
+    <None Remove="Resources\Images\joey.png" />
+    <None Remove="Resources\Images\lisacuddy.jpg" />
     <None Remove="Resources\Images\medicine.png" />
+    <None Remove="Resources\Images\monica.png" />
     <None Remove="Resources\Images\more.png" />
+    <None Remove="Resources\Images\phoebe.jpg" />
     <None Remove="Resources\Images\profile.png" />
     <None Remove="Resources\Images\pulse.png" />
+    <None Remove="Resources\Images\rachel.jpg" />
+    <None Remove="Resources\Images\rachel.png" />
     <None Remove="Resources\Images\rooms.png" />
+    <None Remove="Resources\Images\ross.png" />
     <None Remove="Resources\Images\schedule.png" />
     <None Remove="Resources\Images\search %281%29.png" />
     <None Remove="Resources\Images\search.png" />
@@ -42,6 +52,8 @@
     <None Remove="Resources\Images\show.png" />
     <None Remove="Resources\Images\star.png" />
     <None Remove="Resources\Images\stethoscope.png" />
+    <None Remove="Resources\Images\time-delete.png" />
+    <None Remove="Resources\Images\time-delete2.png" />
     <None Remove="Resources\Images\trash.png" />
     <None Remove="Resources\Images\treatment.png" />
     <None Remove="Resources\Images\undraw_medicine_b1ol.png" />
@@ -52,6 +64,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\chandler.png" />
+    <Resource Include="Resources\Images\edit2.png" />
+    <Resource Include="Resources\Images\monica.png" />
+    <Resource Include="Resources\Images\download.png" />
+    <Resource Include="Resources\Images\joey.png" />
+    <Resource Include="Resources\Images\ross.png" />
+    <Resource Include="Resources\Images\drhouse.png" />
+    <Resource Include="Resources\Images\time-delete.png" />
     <Content Include="Resources\Images\zdravoklinikaicon.ico" />
     <Resource Include="Resources\Images\addPatient.png" />
     <Resource Include="Resources\Images\delete.png" />
@@ -61,8 +81,11 @@
     <Resource Include="Resources\Images\employees.png" />
     <Resource Include="Resources\Images\help.png" />
     <Resource Include="Resources\Images\inventory.png" />
+    <Resource Include="Resources\Images\lisacuddy.jpg" />
     <Resource Include="Resources\Images\more.png" />
+    <Resource Include="Resources\Images\phoebe.jpg" />
     <Resource Include="Resources\Images\profile.png" />
+    <Resource Include="Resources\Images\rachel.png" />
     <Resource Include="Resources\Images\rooms.png" />
     <Resource Include="Resources\Images\schedule.png" />
     <Resource Include="Resources\Images\search (1).png" />
@@ -75,6 +98,7 @@
     <Resource Include="Resources\Images\add (1).png" />
     <Resource Include="Resources\Images\bell (1).png" />
     <Resource Include="Resources\Images\info (2).png" />
+    <Resource Include="Resources\Images\time-delete2.png" />
     <Resource Include="Resources\Images\trash.png" />
     <Resource Include="Resources\Images\warning.png" />
     <Resource Include="Resources\Images\zdravoklinika.png" />
@@ -85,7 +109,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\b33b530cbd60dbae9ab7f69bbd28ae53.jpg" />
+    <Resource Include="Resources\Images\docpfp.jpg" />
     <Resource Include="Resources\Images\hide.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -109,6 +133,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Resources\Documents\" />
     <Folder Include="View\Dialogs\" />
     <Folder Include="View\Patient\" />
   </ItemGroup>
@@ -160,12 +185,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="MaterialDesignExtensions" Version="4.0.0-a02" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.0-ci198" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="17.2.32505.113" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.3.0" />
+    <PackageReference Include="PdfSharp.Xps" Version="1.0.0" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
   </ItemGroup>
 
   <ItemGroup>

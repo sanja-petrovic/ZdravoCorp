@@ -47,6 +47,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public ObservableCollection<Medication> PrescribedMedList { get; set; }
         public ObservableCollection<Prescription> PrescribedList { get; set; } 
 
+        public MyICommand ConfirmCommand { get; set; }
+        public MyICommand GiveUpCommand { get; set; }
+
         public string PatientName { get => patientName; set => SetProperty(ref patientName, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
         public string DoctorName { get => doctorName; set => SetProperty(ref doctorName, value); }
@@ -85,8 +88,21 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             }
             this.PrescribedMedList = new ObservableCollection<Medication>();
             this.PrescribedList = new ObservableCollection<Prescription>();
+            Doctor = RegisteredUserController.UserToDoctor(App.User);
+            ConfirmCommand = new MyICommand(ExecuteConfirm);
+            GiveUpCommand = new MyICommand(ExecuteGiveUp);
         } 
 
+        public void ExecuteConfirm()
+        {
+            Save();
+            DialogHelper.DialogService.CloseDialog(this);
+        }
+
+        public void ExecuteGiveUp()
+        {
+            DialogHelper.DialogService.CloseDialog(this);
+        }
 
         public void Save()
         {
@@ -107,11 +123,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             }
         }
 
-        public void LoadFromRecord(string doctorId, string patientId)
+        public void LoadFromRecord(string patientId)
         {
-            DoctorController doctorController = new DoctorController();
-            
-            this.doctor = doctorController.GetById(doctorId);
             this.patient = registeredPatientController.GetById(patientId);
             this.patientId = this.patient.GetPatientId();
             this.patientName = this.patient.GetPatientFullName();
@@ -129,6 +142,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.doctorName = this.appointment.Doctor.ToString();
             this.doctorSpecialty = this.appointment.Doctor.Specialty;
         }
+
 
         public void Add(int selectedIndex)
         {

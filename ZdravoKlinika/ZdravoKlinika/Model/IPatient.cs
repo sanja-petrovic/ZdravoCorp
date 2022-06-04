@@ -49,5 +49,9 @@ namespace ZdravoKlinika.Model
             return null;
         }
 
+        public string ToString()
+        {
+            return this.GetPatientFullName() + ", " + this.GetPatientId();
+        }
     }
 }
