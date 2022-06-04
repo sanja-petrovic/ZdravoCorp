@@ -13,6 +13,7 @@ public class MoveService
     private Timer timer;
     private RoomService roomService;
     private List<Room> rooms;
+    private List<string> idList;
 
     public MoveService()
     {
@@ -52,73 +53,102 @@ public class MoveService
     {
         FetchRooms();
         
-        //ITERIRAJ KROZ SVE SOBE 
         foreach (Room r in this.rooms)
         {
-            //ODUZIMANJE IZ SOURCE ROOM
             if (r.RoomId.Equals(this.SourceRoom.RoomId))
             {
-                foreach (Equipment equipment in r.EquipmentInRoom)
-                {
-                    foreach (Equipment equ in this.EquipmentToMove)
-                    {
-                        if (equipment.Id.Equals(equ.Id))
-                        {
-                            equipment.Amount = equipment.Amount - equ.Amount;
-                        }
-
-                    }
-                }
-
+                SubstractEquipmentFromSourceRoom(r);
             }
 
-            //DODAVANJE U DESTINATION ROOM
             if (r.RoomId.Equals(this.DestinationRoom.RoomId))
-            {              
-                if (r.EquipmentInRoom.Count != 0) // DA LI JE SOBA PRAZNA
-                {
-                    List<string> idList = new List<string>();
-                    foreach (Equipment equipment in r.EquipmentInRoom)
-                    {
-                        idList.Add(equipment.Id);
-                    }
-
-                    foreach (Equipment equ in this.EquipmentToMove)
-                    {
-
-                        if (idList.Contains(equ.Id))
-                        {
-                            //POSTOJI ARTIKAL U TOJ SOBI --> DODAJ NA STANJE
-                            foreach (Equipment equipment in r.EquipmentInRoom)
-                            {
-                                if (equipment.Id.Equals(equ.Id))
-                                {
-                                    equipment.Amount = equipment.Amount + equ.Amount;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            //NE POSTOJI ARTIKAL U TOJ SOBI --> DODAJ NOVI                          
-                             r.AddEquipmentInRoom(equ);
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (Equipment equipment in this.EquipmentToMove)
-                    {
-                        r.AddEquipmentInRoom(equipment);
-                    }
-                }
-                
+            {
+                AddEquipmentToDestinationRoom(r);
             }
-
         }
 
+        SaveChangesToRooms();
+        DestroyTimer();
+    }
+
+    private void SubstractEquipmentFromSourceRoom(Room r)
+    {
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            foreach (Equipment equ in this.EquipmentToMove)
+            {
+                if (equipment.Id.Equals(equ.Id))
+                {
+                    equipment.Amount = equipment.Amount - equ.Amount;
+                }
+            }
+        }
+    }
+
+    private void AddEquipmentToDestinationRoom(Room r)
+    {
+        if (r.EquipmentInRoom.Count != 0)
+        {          
+            GetAllEquipmentInRoomIds(r);
+
+            foreach (Equipment equ in this.EquipmentToMove)
+            {
+                AddEquipmentToNonEmptyRoom(r, equ);
+            }
+        }
+        else
+        {
+            AddEquipmentToEmptyRoom(r);
+        }
+    }
+
+    private void AddEquipmentToNonEmptyRoom(Room r, Equipment equ)
+    {
+        if (idList.Contains(equ.Id))
+        {           
+            AddAmountToExistingEquipmentInRoom(r, equ);
+        }
+        else
+        {                         
+            r.AddEquipmentInRoom(equ);
+        }
+    }
+
+    private void AddAmountToExistingEquipmentInRoom(Room r, Equipment equ)
+    {
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            if (equipment.Id.Equals(equ.Id))
+            {
+                equipment.Amount = equipment.Amount + equ.Amount;
+            }
+        }
+    }
+
+    private void AddEquipmentToEmptyRoom(Room r)
+    {
+        foreach (Equipment equipment in this.EquipmentToMove)
+        {
+            r.AddEquipmentInRoom(equipment);
+        }
+    }
+
+    private void GetAllEquipmentInRoomIds(Room r)
+    {
+        idList = new List<string>();
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            idList.Add(equipment.Id);
+        }
+    }
+
+    private void SaveChangesToRooms()
+    {
         RoomDataHandler roomDataHandler = new RoomDataHandler();
         roomDataHandler.Write(this.rooms);
+    }
 
+    private void DestroyTimer()
+    {
         timer.Stop();
         timer.Dispose();
     }

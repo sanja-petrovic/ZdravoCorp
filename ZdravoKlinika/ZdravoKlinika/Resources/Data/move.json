@@ -1,201 +1,25 @@
 [
   {
     "EquipmentToMove": [
-      "1,5"
+      "2,29",
+      "1,2"
     ],
     "MoveId": "1",
     "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-05-18T00:42:28",
+    "DestinationRoom": "5",
+    "ScheduledDateTime": "2022-06-04T15:11:15.39",
     "IsMoveFinished": false
   },
   {
     "EquipmentToMove": [
-      "1,7"
+      "1,20",
+      "2,11",
+      "3,25"
     ],
     "MoveId": "2",
     "SourceRoom": "314",
     "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T12:10:02.971",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,2"
-    ],
-    "MoveId": "3",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T12:17:48.762",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,3"
-    ],
-    "MoveId": "4",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T12:20:29.328",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,7"
-    ],
-    "MoveId": "5",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T13:20:05.93",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,6"
-    ],
-    "MoveId": "6",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T13:32:03.512",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,18"
-    ],
-    "MoveId": "7",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T13:38:36.437",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,19"
-    ],
-    "MoveId": "8",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T13:40:02.979",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,12"
-    ],
-    "MoveId": "9",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T13:41:04.7",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,5"
-    ],
-    "MoveId": "10",
-    "SourceRoom": "314",
-    "DestinationRoom": "3",
-    "ScheduledDateTime": "2022-06-04T13:53:20.96",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,17"
-    ],
-    "MoveId": "11",
-    "SourceRoom": "314",
-    "DestinationRoom": "5",
-    "ScheduledDateTime": "2022-06-04T13:55:10.526",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,5",
-      "3,10"
-    ],
-    "MoveId": "12",
-    "SourceRoom": "314",
-    "DestinationRoom": "5",
-    "ScheduledDateTime": "2022-06-04T13:58:10.24",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,2",
-      "2,40"
-    ],
-    "MoveId": "13",
-    "SourceRoom": "314",
-    "DestinationRoom": "3",
-    "ScheduledDateTime": "2022-06-04T14:01:55.294",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,2"
-    ],
-    "MoveId": "14",
-    "SourceRoom": "314",
-    "DestinationRoom": "5",
-    "ScheduledDateTime": "2022-06-04T14:10:00.769",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,2"
-    ],
-    "MoveId": "15",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T14:13:50.567",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,2",
-      "3,20",
-      "2,10"
-    ],
-    "MoveId": "16",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T14:37:45.179",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,2",
-      "2,40",
-      "3,25"
-    ],
-    "MoveId": "17",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T14:40:30.7",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "1,2",
-      "3,25",
-      "2,40"
-    ],
-    "MoveId": "18",
-    "SourceRoom": "314",
-    "DestinationRoom": "6",
-    "ScheduledDateTime": "2022-06-04T14:43:00.631",
-    "IsMoveFinished": false
-  },
-  {
-    "EquipmentToMove": [
-      "2,20",
-      "3,20"
-    ],
-    "MoveId": "19",
-    "SourceRoom": "314",
-    "DestinationRoom": "2",
-    "ScheduledDateTime": "2022-06-04T14:44:00.846",
+    "ScheduledDateTime": "2022-06-04T15:12:25.302",
     "IsMoveFinished": false
   }
 ]

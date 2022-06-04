@@ -4,19 +4,19 @@
       {
         "Id": "1",
         "Name": "Krevet",
-        "Amount": 52,
+        "Amount": 30,
         "Expendable": false
       },
       {
         "Id": "2",
         "Name": "Stolica",
-        "Amount": 140,
+        "Amount": 100,
         "Expendable": false
       },
       {
         "Id": "3",
         "Name": "Jastuk",
-        "Amount": 75,
+        "Amount": 50,
         "Expendable": false
       }
     ],
@@ -33,13 +33,19 @@
       {
         "Id": "1",
         "Name": "Krevet",
-        "Amount": 52,
+        "Amount": 72,
         "Expendable": false
       },
       {
         "Id": "2",
         "Name": "Stolica",
-        "Amount": 140,
+        "Amount": 151,
+        "Expendable": false
+      },
+      {
+        "Id": "3",
+        "Name": "Jastuk",
+        "Amount": 25,
         "Expendable": false
       }
     ],
@@ -62,7 +68,20 @@
     "Free": true
   },
   {
-    "EquipmentInRoom": [],
+    "EquipmentInRoom": [
+      {
+        "Id": "2",
+        "Name": "Stolica",
+        "Amount": 29,
+        "Expendable": false
+      },
+      {
+        "Id": "1",
+        "Name": "Krevet",
+        "Amount": 2,
+        "Expendable": false
+      }
+    ],
     "RoomId": "5",
     "Type": 1,
     "Name": "R5",
