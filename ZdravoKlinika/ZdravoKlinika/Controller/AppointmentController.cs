@@ -136,7 +136,7 @@ public class AppointmentController
         this.appointmentService.EditAppointment(appointment);
     }
 
-    public void EditAppointment(int appointmentId, Doctor doctor, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, Room room, int duration)
+    public void EditAppointment(int appointmentId, Doctor doctor, IPatient patient, DateTime dateAndTime, bool emergency, AppointmentType type, Room room, int duration)
     {
         Appointment a = new Appointment(appointmentId, doctor, patient, room, duration, emergency, type, dateAndTime);
         this.appointmentService.EditAppointment(a);

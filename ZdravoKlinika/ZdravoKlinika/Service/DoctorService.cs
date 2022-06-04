@@ -66,7 +66,7 @@ public class DoctorService
 
     public void UpdateDoctor(Doctor doctor)
     {
-        doctorRepository.UpdateDoctor(doctor);
+        doctorRepository.Update(doctor);
     }
 
     public void DeleteDoctor(String personalId)

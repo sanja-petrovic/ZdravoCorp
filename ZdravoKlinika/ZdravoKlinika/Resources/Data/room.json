@@ -162,5 +162,25 @@
     "Number": 1,
     "Status": 1,
     "Free": true
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "5",
+    "Type": 1,
+    "Name": "R5",
+    "Level": 1,
+    "Number": 15,
+    "Status": 1,
+    "Free": true
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "6",
+    "Type": 1,
+    "Name": "R6",
+    "Level": 1,
+    "Number": 11,
+    "Status": 1,
+    "Free": true
   }
 ]

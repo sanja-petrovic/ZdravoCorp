@@ -8,20 +8,16 @@ namespace ZdravoKlinika.Model
         //private String education;
 
         public Doctor()
-        {
+        { }
 
     public string Specialty { get => specialty; set => specialty = value; }
     public string NameAndLast { get => Name + " " + Lastname + " " + PersonalId; }
 
     public bool IsSpecialist()
     {
-        return !Specialty.Equals("Op�ta praksa");
+        return !Specialty.Equals("Opšta praksa");
     }
 
-        public bool IsSpecialist()
-        {
-            throw new NotImplementedException();
-        }
 
         public static Doctor Parse(string id)
         {

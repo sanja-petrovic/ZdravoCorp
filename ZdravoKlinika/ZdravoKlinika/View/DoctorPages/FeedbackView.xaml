@@ -282,7 +282,7 @@
         <Label Content="Ocenite aplikaciju" Margin="271,75,355,643" FontSize="24" FontWeight="Bold"/>
         <Label Content="Voleli bismo da čujemo Vaše mišljenje!" Margin="302,149,214,569" FontSize="24" FontWeight="Bold"/>
         <TextBlock Text="Kako biste ocenili aplikaciju?" FontSize="16" FontWeight="Bold" Margin="308,217,207,510"/>
-        <materialDesign:RatingBar Min="0" Max="10" Foreground="#FF9E98FF" Margin="307,249,440,492">
+        <materialDesign:RatingBar Min="1" Max="11" Foreground="#FF9E98FF" Margin="307,249,355,492">
             <materialDesign:RatingBar.ValueItemTemplate>
                 <DataTemplate DataType="system:Int32">
                     <Grid>
@@ -294,7 +294,6 @@
                 </DataTemplate>
             </materialDesign:RatingBar.ValueItemTemplate>
         </materialDesign:RatingBar>
-        <!--<Slider x:Name="Slidey" Value="{Binding Value, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Ticks="1, 2, 3, 4, 5, 6, 7, 8, 9, 10" Style="{DynamicResource SliderStyle1}" Minimum="1" Maximum="10" TickFrequency="1" Margin="308,252,122,468" TickPlacement="BottomRight" IsSnapToTickEnabled="True"></Slider>-->
         <TextBlock Text="Ukoliko imate neki komentar, možete ga napisati u polju ispod." FontSize="14" FontWeight="Regular" Margin="308,314,207,412" Foreground="#555557"/>
         <TextBox Foreground="#555557" Style="{StaticResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Margin="308,344,122,174" TextWrapping="Wrap" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>

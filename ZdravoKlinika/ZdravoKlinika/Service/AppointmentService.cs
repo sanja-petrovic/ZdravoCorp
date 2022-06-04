@@ -175,7 +175,7 @@ public class AppointmentService
     }
 
 
-    public List<DateBlock> GetFreeTime(Doctor doctor, Patient patient, DateBlock block)
+    public List<DateBlock> GetFreeTime(Doctor doctor, IPatient patient, DateBlock block)
     {
         List<DateBlock> times = DateBlock.GetIntervals(new DateTime(block.Start.Date.Year, block.Start.Date.Month, block.Start.Date.Day, 8, 0, 0), new DateTime(block.Start.Date.Year, block.Start.Date.Month, block.Start.Date.Day, 20, 0, 0), block.Duration);
 
@@ -493,9 +493,9 @@ public class AppointmentService
        return this.appointmentRepository.GetAppointmentsByRoom(room);
     }
 
-    public void EditAppointment(Appointment a)
+    public void UpdateAppointment(Appointment a)
     {
-        this.appointmentRepository.EditAppointment(a);
+        this.appointmentRepository.Update(a);
     }
 
     public Appointment GetPatientsLatestAppointment(RegisteredPatient patient)

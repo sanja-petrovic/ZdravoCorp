@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Service;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Controller
 {
