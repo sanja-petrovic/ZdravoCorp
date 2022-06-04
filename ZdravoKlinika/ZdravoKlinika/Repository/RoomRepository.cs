@@ -474,10 +474,4 @@ public class RoomRepository : IRoomRepository
         RoomDataHandler roomDataHandler = new RoomDataHandler();
         roomDataHandler.Write(this.rooms);
     }
-
-    public void RemoveAll()
-{
-    this.rooms.Clear();
-    this.roomDataHandler.Write(this.rooms);
-}
 }
