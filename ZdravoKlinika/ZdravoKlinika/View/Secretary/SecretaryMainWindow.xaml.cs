@@ -24,9 +24,11 @@ namespace ZdravoKlinika.View.Secretary
     public partial class SecretaryMainWindow : Window
     {
         PatientViewModel PatientViewModel { get; set; }
-        public SecretaryMainWindow()
+        RegisteredUser thisUser;
+        public SecretaryMainWindow(RegisteredUser user)
         {
             InitializeComponent();
+            thisUser = user;
             MainContentFrame.Navigate(new SecretaryHomePage());
             PatientViewModel = new PatientViewModel();
             Select(BorderHomePage);
@@ -120,6 +122,8 @@ namespace ZdravoKlinika.View.Secretary
             ChangeColorUnSelected(BorderOrderEquipment);
             ChangeColorUnSelected(BorderUpdateAppointment);
             ChangeColorUnSelected(BorderCreateEMAppointment);
+            ChangeColorUnSelected(BorderCreateMeeting);
+            ChangeColorUnSelected(BorderProcessRequests);
 
 
             // selected border
@@ -188,6 +192,26 @@ namespace ZdravoKlinika.View.Secretary
                 MainContentFrame.RemoveBackEntry();
             MainContentFrame.Navigate(new SecretaryCreateEmergencyAppointment(PatientViewModel));
             MenuContentLabel.Content = "Kreiranje hitnih slucajeva";
+            HamburgerMenuFrame.IsChecked = false;
+        }
+
+        private void CreateMeetingPage(object sender, RoutedEventArgs e)
+        {
+            Select(BorderCreateMeeting);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryCreateMeeting(thisUser));
+            MenuContentLabel.Content = "Kreiranje sastanaka";
+            HamburgerMenuFrame.IsChecked = false;
+        }
+
+        private void ProcessTimeOffRequests(object sender, RoutedEventArgs e)
+        {
+            Select(BorderProcessRequests);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryProcessTimeOffRequests(thisUser));
+            MenuContentLabel.Content = "Obrada zahteva";
             HamburgerMenuFrame.IsChecked = false;
         }
     }

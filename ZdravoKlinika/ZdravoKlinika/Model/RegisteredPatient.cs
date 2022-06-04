@@ -115,7 +115,7 @@ public class RegisteredPatient : RegisteredUser, Patient
         return bloodType;
     }
     
-    public override string ToString()
+    public string ToString()
     {
         return this.GetPatientFullName() + ", " + this.GetPatientId();
     }

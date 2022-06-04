@@ -54,6 +54,24 @@ namespace ZdravoKlinika.Model
         public Doctor Doctor { get => doctor; set => doctor = value; }
         public string Comment { get => comment; set => comment = value; }
 
+        public String EmergencyString 
+        {
+            get 
+            {
+                if (emergency)
+                    return "Hitno";
+                return "Nije hitno";
+            }
+        }
+
+        public String StartDateString
+        {
+            get => StartDate.ToString("dd/MM/yyyy");
+        }
+        public String EndDateString
+        {
+            get => EndDate.ToString("dd/MM/yyyy");
+        }
         public string StateToString(RequestState state)
         {
             string retVal = "";
@@ -74,5 +92,6 @@ namespace ZdravoKlinika.Model
 
             return retVal;
         }
+
     }
 }

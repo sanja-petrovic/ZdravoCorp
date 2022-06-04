@@ -30,12 +30,12 @@ public class EquipmentController
 
     public void CreateEquipment(String name, int amount, bool expendable)
     {
-        this.equipmentService.CreateEquipment(name, amount, expendable);
+        this.equipmentService.CreateEquipment(new Equipment("0", name, amount, expendable));
     }
 
     public void UpdateEquipment(String id, String name, int amount, bool expendable)
     {
-        this.equipmentService.UpdateEquipment(id, name, amount, expendable);
+        this.equipmentService.UpdateEquipment(new Equipment(id, name, amount, expendable));
     }
 
     public void DeleteEquipment(String id)

@@ -20,8 +20,8 @@ namespace ZdravoKlinika.View
     {
         private RoomController roomController;
         private RenovationController renovationController;
-        List<Room> entryList;
-        int numberOfExitRooms = 0;
+        private List<Room> entryList;
+        private int numberOfExitRooms = 0;
         public ObservableCollection<Room> Rooms { get; set; }
         public List<Room> EntryList { get => entryList; set => entryList = value; }
 

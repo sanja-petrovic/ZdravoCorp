@@ -23,6 +23,19 @@ namespace ZdravoKlinika.Service
             return this.repository.GetAll();
         }
 
+        public List<TimeOffRequest> GetAllUnprocessed()
+        { 
+            List<TimeOffRequest> list = new List<TimeOffRequest>();
+            foreach (TimeOffRequest request in GetAll())
+            {
+                if (request.State == RequestState.Pending)
+                { 
+                    list.Add(request);
+                }
+            }
+            return list;
+        }
+
         public List<TimeOffRequest> GetAllSorted()
         {
             return this.repository.GetAllSorted();

@@ -50,7 +50,7 @@
             <Label Content="Vreme:" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Text="{Binding SelectedNotification.Prescription.Medication.BrandName}" Margin="92,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
             <TextBlock HorizontalAlignment="Left" Text="{Binding SelectedNotification.Prescription.Amount}" Margin="92,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-            <ComboBox HorizontalAlignment="Left" Margin="92,102,0,0" ItemsSource="{Binding NotificationTimes}" VerticalAlignment="Top" Width="82">
+            <ComboBox HorizontalAlignment="Left" Margin="92,102,0,0" ItemsSource="{Binding NotificationTimes}" VerticalAlignment="Top" Width="82" SelectedItem="{Binding SelectedInCombo}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -59,7 +59,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Content="Sačuvaj" HorizontalAlignment="Left" Margin="133,131,0,0" VerticalAlignment="Top"/>
+            <Button Content="Sačuvaj" Command="{Binding EditTimeCommand}" HorizontalAlignment="Left" Margin="133,131,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Page>

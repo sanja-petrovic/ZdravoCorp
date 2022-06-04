@@ -13,7 +13,7 @@ public class MoveRepository
     public MoveRepository()
     {
         this.MoveDataHandler = new MoveDataHandler();
-        this.moves = this.MoveDataHandler.Read();
+        this.moves = this.moveDataHandler.Read();
     }
 
     public List<Move> Moves
@@ -67,15 +67,16 @@ public class MoveRepository
 
     public Move GetById(String id)
     {
+        Move? returnValue = null;
         foreach (Move m in this.moves)
         {
             if (m.MoveId.Equals(id))
             {
-                return m;
+                returnValue = m;
             }
         }
 
-        return null;
+        return returnValue;
     }
 
     public void CreateMove(Move move)
@@ -103,12 +104,17 @@ public class MoveRepository
             {
                 if (m.MoveId.Equals(move.MoveId))
                 {
-                    m.SourceRoom = move.SourceRoom;
-                    m.DestinationRoom = move.DestinationRoom;
-                    m.ScheduledDateTime = move.ScheduledDateTime;
+                    UpdateMoveValues(m, move);
                 }
             }
         moveDataHandler.Write(this.moves);
+    }
+
+    private void UpdateMoveValues(Move moveToBeUpdated, Move updatedValues)
+    {
+        moveToBeUpdated.SourceRoom = updatedValues.SourceRoom;
+        moveToBeUpdated.DestinationRoom = updatedValues.DestinationRoom;
+        moveToBeUpdated.ScheduledDateTime = updatedValues.ScheduledDateTime;
     }
 
 }

@@ -36,6 +36,10 @@ namespace ZdravoKlinika.Controller
         {
             return notificationService.GetPossibleTriggerTimes(notification);
         }
+        public List<PatientMedicationNotification> GetUpcomingNotifications(string id, int hours)
+        {
+            return notificationService.GetUpcomingNotifications(id, hours);
+        }
         public void CreateNotification(RegisteredUser sender,RegisteredUser reciver, String notificationText, Prescription prescription, String note, DateTime time)
         {
             this.notificationService.CreateNotification(new PatientMedicationNotification(-1,sender,reciver,notificationText,prescription,note,time));
@@ -47,6 +51,10 @@ namespace ZdravoKlinika.Controller
         public void DeleteAllNotifications()
         {
             this.notificationService.DeleteAllNotifications();
+        }
+        public void UpdateTriggerTime(int id, DateTime newTriggerTime)
+        {
+            this.notificationService.UpdateTriggerTime(this.GetById(id),newTriggerTime);
         }
         public void UpdateNotification(int id, RegisteredUser sender, RegisteredUser reciver, String notificationText, Prescription prescription, String note, DateTime time)
         {

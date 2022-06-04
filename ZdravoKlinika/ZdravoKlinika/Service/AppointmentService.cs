@@ -502,4 +502,46 @@ public class AppointmentService
 
         return a;
     }
+
+    public int CountNumberOfGradesForDoctor(int questionNumber, int gradeToCount, Doctor doctor)
+    {
+        int count = 0;
+        List<Appointment> doctorsAppointments = this.GetAppointmentsByDoctorId(doctor.PersonalId);
+
+        foreach (Appointment app in doctorsAppointments)
+        {
+            if(app.Grading != null)
+            {
+                if (app.Grading[questionNumber] == gradeToCount)
+                {
+                    count++;
+                }
+            }          
+        }
+        return count;
+    }
+
+    public double GetAverageGradeForDoctor(int questionNumber, Doctor doctor)
+    {
+        double sum = 0;
+        double count = 0;
+        List<Appointment> doctorsAppointments = this.GetAppointmentsByDoctorId(doctor.PersonalId);
+
+        foreach (Appointment app in doctorsAppointments)
+        {
+            if(app.Grading != null)
+            {
+                for (int i = 0; i < app.Grading.Length; i++)
+                {
+                    if (i == questionNumber)
+                    {
+                        sum += app.Grading[i];
+                        count++;
+                    }
+                }
+            }           
+        }
+        return sum / count;
+    }
+
 }

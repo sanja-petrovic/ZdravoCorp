@@ -28,15 +28,40 @@ public class EquipmentService
         return this.equipmentRepository.GetByExpendability(expendable);
     }
 
-    public void CreateEquipment(String name, int amount, bool expendable)
+    public void CreateEquipment(Equipment eq)
+    {
+        this.EquipmentRepository.CreateEquipment(new Equipment(GenerateEquipmentId().ToString(), eq.Name, eq.Amount, eq.Expendable));
+    }
+
+    public void UpdateEquipment(Equipment changedEquipment)
+    {
+        Equipment equipment = this.equipmentRepository.GetById(changedEquipment.Id);
+        UpdateEquipmentValues(equipment, changedEquipment);      
+        this.equipmentRepository.UpdateEquipment(equipment);
+    }
+
+    public void DeleteEquipment(String id)
+    {
+        Equipment eq = this.equipmentRepository.GetById(id);
+        this.equipmentRepository.DeleteEquipment(eq);
+    }
+
+    private void UpdateEquipmentValues(Equipment equipmentToBeUpdated, Equipment updatingValues)
+    {
+        equipmentToBeUpdated.Name = updatingValues.Name;
+        equipmentToBeUpdated.Amount = updatingValues.Amount;
+        equipmentToBeUpdated.Expendable = updatingValues.Expendable;
+    }
+
+    private int GenerateEquipmentId()
     {
         List<Equipment> equipment = this.EquipmentRepository.GetAll();
         int newEquipmentId;
-        if(equipment.Count > 0)
+        if (equipment.Count > 0)
         {
             int maxId = 0;
             int trenutniId = 0;
-            foreach(Equipment eq in equipment)
+            foreach (Equipment eq in equipment)
             {
                 trenutniId = Int32.Parse(eq.Id);
                 if (trenutniId > maxId) maxId = trenutniId;
@@ -47,24 +72,6 @@ public class EquipmentService
         {
             newEquipmentId = 1;
         }
-
-        Equipment eqa = new Equipment(newEquipmentId.ToString(), name, amount, expendable);
-        this.EquipmentRepository.CreateEquipment(eqa);
+        return newEquipmentId;
     }
-
-    public void UpdateEquipment(String id, String name, int amount, bool expendable)
-    {
-        Equipment eq = this.equipmentRepository.GetById(id);
-        eq.Name = name;
-        eq.Amount = amount;
-        eq.Expendable = expendable;
-        this.equipmentRepository.UpdateEquipment(eq);
-    }
-
-    public void DeleteEquipment(String id)
-    {
-        Equipment eq = this.equipmentRepository.GetById(id);
-        this.equipmentRepository.DeleteEquipment(eq);
-    }
-
 }
