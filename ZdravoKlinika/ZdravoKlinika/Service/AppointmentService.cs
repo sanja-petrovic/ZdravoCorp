@@ -177,17 +177,18 @@ public class AppointmentService
     internal List<DateBlock> GetDateBlocksForDoctorInNextHour(int duration, Doctor doc)
     {
         List<DateBlock> freeBlocks = new List<DateBlock>();
-
-        foreach (DateBlock dateBlock in GetFreeTimeForDoctor(DateTime.Now.Date, duration, doc, DateTime.Now.Hour, DateTime.Now.AddHours(1).Hour))
+        foreach (DateBlock dateBlock in GetFreeTimeForDoctor(DateTime.Now.Date, duration, doc, DateTime.Now.Hour, DateTime.Now.AddHours(2).Hour))
         {
+            if (dateBlock.Start < DateTime.Now || dateBlock.Start > DateTime.Now.AddHours(1))
+                continue;
             if (roomRepository.GetFreeRooms(dateBlock.Start, RoomType.operating).Count > 0)
             {
                 freeBlocks.Add(dateBlock);
             }
         }
-
         return freeBlocks;
     }
+
 
     //TODO these 2 need code cleanup, they can become one-ish ? 
     public List<DateBlock> GetFreeTimeForDoctor(DateTime date,int duration, Doctor doctor, int startHours, int endHours)
@@ -246,7 +247,6 @@ public class AppointmentService
     public List<Doctor> GetFreeDoctorsBySpecialityForNextHour(int duration, String specialitty)
     { 
         List<Doctor> docs = new List<Doctor>();
-        //docs = GetFreeDoctorsForTime(new DateBlock(DateTime.Now,duration),DateTime.Now.Hour,DateTime.Now.AddHours(1).Hour);
         DateTime dateNow = DateTime.Now.Date;
         dateNow = dateNow.AddHours(DateTime.Now.ToLocalTime().Hour);
 
@@ -397,31 +397,31 @@ public class AppointmentService
             actionLogService.AddLog(DateTime.Now, "Remove Appointment", registeredPatientRepository.GetById(patientId));
         }
     }
-    public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
+    public void EditAppointment(Appointment appointment)
     {
-        Appointment appointment = this.appointmentRepository.GetById(appointmentId); 
-
-        Doctor doc = doctorRepository.GetById(doctorId);
-        Room room = roomRepository.GetById(roomId);
-        IPatient pat = patientRepository.GetById(patientId);
-
-        List<DateBlock> t = DateBlock.getIntersection(GetFreeTimeForDoctor(dateAndTime.Date, duration, doc, 8, 20), GetFreeTimeForPatient(dateAndTime.Date, duration, pat, 8, 20));
-
-        foreach (DateBlock block in t) 
+        Appointment appointmentInDatabase = this.appointmentRepository.GetById(appointment.AppointmentId);
+        CheckIfDateIsFreeAndEdit(appointment, appointmentInDatabase);
+        
+    }
+    private void CheckIfDateIsFreeAndEdit(Appointment appointment, Appointment appointmentInDatabase)
+    {
+        List<DateBlock> t = DateBlock.getIntersection(GetFreeTimeForDoctor(appointment.DateAndTime.Date, appointment.Duration, appointment.Doctor, 8, 20), GetFreeTimeForPatient(appointment.DateAndTime.Date, appointment.Duration, appointment.Patient, 8, 20));
+        foreach (DateBlock block in t)
         {
-            if (block.Start.TimeOfDay.Equals(dateAndTime.TimeOfDay) || dateAndTime.TimeOfDay.Equals(appointment.DateAndTime.TimeOfDay))
+            if (block.Start.TimeOfDay.Equals(appointment.DateAndTime.TimeOfDay) || appointment.DateAndTime.TimeOfDay.Equals(appointmentInDatabase.DateAndTime.TimeOfDay))
             {
-                appointment.DateAndTime = dateAndTime;
-                appointment.Emergency = emergency;
-                appointment.Patient = pat;
-                appointment.Doctor = doc;
-                appointment.Room = room;
+                appointmentInDatabase.DateAndTime = appointment.DateAndTime;
+                appointmentInDatabase.Emergency = appointment.Emergency;
+                appointmentInDatabase.Patient = appointment.Patient;
+                appointmentInDatabase.Doctor = appointment.Doctor;
+                appointmentInDatabase.Room = appointment.Room;
 
-                this.appointmentRepository.Update(appointment);
-                return;
+                this.appointmentRepository.Update(appointmentInDatabase);
+                break;
             }
         }
     }
+
     public void PatientEditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
         if (actionLogService.IsUserBannable(patientId))
@@ -431,7 +431,7 @@ public class AppointmentService
         }
         else
         {
-            EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
+            //EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
             actionLogService.AddLog(DateTime.Now, "Edit Appointment", registeredPatientRepository.GetById(patientId));
         }
     }
