@@ -34,7 +34,7 @@ namespace ZdravoKlinika.Controller
             return this.prescriptionService.GetById(id);
         }
 
-        public void Prescribe(Doctor doctor, Patient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote)
+        public void Prescribe(Doctor doctor, IPatient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote)
         {
             
             this.prescriptionService.Prescribe(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote);

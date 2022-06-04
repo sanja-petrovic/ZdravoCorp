@@ -20,7 +20,7 @@ namespace ZdravoKlinika.Service
 
         public RegisteredUser? GetUserById(String id) 
         {
-            return UserRepository.GetUserById(id);
+            return UserRepository.GetById(id);
         }
 
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password)

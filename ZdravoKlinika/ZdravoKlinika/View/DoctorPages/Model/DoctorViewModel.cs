@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using ZdravoKlinika.Controller;
 
+using ZdravoKlinika.Model;
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
     public class DoctorViewModel : ViewModelBase

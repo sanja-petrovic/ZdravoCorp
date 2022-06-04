@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Data_Handler;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class RegisteredUserRepository
+    public class RegisteredUserRepository : Interfaces.IRegisteredUserRepository
     {
         List<RegisteredUser> registeredUsers;
         RegisteredPatientRepository registeredPatientRepository;
@@ -27,11 +28,11 @@ namespace ZdravoKlinika.Repository
             DoctorRepository = new DoctorRepository();
             EmployeeRepository = new EmployeeRepository();
 
-            LoadAllRegisteredUsers();
+            ReadDataFromFile();
 
         }
 
-        private void LoadAllRegisteredUsers()
+        private void ReadDataFromFile()
         {
 
             List<RegisteredPatient> rpats = RegisteredPatientRepository.GetAll();
@@ -39,7 +40,7 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (RegisteredPatient pat in rpats)
                 {
-                    this.AddUser(pat);
+                    this.Add(pat);
                 }
             }
             List<Doctor> docs = DoctorRepository.GetAll();
@@ -47,7 +48,7 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (Doctor doc in docs)
                 {
-                    this.AddUser(doc);
+                    this.Add(doc);
                 }
             }
             List<Employee> emps = EmployeeRepository.GetAll();
@@ -55,14 +56,14 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (Employee emp in emps)
                 {
-                    this.AddUser(emp);
+                    this.Add(emp);
                 }
             }
         }
 
         public  List<RegisteredUser> GetAll()
         {
-            LoadAllRegisteredUsers();
+            ReadDataFromFile();
             return RegisteredUsers;
         }
 
@@ -79,7 +80,7 @@ namespace ZdravoKlinika.Repository
             }
             return userToReturn;
         }
-        private void AddUser(RegisteredUser newUser)
+        public void Add(RegisteredUser newUser)
         {
             if (newUser == null)
                 return;
@@ -110,7 +111,7 @@ namespace ZdravoKlinika.Repository
             dataHandler.Clear();
         }
 
-        public RegisteredUser? GetUserById(string id)
+        public RegisteredUser? GetById(string id)
         {
             RegisteredUser? userToReturn = null;
             foreach (RegisteredUser user in RegisteredUsers)
@@ -123,5 +124,45 @@ namespace ZdravoKlinika.Repository
             }
             return userToReturn;
         }
+
+        public void Remove(RegisteredUser item)
+        {
+            if (registeredUsers != null)
+                registeredUsers.Remove(item);
+        }
+
+        public void Update(RegisteredUser item)
+        {
+            int index = GetIndex(item.PersonalId);
+            if (index != -1)
+            {
+                registeredUsers[index] = item;
+            }
+        }
+
+        public void RemoveAll()
+        {
+            if (registeredUsers != null)
+                registeredUsers.Clear();
+        }
+        private int GetIndex(String id)
+        {
+            int indexToRemove = -1;
+            foreach (RegisteredUser user in registeredUsers)
+            {
+                if (user.PersonalId.Equals(id))
+                {
+                    indexToRemove = registeredUsers.IndexOf(user);
+                    break;
+                }
+            }
+
+            if (indexToRemove == -1)
+            {
+                throw new Exception("User does not exist");
+            }
+            return indexToRemove;
+        }
+
     }
 }

@@ -40,7 +40,7 @@ namespace ZdravoKlinika.View.Secretary
             doctorController = new DoctorController();
             LoadAppointments(patientViewModel.SelectedPatient.GetPatientId());
 
-            Patient pat = patientViewModel.SelectedPatient;
+            IPatient pat = patientViewModel.SelectedPatient;
             if (pat.GetPatientType() == PatientType.Registered)
             {
                 RegisteredPatient rpat;
@@ -134,17 +134,6 @@ namespace ZdravoKlinika.View.Secretary
                 Doctor doc = doctorController.GetById(a);
 
                 List<String> b = new List<String>();
-
-                DateTime currentDate;
-                if (DateTime.Now.Minute < 15 && DateTime.Now.Minute > 0)
-                    currentDate = DateTime.Now.ToLocalTime().AddMinutes(14);
-                else if (DateTime.Now.Minute < 30)
-                    currentDate = DateTime.Now.ToLocalTime().AddMinutes(29);
-                else if (DateTime.Now.Minute < 45)
-                    currentDate = DateTime.Now.ToLocalTime().AddMinutes(44);
-                else
-                    currentDate = DateTime.Now.ToLocalTime().AddHours(1);
-
 
                 foreach (DateBlock block in appointmentContoller.GetDateBlocksForDoctorInNextHour(holder,doc))
                 {

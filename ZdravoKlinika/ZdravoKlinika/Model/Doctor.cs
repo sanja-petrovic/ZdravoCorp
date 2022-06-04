@@ -1,33 +1,38 @@
 using System.Collections.Generic;
 using System;
-
-public class Doctor : Employee
+namespace ZdravoKlinika.Model
 {
-    private String specialty;
-    //private String education;
-
-    public Doctor()
+    public class Doctor : ZdravoKlinika.Model.Employee
     {
+        private String specialty;
+        //private String education;
 
-    }
+        public Doctor()
+        {
 
     public string Specialty { get => specialty; set => specialty = value; }
     public string NameAndLast { get => Name + " " + Lastname + " " + PersonalId; }
 
     public bool IsSpecialist()
     {
-        return !Specialty.Equals("Opšta praksa");
+        return !Specialty.Equals("Opï¿½ta praksa");
     }
 
-    public static Doctor Parse(string id)
-    {
-        Doctor doc = new Doctor();
-        doc.PersonalId = id;
-        return doc;
-    }
+        public bool IsSpecialist()
+        {
+            throw new NotImplementedException();
+        }
 
-    public override string ToString()
-    {
-        return "Dr " + this.Name + " " + this.Lastname;
+        public static Doctor Parse(string id)
+        {
+            Doctor doc = new Doctor();
+            doc.PersonalId = id;
+            return doc;
+        }
+
+        public override string ToString()
+        {
+            return "Dr " + this.Name + " " + this.Lastname;
+        }
     }
 }

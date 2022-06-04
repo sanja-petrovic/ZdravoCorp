@@ -52,7 +52,7 @@ namespace ZdravoKlinika.Service
             request.Id = newId;
             if(IsRequestAcceptable(request))
             {
-                this.repository.CreateRequest(request);
+                this.repository.Add(request);
             }
         }
 
@@ -121,7 +121,7 @@ namespace ZdravoKlinika.Service
             TimeOffRequest requestInDatabase = GetById(req.Id);
             requestInDatabase.Comment = req.Comment;
             requestInDatabase.State = req.State;
-            repository.EditRequest(requestInDatabase);
+            repository.Update(requestInDatabase);
         }
 
         public bool HasAlreadyMadeRequest(DateBlock period, String doctorId)

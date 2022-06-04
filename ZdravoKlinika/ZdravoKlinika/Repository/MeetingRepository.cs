@@ -8,17 +8,17 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class MeetingRepository
+    public class MeetingRepository : Interfaces.IMeetingRepository
     {
         private MeetingDataHandler dataHandler;
         private List<Meeting> meetings;
         public MeetingRepository()
         { 
             dataHandler = new MeetingDataHandler();
-            ReadData();
+            ReadDataFromFile();
         }
 
-        private void ReadData() 
+        private void ReadDataFromFile() 
         {
             meetings = dataHandler.Read();
             if (meetings == null)
@@ -28,9 +28,9 @@ namespace ZdravoKlinika.Repository
             return;
         }
 
-        public void CreateMeeting(Meeting meeting) 
+        public void Add(Meeting meeting) 
         {
-            ReadData();
+            ReadDataFromFile();
             meetings.Add(meeting);
             dataHandler.Write(meetings);
             return;
@@ -38,13 +38,21 @@ namespace ZdravoKlinika.Repository
 
         public List<Meeting> GetAll() 
         {
-            ReadData();
+            ReadDataFromFile();
             return meetings;
         }
 
-        public void DeleteMeeting(String id)
+        public void Remove(Meeting meeting)
         {
-            ReadData();
+            ReadDataFromFile();
+            int indexToRemove = GetIndex(meeting.MeetingId);
+            meetings.RemoveAt(indexToRemove);
+            dataHandler.Write(meetings);
+            return;
+        }
+
+        private int GetIndex(String id) 
+        {
             int indexToRemove = -1;
             foreach (Meeting meeting in meetings)
             {
@@ -59,11 +67,29 @@ namespace ZdravoKlinika.Repository
             {
                 throw new Exception("Meeting does not exist");
             }
-
-            meetings.RemoveAt(indexToRemove);
-            dataHandler.Write(meetings);
-            return;
+            return indexToRemove;
         }
 
+        public Meeting GetById(string id)
+        {
+            return meetings.Find(x => x.MeetingId.Equals(id));
+        }
+
+        public void Update(Meeting item)
+        {
+            int index = GetIndex(item.MeetingId);
+            if (index != -1)
+            {
+                meetings[index] = item;
+                dataHandler.Write(meetings);
+            }
+        }
+
+        public void RemoveAll()
+        {
+            if (meetings != null)
+                meetings.Clear();
+            dataHandler.Write(meetings);
+        }
     }
 }

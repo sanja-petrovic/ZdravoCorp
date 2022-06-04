@@ -49,7 +49,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
             foreach (Appointment appointment in appointments)
             {
-                Patient patient = appointment.Patient;
+                
+                IPatient patient = appointment.Patient;
                 string diagnoses = "";
                 string prescriptions = "";
                 if(patient.GetPatientType() == PatientType.Registered)

@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Data_Handler;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class TimeOffRequestRepository
+    public class TimeOffRequestRepository : ITimeOffRequestRepository
     {
         private TimeOffRequestDataHandler dataHandler;
         private List<TimeOffRequest> requests;
@@ -50,13 +51,13 @@ namespace ZdravoKlinika.Repository
             return request;
         }
 
-        public void CreateRequest(TimeOffRequest request)
+        public void Add(TimeOffRequest request)
         {
             this.requests.Add(request);
             this.dataHandler.Write(this.requests);
         }
 
-        public void UpdateReferences(TimeOffRequest request)
+        private void UpdateReferences(TimeOffRequest request)
         {
             DoctorRepository doctorRepository = new DoctorRepository();
             request.Doctor = doctorRepository.GetById(request.Doctor.PersonalId);
@@ -93,12 +94,18 @@ namespace ZdravoKlinika.Repository
             return requests;
         }
 
-        public void EditRequest(TimeOffRequest requestInDatabase)
+        public void Update(TimeOffRequest requestInDatabase)
+        {
+            int index = GetIndex(requestInDatabase.Id);
+            requests[index] = requestInDatabase;
+            dataHandler.Write(requests);
+        }
+        public int GetIndex(int id) 
         {
             int index = -1;
             foreach (TimeOffRequest request in requests)
             {
-                if (request.Id == requestInDatabase.Id)
+                if (request.Id == id)
                 {
                     index = requests.IndexOf(request);
                 }
@@ -107,8 +114,20 @@ namespace ZdravoKlinika.Repository
             {
                 throw new Exception("Request does not exist");
             }
-            requests[index] = requestInDatabase;
-            dataHandler.Write(requests);
+            return index;
+        }
+
+        public void Remove(TimeOffRequest item)
+        {
+            if(this.GetById(item.Id) != null)
+                this.requests.RemoveAt(this.GetIndex(item.Id));
+            this.dataHandler.Write(this.requests);
+        }
+
+        public void RemoveAll()
+        {
+            this.requests.Clear();
+            this.dataHandler.Write(this.requests);
         }
     }
 }

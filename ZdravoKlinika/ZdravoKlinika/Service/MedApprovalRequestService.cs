@@ -60,12 +60,12 @@ namespace ZdravoKlinika.Service
             request.Id = newId;
             request.Pending = true;
 
-            this.repository.CreateRequest(request);
+            this.repository.Add(request);
         }
 
         public void DenyRequest(MedApprovalRequest request)
         {
-            this.repository.UpdateRequest(request);
+            this.repository.Update(request);
         }
 
         public void ApproveRequest(MedApprovalRequest request)
@@ -73,8 +73,8 @@ namespace ZdravoKlinika.Service
             request.Pending = false;
             request.Medication.Validated = true;
             request.Medication.Validator = request.Reviewer;
-            medicationRepository.UpdateMedication(request.Medication);
-            this.repository.UpdateRequest(request);
+            medicationRepository.Update(request.Medication);
+            this.repository.Update(request);
         }
     }
 }

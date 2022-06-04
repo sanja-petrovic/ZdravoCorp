@@ -1,121 +1,114 @@
 
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Model;
 
-public class DoctorRepository
+namespace ZdravoKlinika.Repository
 {
-    private DoctorDataHandler doctorDataHandler;
-    private List<Doctor> doctorList;
-
-    public List<Doctor> DoctorList { get => doctorList; set => doctorList = value; }
-    public DoctorDataHandler DoctorDataHandler { get => doctorDataHandler; set => doctorDataHandler = value; }
-
-    public DoctorRepository()
+    public class DoctorRepository : Interfaces.IDoctorRepository
     {
-        DoctorDataHandler = new DoctorDataHandler();
-        DoctorList = DoctorDataHandler.Read();
-        if (DoctorList == null) DoctorList = new List<Doctor>();
-    }
+        private DoctorDataHandler doctorDataHandler;
+        private List<Doctor> doctorList;
 
+        public List<Doctor> DoctorList { get => doctorList; set => doctorList = value; }
+        public DoctorDataHandler DoctorDataHandler { get => doctorDataHandler; set => doctorDataHandler = value; }
 
-    public List<Doctor> GetAll()
-    {
-        return DoctorList;
-    }
-
-    public Doctor GetById(String id)
-    {
-
-        foreach (Doctor doctor in DoctorList)
+        public DoctorRepository()
         {
-            if (doctor.PersonalId == id)
+            DoctorDataHandler = new DoctorDataHandler();
+            DoctorList = DoctorDataHandler.Read();
+            if (DoctorList == null) DoctorList = new List<Doctor>();
+        }
+
+
+        public List<Doctor> GetAll()
+        {
+            return DoctorList;
+        }
+
+        public Doctor GetById(String id)
+        {
+
+            foreach (Doctor doctor in DoctorList)
             {
-                return doctor;
+                if (doctor.PersonalId == id)
+                {
+                    return doctor;
+                }
             }
+            return null;
         }
-        return null;
-    }
 
-    public Doctor GetByEmail(String email)
-    {
-        foreach (Doctor doctor in DoctorList)
+        public Doctor GetByEmail(String email)
         {
-            if (doctor.Email == email)
+            foreach (Doctor doctor in DoctorList)
             {
-
-                return doctor;
+                if (doctor.Email == email)
+                {
+                    return doctor;
+                }
             }
+            return null;
         }
-        return null;
-    }
 
-    public void CreateDoctor(Doctor doctor)
-    {
-        DoctorList.Add(doctor);
-        DoctorDataHandler.Write(DoctorList);
-    }
-
-    public void DeleteDoctor(Doctor doctor)
-    {
-        var d = DoctorList.Find(x => x.PersonalId.Equals(doctor.PersonalId));
-        DoctorList.Remove(d);
-        DoctorDataHandler.Write(DoctorList);
-    }
-
-    public void UpdateDoctor(Doctor doctor)
-    {
-        if (doctor == null)
-            return;
-        if (this.doctorList != null)
+        public void Add(Doctor doctor)
         {
-            int index = GetIndex(doctor);
-            this.doctorList[index] = doctor;
-            doctorDataHandler.Write(this.doctorList);
+            DoctorList.Add(doctor);
+            DoctorDataHandler.Write(DoctorList);
         }
-    }
 
-    public int GetIndex(Doctor doctor)
-    {
-        int index = -1;
-        for (int i = 0; i < this.doctorList.Count; i++)
+        public void Delete(Doctor doctor)
         {
-            if (this.doctorList[i].PersonalId.Equals(doctor.PersonalId))
+            var d = DoctorList.Find(x => x.PersonalId.Equals(doctor.PersonalId));
+            DoctorList.Remove(d);
+            DoctorDataHandler.Write(DoctorList);
+        }
+
+        public void Update(Doctor doctor)
+        {
+            Delete(doctor);
+            Add(doctor);
+        }
+
+
+        public List<Doctor> GetBySpecialty(string specialty)
+        {
+            List<Doctor> doctors = new List<Doctor>();
+
+            foreach (Doctor doctor in this.doctorList)
             {
-                index = i;
-                break;
+                if (doctor.Specialty.Equals(specialty))
+                {
+                    doctors.Add(doctor);
+                }
             }
+            return doctors;
         }
 
-        return index;
-    }
-
-    public List<Doctor> GetBySpecialty(string specialty)
-    {
-        List<Doctor> doctors = new List<Doctor>();
-
-        foreach (Doctor doctor in this.doctorList)
+        public List<String> GetAllSpecialties()
         {
-            if (doctor.Specialty.Equals(specialty))
+            List<String> specialties = new List<String>();
+
+            foreach (Doctor doctor in this.DoctorList)
             {
-                doctors.Add(doctor);
+                if (!specialties.Contains(doctor.Specialty))
+                {
+                    specialties.Add(doctor.Specialty);
+                }
             }
+
+            return specialties;
         }
-        return doctors;
-    }
 
-    public List<String> GetAllSpecialties()
-    {
-        List<String> specialties = new List<String>();
-
-        foreach (Doctor doctor in this.DoctorList)
+        public void Remove(Doctor item)
         {
-            if (!specialties.Contains(doctor.Specialty))
-            {
-                specialties.Add(doctor.Specialty);
-            }
+            throw new NotImplementedException();
         }
 
-        return specialties;
+        public void RemoveAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

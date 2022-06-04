@@ -14,7 +14,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
     public class AppointmentViewModel : ViewModelBase
     {
         private Doctor _doctor;
-        private Patient _patient;
+        private IPatient _patient;
         private string doctorName;
         private int id;
         private string patientId;
@@ -139,7 +139,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string PatientId { get => patientId; set { SetProperty(ref patientId, value); _Patient = patientController.GetById(patientId); Name = _Patient.ToString(); } }
         public string DoctorId { get => doctorId; set => SetProperty(ref doctorId, value); }
         public Doctor _Doctor { get => _doctor; set => SetProperty(ref _doctor, value); }
-        public Patient _Patient { get => _patient; set { SetProperty(ref _patient, value); CreateAppointment.RaiseCanExecuteChanged(); SetTimes(); } }
+        public IPatient _Patient { get => _patient; set => SetProperty(ref _patient, value); }
         public DateBlock Time1 { get => _time; set { SetProperty(ref _time, value); CreateAppointment.RaiseCanExecuteChanged(); SetRooms(); } }
 
         public ViewModelBase Parent { get => parent; set => SetProperty(ref parent, value); }

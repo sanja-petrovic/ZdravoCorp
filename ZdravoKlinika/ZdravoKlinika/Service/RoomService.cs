@@ -58,14 +58,14 @@ public class RoomService
 
     public void CreateRoom(Room room)
     {
-        this.roomRepository.CreateRoom(new Room(GenerateRoomId().ToString(), "R"+GenerateRoomId().ToString(), room.Type, room.Level, room.Number, room.Status, room.Free));
+        this.roomRepository.Add(new Room(GenerateRoomId().ToString(), "R"+GenerateRoomId().ToString(), room.Type, room.Level, room.Number, room.Status, room.Free));
     }
 
     public void UpdateRoom(Room changedRoom)
     {
         Room room = this.roomRepository.GetById(changedRoom.RoomId);
         UpdateRoomValues(room, changedRoom);
-        this.roomRepository.UpdateRoom(room);
+        this.roomRepository.Update(room);
     }
 
     public void UpdateRoom(Room changedRoom, List<Equipment> equipmentInRoom)
@@ -73,13 +73,13 @@ public class RoomService
         Room room = this.roomRepository.GetById(changedRoom.RoomId);
         UpdateRoomValues(room, changedRoom);
         room.EquipmentInRoom = equipmentInRoom;
-        this.roomRepository.UpdateRoom(room);
+        this.roomRepository.Update(room);
     }
 
     public void DeleteRoom(String roomId)
     {
         Room r = this.roomRepository.GetById(roomId);
-        this.roomRepository.DeleteRoom(r);
+        this.roomRepository.Remove(r);
     }
 
     public void OccupyRoom(String roomId)

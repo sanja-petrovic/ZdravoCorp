@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Util;
-using ZdravoKlinika.View.DialogHelper;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {

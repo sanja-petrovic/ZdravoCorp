@@ -5,7 +5,7 @@
 
 using System;
 using System.Collections.Generic;
-using ZdravoKlinika.Util;
+using ZdravoKlinika.Model;
 
 public class DoctorController
 {

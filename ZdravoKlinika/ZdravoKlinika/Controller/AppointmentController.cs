@@ -2,18 +2,24 @@ using System;
 using System.Collections.Generic;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Service;
 using ZdravoKlinika.Util;
 
 public class AppointmentController
 {
     private AppointmentService appointmentService;
-    
+    private PatientService patientService;
+    private DoctorService doctorService;
+    private RoomService roomService;
 
     public AppointmentService AppointmentService { get => appointmentService; set => appointmentService = value; }
 
     public AppointmentController()
     {
         this.AppointmentService = new AppointmentService();
+        this.patientService = new PatientService();
+        this.doctorService = new DoctorService();
+        this.roomService = new RoomService();
     }
     public List<Appointment> GetAll()
     {
@@ -72,7 +78,7 @@ public class AppointmentController
     {
         return this.appointmentService.GetFreeTimeForDoctor(date, duration, doctor, startHours, endHours);
     }
-    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, Patient patient, int startHours, int endHours)
+    public List<DateBlock> getFreeTimeForPatient(DateTime date, int duration, IPatient patient, int startHours, int endHours)
     {
         return this.appointmentService.GetFreeTimeForPatient(date, duration, patient, startHours, endHours);
     }
@@ -118,7 +124,16 @@ public class AppointmentController
     }
     public void EditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
     {
-        this.appointmentService.EditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
+        Appointment appointment = new Appointment();
+        appointment.AppointmentId = appointmentId;
+        appointment.Patient = patientService.GetById(patientId);
+        appointment.Doctor = doctorService.GetById(doctorId);
+        appointment.DateAndTime = dateAndTime;
+        appointment.Emergency = emergency;
+        appointment.Type = type;
+        appointment.Room = roomService.GetById(roomId);
+        appointment.Duration = duration;
+        this.appointmentService.EditAppointment(appointment);
     }
 
     public void EditAppointment(int appointmentId, Doctor doctor, Patient patient, DateTime dateAndTime, bool emergency, AppointmentType type, Room room, int duration)
@@ -135,10 +150,19 @@ public class AppointmentController
         this.appointmentService.EditAppointment(a);
     }
     public void PatientEditAppointment(int appointmentId, String doctorId, String patientId, DateTime dateAndTime, bool emergency, AppointmentType type, String roomId, int duration)
-    { 
+    {
+        Appointment appointment = new Appointment();
+        appointment.AppointmentId = appointmentId;
+        appointment.Patient = patientService.GetById(patientId);
+        appointment.Doctor = doctorService.GetById(doctorId);
+        appointment.DateAndTime = dateAndTime;
+        appointment.Emergency = emergency;
+        appointment.Type = type;
+        appointment.Room = roomService.GetById(roomId);
+        appointment.Duration = duration;
         try
         {
-            this.appointmentService.PatientEditAppointment(appointmentId, doctorId, patientId, dateAndTime, emergency, type, roomId, duration);
+            this.appointmentService.PatientEditAppointment(appointment);
         }
         catch (Exception ex)
         {

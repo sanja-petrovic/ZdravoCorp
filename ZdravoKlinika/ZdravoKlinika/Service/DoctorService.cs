@@ -5,6 +5,8 @@
 
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository;
 
 public class DoctorService
 {
@@ -39,7 +41,7 @@ public class DoctorService
         doctor.Specialty = speciality;
         doctor.EducationLevel = education;
 
-        doctorRepository.CreateDoctor(doctor);
+        doctorRepository.Add(doctor);
 
     }
 
@@ -58,7 +60,7 @@ public class DoctorService
         doctor.Gender = gender;
         doctor.DateOfBirth = dateOfBirth;
 
-        doctorRepository.UpdateDoctor(doctor);
+        doctorRepository.Update(doctor);
 
     }
 
@@ -69,7 +71,7 @@ public class DoctorService
 
     public void DeleteDoctor(String personalId)
     {
-        doctorRepository.DeleteDoctor(GetById(personalId));
+        doctorRepository.Delete(GetById(personalId));
     }
 
     public List<Doctor> GetBySpecialty(string specialty)

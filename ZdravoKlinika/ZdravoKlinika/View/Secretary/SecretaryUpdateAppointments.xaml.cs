@@ -38,7 +38,7 @@ namespace ZdravoKlinika.View.Secretary
             doctorController = new DoctorController();
             LoadAppointments(patientViewModel.SelectedPatient.GetPatientId());
 
-            Patient pat = patientViewModel.SelectedPatient;
+            IPatient pat = patientViewModel.SelectedPatient;
             if (pat.GetPatientType() == PatientType.Registered)
             {
                 RegisteredPatient rpat;

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Data_Handler;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class EmployeeRepository
+    public class EmployeeRepository : Interfaces.IEmployeeRepository
     {
         private EmployeeDataHandler employeeDataHandler;
         private List<Employee> employees;
@@ -37,6 +38,26 @@ namespace ZdravoKlinika.Repository
                 }
             }
             return null;
+        }
+
+        public void Add(Employee item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Employee item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Employee item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
