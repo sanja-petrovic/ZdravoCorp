@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentViewModel}" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
         mc:Ignorable="d"
         Title="CreateApptSchedule" Height="380" Width="446">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Height="380" Width="446" >
         <TextBlock HorizontalAlignment="Left" Margin="33,118,0,0" TextWrapping="Wrap" Text="Tip" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
         <TextBlock HorizontalAlignment="Left" Margin="171,152,0,0" TextWrapping="Wrap" Text="Hitno?" VerticalAlignment="Top" FontWeight="Regular" FontSize="12"/>

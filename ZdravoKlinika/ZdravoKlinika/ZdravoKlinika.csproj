@@ -133,7 +133,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Documents\" />
+    <Folder Include="Resources\Documents\NewFolder\" />
     <Folder Include="View\Dialogs\" />
     <Folder Include="View\Patient\" />
   </ItemGroup>

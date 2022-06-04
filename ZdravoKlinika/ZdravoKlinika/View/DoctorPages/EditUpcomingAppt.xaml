@@ -4,9 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
-        xmlns:System="clr-namespace:System;assembly=System.Runtime" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentViewModel}" x:Class="ZdravoKlinika.View.DoctorPages.EditUpcomingAppt"
+        xmlns:System="clr-namespace:System;assembly=System.Runtime" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:AppointmentViewModel}" x:Class="ZdravoKlinika.View.DoctorPages.EditUpcomingAppt" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Izmena termina" Height="362" Width="446" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Height="362" Width="446">
         <TextBlock  HorizontalAlignment="Left" Margin="36,31,0,0" TextWrapping="Wrap" Text="Pacijent" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="36,55,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" />

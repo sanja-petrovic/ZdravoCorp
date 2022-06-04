@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" WindowStartupLocation="CenterScreen" d:DataContext="{d:DesignInstance Type=model:DiagnosisViewModel}"
         mc:Ignorable="d"
         Title="Upisivanje dijagnoze" Height="276" Width="454" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Height="276" Width="454">
         <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Command="{Binding ConfirmCommand}" Margin="336,182,0,0">
             <Button.Resources>
@@ -31,7 +39,7 @@
             </Button.InputBindings>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="40,51,0,0" TextWrapping="Wrap" Text="Dijagnoza" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox Foreground="#555557" Text="{Binding Diagnosis, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" HorizontalAlignment="Center" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="371" Height="74" BorderBrush="#FFAEAEC1">
+        <TextBox Foreground="#555557" Text="{Binding Diagnosis, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" HorizontalAlignment="Center" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="371" Height="74" BorderBrush="#FFAEAEC1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

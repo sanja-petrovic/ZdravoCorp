@@ -6,6 +6,14 @@
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:TherapyTab}"
              mc:Ignorable="d"  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
              Height="390" Width="432" Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid Margin="0,-30,0,55">
 
         <ComboBox  FontFamily="Nunito Sans" x:Name="MedCB" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" BorderBrush="#FFAEAEC1"  Foreground="#555557" ItemsSource="{Binding MedicationsDisplay}" HorizontalAlignment="Left" Margin="34,75,0,0" VerticalAlignment="Top" Width="174" Text="Izaberite lek" Padding="5" Height="28" SelectionChanged="MedCB_SelectionChanged">

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:MedViewModel}"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:MedViewModel}" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="" Height="768" Width="846" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.InputBindings>
@@ -12,6 +12,14 @@
         <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding Edit}"/>
         <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding GiveUp}" />
     </Window.InputBindings>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Label Content="Naziv leka" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="159,39,0,0" VerticalAlignment="Top"/>
         <Label Content="Aktivne supstance" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="56,304,0,0" VerticalAlignment="Top"/>
@@ -81,84 +89,84 @@
         <Label Content="Komentar" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="56,590,0,0" VerticalAlignment="Top"/>
 
         <Grid Name="TextBoxGrid" IsEnabled="{Binding Editable}">
-            <TextBox Foreground="#555557" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="56,522,0,0" TextWrapping="Wrap" Text="{Binding Note, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="52" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="56,522,0,0" TextWrapping="Wrap" Text="{Binding Note, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="52" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557"  Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="458,384,0,0" TextWrapping="Wrap" Text="{Binding SideEffects, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="84" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557"  Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="458,384,0,0" TextWrapping="Wrap" Text="{Binding SideEffects, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="84" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557"  Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="56,338,0,0" TextWrapping="Wrap" Text="{Binding Actives, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="53" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557"  Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="56,338,0,0" TextWrapping="Wrap" Text="{Binding Actives, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="53" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557"  Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="458,79,0,0" TextWrapping="Wrap" Text="{Binding Indications, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="107" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557"  Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="458,79,0,0" TextWrapping="Wrap" Text="{Binding Indications, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="107" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557"   Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="56,440,0,0" TextWrapping="Wrap" Text="{Binding Dosage, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="28" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557"   Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="56,440,0,0" TextWrapping="Wrap" Text="{Binding Dosage, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="28" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557"   Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="56,158,0,0" TextWrapping="Wrap" Text="{Binding Form, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="28" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557"   Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="56,158,0,0" TextWrapping="Wrap" Text="{Binding Form, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="28" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557"   Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="56,236,0,0" TextWrapping="Wrap" Text="{Binding Classification, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="53" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557"   Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="56,236,0,0" TextWrapping="Wrap" Text="{Binding Classification, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="53" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557"   Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="56,79,0,0" TextWrapping="Wrap" Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="79" Height="28" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557"   Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="56,79,0,0" TextWrapping="Wrap" Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="79" Height="28" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557"  Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="159,79,0,0" TextWrapping="Wrap" Text="{Binding BrandName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="230" Height="28" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557"  Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="159,79,0,0" TextWrapping="Wrap" Text="{Binding BrandName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="230" Height="28" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="458,236,0,0" TextWrapping="Wrap" Text="{Binding Instructions, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="103" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="458,236,0,0" TextWrapping="Wrap" Text="{Binding Instructions, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="103" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="458,522,0,0" TextWrapping="Wrap" Text="{Binding Allergens, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="52" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="458,522,0,0" TextWrapping="Wrap" Text="{Binding Allergens, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="52" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Foreground="#555557" Name="CommentTB" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#f3f3f6" Padding="5" HorizontalAlignment="Left" Margin="56,624,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="53" BorderBrush="#FFAEAEC1">
+            <TextBox Foreground="#555557" Name="CommentTB" Style="{DynamicResource MaterialDesignFilledTextBox}" Background="#F8F9FE" Padding="5" HorizontalAlignment="Left" Margin="56,624,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="333" Height="53" BorderBrush="#FFAEAEC1">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
