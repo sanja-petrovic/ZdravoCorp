@@ -202,7 +202,8 @@ public class AppointmentService
     internal List<DateBlock> GetDateBlocksForDoctorInNextHour(int duration, Doctor doc)
     {
         List<DateBlock> freeBlocks = new List<DateBlock>();
-        foreach (DateBlock dateBlock in GetFreeTimeForDoctor(DateTime.Now.Date, duration, doc, DateTime.Now.Hour, DateTime.Now.AddHours(2).Hour))
+        
+        foreach (DateBlock dateBlock in GetFreeTimeForUser(new DateBlock(DateTime.Now.Date, duration), doc, new int[] { DateTime.Now.Hour, DateTime.Now.AddHours(2).Hour }))
         {
             if (dateBlock.Start < DateTime.Now || dateBlock.Start > DateTime.Now.AddHours(1))
                 continue;
@@ -214,9 +215,87 @@ public class AppointmentService
         return freeBlocks;
     }
 
+    public List<Appointment> GetAppointmentsByUser(RegisteredUser user)
+    {
+        List<Appointment> retVal = new List<Appointment>();
+        if (user.UserType.Equals(UserType.Patient))
+        {
+            retVal = GetAppointmentsByPatientId(user.PersonalId);
+        }
+        else if (user.UserType.Equals(UserType.Doctor))
+        {
+            retVal = GetAppointmentsByDoctorId(user.PersonalId);
+        }
+
+        return retVal;
+    }
+
+    public List<Appointment> GetAppointmentsByUserForDate(RegisteredUser user, DateTime date)
+    {
+        return GetAppointmentsByUser(user).FindAll(items => items.DateAndTime.Date == date.Date);
+    }
+
+    public List<DateBlock> GetFreeTimeForUser(DateBlock appointmentTime, RegisteredUser user, int[] workHorus)
+    {
+        List<DateBlock> retVal = new List<DateBlock>();
+        List<Appointment> appointments = GetAppointmentsByUserForDate(user, appointmentTime.Start.Date);
+
+        if (appointments.Count == 0)
+        {
+            //he has no appointmets let him choose anyhour
+
+            retVal = DateBlock.getIntervals(appointmentTime.Start.AddHours(workHorus[0]), appointmentTime.Start.AddHours(workHorus[1]));
+        }
+        else
+        {
+            List<Appointment> sortedAppointments = appointments.OrderBy(o => o.DateAndTime).ToList();
+            for (int i = 0; i < sortedAppointments.Count(); i++)
+            {
+                if (i == 0)
+                {
+                    //is there an interval before 1st and after the start of working hours
+
+                    if ((appointmentTime.Start.Date.AddHours(workHorus[0]).AddMinutes(appointmentTime.Duration) - sortedAppointments[i].DateAndTime).TotalMinutes < 0)
+                    {
+                        foreach (DateBlock d in DateBlock.getIntervals(appointmentTime.Start.Date.AddHours(workHorus[0]), sortedAppointments[i].DateAndTime.AddMinutes(-appointmentTime.Duration)))
+                        {
+                            retVal.Add(d);
+                        }
+                    }
+                }
+                else
+                {
+
+                    if ((sortedAppointments[i - 1].DateAndTime.AddMinutes(sortedAppointments[i - 1].Duration + appointmentTime.Duration) - sortedAppointments[i].DateAndTime).TotalMinutes < 0)
+                    {
+                        //last and its duration + NEEDED duration is before the start of next
+                        foreach (DateBlock d in DateBlock.getIntervals(sortedAppointments[i - 1].DateAndTime.AddMinutes(sortedAppointments[i - 1].Duration), sortedAppointments[i].DateAndTime.AddMinutes(-appointmentTime.Duration)))
+                        {
+                            retVal.Add(d);
+                        }
+                    }
+                }
+            }
+            //all appointments have been looked at, add all free spaces after the last
+            FreeTimesAfterLast(sortedAppointments, workHorus, retVal);
+        }
+        return retVal;
+    }
+
+    private void FreeTimesAfterLast(List<Appointment> sortedAppointments, int[] workHorus, List<DateBlock> result)
+    {
+        Appointment lastAppointmentForTheDay = sortedAppointments[sortedAppointments.Count() - 1];
+        DateTime end = lastAppointmentForTheDay.DateAndTime.Date.AddHours(workHorus[1]);
+        DateTime start = lastAppointmentForTheDay.DateAndTime.AddMinutes(lastAppointmentForTheDay.Duration);
+        foreach (DateBlock d in DateBlock.getIntervals(start, end))
+        {
+            result.Add(d);
+        }
+    }
+
 
     //TODO these 2 need code cleanup, they can become one-ish ? 
-    public List<DateBlock> GetFreeTimeForDoctor(DateTime date,int duration, Doctor doctor, int startHours, int endHours)
+   /* public List<DateBlock> GetFreeTimeForDoctor(DateTime date,int duration, Doctor doctor, int startHours, int endHours)
     {
         List<DateBlock> result = new List<DateBlock>();
         List<Appointment> appointments = GetAppointmentsByDoctorIdForDate(doctor.PersonalId, date.Date);
@@ -269,6 +348,7 @@ public class AppointmentService
             return result;
         }
     }
+   */
     public List<Doctor> GetFreeDoctorsBySpecialityForNextHour(int duration, String specialitty)
     { 
         List<Doctor> docs = new List<Doctor>();
@@ -284,6 +364,70 @@ public class AppointmentService
             throw new Exception("2");
 
         return docs;
+    }
+
+    public List<DateBlock> GetFreeTimeForPatient(DateTime date, int duration, IPatient patient, int startHours, int endHours)
+    {
+        List<DateBlock> result = new List<DateBlock>();
+        List<Appointment> appointments = new List<Appointment>();
+        if (patient.GetPatientType() == PatientType.Registered)
+        {
+            appointments = GetAppointmentsByPatientIdForDate(((RegisteredPatient)patient).PersonalId, date.Date);
+        }
+        else
+        {
+            appointments = GetAppointmentsByPatientIdForDate(((GuestPatient)patient).PersonalId, date.Date);
+        }
+
+        {
+            if (appointments.Count == 0)
+            {
+                //he has no appointmets let him choose anyhour
+
+                result = DateBlock.getIntervals(date.AddHours(startHours), date.AddHours(endHours));
+                return result;
+            }
+
+            List<Appointment> sortedAppointments = appointments.OrderBy(o => o.DateAndTime).ToList();
+
+            for (int i = 0; i < sortedAppointments.Count(); i++)
+            {
+                if (i == 0)
+                {
+                    //is there an interval before 1st and after the start of working hours
+
+                    if ((date.Date.AddHours(startHours).AddMinutes(duration) - sortedAppointments[i].DateAndTime).TotalMinutes < 0)
+                    {
+                        foreach (DateBlock d in DateBlock.getIntervals(date.Date.AddHours(startHours), sortedAppointments[i].DateAndTime.AddMinutes(-duration)))
+                        {
+                            result.Add(d);
+                        }
+                    }
+                }
+                else
+                {
+
+                    if ((sortedAppointments[i - 1].DateAndTime.AddMinutes(sortedAppointments[i - 1].Duration + duration) - sortedAppointments[i].DateAndTime).TotalMinutes < 0)
+                    {
+                        //last and its duration + NEEDED duration is before the start of next
+                        foreach (DateBlock d in DateBlock.getIntervals(sortedAppointments[i - 1].DateAndTime.AddMinutes(sortedAppointments[i - 1].Duration), sortedAppointments[i].DateAndTime.AddMinutes(-duration)))
+                        {
+                            result.Add(d);
+                        }
+                    }
+                }
+            }
+            //all appointments have been looked at, add all free spaces after the last
+            Appointment lastAppointmentForTheDay = sortedAppointments[sortedAppointments.Count() - 1];
+            DateTime end = date.AddHours(endHours);
+            DateTime start = lastAppointmentForTheDay.DateAndTime.AddMinutes(lastAppointmentForTheDay.Duration);
+            foreach (DateBlock d in DateBlock.getIntervals(start, end))
+            {
+                result.Add(d);
+            }
+            return result;
+        }
+
     }
 
     private DateTime GetCurrentTimeFormated()
@@ -306,7 +450,8 @@ public class AppointmentService
 
         foreach (Doctor doctor in doctors)
         {
-            foreach (DateBlock dateBlock in GetFreeTimeForDoctor(DateTime.Now.Date, duration, doctor, DateTime.Now.Hour, DateTime.Now.AddHours(1).AddMinutes(duration).Hour))
+           
+            foreach (DateBlock dateBlock in GetFreeTimeForUser(new DateBlock(DateTime.Now.Date, duration), doctor, new int[] { DateTime.Now.Hour, DateTime.Now.AddHours(1).AddMinutes(duration).Hour }))
             {
                 if (roomRepository.GetFreeRooms(dateBlock.Start, RoomType.operating).Count > 0)
                 {
@@ -330,70 +475,7 @@ public class AppointmentService
         }
         return prunedList;
     }
-    public List<DateBlock> GetFreeTimeForPatient(DateTime date, int duration, IPatient patient, int startHours, int endHours)
-    {
-        List<DateBlock> result = new List<DateBlock>();
-        List<Appointment> appointments = new List<Appointment>();
-        if (patient.GetPatientType() == PatientType.Registered)
-        {
-            appointments = GetAppointmentsByPatientIdForDate(((RegisteredPatient)patient).PersonalId, date.Date);
-        }
-        else 
-        {
-            appointments = GetAppointmentsByPatientIdForDate(((GuestPatient)patient).PersonalId, date.Date);
-        }
-         
-         {
-             if (appointments.Count == 0)
-             {
-                 //he has no appointmets let him choose anyhour
-
-                 result = DateBlock.getIntervals(date.AddHours(startHours), date.AddHours(endHours));
-                 return result;
-             }
-
-             List<Appointment> sortedAppointments = appointments.OrderBy(o => o.DateAndTime).ToList();
-
-             for (int i = 0; i < sortedAppointments.Count(); i++)
-             {
-                 if (i == 0)
-                 {
-                     //is there an interval before 1st and after the start of working hours
-
-                     if ((date.Date.AddHours(startHours).AddMinutes(duration) - sortedAppointments[i].DateAndTime).TotalMinutes < 0)
-                     {
-                         foreach (DateBlock d in DateBlock.getIntervals(date.Date.AddHours(startHours), sortedAppointments[i].DateAndTime.AddMinutes(-duration)))
-                         {
-                             result.Add(d);
-                         }
-                     }
-                 }
-                 else
-                 {
-
-                     if ((sortedAppointments[i - 1].DateAndTime.AddMinutes(sortedAppointments[i - 1].Duration + duration) - sortedAppointments[i].DateAndTime).TotalMinutes < 0)
-                     {
-                         //last and its duration + NEEDED duration is before the start of next
-                         foreach (DateBlock d in DateBlock.getIntervals(sortedAppointments[i - 1].DateAndTime.AddMinutes(sortedAppointments[i - 1].Duration), sortedAppointments[i].DateAndTime.AddMinutes(-duration)))
-                         {
-                             result.Add(d);
-                         }
-                     }
-                 }
-             }
-             //all appointments have been looked at, add all free spaces after the last
-             Appointment lastAppointmentForTheDay = sortedAppointments[sortedAppointments.Count() - 1];
-             DateTime end = date.AddHours(endHours);
-             DateTime start = lastAppointmentForTheDay.DateAndTime.AddMinutes(lastAppointmentForTheDay.Duration);
-             foreach (DateBlock d in DateBlock.getIntervals(start, end))
-             {
-                 result.Add(d);
-             }
-             return result;
-         }
-       
-    }
-
+    
     public void AddPatientNote(Appointment appointment, String note)
     {
         appointment.PatientNotes = note;
@@ -435,7 +517,8 @@ public class AppointmentService
     }
     private void CheckIfDateIsFreeAndEdit(Appointment appointment, Appointment appointmentInDatabase)
     {
-        List<DateBlock> t = DateBlock.getIntersection(GetFreeTimeForDoctor(appointment.DateAndTime.Date, appointment.Duration, appointment.Doctor, 8, 20), GetFreeTimeForPatient(appointment.DateAndTime.Date, appointment.Duration, appointment.Patient, 8, 20));
+        
+        List<DateBlock> t = DateBlock.getIntersection(GetFreeTimeForUser(new DateBlock(appointment.DateAndTime.Date, appointment.Duration), appointment.Doctor, new int[] { 8, 20 }), GetFreeTimeForPatient(appointment.DateAndTime.Date, appointment.Duration, appointment.Patient, 8, 20));
         foreach (DateBlock block in t)
         {
             if (block.Start.TimeOfDay.Equals(appointment.DateAndTime.TimeOfDay) || appointment.DateAndTime.TimeOfDay.Equals(appointmentInDatabase.DateAndTime.TimeOfDay))

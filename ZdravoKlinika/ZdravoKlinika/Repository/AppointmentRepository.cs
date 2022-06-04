@@ -92,7 +92,12 @@ public class AppointmentRepository : IAppointmentRepository
         if (this.appointments == null)
             this.appointments = new List<Appointment>();
         if (!this.appointments.Contains(newAppointment))
+        {
             this.appointments.Add(newAppointment);
+            appointmentDataHandler.Write(appointments);
+        }
+            
+           
     }
     public void Remove(Appointment oldAppointment)
     {
@@ -100,12 +105,19 @@ public class AppointmentRepository : IAppointmentRepository
             return;
         if (this.appointments != null)
             if (this.appointments.Contains(oldAppointment))
+            {
                 this.appointments.Remove(oldAppointment);
+                appointmentDataHandler.Write(appointments);
+            }
     }
     public void RemoveAll()
     {
         if (appointments != null)
+        {
             appointments.Clear();
+            appointmentDataHandler.Write(appointments);
+        }
+            
     }
 
     public List<Appointment> GetAll()

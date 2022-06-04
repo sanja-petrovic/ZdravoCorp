@@ -112,7 +112,7 @@ namespace ZdravoKlinika.View.Secretary
                         a.Add(doc.NameAndLast);
                     }
 
-                    foreach (DateBlock block in AppointmentContoller.getFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, 30, selected.Patient, 8, 20))
+                    foreach (DateBlock block in AppointmentContoller.GetFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, 30, selected.Patient, 8, 20))
                     {
                         b.Add(block.Start.TimeOfDay.ToString());
                     }
@@ -150,7 +150,7 @@ namespace ZdravoKlinika.View.Secretary
                         a.Add(doc.NameAndLast);
                     }
 
-                    foreach (DateBlock block in AppointmentContoller.getFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, selected.Duration, selected.Patient, 8, 20))
+                    foreach (DateBlock block in AppointmentContoller.GetFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, selected.Duration, selected.Patient, 8, 20))
                     {
                         b.Add(block.Start.TimeOfDay.ToString());
                     }

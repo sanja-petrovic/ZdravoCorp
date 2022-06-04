@@ -35,6 +35,10 @@ namespace ZdravoKlinika.Util
         }
         static public List<DateBlock> getIntervals(DateTime start, DateTime end)
         {
+            if(end < start)
+            {
+                end = end.AddDays(1);
+            }
             List<DateBlock> result = new List<DateBlock>();
             int numOfIntervals = (int)((end - start).TotalMinutes / minInterval);
             if (numOfIntervals > 0)
