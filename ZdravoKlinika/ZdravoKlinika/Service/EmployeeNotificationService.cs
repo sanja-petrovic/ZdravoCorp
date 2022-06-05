@@ -68,5 +68,16 @@ namespace ZdravoKlinika.Service
             }
             return newId;
         }
+
+        public void MarkAsRead(string notificationId)
+        {
+            notificationRepository.MarkAsRead(notificationRepository.GetById(notificationId));
+        }
+
+        public void MarkAllPersonalNotificationsAsRead(RegisteredUser user)
+        {
+            notificationRepository.MarkAllPersonalNotificationsAsRead(user);
+        }
+
     }
 }

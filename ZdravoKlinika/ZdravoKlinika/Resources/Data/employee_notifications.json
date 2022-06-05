@@ -5,7 +5,8 @@
     "NotificationId": "eR1MbfVS",
     "NotificationText": "Pozvani ste na sastanak 30.6.2022 u 12:0, prisustvo obavezno.",
     "Reciver": "9999999",
-    "Sender": "9999999"
+    "Sender": "9999999",
+    "Read": false
   },
   {
     "Type": "MeetingCreated",
@@ -13,7 +14,8 @@
     "NotificationId": "epAQA8BD",
     "NotificationText": "Pozvani ste na sastanak 30.6.2022 u 12:0, prisustvo obavezno.",
     "Reciver": "qwer",
-    "Sender": "9999999"
+    "Sender": "9999999",
+    "Read": false
   },
   {
     "Type": "MeetingCreated",
@@ -21,7 +23,8 @@
     "NotificationId": "8FOib0FI",
     "NotificationText": "Pozvani ste na sastanak 30.6.2022 u 12:0, prisustvo obavezno.",
     "Reciver": "123",
-    "Sender": "9999999"
+    "Sender": "9999999",
+    "Read": false
   },
   {
     "Type": "TimeOffProcessed",
@@ -29,7 +32,8 @@
     "NotificationId": "s49CjIoE",
     "NotificationText": "Va\u0161 zahtev je Odobren uz komentar: zahtev.",
     "Reciver": "123",
-    "Sender": "9999999"
+    "Sender": "9999999",
+    "Read": false
   },
   {
     "Type": "TimeOffProcessed",
@@ -37,6 +41,7 @@
     "NotificationId": "FfrHMwAx",
     "NotificationText": "Va\u0161 zahtev je Obdijen uz komentar: zahtev ne.",
     "Reciver": "123",
-    "Sender": "9999999"
+    "Sender": "9999999",
+    "Read": false
   }
 ]

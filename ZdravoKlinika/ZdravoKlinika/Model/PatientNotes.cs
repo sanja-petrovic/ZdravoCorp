@@ -17,7 +17,7 @@ namespace ZdravoKlinika.Model
         {
             this.NotificationId = id;
             this.Sender = patient;
-            this.Reciver = patient;
+            this.Receiver = patient;
             this.NotificationText = note;
             this.Trigger = trigger;
         }

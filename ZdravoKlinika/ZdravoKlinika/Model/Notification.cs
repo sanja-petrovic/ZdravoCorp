@@ -11,13 +11,15 @@ namespace ZdravoKlinika.Model
         private int notificationId;
         private string notificationText;
 
-        private RegisteredUser reciver;
+        private RegisteredUser receiver;
         private RegisteredUser sender;
 
+        private bool read;
 
         public int NotificationId { get => notificationId; set => notificationId = value; }
         public string NotificationText { get => notificationText; set => notificationText = value; }
-        public RegisteredUser Reciver { get => reciver; set => reciver = value; }
+        public RegisteredUser Receiver { get => receiver; set => receiver = value; }
         public RegisteredUser Sender { get => sender; set => sender = value; }
+        public bool Read { get => read; set => read = value; }
     } 
 }

@@ -28,7 +28,7 @@ namespace ZdravoKlinika.Service
         }
         public List<PatientNotes> GetByPatientId(String id)
         {
-           return repository.GetAll().FindAll(items => items.Reciver.PersonalId == id);
+           return repository.GetAll().FindAll(items => items.Receiver.PersonalId == id);
         }
         public List<PatientNotes> GetForDate(string id, DateTime date)
         {
