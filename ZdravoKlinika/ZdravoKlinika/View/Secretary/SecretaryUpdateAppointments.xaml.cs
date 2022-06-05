@@ -100,13 +100,13 @@ namespace ZdravoKlinika.View.Secretary
 
                     ComboBoxDoctorUpdate.ItemsSource = null;
                     ComboBoxTimeUpdate.ItemsSource = null;
-                    List<String> a = new List<String>();
+                    List<Doctor> a = new List<Doctor>();
                     List<String> b = new List<String>();
 
 
                     foreach (Doctor doc in doctorController.GetAll())
                     {
-                        a.Add(doc.NameAndLast);
+                        a.Add(doc);
                     }
 
                     foreach (DateBlock block in AppointmentContoller.GetFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, 30, selected.Patient, 8, 20))
@@ -123,7 +123,7 @@ namespace ZdravoKlinika.View.Secretary
                     ComboBoxDoctorUpdate.ItemsSource = a;
                     ComboBoxTimeUpdate.ItemsSource = b;
 
-                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor.NameAndLast;
+                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor;
                     ComboBoxTimeUpdate.SelectedItem = selected.DateAndTime.TimeOfDay.ToString();
                 }
             }
@@ -139,12 +139,12 @@ namespace ZdravoKlinika.View.Secretary
 
                     ComboBoxDoctorUpdate.ItemsSource = null;
                     ComboBoxTimeUpdate.ItemsSource = null;
-                    List<String> a = new List<String>();
+                    List<Doctor> a = new List<Doctor>();
                     List<String> b = new List<String>();
 
                     foreach (Doctor doc in doctorController.GetAll())
                     {
-                        a.Add(doc.NameAndLast);
+                        a.Add(doc);
                     }
 
                     foreach (DateBlock block in AppointmentContoller.GetFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, selected.Duration, selected.Patient, 8, 20))
@@ -159,7 +159,7 @@ namespace ZdravoKlinika.View.Secretary
                     ComboBoxDoctorUpdate.ItemsSource = a;
                     ComboBoxTimeUpdate.ItemsSource = b;
 
-                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor.NameAndLast;
+                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor;
                     ComboBoxTimeUpdate.SelectedItem = selected.DateAndTime.TimeOfDay.ToString();
                 }
             }
@@ -187,12 +187,11 @@ namespace ZdravoKlinika.View.Secretary
                 date = date.AddMinutes(Int32.Parse(a[1]));
                 date = date.AddHours(Int32.Parse(a[0]));
 
-                String[] ab = ComboBoxDoctorUpdate.SelectedItem.ToString().Split(" ");
                 DateTime date2 = (DateTime.Now).AddDays(2);
                 if (date <= date2)
                     return;
 
-                AppointmentContoller.EditAppointment(selected.AppointmentId, ab[2], selected.Patient.GetPatientId(), date, selected.Emergency, selected.Type, selected.Room.RoomId, selected.Duration);
+                AppointmentContoller.EditAppointment(selected.AppointmentId, ((Doctor)ComboBoxDoctorUpdate.SelectedItem).PersonalId, selected.Patient.GetPatientId(), date, selected.Emergency, selected.Type, selected.Room.RoomId, selected.Duration);
                 LoadAppointments(LabelPID.Content.ToString());
             }
 

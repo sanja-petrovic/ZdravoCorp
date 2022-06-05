@@ -11,7 +11,6 @@ namespace ZdravoKlinika.Model
         { }
 
     public string Specialty { get => specialty; set => specialty = value; }
-    public string NameAndLast { get => Name + " " + Lastname + " " + PersonalId; }
 
     public bool IsSpecialist()
     {

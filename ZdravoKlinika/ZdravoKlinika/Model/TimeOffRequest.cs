@@ -63,15 +63,6 @@ namespace ZdravoKlinika.Model
                 return "Nije hitno";
             }
         }
-
-        public String StartDateString
-        {
-            get => StartDate.ToString("dd/MM/yyyy");
-        }
-        public String EndDateString
-        {
-            get => EndDate.ToString("dd/MM/yyyy");
-        }
         public string StateToString(RequestState state)
         {
             string retVal = "";

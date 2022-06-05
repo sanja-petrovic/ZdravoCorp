@@ -904,5 +904,37 @@
     "Prescriptions": null,
     "Grading": null,
     "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 57,
+    "DateAndTime": "2022-06-16T10:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 120,
+    "Doctor": "qwer",
+    "Patient": "12345,Registered",
+    "Room": "3",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 58,
+    "DateAndTime": "2022-06-05T04:00:00-10:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Surgery",
+    "Emergency": true,
+    "Duration": 120,
+    "Doctor": "456",
+    "Patient": "12345,Registered",
+    "Room": "7",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
   }
 ]

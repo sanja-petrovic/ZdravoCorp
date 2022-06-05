@@ -151,8 +151,12 @@ namespace ZdravoKlinika.View.Secretary
             String[] a = ComboBoxAddTime.SelectedItem.ToString().Split(":");
             selectedDate = selectedDate.AddMinutes(Int32.Parse(a[1]));
             selectedDate = selectedDate.AddHours(Int32.Parse(a[0]));
-
-            appointmentContoller.CreateAppointment( ((Doctor)ComboBoxAddDoctor.SelectedItem).PersonalId,this.patientViewModel.SelectedPatient.GetPatientId(),selectedDate,true,AppointmentType.Surgery,"314",Int32.Parse(TextBoxDurationAdd.Text));
+            
+            List<Room> rooms = new RoomController().GetFreeRooms(selectedDate, RoomType.operating);
+            if (rooms.Count > 0)
+            {
+                appointmentContoller.CreateAppointment(((Doctor)ComboBoxAddDoctor.SelectedItem).PersonalId, this.patientViewModel.SelectedPatient.GetPatientId(), selectedDate, true, AppointmentType.Surgery, rooms.First().RoomId, Int32.Parse(TextBoxDurationAdd.Text));
+            }
             NavigationService.Navigate(new SecretaryCreateEmergencyAppointment(patientViewModel));
         }
     }

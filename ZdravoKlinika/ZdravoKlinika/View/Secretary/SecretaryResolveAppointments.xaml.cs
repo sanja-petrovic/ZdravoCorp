@@ -109,7 +109,7 @@ namespace ZdravoKlinika.View.Secretary
 
                     foreach (Doctor doc in doctorController.GetAll())
                     {
-                        a.Add(doc.NameAndLast);
+                        a.Add(doc.ToString());
                     }
 
                     foreach (DateBlock block in AppointmentContoller.GetFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, 30, selected.Patient, 8, 20))
@@ -126,7 +126,7 @@ namespace ZdravoKlinika.View.Secretary
                     ComboBoxDoctorUpdate.ItemsSource = a;
                     ComboBoxTimeUpdate.ItemsSource = b;
 
-                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor.NameAndLast;
+                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor.ToString();
                     ComboBoxTimeUpdate.SelectedItem = selected.DateAndTime.TimeOfDay.ToString();
                 }
             }
@@ -147,7 +147,7 @@ namespace ZdravoKlinika.View.Secretary
 
                     foreach (Doctor doc in doctorController.GetAll())
                     {
-                        a.Add(doc.NameAndLast);
+                        a.Add(doc.ToString());
                     }
 
                     foreach (DateBlock block in AppointmentContoller.GetFreeTimeForPatient(((DateTime)SelectedDateUpdate.SelectedDate).Date, selected.Duration, selected.Patient, 8, 20))
@@ -162,7 +162,7 @@ namespace ZdravoKlinika.View.Secretary
                     ComboBoxDoctorUpdate.ItemsSource = a;
                     ComboBoxTimeUpdate.ItemsSource = b;
 
-                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor.NameAndLast;
+                    ComboBoxDoctorUpdate.SelectedItem = selected.Doctor.ToString();
                     ComboBoxTimeUpdate.SelectedItem = selected.DateAndTime.TimeOfDay.ToString();
                 }
             }
