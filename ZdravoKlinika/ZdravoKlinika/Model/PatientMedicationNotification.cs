@@ -18,19 +18,22 @@ namespace ZdravoKlinika.Model
         public String GenerateDailyNotification()
         {
             String retVal =""; 
-            switch (this.Prescription.Frequency)
+            if(this.Prescription != null)
             {
-                case 1:
-                    retVal = GenerateDailyRepeatingOnce();
-                    break;
-                case 2:
-                    retVal = GenerateDailyRepeatingTwice();
-                    break;
-                case 3:
-                   retVal = GenerateDailyRepeatingThreeTimes();
-                    break;
-                default:
-                    break;
+                switch (this.Prescription.Frequency)
+                {
+                    case 1:
+                        retVal = GenerateDailyRepeatingOnce();
+                        break;
+                    case 2:
+                        retVal = GenerateDailyRepeatingTwice();
+                        break;
+                    case 3:
+                       retVal = GenerateDailyRepeatingThreeTimes();
+                        break;
+                    default:
+                        break;
+                }
             }
             return retVal;
         }

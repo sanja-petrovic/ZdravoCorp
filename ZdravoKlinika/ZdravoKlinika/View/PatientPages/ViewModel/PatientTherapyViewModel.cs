@@ -117,7 +117,8 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
         }
         public void EditTime(object data)
         {
-            controller.UpdateTriggerTime(selectedNotification.NotificationId, SelectedInCombo);
+            DateTime newTriggerTime = new(selectedNotification.TriggerTime.Year, selectedNotification.TriggerTime.Month, selectedNotification.TriggerTime.Day, selectedInCombo.Hour, selectedInCombo.Minute, selectedInCombo.Second); 
+            controller.UpdateTriggerTime(selectedNotification.NotificationId, newTriggerTime);
         }
         public bool CanExecuteEditTime(object data)
         {

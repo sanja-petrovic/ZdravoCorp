@@ -166,7 +166,8 @@ namespace ZdravoKlinika.Service
 
                 if (notif.Prescription.Repeat.Equals("dnevno"))
                 {
-                    retVal.Add(GetUpcomingDailyNotifications(id,notif,hours));
+                    PatientMedicationNotification daily = GetUpcomingDailyNotifications(id, notif, hours);
+                    if (daily != null) retVal.Add(daily);
                 }
                 else if (notif.Prescription.Repeat.Equals("nedeljno"))
                 {
@@ -182,7 +183,7 @@ namespace ZdravoKlinika.Service
         }
         public PatientMedicationNotification GetUpcomingDailyNotifications(string id,PatientMedicationNotification notification, int hours)
         {
-           PatientMedicationNotification retVal = new PatientMedicationNotification();
+            PatientMedicationNotification retVal = null;
             switch (notification.Prescription.Frequency)
             {
                 case 1:
