@@ -23,5 +23,11 @@ namespace ZdravoKlinika.Model
         public RegisteredUser Sender { get => sender; set => sender = value; }
         public bool Read { get => read; set => read = value; }
         public DateTime TimeOfCreation { get => timeOfCreation; set => timeOfCreation = value; }
+
+        public Notification()
+        {
+            Read = false;
+            TimeOfCreation = DateTime.Now;
+        }
     } 
 }
