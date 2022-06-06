@@ -9,6 +9,7 @@
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:system="clr-namespace:System;assembly=netstandard" d:DataContext="{d:DesignInstance Type=model:MainViewModel}">
     <Window.InputBindings>
         <KeyBinding Key="S" Modifiers="Shift" Command="{Binding ToggleSettings}"/>
+        <KeyBinding Key="N" Modifiers="Shift" Command="{Binding ToggleNotifs}"/>
         <KeyBinding Key="D1" Modifiers="Shift" Command="{Binding HomeCommand}"/>
         <KeyBinding Key="Home" Command="{Binding HomeCommand}"/>
         <KeyBinding Key="D2" Modifiers="Shift" Command="{Binding ProfileCommand}"/>
@@ -209,9 +210,14 @@
         <Rectangle Fill="#F8F9FE" Height="1" Margin="13,107,801,660"/>
         <Frame NavigationUIVisibility="Hidden" Content="{Binding SelectedVm}" x:Name="MainFrame" Margin="0,0,0,0"/>
 
-        <Image Margin="893,4,111,728" Source="/Resources/Images/bell (1).png" Stretch="Uniform"/>
-        <Image Margin="932,4,72,728" Source="/Resources/Images/info (2).png" Stretch="Uniform"/>
-        <Image Margin="969,4,35,728" Source="/Resources/Images/settings.png" Stretch="Uniform">
+        <Image Margin="893,4,111,728" Source="/Resources/Images/bell (1).png" Stretch="Uniform" Cursor="Hand">
+            <Image.InputBindings>
+                <MouseBinding Gesture="LeftClick" Command="{Binding ToggleNotifs}"/>
+                <KeyBinding Key="N" Modifiers="Shift" Command="{Binding ToggleNotifs}"/>
+            </Image.InputBindings>
+        </Image>
+        <Image Margin="932,4,72,728" Source="/Resources/Images/info (2).png" Stretch="Uniform" Cursor="Hand"/>
+        <Image Margin="969,4,35,728" Source="/Resources/Images/settings.png" Stretch="Uniform" Cursor="Hand">
             <Image.InputBindings>
                 <MouseBinding Gesture="LeftClick" Command="{Binding ToggleSettings}"/>
                 <KeyBinding Key="S" Modifiers="Shift" Command="{Binding ToggleSettings}"/>
@@ -245,5 +251,12 @@
                 </ListBoxItem>
             </ListBox>
         </Grid>
-    </Grid>
+
+        <Grid Visibility="{Binding NotifsVisibility}">
+            <local:NotificationPanel DataContext="{Binding NotifPanelViewModel}"></local:NotificationPanel>
+        </Grid>
+        <Grid Visibility="{Binding NotifsOpened}" Margin="903,4,104,747">
+            <Rectangle RadiusX="10" RadiusY="10" Stroke="White" Fill="#FE5D7A" Margin="-1,2,2,-1"></Rectangle>
+        </Grid>
+     </Grid>
 </Window>

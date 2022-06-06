@@ -5,9 +5,10 @@
     "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 1,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
+    "Receiver": "0105965123321",
     "Sender": "123",
-    "Read": false
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 2,
@@ -15,9 +16,10 @@
     "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 2,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
+    "Receiver": "0105965123321",
     "Sender": "123",
-    "Read": false
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 3,
@@ -25,9 +27,10 @@
     "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 3,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
+    "Receiver": "0105965123321",
     "Sender": "123",
-    "Read": false
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 4,
@@ -35,9 +38,10 @@
     "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 4,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
+    "Receiver": "0105965123321",
     "Sender": "123",
-    "Read": false
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 5,
@@ -45,9 +49,10 @@
     "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 5,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
+    "Receiver": "0105965123321",
     "Sender": "123",
-    "Read": false
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 6,
@@ -55,9 +60,10 @@
     "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 6,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
+    "Receiver": "0105965123321",
     "Sender": "123",
-    "Read": false
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 7,
@@ -65,9 +71,10 @@
     "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 7,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
+    "Receiver": "0105965123321",
     "Sender": "123",
-    "Read": false
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 12,
@@ -75,8 +82,9 @@
     "TriggerTime": "2022-06-04T23:50:35.5642512+02:00",
     "NotificationId": 8,
     "NotificationText": "",
-    "Reciver": "1510963123321",
+    "Receiver": "1510963123321",
     "Sender": "123",
-    "Read": false
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   }
 ]

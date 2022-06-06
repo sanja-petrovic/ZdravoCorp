@@ -11,5 +11,9 @@ namespace ZdravoKlinika.Repository.Interfaces
         public List<Model.EmployeeNotification> GetAllPersonalNotifications(RegisteredUser usr);
         public List<Model.EmployeeNotification> GetSpecificTypeOfNotifications(RegisteredUser user, EmployeeNotificationType type);
 
+        public void MarkAsRead(Model.EmployeeNotification notification);
+
+        public void MarkAllPersonalNotificationsAsRead(RegisteredUser user);
+
     }
 }

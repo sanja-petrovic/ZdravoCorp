@@ -34,6 +34,7 @@
     <None Remove="Resources\Images\inventory.png" />
     <None Remove="Resources\Images\joey.png" />
     <None Remove="Resources\Images\lisacuddy.jpg" />
+    <None Remove="Resources\Images\markasread.png" />
     <None Remove="Resources\Images\medicine.png" />
     <None Remove="Resources\Images\monica.png" />
     <None Remove="Resources\Images\more.png" />
@@ -42,6 +43,7 @@
     <None Remove="Resources\Images\pulse.png" />
     <None Remove="Resources\Images\rachel.jpg" />
     <None Remove="Resources\Images\rachel.png" />
+    <None Remove="Resources\Images\read.png" />
     <None Remove="Resources\Images\rooms.png" />
     <None Remove="Resources\Images\ross.png" />
     <None Remove="Resources\Images\schedule.png" />
@@ -69,6 +71,7 @@
     <Resource Include="Resources\Images\monica.png" />
     <Resource Include="Resources\Images\download.png" />
     <Resource Include="Resources\Images\joey.png" />
+    <Resource Include="Resources\Images\read.png" />
     <Resource Include="Resources\Images\ross.png" />
     <Resource Include="Resources\Images\drhouse.png" />
     <Resource Include="Resources\Images\time-delete.png" />

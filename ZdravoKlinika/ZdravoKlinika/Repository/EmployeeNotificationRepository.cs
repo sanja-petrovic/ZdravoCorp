@@ -122,6 +122,7 @@ namespace ZdravoKlinika.Repository
         {
             notification.Read = true;
             this.employeeNotifications[this.employeeNotifications.FindIndex(n => n.NotificationId.Equals(notification.NotificationId))] = notification;
+            this.dataHandler.Write(this.employeeNotifications);
         }
 
         public void MarkAllPersonalNotificationsAsRead(RegisteredUser user)
@@ -133,6 +134,22 @@ namespace ZdravoKlinika.Repository
                     n.Read = true;
                 }
             }
+            this.dataHandler.Write(this.employeeNotifications);
+        }
+
+        public bool HasEveryNotifBeenRead(RegisteredUser user)
+        {
+            bool retVal = true;
+            foreach (EmployeeNotification n in this.GetAllPersonalNotifications(user))
+            {
+                if(!n.Read)
+                {
+                    retVal = false;
+                    break;
+                }
+            }
+
+            return retVal;
         }
     }
 }

@@ -79,5 +79,10 @@ namespace ZdravoKlinika.Service
             notificationRepository.MarkAllPersonalNotificationsAsRead(user);
         }
 
+        public bool HasEveryNotifBeenRead(RegisteredUser user)
+        {
+            return notificationRepository.HasEveryNotifBeenRead(user);
+        }
+
     }
 }

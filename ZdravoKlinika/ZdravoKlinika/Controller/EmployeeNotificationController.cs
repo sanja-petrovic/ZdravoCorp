@@ -99,5 +99,10 @@ namespace ZdravoKlinika.Controller
             notificationService.MarkAllPersonalNotificationsAsRead(registeredUserService.GetUserById(userId));
         }
 
+        public bool HasEveryNotifBeenRead(string userId)
+        {
+            return notificationService.HasEveryNotifBeenRead(registeredUserService.GetUserById(userId));
+        }
+
     }
 }
