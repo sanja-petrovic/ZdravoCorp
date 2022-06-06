@@ -33,7 +33,7 @@ namespace ZdravoKlinika.Controller
             notification.NotificationTitle = notificationTitle;
             notification.NotificationText = notificationText;
             notification.Sender = sender;
-            notification.Reciver = receiver;
+            notification.Receiver = receiver;
             notification.Type = DecodeNotificationType(typeOfNotification);
 
             notificationService.SendNotification(notification);
@@ -87,6 +87,21 @@ namespace ZdravoKlinika.Controller
         public void DeleteNotification(String notificationId)
         {
             notificationService.Remove(notificationId);
+        }
+
+        public void MarkAsRead(string notificationId)
+        {
+            notificationService.MarkAsRead(notificationId);
+        }
+
+        public void MarkAllPersonalNotificationsAsRead(string userId)
+        {
+            notificationService.MarkAllPersonalNotificationsAsRead(registeredUserService.GetUserById(userId));
+        }
+
+        public bool HasEveryNotifBeenRead(string userId)
+        {
+            return notificationService.HasEveryNotifBeenRead(registeredUserService.GetUserById(userId));
         }
 
     }

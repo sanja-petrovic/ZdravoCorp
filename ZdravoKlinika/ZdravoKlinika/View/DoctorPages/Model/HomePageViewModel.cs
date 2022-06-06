@@ -45,8 +45,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             RecordCommand = new Prism.Commands.DelegateCommand(ExecuteRecord);
             LogAppointment = new MyICommand(ExecuteLog);
-            this.doctor = RegisteredUserController.UserToDoctor(App.User);
-            this.Appointments = new ObservableCollection<AppointmentViewModel>();
+            Doctor = RegisteredUserController.UserToDoctor(App.User);
+            Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
             List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate(doctor.PersonalId, DateTime.Today);
             foreach (Appointment appointment in appts)

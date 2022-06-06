@@ -46,7 +46,7 @@ namespace ZdravoKlinika.Repository
             List<EmployeeNotification> notifsToReturn = new List<EmployeeNotification>();
             foreach (EmployeeNotification notif in employeeNotifications)
             {
-                if (notif.Reciver.PersonalId.Equals(user.PersonalId))
+                if (notif.Receiver.PersonalId.Equals(user.PersonalId))
                 {
                     notifsToReturn.Add(notif);
                 }
@@ -60,7 +60,7 @@ namespace ZdravoKlinika.Repository
             List<EmployeeNotification> notifsToReturn = new List<EmployeeNotification>();
             foreach (EmployeeNotification notif in employeeNotifications)
             {
-                if (notif.Reciver.PersonalId.Equals(user.PersonalId) && notif.Type == type)
+                if (notif.Receiver.PersonalId.Equals(user.PersonalId) && notif.Type == type)
                 {
                     notifsToReturn.Add(notif);
                 }
@@ -115,6 +115,41 @@ namespace ZdravoKlinika.Repository
             if (employeeNotifications != null)
                 employeeNotifications.Clear();
             dataHandler.Write(employeeNotifications);
+        }
+
+
+        public void MarkAsRead(EmployeeNotification notification)
+        {
+            notification.Read = true;
+            this.employeeNotifications[this.employeeNotifications.FindIndex(n => n.NotificationId.Equals(notification.NotificationId))] = notification;
+            this.dataHandler.Write(this.employeeNotifications);
+        }
+
+        public void MarkAllPersonalNotificationsAsRead(RegisteredUser user)
+        {
+            foreach(EmployeeNotification n in this.GetAllPersonalNotifications(user))
+            {
+                if(!n.Read)
+                {
+                    n.Read = true;
+                }
+            }
+            this.dataHandler.Write(this.employeeNotifications);
+        }
+
+        public bool HasEveryNotifBeenRead(RegisteredUser user)
+        {
+            bool retVal = true;
+            foreach (EmployeeNotification n in this.GetAllPersonalNotifications(user))
+            {
+                if(!n.Read)
+                {
+                    retVal = false;
+                    break;
+                }
+            }
+
+            return retVal;
         }
     }
 }

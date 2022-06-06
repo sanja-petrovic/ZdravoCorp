@@ -42,22 +42,26 @@ namespace ZdravoKlinika.Repository
 
         public void Add(Employee item)
         {
-            throw new NotImplementedException();
+            this.employees.Add(item);
+            this.employeeDataHandler.Write(employees);
         }
 
         public void Remove(Employee item)
         {
-            throw new NotImplementedException();
+            this.employees.RemoveAt(this.employees.FindIndex(e => e.PersonalId.Equals(item.PersonalId)));
+            this.employeeDataHandler.Write(employees);
         }
 
         public void Update(Employee item)
         {
-            throw new NotImplementedException();
+            this.employees[this.employees.FindIndex(e => e.PersonalId.Equals(item.PersonalId))] = item;
+            this.employeeDataHandler.Write(employees);
         }
 
         public void RemoveAll()
         {
-            throw new NotImplementedException();
+            this.employees.Clear();
+            this.employeeDataHandler.Write(employees);
         }
     }
 }

@@ -79,7 +79,7 @@ namespace ZdravoKlinika.Model
         {
             this.NotificationId = id;
             this.Sender = sender;
-            this.Reciver = reciever;
+            this.Receiver = reciever;
             this.NotificationText = notificationText;
             this.Prescription = prescription;
             this.note = note;

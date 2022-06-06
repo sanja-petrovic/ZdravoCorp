@@ -13,9 +13,15 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private Doctor doctor;
         private ViewModelBase selectedVm;
         private Visibility settingsVisibility;
+        private Visibility notifsVisibility;
+        private Visibility notifsOpened;
         private int index;
+        private Controller.EmployeeNotificationController notificationController;
+        private NotifPanelViewModel notifPanelViewModel;
+        private bool openedNotifs;
 
         public MyICommand ToggleSettings { get; set; }
+        public MyICommand ToggleNotifs { get; set; }
 
         public MyICommand HomeCommand { get; set; }
         public MyICommand ProfileCommand { get; set; }
@@ -28,11 +34,16 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public MainViewModel()
         {
+            openedNotifs = false;
+            this.notificationController = new Controller.EmployeeNotificationController();
             Doctor = Controller.RegisteredUserController.UserToDoctor(App.User);
+            SettingsVisibility = Visibility.Collapsed;
+            NotifsVisibility = Visibility.Collapsed;
+            NotifsOpened = notificationController.HasEveryNotifBeenRead(Doctor.PersonalId) ? Visibility.Collapsed : Visibility.Visible;
             GoToHome();
-            settingsVisibility = Visibility.Collapsed;
             Index = 5;
             ToggleSettings = new MyICommand(ExecuteToggleSettings);
+            ToggleNotifs = new MyICommand(ExecuteToggleNotifs);
 
             HomeCommand = new MyICommand(GoToHome);
             ProfileCommand = new MyICommand(GoToProfile);
@@ -40,6 +51,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             PatientsCommand = new MyICommand(GoToPatients);
             ScheduleCommand = new MyICommand(GoToSchedule);
             FeedbackCommand = new MyICommand(GoToFeedback);
+            NotifPanelViewModel = new NotifPanelViewModel();
 
             SignOut = new MyICommand(ExecuteSignOut, CanExecuteSignOut);
         }
@@ -47,7 +59,21 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void ExecuteToggleSettings()
         {
             SettingsVisibility = SettingsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            
+            NotifsVisibility = Visibility.Collapsed;
+        }
+
+        public void ExecuteToggleNotifs()
+        {
+            SettingsVisibility = Visibility.Collapsed;
+            NotifsVisibility = NotifsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            if(notifsOpened != Visibility.Collapsed)
+            {
+                this.notificationController.MarkAllPersonalNotificationsAsRead(Doctor.PersonalId);
+            } else
+            {
+                NotifPanelViewModel.MarkAllAsRead();
+            }
+            NotifsOpened = Visibility.Collapsed;
         }
 
         public void GoToHome()
@@ -104,5 +130,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public ViewModelBase SelectedVm { get => selectedVm; set => SetProperty(ref selectedVm, value); }
         public Visibility SettingsVisibility { get => settingsVisibility; set => SetProperty(ref settingsVisibility, value); }
         public int Index { get => index; set => SetProperty(ref index, value); }
+        public Visibility NotifsVisibility { get => notifsVisibility; set => SetProperty(ref notifsVisibility, value); }
+        public Visibility NotifsOpened { get => notifsOpened; set => SetProperty(ref notifsOpened, value); }
+        public NotifPanelViewModel NotifPanelViewModel { get => notifPanelViewModel; set => notifPanelViewModel = value; }
+        public bool OpenedNotifs { get => openedNotifs; set => openedNotifs = value; }
     }
 }

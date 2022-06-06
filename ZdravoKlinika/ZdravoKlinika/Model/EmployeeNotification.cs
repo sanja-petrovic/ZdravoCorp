@@ -19,6 +19,7 @@ namespace ZdravoKlinika.Model
 
         public EmployeeNotification()
         {
+            
         }
 
     }
