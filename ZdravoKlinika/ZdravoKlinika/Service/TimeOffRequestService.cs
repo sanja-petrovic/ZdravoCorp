@@ -36,10 +36,6 @@ namespace ZdravoKlinika.Service
             return list;
         }
 
-        public List<TimeOffRequest> GetAllSorted()
-        {
-            return this.repository.GetAllSorted();
-        }
 
         public TimeOffRequest GetById(int id)
         {

@@ -31,10 +31,6 @@ public class DoctorController
         doctorService.CreateDoctor(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, speciality, education);
     }
 
-    public void UpdateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
-    {
-        doctorService.UpdateDoctor(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, speciality, education);
-    }
 
     public void UpdateDoctor(Doctor doctor, string phone, string street, string number, string city, string country)
     {

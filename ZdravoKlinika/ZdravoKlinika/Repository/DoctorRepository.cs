@@ -28,27 +28,30 @@ namespace ZdravoKlinika.Repository
 
         public Doctor GetById(String id)
         {
-
+            Doctor retVal = null;
             foreach (Doctor doctor in DoctorList)
             {
                 if (doctor.PersonalId == id)
                 {
-                    return doctor;
+                    retVal = doctor;
+                    break;
                 }
             }
-            return null;
+            return retVal;
         }
 
         public Doctor GetByEmail(String email)
         {
+            Doctor retVal = null;
             foreach (Doctor doctor in DoctorList)
             {
                 if (doctor.Email == email)
                 {
-                    return doctor;
+                    retVal = doctor;
+                    break;
                 }
             }
-            return null;
+            return retVal;
         }
 
         public void Add(Doctor doctor)
@@ -57,7 +60,7 @@ namespace ZdravoKlinika.Repository
             DoctorDataHandler.Write(DoctorList);
         }
 
-        public void Delete(Doctor doctor)
+        public void Remove(Doctor doctor)
         {
             var d = DoctorList.Find(x => x.PersonalId.Equals(doctor.PersonalId));
             DoctorList.Remove(d);
@@ -66,7 +69,7 @@ namespace ZdravoKlinika.Repository
 
         public void Update(Doctor doctor)
         {
-            Delete(doctor);
+            Remove(doctor);
             Add(doctor);
         }
 
@@ -100,14 +103,11 @@ namespace ZdravoKlinika.Repository
             return specialties;
         }
 
-        public void Remove(Doctor item)
-        {
-            throw new NotImplementedException();
-        }
 
         public void RemoveAll()
         {
-            throw new NotImplementedException();
+            this.doctorList = new List<Doctor>();
+            this.doctorDataHandler.Write(this.doctorList);
         }
     }
 

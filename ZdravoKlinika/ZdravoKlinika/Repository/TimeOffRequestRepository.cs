@@ -21,11 +21,6 @@ namespace ZdravoKlinika.Repository
         }
 
 
-        public List<TimeOffRequest> GetAllSorted()
-        {
-            return this.GetAll().OrderBy(request => request.StartDate).ToList();
-        }
-
         public List<TimeOffRequest> GetAll()
         {
             foreach(TimeOffRequest request in this.requests)
@@ -33,7 +28,7 @@ namespace ZdravoKlinika.Repository
                 UpdateReferences(request);
             }
             
-            return this.requests;
+            return this.requests.OrderBy(request => request.StartDate).ToList();
         }
 
         public TimeOffRequest GetById(int id)
@@ -100,7 +95,8 @@ namespace ZdravoKlinika.Repository
             requests[index] = requestInDatabase;
             dataHandler.Write(requests);
         }
-        public int GetIndex(int id) 
+
+        private int GetIndex(int id) 
         {
             int index = -1;
             foreach (TimeOffRequest request in requests)
@@ -119,9 +115,12 @@ namespace ZdravoKlinika.Repository
 
         public void Remove(TimeOffRequest item)
         {
-            if(this.GetById(item.Id) != null)
+            int index = this.requests.FindIndex(r => r.Id == item.Id);
+            if(index != -1)
+            {
                 this.requests.RemoveAt(this.GetIndex(item.Id));
-            this.dataHandler.Write(this.requests);
+                this.dataHandler.Write(this.requests);
+            }
         }
 
         public void RemoveAll()

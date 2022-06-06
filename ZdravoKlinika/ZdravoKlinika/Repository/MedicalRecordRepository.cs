@@ -38,6 +38,7 @@ namespace ZdravoKlinika.Repository
             {
                 medicalRecord.CurrentMedication[i] = medicationRepository.GetById(medicalRecord.CurrentMedication[i].MedicationId);
             }
+
             for(int i = 0; i < medicalRecord.PastMedication.Count; i++)
             {
                 medicalRecord.PastMedication[i] = medicationRepository.GetById(medicalRecord.PastMedication[i].MedicationId);
@@ -46,22 +47,20 @@ namespace ZdravoKlinika.Repository
 
         public void Add(MedicalRecord medicalRecord)
         {
-            if (medicalRecord == null)
-                return;
-            if (this.MedicalRecords == null)
-                this.MedicalRecords = new List<MedicalRecord>();
-
+            bool duplicate = false;
             foreach (MedicalRecord med in MedicalRecords)
             {
                 if (med.MedicalRecordId == medicalRecord.MedicalRecordId)
                 {
-                    return; // throw new Exception("BAD");
+                    duplicate = true;
                 }
             }
 
-            this.MedicalRecords.Add(medicalRecord);
-            MedicalRecordDataHandler.Write(MedicalRecords);
-            return;
+            if(!duplicate)
+            {
+                this.MedicalRecords.Add(medicalRecord);
+                MedicalRecordDataHandler.Write(MedicalRecords);
+            }
         }
         public void Update(MedicalRecord medicalRecord)
         {
@@ -122,7 +121,7 @@ namespace ZdravoKlinika.Repository
             {
                 record.AddCurrentMedication(medication);
             }
-            int i = FindIndexInList(record.MedicalRecordId);
+            int i = GetIndex(record.MedicalRecordId);
             this.MedicalRecords[i] = record;
 
             MedicalRecordDataHandler.Write(MedicalRecords);
@@ -135,13 +134,13 @@ namespace ZdravoKlinika.Repository
             {
                 record.Diagnoses.Add(diagnosis);
             }
-            int i = FindIndexInList(record.MedicalRecordId);
+            int i = GetIndex(record.MedicalRecordId);
             MedicalRecords[i] = record;
 
             MedicalRecordDataHandler.Write(MedicalRecords);
         }
 
-        public int FindIndexInList(string id)
+        public int GetIndex(string id)
         {
             int retVal = -1;
             for(int i = 0; i < this.MedicalRecords.Count(); i++)

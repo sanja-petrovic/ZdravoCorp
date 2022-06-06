@@ -180,12 +180,18 @@ namespace ZdravoKlinika.Repository
 
         public void Remove(MedApprovalRequest item)
         {
-            throw new NotImplementedException();
+            int index = this.requests.FindIndex(r => r.Id == item.Id);
+            if(index != -1)
+            {
+                this.requests.RemoveAt(index);
+                this.dataHandler.Write(this.requests);
+            }
         }
 
         public void RemoveAll()
         {
-            throw new NotImplementedException();
+            this.requests = new List<MedApprovalRequest>();
+            this.dataHandler.Write(this.requests);
         }
     }
 

@@ -34,24 +34,12 @@ namespace ZdravoKlinika.Controller
             return this.prescriptionService.GetById(id);
         }
 
-        public void Prescribe(Doctor doctor, IPatient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote)
-        {
-            
-            this.prescriptionService.Prescribe(doctor, patient, medication, amount, duration, frequency, singleDose, repeat, doctorsNote);
-
-        }
 
         public void Prescribe(Prescription prescription)
         {
             prescription.DateOfCreation = DateTime.Now;
             this.prescriptionService.Prescribe(prescription);
         }
-
-        public void CreatePrescription(String doctorId, String patientId, String medicationId, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote)
-        {
-            //this.prescriptionService.Create(doctorId, patientId, medicationId, amount, duration, frequency, singleDose, repeat, doctorsNote, noAlternatives, emergency);
-        }
-
 
     }
 }

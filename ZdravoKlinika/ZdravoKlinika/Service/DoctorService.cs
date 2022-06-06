@@ -45,25 +45,6 @@ public class DoctorService
 
     }
 
-    public void UpdateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
-    {
-        Doctor doctor = new Doctor();
-        doctor.PersonalId = personalId;
-        doctor.Name = name;
-        doctor.Lastname = lastname;
-        doctor.ProfilePicture = profilePicture;
-        doctor.Email = email;
-        doctor.Password = password;
-        doctor.Phone = phone;
-        doctor.Specialty = speciality;
-        doctor.EducationLevel = education;
-        doctor.Gender = gender;
-        doctor.DateOfBirth = dateOfBirth;
-
-        doctorRepository.Update(doctor);
-
-    }
-
     public void UpdateDoctor(Doctor doctor)
     {
         doctorRepository.Update(doctor);
@@ -71,7 +52,7 @@ public class DoctorService
 
     public void DeleteDoctor(String personalId)
     {
-        doctorRepository.Delete(GetById(personalId));
+        doctorRepository.Remove(GetById(personalId));
     }
 
     public List<Doctor> GetBySpecialty(string specialty)

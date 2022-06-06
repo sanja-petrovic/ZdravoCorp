@@ -12,7 +12,6 @@ namespace ZdravoKlinika.Repository.Interfaces
         public List<Appointment> GetPatientsUpcomingAppointments(RegisteredPatient patient);
         public List<Appointment> GetPatientsPastAppointments(RegisteredPatient patient);
         public void AddGrading(Appointment appointment, int[] grades);
-        public List<Appointment> GetFutureAppointments();
         public List<Appointment> GetAppointmentsOnDate(DateTime date);
         public List<Appointment> GetAppointmentsByPatient(String patientId);
         public List<Appointment> GetAppointmentsByDoctor(String doctorId);

@@ -28,9 +28,6 @@ public class AppointmentRepository : IAppointmentRepository
         
     }
 
-
-
-
     private void ReadDataFromFile()
     {
         appointments = appointmentDataHandler.Read();
@@ -117,7 +114,6 @@ public class AppointmentRepository : IAppointmentRepository
             appointments.Clear();
             appointmentDataHandler.Write(appointments);
         }
-            
     }
 
     public List<Appointment> GetAll()
@@ -128,12 +124,6 @@ public class AppointmentRepository : IAppointmentRepository
             UpdateReferences(appointment);
         }
         return Appointments;
-    }
-    public List<Appointment> GetFutureAppointments()
-    {
-        this.appointments = this.GetAll();
-        this.appointments.RemoveAll(app => app.Over == false);
-        return this.appointments;
     }
 
     public List<Appointment> GetAppointmentsOnDate(DateTime date)
