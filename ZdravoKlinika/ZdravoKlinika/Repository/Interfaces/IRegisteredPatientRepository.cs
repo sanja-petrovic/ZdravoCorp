@@ -10,6 +10,5 @@ namespace ZdravoKlinika.Repository.Interfaces
     {
         public void RecordUpdated(RegisteredPatient p);
         public bool IsBanned(RegisteredPatient patient);
-        public void Ban(RegisteredPatient patient);
     }
 }

@@ -141,10 +141,5 @@ namespace ZdravoKlinika.Repository
         {
             return patient.Ban;
         }
-        public void Ban(RegisteredPatient patient)
-        {
-            patient.Ban = true;
-            Update(patient);
-        }
     }
 }

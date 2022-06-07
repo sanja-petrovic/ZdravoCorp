@@ -96,6 +96,14 @@ public class RegisteredPatientService
     {
         return this.registeredPatientRepository.IsBanned(patient);
     }
+
+    public void Ban(String patientId)
+    {
+        RegisteredPatient patient = this.GetById(patientId);
+        patient.Ban = true;
+        registeredPatientRepository.Update(patient);
+    }
+
     private bool IsPersonalIdFree(String personalId)
     {
         bool isIdFree = true;

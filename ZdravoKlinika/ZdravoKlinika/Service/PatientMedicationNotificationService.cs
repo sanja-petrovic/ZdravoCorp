@@ -34,10 +34,14 @@ namespace ZdravoKlinika.Service
             List<PatientMedicationNotification> retVal = new List<PatientMedicationNotification>();
             foreach (PatientMedicationNotification notification in this.GetAll())
             {
-                if (notification.Prescription.Patient.GetPatientId().Equals(id))
+                if(notification.Prescription.Patient != null)
                 {
-                    retVal.Add(notification);
+                    if (notification.Prescription.Patient.GetPatientId().Equals(id))
+                    {
+                        retVal.Add(notification);
+                    }
                 }
+                
             }
             return retVal;
         }
@@ -187,19 +191,19 @@ namespace ZdravoKlinika.Service
             switch (notification.Prescription.Frequency)
             {
                 case 1:
-                    if (notification.TriggerTime > DateTime.Now && notification.TriggerTime < DateTime.Now.AddHours(hours))
+                    if (notification.TriggerTime.TimeOfDay > DateTime.Now.TimeOfDay && notification.TriggerTime.TimeOfDay < DateTime.Now.AddHours(hours).TimeOfDay)
                     {
                         retVal = notification;
                     }
                     break;
                 case 2:
-                    if ((notification.TriggerTime > DateTime.Now && notification.TriggerTime < DateTime.Now.AddHours(hours)) || (notification.TriggerTime.AddHours(12) > DateTime.Now && notification.TriggerTime.AddHours(12) < DateTime.Now.AddHours(hours)))
+                    if ((notification.TriggerTime.TimeOfDay > DateTime.Now.TimeOfDay && notification.TriggerTime.TimeOfDay < DateTime.Now.AddHours(hours).TimeOfDay) || (notification.TriggerTime.AddHours(12).TimeOfDay > DateTime.Now.TimeOfDay && notification.TriggerTime.AddHours(12).TimeOfDay < DateTime.Now.AddHours(hours).TimeOfDay))
                     {
                         retVal = notification;
                     }
                     break;
                 case 3:
-                    if ((notification.TriggerTime > DateTime.Now && notification.TriggerTime < DateTime.Now.AddHours(hours)) || (notification.TriggerTime.AddHours(6) > DateTime.Now && notification.TriggerTime.AddHours(6) < DateTime.Now.AddHours(hours)) || (notification.TriggerTime.AddHours(12) > DateTime.Now && notification.TriggerTime.AddHours(12) < DateTime.Now.AddHours(hours)))
+                    if ((notification.TriggerTime.TimeOfDay > DateTime.Now.TimeOfDay && notification.TriggerTime.TimeOfDay < DateTime.Now.AddHours(hours).TimeOfDay) || (notification.TriggerTime.AddHours(6).TimeOfDay > DateTime.Now.TimeOfDay && notification.TriggerTime.AddHours(6).TimeOfDay < DateTime.Now.AddHours(hours).TimeOfDay) || (notification.TriggerTime.AddHours(12).TimeOfDay > DateTime.Now.TimeOfDay && notification.TriggerTime.AddHours(12).TimeOfDay < DateTime.Now.AddHours(hours).TimeOfDay))
                     {
                         retVal = notification;
                     }

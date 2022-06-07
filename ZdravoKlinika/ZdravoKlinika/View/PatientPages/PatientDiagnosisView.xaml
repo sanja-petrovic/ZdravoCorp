@@ -52,7 +52,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="130,56,0,0" TextWrapping="Wrap" Text="{Binding Diagnosis, Mode=OneWay}" VerticalAlignment="Top" Width="225"/>
         <TextBlock HorizontalAlignment="Left" Margin="130,85,0,0" TextWrapping="Wrap" Text="{Binding DoctorNote, Mode=OneWay}" VerticalAlignment="Top" Width="400" Height="47"/>
         <Label Content="Vaša beleška:" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="130,0,0,0" TextWrapping="Wrap" Text="{Binding PatientNote,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="400" Height="48"/>
+        <TextBox HorizontalAlignment="Left" Margin="130,160,0,0" TextWrapping="Wrap" Text="{Binding PatientNote,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="400" Height="48"/>
         <Button Content="Sacuvaj" Style="{StaticResource regularButton}" Command="{Binding SaveCommand}" HorizontalAlignment="Left" Margin="478,217,0,0" VerticalAlignment="Top" Height="23" Width="52"/>
     </Grid>
 </Page>

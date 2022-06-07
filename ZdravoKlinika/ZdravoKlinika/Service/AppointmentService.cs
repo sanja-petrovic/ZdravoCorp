@@ -15,7 +15,7 @@ public class AppointmentService
     private ZdravoKlinika.Util.ListHelper listHelper;
     private ZdravoKlinika.Util.DateBlock dateBlock = new ZdravoKlinika.Util.DateBlock();
     private ActionLogService actionLogService;
-    private RegisteredPatientRepository registeredPatientRepository;
+    private RegisteredPatientService registeredPatientService;
     private RoomService roomService;
 
     public AppointmentService()
@@ -25,7 +25,7 @@ public class AppointmentService
         this.roomRepository = new RoomRepository();
         this.patientRepository = new PatientRepository();
         this.actionLogService = new ActionLogService();
-        this.registeredPatientRepository = new RegisteredPatientRepository();
+        this.registeredPatientService = new RegisteredPatientService();
     }
  
     public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
@@ -500,13 +500,13 @@ public class AppointmentService
     {
         if (actionLogService.IsUserBannable(patientId))
         {
-            registeredPatientRepository.Ban(registeredPatientRepository.GetById(patientId));
+            registeredPatientService.Ban(patientId);
             throw new Exception("Ban");
         }
         else
         {
             DeleteAppointment(id);
-            actionLogService.AddLog(DateTime.Now, "Remove Appointment", registeredPatientRepository.GetById(patientId));
+            actionLogService.AddLog(DateTime.Now, "Remove Appointment", registeredPatientService.GetById(patientId));
         }
     }
     public void EditAppointment(Appointment appointment)
@@ -539,13 +539,13 @@ public class AppointmentService
     {
         if (actionLogService.IsUserBannable(app.Patient.GetPatientId()))
         {
-            registeredPatientRepository.Ban(registeredPatientRepository.GetById(app.Patient.GetPatientId()));
+            registeredPatientService.Ban(app.Patient.GetPatientId());
             throw new Exception("Ban");
         }
         else
         {
             EditAppointment(app);
-            actionLogService.AddLog(DateTime.Now, "Edit Appointment", registeredPatientRepository.GetById(app.Patient.GetPatientId()));
+            actionLogService.AddLog(DateTime.Now, "Edit Appointment", registeredPatientService.GetById(app.Patient.GetPatientId()));
         }
     }
     public void LogAppointment(Appointment appointment, String diagnoses, String doctorsNote)
