@@ -97,7 +97,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Duration = a.Duration;
             Emergency = a.Emergency;
             Room = a.Room;
-
         }
 
         public void ExecuteGiveUp()
@@ -110,6 +109,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             DateTime datetime = new DateTime(Date.Year, Date.Month, Date.Day, Time1.Start.Hour, Time1.Start.Minute, 0);
             appointmentController.EditAppointment(Id, _Doctor, _Patient, datetime, Emergency, Type.Equals("Pregled") ? AppointmentType.Regular : AppointmentType.Surgery, Room, Duration);
             DialogHelper.DialogService.CloseDialog(this);
+            CallMessenger("Uspešno ste izmenili termin!");
         }
 
         public void ExecuteCreate()
@@ -117,8 +117,15 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             DateTime datetime = new DateTime(Date.Year, Date.Month, Date.Day, Time1.Start.Hour, Time1.Start.Minute, 0);
             this.appointmentController.CreateAppointment(DoctorId, _Patient.GetPatientId(), datetime, Emergency, Type.Equals("Pregled") ? AppointmentType.Regular : AppointmentType.Surgery, Room.RoomId, Duration);
             DialogHelper.DialogService.CloseDialog(this);
-
+            CallMessenger("Uspešno ste zakazali termin!");
+            
         }
+
+        public void CallMessenger(string message)
+        {
+            Messenger.Messenger.SuccessMessage(message);
+        }
+
         public bool CanExecuteCreate()
         {
             return DoctorId != null && PatientId != null  && Type != null && Room != null && Duration != null;

@@ -23,9 +23,9 @@ namespace ZdravoKlinika.View.Messenger
 
         public Messenger() { }
 
-        public void ProfileSuccessMessage()
+        public static void SuccessMessage(string message)
         {
-            DoctorBase.LoadProfileEditSuccessMessage();
+            DoctorBase.LoadSuccessMessage(message);
         }
 
 

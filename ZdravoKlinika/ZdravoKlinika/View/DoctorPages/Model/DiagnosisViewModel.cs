@@ -29,6 +29,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             controller.AddDiagnosis(Diagnosis, MedicalRecordId);
             DialogHelper.DialogService.CloseDialog(this);
+            Messenger.Messenger.SuccessMessage("Uspešno ste dodali dijagnozu u pacijentov zdravstveni karton!");
         }
 
         public void ExecuteGiveUp()

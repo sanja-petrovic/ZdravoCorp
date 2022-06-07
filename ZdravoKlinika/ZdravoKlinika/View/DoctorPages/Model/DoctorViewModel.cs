@@ -32,12 +32,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public DelegateCommand EditCommand { get; set; }
         public DelegateCommand ConfirmCommand { get; set; }
         public DelegateCommand CancelCommand { get; set; }
-        private Messenger.Messenger messenger;
 
 
         public DoctorViewModel()
         {
-            Messenger = new Messenger.Messenger();
             EditCommand = new DelegateCommand(ExecuteEdit);
             ConfirmCommand = new DelegateCommand(ExecuteConfirm);
             CancelCommand = new DelegateCommand(ExecuteCancel);
@@ -64,7 +62,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void LoadSuccessMessage()
         {
-            messenger.ProfileSuccessMessage();
+            Messenger.Messenger.SuccessMessage("Uspešno ste izmenili Vaš profil!");
         }
 
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
@@ -83,7 +81,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Country { get => country; set => SetProperty(ref country, value); }
         public Visibility IsEditVisible { get => isEditVisible; set => SetProperty(ref isEditVisible, value); }
         public Visibility AreButtonsVisible { get => areButtonsVisible; set => SetProperty(ref areButtonsVisible, value); }
-        public Messenger.Messenger Messenger { get => messenger; set => messenger = value; }
 
         public void ExecuteEdit()
         {

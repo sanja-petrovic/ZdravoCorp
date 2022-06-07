@@ -85,13 +85,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
            .Queue();
         }
 
-        public void LoadProfileEditSuccessMessage()
+        public void LoadSuccessMessage(string message)
         {
             Manager.CreateMessage()
            .Accent("#FF9E98FF")
            .Background("#FF9E98FF")
            .Foreground("White")
-           .HasHeader("Uspešno ste izmenili Vaš profil!")
+           .HasHeader(message)
            .Animates(true)
            .AnimationInDuration(0.5)
            .AnimationOutDuration(1)

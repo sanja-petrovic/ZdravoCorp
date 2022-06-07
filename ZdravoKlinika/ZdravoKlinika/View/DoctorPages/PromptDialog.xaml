@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" WindowStartupLocation="CenterScreen" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:PromptViewModel}"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="233" Width="380">
-    <Grid MaxWidth="353" HorizontalAlignment="Center" Height="134">
-        <StackPanel VerticalAlignment="Top" Orientation="Vertical">
-            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Text="{Binding Title}" FontWeight="Bold" Margin="0 0 0 15"/>
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Text="{Binding Message}" TextWrapping="Wrap"  TextAlignment="Center" ></TextBlock>
-        </StackPanel>
-        <StackPanel VerticalAlignment="Bottom" Margin="0 30 0 0" Orientation="Horizontal">
+    <Grid MaxWidth="340" HorizontalAlignment="Center" Height="134">
+        <Grid VerticalAlignment="Top" Height="77">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Text="{Binding Title}" FontWeight="Bold" Margin="0 0 0 15"/>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Text="{Binding Message}" Margin="0 45 0 0" TextWrapping="Wrap"  TextAlignment="Center" ></TextBlock>
+        </Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 30 0 0" Orientation="Horizontal">
             <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" FontSize="12" Padding="7" Height="36" Margin="0 0 10 0" Width="125" Command="{Binding GiveUpCommand}" >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">

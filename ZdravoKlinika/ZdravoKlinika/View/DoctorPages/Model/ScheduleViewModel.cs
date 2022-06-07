@@ -76,7 +76,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
                 var past = controller.GetPatientsLatestAppointment(patient.GetPatientId());
                 string lastDate = past != null ? past.DateAndTime.ToString("dd.MM.yyyy.") : "/";
-                Visibility v = appointment.DateAndTime >= DateTime.Today ? Visibility.Visible : Visibility.Collapsed;
+                Visibility v = !appointment.Over ? Visibility.Visible : Visibility.Collapsed;
 
                 Tabs.Add(new ScheduleTabItem { ApptId = appointment.AppointmentId, Visible = v, Parent = this, Time = appointment.DateAndTime.ToString("HH:mm"), AppointmentType = appointment.getTranslatedType(), PatientId = patient.GetPatientId(), PatientName = patient.GetPatientFullName(), Room = appointment.Room.RoomId, Diagnoses = diagnoses, LastDate = lastDate, Prescriptions = prescriptions, Duration = appointment.Duration + " minuta", Emergency = appointment.Emergency });
                 

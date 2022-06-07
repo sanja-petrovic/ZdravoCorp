@@ -255,9 +255,9 @@
             </ListBox>
         </Grid>
 
-        <!--<Grid Visibility="{Binding NotifsVisibility}">
+        <Grid Visibility="{Binding NotifsVisibility}">
             <local:NotificationPanel DataContext="{Binding NotifPanelViewModel}"></local:NotificationPanel>
-        </Grid>-->
+        </Grid>
         <Grid Visibility="{Binding NotifsOpened}" Margin="903,4,104,747">
             <Rectangle RadiusX="10" RadiusY="10" Stroke="White" Fill="#FE5D7A" Margin="-1,2,2,-1"></Rectangle>
         </Grid>

@@ -99,6 +99,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             Save();
             DialogHelper.DialogService.CloseDialog(this);
+            Messenger.Messenger.SuccessMessage("Uspešno ste prepisali lek!");
         }
 
         public void ExecuteGiveUp()
