@@ -22,7 +22,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private Controller.EmployeeNotificationController notificationController;
         private NotifPanelViewModel notifPanelViewModel;
         private bool openedNotifs;
-        NotificationMessageManager manager = new NotificationMessageManager();
+        private NotificationMessageManager manager = new NotificationMessageManager();
+        private Messenger.Messenger messenger;
 
         public MyICommand ToggleSettings { get; set; }
         public MyICommand ToggleNotifs { get; set; }
@@ -33,12 +34,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public MyICommand PatientsCommand { get; set; }
         public MyICommand ScheduleCommand { get; set; }
         public MyICommand FeedbackCommand { get; set; }
+        
 
         public MyICommand SignOut { get; set; }
 
         public MainViewModel()
         {
-            
+            Messenger = new Messenger.Messenger(this);
             openedNotifs = false;
             this.notificationController = new Controller.EmployeeNotificationController();
             Doctor = Controller.RegisteredUserController.UserToDoctor(App.User);
@@ -59,8 +61,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             NotifPanelViewModel = new NotifPanelViewModel();
 
             SignOut = new MyICommand(ExecuteSignOut, CanExecuteSignOut);
-
-            LoadWelcomeMessage();
+            
         }
 
         public void ExecuteToggleSettings()
@@ -77,6 +78,20 @@ namespace ZdravoKlinika.View.DoctorPages.Model
            .Background("#FF9E98FF")
            .Foreground("White")
            .HasHeader("Dobrodošli u aplikaciju Zdravo klinike!")
+           .Animates(true)
+           .AnimationInDuration(0.5)
+           .AnimationOutDuration(1)
+           .Dismiss().WithDelay(3000)
+           .Queue();
+        }
+
+        public void LoadProfileEditSuccessMessage()
+        {
+            Manager.CreateMessage()
+           .Accent("#FF9E98FF")
+           .Background("#FF9E98FF")
+           .Foreground("White")
+           .HasHeader("Uspešno ste izmenili Vaš profil!")
            .Animates(true)
            .AnimationInDuration(0.5)
            .AnimationOutDuration(1)
@@ -158,5 +173,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public NotifPanelViewModel NotifPanelViewModel { get => notifPanelViewModel; set => notifPanelViewModel = value; }
         public bool OpenedNotifs { get => openedNotifs; set => openedNotifs = value; }
         public NotificationMessageManager Manager { get => manager; set => manager = value; }
+        public Messenger.Messenger Messenger { get => messenger; set => messenger = value; }
     }
 }

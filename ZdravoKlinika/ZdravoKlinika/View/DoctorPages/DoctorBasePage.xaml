@@ -261,8 +261,8 @@
         <Grid Visibility="{Binding NotifsOpened}" Margin="903,4,104,747">
             <Rectangle RadiusX="10" RadiusY="10" Stroke="White" Fill="#FE5D7A" Margin="-1,2,2,-1"></Rectangle>
         </Grid>
-        <Border>
-            <controls:NotificationMessageContainer Manager="{Binding Manager}" Height="61" Margin="304,0,304,0" />
+        <Border BorderThickness="0">
+            <controls:NotificationMessageContainer Manager="{Binding Manager}" Height="55" Margin="304,0,304,0" />
         </Border>
 
     </Grid>

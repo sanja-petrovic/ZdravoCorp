@@ -1,11 +1,11 @@
 [
   {
     "Specialty": "Dijagnosti\u010Dar",
-    "NameAndLast": "Gregory House 456",
     "YearsOfService": 23,
     "EducationLevel": "Doktor medicine, specijalista nefrologije, Medicinski fakultet, Univerzitet u Novom Sadu",
     "Working": true,
     "UserType": 0,
+    "UserTypeString": "Doktor",
     "PersonalId": "456",
     "Name": "Gregory",
     "Lastname": "House",
@@ -25,35 +25,11 @@
   },
   {
     "Specialty": "Endokrinolog",
-    "NameAndLast": "Lisa Cuddy 123",
-    "YearsOfService": 26,
-    "EducationLevel": "Doktor medicine, specijalista endokrinologije, Medicinski fakultet, Univerzitet u Novom Sadu",
-    "Working": true,
-    "UserType": 0,
-    "PersonalId": "123",
-    "Name": "Lisa",
-    "Lastname": "Cuddy",
-    "DateOfBirth": "1959-10-05T00:00:00",
-    "Gender": 0,
-    "Phone": "0612345678",
-    "Email": "lisacuddy@zdravo.com",
-    "Password": "lisa123",
-    "ProfilePicture": "\\Resources\\Images\\lisacuddy.jpg",
-    "LastLogin": "0001-01-01T00:00:00",
-    "Address": {
-      "Street": "Mi\u0161e Dimitrijevi\u0107a",
-      "Number": "26",
-      "City": "Novi Sad",
-      "Country": "Srbija"
-    }
-  },
-  {
-    "Specialty": "Endokrinolog",
-    "NameAndLast": "wqer wer qwer",
     "YearsOfService": 0,
     "EducationLevel": "Doktor medicine, specijalista endokrinologije, Medicinski fakultet, Univerzitet u Novom Sadu",
     "Working": false,
     "UserType": 0,
+    "UserTypeString": "Doktor",
     "PersonalId": "qwer",
     "Name": "wqer",
     "Lastname": "wer",
@@ -69,6 +45,30 @@
       "Number": "B",
       "City": "C",
       "Country": "D"
+    }
+  },
+  {
+    "Specialty": "Endokrinolog",
+    "YearsOfService": 26,
+    "EducationLevel": "Doktor medicine, specijalista endokrinologije, Medicinski fakultet, Univerzitet u Novom Sadu",
+    "Working": true,
+    "UserType": 0,
+    "UserTypeString": "Doktor",
+    "PersonalId": "123",
+    "Name": "Lisa",
+    "Lastname": "Cuddy",
+    "DateOfBirth": "1959-10-05T00:00:00",
+    "Gender": 0,
+    "Phone": "0612345678",
+    "Email": "lisacuddy@zdravo.com",
+    "Password": "lisa123",
+    "ProfilePicture": "\\Resources\\Images\\lisacuddy.jpg",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "Mi\u0161e Dimitrijevi\u0107a",
+      "Number": "26",
+      "City": "Novi Sad",
+      "Country": "Srbija"
     }
   }
 ]

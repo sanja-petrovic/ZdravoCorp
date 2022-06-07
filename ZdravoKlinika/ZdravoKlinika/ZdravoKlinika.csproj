@@ -138,7 +138,6 @@
   <ItemGroup>
     <Folder Include="Resources\Documents\NewFolder\" />
     <Folder Include="View\Dialogs\" />
-    <Folder Include="View\Messenger\" />
     <Folder Include="View\Patient\" />
   </ItemGroup>
 
