@@ -23,6 +23,20 @@ namespace ZdravoKlinika.Service
             return this.repository.GetAll();
         }
 
+        public List<TimeOffRequest> GetAllUnprocessed()
+        { 
+            List<TimeOffRequest> list = new List<TimeOffRequest>();
+            foreach (TimeOffRequest request in GetAll())
+            {
+                if (request.State == RequestState.Pending)
+                { 
+                    list.Add(request);
+                }
+            }
+            return list;
+        }
+
+
         public TimeOffRequest GetById(int id)
         {
             return this.repository.GetById(id);
@@ -34,7 +48,7 @@ namespace ZdravoKlinika.Service
             request.Id = newId;
             if(IsRequestAcceptable(request))
             {
-                this.repository.CreateRequest(request);
+                this.repository.Add(request);
             }
         }
 
@@ -96,6 +110,14 @@ namespace ZdravoKlinika.Service
             }
 
             return result;
+        }
+
+        public void ProcessRequest(TimeOffRequest req)
+        {
+            TimeOffRequest requestInDatabase = GetById(req.Id);
+            requestInDatabase.Comment = req.Comment;
+            requestInDatabase.State = req.State;
+            repository.Update(requestInDatabase);
         }
 
         public bool HasAlreadyMadeRequest(DateBlock period, String doctorId)

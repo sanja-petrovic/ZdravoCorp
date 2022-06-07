@@ -29,8 +29,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public string PatientName { get => patientName; set => SetProperty(ref patientName, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
+        public string Patient { get => PatientName + ", " + PatientId; }
         public string DoctorName { get => doctorName; set => SetProperty(ref doctorName, value); }
         public string DoctorSpecialty { get => doctorSpecialty; set => SetProperty(ref doctorSpecialty, value); }
+        public string Doctor { get => DoctorName + ", " + DoctorSpecialty.ToLower(); }
         public string DateTime { get => dateTime; set => SetProperty(ref dateTime, value); }
         public string Room { get => room; set => SetProperty(ref room, value); }
         public string Diagnoses { get => diagnoses; set => SetProperty(ref diagnoses, value); }

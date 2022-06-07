@@ -5,6 +5,8 @@
 
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository;
 
 public class DoctorService
 {
@@ -39,32 +41,18 @@ public class DoctorService
         doctor.Specialty = speciality;
         doctor.EducationLevel = education;
 
-        doctorRepository.CreateDoctor(doctor);
+        doctorRepository.Add(doctor);
 
     }
 
-    public void UpdateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
+    public void UpdateDoctor(Doctor doctor)
     {
-        Doctor doctor = new Doctor();
-        doctor.PersonalId = personalId;
-        doctor.Name = name;
-        doctor.Lastname = lastname;
-        doctor.ProfilePicture = profilePicture;
-        doctor.Email = email;
-        doctor.Password = password;
-        doctor.Phone = phone;
-        doctor.Specialty = speciality;
-        doctor.EducationLevel = education;
-        doctor.Gender = gender;
-        doctor.DateOfBirth = dateOfBirth;
-
-        doctorRepository.UpdateDoctor(doctor);
-
+        doctorRepository.Update(doctor);
     }
 
     public void DeleteDoctor(String personalId)
     {
-        doctorRepository.DeleteDoctor(GetById(personalId));
+        doctorRepository.Remove(GetById(personalId));
     }
 
     public List<Doctor> GetBySpecialty(string specialty)

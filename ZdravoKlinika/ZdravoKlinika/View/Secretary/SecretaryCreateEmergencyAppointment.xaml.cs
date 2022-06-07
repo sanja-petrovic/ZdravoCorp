@@ -40,7 +40,7 @@ namespace ZdravoKlinika.View.Secretary
             doctorController = new DoctorController();
             LoadAppointments(patientViewModel.SelectedPatient.GetPatientId());
 
-            Patient pat = patientViewModel.SelectedPatient;
+            IPatient pat = patientViewModel.SelectedPatient;
             if (pat.GetPatientType() == PatientType.Registered)
             {
                 RegisteredPatient rpat;
@@ -135,17 +135,6 @@ namespace ZdravoKlinika.View.Secretary
 
                 List<String> b = new List<String>();
 
-                DateTime currentDate;
-                if (DateTime.Now.Minute < 15 && DateTime.Now.Minute > 0)
-                    currentDate = DateTime.Now.ToLocalTime().AddMinutes(14);
-                else if (DateTime.Now.Minute < 30)
-                    currentDate = DateTime.Now.ToLocalTime().AddMinutes(29);
-                else if (DateTime.Now.Minute < 45)
-                    currentDate = DateTime.Now.ToLocalTime().AddMinutes(44);
-                else
-                    currentDate = DateTime.Now.ToLocalTime().AddHours(1);
-
-
                 foreach (DateBlock block in appointmentContoller.GetDateBlocksForDoctorInNextHour(holder,doc))
                 {
                     b.Add(block.Start.TimeOfDay.ToString());
@@ -162,8 +151,12 @@ namespace ZdravoKlinika.View.Secretary
             String[] a = ComboBoxAddTime.SelectedItem.ToString().Split(":");
             selectedDate = selectedDate.AddMinutes(Int32.Parse(a[1]));
             selectedDate = selectedDate.AddHours(Int32.Parse(a[0]));
-
-            appointmentContoller.CreateAppointment( ((Doctor)ComboBoxAddDoctor.SelectedItem).PersonalId,this.patientViewModel.SelectedPatient.GetPatientId(),selectedDate,true,AppointmentType.Surgery,"314",Int32.Parse(TextBoxDurationAdd.Text));
+            
+            List<Room> rooms = new RoomController().GetFreeRooms(selectedDate, RoomType.operating);
+            if (rooms.Count > 0)
+            {
+                appointmentContoller.CreateAppointment(((Doctor)ComboBoxAddDoctor.SelectedItem).PersonalId, this.patientViewModel.SelectedPatient.GetPatientId(), selectedDate, true, AppointmentType.Surgery, rooms.First().RoomId, Int32.Parse(TextBoxDurationAdd.Text));
+            }
             NavigationService.Navigate(new SecretaryCreateEmergencyAppointment(patientViewModel));
         }
     }

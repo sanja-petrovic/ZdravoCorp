@@ -2,7 +2,7 @@ using System;
 using System.Text.Json.Serialization;
 using ZdravoKlinika.Model;
 
-public class RegisteredPatient : RegisteredUser, Patient
+public class RegisteredPatient : RegisteredUser, IPatient
 {
     private PatientType patientType;
     private BloodType bloodType;
@@ -78,6 +78,42 @@ public class RegisteredPatient : RegisteredUser, Patient
         return Lastname;
     }
 
+    public string BloodTypeToString()
+    {
+        string bloodType = "";
+        switch(this.bloodType)
+        {
+            case BloodType.APositive:
+                bloodType = "A+";
+                break;
+            case BloodType.ANegative:
+                bloodType = "A-";
+                break;
+            case BloodType.BPositive:
+                bloodType = "B+";
+                break;
+            case BloodType.BNegative:
+                bloodType = "B-";
+                break;
+            case BloodType.ABPositive:
+                bloodType = "AB+";
+                break;
+            case BloodType.ABNegative:
+                bloodType = "AB-";
+                break;
+            case BloodType.OPositive:
+                bloodType = "O+";
+                break;
+            case BloodType.ONegative:
+                bloodType = "O-";
+                break;
+            default:
+                break;
+
+        }
+
+        return bloodType;
+    }
     
     public override string ToString()
     {

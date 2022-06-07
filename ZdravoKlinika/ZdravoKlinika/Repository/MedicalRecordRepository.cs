@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Data_Handler;
+using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class MedicalRecordRepository
+    public class MedicalRecordRepository : IMedicalRecordRepository
     {
         private MedicalRecordDataHandler medicalRecordDataHandler;
         private MedicationRepository medicationRepository;
@@ -19,49 +21,48 @@ namespace ZdravoKlinika.Repository
         public MedicalRecordRepository()
         {
             MedicalRecordDataHandler = new MedicalRecordDataHandler();
-            ReadDataFromFiles();
+            ReadDataFromFile();
 
             medicationRepository = new MedicationRepository();
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             MedicalRecords = MedicalRecordDataHandler.Read();
             if (MedicalRecords == null) MedicalRecords = new List<MedicalRecord>();
         }
 
-        public void UpdateReferences(MedicalRecord medicalRecord)
+        private void UpdateReferences(MedicalRecord medicalRecord)
         {
             for(int i = 0; i < medicalRecord.CurrentMedication.Count; i++)
             {
                 medicalRecord.CurrentMedication[i] = medicationRepository.GetById(medicalRecord.CurrentMedication[i].MedicationId);
             }
+
             for(int i = 0; i < medicalRecord.PastMedication.Count; i++)
             {
                 medicalRecord.PastMedication[i] = medicationRepository.GetById(medicalRecord.PastMedication[i].MedicationId);
             }      
         }
 
-        public void CreateMedicalRecord(MedicalRecord medicalRecord)
+        public void Add(MedicalRecord medicalRecord)
         {
-            if (medicalRecord == null)
-                return;
-            if (this.MedicalRecords == null)
-                this.MedicalRecords = new List<MedicalRecord>();
-
+            bool duplicate = false;
             foreach (MedicalRecord med in MedicalRecords)
             {
                 if (med.MedicalRecordId == medicalRecord.MedicalRecordId)
                 {
-                    return; // throw new Exception("BAD");
+                    duplicate = true;
                 }
             }
 
-            this.MedicalRecords.Add(medicalRecord);
-            MedicalRecordDataHandler.Write(MedicalRecords);
-            return;
+            if(!duplicate)
+            {
+                this.MedicalRecords.Add(medicalRecord);
+                MedicalRecordDataHandler.Write(MedicalRecords);
+            }
         }
-        public void UpdateMedicalRecord(MedicalRecord medicalRecord)
+        public void Update(MedicalRecord medicalRecord)
         {
             int index = -1;
             foreach (MedicalRecord recordObject in this.MedicalRecords)
@@ -81,13 +82,13 @@ namespace ZdravoKlinika.Repository
             MedicalRecordDataHandler.Write(MedicalRecords);
             return;
         }
-        public void DeleteAllMedicalRecord()
+        public void RemoveAll()
         {
             if (MedicalRecords != null)
                 MedicalRecords.Clear();
         }
 
-        public void DeleteMedicalRecord(MedicalRecord record)
+        public void Remove(MedicalRecord record)
         {
             if (record == null)
                 return;
@@ -98,11 +99,11 @@ namespace ZdravoKlinika.Repository
             MedicalRecordDataHandler.Write(MedicalRecords);
         }
 
-        public MedicalRecord? GetById(String id)
+        public MedicalRecord GetById(String id)
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             MedicalRecord? medicalRecordToReturn = null;
-            foreach (MedicalRecord record in this.MedicalRecords)
+            foreach (MedicalRecord record in this.medicalRecordDataHandler.Read())
             {
                 if (record.MedicalRecordId.Equals(id))
                 {
@@ -114,21 +115,32 @@ namespace ZdravoKlinika.Repository
             return medicalRecordToReturn;
         }
 
-        public void AddCurrentMedication(String medicalRecordId, Medication medication)
+        public void AddCurrentMedication(MedicalRecord record, Medication medication)
         {
-            MedicalRecord medicalRecord = this.GetById(medicalRecordId);
-            if(!medicalRecord.CurrentMedication.Contains(medication))
+            if(!record.CurrentMedication.Contains(medication))
             {
-                medicalRecord.AddCurrentMedication(medication);
+                record.AddCurrentMedication(medication);
             }
-            int i = FindIndexInList(medicalRecordId);
-            this.MedicalRecords[i] = medicalRecord;
+            int i = GetIndex(record.MedicalRecordId);
+            this.MedicalRecords[i] = record;
 
             MedicalRecordDataHandler.Write(MedicalRecords);
 
         }
 
-        public int FindIndexInList(string id)
+        public void AddDiagnosis(String diagnosis, MedicalRecord record)
+        {
+            if(record != null)
+            {
+                record.Diagnoses.Add(diagnosis);
+            }
+            int i = GetIndex(record.MedicalRecordId);
+            MedicalRecords[i] = record;
+
+            MedicalRecordDataHandler.Write(MedicalRecords);
+        }
+
+        public int GetIndex(string id)
         {
             int retVal = -1;
             for(int i = 0; i < this.MedicalRecords.Count(); i++)
@@ -141,6 +153,33 @@ namespace ZdravoKlinika.Repository
             }
 
             return retVal;
+        }
+
+        public List<string> GetDiagnosesAndAllergies(MedicalRecord medicalRecord)
+        {
+            List<string> list = new List<string>();
+
+            foreach(string allergy in medicalRecord.Allergies)
+            {
+                list.Add("Alergija: " + allergy);
+            }
+            foreach(string diagnosis in medicalRecord.Diagnoses)
+            {
+                list.Add(diagnosis);
+            }
+
+            return list;
+        }
+
+        public List<MedicalRecord> GetAll()
+        {
+            ReadDataFromFile();
+            foreach (MedicalRecord record in this.medicalRecords)
+            {
+                UpdateReferences(record);
+            }
+
+            return this.medicalRecords;
         }
 
     }

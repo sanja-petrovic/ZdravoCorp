@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Data_Handler;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class EmployeeRepository
+    public class EmployeeRepository : Interfaces.IEmployeeRepository
     {
         private EmployeeDataHandler employeeDataHandler;
         private List<Employee> employees;
@@ -37,6 +38,30 @@ namespace ZdravoKlinika.Repository
                 }
             }
             return null;
+        }
+
+        public void Add(Employee item)
+        {
+            this.employees.Add(item);
+            this.employeeDataHandler.Write(employees);
+        }
+
+        public void Remove(Employee item)
+        {
+            this.employees.RemoveAt(this.employees.FindIndex(e => e.PersonalId.Equals(item.PersonalId)));
+            this.employeeDataHandler.Write(employees);
+        }
+
+        public void Update(Employee item)
+        {
+            this.employees[this.employees.FindIndex(e => e.PersonalId.Equals(item.PersonalId))] = item;
+            this.employeeDataHandler.Write(employees);
+        }
+
+        public void RemoveAll()
+        {
+            this.employees.Clear();
+            this.employeeDataHandler.Write(employees);
         }
     }
 }

@@ -1,10 +1,11 @@
 [
   {
     "Specialty": "Dijagnosti\u010Dar",
-    "EducationLevel": "Doktor nauka",
-    "YearsOfService": 0,
+    "YearsOfService": 23,
+    "EducationLevel": "Doktor medicine, specijalista nefrologije, Medicinski fakultet, Univerzitet u Novom Sadu",
     "Working": true,
     "UserType": 0,
+    "UserTypeString": "Doktor",
     "PersonalId": "456",
     "Name": "Gregory",
     "Lastname": "House",
@@ -13,35 +14,22 @@
     "Phone": "0612345679",
     "Email": "drhouse@zdravo.com",
     "Password": "houses",
-    "ProfilePicture": "null",
+    "ProfilePicture": "\\Resources\\Images\\drhouse.png",
     "LastLogin": "0001-01-01T00:00:00",
-    "Address": null
+    "Address": {
+      "Street": "A",
+      "Number": "B",
+      "City": "C",
+      "Country": "D"
+    }
   },
   {
     "Specialty": "Endokrinolog",
-    "EducationLevel": "Doktor nauka",
     "YearsOfService": 0,
-    "Working": true,
-    "UserType": 0,
-    "PersonalId": "123",
-    "Name": "Lisa",
-    "Lastname": "Cuddy",
-    "DateOfBirth": "1959-10-05T00:00:00",
-    "Gender": 0,
-    "Phone": "0612345678",
-    "Email": "lisacuddy@zdravo.com",
-    "Password": "lisa123",
-    "ProfilePicture": "null",
-    "LastLogin": "0001-01-01T00:00:00",
-    "Address": null
-  },
-  {
-    "Specialty": "Endokrinolog",
-    "Education": "123",
-    "YearsOfService": 0,
-    "EducationLevel": null,
+    "EducationLevel": "Doktor medicine, specijalista endokrinologije, Medicinski fakultet, Univerzitet u Novom Sadu",
     "Working": false,
     "UserType": 0,
+    "UserTypeString": "Doktor",
     "PersonalId": "qwer",
     "Name": "wqer",
     "Lastname": "wer",
@@ -50,8 +38,37 @@
     "Phone": "123456798",
     "Email": "gugma@gugmar.com",
     "Password": "123",
-    "ProfilePicture": "null",
+    "ProfilePicture": "\\Resources\\Images\\docpfp.jpg",
     "LastLogin": "0001-01-01T00:00:00",
-    "Address": null
+    "Address": {
+      "Street": "A",
+      "Number": "B",
+      "City": "C",
+      "Country": "D"
+    }
+  },
+  {
+    "Specialty": "Endokrinolog",
+    "YearsOfService": 26,
+    "EducationLevel": "Doktor medicine, specijalista endokrinologije, Medicinski fakultet, Univerzitet u Novom Sadu",
+    "Working": true,
+    "UserType": 0,
+    "UserTypeString": "Doktor",
+    "PersonalId": "123",
+    "Name": "Lisa",
+    "Lastname": "Cuddy",
+    "DateOfBirth": "1959-10-05T00:00:00",
+    "Gender": 0,
+    "Phone": "0612345678",
+    "Email": "lisacuddy@zdravo.com",
+    "Password": "lisa123",
+    "ProfilePicture": "\\Resources\\Images\\lisacuddy.jpg",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "Mi\u0161e Dimitrijevi\u0107a",
+      "Number": "26",
+      "City": "Novi Sad",
+      "Country": "Srbija"
+    }
   }
 ]

@@ -27,6 +27,11 @@ public class RoomController
         return this.roomService.GetFreeRooms(enteredTime, roomType);
     }
 
+    public List<Room> GetOccupiedRooms(DateTime enteredTime, int duration, RoomType roomType)
+    {
+        return this.roomService.GetAvailableRooms(new ZdravoKlinika.Util.DateBlock(enteredTime, duration), roomType);
+    }
+
     public List<Room> GetRenovatableRooms() 
     {
         return this.roomService.GetRenovatableRooms();
@@ -34,12 +39,12 @@ public class RoomController
 
     public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number, bool free)
     {
-        this.roomService.CreateRoom(name, type, status, level, number, free);
+        this.roomService.CreateRoom(new Room("0", name, type, level, number, status, free));
     }
 
     public void UpdateRoom(String roomId, String name, RoomType type, RoomStatus status, int level, int number, bool free)
     {
-        this.roomService.UpdateRoom(roomId, name, type, status, level, number, free);
+        this.roomService.UpdateRoom(new Room(roomId, name, type, level, number, status, free));
     }
 
     public void DeleteRoom(String roomId)

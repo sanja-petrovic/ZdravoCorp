@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Model;
 using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
@@ -19,16 +20,15 @@ namespace ZdravoKlinika.View.DoctorPages
     /// <summary>
     /// Interaction logic for DoctorHomePage.xaml
     /// </summary>
-    public partial class DoctorHomePage : Page
+    public partial class DoctorHomePage : UserControl
     {
         private int selectedAppointmentId;
-        private AppointmentsTodayViewModel viewModel;
-        private Doctor doctor;
-        public DoctorHomePage(Doctor doctor)
+        private HomePageViewModel viewModel;
+        public DoctorHomePage()
         {
-            viewModel = new AppointmentsTodayViewModel(doctor);
+            
+            viewModel = new HomePageViewModel();
             DataContext = viewModel;
-            this.doctor = doctor;
             InitializeComponent();
             
         }
@@ -41,18 +41,12 @@ namespace ZdravoKlinika.View.DoctorPages
             viewModel.SelectionChanged(selectedAppointmentId);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog { SelectedAppointmentId = this.selectedAppointmentId };
-            logAppointmentDialog.Init();
-            logAppointmentDialog.ShowDialog();
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord(doctor);
-            doctorMedicalRecord.init(viewModel.PatientId);
-            this.NavigationService.Navigate(doctorMedicalRecord);
+            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
+            doctorMedicalRecord.Init(viewModel.PatientId);
+            //this.NavigationService.Navigate(doctorMedicalRecord);
         }
     }
 }

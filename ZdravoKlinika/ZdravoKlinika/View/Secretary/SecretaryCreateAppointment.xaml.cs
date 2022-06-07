@@ -38,7 +38,7 @@ namespace ZdravoKlinika.View.Secretary
             doctorController = new DoctorController();
             LoadAppointments(patientViewModel.SelectedPatient.GetPatientId());
 
-            Patient pat = patientViewModel.SelectedPatient;
+            IPatient pat = patientViewModel.SelectedPatient;
             if (pat.GetPatientType() == PatientType.Registered)
             {
                 RegisteredPatient rpat;
@@ -96,23 +96,22 @@ namespace ZdravoKlinika.View.Secretary
 
             ComboBoxAddTime.ItemsSource = null;
             ComboBoxAddDoctor.ItemsSource = null;
-            List<String> a = new List<String>();
+            List<Doctor> a = new List<Doctor>();
             List<String> b = new List<String>();
 
 
             foreach (Doctor doc in doctorController.GetAll())
             {
-                a.Add(doc.NameAndLast);
+                a.Add(doc);
             }
 
-            foreach (DateBlock block in AppointmentContoller.getFreeTimeForPatient(((DateTime)DatePickerAdd.SelectedDate).Date, Int32.Parse(TextBoxDurationAdd.Text), patientContoller.GetById(LabelPID.Content.ToString()), 8, 20))
+            foreach (DateBlock block in AppointmentContoller.GetFreeTimeForPatient(((DateTime)DatePickerAdd.SelectedDate).Date, Int32.Parse(TextBoxDurationAdd.Text), patientContoller.GetById(LabelPID.Content.ToString()), 8, 20))
             {
                 b.Add(block.Start.TimeOfDay.ToString());
             }
 
             b.Sort();
 
-            //SelectedDateUpdate.SelectedDate = selected.DateAndTime;
 
             ComboBoxAddDoctor.ItemsSource = a;
             ComboBoxAddTime.ItemsSource = b;
@@ -128,18 +127,17 @@ namespace ZdravoKlinika.View.Secretary
             date = date.AddMinutes(Int32.Parse(a[1]));
             date = date.AddHours(Int32.Parse(a[0]));
 
-            String[] ab = ComboBoxAddDoctor.SelectedItem.ToString().Split(" ");
             DateTime date2 = (DateTime.Now).AddDays(2);
             if (date <= date2)
                 return;
 
             int duration = Int32.Parse(TextBoxDurationAdd.Text);
 
-            AppointmentType type = (AppointmentType)ComboBoxAddType.SelectedIndex;
-            Doctor doc = doctorController.GetById(ab[2]);
-            Patient pat = patientContoller.GetById(LabelPID.Content.ToString());
+            AppointmentType type = (AppointmentType)ComboBoxAddType.SelectedIndex -1;
+            Doctor doc = doctorController.GetById(((Doctor)ComboBoxAddDoctor.SelectedItem).PersonalId);
+            IPatient pat = patientContoller.GetById(LabelPID.Content.ToString());
 
-            List<DateBlock> t = DateBlock.getIntersection(AppointmentContoller.getFreeTimeForDoctor(date.Date, duration, doc, 8, 20), AppointmentContoller.getFreeTimeForPatient(date.Date, duration, pat, 8, 20));
+            List<DateBlock> t = DateBlock.getIntersection(AppointmentContoller.GetFreeTimeForUser(new DateBlock(date.Date, duration), doc, new int[] { 8, 20 }), AppointmentContoller.GetFreeTimeForPatient(date.Date, duration, pat, 8, 20));
             
 
             foreach (DateBlock block in t)
@@ -151,10 +149,9 @@ namespace ZdravoKlinika.View.Secretary
                     List<Room> rooms = new RoomController().GetFreeRooms(block.Start,roomType);
                     if (rooms.Count > 0)
                     {
-                        AppointmentContoller.CreateAppointment(ab[2], LabelPID.Content.ToString(), date, false, type, rooms.First().RoomId, duration);
+                        AppointmentContoller.CreateAppointment(((Doctor)ComboBoxAddDoctor.SelectedItem).PersonalId, LabelPID.Content.ToString(), date, false, type, rooms.First().RoomId, duration);
                     }
-                    
-                    return;
+                    break;
                 }
             }
             LoadAppointments(LabelPID.Content.ToString());

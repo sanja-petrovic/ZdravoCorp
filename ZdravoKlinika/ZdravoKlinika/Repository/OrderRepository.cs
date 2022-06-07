@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class OrderRepository
+    public class OrderRepository : Interfaces.IOrderRepository
     {
         private List<Order> orders;
         private OrderDataHandler orderDataHandler;
@@ -20,14 +20,13 @@ namespace ZdravoKlinika.Repository
 
         public OrderRepository()
         {
-            // let this first update finished orders 
             EquipmentRepository = new EquipmentRepository();
 
             OrderDataHandler = new OrderDataHandler();
-            ReadDataFromFiles();
+            ReadDataFromFile();
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             Orders = OrderDataHandler.Read();
             if (Orders == null) Orders = new List<Order>();
@@ -43,9 +42,9 @@ namespace ZdravoKlinika.Repository
             }
         }
 
-        public List<Order> GetAllOrders()
+        public List<Order> GetAll()
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             foreach (Order order in Orders)
             {
                 UpdateReferences(order);
@@ -68,9 +67,51 @@ namespace ZdravoKlinika.Repository
             return orderToReturn;
         }
 
-        public void CreateNewOrder(Order newOrder)
+        public void Add(Order newOrder)
         {
             Orders.Add(newOrder);
+            OrderDataHandler.Write(Orders);
+        }
+
+        public void Remove(Order item)
+        {
+            Orders.Remove(item);
+            OrderDataHandler.Write(Orders);
+        }
+
+        public void Update(Order item)
+        {
+            int index = GetIndex(item.OrderId);
+            if (index != -1)
+            {
+                orders[index] = item;
+                orderDataHandler.Write(orders);
+            }
+        }
+
+        private int GetIndex(String id)
+        {
+            int indexToRemove = -1;
+            foreach (Order order in orders)
+            {
+                if (order.OrderId.Equals(id))
+                {
+                    indexToRemove = orders.IndexOf(order);
+                    break;
+                }
+            }
+
+            if (indexToRemove == -1)
+            {
+                throw new Exception("Order does not exist");
+            }
+            return indexToRemove;
+        }
+
+        public void RemoveAll()
+        {
+            if (Orders != null)
+                Orders.Clear();
             OrderDataHandler.Write(Orders);
         }
     }

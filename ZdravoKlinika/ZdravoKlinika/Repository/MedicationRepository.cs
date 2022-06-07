@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Data_Handler;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    internal class MedicationRepository
+    internal class MedicationRepository : IMedicationRepository
     {
 
         private MedicationDataHandler medicationDataHandler;
@@ -18,19 +19,19 @@ namespace ZdravoKlinika.Repository
         public MedicationRepository()
         {
             medicationDataHandler = new MedicationDataHandler();
-            ReadDataFromFiles();
+            ReadDataFromFile();
 
             this.doctorRepository = new DoctorRepository();
             this.approvedValueList = new List<Medication>();
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             medications = medicationDataHandler.Read();
             if (medications == null) medications = new List<Medication>();
         }
 
-        public void UpdateReferences(Medication medication)
+        private void UpdateReferences(Medication medication)
         {
             if (medication.Alternatives != null)
             {
@@ -42,7 +43,7 @@ namespace ZdravoKlinika.Repository
             UpdateDoctor(medication);
         }
 
-        public void UpdateDoctor(Medication medication)
+        private void UpdateDoctor(Medication medication)
         {
 
             if (medication.Validator != null)
@@ -53,8 +54,8 @@ namespace ZdravoKlinika.Repository
 
         public List<Medication> GetAll()
         {
-            ReadDataFromFiles();
-            foreach (Medication medication in this.medicationDataHandler.Read())
+            ReadDataFromFile();
+            foreach (Medication medication in this.medications)
             {
                 UpdateReferences(medication);
             }
@@ -64,11 +65,11 @@ namespace ZdravoKlinika.Repository
 
         public Medication GetById(String id)
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             Medication? medicationToReturn = null;
             foreach (Medication medication in medications)
             {
-                if(medication.MedicationId == id)
+                if(medication.MedicationId.Equals(id))
                 {
                     UpdateDoctor(medication);
                     medicationToReturn = medication;
@@ -81,7 +82,7 @@ namespace ZdravoKlinika.Repository
       
         public Medication GetByCodeAndName(string medicationCode, string brandName)
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             Medication? medicationToReturn = null;
             foreach (Medication medication in medications)
             {
@@ -118,13 +119,13 @@ namespace ZdravoKlinika.Repository
             return medication.Alternatives;
         }
 
-        public void CreateMedication(Medication medication)
+        public void Add(Medication medication)
         {
             this.medications.Add(medication);
             medicationDataHandler.Write(this.medications);
         }
 
-        public void DeleteMedication(Medication medication)
+        public void Remove(Medication medication)
         {
             if (medication == null)
                 return;
@@ -134,7 +135,7 @@ namespace ZdravoKlinika.Repository
             medicationDataHandler.Write(this.medications);
         }
 
-        public void UpdateMedication(Medication medication)
+        public void Update(Medication medication)
         {
             if (medication == null)
                 return;
@@ -146,7 +147,7 @@ namespace ZdravoKlinika.Repository
             }
         }
 
-        public int GetIndex(Medication medication)
+        private int GetIndex(Medication medication)
         {
             int index = -1;
             for(int i = 0; i < this.medications.Count; i++)
@@ -161,21 +162,11 @@ namespace ZdravoKlinika.Repository
             return index;
         }
 
-        public List<Medication> GetApproved()
+        public void RemoveAll()
         {
-            List<Medication> list = new List<Medication>();
+            this.medications.Clear();
+            this.medicationDataHandler.Write(this.medications);
 
-            foreach(Medication medication in this.medicationDataHandler.Read())
-            {
-                if(medication.Validated)
-                {
-                    UpdateReferences(medication);
-                    list.Add(medication);
-                }
-            }
-
-            return list;
         }
-
     }
 }

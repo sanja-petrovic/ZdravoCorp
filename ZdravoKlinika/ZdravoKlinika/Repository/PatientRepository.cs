@@ -8,14 +8,14 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class PatientRepository
+    public class PatientRepository : Interfaces.IPatientRepository
     {
-        private List<Patient> patients;
+        private List<IPatient> patients;
         private RegisteredPatientRepository registeredPatientRepository;
         private GuestPatientRepository guestPatientRepository;
         public RegisteredPatientRepository RegisteredPatientRepository { get => registeredPatientRepository; set => registeredPatientRepository = value; }
         public GuestPatientRepository GuestPatientRepository { get => guestPatientRepository; set => guestPatientRepository = value; }
-        public List<Patient> Patients { get => patients; set => patients = value; }
+        public List<IPatient> Patients { get => patients; set => patients = value; }
 
         public PatientRepository()
         {
@@ -32,7 +32,7 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (RegisteredPatient patient in regPatients)
                 {
-                    this.AddPatient(patient);
+                    this.Add(patient);
                 }
             }      
             List<GuestPatient> guestPatients = GuestPatientRepository.GetAll();
@@ -40,21 +40,21 @@ namespace ZdravoKlinika.Repository
             {
                 foreach (GuestPatient patient in guestPatients)
                 {
-                    this.AddPatient(patient);
+                    this.Add(patient);
                 }
             }
         }
 
-        public void AddPatient(Patient newPatient)
+        public void Add(IPatient newPatient)
         {
             if (newPatient == null)
                 return;
             if (this.Patients == null)
-                this.Patients = new List<Patient>();
+                this.Patients = new List<IPatient>();
             if (!this.Patients.Contains(newPatient))
                 this.Patients.Add(newPatient);
         }
-        public void RemovePatient(Patient oldPatient)
+        public void Remove(IPatient oldPatient)
         {
             if (oldPatient == null)
                 return;
@@ -62,14 +62,14 @@ namespace ZdravoKlinika.Repository
                 if (this.Patients.Contains(oldPatient))
                     this.Patients.Remove(oldPatient);
         }
-        public void RemoveAllPatient()
+        public void RemoveAll()
         {
             if (Patients != null)
                 Patients.Clear();
         }
-        public Patient GetById(String id)
+        public IPatient GetById(String id)
         {
-            foreach (Patient patient in Patients)
+            foreach (IPatient patient in Patients)
             {
                 if(patient.IsPatientById(id))
                     return patient;
@@ -80,13 +80,41 @@ namespace ZdravoKlinika.Repository
         public void CreateNewGuestPatient(GuestPatient guestPatient)
         {
             Patients.Add(guestPatient);
-            GuestPatientRepository.AddGuestPatient(guestPatient);
+            GuestPatientRepository.Add(guestPatient);
             return;
         }
 
-        public List<Patient> GetAll()
+        public List<IPatient> GetAll()
         {
             return Patients;
+        }
+
+        public void Update(IPatient item)
+        {
+            int index = GetIndex(item.GetPatientId());
+            if (index != -1)
+            {
+                patients[index] = item;
+            }
+        }
+
+        private int GetIndex(String id)
+        {
+            int indexToRemove = -1;
+            foreach (IPatient patient in patients)
+            {
+                if (patient.GetPatientId().Equals(id))
+                {
+                    indexToRemove = patients.IndexOf(patient);
+                    break;
+                }
+            }
+
+            if (indexToRemove == -1)
+            {
+                throw new Exception("Patient does not exist");
+            }
+            return indexToRemove;
         }
     }
 }

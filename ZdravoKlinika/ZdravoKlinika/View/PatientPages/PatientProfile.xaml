@@ -36,7 +36,7 @@
                                     <RowDefinition Height="1*"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="{Binding}"  Margin="10,0,0,0" Grid.Row="0"/>
-                                <Button Content="Obrisi" Margin="0,0,10,0"  Grid.Row="1" Width="75" HorizontalAlignment="Right"></Button>
+                                <Button Content="Obrisi" Margin="0,0,10,0"  Grid.Row="1" Width="75" HorizontalAlignment="Right" Click="Button_Click"></Button>
                             </Grid>
                         </Border>
                     </DataTemplate>

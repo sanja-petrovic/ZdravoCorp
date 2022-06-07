@@ -1,0 +1,345 @@
+﻿<UserControl x:Class="ZdravoKlinika.View.DoctorPages.DoctorProfileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" 
+             xmlns:validation="clr-namespace:ZdravoKlinika.View.DoctorPages.ValidationRules"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:DoctorViewModel}" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+            Height="768" Width="1024" >
+
+    <UserControl.Resources>
+
+        <Style x:Key="ErrorStyle"
+               TargetType="Control">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <StackPanel>
+                            <Border BorderBrush="Transparent" BorderThickness="2">
+                                <!-- Placeholder for the control itself -->
+                                <AdornedElementPlaceholder />
+                            </Border>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <LinearGradientBrush x:Key="GridLabelColor" StartPoint="0.55,0" EndPoint="0.95,1" Opacity="1">
+            <GradientStop Color="#bc8dff" Offset="0.85"/>
+            <GradientStop Color="#938dff" Offset="0"/>
+        </LinearGradientBrush>
+        <Style TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Name="Bd" BorderThickness="{TemplateBinding BorderThickness}" 
+                                             BorderBrush="{TemplateBinding BorderBrush}" 
+                                             Background="{TemplateBinding Background}" 
+                                             SnapsToDevicePixels="true">
+                            <ScrollViewer Name="PART_ContentHost" Background="{TemplateBinding Background}" 
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Value="#555557" Property="Foreground" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.InputBindings>
+        <KeyBinding Key="I" Modifiers="Alt" Command="{Binding EditCommand}"/>
+        <KeyBinding Key="O" Modifiers="Alt" Command="{Binding CancelCommand}"/>
+        <KeyBinding Key="P" Modifiers="Alt" Command="{Binding ConfirmCommand}"/>
+    </UserControl.InputBindings>
+    <Grid Margin="0,-27,0,0">
+        <Border  Margin="279,181,577,457"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border  Margin="279,369,577,285"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border><Border  Margin="279,369,577,285"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border  Margin="279,535,672,213"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border  Margin="373,535,577,213"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border  Margin="477,185,251,218"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border  Margin="801,185,43,437"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border  Margin="801,406,43,182"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border Visibility="{Binding AreButtonsVisible}" Margin="608,643,342,130"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Border  Visibility="{Binding AreButtonsVisible}" Margin="702,643,246,130"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Rectangle HorizontalAlignment="Left" Height="170" Margin="276,177,0,0"  VerticalAlignment="Top" Width="174" Fill="White"  RadiusX="10" RadiusY="10"/>
+        <Rectangle HorizontalAlignment="Left" Height="448" Margin="470,177,0,0"  VerticalAlignment="Top" Width="310" Fill="White"  RadiusX="10" RadiusY="10"/>
+        <Rectangle HorizontalAlignment="Left" Height="204" Margin="798,177,0,0"  VerticalAlignment="Top" Width="188" Fill="White"  RadiusX="10" RadiusY="10"/>
+        <Rectangle HorizontalAlignment="Left" Height="224" Margin="798,401,0,0"  VerticalAlignment="Top" Width="188" Fill="White"  RadiusX="10" RadiusY="10"/>
+        <Rectangle HorizontalAlignment="Left" Height="145" Margin="276,369,0,0"  VerticalAlignment="Top" Width="174" Fill="White"  RadiusX="10" RadiusY="10">
+        </Rectangle>
+        <Rectangle HorizontalAlignment="Left" Height="56" Margin="276,530,0,0"  VerticalAlignment="Top" Width="80" Fill="White"  RadiusX="10" RadiusY="10"/>
+        <Rectangle HorizontalAlignment="Left" Height="56" Margin="370,530,0,0"  VerticalAlignment="Top" Width="80" Fill="White"  RadiusX="10" RadiusY="10"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical" Margin="296,200,0,0" Width="134" Height="128">
+            <Ellipse HorizontalAlignment="Center" Height="74" VerticalAlignment="Center" Width="74" Margin="0 0 0 10">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding Doctor.ProfilePicture}" Stretch="Fill"></ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Doctor}" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"/>
+            <TextBlock HorizontalAlignment="Center"  TextWrapping="Wrap" Text="{Binding Doctor.Specialty}" VerticalAlignment="Center" FontWeight="Regular" FontSize="12" Foreground="#555557"/>
+        </StackPanel>
+
+        <Grid Margin="496,185,265,178">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Ime i prezime:" FontWeight="Bold" FontSize="14"/>
+            <TextBlock Grid.Column="1"  Margin="18 0 0 -2" HorizontalAlignment="Left" TextWrapping="Wrap" FontWeight="Regular" FontSize="12" Foreground="#555557" VerticalAlignment="Bottom">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="Doctor.Name" />
+                        <Binding Path="Doctor.Lastname" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+
+            <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="JMBG:" FontWeight="Bold" VerticalAlignment="Bottom" FontSize="14"/>
+            <TextBlock  Grid.Row="2"   Grid.Column="1"  Margin="18 0 0 -2" VerticalAlignment="Bottom" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Doctor.PersonalId}" FontWeight="Regular" FontSize="12" Foreground="#555557"/>
+
+            <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Datum rođenja:" FontWeight="Bold" FontSize="14"/>
+            <TextBlock  Grid.Row="3"   Grid.Column="1"  Margin="18 0 0 -2" VerticalAlignment="Bottom" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding DateOfBirth}" FontWeight="Regular" FontSize="12" Foreground="#555557"/>
+
+            <TextBlock Grid.Row="4" TextWrapping="Wrap" Text="Pol:" FontWeight="Bold" FontSize="14"/>
+            <TextBlock  Grid.Row="4"   Grid.Column="1"  Margin="18 0 0 -2" VerticalAlignment="Bottom" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Gender}" FontWeight="Regular" FontSize="12" Foreground="#555557"/>
+
+            <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="0">
+                <TextBlock TextWrapping="Wrap" Text="Ulica:"  HorizontalAlignment="Left" FontWeight="Bold" FontSize="14"/>
+                <TextBox MaxWidth="120" Style="{StaticResource TextBoxStyle2}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" Margin="-2 0 0 0" IsEnabled="{Binding IsEditable}" Background="Transparent" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top"  MaxHeight="20" Padding="0" HorizontalAlignment="Left" TextWrapping="Wrap" FontWeight="Regular" FontSize="12" Foreground="#555557">
+                    <TextBox.Text>
+                        <Binding Path="Street"
+             UpdateSourceTrigger="PropertyChanged" >
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="1" Margin="16 0 0 0">
+                <TextBlock TextWrapping="Wrap" Text="Broj:" FontWeight="Bold" FontSize="14"/>
+                <TextBox Style="{StaticResource TextBoxStyle2}" Margin="-2 0 0 0" IsEnabled="{Binding IsEditable}" Background="Transparent" Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom"  MaxHeight="25" Padding="0" MinWidth="30" HorizontalAlignment="Left" TextWrapping="Wrap" FontWeight="Regular" FontSize="12" Foreground="#555557">
+                    <TextBox.Text>
+                        <Binding Path="Number"
+             UpdateSourceTrigger="PropertyChanged" >
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Vertical">
+                <TextBlock TextWrapping="Wrap" Text="Grad:" FontWeight="Bold" FontSize="14"/>
+                <TextBox Style="{StaticResource TextBoxStyle2}" MinWidth="30" Margin="-2 0 0 0" IsEnabled="{Binding IsEditable}" Background="Transparent" Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom"  MaxHeight="25" Padding="0" HorizontalAlignment="Left" TextWrapping="Wrap" FontWeight="Regular" FontSize="12" Foreground="#555557">
+                    <TextBox.Text>
+                        <Binding Path="City"
+             UpdateSourceTrigger="PropertyChanged" >
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="6" Grid.Column="1" Margin="16 0 0 0">
+                <TextBlock TextWrapping="Wrap" Text="Država:" MinWidth="30" FontWeight="Bold" FontSize="14"/>
+                <TextBox Style="{StaticResource TextBoxStyle2}" Margin="-2 0 0 0" IsEnabled="{Binding IsEditable}" Background="Transparent" Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom"  MaxHeight="25" Padding="0" HorizontalAlignment="Left" TextWrapping="Wrap" FontWeight="Regular" FontSize="12" Foreground="#555557">
+                    <TextBox.Text>
+                        <Binding Path="Country"
+             UpdateSourceTrigger="PropertyChanged" >
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+
+            <TextBox Style="{StaticResource TextBoxStyle2}" Margin="16 0 0 -2" IsEnabled="{Binding IsEditable}" Background="Transparent" Grid.Row="7" Grid.Column="1" VerticalAlignment="Bottom"  MaxHeight="25" Padding="0" HorizontalAlignment="Left" TextWrapping="Wrap" FontWeight="Regular" FontSize="12" Foreground="#555557">
+                <TextBox.Text>
+                    <Binding Path="Phone"
+             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <validation:PhoneValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <StackPanel>
+                            <AdornedElementPlaceholder x:Name="textBox"/>
+                            <TextBlock Text="{Binding [0].ErrorContent}" Foreground="#FE5D7A"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
+            <TextBlock Grid.Row="7" TextWrapping="Wrap" Text="Telefon:" FontWeight="Bold" FontSize="14"/>
+
+
+
+
+            <TextBlock Grid.Row="8" TextWrapping="Wrap" Text="Email:" FontWeight="Bold" FontSize="14"/>
+            <TextBlock  Grid.Row="8"  Grid.Column="1"  Margin="18,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Doctor.Email}" FontWeight="Regular" FontSize="12" Foreground="#555557" Width="139"/>
+
+            <TextBlock Grid.Row="9" TextWrapping="Wrap" Text="Obrazovanje:" FontWeight="Bold" FontSize="14"/>
+            <TextBlock  Grid.Row="9"   Grid.Column="1"  Margin="18 0 0 -2" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Doctor.EducationLevel}" FontWeight="Regular" FontSize="12" Foreground="#555557"/>
+
+            <Grid.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Padding" Value="0,18,0,0"/>
+                    <Setter Property="FontFamily" Value="Nunito Sans"/>
+                </Style>
+            </Grid.Resources>
+        </Grid>
+
+
+        <StackPanel Orientation="Vertical" Margin="296,384,594,254">
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="9.4" VerticalAlignment="Center" Foreground="Black" FontWeight="Regular" FontSize="44" />
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Foreground="#555557" Text="Prosečna ocena lekara" VerticalAlignment="Center" FontWeight="Regular" FontSize="12"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0 5 0 0" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic"  Text="Na osnovu ocena 123 pacijenata" VerticalAlignment="Center" FontWeight="Light" FontSize="12" Foreground="#555557"/>
+        </StackPanel>
+
+        <StackPanel Margin="798,185,38,437">
+            <TextBlock TextWrapping="Wrap" Text="Zauzetost ove nedelje" TextAlignment="Center" FontWeight="Bold" FontSize="14"/>
+        </StackPanel>
+        <StackPanel Margin="798,406,38,182">
+            <TextBlock TextWrapping="Wrap" Text="Novi pacijenti u poslednjih 30 dana" TextAlignment="Center" FontWeight="Bold" FontSize="14" Width="164"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="279,536,673,0" Height="50">
+
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="1253" VerticalAlignment="Center" Foreground="Black" FontWeight="Regular" FontSize="24" />
+            <TextBlock HorizontalAlignment="Center" Margin="0 -3 0 0" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic"  Text="pacijenata" VerticalAlignment="Center" FontWeight="Regular" FontSize="9" Foreground="#555557"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="374,535,577,0" Height="51">
+
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Doctor.YearsOfService}" VerticalAlignment="Center" Foreground="Black" FontWeight="Regular" FontSize="24" />
+            <TextBlock HorizontalAlignment="Center" Margin="0 -3 0 0" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic"  Text="{Binding ProperText}" VerticalAlignment="Center" FontWeight="Regular" FontSize="9" Foreground="#555557"/>
+        </StackPanel>
+
+        <local:Graph1 Margin="811,210,53,423"/>
+        <local:Graph2 Margin="811,459,53,186"></local:Graph2>
+
+        <Border Visibility="{Binding IsEditVisible}"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="10" Margin="702,142,246,629">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Button Visibility="{Binding IsEditVisible}" OverridesDefaultStyle="False" Command="{Binding EditCommand}" Focusable="False" HorizontalAlignment="Left" BorderBrush="Transparent"  VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="80" Height="28"  Foreground="#555557" Margin="700,140,0,0" >
+            <AccessText>_Izmenite</AccessText>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle2"/>
+            </Button.Style>
+        </Button>
+        <Button Visibility="{Binding AreButtonsVisible}" OverridesDefaultStyle="False" Command="{Binding ConfirmCommand}" Focusable="False" HorizontalAlignment="Left" BorderBrush="Transparent"  VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="80" Height="28"  Foreground="#555557" Margin="700,640,0,0" >
+            <AccessText>_Potvrdite</AccessText>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle2"/>
+            </Button.Style>
+        </Button>
+        <Button Visibility="{Binding AreButtonsVisible}" Command="{Binding CancelCommand}" OverridesDefaultStyle="False" Focusable="True" HorizontalAlignment="Left" BorderBrush="Transparent"  VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="80" Height="28"  Foreground="#555557" Margin="605,640,0,0" >
+            <AccessText>_Otkažite</AccessText>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle2"/>
+            </Button.Style>
+        </Button>
+
+    </Grid>
+</UserControl>

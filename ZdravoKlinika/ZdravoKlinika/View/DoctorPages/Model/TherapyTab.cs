@@ -39,13 +39,17 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private RegisteredPatientController registeredPatientController;
         private MedicationController medicationController;
         private PrescriptionController prescriptionController;
+        private PatientMedicationNotificationController notificationController;
         private List<Medication> medications;
         private List<String> medicationsDisplay;
         private List<String> repeatDisplay;
         private Doctor doctor;
-        private Patient patient;
+        private IPatient patient;
         public ObservableCollection<Medication> PrescribedMedList { get; set; }
         public ObservableCollection<Prescription> PrescribedList { get; set; } 
+
+        public MyICommand ConfirmCommand { get; set; }
+        public MyICommand GiveUpCommand { get; set; }
 
         public string PatientName { get => patientName; set => SetProperty(ref patientName, value); }
         public string PatientId { get => patientId; set => SetProperty(ref patientId, value); }
@@ -63,7 +67,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public List<Medication> Medications { get => medications; set => medications = value; }
         public List<string> MedicationsDisplay { get => medicationsDisplay; set => medicationsDisplay = value; }
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
-        public Patient Patient { get => patient; set => SetProperty(ref patient, value); }
+        public IPatient Patient { get => patient; set => SetProperty(ref patient, value); }
         public List<string> RepeatDisplay { get => repeatDisplay; set => SetProperty(ref repeatDisplay, value); }
 
         public TherapyTab()
@@ -72,12 +76,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.medicationController = new MedicationController();
             this.registeredPatientController = new RegisteredPatientController();
             this.prescriptionController = new PrescriptionController();
+            this.notificationController = new PatientMedicationNotificationController();
             this.repeatDisplay = new List<string>();
             this.repeatDisplay.Add("dnevno");
             this.repeatDisplay.Add("nedeljno");
             this.repeatDisplay.Add("mesečno");
 
-            Medications = medicationController.GetApproved();
+            Medications = medicationController.GetByApprovedValue(true);
             this.MedicationsDisplay = new List<String>();
             foreach (Medication m in this.medications)
             {
@@ -85,14 +90,29 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             }
             this.PrescribedMedList = new ObservableCollection<Medication>();
             this.PrescribedList = new ObservableCollection<Prescription>();
+            Doctor = RegisteredUserController.UserToDoctor(App.User);
+            ConfirmCommand = new MyICommand(ExecuteConfirm);
+            GiveUpCommand = new MyICommand(ExecuteGiveUp);
         } 
 
+        public void ExecuteConfirm()
+        {
+            Save();
+            DialogHelper.DialogService.CloseDialog(this);
+            Messenger.Messenger.SuccessMessage("Uspešno ste prepisali lek!");
+        }
+
+        public void ExecuteGiveUp()
+        {
+            DialogHelper.DialogService.CloseDialog(this);
+        }
 
         public void Save()
         {
             foreach(Prescription p in PrescribedList)
             {
                 this.prescriptionController.Prescribe(p);
+                this.notificationController.CreateNotification(p.Doctor, registeredPatientController.GetById(p.Patient.GetPatientId()), "", p, "", DateTime.Now.AddHours(1));
             }
         }
 
@@ -107,11 +127,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             }
         }
 
-        public void LoadFromRecord(string doctorId, string patientId)
+        public void LoadFromRecord(string patientId)
         {
-            DoctorController doctorController = new DoctorController();
-            
-            this.doctor = doctorController.GetById(doctorId);
             this.patient = registeredPatientController.GetById(patientId);
             this.patientId = this.patient.GetPatientId();
             this.patientName = this.patient.GetPatientFullName();
@@ -129,6 +146,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.doctorName = this.appointment.Doctor.ToString();
             this.doctorSpecialty = this.appointment.Doctor.Specialty;
         }
+
 
         public void Add(int selectedIndex)
         {

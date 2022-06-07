@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Repository;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Service
 {
@@ -18,6 +19,11 @@ namespace ZdravoKlinika.Service
             userRepository = new RegisteredUserRepository();
         }
 
+        public RegisteredUser? GetUserById(String id) 
+        {
+            return UserRepository.GetById(id);
+        }
+
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password)
         {
             return UserRepository.GetUserByEmailAndPassword(email, password);
@@ -28,6 +34,21 @@ namespace ZdravoKlinika.Service
             this.userRepository.RememberUser(user);
         }
 
+        internal List<RegisteredUser> GetAllEmployees()
+        {
+            List<RegisteredUser> employees = new List<RegisteredUser>();
+
+            foreach (RegisteredUser user in GetAll())
+            {
+                if (user.UserType != UserType.Patient)
+                {
+                    employees.Add(user);
+                }
+            }
+
+            return employees;
+        }
+
         public RegisteredUser GetRememberedUser()
         {
             return this.userRepository.GetRememberedUser();
@@ -36,6 +57,18 @@ namespace ZdravoKlinika.Service
         public void ForgetUser()
         {
             this.userRepository.ForgetUser();
+        }
+
+        public List<RegisteredUser> GetAll()
+        {
+            return userRepository.GetAll();
+        }
+
+        public static Doctor UserToDoctor(RegisteredUser user)
+        {
+            DoctorRepository doctorRepository = new DoctorRepository();
+            return doctorRepository.GetByEmail(user.Email);
+
         }
 
     }

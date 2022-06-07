@@ -21,7 +21,7 @@ namespace ZdravoKlinika.Service
 
         public List<Order> GetAllOrders()
         {
-            return OrderRepository.GetAllOrders();
+            return OrderRepository.GetAll();
         }
 
         public Order? GetById(String orderId)
@@ -31,28 +31,33 @@ namespace ZdravoKlinika.Service
 
         public void CreateNewOrder(List<Equipment> equipmentToOrder)
         {
+            String newId = GetFreeId();
+            Order orderToAdd = new Order(newId);
+            orderToAdd.EquipmentToOrder = equipmentToOrder;
+
+            orderRepository.Add(orderToAdd);
+            return;
+        }
+
+        private String GetFreeId() 
+        {
             bool orderIsUnique = false;
             String newId = "";
             while (!orderIsUnique)
-            { 
-                List<Order> orders = orderRepository.GetAllOrders();
+            {
+                List<Order> orders = orderRepository.GetAll();
                 newId = Util.IdGenerator.Generate();
                 orderIsUnique = true;
                 foreach (Order order in orders)
                 {
                     if (order.OrderId.Equals(newId))
-                    { 
+                    {
                         orderIsUnique = false;
                         break;
                     }
                 }
             }
-            Order orderToAdd = new Order(newId);
-            orderToAdd.EquipmentToOrder = equipmentToOrder;
-
-            orderRepository.CreateNewOrder(orderToAdd);
-            return;
+            return newId;
         }
-
     }
 }

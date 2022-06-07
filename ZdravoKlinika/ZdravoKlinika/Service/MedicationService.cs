@@ -40,25 +40,25 @@ namespace ZdravoKlinika.Service
         public void CreateMedication(string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, string dosageInstructions, int amount)
         {         
             Medication m = new Medication(GenerateId().ToString(), medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, dosageInstructions, amount);
-            this.medicationRepository.CreateMedication(m);
+            this.medicationRepository.Add(m);
         }
 
         public void UpdateMedication(string medicationId, string medicationCode, String brandName, string dosage, List<String> activeSubstances, string form, String note, List<string> allergens, bool validated, List<Medication> alternatives, string classification, string indications, string sideEffects, string dosageInstructions, int amount)
 
         {
             Medication medication = new Medication(medicationId, medicationCode, brandName, dosage, activeSubstances, form, note, allergens, validated, alternatives, classification, indications, sideEffects, dosageInstructions, amount);
-            this.medicationRepository.UpdateMedication(medication);
+            this.medicationRepository.Update(medication);
         }
 
         public void UpdateMedication(Medication medication)
         {
-            this.medicationRepository.UpdateMedication(medication);
+            this.medicationRepository.Update(medication);
         }
 
         public void DeleteMedication(string medicationId)
         {
             Medication m = medicationRepository.GetById(medicationId);
-            this.medicationRepository.DeleteMedication(m);
+            this.medicationRepository.Remove(m);
         }
 
         public int GenerateId()
@@ -75,9 +75,5 @@ namespace ZdravoKlinika.Service
             return this.medicationRepository.GetAlternatives(medication);
         }
 
-        public List<Medication> GetApproved()
-        {
-            return this.medicationRepository.GetApproved();
-        }
     }
 }

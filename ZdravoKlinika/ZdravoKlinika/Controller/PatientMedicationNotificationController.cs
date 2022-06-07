@@ -24,9 +24,25 @@ namespace ZdravoKlinika.Controller
         {
             return this.notificationService.GetById(id);
         }
-        public void CreateNotification(RegisteredUser sender,RegisteredUser reciver, String notificationText, Prescription prescription)
+        public List<PatientMedicationNotification> GetByPatientForDate(String id, DateTime date)
         {
-            this.notificationService.CreateNotification(sender,reciver,notificationText,prescription);
+            return notificationService.GetByPatientForDate(id, date);
+        }
+        public List<DateTime> GetNotificationDatesForPatient(String id)
+        {
+            return notificationService.GetNotificationDatesForPatient(id);
+        }
+        public List<DateTime> GetPossibleTriggerTimes(PatientMedicationNotification notification)
+        {
+            return notificationService.GetPossibleTriggerTimes(notification);
+        }
+        public List<PatientMedicationNotification> GetUpcomingNotifications(string id, int hours)
+        {
+            return notificationService.GetUpcomingNotifications(id, hours);
+        }
+        public void CreateNotification(RegisteredUser sender,RegisteredUser Receiver, String notificationText, Prescription prescription, String note, DateTime time)
+        {
+            this.notificationService.CreateNotification(new PatientMedicationNotification(-1,sender,Receiver,notificationText,prescription,note,time));
         }
         public void DeleteNotification(int id)
         {
@@ -36,9 +52,13 @@ namespace ZdravoKlinika.Controller
         {
             this.notificationService.DeleteAllNotifications();
         }
-        public void UpdateNotification(int id, RegisteredUser sender, RegisteredUser reciver, String notificationText, Prescription prescription)
+        public void UpdateTriggerTime(int id, DateTime newTriggerTime)
         {
-            this.UpdateNotification(id, sender, reciver, notificationText, prescription);
+            this.notificationService.UpdateTriggerTime(this.GetById(id),newTriggerTime);
+        }
+        public void UpdateNotification(int id, RegisteredUser sender, RegisteredUser Receiver, String notificationText, Prescription prescription, String note, DateTime time)
+        {
+            this.notificationService.UpdateNotification(new PatientMedicationNotification(id,sender,Receiver,notificationText,prescription,note,time));
         }
     }
 }

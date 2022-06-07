@@ -23,6 +23,7 @@ namespace ZdravoKlinika.Model
         private string reason;
         private RequestState state;
         private bool emergency;
+        private String comment;
 
         public TimeOffRequest(int id, Doctor doctor, DateTime dateOfCreation, DateTime startDate, DateTime endDate, string reason, RequestState state, bool emergency)
         {
@@ -34,6 +35,12 @@ namespace ZdravoKlinika.Model
             this.reason = reason;
             this.state = state;
             this.emergency = emergency;
+            Comment = "";
+        }
+
+        public TimeOffRequest() 
+        {
+            Comment = "";
         }
 
 
@@ -45,7 +52,17 @@ namespace ZdravoKlinika.Model
         public bool Emergency { get => emergency; set => emergency = value; }
         public DateTime DateOfCreation { get => dateOfCreation; set => dateOfCreation = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
+        public string Comment { get => comment; set => comment = value; }
 
+        public String EmergencyString 
+        {
+            get 
+            {
+                if (emergency)
+                    return "Hitno";
+                return "Nije hitno";
+            }
+        }
         public string StateToString(RequestState state)
         {
             string retVal = "";
@@ -66,5 +83,6 @@ namespace ZdravoKlinika.Model
 
             return retVal;
         }
+
     }
 }

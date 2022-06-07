@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using ZdravoKlinika.Util;
 
 public class RoomService
 {
     private RoomRepository roomRepository;
+    private AppointmentRepository appointmentRepository;
 
     public RoomService()
     {
         this.roomRepository = new RoomRepository();
+        this.appointmentRepository = new AppointmentRepository();
     }
 
     public RoomRepository RoomRepository { get => roomRepository; set => roomRepository = value; }
+    public AppointmentRepository AppointmentRepository { get => appointmentRepository; set => appointmentRepository = value; }
 
     public List<Room> GetAll()
     {
@@ -32,7 +37,79 @@ public class RoomService
         return this.roomRepository.GetRenovatableRooms();
     }
 
-    public int GenerateId()
+
+    public List<Room> GetAvailableRooms(DateBlock period, RoomType roomType)
+    {
+        List<Room> rooms = this.GetAll().FindAll(r => r.Type.Equals(roomType));
+
+        foreach (Appointment appointment in AppointmentRepository.GetAppointmentsOnDate(period.Start.Date).OrderBy(o => o.DateAndTime).ToList())
+        {
+            DateBlock apptDateBlock = new DateBlock(appointment.DateAndTime, appointment.DateAndTime.AddMinutes(appointment.Duration));
+            if (DateBlock.DateBlocksIntersect(period, apptDateBlock))
+            {
+                Room r = rooms.Find(x => x.RoomId.Equals(appointment.Room.RoomId));
+                if (r != null)
+                    rooms.Remove(r);
+            }
+        }
+
+        return rooms;
+    }
+
+    public void CreateRoom(Room room)
+    {
+        this.roomRepository.Add(new Room(GenerateRoomId().ToString(), "R"+GenerateRoomId().ToString(), room.Type, room.Level, room.Number, room.Status, room.Free));
+    }
+
+    public void UpdateRoom(Room changedRoom)
+    {
+        Room room = this.roomRepository.GetById(changedRoom.RoomId);
+        UpdateRoomValues(room, changedRoom);
+        this.roomRepository.Update(room);
+    }
+
+    public void UpdateRoom(Room changedRoom, List<Equipment> equipmentInRoom)
+    {
+        Room room = this.roomRepository.GetById(changedRoom.RoomId);
+        UpdateRoomValues(room, changedRoom);
+        room.EquipmentInRoom = equipmentInRoom;
+        this.roomRepository.Update(room);
+    }
+
+    public void DeleteRoom(String roomId)
+    {
+        Room r = this.roomRepository.GetById(roomId);
+        this.roomRepository.Remove(r);
+    }
+
+    public void OccupyRoom(String roomId)
+    {
+        Room r = this.roomRepository.GetById(roomId);
+        this.roomRepository.OccupyRoom(r);
+    }
+
+    public void FreeRoom(String roomId)
+    {
+        Room r = this.roomRepository.GetById(roomId);
+        this.roomRepository.FreeRoom(r);
+    }
+
+    public void RenovateRoom(String roomId)
+    {
+        Room r = this.roomRepository.GetById(roomId);
+        this.roomRepository.RenovateRoom(r);
+    }
+    private void UpdateRoomValues(Room roomToBeUpdated, Room updatingValues)
+    {
+        roomToBeUpdated.Name = updatingValues.Name;
+        roomToBeUpdated.Type = updatingValues.Type;
+        roomToBeUpdated.Status = updatingValues.Status;
+        roomToBeUpdated.Level = updatingValues.Level;
+        roomToBeUpdated.Number = updatingValues.Number;
+        roomToBeUpdated.Free = updatingValues.Free;
+    }
+
+    private int GenerateRoomId()
     {
         List<Room> rooms = this.roomRepository.GetAll();
         int newRoomId;
@@ -54,62 +131,5 @@ public class RoomService
         }
         return newRoomId;
     }
-
-    public void CreateRoom(String name, RoomType type, RoomStatus status, int level, int number, bool free)
-    {
-        int newRoomId = GenerateId();
-        Room r = new Room(newRoomId.ToString(), "R"+newRoomId, type, level, number, status, free);
-        this.roomRepository.CreateRoom(r);
-    }
-
-    public void UpdateRoom(String roomId, String name, RoomType type, RoomStatus status, int level, int number, bool free)
-    {
-        Room r = this.roomRepository.GetById(roomId);
-        r.Name = name;
-        r.Type = type;
-        r.Status = status;
-        r.Level = level;
-        r.Number = number;
-        r.Free = free;
-        this.roomRepository.UpdateRoom(r);
-    }
-
-    public void UpdateRoom(String roomId, String name, RoomType type, RoomStatus status, int level, int number, bool free, List<Equipment> equipmentInRoom)
-    {
-        Room r = this.roomRepository.GetById(roomId);
-        r.Name = name;
-        r.Type = type;
-        r.Status = status;
-        r.Level = level;
-        r.Number = number;
-        r.Free = free;
-        r.EquipmentInRoom = equipmentInRoom;
-        this.roomRepository.UpdateRoom(r);
-    }
-
-    public void DeleteRoom(String roomId)
-    {
-        Room r = this.roomRepository.GetById(roomId);
-        this.roomRepository.DeleteRoom(r);
-    }
-
-    public void OccupyRoom(String roomId)
-    {
-        Room r = this.roomRepository.GetById(roomId);
-        this.roomRepository.OccupyRoom(r);
-    }
-
-    public void FreeRoom(String roomId)
-    {
-        Room r = this.roomRepository.GetById(roomId);
-        this.roomRepository.FreeRoom(r);
-    }
-
-    public void RenovateRoom(String roomId)
-    {
-        Room r = this.roomRepository.GetById(roomId);
-        this.roomRepository.RenovateRoom(r);
-    }
-
 }
 

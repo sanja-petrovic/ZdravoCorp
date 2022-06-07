@@ -8,7 +8,7 @@ using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Repository
 {
-    public class GuestPatientRepository
+    public class GuestPatientRepository : Interfaces.IGuestPatientRepository
     {
         private GuestPatientDataHandler guestPatientDataHandler;
         private List<GuestPatient> guests;
@@ -23,11 +23,11 @@ namespace ZdravoKlinika.Repository
             }
             set
             {
-                RemoveAllGuestPatient();
+                RemoveAll();
                 if (value != null)
                 {
                     foreach (GuestPatient oGuests in value)
-                        AddGuestPatient(oGuests);
+                        Add(oGuests);
                 }
             }
         }
@@ -39,7 +39,7 @@ namespace ZdravoKlinika.Repository
             guests = GuestPatientDataHandler.Read();
         }
 
-        public void AddGuestPatient(GuestPatient newGuest)
+        public void Add(GuestPatient newGuest)
         {
             if (newGuest == null)
                 return;
@@ -49,7 +49,7 @@ namespace ZdravoKlinika.Repository
                 this.guests.Add(newGuest);
             GuestPatientDataHandler.Write(Guests);
         }
-        public void RemoveGuestPatient(GuestPatient oldGuest)
+        public void Remove(GuestPatient oldGuest)
         {
             if (oldGuest == null)
                 return;
@@ -58,7 +58,7 @@ namespace ZdravoKlinika.Repository
                     this.guests.Remove(oldGuest);
             GuestPatientDataHandler.Write(Guests);
         }
-        public void RemoveAllGuestPatient()
+        public void RemoveAll()
         {
             if (guests != null)
                 guests.Clear();
@@ -82,6 +82,35 @@ namespace ZdravoKlinika.Repository
                 }
             }
             return guestToReturn;
+        }
+
+        public void Update(GuestPatient item)
+        {
+            int index = GetIndex(item.PersonalId);
+            if (index != -1)
+            {
+                guests[index] = item;
+                guestPatientDataHandler.Write(guests);
+            }
+        }
+
+        private int GetIndex(String id)
+        {
+            int indexToRemove = -1;
+            foreach (GuestPatient guest in guests)
+            {
+                if (guest.PersonalId.Equals(id))
+                {
+                    indexToRemove = guests.IndexOf(guest);
+                    break;
+                }
+            }
+
+            if (indexToRemove == -1)
+            {
+                throw new Exception("Patient does not exist");
+            }
+            return indexToRemove;
         }
     }
 }

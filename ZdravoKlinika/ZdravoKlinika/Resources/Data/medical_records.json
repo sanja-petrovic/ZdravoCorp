@@ -23,9 +23,9 @@
       ""
     ],
     "CurrentMedication": [
-      "1",
-      "5",
-      "2"
+      "3",
+      "2",
+      "4"
     ],
     "PastMedication": [],
     "Reports": [],
@@ -52,14 +52,61 @@
       "penicilin"
     ],
     "CurrentMedication": [
-      "4",
+      "2",
+      "5",
       "3",
-      "2",
-      "2",
-      "5"
+      "3"
     ],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "0105965123321"
+  },
+  {
+    "Diagnoses": [
+      " "
+    ],
+    "Allergies": [],
+    "CurrentMedication": [
+      "4",
+      "3",
+      "5"
+    ],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "1207965123321"
+  },
+  {
+    "Diagnoses": [
+      " "
+    ],
+    "Allergies": [],
+    "CurrentMedication": [
+      "4"
+    ],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "0304965123321"
+  },
+  {
+    "Diagnoses": [
+      "Diagnosis1"
+    ],
+    "Allergies": [],
+    "CurrentMedication": [],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "2901967123321"
+  },
+  {
+    "Diagnoses": [
+      " "
+    ],
+    "Allergies": [],
+    "CurrentMedication": [
+      "4"
+    ],
+    "PastMedication": [],
+    "Reports": [],
+    "MedicalRecordId": "3007967123321"
   }
 ]

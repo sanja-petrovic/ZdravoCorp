@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
-    internal class EditApptViewModel : ViewModelBase
+    public class EditApptViewModel : ViewModelBase
     {
         private AppointmentController appointmentController;
         private Appointment appointment;
@@ -17,6 +17,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string doctorSpecialty;
         private string dateTime;
         private string room;
+
 
         private string diagnoses;
         private string doctorsNote;
@@ -38,7 +39,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.AppointmentController = new AppointmentController();
         }
 
-        public void load()
+        public void Load()
         {
             this.appointment = appointmentController.GetAppointmentById(appointmentId);
             this.patientName = appointment.Patient.GetPatientFullName();
@@ -53,7 +54,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         }
 
-        public void save(String note)
+        public void Save(String note)
         {
             appointmentController.LogAppointment(appointment, Diagnoses, note);
         }

@@ -28,8 +28,15 @@ namespace ZdravoKlinika.View.DoctorPages
             InitializeComponent();
         }
 
+        public AnamnesisView(AnamnesisTab model)
+        {
+            this.viewModel = model;
+            this.viewModel.Load();
+            DataContext = model;
+            InitializeComponent();
+        }
+
         public int SelectedAppointmentId { get => selectedAppointmentId; set => selectedAppointmentId = value; }
-
-
+        public AnamnesisTab ViewModel { get => viewModel; set => viewModel = value; }
     }
 }

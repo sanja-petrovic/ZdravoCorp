@@ -5,10 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xml:lang="sr-Latn-RS" 
              mc:Ignorable="d" 
-             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:ReferralTab}"
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:ReferralTab}" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Height="390" Width="432" Background="White">
     <UserControl.Resources>
 
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
     </UserControl.Resources>
     <Grid Margin="0,-68,0,0">
@@ -28,14 +34,14 @@
                 <StaticResource ResourceKey="fancyButtonStyle4"/>
             </Button.Style>
         </Button>
-        <ComboBox x:Name="DoctorCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" SelectionChanged="DoctorCB_SelectionChanged" Foreground="#555557" ItemsSource="{Binding DoctorsDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="230,113,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
+        <ComboBox x:Name="DoctorCB" BorderBrush="#FFAEAEC1" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" SelectionChanged="DoctorCB_SelectionChanged" Foreground="#555557" ItemsSource="{Binding DoctorsDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="230,113,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <ComboBox x:Name="TypeCB" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" ItemsSource="{Binding Types, UpdateSourceTrigger=PropertyChanged}" Foreground="#555557" SelectedItem="{Binding Type}" HorizontalAlignment="Left" Margin="26,193,0,0" VerticalAlignment="Top" Width="102" Padding="5" Height="28">
+        <ComboBox x:Name="TypeCB" BorderBrush="#FFAEAEC1" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" ItemsSource="{Binding Types, UpdateSourceTrigger=PropertyChanged}" Foreground="#555557" SelectedItem="{Binding Type}" HorizontalAlignment="Left" Margin="26,193,0,0" VerticalAlignment="Top" Width="102" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -44,15 +50,15 @@
         </ComboBox>
         <CheckBox Name="EmergencyCB" IsChecked="{Binding Emergency, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CheckBoxStyle1}" Margin="143,199,269,242"/>
 
-        <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Loaded="DatePicker_Loaded" SelectedDateChanged="DatePicker_SelectedDateChanged" Name="DatePicker" Style="{DynamicResource DatePickerStyle1}" HorizontalAlignment="Left" Margin="26,274,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday"/>
-        <ComboBox x:Name="TimePicker" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" SelectionChanged="TimePicker_SelectionChanged" Margin="230,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+        <DatePicker BorderBrush="#FFAEAEC1" CalendarStyle="{DynamicResource DatePickerCalendarStyle1}" SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}" Loaded="DatePicker_Loaded" SelectedDateChanged="DatePicker_SelectedDateChanged" Name="DatePicker" Style="{DynamicResource MaterialDesignDatePicker}" HorizontalAlignment="Left" Margin="26,274,0,0" VerticalAlignment="Top" Width="174" Height="28" FirstDayOfWeek="Monday"/>
+        <ComboBox x:Name="TimePicker" BorderBrush="#FFAEAEC1" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" Foreground="#555557" ItemsSource="{Binding Times, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" SelectionChanged="TimePicker_SelectionChanged" Margin="230,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <ComboBox x:Name="RoomCB" Style="{DynamicResource ComboBoxStyle1}" ItemsSource="{Binding RoomsDisplay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="RoomCB_SelectionChanged" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="324,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
+        <ComboBox x:Name="RoomCB"  ItemsSource="{Binding RoomsDisplay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="RoomCB_SelectionChanged" BorderBrush="#FFAEAEC1" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" Foreground="#555557" HorizontalAlignment="Left" Margin="324,274,0,0" VerticalAlignment="Top" Width="70" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -61,7 +67,7 @@
 
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="26,89,0,0" TextWrapping="Wrap" Text="Specijalnost" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <ComboBox x:Name="SpecialtyCB" SelectionChanged="SpecialtyCB_SelectionChanged" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" Foreground="#555557" ItemsSource="{Binding Specialties}" HorizontalAlignment="Left" Margin="26,113,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
+        <ComboBox x:Name="SpecialtyCB" SelectionChanged="SpecialtyCB_SelectionChanged" BorderBrush="#FFAEAEC1" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" Foreground="#555557" ItemsSource="{Binding Specialties}" HorizontalAlignment="Left" Margin="26,113,0,0" VerticalAlignment="Top" Width="164" Padding="5" Height="28">
             <ComboBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -69,7 +75,7 @@
             </ComboBox.Resources>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="230,165,0,0" TextWrapping="Wrap" Text="Trajanje" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="22"/>
-        <TextBox x:Name="TypeCB_Copy" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource TextBoxStyle1}" Foreground="#555557" HorizontalAlignment="Left" Margin="230,194,0,0" VerticalAlignment="Top" Width="114" Padding="5" Height="28">
+        <TextBox x:Name="TypeCB_Copy" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource MaterialDesignTextBox}" Foreground="#555557" BorderBrush="#FFAEAEC1" HorizontalAlignment="Left" Margin="230,194,0,0" VerticalAlignment="Top" Width="114" Padding="5" Height="28">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

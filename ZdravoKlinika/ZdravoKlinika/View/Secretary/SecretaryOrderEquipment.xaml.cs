@@ -122,8 +122,11 @@ namespace ZdravoKlinika.View.Secretary
 
         private void DataGridStorageEquipment_Selected(object sender, RoutedEventArgs e)
         {
-            TextBoxName.Text = ((Equipment) DataGridStorageEquipment.SelectedItem).Name;
-            TextBoxAmount.Text = "";
+            if (DataGridStorageEquipment.SelectedIndex != -1)
+            {
+                TextBoxName.Text = ((Equipment)DataGridStorageEquipment.SelectedItem).Name;
+                TextBoxAmount.Text = "";
+            }
         }
     }
 }

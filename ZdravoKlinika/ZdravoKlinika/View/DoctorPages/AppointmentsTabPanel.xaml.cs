@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Model;
 using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
@@ -30,9 +31,9 @@ namespace ZdravoKlinika.View.DoctorPages
         public AppointmentsTabPanel()
         {
             selected = DateTime.Today;
-            viewModel = new ScheduleViewModel();
-            viewModel.Selected = selected;
-            DataContext = viewModel;
+            ViewModel = new ScheduleViewModel();
+            ViewModel.Selected = selected;
+            DataContext = ViewModel;
             InitializeComponent();
         }
 
@@ -45,9 +46,9 @@ namespace ZdravoKlinika.View.DoctorPages
             set
             {
                 this.selected = value;
-                viewModel.Selected = value;
-                viewModel.Doctor = this.doctor;
-                viewModel.infoChange();
+                ViewModel.Selected = value;
+                ViewModel.Doctor = this.doctor;
+                ViewModel.InfoChange();
                 TabTab.SelectedIndex = 0;
                 if(TabTab.Items.Count == 0)
                 {
@@ -62,12 +63,8 @@ namespace ZdravoKlinika.View.DoctorPages
         public DoctorSchedule Parent1 { get => parent; set => parent = value; }
         public string ClickedPatientId { get => clickedPatientId; set => clickedPatientId = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
+        internal ScheduleViewModel ViewModel { get => viewModel; set => viewModel = value; }
 
-        private void GoToRecord(object sender, RoutedEventArgs e)
-        {
-            var sel = (ScheduleTabItem) TabTab.SelectedItem;
-            parent.goToMedicalRecord(sel.PatientId);
-        }
         
     }
 }

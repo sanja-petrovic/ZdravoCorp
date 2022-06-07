@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Data_Handler;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    public class TimeOffRequestRepository
+    public class TimeOffRequestRepository : ITimeOffRequestRepository
     {
         private TimeOffRequestDataHandler dataHandler;
         private List<TimeOffRequest> requests;
@@ -19,6 +20,7 @@ namespace ZdravoKlinika.Repository
             this.requests = this.dataHandler.Read();
         }
 
+
         public List<TimeOffRequest> GetAll()
         {
             foreach(TimeOffRequest request in this.requests)
@@ -26,7 +28,7 @@ namespace ZdravoKlinika.Repository
                 UpdateReferences(request);
             }
             
-            return this.requests;
+            return this.requests.OrderBy(request => request.StartDate).ToList();
         }
 
         public TimeOffRequest GetById(int id)
@@ -44,19 +46,13 @@ namespace ZdravoKlinika.Repository
             return request;
         }
 
-        public void CreateRequest(TimeOffRequest request)
+        public void Add(TimeOffRequest request)
         {
             this.requests.Add(request);
             this.dataHandler.Write(this.requests);
         }
 
-        public void ChangeState(TimeOffRequest request, RequestState state)
-        {
-            request.State = state;
-        }
-
-
-        public void UpdateReferences(TimeOffRequest request)
+        private void UpdateReferences(TimeOffRequest request)
         {
             DoctorRepository doctorRepository = new DoctorRepository();
             request.Doctor = doctorRepository.GetById(request.Doctor.PersonalId);
@@ -66,7 +62,7 @@ namespace ZdravoKlinika.Repository
         {
             List<TimeOffRequest> requests = new List<TimeOffRequest>();
 
-            foreach(TimeOffRequest request in this.dataHandler.Read())
+            foreach (TimeOffRequest request in this.dataHandler.Read().OrderBy(request => request.StartDate))
             {
                 if(request.Doctor.PersonalId.Equals(doctor.PersonalId) && request.EndDate.CompareTo(DateTime.Today) >= 0)
                 {
@@ -93,5 +89,44 @@ namespace ZdravoKlinika.Repository
             return requests;
         }
 
+        public void Update(TimeOffRequest requestInDatabase)
+        {
+            int index = GetIndex(requestInDatabase.Id);
+            requests[index] = requestInDatabase;
+            dataHandler.Write(requests);
+        }
+
+        private int GetIndex(int id) 
+        {
+            int index = -1;
+            foreach (TimeOffRequest request in requests)
+            {
+                if (request.Id == id)
+                {
+                    index = requests.IndexOf(request);
+                }
+            }
+            if (index == -1)
+            {
+                throw new Exception("Request does not exist");
+            }
+            return index;
+        }
+
+        public void Remove(TimeOffRequest item)
+        {
+            int index = this.requests.FindIndex(r => r.Id == item.Id);
+            if(index != -1)
+            {
+                this.requests.RemoveAt(this.GetIndex(item.Id));
+                this.dataHandler.Write(this.requests);
+            }
+        }
+
+        public void RemoveAll()
+        {
+            this.requests.Clear();
+            this.dataHandler.Write(this.requests);
+        }
     }
 }

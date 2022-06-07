@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Util;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -139,7 +140,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Times.Clear();
             if(Doctor != null)
             {
-                List<DateBlock> list = this.appointmentController.getFreeTimeForDoctor(Date, Duration, Doctor, 12, 20);
+                List<DateBlock> list = this.appointmentController.GetFreeTimeForUser(new DateBlock(Date, Duration), Doctor, new int[] { 12, 20 });
                 foreach(DateBlock block in list)
                 {
                     Times.Add(block.Start.ToShortTimeString());

@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class RenovationRepository
+public class RenovationRepository : IRenovationRepository
 {
     private RenovationDataHandler renovationDataHandler;
     private List<Renovation> renovations;
@@ -12,7 +13,7 @@ public class RenovationRepository
 
     public RenovationRepository()
     {
-        this.renovationDataHandler = new RenovationDataHandler();
+        RenovationDataHandler = new RenovationDataHandler();
         this.renovations = this.renovationDataHandler.Read();
     }
 
@@ -67,24 +68,25 @@ public class RenovationRepository
 
     public Renovation GetById(String id)
     {
+        Renovation? returnValue = null;
         foreach (Renovation r in this.renovations)
         {
             if (r.Id.Equals(id))
             {
-                return r;
+                returnValue = r;
             }
         }
 
-        return null;
+        return returnValue;
     }
 
-    public void CreateRenovation(Renovation renovation)
+    public void Add(Renovation renovation)
     {
         this.renovations.Add(renovation);
         renovationDataHandler.Write(this.renovations);
     }
 
-    public void DeleteRenovation(Renovation renovation)
+    public void Remove(Renovation renovation)
     {
         if (renovation == null)
             return;
@@ -94,7 +96,7 @@ public class RenovationRepository
         renovationDataHandler.Write(this.renovations);
     }
 
-    public void UpdateRenovation(Renovation renovation)
+    public void Update(Renovation renovation)
     {
         if (renovation == null)
             return;
@@ -103,13 +105,24 @@ public class RenovationRepository
             {
                 if (r.Id.Equals(renovation.Id))
                 {
-                    r.EntryRooms = renovation.EntryRooms;
-                    r.NumberOfExitRooms = renovation.NumberOfExitRooms;
-                    r.ScheduledDateTime = renovation.ScheduledDateTime;
-                    r.IsRenovationFinished = renovation.IsRenovationFinished;
+                    UpdateRenovationValues(r, renovation);
                 }
             }
         renovationDataHandler.Write(this.renovations);
+    }
+
+    private void UpdateRenovationValues(Renovation renovationToBeUpdated, Renovation updatingValues)
+    {
+        renovationToBeUpdated.EntryRooms = updatingValues.EntryRooms;
+        renovationToBeUpdated.NumberOfExitRooms = updatingValues.NumberOfExitRooms;
+        renovationToBeUpdated.ScheduledDateTime = updatingValues.ScheduledDateTime;
+        renovationToBeUpdated.IsRenovationFinished = updatingValues.IsRenovationFinished;
+    }
+
+    public void RemoveAll()
+    {
+        this.renovations.Clear();
+        this.renovationDataHandler.Write(this.renovations);
     }
 
 }

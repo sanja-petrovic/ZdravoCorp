@@ -1,51 +1,112 @@
 [
   {
     "Prescription": 1,
+    "Note": null,
+    "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 1,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
-    "Sender": "123"
+    "Receiver": "0105965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 2,
+    "Note": null,
+    "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 2,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
-    "Sender": "123"
+    "Receiver": "0105965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 3,
+    "Note": null,
+    "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 3,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
-    "Sender": "123"
+    "Receiver": "0105965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 4,
+    "Note": null,
+    "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 4,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
-    "Sender": "123"
+    "Receiver": "0105965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 5,
+    "Note": null,
+    "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 5,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
-    "Sender": "123"
+    "Receiver": "0105965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 6,
+    "Note": null,
+    "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 6,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
-    "Sender": "123"
+    "Receiver": "0105965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
   },
   {
     "Prescription": 7,
+    "Note": null,
+    "TriggerTime": "0001-01-01T00:00:00",
     "NotificationId": 7,
     "NotificationText": "prepisan lek",
-    "Reciver": "0105965123321",
-    "Sender": "123"
+    "Receiver": "0105965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
+  },
+  {
+    "Prescription": 12,
+    "Note": "",
+    "TriggerTime": "2022-06-04T12:00:00",
+    "NotificationId": 8,
+    "NotificationText": "",
+    "Receiver": "1510963123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-06T11:00:00"
+  },
+  {
+    "Prescription": 13,
+    "Note": "",
+    "TriggerTime": "2022-06-07T04:55:12.4057587+02:00",
+    "NotificationId": 9,
+    "NotificationText": "",
+    "Receiver": "1207965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-07T03:55:12.4059298+02:00"
+  },
+  {
+    "Prescription": 14,
+    "Note": "",
+    "TriggerTime": "2022-06-07T04:56:51.2676011+02:00",
+    "NotificationId": 10,
+    "NotificationText": "",
+    "Receiver": "1207965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-07T03:56:51.2678241+02:00"
   }
 ]
