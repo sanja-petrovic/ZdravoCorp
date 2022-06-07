@@ -11,6 +11,14 @@
         <KeyBinding Key="O" Modifiers="Alt" Command="{Binding GiveUpCommand}"/>
         <KeyBinding Key="H" Modifiers="Alt" Command="{Binding CheckCommand}"/>
     </Window.InputBindings>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Height="384" Width="529">
         <TextBlock HorizontalAlignment="Left" Margin="46,180,0,0" TextWrapping="Wrap" Text="Razlog" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBox Foreground="#555557" Name="ReasonTB" VerticalContentAlignment="Center" Padding="7 0 0 0" Style="{DynamicResource MaterialDesignTextBox}" Text="{Binding Reason, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="46,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Height="28" BorderBrush="#FFAEAEC1" RenderTransformOrigin="0.5,0.5">

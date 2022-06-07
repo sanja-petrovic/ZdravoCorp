@@ -8,6 +8,7 @@ using System.Windows;
 using ZdravoKlinika.Controller;
 
 using ZdravoKlinika.Model;
+
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
     public class DoctorViewModel : ViewModelBase
@@ -31,7 +32,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public DelegateCommand EditCommand { get; set; }
         public DelegateCommand ConfirmCommand { get; set; }
         public DelegateCommand CancelCommand { get; set; }
-        
+
 
         public DoctorViewModel()
         {
@@ -57,6 +58,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             }
             AreButtonsVisible = Visibility.Collapsed;
             
+        }
+
+        public void LoadSuccessMessage()
+        {
+            Messenger.Messenger.SuccessMessage("Uspešno ste izmenili Vaš profil!");
         }
 
         public Doctor Doctor { get => doctor; set => SetProperty(ref doctor, value); }
@@ -99,6 +105,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             AreButtonsVisible = Visibility.Collapsed;
             IsEditVisible= Visibility.Visible;
             IsEditable = false;
+            LoadSuccessMessage();
         }
     }
 }

@@ -78,6 +78,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             avm.LoadForEdit(a);
             DialogService.ShowEditAppt(avm);
             parent.InfoChange();
+            parent.SelectedIndex = 0;
         }
 
         public void DeleteAppointment()

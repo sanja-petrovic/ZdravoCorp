@@ -29,6 +29,8 @@ namespace ZdravoKlinika.View.DialogHelper
             createApptSchedule.ShowDialog();
         }
 
+
+
         public void ShowCreateApptRecordDialog(String id)
         {
             CreateApptRecord createApptRecord = new CreateApptRecord(id);

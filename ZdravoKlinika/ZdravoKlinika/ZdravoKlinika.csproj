@@ -188,6 +188,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Enterwell.Clients.Wpf.Notifications" Version="1.4.2" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MaterialDesignExtensions" Version="4.0.0-a02" />
     <PackageReference Include="MaterialDesignThemes" Version="4.6.0-ci198" />

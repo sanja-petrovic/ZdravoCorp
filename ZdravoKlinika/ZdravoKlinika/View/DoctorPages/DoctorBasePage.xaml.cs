@@ -31,6 +31,7 @@ namespace ZdravoKlinika.View.DoctorPages
             this.ViewModel = new Model.MainViewModel();
             DataContext = this.ViewModel;
             InitializeComponent();
+            ViewModel.LoadWelcomeMessage();
         }
 
         public MainViewModel ViewModel { get => viewModel; set => viewModel = value; }

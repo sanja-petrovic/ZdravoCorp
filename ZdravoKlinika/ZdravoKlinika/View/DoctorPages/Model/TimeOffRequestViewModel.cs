@@ -88,6 +88,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             CreateRequest();
             DialogService.CloseDialog(this);
+            Messenger.Messenger.SuccessMessage("Uspešno ste podneli zahtev za slobodan dan!");
         }
 
         public bool CanExecuteConfirm()

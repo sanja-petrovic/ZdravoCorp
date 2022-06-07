@@ -232,7 +232,7 @@ Background="#F8F9FE" ResizeMode="CanMinimize" WindowStartupLocation="CenterScree
                 </DataTemplate>
             </TabControl.Resources>
         </TabControl>
-        <Button Name="ConfirmButton" Click="Save" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Upišite pregled" HorizontalAlignment="Left"  Margin="288,594,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="116" >
+        <Button Name="ConfirmButton" Command="{Binding ConfirmCommand}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Upišite pregled" HorizontalAlignment="Left"  Margin="288,594,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="116" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
