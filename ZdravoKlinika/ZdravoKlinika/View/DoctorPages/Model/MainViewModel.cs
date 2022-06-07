@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using ZdravoKlinika.Model;
+using System.Windows.Controls;
+using System.Windows.Media;
+using Enterwell.Clients.Wpf.Notifications;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -19,6 +22,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private Controller.EmployeeNotificationController notificationController;
         private NotifPanelViewModel notifPanelViewModel;
         private bool openedNotifs;
+        NotificationMessageManager manager = new NotificationMessageManager();
 
         public MyICommand ToggleSettings { get; set; }
         public MyICommand ToggleNotifs { get; set; }
@@ -34,6 +38,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public MainViewModel()
         {
+            
             openedNotifs = false;
             this.notificationController = new Controller.EmployeeNotificationController();
             Doctor = Controller.RegisteredUserController.UserToDoctor(App.User);
@@ -54,22 +59,40 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             NotifPanelViewModel = new NotifPanelViewModel();
 
             SignOut = new MyICommand(ExecuteSignOut, CanExecuteSignOut);
+
+            LoadWelcomeMessage();
         }
 
         public void ExecuteToggleSettings()
         {
             SettingsVisibility = SettingsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            NotifsVisibility = Visibility.Collapsed;
+            NotifsVisibility = Visibility.Collapsed; 
+            
+        }
+
+        public void LoadWelcomeMessage()
+        {
+            Manager.CreateMessage()
+           .Accent("#FF9E98FF")
+           .Background("#FF9E98FF")
+           .Foreground("White")
+           .HasHeader("Dobrodošli u aplikaciju Zdravo klinike!")
+           .Animates(true)
+           .AnimationInDuration(0.5)
+           .AnimationOutDuration(1)
+           .Dismiss().WithDelay(3000)
+           .Queue();
         }
 
         public void ExecuteToggleNotifs()
         {
             SettingsVisibility = Visibility.Collapsed;
             NotifsVisibility = NotifsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            if(notifsOpened != Visibility.Collapsed)
+            if (notifsOpened != Visibility.Collapsed)
             {
                 this.notificationController.MarkAllPersonalNotificationsAsRead(Doctor.PersonalId);
-            } else
+            }
+            else
             {
                 NotifPanelViewModel.MarkAllAsRead();
             }
@@ -134,5 +157,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public Visibility NotifsOpened { get => notifsOpened; set => SetProperty(ref notifsOpened, value); }
         public NotifPanelViewModel NotifPanelViewModel { get => notifPanelViewModel; set => notifPanelViewModel = value; }
         public bool OpenedNotifs { get => openedNotifs; set => openedNotifs = value; }
+        public NotificationMessageManager Manager { get => manager; set => manager = value; }
     }
 }
