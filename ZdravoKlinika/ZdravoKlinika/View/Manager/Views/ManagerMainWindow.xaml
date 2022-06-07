@@ -67,7 +67,7 @@
                 <MenuItem.Header>
                     <WrapPanel>
                         <Image Width="20" Height="20" Source="/Resources/Images/employees.png"/>
-                        <TextBlock Text="Zaposleni" Margin="5,0,0,0" Height="15"/>
+                        <TextBlock Text="Zaposleni" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -76,7 +76,7 @@
                 <MenuItem.Header>
                     <WrapPanel>
                         <Image Width="20" Height="20" Source="/Resources/Images/rooms.png"/>
-                        <TextBlock Text="Prostorije" Margin="5,0,0,0" Height="15"/>
+                        <TextBlock Text="Prostorije" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -85,7 +85,7 @@
                 <MenuItem.Header>
                     <WrapPanel>
                         <Image Width="20" Height="20" Source="/Resources/Images/inventory.png"/>
-                        <TextBlock Text="Inventar" Margin="5,0,0,0" Height="15"/>
+                        <TextBlock Text="Inventar" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -94,7 +94,7 @@
                 <MenuItem.Header>
                     <WrapPanel>
                         <Image Width="20" Height="20" Source="/Resources/Images/schedule.png"/>
-                        <TextBlock Text="Rasporedi" Margin="5,0,0,0" Height="15"/>
+                        <TextBlock Text="Rasporedi" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -103,7 +103,7 @@
                 <MenuItem.Header>
                     <WrapPanel>
                         <Image Width="20" Height="20" Source="/Resources/Images/help.png"/>
-                        <TextBlock Text="Pomoć(H)" Margin="5,0,0,0" Height="15"/>
+                        <TextBlock Text="Pomoć(H)" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -112,7 +112,7 @@
                 <MenuItem.Header>
                     <WrapPanel>
                         <Image Width="20" Height="20" Source="/Resources/Images/profile.png"/>
-                        <TextBlock Text="Profil(L)" Margin="5,0,0,0" Height="15"/>
+                        <TextBlock Text="Profil(L)" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -125,8 +125,8 @@
                     <GradientStop Color="#FF7346F3" Offset="0.6"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <TextBlock Text="{Binding Page}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="5,5,0,0"/>
-            <TextBlock Text="{Binding CurrentTime}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="0,5,5,0" HorizontalAlignment="Right"/>
+            <TextBlock Text="{Binding Page}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="5,5,0,0" Foreground="White"/>
+            <TextBlock Text="{Binding CurrentTime}" FontWeight="Bold" FontFamily="Verdana" FontStyle="Italic" Margin="0,5,5,0" HorizontalAlignment="Right" Foreground="Black"/>
         </Grid>
     </Grid>
 </Window>

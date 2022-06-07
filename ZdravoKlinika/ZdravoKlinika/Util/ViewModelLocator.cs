@@ -40,7 +40,6 @@ namespace ZdravoKlinika.Util
             var viewTypeName = str;
 
             var viewModelTypeName = viewTypeName + "Model";
-            System.Diagnostics.Debug.WriteLine(viewModelTypeName);
             var viewModelType = Type.GetType(viewModelTypeName);
             var viewModel = Activator.CreateInstance(viewModelType);
 
