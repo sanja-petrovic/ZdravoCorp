@@ -36,6 +36,7 @@ namespace ZdravoKlinika.View.DoctorPages
             ApptTabPanel.Doctor = doctor;
             ApptTabPanel.Selected = DateTime.Today;
             TimeOffView.Load();
+            this.Focus();
         }
         private DelegateCommand showCreateDialog;
         private DelegateCommand showTimeOffDialog;

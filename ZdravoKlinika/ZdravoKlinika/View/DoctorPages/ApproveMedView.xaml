@@ -32,7 +32,8 @@
         <Label Content="Doza" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="56,406,0,0" VerticalAlignment="Top"/>
         <Label Content="Oblik" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="56,124,0,0" VerticalAlignment="Top"/>
         
-        <Button x:Name="ConfirmButton"  Visibility="{Binding Visibility1}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Odobrite" HorizontalAlignment="Left"  Margin="715,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Command="{Binding Approve}">
+        <Button x:Name="ConfirmButton"  Visibility="{Binding Visibility1}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold"  HorizontalAlignment="Left"  Margin="715,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Command="{Binding Approve}">
+            <AccessText>_Odobrite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -46,7 +47,8 @@
             </Button.InputBindings>
             
         </Button>
-        <Button Visibility="{Binding Visibility2}" x:Name="OkButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="715,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Command="{Binding Deny}">
+        <Button Visibility="{Binding Visibility2}" x:Name="OkButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold"  HorizontalAlignment="Left"  Margin="715,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Command="{Binding Deny}">
+            <AccessText>_Potvrdite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -59,7 +61,8 @@
                 <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding Deny}"/>
             </Button.InputBindings>
         </Button>
-        <Button x:Name="EditButton" Visibility="{Binding Visibility1}" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Izmenite" HorizontalAlignment="Left"  Margin="616,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding Edit}">
+        <Button x:Name="EditButton" Visibility="{Binding Visibility1}" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold"  HorizontalAlignment="Left"  Margin="616,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding Edit}">
+            <AccessText>_Izmenite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -72,7 +75,8 @@
                 <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding Edit}"/>
             </Button.InputBindings>
         </Button>
-        <Button  Visibility="{Binding Visibility2}" x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  Margin="616,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding GiveUp}">
+        <Button  Visibility="{Binding Visibility2}" x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" HorizontalAlignment="Left"  Margin="616,679,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding GiveUp}">
+            <AccessText>O_dustanite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

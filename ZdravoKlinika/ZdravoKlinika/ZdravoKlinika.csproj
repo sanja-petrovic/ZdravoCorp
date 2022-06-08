@@ -19,6 +19,7 @@
     <None Remove="Resources\Images\calendar.png" />
     <None Remove="Resources\Images\chandler.png" />
     <None Remove="Resources\Images\comment.png" />
+    <None Remove="Resources\Images\cross.png" />
     <None Remove="Resources\Images\delete.png" />
     <None Remove="Resources\Images\docpfp.jpg" />
     <None Remove="Resources\Images\download.png" />
@@ -29,6 +30,7 @@
     <None Remove="Resources\Images\employees.png" />
     <None Remove="Resources\Images\help.png" />
     <None Remove="Resources\Images\hide.png" />
+    <None Remove="Resources\Images\hm.png" />
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info %282%29.png" />
     <None Remove="Resources\Images\inventory.png" />
@@ -38,6 +40,7 @@
     <None Remove="Resources\Images\medicine.png" />
     <None Remove="Resources\Images\monica.png" />
     <None Remove="Resources\Images\more.png" />
+    <None Remove="Resources\Images\pencil.png" />
     <None Remove="Resources\Images\phoebe.jpg" />
     <None Remove="Resources\Images\profile.png" />
     <None Remove="Resources\Images\pulse.png" />
@@ -67,10 +70,15 @@
 
   <ItemGroup>
     <Resource Include="Resources\Images\chandler.png" />
+    <Resource Include="Resources\Images\cross.png" />
     <Resource Include="Resources\Images\edit2.png" />
+    <Resource Include="Resources\Images\hm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\monica.png" />
     <Resource Include="Resources\Images\download.png" />
     <Resource Include="Resources\Images\joey.png" />
+    <Resource Include="Resources\Images\pencil.png" />
     <Resource Include="Resources\Images\read.png" />
     <Resource Include="Resources\Images\ross.png" />
     <Resource Include="Resources\Images\drhouse.png" />
@@ -188,6 +196,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlurryControls" Version="1.0.24" />
     <PackageReference Include="Enterwell.Clients.Wpf.Notifications" Version="1.4.2" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MaterialDesignExtensions" Version="4.0.0-a02" />

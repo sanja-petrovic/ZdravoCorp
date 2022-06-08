@@ -449,7 +449,8 @@
     </Window.Resources>
     <Grid>
         <local:TherapyView Margin="3,26,0,75"/>
-        <Button x:Name="ConfirmButton"  OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="310,416,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding ConfirmCommand}">
+        <Button x:Name="ConfirmButton"  OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold"  HorizontalAlignment="Left"  Margin="310,416,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding ConfirmCommand}">
+            <AccessText>_Potvrdite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -459,7 +460,8 @@
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
         </Button>
-        <Button Visibility="Visible" x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82"  Margin="219,416,0,0" Command="{Binding GiveUpCommand}">
+        <Button Visibility="Visible" x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82"  Margin="219,416,0,0" Command="{Binding GiveUpCommand}">
+            <AccessText>_Odustanite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

@@ -162,7 +162,8 @@
                 <DataGridTemplateColumn Header="Više">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button  OverridesDefaultStyle="False" Focusable="True" Command="{Binding RecordCommand}" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" Padding="7" Height="30" Width="140">
+                            <Button  OverridesDefaultStyle="False" Focusable="True" Command="{Binding RecordCommand}" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" Padding="7" Height="30" Width="140">
+                                <AccessText>Zdravstveni _karton</AccessText>
                                 <Button.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>

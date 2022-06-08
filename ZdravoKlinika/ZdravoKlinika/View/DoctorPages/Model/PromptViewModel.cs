@@ -14,6 +14,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private int appointmentId;
         private DialogHelper.DialogService dialogService;
         private Action action;
+        private string confirmText;
+        private string giveUpText;
 
         public MyICommand ConfirmCommand { get; set; }
         public MyICommand GiveUpCommand { get; set; }
@@ -21,7 +23,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         private AppointmentController appointmentController;
 
-        public PromptViewModel(string title, string message, Action action)
+        public PromptViewModel(string title, string message, Action action, string confirmText="Potvrdite", string giveUpText="Odustanite")
         {
             Title = title;
             Message = message;
@@ -30,6 +32,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             ConfirmCommand = new MyICommand(ExecuteConfirm);
             GiveUpCommand = new MyICommand(ExecuteGiveUp);
             Action = action;
+            ConfirmText = confirmText;
+            GiveUpText = giveUpText;
         }
 
         public virtual void ExecuteConfirm()
@@ -50,5 +54,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public int AppointmentId { get => appointmentId; set => appointmentId = value; }
         public Action Action { get => action; set => action = value; }
         public DialogService DialogService { get => dialogService; set => dialogService = value; }
+        public string ConfirmText { get => confirmText; set => confirmText = value; }
+        public string GiveUpText { get => giveUpText; set => giveUpText = value; }
     }
 }

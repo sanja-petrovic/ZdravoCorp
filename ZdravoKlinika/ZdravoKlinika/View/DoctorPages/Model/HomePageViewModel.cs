@@ -43,8 +43,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public HomePageViewModel()
         {
-            RecordCommand = new Prism.Commands.DelegateCommand(ExecuteRecord);
-            LogAppointment = new MyICommand(ExecuteLog);
+            RecordCommand = new Prism.Commands.DelegateCommand(ExecuteRecord, CanExecuteLogAndRecord);
+            LogAppointment = new MyICommand(ExecuteLog, CanExecuteLogAndRecord);
             Doctor = RegisteredUserController.UserToDoctor(App.User);
             Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
@@ -76,9 +76,15 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         {
             DialogHelper.DialogService dialogService = new DialogHelper.DialogService();
             dialogService.ShowLogApptDialog(SelectedAppointmentId);
+            InfoChange();
         }
 
-        public void infoChange()
+        public bool CanExecuteLogAndRecord()
+        {
+            return Appointments.Count > 0;
+        }
+
+        public void InfoChange()
         {
             this.Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
@@ -86,6 +92,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
             foreach (Appointment appointment in appts)
             {
+                if(appointment.Over)
+                {
+                    continue;
+                }
                 RegisteredPatient patient = (RegisteredPatient)appointment.Patient;
                 DateTime time = appointment.DateAndTime;
                 Room room = appointment.Room;
@@ -93,6 +103,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
                 this.Appointments.Add(new AppointmentViewModel { Id = appointment.AppointmentId, Name = patient.Name + " " + patient.Lastname, Time = time.ToShortTimeString(), Type = appointment.getTranslatedType(), Room = room });
             }
+            AboutVisibility = Appointments.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            RecordCommand.RaiseCanExecuteChanged();
+            LogAppointment.RaiseCanExecuteChanged();
         }
 
         public void SelectionChanged(int selectedId)

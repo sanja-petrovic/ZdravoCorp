@@ -35,22 +35,19 @@ namespace ZdravoKlinika.View.DoctorPages
             SliderMinus = new MyICommand(Substract);
             InitializeComponent();
             ThanksGrid.Visibility = Visibility.Collapsed;
+            this.Focus();
         }
 
         public void Add()
         {
-            /*if(Slidey.Value + 1 <= 10)
-            {
-                Slidey.Value++;
-            }*/
+            if(Stars.Value + 1 <= 10)
+                Stars.Value++;
         }
         
         public void Substract()
         {
-            /*if(Slidey.Value - 1 >= 1)
-            {
-                Slidey.Value--;
-            }*/
+            if(Stars.Value - 1 >= 1)
+                Stars.Value--;
         }
 
         public void ExecuteConfirm()

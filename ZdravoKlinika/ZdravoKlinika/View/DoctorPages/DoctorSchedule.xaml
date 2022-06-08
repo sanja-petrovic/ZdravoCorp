@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model"  
       xml:lang="sr-Latn-RS"  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-      mc:Ignorable="d"  Width="1024" Height="768" Cursor="Arrow">
+      mc:Ignorable="d"  Width="1024" Height="768" Cursor="Arrow" Focusable="True">
     <UserControl.Resources>
 
         <Style x:Key="FocusVisual">

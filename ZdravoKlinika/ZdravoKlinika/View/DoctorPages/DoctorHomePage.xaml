@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:HomePageViewModel}"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" Focusable="True"
              Height="768" Width="1024">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -14,6 +14,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="Z" Modifiers="Shift" Command="{Binding RecordCommand}"/>
+        <KeyBinding Key="U" Modifiers="Alt" Command="{Binding LogAppointment}"/>
+    </UserControl.InputBindings>
     <Grid>
         <Label Content="Današnji raspored" Margin="271,75,355,643" FontSize="24" FontWeight="Bold"/>
 
@@ -48,7 +52,7 @@
             </DataGrid>
         </Grid>
         <Rectangle Fill="#F8F9FE" Height="1" Margin="298,172,66,595"/>
-        <Border  Margin="838,76,45,661"
+        <Border Visibility="{Binding AboutVisibility}"  Margin="838,76,45,661"
             BorderBrush="Black"
             BorderThickness="2"
             CornerRadius="10">
@@ -56,12 +60,16 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button OverridesDefaultStyle="False"  Focusable="False" Content="Upišite pregled" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="837,75,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="143" Height="33"  Foreground="#555557" Command="{Binding LogAppointment}" >
+        <Button OverridesDefaultStyle="False" Visibility="{Binding AboutVisibility}"  Focusable="True" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="837,75,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Padding="7" Width="143" Height="33"  Foreground="#555557" Command="{Binding LogAppointment}" >
+            <AccessText>_Upišite pregled</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
+            <Button.InputBindings>
+                <KeyBinding Key="U" Modifiers="Alt" Command="{Binding LogAppointment}"/>
+            </Button.InputBindings>
             <Button.Style>
                 <StaticResource ResourceKey="fancyButtonStyle2"/>
             </Button.Style>
@@ -77,7 +85,8 @@
             </Border>
             <Rectangle HorizontalAlignment="Left" Height="178" Margin="275,505,0,0"  VerticalAlignment="Top" Width="697" Fill="White"  RadiusX="10" RadiusY="10"/>
             <Label Content="O pacijentu" Margin="275,457,351,251" FontSize="24" FontWeight="Bold" Panel.ZIndex="1"/>
-            <Button Name="RecordButton" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zdravstveni karton" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="298,632,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="148" Height="34" Command="{Binding RecordCommand}">
+            <Button Name="RecordButton" OverridesDefaultStyle="False" Focusable="True" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="298,632,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Open Sans" Padding="7" Width="148" Height="34" Command="{Binding RecordCommand}">
+                <AccessText>Zdravstveni _karton</AccessText>
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -86,6 +95,9 @@
                 <Button.Style>
                     <StaticResource ResourceKey="fancyButtonStyle3"/>
                 </Button.Style>
+                <Button.InputBindings>
+                    <KeyBinding Key="Z" Modifiers="Shift" Command="{Binding RecordCommand}"/>
+                </Button.InputBindings>
             </Button>
             <Label Content="{Binding PatientName, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="20"  HorizontalAlignment="Left" Margin="292,517,0,0" VerticalAlignment="Top"/>
             <Label Content="Datum rođenja" FontWeight="Bold" FontSize="14"  HorizontalAlignment="Left" Margin="292,554,0,0" VerticalAlignment="Top"/>
