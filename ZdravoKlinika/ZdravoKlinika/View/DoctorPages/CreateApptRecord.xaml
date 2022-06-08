@@ -20,7 +20,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="32,203,0,0" TextWrapping="Wrap" Text="Datum" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="236,203,0,0" TextWrapping="Wrap" Text="Vreme" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="330,203,0,0" TextWrapping="Wrap" Text="Soba" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Button x:Name="ScheduleButton" Command="{Binding CreateAppointment}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Zakažite" HorizontalAlignment="Left"  Margin="307,289,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="93" >
+        <Button x:Name="ScheduleButton" Command="{Binding CreateAppointment}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold"  HorizontalAlignment="Left"  Margin="307,289,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" >
+            <AccessText>_Zakažite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -75,5 +76,19 @@
         <TextBlock HorizontalAlignment="Left" Margin="236,42,0,0" TextWrapping="Wrap" Text="Doktor" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 
         <TextBlock  Foreground="#555557" HorizontalAlignment="Left" Margin="236,71,0,0" TextWrapping="Wrap" Text="{Binding _Doctor}" VerticalAlignment="Top" FontWeight="Regular" FontSize="12" Width="164"/>
+        <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="True" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding GiveUpCommand}" Margin="211,289,0,0" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <StaticResource ResourceKey="fancyButtonStyle4"/>
+            </Button.Style>
+            <Button.InputBindings>
+                <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding GiveUpCommand}"/>
+            </Button.InputBindings>
+            <AccessText Text="_Odustanite"/>
+        </Button>
     </Grid>
 </Window>

@@ -30,7 +30,7 @@
   {
     "Medication": "1",
     "Reviewer": "123",
-    "Pending": true,
+    "Pending": false,
     "Comment": null,
     "Id": 5
   }

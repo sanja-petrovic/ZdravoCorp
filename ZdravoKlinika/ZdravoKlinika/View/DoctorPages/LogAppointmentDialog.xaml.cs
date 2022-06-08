@@ -46,11 +46,13 @@ namespace ZdravoKlinika.View.DoctorPages
             {
                 if (Tabby.SelectedIndex != 0)
                 {
-                    ConfirmButton.Visibility = Visibility.Hidden;
+                    ConfirmButton.Visibility = Visibility.Collapsed;
+                    GiveUpButton.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
                     ConfirmButton.Visibility = Visibility.Visible;
+                    GiveUpButton.Visibility = Visibility.Visible;
                 }
             }
 

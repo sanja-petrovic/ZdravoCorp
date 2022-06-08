@@ -26,10 +26,10 @@ namespace ZdravoKlinika.View.DoctorPages
         private HomePageViewModel viewModel;
         public DoctorHomePage()
         {
-            
             viewModel = new HomePageViewModel();
             DataContext = viewModel;
             InitializeComponent();
+            this.Focus();
             
         }
 
@@ -37,16 +37,11 @@ namespace ZdravoKlinika.View.DoctorPages
         {
 
             var smth = (AppointmentViewModel)ScheduleDG.SelectedItem;
-            this.selectedAppointmentId = smth.Id;
-            viewModel.SelectionChanged(selectedAppointmentId);
-        }
-
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord();
-            doctorMedicalRecord.Init(viewModel.PatientId);
-            //this.NavigationService.Navigate(doctorMedicalRecord);
+            this.selectedAppointmentId = smth == null ? -1 : smth.Id;
+            if(smth != null)
+            {
+                viewModel.SelectionChanged(selectedAppointmentId);
+            }
         }
     }
 }

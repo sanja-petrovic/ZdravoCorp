@@ -108,5 +108,49 @@
     "Sender": "123",
     "Read": false,
     "TimeOfCreation": "2022-06-07T03:56:51.2678241+02:00"
+  },
+  {
+    "Prescription": 15,
+    "Note": "",
+    "TriggerTime": "2022-06-07T16:23:27.571986+02:00",
+    "NotificationId": 11,
+    "NotificationText": "",
+    "Receiver": "0304965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-07T15:23:27.5721775+02:00"
+  },
+  {
+    "Prescription": 16,
+    "Note": "",
+    "TriggerTime": "2022-06-07T16:56:32.3758921+02:00",
+    "NotificationId": 12,
+    "NotificationText": "",
+    "Receiver": "2901967123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-07T15:56:32.3760955+02:00"
+  },
+  {
+    "Prescription": 17,
+    "Note": "",
+    "TriggerTime": "2022-06-07T16:56:32.5121799+02:00",
+    "NotificationId": 13,
+    "NotificationText": "",
+    "Receiver": "2901967123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-07T15:56:32.5121825+02:00"
+  },
+  {
+    "Prescription": 18,
+    "Note": "",
+    "TriggerTime": "2022-06-07T18:49:50.1302305+02:00",
+    "NotificationId": 14,
+    "NotificationText": "",
+    "Receiver": "0304965123321",
+    "Sender": "123",
+    "Read": false,
+    "TimeOfCreation": "2022-06-07T17:49:50.1305668+02:00"
   }
 ]

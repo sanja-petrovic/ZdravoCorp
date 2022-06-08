@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
     /// <summary>
-    /// Interaction logic for Settings.xaml
+    /// Interaction logic for Shortcuts.xaml
     /// </summary>
-    public partial class Settings : UserControl
+    public partial class Shortcuts : Window
     {
-        public Settings()
+        public Shortcuts()
         {
             InitializeComponent();
         }

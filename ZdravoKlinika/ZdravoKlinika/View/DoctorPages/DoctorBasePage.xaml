@@ -11,6 +11,7 @@
     <Window.InputBindings>
         <KeyBinding Key="S" Modifiers="Shift" Command="{Binding ToggleSettings}"/>
         <KeyBinding Key="N" Modifiers="Shift" Command="{Binding ToggleNotifs}"/>
+        <KeyBinding Key="H" Modifiers="Shift" Command="{Binding ToggleHelp}"/>
         <KeyBinding Key="D1" Modifiers="Shift" Command="{Binding HomeCommand}"/>
         <KeyBinding Key="Home" Command="{Binding HomeCommand}"/>
         <KeyBinding Key="D2" Modifiers="Shift" Command="{Binding ProfileCommand}"/>
@@ -219,7 +220,12 @@
                 <KeyBinding Key="N" Modifiers="Shift" Command="{Binding ToggleNotifs}"/>
             </Image.InputBindings>
         </Image>
-        <Image Margin="932,4,72,728" Source="/Resources/Images/info (2).png" Stretch="Uniform" Cursor="Hand"/>
+        <Image Margin="932,4,72,728" Source="/Resources/Images/info (2).png" Stretch="Uniform" Cursor="Hand">
+            <Image.InputBindings>
+                <MouseBinding Gesture="LeftClick" Command="{Binding ToggleHelp}"/>
+                <KeyBinding Key="H" Modifiers="Shift" Command="{Binding ToggleHelp}"/>
+            </Image.InputBindings>
+        </Image>
         <Image Margin="969,4,35,728" Source="/Resources/Images/settings.png" Stretch="Uniform" Cursor="Hand">
             <Image.InputBindings>
                 <MouseBinding Gesture="LeftClick" Command="{Binding ToggleSettings}"/>
@@ -227,12 +233,12 @@
             </Image.InputBindings>
         </Image>
         <Image Margin="254,4,706,730" Source="/Resources/Images/zdravoklinika2.png" Stretch="Fill"/>
-        <Image Margin="28,148,980,604" Source="/Resources/Images/home.png" Stretch="UniformToFill"  Height="16" Width="16"/>
-        <Image Margin="28,198,980,555" Source="/Resources/Images/user.png" Stretch="Fill"  Height="16" Width="16"/>
-        <Image Margin="28,247,980,504" Source="/Resources/Images/stethoscope.png" Stretch="Fill" Height="16" Width="16"/>
-        <Image Margin="28,345,980,407" Source="/Resources/Images/calendar.png" Stretch="Fill" Height="16" Width="16"/>
-        <Image Margin="28,394,980,358" Source="/Resources/Images/star.png" Stretch="Fill" Height="16" Width="16"/>
-        <Image Margin="28,296,980,456" Source="/Resources/Images/medicine.png" Stretch="Fill" Height="16" Width="16"/>
+        <Image Margin="28,146,980,606" Source="/Resources/Images/home.png" Stretch="UniformToFill"  Height="16" Width="16"/>
+        <Image Margin="28,195,980,557" Source="/Resources/Images/user.png" Stretch="Fill"  Height="16" Width="16"/>
+        <Image Margin="28,245,980,507" Source="/Resources/Images/stethoscope.png" Stretch="Fill" Height="16" Width="16"/>
+        <Image Margin="28,343,980,409" Source="/Resources/Images/calendar.png" Stretch="Fill" Height="16" Width="16"/>
+        <Image Margin="28,392,980,360" Source="/Resources/Images/star.png" Stretch="Fill" Height="16" Width="16"/>
+        <Image Margin="28,293,980,459" Source="/Resources/Images/medicine.png" Stretch="Fill" Height="16" Width="16"/>
 
         <Grid Name="Settings" Visibility="{Binding SettingsVisibility}">
             <Border  Margin="834,63,13,604"
@@ -255,15 +261,15 @@
             </ListBox>
         </Grid>
 
-        <Grid Visibility="{Binding NotifsVisibility}">
+        <!--<Grid Visibility="{Binding NotifsVisibility}">
             <local:NotificationPanel DataContext="{Binding NotifPanelViewModel}"></local:NotificationPanel>
         </Grid>
         <Grid Visibility="{Binding NotifsOpened}" Margin="903,4,104,747">
             <Rectangle RadiusX="10" RadiusY="10" Stroke="White" Fill="#FE5D7A" Margin="-1,2,2,-1"></Rectangle>
         </Grid>
         <Border BorderThickness="0">
-            <controls:NotificationMessageContainer Manager="{Binding Manager}" Height="55" Margin="304,0,304,0" />
-        </Border>
+            <controls:NotificationMessageContainer Manager="{Binding Manager}" MinHeight="55" MaxHeight="80" Margin="304,0,304,0" />
+        </Border>-->
 
     </Grid>
 </Window>

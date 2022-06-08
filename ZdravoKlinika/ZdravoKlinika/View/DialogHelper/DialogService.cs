@@ -29,7 +29,11 @@ namespace ZdravoKlinika.View.DialogHelper
             createApptSchedule.ShowDialog();
         }
 
-
+        public static void ShowHelp()
+        {
+            Shortcuts shortcuts = new Shortcuts();
+            shortcuts.Show();
+        }
 
         public void ShowCreateApptRecordDialog(String id)
         {
@@ -76,8 +80,8 @@ namespace ZdravoKlinika.View.DialogHelper
         {
             LogAppointmentDialog logAppointmentDialog = new LogAppointmentDialog { SelectedAppointmentId = apptId };
             logAppointmentDialog.Init();
-            logAppointmentDialog.Show();
             OpenDialogs.Add(logAppointmentDialog);
+            logAppointmentDialog.ShowDialog();
         }
 
         public void ShowEditAnamnesisDialog(PastViewModel viewModel)
@@ -87,9 +91,9 @@ namespace ZdravoKlinika.View.DialogHelper
             OpenDialogs.Add(editAnamnesisWindow);
         }
 
-        public void ShowPrompt(string title, string message, Action action)
+        public void ShowPrompt(string title, string message, Action action, string confirmText="Potvrdite", string giveUpText="Odustanite")
         {
-            PromptDialog promptDialog = new PromptDialog(new PromptViewModel(title, message, action));
+            PromptDialog promptDialog = new PromptDialog(new PromptViewModel(title, message, action, confirmText, giveUpText));
             OpenDialogs.Add(promptDialog);
             promptDialog.ShowDialog();
         }

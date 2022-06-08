@@ -16,9 +16,25 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string usage;
         public DelegateCommand DownloadPrescription { get; set; }
         private string patient;
+        public MyICommand EditCommand { get; set; }
+        public MyICommand DeleteCommand { get; set; }
+        private TherapyTab parent;
 
         public PrescriptionViewModel()
         {
+            EditCommand = new MyICommand(ExecuteEdit);
+            DeleteCommand = new MyICommand(ExecuteDelete);
+        }
+
+        public void ExecuteEdit()
+        {
+            Parent.LoadPrescription(prescription);
+        }
+
+        public void ExecuteDelete()
+        {
+            Parent.LoadPrescription(prescription);
+            Parent.Delete();
         }
 
         public PrescriptionViewModel(Prescription prescription)
@@ -43,5 +59,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public string Usage { get => usage; set => SetProperty(ref usage, value); }
         public string Date { get => date; set => date = value; }
         public string Patient { get => patient; set => patient = value; }
+        public TherapyTab Parent { get => parent; set => parent = value; }
     }
 }

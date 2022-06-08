@@ -17,6 +17,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private ViewModelBase selectedVm;
         private Visibility settingsVisibility;
         private Visibility notifsVisibility;
+        private Visibility helpVisibility;
         private Visibility notifsOpened;
         private int index;
         private Controller.EmployeeNotificationController notificationController;
@@ -27,6 +28,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public MyICommand ToggleSettings { get; set; }
         public MyICommand ToggleNotifs { get; set; }
+        public MyICommand ToggleHelp { get; set; }
 
         public MyICommand HomeCommand { get; set; }
         public MyICommand ProfileCommand { get; set; }
@@ -51,6 +53,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Index = 5;
             ToggleSettings = new MyICommand(ExecuteToggleSettings);
             ToggleNotifs = new MyICommand(ExecuteToggleNotifs);
+            ToggleHelp = new MyICommand(ExecuteToggleHelp);
 
             HomeCommand = new MyICommand(GoToHome);
             ProfileCommand = new MyICommand(GoToProfile);
@@ -67,8 +70,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void ExecuteToggleSettings()
         {
             SettingsVisibility = SettingsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            NotifsVisibility = Visibility.Collapsed; 
-            
+            NotifsVisibility = Visibility.Collapsed;
+            HelpVisibility = Visibility.Collapsed;
+
         }
 
         public void LoadWelcomeMessage()
@@ -102,6 +106,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public void ExecuteToggleNotifs()
         {
             SettingsVisibility = Visibility.Collapsed;
+            HelpVisibility = Visibility.Collapsed;
             NotifsVisibility = NotifsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
             if (notifsOpened != Visibility.Collapsed)
             {
@@ -112,6 +117,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 NotifPanelViewModel.MarkAllAsRead();
             }
             NotifsOpened = Visibility.Collapsed;
+        }
+
+        public void ExecuteToggleHelp()
+        {
+            DialogHelper.DialogService.ShowHelp();
         }
 
         public void GoToHome()
@@ -174,5 +184,6 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public bool OpenedNotifs { get => openedNotifs; set => openedNotifs = value; }
         public NotificationMessageManager Manager { get => manager; set => manager = value; }
         public Messenger.Messenger Messenger { get => messenger; set => messenger = value; }
+        public Visibility HelpVisibility { get => helpVisibility; set => SetProperty(ref helpVisibility, value); }
     }
 }

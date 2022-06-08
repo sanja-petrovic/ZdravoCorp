@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Util;
 using ZdravoKlinika.Model;
+using System.Windows;
 
 namespace ZdravoKlinika.View.DoctorPages.Model
 {
@@ -14,13 +15,14 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private string header;
         private int appointmentId;
         private AppointmentController appointmentController;
+        private Visibility successVisibility;
 
         public string Header { get => header; set => SetProperty(ref header, value); }
         public int AppointmentId { get => appointmentId; set => SetProperty(ref appointmentId, value); }
         public List<string> Specialties { get => specialties; set => SetProperty(ref specialties, value); }
         public List<Doctor> Doctors { get => doctors; set => SetProperty(ref doctors, value); }
         public ObservableCollection<string> DoctorsDisplay { get => doctorsDisplay; set => SetProperty(ref doctorsDisplay, value); }
-        public String Type { get => type; set => SetProperty(ref type, value); }
+        public String Type { get => type; set { SetProperty(ref type, value); SetTimes();  } }
         public bool Emergency { get => emergency; set => SetProperty(ref emergency, value); }
         public DateTime Date { get => date; set => SetProperty(ref date, value); }
         public List<Room> Rooms { get => rooms; set => SetProperty(ref rooms, value); }
@@ -49,11 +51,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private DateTime dateAndTime;
 
         private DoctorController doctorController;
-
+        public MyICommand ScheduleCommand { get; set; }
+        public Visibility SuccessVisibility { get => successVisibility; set => SetProperty(ref successVisibility, value); }
 
         public ReferralTab()
         {
             this.appointmentController = new AppointmentController();
+            ScheduleCommand = new MyICommand(Schedule, CanExecuteSchedule);
         }
 
         public void Load()
@@ -73,6 +77,11 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             this.appointmentController = new AppointmentController();
         }
 
+        public bool CanExecuteSchedule()
+        {
+            return Doctor != null && DateAndTime != null && Duration > 0;
+        }
+
         public void SetDoctorComboBox(int selected)
         {
             Doctors = this.doctorController.GetBySpecialty(Specialties[selected]);
@@ -81,6 +90,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 DoctorsDisplay.Add(doctor.ToString());
             }
+            ScheduleCommand.RaiseCanExecuteChanged();
         }
 
         public void SetRooms()
@@ -98,6 +108,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 RoomsDisplay.Add(room.Name);
             }
+            ScheduleCommand.RaiseCanExecuteChanged();
 
         }
 
@@ -109,6 +120,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 Types.Add("Operacija");
             }
+            ScheduleCommand.RaiseCanExecuteChanged();
         }
 
         public void SetSelectedDoctor(int selected)
@@ -118,6 +130,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 this.doctor = this.Doctors[selected];
             }
             SetTimes();
+            ScheduleCommand.RaiseCanExecuteChanged();
         }
 
         public void SetDateTime(int selected)
@@ -132,6 +145,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
                 DateAndTime = new DateTime(this.date.Year, this.date.Month, this.date.Day, hours, minutes, 0);
             }
+            ScheduleCommand.RaiseCanExecuteChanged();
         }
         
 
@@ -146,6 +160,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                     Times.Add(block.Start.ToShortTimeString());
                 }
             }
+            ScheduleCommand.RaiseCanExecuteChanged();
 
         }
 
@@ -155,11 +170,13 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             {
                 Room = this.rooms[selected];
             }
+            ScheduleCommand.RaiseCanExecuteChanged();
         }
 
         public void Schedule()
         {
             this.appointmentController.CreateAppointment(Doctor.PersonalId, this.appointmentController.GetAppointmentById(this.appointmentId).Patient.GetPatientId(), DateAndTime, Emergency, AppointmentType.Regular, Room.RoomId, Duration);
+            SuccessVisibility = Visibility.Visible;
         }
     }
 }

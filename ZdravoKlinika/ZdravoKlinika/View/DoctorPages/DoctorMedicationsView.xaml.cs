@@ -28,7 +28,7 @@ namespace ZdravoKlinika.View.DoctorPages
             ViewModel = new DoctorMedicationsViewModel();
             DataContext = ViewModel;
             InitializeComponent();
-            MedsTab.Focus();
+            this.Focus();
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)

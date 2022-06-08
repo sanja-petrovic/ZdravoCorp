@@ -97,7 +97,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 mViewModel.ParentViewModel = this;
                 PendingMeds.Add(mViewModel);
             }
-            RequestSelected = PendingMeds.First();
+            RequestSelected = PendingMeds.Count > 0 ? PendingMeds.First() : null;
         }
 
     }

@@ -45,7 +45,9 @@
   },
   {
     "Diagnoses": [
-      " "
+      "Diabetes mellitus",
+      "A",
+      "sdfds"
     ],
     "Allergies": [
       "Ma\u010Dja dlaka",
@@ -63,7 +65,7 @@
   },
   {
     "Diagnoses": [
-      " "
+      "A"
     ],
     "Allergies": [],
     "CurrentMedication": [
@@ -77,11 +79,14 @@
   },
   {
     "Diagnoses": [
-      " "
+      "b",
+      "c"
     ],
     "Allergies": [],
     "CurrentMedication": [
-      "4"
+      "4",
+      "5",
+      "2"
     ],
     "PastMedication": [],
     "Reports": [],
@@ -92,15 +97,16 @@
       "Diagnosis1"
     ],
     "Allergies": [],
-    "CurrentMedication": [],
+    "CurrentMedication": [
+      "3",
+      "4"
+    ],
     "PastMedication": [],
     "Reports": [],
     "MedicalRecordId": "2901967123321"
   },
   {
-    "Diagnoses": [
-      " "
-    ],
+    "Diagnoses": [],
     "Allergies": [],
     "CurrentMedication": [
       "4"

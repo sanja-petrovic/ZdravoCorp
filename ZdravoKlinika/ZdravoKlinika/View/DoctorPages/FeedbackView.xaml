@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages"
       xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="ZdravoKlinika.View.DoctorPages.FeedbackView"
       mc:Ignorable="d" Width="1024" Height="768" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      Title="FeedbackView">
+      Title="FeedbackView" Focusable="True">
     <Page.InputBindings>
         <KeyBinding Key="P" Modifiers="Alt" Command="{Binding Confirm}"/>
         <KeyBinding Key="Add" Modifiers="Ctrl" Command="{Binding SliderPlus}"/>
@@ -34,7 +34,7 @@
         <Label Content="Ocenite aplikaciju" Margin="271,75,355,643" FontSize="24" FontWeight="Bold"/>
         <Label Content="Voleli bismo da čujemo Vaše mišljenje!" Margin="302,149,214,569" FontSize="24" FontWeight="Bold"/>
         <TextBlock Text="Kako biste ocenili aplikaciju?" FontSize="16" FontWeight="Bold" Margin="308,217,207,510"/>
-        <materialDesign:RatingBar Min="1" Max="10" Foreground="#FF9E98FF" Margin="307,249,355,492">
+        <materialDesign:RatingBar Focusable="True" x:Name="Stars" Min="1" Max="10" Foreground="#FF9E98FF" Margin="307,249,355,492">
             <materialDesign:RatingBar.ValueItemTemplate>
                 <DataTemplate DataType="system:Int32">
                     <Grid>
@@ -67,7 +67,8 @@
             <TextBlock Text="10" Margin="578,0,0,0" />
         </Grid>
 
-        <Button OverridesDefaultStyle="False" Focusable="True" Background="#FF9E98FF" Foreground="White" FontWeight="Bold" Content="Pošaljite" HorizontalAlignment="Left"  Margin="757,632,0,0" VerticalAlignment="Top" FontSize="14" Padding="7" Height="30" Width="145" Command="{Binding Confirm}">
+        <Button OverridesDefaultStyle="False" Focusable="True" Background="#FF9E98FF" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left"  Margin="757,632,0,0" VerticalAlignment="Top" FontSize="14" Padding="7" Height="30" Width="145" Command="{Binding Confirm}">
+            <AccessText>_Pošaljite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -76,9 +77,6 @@
             <Button.Style>
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
-            <Button.InputBindings>
-                <KeyBinding Key="Enter" Modifiers="Ctrl" Command="{Binding Confirm}"/>
-            </Button.InputBindings>
         </Button>
         <Grid Name="ThanksGrid" Visibility="Collapsed" Margin="275,125,94,85">
             <Rectangle HorizontalAlignment="Left" Height="558"  VerticalAlignment="Top" Width="655" Fill="White"  RadiusX="10" RadiusY="10"/>

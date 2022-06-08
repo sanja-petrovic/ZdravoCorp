@@ -29,6 +29,7 @@ namespace ZdravoKlinika.View.DoctorPages
             viewModel = new DoctorViewModel();
             DataContext = viewModel;
             InitializeComponent();
+            this.Focus();
         }
     }
 }

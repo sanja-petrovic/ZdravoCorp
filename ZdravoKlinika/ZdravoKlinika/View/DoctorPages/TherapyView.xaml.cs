@@ -25,7 +25,7 @@ namespace ZdravoKlinika.View.DoctorPages
         {
             InitializeComponent();
         }
-
+        /*
         private void MedCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(DataContext != null)
@@ -43,11 +43,6 @@ namespace ZdravoKlinika.View.DoctorPages
                     AddButton.IsEnabled = false;
                 }
             }
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            ((TherapyTab)DataContext).Add(MedCB.SelectedIndex);
-        }
+        }*/
     }
 }
