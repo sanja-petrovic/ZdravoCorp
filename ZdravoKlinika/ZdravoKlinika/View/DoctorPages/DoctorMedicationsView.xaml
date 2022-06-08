@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:DoctorMedicationsViewModel}" xmlns:sys="clr-namespace:System;assembly=mscorlib"  
-             mc:Ignorable="d"  Height="768" Width="1024">
+             mc:Ignorable="d"  Height="768" Width="1024" Focusable="True">
 
     <UserControl.InputBindings>
         <KeyBinding Key="O" Command="{Binding Authorize}" Modifiers="Ctrl"></KeyBinding>

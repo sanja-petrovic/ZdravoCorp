@@ -50,7 +50,7 @@ namespace ZdravoKlinika.Repository
         {
             List<Prescription> patientsPrescriptions = new List<Prescription>();
 
-            foreach(Prescription prescription in this.prescriptions)
+            foreach(Prescription prescription in this.GetAll())
             {
                 UpdateReferences(prescription);
                 if(prescription.Patient.GetPatientId().Equals(patient.PersonalId))

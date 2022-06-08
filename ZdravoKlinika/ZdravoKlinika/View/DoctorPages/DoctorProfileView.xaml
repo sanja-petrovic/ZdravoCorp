@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" 
              xmlns:validation="clr-namespace:ZdravoKlinika.View.DoctorPages.ValidationRules"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:DoctorViewModel}" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"  Focusable="True"
             Height="768" Width="1024" >
 
     <UserControl.Resources>

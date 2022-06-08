@@ -27,6 +27,7 @@ namespace ZdravoKlinika.View.DoctorPages
         public DoctorMedicalRecord()
         {
             InitializeComponent();
+            this.Focus();
         }
 
         public void Init(string patientId)
@@ -35,6 +36,7 @@ namespace ZdravoKlinika.View.DoctorPages
             DataContext = viewModel;
             viewModel.init(patientId);
             InitializeComponent();
+            this.Focus();
         }
 
         public string PatientId { get => patientId; set => patientId = value; }

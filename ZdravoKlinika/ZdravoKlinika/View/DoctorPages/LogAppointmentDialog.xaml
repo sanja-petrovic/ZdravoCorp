@@ -9,6 +9,8 @@
         Title="Upisivanje pregleda" Height="682" Width="432"
 Background="#F8F9FE" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:ApptLogViewModel}" SizeToContent="WidthAndHeight">
+    <Window.InputBindings>
+    </Window.InputBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -232,7 +234,8 @@ Background="#F8F9FE" ResizeMode="CanMinimize" WindowStartupLocation="CenterScree
                 </DataTemplate>
             </TabControl.Resources>
         </TabControl>
-        <Button Name="ConfirmButton" Command="{Binding ConfirmCommand}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Upišite pregled" HorizontalAlignment="Left"  Margin="288,594,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="116" >
+        <Button Name="ConfirmButton" Command="{Binding ConfirmCommand}" OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold"  HorizontalAlignment="Left"  Margin="288,594,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="116" >
+            <AccessText>_Upišite pregled</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -242,7 +245,8 @@ Background="#F8F9FE" ResizeMode="CanMinimize" WindowStartupLocation="CenterScree
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
         </Button>
-        <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="116" Command="{Binding GiveUpCommand}" Margin="154,594,0,0" >
+        <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold"  HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="116" Command="{Binding GiveUpCommand}" Margin="154,594,0,0" >
+            <AccessText>_Odustanite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

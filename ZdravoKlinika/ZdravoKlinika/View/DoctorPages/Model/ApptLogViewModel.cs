@@ -35,13 +35,24 @@ namespace ZdravoKlinika.View.DoctorPages.Model
 
         public void ExecuteGiveUp()
         {
-            DialogHelper.DialogService.CloseDialog(this);
+            DialogHelper.DialogService dialogService = new DialogHelper.DialogService();
+            dialogService.ShowPrompt("Odustanak od upisa pregleda", "Da li ste sigurni da želite da odustanete od upisa pregleda? Ništa od unetih podataka ili recepata neće biti sačuvano.", Close, "Da, želim", "Ne, vrati me nazad");
         }
         
+        public void Close()
+        {
+            DialogHelper.DialogService.CloseDialog(this);
+        }
+
         public void ExecuteConfirm()
         {
             ((TherapyTab)TabViewModels[1]).Save();
-            ((AnamnesisTab)TabViewModels[0]).Appointment.Prescriptions = ((TherapyTab)TabViewModels[1]).PrescribedList.ToList();
+            var p = ((TherapyTab)TabViewModels[1]).PrescribedList.ToList();
+            ((AnamnesisTab)TabViewModels[0]).Appointment.Prescriptions = new List<ZdravoKlinika.Model.Prescription>();
+            foreach (PrescriptionViewModel pvm in p)
+            {
+                ((AnamnesisTab)TabViewModels[0]).Appointment.Prescriptions.Add(pvm.Prescription);
+            }
             ((AnamnesisTab)TabViewModels[0]).Save();
             DialogHelper.DialogService.CloseDialog(this);
             Messenger.Messenger.SuccessMessage("Uspešno ste upisali pregled!");

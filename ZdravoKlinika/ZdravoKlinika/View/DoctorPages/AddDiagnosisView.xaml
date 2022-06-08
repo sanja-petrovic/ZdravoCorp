@@ -15,7 +15,8 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid Height="276" Width="454">
-        <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Command="{Binding ConfirmCommand}" Margin="336,182,0,0">
+        <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="76" Command="{Binding ConfirmCommand}" Margin="336,182,0,0">
+            <AccessText>_Potvrdite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -25,7 +26,8 @@
                 <StaticResource ResourceKey="fancyButtonStyle3"/>
             </Button.Style>
         </Button>
-        <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding GiveUpCommand}" Margin="237,182,0,0">
+        <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding GiveUpCommand}" Margin="237,182,0,0">
+            <AccessText>_Odustanite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

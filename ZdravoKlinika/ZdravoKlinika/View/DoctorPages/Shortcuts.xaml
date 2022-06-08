@@ -1,0 +1,78 @@
+﻿<Window x:Class="ZdravoKlinika.View.DoctorPages.Shortcuts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:system="clr-namespace:System;assembly=netstandard"
+        mc:Ignorable="d"
+        Title="Spisak prečica" Height="730" Width="487" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="White">
+    <ScrollViewer Height="730" Width="487" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Margin="10">
+        <StackPanel Orientation="Vertical">
+            <Label Content="Spisak prečica" FontSize="20" FontWeight="Bold"/>
+            <Label Content="Uopšteno" FontSize="16"/>
+            <StackPanel Margin="20 10" Orientation="Vertical">
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+S: Otvaranje/zatvaranje podešavanja"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+N: Otvaranje/zatvaranje obaveštenja"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+H   : Otvaranje/zatvaranje spiska prečica"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+1: Početna stranica"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+2: Profil"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+3: Pacijenti"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+4: Baza lekova"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+5: Mesečni raspored"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+6: Ocenite aplikaciju"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• CTRL+ALT+O: Odjava"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+O: Odustanite"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+P: Potvrdite"></TextBlock>
+            </StackPanel>
+            <Label Content="Početna stranica" FontSize="16"/>
+            <StackPanel Margin="20 10" Orientation="Vertical">
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+U: Pristup upisu pregleda"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+K: Zdravstveni karton odabranog pacijenta"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+Z: [Prilikom upisa] Zakažite pregled pacijentu kod specijaliste (uput)"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+U: [Prilikom upisa] Potvrda anamneze i terapije, upisivanje pregleda"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+D: [Prilikom upisa] Dodavanje leka u listu prepisanih"></TextBlock>
+            </StackPanel>
+            <Label Content="Profil" FontSize="16"/>
+            <StackPanel Margin="20 10" Orientation="Vertical">
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+I: Pristup izmeni profila"></TextBlock>
+            </StackPanel>
+            <Label Content="Pacijenti" FontSize="16"/>
+            <StackPanel Margin="20 10" Orientation="Vertical">
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+K: Zdravstveni karton odabranog pacijenta"></TextBlock>
+            </StackPanel>
+            <Label Content="Zdravstveni karton" FontSize="16"/>
+            <StackPanel Margin="20 10" Orientation="Vertical">
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+D: Dodavanje dijagnoze"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+P: Prepisivanje recepta"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+D: Preuzimanje odabranog dokumenta ili anamneze"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+I: Izmena odabrane anamneze ili predstojećeg termina"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+Delete: Otkazivanje predstojećeg termina"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+Z: Zakazivanje termina"></TextBlock>
+            </StackPanel>
+            <Label Content="Baza lekova" FontSize="16"/>
+            <StackPanel Margin="20 10" Orientation="Vertical">
+                <TextBlock FontSize="12" Foreground="#555557" Text="• CTRL+O: Pristup odobravanju leka"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• CTRL+M: Pregled odabranog leka"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• SHIFT+T: Promena taba"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+O: Odobrite"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+I: Izmenite"></TextBlock>
+            </StackPanel>
+            <Label Content="Mesečni raspored" FontSize="16"/>
+            <StackPanel Margin="20 10" Orientation="Vertical">
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+Z: Zakazivanje termina"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+P: Podnošenje zahteva za slobodne dane"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+I: Izmena predstojećeg termina"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+Delete: Otkazivanje predstojećeg termina"></TextBlock>
+            </StackPanel>
+            <Label Content="Ocenite aplikaciju" FontSize="16"/>
+            <StackPanel Margin="20 10" Orientation="Vertical">
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+Plus[Numpad]: Povećavanje ocene"></TextBlock>
+                <TextBlock FontSize="12" Foreground="#555557" Text="• ALT+Minus[Numpad]: Smanjivanje ocene"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <ScrollViewer.Resources>
+            <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">5</system:Double>
+        </ScrollViewer.Resources>
+    </ScrollViewer>
+</Window>

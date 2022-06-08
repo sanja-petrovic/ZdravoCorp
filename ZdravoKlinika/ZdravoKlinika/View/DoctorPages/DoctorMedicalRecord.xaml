@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" UseLayoutRounding="True" d:DataContext="{d:DesignInstance Type=model:DoctorMedicalRecordViewModel}"
+      xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" Focusable="True" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" UseLayoutRounding="True" d:DataContext="{d:DesignInstance Type=model:DoctorMedicalRecordViewModel}"
       mc:Ignorable="d" 
              Height="768" Width="1024" >
     <UserControl.Resources>
@@ -447,6 +447,7 @@
         </ResourceDictionary>
 
     </UserControl.Resources>
+    
     <Grid>
         <Label Content="{Binding Name}" Margin="271,45,355,663" FontSize="24" FontWeight="Bold"/>
         <Border  Margin="276,84,53,536"
@@ -528,7 +529,8 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button Content="Prepišite" KeyboardNavigation.TabIndex="1" OverridesDefaultStyle="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Command="{Binding PrescribeCommand}">
+        <Button KeyboardNavigation.TabIndex="1" OverridesDefaultStyle="False" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="656,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Command="{Binding PrescribeCommand}">
+            <AccessText>_Prepišite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -553,7 +555,7 @@
                 <ListBox Name="PastLB" ItemsSource="{Binding PastAppointments}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="Transparent" BorderBrush="Transparent" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Margin="10 0 0 15">
+                            <StackPanel Focusable="True" Orientation="Vertical" Margin="10 0 0 15">
                                 <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Title}"/>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <TextBlock FontSize="12" FontWeight="Bold" Text="Dijagnoza:" Margin="0 0 10 0"/>
@@ -568,13 +570,13 @@
                                     <TextBlock TextWrapping="Wrap" Text="{Binding Opinion}"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
-                                    <Image Source="/Resources/Images/download.png" HorizontalAlignment="Left" Width="12" Height="12" Cursor="Hand" Margin="0 0 10 0">
+                                    <Image Focusable="True" Source="/Resources/Images/download.png" HorizontalAlignment="Left" Width="12" Height="12" Cursor="Hand" Margin="0 0 10 0">
                                         <Image.InputBindings>
                                             <MouseBinding Gesture="LeftClick" Command="{Binding DownloadAnamnesis, Mode=OneTime}" />
                                             <KeyBinding Key="D" Modifiers="Shift" Command="{Binding DownloadAnamnesis}"/>
                                         </Image.InputBindings>
                                     </Image>
-                                    <Image Cursor="Hand"  Source="/Resources/Images/edit.png" Width="12" Height="12">
+                                    <Image Focusable="True" Cursor="Hand"  Source="/Resources/Images/edit.png" Width="12" Height="12">
 
                                         <Image.InputBindings>
                                             <MouseBinding Gesture="LeftClick" Command="{Binding EditCommand, Mode=OneTime}" />
@@ -582,16 +584,21 @@
                                         </Image.InputBindings>
                                     </Image>
                                 </StackPanel>
+                                <StackPanel.InputBindings>
+                                    <KeyBinding Key="I" Modifiers="Alt" Command="{Binding EditCommand}"/>
+                                    <KeyBinding Key="D" Modifiers="Shift" Command="{Binding DownloadAnamnesis}"/>
+                                </StackPanel.InputBindings>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
+                    
                 </ListBox>
             </TabItem>
             <TabItem KeyboardNavigation.TabIndex="4" Header="Predstojeći">
                 <ListBox KeyboardNavigation.TabIndex="5" Name="UpcomingTb" ItemsSource="{Binding UpcomingAppointments}" ItemContainerStyle="{DynamicResource ListBoxItemContainerStyle2}" Style="{DynamicResource ListBoxStyle1}" Margin="0 20 0 0" Height="251" Background="Transparent" BorderBrush="Transparent" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Margin="10 0 0 15">
+                            <StackPanel Orientation="Vertical" Margin="10 0 0 15" Focusable="True">
 
                                 <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Title}"/>
                                 <StackPanel Orientation="Horizontal">
@@ -603,13 +610,13 @@
                                     <TextBlock Text="{Binding Room}"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"  Margin="0 10 0 0">
-                                    <Image  Cursor="Hand" Source="/Resources/Images/edit.png" Width="12" Height="12"  Margin="0 0 10 0">
+                                    <Image Focusable="True"  Cursor="Hand" Source="/Resources/Images/edit.png" Width="12" Height="12"  Margin="0 0 10 0">
                                         <Image.InputBindings>
                                             <MouseBinding Gesture="LeftClick" Command="{Binding EditCommand, Mode=OneTime}" />
                                             <KeyBinding Key="I" Modifiers="Alt" Command="{Binding EditCommand}"/>
                                         </Image.InputBindings>
                                     </Image>
-                                    <Image Cursor="Hand" Source="/Resources/Images/time-delete.png" Width="12" Height="12">
+                                    <Image Cursor="Hand" Focusable="True" Source="/Resources/Images/time-delete.png" Width="12" Height="12">
 
                                         <Image.InputBindings>
                                             <MouseBinding Gesture="LeftClick" Command="{Binding DeleteCommand, Mode=OneTime}" />
@@ -617,6 +624,10 @@
                                         </Image.InputBindings>
                                     </Image>
                                 </StackPanel>
+                                <StackPanel.InputBindings>
+                                    <KeyBinding Key="I" Modifiers="Alt" Command="{Binding EditCommand}"/>
+                                    <KeyBinding Key="Delete" Modifiers="Alt" Command="{Binding DeleteCommand}"/>
+                                </StackPanel.InputBindings>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -633,7 +644,8 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button KeyboardNavigation.TabIndex="0" Content="Dodajte" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="413,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Command="{Binding AddDiagnosis}">
+        <Button KeyboardNavigation.TabIndex="0" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="413,248,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Command="{Binding AddDiagnosis}">
+            <AccessText>_Dodajte</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -662,7 +674,8 @@
                 <DropShadowEffect Color="Black" Opacity="0.3" Direction="0" ShadowDepth="0" BlurRadius="30"/>
             </Border.Effect>
         </Border>
-        <Button KeyboardNavigation.TabIndex="6" Content="Zakažite" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="380,455,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Command="{Binding CreateAppointment}">
+        <Button KeyboardNavigation.TabIndex="6" OverridesDefaultStyle="False"  Focusable="True" BorderBrush="Transparent" Style="{StaticResource ResourceKey=fancyButtonStyle2}" HorizontalAlignment="Left" Margin="380,455,0,0" VerticalAlignment="Top" Width="72" Height="23" Background="White" Command="{Binding CreateAppointment}">
+            <AccessText>_Zakažite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -670,7 +683,7 @@
             </Button.Resources>
         </Button>
 
-        <ListBox KeyboardNavigation.TabIndex="2" ItemsSource="{Binding Prescriptions}" Background="Transparent" Style="{StaticResource ListBoxStyle1}" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle2}" Margin="761,278,54,339">
+        <ListBox KeyboardNavigation.TabIndex="2" ItemsSource="{Binding Prescriptions,UpdateSourceTrigger=PropertyChanged}" Background="Transparent" Style="{StaticResource ListBoxStyle1}" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle2}" Margin="761,278,54,339">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel Orientation="Horizontal">

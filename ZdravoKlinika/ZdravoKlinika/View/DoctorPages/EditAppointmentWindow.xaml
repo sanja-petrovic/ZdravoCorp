@@ -653,11 +653,8 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button OverridesDefaultStyle="False" Focusable="False" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold" Content="Potvrdite" HorizontalAlignment="Left"  Margin="378,364,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77" Command="{Binding SaveCommand}">
-            <Button.InputBindings>
-                <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding SaveCommand}"/>
-                <MouseBinding Gesture="LeftClick" Command="{Binding SaveCommand}"/>
-            </Button.InputBindings>
+        <Button OverridesDefaultStyle="False" Focusable="True" Background="#FF9E98FF" Foreground="White" FontWeight="DemiBold"  HorizontalAlignment="Left"  Margin="378,364,0,0" VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="77" Command="{Binding SaveCommand}">
+            <AccessText>_Potvrdite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -668,7 +665,8 @@
             </Button.Style>
         </Button>
 
-        <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="False" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold" Content="Odustanite" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding GiveUpCommand}" Margin="276,364,0,0">
+        <Button x:Name="GiveUpButton" OverridesDefaultStyle="False" Focusable="True" Background="White" Foreground="#FF9E98FF" FontWeight="DemiBold"  HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="12" Padding="7" Height="30" Width="82" Command="{Binding GiveUpCommand}" Margin="276,364,0,0">
+            <AccessText>_Odustanite</AccessText>
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -677,9 +675,6 @@
             <Button.Style>
                 <StaticResource ResourceKey="fancyButtonStyle4"/>
             </Button.Style>
-            <Button.InputBindings>
-                <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding GiveUpCommand}"/>
-            </Button.InputBindings>
         </Button>
     </Grid>
 </Window>
