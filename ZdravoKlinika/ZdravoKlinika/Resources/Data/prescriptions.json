@@ -232,5 +232,44 @@
     "Id": 18,
     "DateOfCreation": "2022-06-07T17:49:50.0147032+02:00",
     "Patient": "0304965123321,Registered"
+  },
+  {
+    "Medication": "1",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": null,
+    "Doctor": "123",
+    "Id": 19,
+    "DateOfCreation": "2022-06-08T04:13:13.0764877+02:00",
+    "Patient": "3007967123321,Registered"
+  },
+  {
+    "Medication": "6",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "123",
+    "Doctor": "123",
+    "Id": 20,
+    "DateOfCreation": "2022-06-08T04:15:53.733358+02:00",
+    "Patient": "3007967123321,Registered"
+  },
+  {
+    "Medication": "1",
+    "Amount": 1,
+    "Duration": 1,
+    "Frequency": 1,
+    "SingleDose": "1",
+    "Repeat": "dnevno",
+    "DoctorsNote": "123",
+    "Doctor": "123",
+    "Id": 21,
+    "DateOfCreation": "2022-06-08T04:18:21.5163414+02:00",
+    "Patient": "2901967123321,Registered"
   }
 ]

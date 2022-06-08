@@ -99,7 +99,8 @@
     "Allergies": [],
     "CurrentMedication": [
       "3",
-      "4"
+      "4",
+      "1"
     ],
     "PastMedication": [],
     "Reports": [],
@@ -109,7 +110,9 @@
     "Diagnoses": [],
     "Allergies": [],
     "CurrentMedication": [
-      "4"
+      "4",
+      "1",
+      "6"
     ],
     "PastMedication": [],
     "Reports": [],

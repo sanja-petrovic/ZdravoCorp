@@ -261,7 +261,7 @@
             </ListBox>
         </Grid>
 
-        <!--<Grid Visibility="{Binding NotifsVisibility}">
+        <Grid Visibility="{Binding NotifsVisibility}">
             <local:NotificationPanel DataContext="{Binding NotifPanelViewModel}"></local:NotificationPanel>
         </Grid>
         <Grid Visibility="{Binding NotifsOpened}" Margin="903,4,104,747">
@@ -269,7 +269,7 @@
         </Grid>
         <Border BorderThickness="0">
             <controls:NotificationMessageContainer Manager="{Binding Manager}" MinHeight="55" MaxHeight="80" Margin="304,0,304,0" />
-        </Border>-->
+        </Border>
 
     </Grid>
 </Window>

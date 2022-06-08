@@ -189,6 +189,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             }
         }
 
+
+
         public void DiagnosisAdded()
         {
             Diagnoses = new ObservableCollection<string> (this.medicalRecordController.GetDiagnosesAndAllergies(Id));

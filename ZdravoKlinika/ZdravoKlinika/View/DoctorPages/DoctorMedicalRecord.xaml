@@ -683,7 +683,7 @@
             </Button.Resources>
         </Button>
 
-        <ListBox KeyboardNavigation.TabIndex="2" ItemsSource="{Binding Prescriptions}" Background="Transparent" Style="{StaticResource ListBoxStyle1}" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle2}" Margin="761,278,54,339">
+        <ListBox KeyboardNavigation.TabIndex="2" ItemsSource="{Binding Prescriptions,UpdateSourceTrigger=PropertyChanged}" Background="Transparent" Style="{StaticResource ListBoxStyle1}" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle2}" Margin="761,278,54,339">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel Orientation="Horizontal">
