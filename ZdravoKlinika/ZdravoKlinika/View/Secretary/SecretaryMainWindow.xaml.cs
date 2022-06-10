@@ -214,5 +214,28 @@ namespace ZdravoKlinika.View.Secretary
             MenuContentLabel.Content = "Obrada zahteva";
             HamburgerMenuFrame.IsChecked = false;
         }
+
+        private void SettingsMenuAction(object sender, RoutedEventArgs e)
+        {
+            if (SettingsMenu.Visibility == Visibility.Collapsed)
+                SettingsMenu.Visibility = Visibility.Visible;
+
+            if (SettingsMenu.IsChecked == false)
+            {
+                SettingsMenu.IsChecked = true;
+                return;
+            }
+            SettingsMenu.IsChecked = false;
+        }
+
+        private void ProfileSettingsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigator.CloseMainAndOpenSignIn();
+        }
     }
 }
