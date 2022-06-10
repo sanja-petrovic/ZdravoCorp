@@ -31,6 +31,11 @@
     "Password": "s",
     "ProfilePicture": "null",
     "LastLogin": "0001-01-01T00:00:00",
-    "Address": null
+    "Address": {
+      "Street": "A",
+      "Number": "B",
+      "City": "C",
+      "Country": "D"
+    }
   }
 ]

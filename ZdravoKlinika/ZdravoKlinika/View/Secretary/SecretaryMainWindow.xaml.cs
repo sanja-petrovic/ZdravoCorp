@@ -37,6 +37,7 @@ namespace ZdravoKlinika.View.Secretary
 
         private void HambuergerMenuIcon_MouseLeftButtonUp(object sender, RoutedEventArgs e)
         {
+            SettingsMenu.IsChecked = false;
             if (HamburgerMenuFrame.Visibility == Visibility.Collapsed)
                 HamburgerMenuFrame.Visibility = Visibility.Visible;
 
@@ -46,6 +47,7 @@ namespace ZdravoKlinika.View.Secretary
                 return;
             }
             HamburgerMenuFrame.IsChecked = false;
+
         }
 
         private void HomeChangePage(object sender, RoutedEventArgs e)
@@ -124,6 +126,7 @@ namespace ZdravoKlinika.View.Secretary
             ChangeColorUnSelected(BorderCreateEMAppointment);
             ChangeColorUnSelected(BorderCreateMeeting);
             ChangeColorUnSelected(BorderProcessRequests);
+            ChangeColorUnSelected(ProfileEditBorder);
 
 
             // selected border
@@ -230,6 +233,12 @@ namespace ZdravoKlinika.View.Secretary
 
         private void ProfileSettingsClick(object sender, RoutedEventArgs e)
         {
+            Select(ProfileEditBorder);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretarEditProfile(thisUser));
+            MenuContentLabel.Content = "Izmena profila";
+            SettingsMenu.IsChecked = false;
 
         }
 
