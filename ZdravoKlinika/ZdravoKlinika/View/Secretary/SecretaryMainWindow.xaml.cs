@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.View.Secretary.SecretaryViewModel;
 using ZdravoKlinika.ViewModel.SecretaryViewModel;
 
 namespace ZdravoKlinika.View.Secretary
@@ -27,17 +28,20 @@ namespace ZdravoKlinika.View.Secretary
         RegisteredUser thisUser;
         public SecretaryMainWindow()
         {
-            InitializeComponent();
             thisUser = App.User;
+            DataContext = new MainMenuViewModel(thisUser);
+            InitializeComponent();       
             MainContentFrame.Navigate(new SecretaryHomePage());
             PatientViewModel = new PatientViewModel();
             Select(BorderHomePage);
             Application.Current.MainWindow = this;
+            
         }
 
         private void HambuergerMenuIcon_MouseLeftButtonUp(object sender, RoutedEventArgs e)
         {
             SettingsMenu.IsChecked = false;
+            Notifications.IsChecked = false;
             if (HamburgerMenuFrame.Visibility == Visibility.Collapsed)
                 HamburgerMenuFrame.Visibility = Visibility.Visible;
 
@@ -220,6 +224,7 @@ namespace ZdravoKlinika.View.Secretary
 
         private void SettingsMenuAction(object sender, RoutedEventArgs e)
         {
+            Notifications.IsChecked = false;
             if (SettingsMenu.Visibility == Visibility.Collapsed)
                 SettingsMenu.Visibility = Visibility.Visible;
 
@@ -245,6 +250,20 @@ namespace ZdravoKlinika.View.Secretary
         private void Logout(object sender, RoutedEventArgs e)
         {
             Navigation.Navigator.CloseMainAndOpenSignIn();
+        }
+        private void NotificationsClick(object sender, RoutedEventArgs e)
+        {
+            SettingsMenu.IsChecked = false;
+            if (Notifications.Visibility == Visibility.Collapsed)
+                Notifications.Visibility = Visibility.Visible;
+
+            if (Notifications.IsChecked == false)
+            {
+                Notifications.IsChecked = true;
+                return;
+            }
+            Notifications.IsChecked = false;
+
         }
     }
 }

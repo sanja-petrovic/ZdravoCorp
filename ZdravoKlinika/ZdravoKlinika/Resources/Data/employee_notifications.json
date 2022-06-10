@@ -48,5 +48,105 @@
     "Sender": "9999999",
     "Read": true,
     "TimeOfCreation": "2022-06-06T11:00:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "iBsdccw9",
+    "NotificationText": "Pozvani ste na sastanak 24.6.2022 u 16:30, prisustvo obavezno.",
+    "Receiver": "9999999",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:14:51.7156389-10:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "HHhQF0He",
+    "NotificationText": "Pozvani ste na sastanak 24.6.2022 u 16:30, prisustvo opcionalno.",
+    "Receiver": "8888888",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:14:51.7239572-10:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "gMJHW0Lg",
+    "NotificationText": "Pozvani ste na sastanak 24.6.2022 u 16:30, prisustvo opcionalno.",
+    "Receiver": "123",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:14:51.7328582-10:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "JIhicp2D",
+    "NotificationText": "Pozvani ste na sastanak 23.6.2022 u 20:30, prisustvo obavezno.",
+    "Receiver": "456",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:15:12.0034626-10:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "xfaSwxjw",
+    "NotificationText": "Pozvani ste na sastanak 23.6.2022 u 20:30, prisustvo opcionalno.",
+    "Receiver": "9999999",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:15:12.0059069-10:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "sSGK9Bzf",
+    "NotificationText": "Pozvani ste na sastanak 23.6.2022 u 20:30, prisustvo opcionalno.",
+    "Receiver": "8888888",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:15:12.0131672-10:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "e5TnJliv",
+    "NotificationText": "Pozvani ste na sastanak 29.6.2022 u 20:30, prisustvo obavezno.",
+    "Receiver": "qwer",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:17:19.6363053-10:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "4S9CkwUZ",
+    "NotificationText": "Pozvani ste na sastanak 29.6.2022 u 20:30, prisustvo obavezno.",
+    "Receiver": "8888888",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:17:19.6464485-10:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "SDmPFhw8",
+    "NotificationText": "Pozvani ste na sastanak 29.6.2022 u 20:30, prisustvo opcionalno.",
+    "Receiver": "9999999",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:17:19.656619-10:00"
+  },
+  {
+    "Type": "MeetingCreated",
+    "NotificationTitle": "Novi sastanak!",
+    "NotificationId": "qYHYqCXQ",
+    "NotificationText": "Pozvani ste na sastanak 29.6.2022 u 20:30, prisustvo opcionalno.",
+    "Receiver": "123",
+    "Sender": "9999999",
+    "Read": false,
+    "TimeOfCreation": "2022-06-10T09:17:19.6636223-10:00"
   }
 ]
