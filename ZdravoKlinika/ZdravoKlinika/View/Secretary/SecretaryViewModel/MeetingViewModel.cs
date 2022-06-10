@@ -175,7 +175,11 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
                 return;
             Regex regex = new Regex("[0-9]{1,2}[:][0-9]{2}");
             if (!regex.IsMatch(selectedMeetingTime))
-              return;
+            {
+                return; 
+            
+            }
+              
             int hours = Int32.Parse(selectedMeetingTime.Split(":")[0]);
             int minutes = Int32.Parse(selectedMeetingTime.Split(":")[1]);
             if (hours > 24 || minutes > 60)
