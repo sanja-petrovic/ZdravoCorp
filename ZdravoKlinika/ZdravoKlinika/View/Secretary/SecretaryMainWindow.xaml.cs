@@ -268,7 +268,7 @@ namespace ZdravoKlinika.View.Secretary
         }
         private void ListAppointments(object sender, RoutedEventArgs e)
         {
-            Select(ProfileEditBorder);
+            Select(BorderListAppointments);
             if (MainContentFrame.CanGoBack)
                 MainContentFrame.RemoveBackEntry();
             MainContentFrame.Navigate(new SecretaryReport());

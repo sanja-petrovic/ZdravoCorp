@@ -4,10 +4,12 @@ using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
@@ -65,7 +67,7 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
 
             int hours = Int32.Parse(fromTime.Split(":")[0]);
             int minutes = Int32.Parse(fromTime.Split(":")[1]);
-            if (hours > 24 || minutes > 60)
+            if (hours >= 24 || minutes >= 60)
                 return false;
             DateTime date = fromDateTime.Date;
             date = date.AddHours(hours);
@@ -81,7 +83,7 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
 
             int hours2 = Int32.Parse(toTime.Split(":")[0]);
             int minutes2 = Int32.Parse(toTime.Split(":")[1]);
-            if (hours > 24 || minutes > 60)
+            if (hours >= 24 || minutes >= 60)
                 return false;
             DateTime date2 = toDateTime.Date;
             date2 = date2.AddHours(hours2);
@@ -246,5 +248,6 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         public bool SearchCanExecute { get => true; }
         public ObservableCollection<Appointment> Apps { get => apps; set => SetProperty(ref apps, value);}
         public bool CreateCanExecute { get => true;}
+
     }
 }
