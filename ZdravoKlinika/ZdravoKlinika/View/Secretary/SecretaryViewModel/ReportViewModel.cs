@@ -70,6 +70,7 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
             DateTime date = fromDateTime.Date;
             date = date.AddHours(hours);
             date = date.AddMinutes(minutes);
+            FromDateTime = date;
 
             Regex regex2 = new Regex("[0-9]{1,2}[:][0-9]{2}");
             if (!regex2.IsMatch(toTime))
@@ -82,9 +83,10 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
             int minutes2 = Int32.Parse(toTime.Split(":")[1]);
             if (hours > 24 || minutes > 60)
                 return false;
-            DateTime date2 = fromDateTime.Date;
+            DateTime date2 = toDateTime.Date;
             date2 = date2.AddHours(hours2);
             date2 = date2.AddMinutes(minutes2);
+            ToDateTime = date2;
             return true;
         }
 
