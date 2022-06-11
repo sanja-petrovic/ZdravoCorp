@@ -131,6 +131,7 @@ namespace ZdravoKlinika.View.Secretary
             ChangeColorUnSelected(BorderCreateMeeting);
             ChangeColorUnSelected(BorderProcessRequests);
             ChangeColorUnSelected(ProfileEditBorder);
+            ChangeColorUnSelected(BorderListAppointments);
 
 
             // selected border
@@ -264,6 +265,15 @@ namespace ZdravoKlinika.View.Secretary
             }
             Notifications.IsChecked = false;
 
+        }
+        private void ListAppointments(object sender, RoutedEventArgs e)
+        {
+            Select(ProfileEditBorder);
+            if (MainContentFrame.CanGoBack)
+                MainContentFrame.RemoveBackEntry();
+            MainContentFrame.Navigate(new SecretaryReport());
+            MenuContentLabel.Content = "Izvestaj";
+            HamburgerMenuFrame.IsChecked = false;
         }
     }
 }

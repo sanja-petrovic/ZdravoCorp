@@ -225,4 +225,8 @@ public class AppointmentController
         return this.appointmentService.GetPatientsLatestAppointment(patientController.GetById(patientId));
     }
 
+    public List<Appointment> GetAllInTimeFrame(DateTime from, DateTime to) 
+    {
+        return appointmentService.GetAllInTimeFrame(from, to);
+    }
 }

@@ -235,6 +235,24 @@ public class AppointmentService
         return GetAppointmentsByUser(user).FindAll(items => items.DateAndTime.Date == date.Date);
     }
 
+    public List<Appointment> GetAllInTimeFrame(DateTime from, DateTime to)
+    {
+        List<Appointment> apps = new List<Appointment>();
+        foreach (Appointment appointment in GetAll())
+        { 
+            if(appointment.DateAndTime > from && appointment.DateAndTime < to)
+            {
+                apps.Add(appointment);
+            }
+        }
+        apps.Sort(CompareDates);
+        return apps;
+    }
+    private static int CompareDates(Appointment ap1, Appointment ap2)
+    {
+        return ap1.DateAndTime.CompareTo(ap2.DateAndTime);
+    }
+
     public List<DateBlock> GetFreeTimeForUser(DateBlock appointmentTime, RegisteredUser user, int[] workHorus)
     {
         List<DateBlock> retVal = new List<DateBlock>();
