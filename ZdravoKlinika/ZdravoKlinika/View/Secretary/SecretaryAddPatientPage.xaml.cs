@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.Secretary.SecretaryViewModel;
 
 namespace ZdravoKlinika.View.Secretary
 {
@@ -24,6 +25,7 @@ namespace ZdravoKlinika.View.Secretary
         RegisteredPatientController registeredPatientController;
         public SecretaryAddPatientPage()
         {
+            DataContext = new AddPatientViewModel();
             InitializeComponent();
             registeredPatientController = new RegisteredPatientController();
         }
