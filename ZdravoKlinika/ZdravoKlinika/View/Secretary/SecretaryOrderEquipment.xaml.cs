@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Controller;
+using ZdravoKlinika.View.Secretary.SecretaryViewModel;
 
 namespace ZdravoKlinika.View.Secretary
 {
@@ -27,6 +28,7 @@ namespace ZdravoKlinika.View.Secretary
 
         public SecretaryOrderEquipment()
         {
+            DataContext = new OrderEquipmentViewModel();
             InitializeComponent();
             equipmentInOrder = new List<Equipment>();
 
