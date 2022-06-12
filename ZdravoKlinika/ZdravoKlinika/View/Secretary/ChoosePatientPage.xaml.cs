@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.View.Secretary.SecretaryViewModel;
 using ZdravoKlinika.ViewModel.SecretaryViewModel;
 
 namespace ZdravoKlinika.View.Secretary
@@ -25,6 +26,7 @@ namespace ZdravoKlinika.View.Secretary
         Object caller;
         public ChoosePatientPage(PatientViewModel viewModel)
         {
+            DataContext = new ChoosePatientViewModel();
             InitializeComponent();
 
             this.viewModel = viewModel;

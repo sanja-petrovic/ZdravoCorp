@@ -3,12 +3,29 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZdravoKlinika.View.Secretary"
+      xmlns:local="clr-namespace:ZdravoKlinika.View.Secretary" xmlns:secretaryviewmodel="clr-namespace:ZdravoKlinika.View.Secretary.SecretaryViewModel" d:DataContext="{d:DesignInstance Type=secretaryviewmodel:ChoosePatientViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="688" d:DesignWidth="430"
       Title="ChoosePatientPage"
       FontSize="16">
+    <Page.Resources>
+        <ControlTemplate x:Key="validationTemplate">
+            <DockPanel>
+                <TextBlock Foreground="Red" FontSize="20" DockPanel.Dock="Right">!</TextBlock>
+                <AdornedElementPlaceholder/>
+            </DockPanel>
+        </ControlTemplate>
+        <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+        Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)/ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
+    </Page.Resources>
     <Page.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
             <GradientStop Color="#EAEAEA" Offset="-1"/>
@@ -71,34 +88,58 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Height="32" Margin="0,10,0,10">
                             <Label Content="Ime:" Height="32" Width="130" Margin="10,0,10,0"/>
-                            <TextBox BorderThickness="0,0,0,2" BorderBrush="Black"  VerticalAlignment="Center" Width="240" Name="TextBoxName" >
+                            <TextBox BorderThickness="0,0,0,2" BorderBrush="Black"  VerticalAlignment="Center" Width="240" Name="TextBoxName"  Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}" >
                                 <TextBox.Background>
                                     <SolidColorBrush Opacity="0"/>
                                 </TextBox.Background>
+                                <TextBox.Text>
+                                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <secretaryviewmodel:EmptyValidation/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
                             </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="32" Margin="0,10,0,10">
                             <Label Content="Prezime:" Height="32" Width="130" Margin="10,0,10,0"/>
-                            <TextBox BorderThickness="0,0,0,2" BorderBrush="Black" VerticalAlignment="Center" Width="240"  Name="TextBoxLastname">
+                            <TextBox BorderThickness="0,0,0,2" BorderBrush="Black" VerticalAlignment="Center" Width="240"  Name="TextBoxLastname"  Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}">
                                 <TextBox.Background>
                                     <SolidColorBrush Opacity="0"/>
                                 </TextBox.Background>
+                                <TextBox.Text>
+                                    <Binding Path="Lastname" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <secretaryviewmodel:EmptyValidation/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
                             </TextBox>
                         </StackPanel>
 
 
                         <StackPanel Orientation="Horizontal" Height="32" Margin="0,10,0,10">
                             <Label Content="JMBG:" Height="32" Width="130" Margin="10,0,10,0"/>
-                            <TextBox BorderThickness="0,0,0,2" BorderBrush="Black" VerticalAlignment="Center" Width="240" Name="TextBoxPID">
+                            <TextBox BorderThickness="0,0,0,2" BorderBrush="Black" VerticalAlignment="Center" Width="240" Name="TextBoxPID"  Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}">
                                 <TextBox.Background>
                                     <SolidColorBrush Opacity="0"/>
                                 </TextBox.Background>
+                                <TextBox.Text>
+                                    <Binding Path="Pid" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <secretaryviewmodel:EmptyValidation/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
                             </TextBox>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
                         <Border CornerRadius="16" Background="#c5d969" Height="32" BorderThickness="1" BorderBrush="Black">
                             <Button Style="{StaticResource MyButtonStyle}" Height="32" Width="240" HorizontalAlignment="Left" BorderThickness="0" Content="Izaberite pacijenta" VerticalAlignment="Center" Click="Button_Click">
+                                <Button.ToolTip>
+                                    <TextBlock Text="Učitaj pacijenta"></TextBlock>
+                                </Button.ToolTip>
                             </Button>
                         </Border>
                     </StackPanel>
