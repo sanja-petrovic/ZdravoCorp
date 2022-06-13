@@ -4,63 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View"
+      xmlns:util="clr-namespace:ZdravoKlinika.Util"
       mc:Ignorable="d" 
       d:DesignHeight="250" d:DesignWidth="778"
       Title="PatientAddView">
-    <Page.Resources>
-        <Style TargetType="Grid" x:Key="regularBackground">
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush>
-                        <GradientStop Color="#FFC9C6FF" Offset="0.0" />
-                        <GradientStop Color="#FFE9D5FF" Offset="1" />
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="{x:Type Button}" x:Key="regularButton">
-            <Setter Property="Background" Value="White" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                            <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="#6c63ff" RadiusX="20" RadiusY="20" StrokeThickness="2" Fill="White" />
-                            <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <ContentPresenter x:Name="myContentPresenter" TextBlock.Foreground="#6c63ff" Width="71" Height="25" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
-                                    <ContentPresenter.Content>
-                                        <Label x:Name="label" Content="{TemplateBinding Content}" HorizontalAlignment="Center"></Label>
-                                    </ContentPresenter.Content>
-                                </ContentPresenter>
-                            </DockPanel>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Rectangle.Stroke" TargetName="rectangle" Value="#FFAD61FF"></Setter>
-                                <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="#FFAD61FF"></Setter>
-                                <Setter Property="Label.Foreground" TargetName="label" Value="White" ></Setter>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Rectangle.Stroke" TargetName="rectangle" Value="DarkGray"></Setter>
-                                <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="DarkGray"></Setter>
-                                <Setter Property="Label.Foreground" TargetName="label" Value="White" ></Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-    </Page.Resources>
-    <Grid Background="White">
-        <Label Content="Zakazivanje termina" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Label Content="Datum:" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
+    <Grid Background="{DynamicResource backgroundActive}">
+        <Label Content="{util:Localization makeAppointment}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Label Content="{util:Localization date}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="datePicker"  HorizontalAlignment="Left" Margin="111,56,0,0" VerticalAlignment="Top" Width="120" SelectedDateChanged="datePicker_SelectedDateChanged"/>
-        <Label Content="Prioditet" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization prio}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="priorityComboBox" HorizontalAlignment="Left" Margin="111,82,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="priorityComboBox_SelectionChanged"/>
-        <Label Content="Vreme pocetka:" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doktor:" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization time}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top"/>
+        <Label Content="{util:Localization doctor}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="timeComboBox" HorizontalAlignment="Left" Margin="111,110,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="timeComboBox_SelectionChanged"/>
         <ComboBox x:Name="doctorComboBox" HorizontalAlignment="Left" Margin="111,141,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="doctorComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
@@ -74,7 +29,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="151,215,0,0" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource regularButton}"/>
+        <Button Content="{util:Localization save}" HorizontalAlignment="Left" Margin="151,215,0,0" VerticalAlignment="Top" Click="Button_Click" Style="{DynamicResource regularButtonActive}"/>
         <Label x:Name="errorLabel" Content="Label" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" FontSize="10" Visibility="Hidden" Foreground="#FF640000"/>
 
     </Grid>

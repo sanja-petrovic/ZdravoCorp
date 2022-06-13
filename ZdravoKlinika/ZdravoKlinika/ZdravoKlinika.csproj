@@ -34,6 +34,8 @@
     <None Remove="Resources\Images\home.png" />
     <None Remove="Resources\Images\info %282%29.png" />
     <None Remove="Resources\Images\inventory.png" />
+    <None Remove="Resources\Images\lightbulbBlack.png" />
+    <None Remove="Resources\Images\lightbulbWhite.png" />
     <None Remove="Resources\Images\joey.png" />
     <None Remove="Resources\Images\lisacuddy.jpg" />
     <None Remove="Resources\Images\markasread.png" />
@@ -55,6 +57,8 @@
     <None Remove="Resources\Images\settings.png" />
     <None Remove="Resources\Images\show %281%29.png" />
     <None Remove="Resources\Images\show.png" />
+    <None Remove="Resources\Images\sliderOff.png" />
+    <None Remove="Resources\Images\sliderOn.png" />
     <None Remove="Resources\Images\star.png" />
     <None Remove="Resources\Images\stethoscope.png" />
     <None Remove="Resources\Images\time-delete.png" />
@@ -69,6 +73,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\lightbulbBlack.png" />
+    <Resource Include="Resources\Images\lightbulbWhite.png" />
+    <Resource Include="Resources\Images\sliderOn.png" />
     <Resource Include="Resources\Images\chandler.png" />
     <Resource Include="Resources\Images\cross.png" />
     <Resource Include="Resources\Images\edit2.png" />
@@ -109,6 +116,7 @@
     <Resource Include="Resources\Images\add (1).png" />
     <Resource Include="Resources\Images\bell (1).png" />
     <Resource Include="Resources\Images\info (2).png" />
+    <Resource Include="Resources\Images\sliderOff.png" />
     <Resource Include="Resources\Images\time-delete2.png" />
     <Resource Include="Resources\Images\trash.png" />
     <Resource Include="Resources\Images\warning.png" />
@@ -155,6 +163,10 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Resources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Resources\Localisation\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
 	  <Compile Update="Properties\Settings.Designer.cs">
 	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
 	    <AutoGen>True</AutoGen>
@@ -181,12 +193,18 @@
     <Resource Include="Resources\Images\cancel.png" />
     <Resource Include="Resources\Images\dots.png" />
     <Resource Include="Resources\Images\plus.png" />
-    <Folder Include="Resources\Localisation\" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localisation\Resources.el-GR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localisation\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
@@ -208,6 +226,8 @@
 
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.3.0" />
+    <PackageReference Include="PdfSharp" Version="1.50.5147" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="PdfSharp.Xps" Version="1.0.0" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />

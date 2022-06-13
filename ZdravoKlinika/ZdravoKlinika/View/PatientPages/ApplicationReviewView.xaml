@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.PatientPages"
+      xmlns:util="clr-namespace:ZdravoKlinika.Util"
       xmlns:viewModel="clr-namespace:ZdravoKlinika.View.PatientPages.ViewModel" d:DataContext="{d:DesignInstance Type=viewModel:PatientApplicationReviewViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -11,45 +12,35 @@
     <Page.Resources>
         <ResourceDictionary>
             <viewModel:RadioButtonDataConverter x:Key="RadioButtonDataConverter"></viewModel:RadioButtonDataConverter>
-            <Style TargetType="{x:Type Button}" x:Key="menuButton">
-                <Setter Property="Background" Value="White" />
-                <Setter Property="Width" Value="80" />
-                <Setter Property="Margin" Value="10" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                                <Rectangle x:Name="rectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="White" />
-                                <DockPanel Name="myContentPresenterDockPanel" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <ContentPresenter x:Name="myContentPresenter" TextBlock.Foreground="#6c63ff" Width="71" Height="25" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
-                                        <ContentPresenter.Content>
-                                            <Label x:Name="label" Content="{TemplateBinding Content}" HorizontalAlignment="Center"></Label>
-                                        </ContentPresenter.Content>
-                                    </ContentPresenter>
-                                </DockPanel>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Rectangle.Stroke" TargetName="rectangle" Value="#FFAD61FF"></Setter>
-                                    <Setter Property="Rectangle.Fill" TargetName="rectangle" Value="#FFAD61FF"></Setter>
-                                    <Setter Property="Label.Foreground" TargetName="label" Value="White" ></Setter>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
         </ResourceDictionary>
     </Page.Resources>
     <Page.DataContext>
         <viewModel:PatientApplicationReviewViewModel></viewModel:PatientApplicationReviewViewModel>
     </Page.DataContext>
     <Grid>
-        <Label x:Name="title" Content="Utisci&#xD;&#xA;" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" Height="32"/>
-        <Label Content="Vaše mišljenje o aplikaciji možete iskazati ispod." HorizontalAlignment="Left" Margin="70,47,0,0" VerticalAlignment="Top"/>
-        <DataGrid Margin="70,76,40,177" x:Name="questionsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding QuestionsAndGroups}" EnableRowVirtualization="False">
+        <Label x:Name="title" Content="{util:Localization feedback}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="22" Height="32"/>
+        <Label Content="{util:Localization feedbackTitle}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="70,47,0,0" VerticalAlignment="Top"/>
+        <DataGrid Margin="70,76,40,177" x:Name="questionsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding QuestionsAndGroups}" EnableRowVirtualization="False" Background="{DynamicResource backgroundActive}">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="{DynamicResource backgroundActive}"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.RowHeaderStyle>
+                <Style TargetType="DataGridRowHeader">
+                    <Setter Property="Background" Value="{DynamicResource backgroundActive}"/>
+                </Style>
+            </DataGrid.RowHeaderStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="{DynamicResource backgroundActive}"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Pitanje" Binding="{Binding Content}" Width="4*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="{util:Localization question}" Binding="{Binding Content}" Width="4*" IsReadOnly="True">
+                </DataGridTextColumn>
                 <DataGridTemplateColumn Width="1*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -115,9 +106,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Polje za vaš komentar." HorizontalAlignment="Left" Margin="70,286,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="70,315,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Top" Width="345" Height="82"/>
-        <Button Content="Sačuvaj" Style="{StaticResource menuButton}" Command="{Binding AddReviewCommand}" HorizontalAlignment="Left" Margin="70,402,0,0" VerticalAlignment="Top" Height="25" Width="63"/>
+        <Label Content="{util:Localization feedbackField}" Foreground="{DynamicResource titleActive}" HorizontalAlignment="Left" Margin="70,286,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="70,315,0,0" TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" Background="{DynamicResource backgroundActive}" VerticalAlignment="Top" Width="345" Height="82"/>
+        <Button Content="{util:Localization save}" Style="{DynamicResource menuButtonActive}" Command="{Binding AddReviewCommand}" HorizontalAlignment="Left" Margin="70,402,0,0" VerticalAlignment="Top" Height="25" Width="63"/>
 
     </Grid>
 </Page>
