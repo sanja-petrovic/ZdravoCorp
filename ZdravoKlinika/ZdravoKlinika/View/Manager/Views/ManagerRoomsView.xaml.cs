@@ -23,7 +23,14 @@ namespace ZdravoKlinika.View.Manager.Views
         public ManagerRoomsView()
         {
             InitializeComponent();
+            EditButton.IsEnabled = false;
+            DeleteButton.IsEnabled = false;
         }
 
+        private void dataGridRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EditButton.IsEnabled = true;
+            DeleteButton.IsEnabled = true;
+        }
     }
 }

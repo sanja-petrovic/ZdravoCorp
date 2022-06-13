@@ -4,13 +4,63 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.Manager.Views"
-      xmlns:vml="clr-namespace:ZdravoKlinika.Util"
-      vml:ViewModelLocator.AutoHookedUpViewModel="True"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Pomoc">
 
-    <Grid>
-        
+    <Grid Margin="40">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Prečice na tastaturi: " FontWeight="Bold"></Label>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,30,0,0" Content="   - Menijima se direktno može pristupati pomoću prečica (ALT + slovo u zagradi pored naziva menija)."></Label>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,60,0,0" TextWrapping="WrapWithOverflow">- Unutar menija za pregled entiteta sistema, postoje prečice za dodavanje novog (CTRL + N), izmenu (CTRL + E) i brisanje (CTRL + D) postojećeg entiteta.</TextBlock>
+        <Label Grid.Row="0" Grid.Column="0" Margin="0,90,0,0" Content="Tutorijal:" FontWeight="Bold"></Label>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,125,0,0" TextWrapping="WrapWithOverflow">- Ukoliko prvi put koristite sistem Zdravo Klinika, savetujemo Vam da izaberete opciju Tutorijal na ovom prozoru.</TextBlock>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Često postavljana pitanja: " FontWeight="Bold"></Label>
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="15,30,0,0" TextWrapping="WrapWithOverflow" FontWeight="DemiBold">- Q: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut finibus massa. Suspendisse vel nisi dignissim?</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="15,60,0,0" TextWrapping="WrapWithOverflow">A: Maecenas augue nibh, volutpat et accumsan id, elementum pellentesque nisi. Nullam enim dui, ullamcorper eget nibh sodales, tempor tempor dolor.</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="15,90,0,0" TextWrapping="WrapWithOverflow" FontWeight="DemiBold">- Q: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut finibus massa. Suspendisse vel nisi dignissim?</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="15,120,0,0" TextWrapping="WrapWithOverflow">A: Maecenas augue nibh, volutpat et accumsan id, elementum pellentesque nisi. Nullam enim dui, ullamcorper eget nibh sodales, tempor tempor dolor.</TextBlock>
+
+        <Rectangle Grid.Row="1" Grid.Column="1" Width="250" Height="150" Stroke="Black" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button Name="tutorialButton" Grid.Row="1" Grid.Column="1" Width="200" Height="110" Background="#FF7346F3" Foreground="White" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" Click="tutorialButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Content>
+                <StackPanel>
+                    <Image Width="50" Height="50" Source="/Resources/Images/tutorialWhite.png" Margin="0,0,0,10"/>
+                    <TextBlock Text="Tutorijal" Height="27" FontWeight="Bold" FontSize="24"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
     </Grid>
 </Page>

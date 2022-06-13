@@ -31,16 +31,16 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         public NotifPanelViewModel()
         {
             controller = new Controller.EmployeeNotificationController();
-            var notifs = this.controller.GetAllPersonalNotifications(Controller.RegisteredUserController.UserToDoctor(App.User).PersonalId);
+            //var notifs = this.controller.GetAllPersonalNotifications(Controller.RegisteredUserController.UserToDoctor(App.User).PersonalId);
             Notifications = new ObservableCollection<NotifViewModel>();
-            foreach(ZdravoKlinika.Model.EmployeeNotification notif in notifs)
+            /*foreach(ZdravoKlinika.Model.EmployeeNotification notif in notifs)
             {
                 Notifications.Add(new NotifViewModel { Id = notif.NotificationId, Title = notif.NotificationTitle, Text = notif.NotificationText, NotifTime = notif.TimeOfCreation.ToString("dd.MM.yyyy. HH:mm"), Read = notif.Read });
                 if(!notif.Read)
                 {
                     NotificationsCount++;
                 }
-            }
+            }*/
             ClearCommand = new MyICommand(ClearNotifs);
             Height = Notifications.Count > 0 ? Notifications.Count * 115: 115;
             BorderHeight = Notifications.Count > 0 ? Notifications.Count * 110 : 110;

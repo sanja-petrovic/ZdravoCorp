@@ -4,13 +4,114 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKlinika.View.Manager.Views"
+      xmlns:doc="clr-namespace:ZdravoKlinika.View.DoctorPages"
       xmlns:vml="clr-namespace:ZdravoKlinika.Util"
+      xmlns:views="clr-namespace:ZdravoKlinika.View.Manager.Views"
+      xmlns:viewModel="clr-namespace:ZdravoKlinika.View.Manager.ViewModel"
       vml:ViewModelLocator.AutoHookedUpViewModel="True"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Rasporedi">
-
+    <Page.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border Padding="5,0,5,0">
+                            <Grid>
+                                <Grid>
+                                    <Border x:Name="border" 
+                                            CornerRadius="3,3,0,0"                                            
+                                            Background="#FF7346F3"
+                                            />
+                                </Grid>
+                                <ContentPresenter ContentSource="Header" Margin="10,5,10,5"
+                                                    TextElement.FontSize ="15" TextElement.FontWeight="Bold"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#32bfa5" />
+                            </Trigger>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#FF6D806D" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate DataType="{x:Type viewModel:ManagerScheduleViewModel}">
+            <views:ManagerScheduleView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerFormScheduleViewModel}">
+            <views:ManagerFormScheduleView/>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
-        
+        <TabControl Margin="0,15,0,0" Background="#FFACFFF0">
+            <TabItem Header="Pregled" Cursor="Hand">
+                <Grid Margin="0,0,0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                        <ColumnDefinition Width="280"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Content="Izaberite zaposlenog:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox Name="employeeComboBox" ItemsSource="{Binding Doctors}" Grid.Row="0" Grid.Column="2" Margin="-100,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Style="{DynamicResource ComboBoxStyle1}"/>
+                    <Button Name="EditButton" Width="74" Height="25" Background="#FF7346F3" Foreground="White" Grid.Row="0" Grid.Column="4">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Content>
+                            <WrapPanel>
+                                <TextBlock Text="Izmeni" Height="15" FontWeight="Bold"/>
+                            </WrapPanel>
+                        </Button.Content>
+                    </Button>
+                    <Calendar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,-10,0,0" SelectedDate="{Binding Selected}" Name="Cal" Style="{DynamicResource CalendarStyle1}" CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}"/>
+                    <doc:AppointmentsTabPanel Background="White" x:Name="ApptTabPanel" Grid.Row="1" Grid.Column="4" Height="345" Width="280" Margin="0,0,0,8"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Formiranje" Cursor="Hand">
+                <Frame Content="{Binding FormScheduleViewModel}" NavigationUIVisibility="Hidden"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Page>

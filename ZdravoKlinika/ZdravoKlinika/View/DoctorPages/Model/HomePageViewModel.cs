@@ -48,8 +48,8 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Doctor = RegisteredUserController.UserToDoctor(App.User);
             Appointments = new ObservableCollection<AppointmentViewModel>();
             this.appointmentController = new AppointmentController();
-            List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate(doctor.PersonalId, DateTime.Today);
-            foreach (Appointment appointment in appts)
+            //List<Appointment> appts = appointmentController.GetAppointmentsByDoctorDate(doctor.PersonalId, DateTime.Today);
+            /*foreach (Appointment appointment in appts)
             {
                 {
 
@@ -63,7 +63,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
                 }
 
             }
-            AboutVisibility = Appointments.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            AboutVisibility = Appointments.Count > 0 ? Visibility.Visible : Visibility.Collapsed;*/
         }
 
         public void ExecuteRecord()

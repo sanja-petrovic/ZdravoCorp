@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ZdravoKlinika.View.Manager.ViewModel;
 
 namespace ZdravoKlinika.View.Manager.Views
 {
     /// <summary>
-    /// Interaction logic for ManagerScheduleView.xaml
+    /// Interaction logic for ManagerFormScheduleView.xaml
     /// </summary>
-    public partial class ManagerScheduleView : Page
+    public partial class ManagerFormScheduleView : Page
     {
-        public ManagerScheduleView()
+        public ManagerFormScheduleView()
         {
             InitializeComponent();
         }

@@ -1,0 +1,101 @@
+﻿<Window x:Class="ZdravoKlinika.View.Manager.Views.ManagerAddRoomWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.Manager.Views"
+        mc:Ignorable="d"
+        Title="Dodavanje prostorije" Height="350" Width="500">
+    <Grid Background="#FFACFFF0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="1" Grid.Column="1" Content="Šifra:" HorizontalAlignment="Center" Margin="-150,15,0,0" VerticalAlignment="Top" Height="26" Width="35"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="Tip:" HorizontalAlignment="Center" Margin="-150,55,0,0" VerticalAlignment="Top" Height="26" Width="29"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="Naziv:" HorizontalAlignment="Center" Margin="-150,95,0,0" VerticalAlignment="Top" Height="26" Width="42"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="Sprat:" HorizontalAlignment="Center" Margin="-150,135,0,0" VerticalAlignment="Top" Height="26" Width="40"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="Broj:" HorizontalAlignment="Center" Margin="-150,175,0,0" VerticalAlignment="Top" Height="26" Width="34"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="Status:" HorizontalAlignment="Center" Margin="-150,215,0,0" VerticalAlignment="Top" Height="26" Width="45"/>
+
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="SifraTextBox" HorizontalAlignment="Center" Margin="100,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" IsEnabled="False">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="NazivTextBox" HorizontalAlignment="Center" Margin="100,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" VerticalContentAlignment="Center">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="SpratTextBox" Text="{Binding Path=LevelField, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="100,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" VerticalContentAlignment="Center" TextChanged="SpratTextBox_TextChanged">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="BrojTextBox" Text="{Binding Path=NumberField, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="100,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" VerticalContentAlignment="Center" TextChanged="BrojTextBox_TextChanged">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="TipComboBox" HorizontalAlignment="Center" Margin="100,55,0,0" VerticalAlignment="Top" Width="120" Height="26" BorderBrush="White" Style="{DynamicResource ComboBoxStyle1}" VerticalContentAlignment="Center">
+            <ComboBoxItem>operating</ComboBoxItem>
+            <ComboBoxItem>checkup</ComboBoxItem>
+            <ComboBoxItem>resting</ComboBoxItem>
+        </ComboBox>
+        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="StatusComboBox" HorizontalAlignment="Center" Margin="100,215,0,0" VerticalAlignment="Top" Width="120" Height="26" BorderBrush="White" Style="{DynamicResource ComboBoxStyle1}" VerticalContentAlignment="Center">
+            <ComboBoxItem>occupied</ComboBoxItem>
+            <ComboBoxItem>available</ComboBoxItem>
+            <ComboBoxItem>renovation</ComboBoxItem>
+        </ComboBox>
+        <Button Name="AddButton" Grid.Row="1" Grid.Column="1" Width="74" Height="25" Margin="0,0,0,20" Background="#FF7346F3" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Cursor="Hand" Click="AddButton_Click" IsEnabled="False">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Background" Value="Gray" TargetName="Border" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Content>
+                <WrapPanel>
+                    <Image Width="20" Height="20" Source="/Resources/Images/addWhite.png" Margin="-12,0,0,0"/>
+                    <TextBlock Text="Dodaj" Margin="8,0,-10,0" Height="15" FontWeight="Bold"/>
+                </WrapPanel>
+            </Button.Content>
+        </Button>
+    </Grid>
+</Window>

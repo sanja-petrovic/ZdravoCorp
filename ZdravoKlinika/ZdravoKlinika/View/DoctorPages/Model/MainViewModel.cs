@@ -48,7 +48,7 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Doctor = Controller.RegisteredUserController.UserToDoctor(App.User);
             SettingsVisibility = Visibility.Collapsed;
             NotifsVisibility = Visibility.Collapsed;
-            NotifsOpened = notificationController.HasEveryNotifBeenRead(Doctor.PersonalId) ? Visibility.Collapsed : Visibility.Visible;
+            //NotifsOpened = notificationController.HasEveryNotifBeenRead(Doctor.PersonalId) ? Visibility.Collapsed : Visibility.Visible; zakomentarisano jer je pucao program
             GoToHome();
             Index = 5;
             ToggleSettings = new MyICommand(ExecuteToggleSettings);

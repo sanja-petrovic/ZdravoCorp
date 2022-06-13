@@ -192,5 +192,55 @@
     "Number": 11,
     "Status": 1,
     "Free": true
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "316",
+    "Type": 1,
+    "Name": "R316",
+    "Level": 2,
+    "Number": 2,
+    "Status": 1,
+    "Free": true
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "317",
+    "Type": 0,
+    "Name": "R317",
+    "Level": 5,
+    "Number": 55,
+    "Status": 1,
+    "Free": true
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "318",
+    "Type": 0,
+    "Name": "R318",
+    "Level": 1,
+    "Number": 2,
+    "Status": 1,
+    "Free": true
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "319",
+    "Type": 0,
+    "Name": "R319",
+    "Level": 2,
+    "Number": 9,
+    "Status": 1,
+    "Free": true
+  },
+  {
+    "EquipmentInRoom": [],
+    "RoomId": "320",
+    "Type": 1,
+    "Name": "R320",
+    "Level": 2,
+    "Number": 4,
+    "Status": 1,
+    "Free": true
   }
 ]

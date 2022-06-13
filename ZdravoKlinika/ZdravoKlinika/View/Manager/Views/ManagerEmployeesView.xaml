@@ -85,7 +85,7 @@
                     <ColumnDefinition Width="80"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Name="AddButton" Width="74" Height="25" Margin="-5,0,0,0" Background="#FF7346F3" Foreground="White">
+                <Button Name="AddButton" Width="74" Height="25" Margin="-5,0,0,0" Background="#FF7346F3" Foreground="White" Cursor="Hand">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Template">
@@ -111,12 +111,12 @@
                     </Button.Resources>
                     <Button.Content>
                         <WrapPanel>
-                            <Image Width="20" Height="20" Source="/Resources/Images/addPatient.png" Margin="-12,0,0,0"/>
+                            <Image Width="20" Height="20" Source="/Resources/Images/addWhite.png" Margin="-12,0,0,0"/>
                             <TextBlock Text="Dodaj" Margin="8,0,-10,0" Height="15" FontWeight="Bold"/>
                         </WrapPanel>
                     </Button.Content>
                 </Button>
-                <Button Name="EditButton" Width="74" Height="25" Grid.Column="1" Margin="-1,0,0,0" Background="#FF7346F3" Foreground="White">
+                <Button Name="EditButton" Width="74" Height="25" Grid.Column="1" Margin="-1,0,0,0" Background="#FF7346F3" Foreground="White" Cursor="Hand">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Template">
@@ -142,12 +142,12 @@
                     </Button.Resources>
                     <Button.Content>
                         <WrapPanel>
-                            <Image Width="20" Height="20" Source="/Resources/Images/editPatient.png" Margin="-12,0,0,0"/>
+                            <Image Width="20" Height="20" Source="/Resources/Images/editWhite.png" Margin="-12,0,0,0"/>
                             <TextBlock Text="Izmeni" Margin="6,0,-10,0" Height="15" FontWeight="Bold"/>
                         </WrapPanel>
                     </Button.Content>
                 </Button>
-                <Button Name="DeleteButton" Width="74" Height="25" Grid.Column="2" Margin="4,0,0,0" Background="#FF7346F3" Foreground="White">
+                <Button Name="DeleteButton" Width="74" Height="25" Grid.Column="2" Margin="4,0,0,0" Background="#FF7346F3" Foreground="White" Cursor="Hand"> 
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Template">
@@ -173,12 +173,12 @@
                     </Button.Resources>
                     <Button.Content>
                         <WrapPanel>
-                            <Image Width="20" Height="20" Source="/Resources/Images/delete.png" Margin="-12,0,0,0"/>
+                            <Image Width="20" Height="20" Source="/Resources/Images/deleteWhite.png" Margin="-12,0,0,0"/>
                             <TextBlock Text="Obriši" Margin="8,0,-12,0" Height="15" FontWeight="Bold"/>
                         </WrapPanel>
                     </Button.Content>
                 </Button>
-                <DataGrid Grid.Row="1" IsReadOnly="true" Grid.ColumnSpan="5" CellStyle="{DynamicResource DataGridCellStyle}" RowHeaderWidth="0" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" x:Name="dataGridEmployees" GridLinesVisibility="None"  ItemsSource="{Binding Employees}" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="750"  AutoGenerateColumns="False" SelectedIndex="-1" Height="310" CanUserAddRows="False" CanUserSortColumns="False" FontFamily="Verdana">
+                <DataGrid Cursor="Hand" Grid.Row="1" IsReadOnly="true" Grid.ColumnSpan="5" CellStyle="{DynamicResource DataGridCellStyle}" RowHeaderWidth="0" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" x:Name="dataGridEmployees" GridLinesVisibility="None"  ItemsSource="{Binding Employees}" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="750"  AutoGenerateColumns="False" SelectedIndex="-1" Height="310" CanUserAddRows="False" CanUserSortColumns="False" FontFamily="Verdana">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Šifra" Binding="{Binding PersonalId}" Width="90"/>
                         <DataGridTextColumn Header="Ime" Binding="{Binding Name}" Width="*"/>

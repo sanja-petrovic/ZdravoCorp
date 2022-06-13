@@ -8,30 +8,20 @@ using ZdravoKlinika.Repository;
 
 namespace ZdravoKlinika.View.Manager.ViewModel
 {
-    public class ManagerScheduleViewModel : ManagerViewModelBase
+    public class ManagerFormScheduleViewModel : ManagerViewModelBase
     {
-        private ManagerFormScheduleViewModel formScheduleViewModel = new ManagerFormScheduleViewModel();
+        private DateTime selected;
         DoctorRepository doctorRepository;
         List<Doctor> doctors;
-        private DateTime selected;
 
         public DateTime Selected { get => selected; set => selected = value; }
         public List<Doctor> Doctors { get => doctors; set => doctors = value; }
 
-        public ManagerScheduleViewModel()
+        public ManagerFormScheduleViewModel()
         {
             Selected = DateTime.Today;
             doctorRepository = new DoctorRepository();
             Doctors = doctorRepository.GetAll();
-        }
-
-        public ManagerFormScheduleViewModel FormScheduleViewModel
-        {
-            get { return formScheduleViewModel; }
-            set
-            {
-                SetProperty(ref formScheduleViewModel, value);
-            }
         }
     }
 }

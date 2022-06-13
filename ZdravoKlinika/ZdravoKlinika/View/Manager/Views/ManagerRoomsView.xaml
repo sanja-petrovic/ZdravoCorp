@@ -7,7 +7,7 @@
       xmlns:viewModel="clr-namespace:ZdravoKlinika.View.Manager.ViewModel"
       xmlns:vml="clr-namespace:ZdravoKlinika.Util"
       vml:ViewModelLocator.AutoHookedUpViewModel="True"   
-      xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna"
+      xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna" d:DataContext="{d:DesignInstance Type=viewModel:ManagerRoomsViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Prostorije">
@@ -120,6 +120,19 @@
             <views:ManagerTransferEquipmentView/>
         </DataTemplate>
     </Page.Resources>
+
+    <Page.InputBindings>
+        <KeyBinding Command="{Binding Path=AddCommand}" 
+                    Key="N" 
+                    Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=EditCommand}" 
+                    Key="E" 
+                    Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=DeleteCommand}" 
+                    Key="D" 
+                    Modifiers="Ctrl"/>
+    </Page.InputBindings>
+
     <Grid>
         <TabControl Margin="0,15,0,0" Background="#FFACFFF0">
             <TabItem Header="Pregled" Cursor="Hand">
@@ -135,7 +148,7 @@
                         <ColumnDefinition Width="80"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Name="AddButton" Width="74" Height="25" Margin="-5,0,0,0" Background="#FF7346F3" Foreground="White">
+                    <Button Name="AddButton" Width="74" Height="25" Margin="-5,0,0,0" Background="#FF7346F3" Foreground="White" Command="{Binding AddCommand}">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">
@@ -161,12 +174,12 @@
                         </Button.Resources>
                         <Button.Content>
                             <WrapPanel>
-                                <Image Width="20" Height="20" Source="/Resources/Images/addPatient.png" Margin="-12,0,0,0"/>
+                                <Image Width="20" Height="20" Source="/Resources/Images/addWhite.png" Margin="-12,0,0,0"/>
                                 <TextBlock Text="Dodaj" Margin="8,0,-10,0" Height="15" FontWeight="Bold"/>
                             </WrapPanel>
                         </Button.Content>
                     </Button>
-                    <Button Name="EditButton" Width="74" Height="25" Grid.Column="1" Margin="-1,0,0,0" Background="#FF7346F3" Foreground="White">
+                    <Button Name="EditButton" Width="74" Height="25" Grid.Column="1" Margin="-1,0,0,0" Background="#FF7346F3" Foreground="White" Command="{Binding EditCommand}">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">
@@ -178,6 +191,9 @@
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
                                                     <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Background" Value="Gray" TargetName="Border" />
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
@@ -192,12 +208,12 @@
                         </Button.Resources>
                         <Button.Content>
                             <WrapPanel>
-                                <Image Width="20" Height="20" Source="/Resources/Images/editPatient.png" Margin="-12,0,0,0"/>
+                                <Image Width="20" Height="20" Source="/Resources/Images/editWhite.png" Margin="-12,0,0,0"/>
                                 <TextBlock Text="Izmeni" Margin="6,0,-10,0" Height="15" FontWeight="Bold"/>
                             </WrapPanel>
                         </Button.Content>
                     </Button>
-                    <Button Name="DeleteButton" Width="74" Height="25" Grid.Column="2" Margin="4,0,0,0" Background="#FF7346F3" Foreground="White">
+                    <Button Name="DeleteButton" Width="74" Height="25" Grid.Column="2" Margin="4,0,0,0" Background="#FF7346F3" Foreground="White" Command="{Binding DeleteCommand}">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Template">
@@ -209,6 +225,9 @@
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
                                                     <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Background" Value="Gray" TargetName="Border" />
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
@@ -223,12 +242,12 @@
                         </Button.Resources>
                         <Button.Content>
                             <WrapPanel>
-                                <Image Width="20" Height="20" Source="/Resources/Images/delete.png" Margin="-12,0,0,0"/>
+                                <Image Width="20" Height="20" Source="/Resources/Images/deleteWhite.png" Margin="-12,0,0,0"/>
                                 <TextBlock Text="Obriši" Margin="8,0,-12,0" Height="15" FontWeight="Bold"/>
                             </WrapPanel>
                         </Button.Content>
                     </Button>
-                    <DataGrid Grid.Row="1" IsReadOnly="true" Grid.ColumnSpan="5" CellStyle="{DynamicResource DataGridCellStyle}" RowHeaderWidth="0" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" x:Name="dataGridRooms" GridLinesVisibility="None"  ItemsSource="{Binding Rooms}" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="750"  AutoGenerateColumns="False" SelectedIndex="-1" Height="310" CanUserAddRows="False" CanUserSortColumns="False" FontFamily="Verdana">
+                    <DataGrid Grid.Row="1" IsReadOnly="true" Grid.ColumnSpan="5" CellStyle="{DynamicResource DataGridCellStyle}" RowHeaderWidth="0" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" x:Name="dataGridRooms" GridLinesVisibility="None"  ItemsSource="{Binding Rooms, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="-1" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="750"  AutoGenerateColumns="False" Height="310" CanUserAddRows="False" CanUserSortColumns="False" FontFamily="Verdana" SelectionChanged="dataGridRooms_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Šifra" Binding="{Binding RoomId}" Width="*"/>
                             <DataGridTextColumn Header="Tip" Binding="{Binding Type}" Width="*"/>

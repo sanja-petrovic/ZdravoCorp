@@ -24,5 +24,12 @@ namespace ZdravoKlinika.View.Manager.Views
         {
             InitializeComponent();
         }
+
+        private void tutorialButton_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerTutorialWindow window = new ManagerTutorialWindow();
+            window.Show();
+        }
+
     }
 }

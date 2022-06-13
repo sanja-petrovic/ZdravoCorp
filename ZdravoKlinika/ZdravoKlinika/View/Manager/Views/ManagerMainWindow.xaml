@@ -10,6 +10,7 @@
         xmlns:viewModel="clr-namespace:ZdravoKlinika.View.Manager.ViewModel"
         mc:Ignorable="d"
         Title="Zdravo Klinika" Height="600" Width="900">
+    
     <Window.Resources>
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="Template">
@@ -49,6 +50,34 @@
             <views:ManagerProfileView/>
         </DataTemplate>
     </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Path=NavCommand}" 
+                    CommandParameter="employees"
+                    Key="Z" 
+                    Modifiers="Alt"/>
+        <KeyBinding Command="{Binding Path=NavCommand}" 
+                    CommandParameter="rooms"
+                    Key="P" 
+                    Modifiers="Alt"/>
+        <KeyBinding Command="{Binding Path=NavCommand}" 
+                    CommandParameter="inventory"
+                    Key="I" 
+                    Modifiers="Alt"/>
+        <KeyBinding Command="{Binding Path=NavCommand}" 
+                    CommandParameter="schedules"
+                    Key="R" 
+                    Modifiers="Alt"/>
+        <KeyBinding Command="{Binding Path=NavCommand}" 
+                    CommandParameter="help"
+                    Key="H" 
+                    Modifiers="Alt"/>
+        <KeyBinding Command="{Binding Path=NavCommand}" 
+                    CommandParameter="profile"
+                    Key="L" 
+                    Modifiers="Alt"/>
+    </Window.InputBindings>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -66,8 +95,8 @@
                           CommandParameter="employees" Cursor="Hand">
                 <MenuItem.Header>
                     <WrapPanel>
-                        <Image Width="20" Height="20" Source="/Resources/Images/employees.png"/>
-                        <TextBlock Text="Zaposleni" Margin="5,0,0,0" Height="15" Foreground="White"/>
+                        <Image Width="20" Height="20" Source="/Resources/Images/employeesWhite.png"/>
+                        <TextBlock Text="Zaposleni(Z)" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -75,8 +104,8 @@
                           CommandParameter="rooms" Cursor="Hand">
                 <MenuItem.Header>
                     <WrapPanel>
-                        <Image Width="20" Height="20" Source="/Resources/Images/rooms.png"/>
-                        <TextBlock Text="Prostorije" Margin="5,0,0,0" Height="15" Foreground="White"/>
+                        <Image Width="20" Height="20" Source="/Resources/Images/roomsWhite.png"/>
+                        <TextBlock Text="Prostorije(P)" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -84,8 +113,8 @@
                           CommandParameter="inventory" Cursor="Hand">
                 <MenuItem.Header>
                     <WrapPanel>
-                        <Image Width="20" Height="20" Source="/Resources/Images/inventory.png"/>
-                        <TextBlock Text="Inventar" Margin="5,0,0,0" Height="15" Foreground="White"/>
+                        <Image Width="20" Height="20" Source="/Resources/Images/inventoryWhite.png"/>
+                        <TextBlock Text="Inventar(I)" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -93,8 +122,8 @@
                           CommandParameter="schedules" Cursor="Hand">
                 <MenuItem.Header>
                     <WrapPanel>
-                        <Image Width="20" Height="20" Source="/Resources/Images/schedule.png"/>
-                        <TextBlock Text="Rasporedi" Margin="5,0,0,0" Height="15" Foreground="White"/>
+                        <Image Width="20" Height="20" Source="/Resources/Images/scheduleWhite.png"/>
+                        <TextBlock Text="Rasporedi(R)" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -102,7 +131,7 @@
                           CommandParameter="help" Cursor="Hand">
                 <MenuItem.Header>
                     <WrapPanel>
-                        <Image Width="20" Height="20" Source="/Resources/Images/help.png"/>
+                        <Image Width="20" Height="20" Source="/Resources/Images/helpWhite.png"/>
                         <TextBlock Text="Pomoć(H)" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>
@@ -111,7 +140,7 @@
                           CommandParameter="profile" Cursor="Hand">
                 <MenuItem.Header>
                     <WrapPanel>
-                        <Image Width="20" Height="20" Source="/Resources/Images/profile.png"/>
+                        <Image Width="20" Height="20" Source="/Resources/Images/profileWhite.png"/>
                         <TextBlock Text="Profil(L)" Margin="5,0,0,0" Height="15" Foreground="White"/>
                     </WrapPanel>
                 </MenuItem.Header>

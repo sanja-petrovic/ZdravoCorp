@@ -10,18 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ZdravoKlinika.View.Manager.ViewModel;
 
 namespace ZdravoKlinika.View.Manager.Views
 {
     /// <summary>
-    /// Interaction logic for ManagerScheduleView.xaml
+    /// Interaction logic for ManagerEditRoomWindow.xaml
     /// </summary>
-    public partial class ManagerScheduleView : Page
+    public partial class ManagerEditRoomWindow : Window
     {
-        public ManagerScheduleView()
+        public ManagerEditRoomWindow()
         {
             InitializeComponent();
         }
