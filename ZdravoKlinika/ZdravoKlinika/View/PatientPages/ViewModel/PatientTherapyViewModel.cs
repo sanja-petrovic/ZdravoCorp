@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using ZdravoKlinika.Controller;
 using ZdravoKlinika.Model;
@@ -132,6 +133,21 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
             }
             return retVal;
         }
+
+        public void EditTime(object data)
+        {
+            DateTime newTriggerTime = new(selectedNotification.TriggerTime.Year, selectedNotification.TriggerTime.Month, selectedNotification.TriggerTime.Day, selectedInCombo.Hour, selectedInCombo.Minute, selectedInCombo.Second);
+            controller.UpdateTriggerTime(selectedNotification.NotificationId, newTriggerTime);
+        }
+        public bool CanExecuteEditTime(object data)
+        {
+            bool retVal = false;
+            if (selectedInCombo != null)
+            {
+                retVal = true;
+            }
+            return retVal;
+        }
         public void CreatePdf(object data)
         {
             PdfDocument document = new PdfDocument();
@@ -150,7 +166,7 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
             format.Alignment = XStringAlignment.Near;
             var tf = new XTextFormatter(graph);
 
-            XFont fontParagraph = new XFont( new Font("Times New Roman", 12.0f, GraphicsUnit.World));
+            XFont fontParagraph = new XFont("Verdana", 8, XFontStyle.Regular);
             // Row elements
             int el1_width = 50;
             int el2_width = 400;
@@ -186,8 +202,8 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
 
                 graph.DrawRectangle(rect_style1, marginLeft, marginTop + dist_Y2, el1_width, rect_height);
                 tf.DrawString(
-
-                    Reports[i].Date.ToString(),
+                    //Convert.ToDateTime(fromDate).ToString("yyyy-MM-dd");
+                    Convert.ToDateTime(Reports[i].Date).ToString("dd-MM-yyyy"),
                     fontParagraph,
                     XBrushes.Black,
                     new XRect(marginLeft, marginTop + dist_Y, el1_width, el_height),
@@ -204,6 +220,7 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
             //const string filename = "C:\\Users\\asd\\Desktop\\izvestaj.pdf";
             const string filename = "C:\\Users\\yeet\\Desktop\\izvestaj.pdf";
             document.Save(filename);
+            MessageBoxResult result = MessageBox.Show(Resources.Localisation.Resources.reportMsg,Resources.Localisation.Resources.report);
         }
     }
     public class PatientReport
@@ -223,19 +240,6 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
 
         public DateTime Date { get => date; set => date = value; }
         public string MedicationTitle { get => medicationTitle; set => medicationTitle = value; }
-        public void EditTime(object data)
-        {
-            DateTime newTriggerTime = new(selectedNotification.TriggerTime.Year, selectedNotification.TriggerTime.Month, selectedNotification.TriggerTime.Day, selectedInCombo.Hour, selectedInCombo.Minute, selectedInCombo.Second); 
-            controller.UpdateTriggerTime(selectedNotification.NotificationId, newTriggerTime);
-        }
-        public bool CanExecuteEditTime(object data)
-        {
-            bool retVal = false;
-            if(selectedInCombo != null)
-            {
-                retVal = true;
-            }
-            return retVal;
-        }
+       
     }
 }

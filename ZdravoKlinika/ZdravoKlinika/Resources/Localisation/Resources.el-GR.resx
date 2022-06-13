@@ -285,6 +285,12 @@
   <data name="remove" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="reportMsg" xml:space="preserve">
+    <value>Report successfully created.</value>
+  </data>
   <data name="room" xml:space="preserve">
     <value>Room:</value>
   </data>

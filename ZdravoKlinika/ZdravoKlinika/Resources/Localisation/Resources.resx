@@ -285,6 +285,12 @@
   <data name="remove" xml:space="preserve">
     <value>Уклони</value>
   </data>
+  <data name="report" xml:space="preserve">
+    <value>Извештај</value>
+  </data>
+  <data name="reportMsg" xml:space="preserve">
+    <value>Извештај је успешно креиран.</value>
+  </data>
   <data name="room" xml:space="preserve">
     <value>Соба:</value>
   </data>

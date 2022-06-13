@@ -565,6 +565,24 @@ namespace ZdravoKlinika.Resources.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Извештај.
+        /// </summary>
+        internal static string report {
+            get {
+                return ResourceManager.GetString("report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Извештај је успешно креиран..
+        /// </summary>
+        internal static string reportMsg {
+            get {
+                return ResourceManager.GetString("reportMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Соба:.
         /// </summary>
         internal static string room {
