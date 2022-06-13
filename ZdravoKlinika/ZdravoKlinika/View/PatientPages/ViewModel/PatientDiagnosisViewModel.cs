@@ -13,26 +13,33 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
         public PatientDiagnosisViewModel(Appointment appointment)
         {
             SelectedAppointment = appointment;
-            if(SelectedAppointment.Diagnoses == null || !SelectedAppointment.Diagnoses.Equals(""))
+            if (SelectedAppointment.Diagnoses == null || !SelectedAppointment.Diagnoses.Equals(""))
             {
                 diagnosis = "Lekar nije upisao dijagnozu.";
-                
+
             }
             else
             {
                 diagnosis = SelectedAppointment.Diagnoses;
             }
-            if(SelectedAppointment.DoctorsNotes == null || SelectedAppointment.Diagnoses.Equals(""))
+            if (SelectedAppointment.DoctorsNotes == null || SelectedAppointment.Diagnoses.Equals(""))
             {
                 doctorNote = "Lekar nije upisao belesku.";
-                
+
             }
             else
             {
                 doctorNote = SelectedAppointment.DoctorsNotes;
             }
+            if (SelectedAppointment.PatientNotes == null || SelectedAppointment.PatientNotes.Equals(""))
+            {
+                patientNote = "";
+            }
+            else
+            {
+                patientNote = SelectedAppointment.PatientNotes;
+            }
             appointmentController = new AppointmentController();
-            patientNote = "";
             SaveCommand = new MyICommand(SavePatientNote,CanExecuteSavePatientNote);
         }
 

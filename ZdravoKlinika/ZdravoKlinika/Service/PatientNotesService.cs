@@ -28,24 +28,32 @@ namespace ZdravoKlinika.Service
         }
         public List<PatientNotes> GetByPatientId(String id)
         {
-           return repository.GetAll().FindAll(items => items.Reciver.PersonalId == id);
+           return repository.GetAll().FindAll(items => items.Receiver.PersonalId == id);
         }
-        public void CreateNote(PatientNotes note)
+        public List<PatientNotes> GetForDate(string id, DateTime date)
+        {
+            return this.GetByPatientId(id).FindAll(items => items.Trigger.Date.Equals(date.Date));
+        }
+        public List<PatientNotes> GetUpcommingNotes(String id, int hours)
+        {
+            return this.GetForDate(id, DateTime.Now).FindAll(items => items.Trigger > DateTime.Now && items.Trigger < DateTime.Now.AddHours(hours));
+        }
+        public void CreateNote(PatientNotes note) 
         {
             note.NotificationId = GetAvailableId();
-            repository.CreateNote(note);
+            repository.Add(note);
         }
         public void DeleteNote(int id)
         {
-            repository.DeleteNote(repository.GetById(id));
+            repository.Remove(repository.GetById(id));
         }
         public void DeleteAllNotes()
         {
-            repository.DeleteAllNotes();
+            repository.RemoveAll();
         }
         public void UpdateNote(PatientNotes note)
         {
-            repository.UpdateNote(note);
+            repository.Update(note);
         }
         private int GetAvailableId()
         {

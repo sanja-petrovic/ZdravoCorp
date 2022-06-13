@@ -16,7 +16,7 @@
     "Phone": "0687462949",
     "Email": "monicageller@zdravo.com",
     "Password": "monic",
-    "ProfilePicture": "asd",
+    "ProfilePicture": "\\Resources\\Images\\monica.png",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": {
       "Street": "Hajduk Veljka Petrovi\u0107a",
@@ -42,7 +42,7 @@
     "Phone": "0638962241",
     "Email": "rosgeller@zdravo.com",
     "Password": "ross",
-    "ProfilePicture": "\\Resources\\Images\\undraw_medicine_b1ol.png",
+    "ProfilePicture": "\\Resources\\Images\\ross.png",
     "LastLogin": "0001-01-01T00:00:00",
     "Address": {
       "Street": "Balzakova",
@@ -75,6 +75,110 @@
       "Number": "asd",
       "City": "asd",
       "Country": "asd"
+    }
+  },
+  {
+    "BloodType": "BNegative",
+    "Occupation": "Menadžer",
+    "EmergencyContactName": "Ros Geler",
+    "EmergencyContactPhone": "0638962241",
+    "MedicalRecord": "1207965123321",
+    "PatientType": "Registered",
+    "Ban": false,
+    "UserType": "Patient",
+    "PersonalId": "1207965123321",
+    "Name": "Rej\u010Del",
+    "Lastname": "Grin",
+    "DateOfBirth": "1965-07-12T00:00:00",
+    "Gender": "Female",
+    "Phone": "0638962240",
+    "Email": "rachelgreen@zdravo.com",
+    "Password": "rach",
+    "ProfilePicture": "\\Resources\\Images\\rachel.png",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "Balzakova",
+      "Number": "3",
+      "City": "Novi Sad",
+      "Country": "Srbija"
+    }
+  },
+  {
+    "BloodType": "ABNegative",
+    "Occupation": "Marketing menadžer",
+    "EmergencyContactName": "Monika Geler",
+    "EmergencyContactPhone": "0687462949",
+    "MedicalRecord": "0304965123321",
+    "PatientType": "Registered",
+    "Ban": false,
+    "UserType": "Patient",
+    "PersonalId": "0304965123321",
+    "Name": "\u010Cendler",
+    "Lastname": "Bing",
+    "DateOfBirth": "1965-04-03T00:00:00",
+    "Gender": "Male",
+    "Phone": "0687462950",
+    "Email": "chandler@zdravo.com",
+    "Password": "chandler",
+    "ProfilePicture": "\\Resources\\Images\\chandler.png",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "Hajduk Veljka Petrovi\u0107a",
+      "Number": "18",
+      "City": "Novi Sad",
+      "Country": "Srbija"
+    }
+  },
+  {
+    "BloodType": "OPositive",
+    "Occupation": "Maserka",
+    "EmergencyContactName": "Majk Henigan",
+    "EmergencyContactPhone": "0612362949",
+    "MedicalRecord": "2901967123321",
+    "PatientType": "Registered",
+    "Ban": false,
+    "UserType": "Patient",
+    "PersonalId": "2901967123321",
+    "Name": "Fibi",
+    "Lastname": "Bufe",
+    "DateOfBirth": "1967-01-29T00:00:00",
+    "Gender": "Female",
+    "Phone": "0612362947",
+    "Email": "phoebe@zdravo.com",
+    "Password": "phoebe",
+    "ProfilePicture": "\\Resources\\Images\\phoebe.jpg",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "Bulevar cara Lazara",
+      "Number": "6",
+      "City": "Novi Sad",
+      "Country": "Srbija"
+    }
+  },
+  {
+    "BloodType": "BPositive",
+    "Occupation": "Glumac",
+    "EmergencyContactName": "Čendler Bing",
+    "EmergencyContactPhone": "0687462949",
+    "MedicalRecord": "3007967123321",
+    "PatientType": "Registered",
+    "Ban": false,
+    "UserType": "Patient",
+    "PersonalId": "3007967123321",
+    "Name": "Džoi",
+    "Lastname": "Tribijani",
+    "DateOfBirth": "1967-07-30T00:00:00",
+    "Gender": "Male",
+    "Phone": "0612362967",
+    "Email": "joey@zdravo.com",
+    "Password": "howyoudoin",
+    "ProfilePicture": "\\Resources\\Images\\joey.png",
+    "LastLogin": "0001-01-01T00:00:00",
+    "Address": {
+      "Street": "Jevrejska",
+      "Number": "6",
+      "City": "Novi Sad",
+      "Country": "Srbija"
     }
   }
 ]

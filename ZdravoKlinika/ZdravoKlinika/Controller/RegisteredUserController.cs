@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Service;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.Controller
 {
@@ -18,8 +19,6 @@ namespace ZdravoKlinika.Controller
             userService = new RegisteredUserService();
         }
 
-        
-
         public RegisteredUser? GetUserByEmailAndPassword(String email, String password)
         {
             return UserService.GetUserByEmailAndPassword(email, password);
@@ -31,6 +30,11 @@ namespace ZdravoKlinika.Controller
             this.userService.RememberUser(user);
         }
 
+        public List<RegisteredUser> GetAllEmployees()
+        {
+            return userService.GetAllEmployees();
+        }
+
         public RegisteredUser GetRememberedUser()
         {
             return this.userService.GetRememberedUser();
@@ -39,6 +43,16 @@ namespace ZdravoKlinika.Controller
         public void ForgetUser()
         {
             this.userService.ForgetUser();
+        }
+
+        public List<RegisteredUser> GetAll()
+        {
+            return userService.GetAll();
+        }
+
+        public static Doctor UserToDoctor(RegisteredUser user)
+        {
+            return RegisteredUserService.UserToDoctor(user);
         }
     }
 }

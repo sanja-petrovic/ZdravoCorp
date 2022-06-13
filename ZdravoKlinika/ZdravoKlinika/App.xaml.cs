@@ -13,8 +13,10 @@ namespace ZdravoKlinika
     /// </summary>
     public partial class App : Application
     {
+        public static RegisteredUser User;
         public App()
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
     }
 

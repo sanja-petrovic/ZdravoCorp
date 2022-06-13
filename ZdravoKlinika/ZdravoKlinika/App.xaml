@@ -7,10 +7,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/PatientViewDictionary.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/DoctorViewDictionary.xaml"></ResourceDictionary>
-               
+              <ResourceDictionary Source="/DoctorViewDictionary.xaml"></ResourceDictionary>               
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+ </ResourceDictionary>
     </Application.Resources>
 </Application>
 

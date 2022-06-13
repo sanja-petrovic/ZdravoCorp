@@ -29,6 +29,14 @@ namespace ZdravoKlinika.Controller
         {
             return service.GetByPatientId(id);
         }
+        public List<PatientNotes> GetForDate(string id, DateTime date)
+        {
+            return service.GetForDate(id, date);
+        }
+        public List<PatientNotes> GetUpcommingNotes(String id, int hours)
+        {
+            return service.GetUpcommingNotes(id,hours);
+        }
         public void CreateNote(RegisteredUser user, String note, DateTime time)
         {
             service.CreateNote(new PatientNotes(-1,time,user,note));

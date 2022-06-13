@@ -25,12 +25,12 @@ public class RenovationController
 
     public void CreateRenovation(List<Room> entryRooms, int numberOfExitRooms, DateTime scheduledDateTime)
     {
-        this.renovationService.CreateRenovation(entryRooms, numberOfExitRooms, scheduledDateTime);
+        this.renovationService.CreateRenovation(new Renovation("0", numberOfExitRooms, scheduledDateTime, entryRooms, false));
     }
 
     public void UpdateRenovation(String id, List<Room> entryRooms, int numberOfExitRooms, DateTime scheduledDateTime)
     {
-        this.renovationService.UpdateRenovation(id, entryRooms, numberOfExitRooms, scheduledDateTime, false);
+        this.renovationService.UpdateRenovation(new Renovation(id, numberOfExitRooms, scheduledDateTime, entryRooms, false));
     }
 
     public void DeleteRenovation(String id)

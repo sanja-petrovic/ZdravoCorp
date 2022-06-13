@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class MoveRepository
+public class MoveRepository : IMoveRepository
 {
     private MoveDataHandler moveDataHandler;
     private List<Move> moves;
@@ -13,7 +14,7 @@ public class MoveRepository
     public MoveRepository()
     {
         this.MoveDataHandler = new MoveDataHandler();
-        this.moves = this.MoveDataHandler.Read();
+        this.moves = this.moveDataHandler.Read();
     }
 
     public List<Move> Moves
@@ -67,24 +68,25 @@ public class MoveRepository
 
     public Move GetById(String id)
     {
+        Move? returnValue = null;
         foreach (Move m in this.moves)
         {
             if (m.MoveId.Equals(id))
             {
-                return m;
+                returnValue = m;
             }
         }
 
-        return null;
+        return returnValue;
     }
 
-    public void CreateMove(Move move)
+    public void Add(Move move)
     {
         this.moves.Add(move);
         moveDataHandler.Write(this.moves);
     }
 
-    public void DeleteMove(Move move)
+    public void Remove(Move move)
     {
         if (move == null)
             return;
@@ -94,7 +96,7 @@ public class MoveRepository
         moveDataHandler.Write(this.moves);
     }
 
-    public void UpdateMove(Move move)
+    public void Update(Move move)
     {
         if (move == null)
             return;
@@ -103,12 +105,23 @@ public class MoveRepository
             {
                 if (m.MoveId.Equals(move.MoveId))
                 {
-                    m.SourceRoom = move.SourceRoom;
-                    m.DestinationRoom = move.DestinationRoom;
-                    m.ScheduledDateTime = move.ScheduledDateTime;
+                    UpdateMoveValues(m, move);
                 }
             }
         moveDataHandler.Write(this.moves);
     }
 
+    private void UpdateMoveValues(Move moveToBeUpdated, Move updatedValues)
+    {
+        moveToBeUpdated.SourceRoom = updatedValues.SourceRoom;
+        moveToBeUpdated.DestinationRoom = updatedValues.DestinationRoom;
+        moveToBeUpdated.ScheduledDateTime = updatedValues.ScheduledDateTime;
+    }
+
+    public void RemoveAll()
+    {
+        this.moves.Clear();
+        this.moveDataHandler.Write(this.moves);
+
+    }
 }

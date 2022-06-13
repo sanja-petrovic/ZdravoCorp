@@ -6,11 +6,155 @@
       xmlns:local="clr-namespace:ZdravoKlinika.View.Manager.Views"
       xmlns:vml="clr-namespace:ZdravoKlinika.Util"
       vml:ViewModelLocator.AutoHookedUpViewModel="True"
+      xmlns:views="clr-namespace:ZdravoKlinika.View.Manager.Views"
+      xmlns:viewModel="clr-namespace:ZdravoKlinika.View.Manager.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Profil">
 
-    <Grid>
-        
+    <Page.Resources>
+        <DataTemplate DataType="{x:Type viewModel:ManagerInfoViewModel}">
+            <views:ManagerInfoView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerChangePasswordViewModel}">
+            <views:ManagerChangePasswordView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerFeedbackViewModel}">
+            <views:ManagerFeedbackView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerLogoutViewModel}">
+            <views:ManagerLogoutView/>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Width="800">
+        <Grid HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Width="100" Height="100" Source="/Resources/Images/employees.png" VerticalAlignment="Bottom" Grid.Row="1"/>
+
+            <Label Grid.Row="2" Content="Dušan Jovanović" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20"></Label>
+
+            <Button x:Name="informationButton" Command="{Binding NavCommand}" CommandParameter="info" Height="30" FontWeight="Bold" Background="#FF7346F3" Foreground="White" Content="Podaci" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Grid.Row="4">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="changePasswordButton" Command="{Binding NavCommand}" CommandParameter="changePassword" Height="30" FontWeight="Bold" Background="#FF7346F3" Foreground="White" Content="Izmena šifre" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Grid.Row="5">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="feedbackButton" Command="{Binding NavCommand}" CommandParameter="feedback" Height="30" FontWeight="Bold" Background="#FF7346F3" Foreground="White" Content="Utisci o aplikaciji" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Grid.Row="6">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="logoutButton" Command="{Binding NavCommand}" CommandParameter="logout" Height="30" FontWeight="Bold" Background="#FF7346F3" Foreground="White" Content="Izloguj se" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Grid.Row="7">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Frame NavigationUIVisibility="Hidden" Content="{Binding CurrentViewModel}" x:Name="MainFrame" Grid.Column="1" Grid.Row="0" Grid.RowSpan="9"/>
+        </Grid>
     </Grid>
 </Page>

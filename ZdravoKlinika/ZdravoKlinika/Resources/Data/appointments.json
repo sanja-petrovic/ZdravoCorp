@@ -2,7 +2,7 @@
   {
     "AppointmentId": 1,
     "DateAndTime": "2022-05-02T11:00:00",
-    "Diagnoses": ":(",
+    "Diagnoses": ":(sggdfgdf",
     "DoctorsNotes": "dgffsfds",
     "Type": "Regular",
     "Emergency": false,
@@ -12,7 +12,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      2,
+      2,
+      5,
+      5,
+      5,
+      5,
+      5,
+      3
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 2,
@@ -27,7 +37,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      1,
+      2,
+      1,
+      4,
+      4,
+      5,
+      5,
+      4
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 3,
@@ -42,12 +62,22 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 4,
     "DateAndTime": "2022-04-28T09:00:00",
-    "Diagnoses": "Hypertension",
+    "Diagnoses": "Hypertensio",
     "DoctorsNotes": "Pacijent se \u017Ealio na povi\u0161en krvni pritisak koji mu mesecima pravi probleme.",
     "Type": "Regular",
     "Emergency": false,
@@ -57,7 +87,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      3,
+      4,
+      2
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 5,
@@ -72,7 +112,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      3,
+      3,
+      3,
+      3,
+      1,
+      4,
+      5,
+      5
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 6,
@@ -87,7 +137,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      5,
+      5,
+      5,
+      5,
+      1,
+      5,
+      5,
+      5
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 7,
@@ -102,7 +162,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      1,
+      2,
+      3,
+      1,
+      4,
+      1,
+      4,
+      1
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 8,
@@ -117,7 +187,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      4,
+      2,
+      1,
+      5,
+      1,
+      3,
+      1,
+      2
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 9,
@@ -132,7 +212,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      3,
+      2,
+      4,
+      1,
+      1,
+      2,
+      2,
+      1
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 10,
@@ -147,7 +237,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 11,
@@ -161,11 +261,18 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      10,
-      11
+    "Prescriptions": [],
+    "Grading": [
+      3,
+      3,
+      3,
+      5,
+      5,
+      5,
+      3,
+      4
     ],
-    "Grading": null
+    "PatientNotes": null
   },
   {
     "AppointmentId": 14,
@@ -180,7 +287,17 @@
     "Room": "314",
     "Over": false,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      3,
+      3,
+      3,
+      4,
+      5,
+      4,
+      3,
+      1
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 15,
@@ -195,7 +312,17 @@
     "Room": "2",
     "Over": false,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4,
+      5
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 16,
@@ -210,7 +337,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      3,
+      3,
+      3,
+      1,
+      5,
+      5,
+      1,
+      2
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 17,
@@ -225,7 +362,8 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": null,
+    "PatientNotes": null
   },
   {
     "AppointmentId": 18,
@@ -240,7 +378,17 @@
     "Room": "314",
     "Over": true,
     "Prescriptions": [],
-    "Grading": null
+    "Grading": [
+      2,
+      2,
+      3,
+      3,
+      4,
+      4,
+      5,
+      5
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 19,
@@ -254,10 +402,18 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      5
+    "Prescriptions": [],
+    "Grading": [
+      5,
+      5,
+      4,
+      5,
+      5,
+      5,
+      5,
+      1
     ],
-    "Grading": null
+    "PatientNotes": null
   },
   {
     "AppointmentId": 20,
@@ -271,73 +427,23 @@
     "Patient": "12345123,Guest",
     "Room": "315",
     "Over": false,
-    "Prescriptions": null,
-    "Grading": null
-  },
-  {
-    "AppointmentId": 21,
-    "DateAndTime": "2022-05-13T08:00:00",
-    "Diagnoses": "asds",
-    "DoctorsNotes": "asdf",
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 15,
-    "Doctor": "123",
-    "Patient": "0105965123321,Registered",
-    "Room": "315",
-    "Over": false,
-    "Prescriptions": null,
-    "Grading": null
-  },
-  {
-    "AppointmentId": 25,
-    "DateAndTime": "2022-05-28T13:30:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 30,
-    "Doctor": "123",
-    "Patient": "0105965123321,Registered",
-    "Room": "314",
-    "Over": false,
-    "Prescriptions": null,
-    "Grading": null
-  },
-  {
-    "AppointmentId": 26,
-    "DateAndTime": "2022-05-28T15:00:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 30,
-    "Doctor": "123",
-    "Patient": "0105965123321,Registered",
-    "Room": "314",
-    "Over": false,
-    "Prescriptions": null,
-    "Grading": null
-  },
-  {
-    "AppointmentId": 27,
-    "DateAndTime": "2022-06-04T08:15:00",
-    "Diagnoses": null,
-    "DoctorsNotes": null,
-    "Type": "Regular",
-    "Emergency": false,
-    "Duration": 30,
-    "Doctor": "123",
-    "Patient": "0105965123321,Registered",
-    "Room": "314",
-    "Over": false,
-    "Prescriptions": null,
-    "Grading": null
+    "Prescriptions": [],
+    "Grading": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 28,
     "DateAndTime": "2022-05-18T08:15:00",
-    "Diagnoses": "/",
+    "Diagnoses": "1234",
     "DoctorsNotes": "/",
     "Type": "Regular",
     "Emergency": false,
@@ -346,11 +452,9 @@
     "Patient": "0105965123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      22,
-      23
-    ],
-    "Grading": null
+    "Prescriptions": [],
+    "Grading": null,
+    "PatientNotes": null
   },
   {
     "AppointmentId": 29,
@@ -364,10 +468,9 @@
     "Patient": "1510963123321,Registered",
     "Room": "314",
     "Over": true,
-    "Prescriptions": [
-      24
-    ],
-    "Grading": null
+    "Prescriptions": [],
+    "Grading": null,
+    "PatientNotes": null
   },
   {
     "AppointmentId": 30,
@@ -381,8 +484,18 @@
     "Patient": "1510963123321,Registered",
     "Room": "5",
     "Over": false,
-    "Prescriptions": null,
-    "Grading": null
+    "Prescriptions": [],
+    "Grading": [
+      4,
+      2,
+      5,
+      5,
+      1,
+      3,
+      2,
+      1
+    ],
+    "PatientNotes": null
   },
   {
     "AppointmentId": 31,
@@ -396,12 +509,122 @@
     "Patient": "1510963123321,Registered",
     "Room": "5",
     "Over": false,
-    "Prescriptions": null,
-    "Grading": null
+    "Prescriptions": [],
+    "Grading": [
+      1,
+      1,
+      5,
+      5,
+      5,
+      1,
+      4,
+      4
+    ],
+    "PatientNotes": null
   },
   {
-    "AppointmentId": 32,
-    "DateAndTime": "2022-08-05T04:00:00",
+    "AppointmentId": 33,
+    "DateAndTime": "2022-05-31T09:15:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": true,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "1510963123321,Registered",
+    "Room": "2",
+    "Over": false,
+    "Prescriptions": [],
+    "Grading": [
+      2,
+      2,
+      2,
+      5,
+      3,
+      1,
+      4,
+      1
+    ],
+    "PatientNotes": null
+  },
+  {
+    "AppointmentId": 34,
+    "DateAndTime": "2022-06-01T13:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": true,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "12345,Registered",
+    "Room": "2",
+    "Over": false,
+    "Prescriptions": [],
+    "Grading": [
+      1,
+      4,
+      1,
+      3,
+      3,
+      3,
+      1,
+      3
+    ],
+    "PatientNotes": null
+  },
+  {
+    "AppointmentId": 36,
+    "DateAndTime": "2022-06-01T08:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [],
+    "Grading": [
+      5,
+      5,
+      1,
+      3,
+      1,
+      4,
+      2,
+      2
+    ],
+    "PatientNotes": null
+  },
+  {
+    "AppointmentId": 37,
+    "DateAndTime": "2022-06-01T08:15:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [],
+    "Grading": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "PatientNotes": null
+  },
+  {
+    "AppointmentId": 39,
+    "DateAndTime": "2022-06-01T08:30:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
@@ -409,24 +632,393 @@
     "Duration": 15,
     "Doctor": "456",
     "Patient": "1510963123321,Registered",
-    "Room": "314",
+    "Room": "5",
     "Over": false,
-    "Prescriptions": null,
-    "Grading": null
+    "Prescriptions": [],
+    "Grading": [
+      2,
+      2,
+      2,
+      2,
+      3,
+      4,
+      2,
+      1
+    ],
+    "PatientNotes": null
   },
   {
-    "AppointmentId": 33,
-    "DateAndTime": "2022-05-21T08:00:00",
+    "AppointmentId": 40,
+    "DateAndTime": "2022-06-08T14:30:00",
     "Diagnoses": null,
     "DoctorsNotes": null,
     "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "1510963123321,Registered",
+    "Room": "5",
+    "Over": true,
+    "Prescriptions": [],
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 41,
+    "DateAndTime": "2022-06-01T08:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "12345,Registered",
+    "Room": "5",
+    "Over": false,
+    "Prescriptions": [],
+    "Grading": [
+      4,
+      2,
+      3,
+      1,
+      5,
+      5,
+      4,
+      1
+    ],
+    "PatientNotes": null
+  },
+  {
+    "AppointmentId": 43,
+    "DateAndTime": "2022-06-03T08:15:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "3007967123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": [],
+    "Grading": [
+      5,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      3
+    ],
+    "PatientNotes": null
+  },
+  {
+    "AppointmentId": 44,
+    "DateAndTime": "2022-06-04T08:00:00",
+    "Diagnoses": "a",
+    "DoctorsNotes": "a",
+    "Type": "Regular",
     "Emergency": true,
     "Duration": 60,
-    "Doctor": "qwer",
-    "Patient": "1510963123321,Registered",
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [],
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 45,
+    "DateAndTime": "2022-06-05T10:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "315",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 46,
+    "DateAndTime": "2022-06-05T08:15:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "2901967123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 47,
+    "DateAndTime": "2022-06-24T08:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Surgery",
+    "Emergency": false,
+    "Duration": 80,
+    "Doctor": "123",
+    "Patient": "2901967123321,Registered",
     "Room": "2",
     "Over": false,
     "Prescriptions": null,
-    "Grading": null
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 49,
+    "DateAndTime": "2022-06-08T15:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "0304965123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 50,
+    "DateAndTime": "2022-06-09T11:15:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "3007967123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 51,
+    "DateAndTime": "2022-06-07T09:00:00",
+    "Diagnoses": "dijagnoza",
+    "DoctorsNotes": "nalaz i misljenje",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "1207965123321,Registered",
+    "Room": "314",
+    "Over": true,
+    "Prescriptions": [
+      13
+    ],
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 52,
+    "DateAndTime": "2022-06-05T09:45:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "0304965123321,Registered",
+    "Room": "5",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 53,
+    "DateAndTime": "2022-06-05T08:45:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "1510963123321,Registered",
+    "Room": "314",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 54,
+    "DateAndTime": "2022-06-04T14:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "0105965123321,Registered",
+    "Room": "5",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 55,
+    "DateAndTime": "2022-06-04T09:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 30,
+    "Doctor": "123",
+    "Patient": "0304965123321,Registered",
+    "Room": "6",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 56,
+    "DateAndTime": "2022-06-04T14:45:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "3007967123321,Registered",
+    "Room": "5",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 57,
+    "DateAndTime": "2022-06-16T10:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 120,
+    "Doctor": "qwer",
+    "Patient": "12345,Registered",
+    "Room": "3",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 58,
+    "DateAndTime": "2022-06-05T16:00:00+02:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Surgery",
+    "Emergency": true,
+    "Duration": 120,
+    "Doctor": "456",
+    "Patient": "12345,Registered",
+    "Room": "7",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 59,
+    "DateAndTime": "2022-06-08T08:30:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "3007967123321,Registered",
+    "Room": "4",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 60,
+    "DateAndTime": "2022-06-07T13:15:00",
+    "Diagnoses": "a",
+    "DoctorsNotes": "b",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "0304965123321,Registered",
+    "Room": "3",
+    "Over": true,
+    "Prescriptions": [],
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 61,
+    "DateAndTime": "2022-06-07T08:00:00",
+    "Diagnoses": "123",
+    "DoctorsNotes": "123",
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "123",
+    "Patient": "1207965123321,Registered",
+    "Room": "3",
+    "Over": true,
+    "Prescriptions": [],
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 62,
+    "DateAndTime": "2022-06-07T13:00:00",
+    "Diagnoses": "123",
+    "DoctorsNotes": "123",
+    "Type": "Surgery",
+    "Emergency": false,
+    "Duration": 60,
+    "Doctor": "123",
+    "Patient": "0304965123321,Registered",
+    "Room": "7",
+    "Over": true,
+    "Prescriptions": [
+      18
+    ],
+    "Grading": null,
+    "PatientNotes": ""
+  },
+  {
+    "AppointmentId": 63,
+    "DateAndTime": "2022-06-08T12:00:00",
+    "Diagnoses": null,
+    "DoctorsNotes": null,
+    "Type": "Regular",
+    "Emergency": false,
+    "Duration": 15,
+    "Doctor": "456",
+    "Patient": "1510963123321,Registered",
+    "Room": "3",
+    "Over": false,
+    "Prescriptions": null,
+    "Grading": null,
+    "PatientNotes": ""
   }
 ]

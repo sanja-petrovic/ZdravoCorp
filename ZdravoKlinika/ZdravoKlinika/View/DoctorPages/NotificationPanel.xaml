@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="ZdravoKlinika.View.DoctorPages.NotificationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZdravoKlinika.View.DoctorPages" xmlns:System="clr-namespace:System;assembly=netstandard" xmlns:model="clr-namespace:ZdravoKlinika.View.DoctorPages.Model" d:DataContext="{d:DesignInstance Type=model:NotifPanelViewModel}"
+             mc:Ignorable="d"  Focusable="True"
+             Height="768" Width="1024">
+    <UserControl.InputBindings>
+        <KeyBinding Key="C" Modifiers="Ctrl+Alt" Command="{Binding ClearCommand}"/>
+    </UserControl.InputBindings>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <!--83-->
+        <Border
+            BorderBrush="Black"
+            BorderThickness="2" Width="309"
+            CornerRadius="10" Height="{Binding BorderHeight}" Margin="703,65,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.9" Direction="0" ShadowDepth="0" BlurRadius="30"/>
+            </Border.Effect>
+        </Border>
+        <Rectangle HorizontalAlignment="Left" Height="{Binding Height}" Margin="697,60,0,0"  VerticalAlignment="Top" Width="317" Fill="White"  RadiusX="10" RadiusY="10"></Rectangle>
+
+        <Rectangle Fill="#F8F9FE" Height="1" Margin="697,92,10,675"/>
+        <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="707,66,91,678"></TextBlock>
+
+        <Button Margin="944,72,24,664" Focusable="True" Foreground="#FF9E98FF" FontSize="10"  Command="{Binding ClearCommand}">
+            <AccessText>_Obrišite sva</AccessText>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter Margin="0,0,0,18" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+
+        <ListBox Margin="695,88,8,58" Style="{StaticResource ListBoxStyle1}" Background="Transparent" ItemContainerStyle="{StaticResource ListBoxItemContainerStyle1}" ItemsSource="{Binding Notifications}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Rectangle Fill="{Binding BackgroundColor}" Margin="-13,1,-45,-4"/>
+                        <Rectangle Fill="#F8F9FE" Height="1" VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding Title}" FontSize="14" FontWeight="Bold" Margin="15,15,0,-8"/>
+                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap" FontSize="12" Foreground="#555557" Margin="15,37,0,0" Height="47" VerticalAlignment="Top" Width="288" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding NotifTime}" TextWrapping="Wrap" FontSize="10" Foreground="#555557" Margin="215,6,-200,0"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Resources>
+                <System:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">5</System:Double>
+            </ListBox.Resources>
+        </ListBox>
+
+        <TextBlock Visibility="{Binding NoNotifs}" Text="Nemate novih obaveštenja." HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#555557" FontSize="12" Margin="783,128,0,0"/>
+    </Grid>
+</UserControl>

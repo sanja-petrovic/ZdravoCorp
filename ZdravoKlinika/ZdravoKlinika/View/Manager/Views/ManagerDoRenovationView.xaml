@@ -96,7 +96,7 @@
             <wpfTool:DateTimePicker x:Name="dateTimePicker" FontWeight="DemiBold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="210" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" Margin="10,0,0,0"/>
 
             <Label Content="3. Izaberite tip renoviranja:" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1" Margin="0,0,0,-5"/>
-            <Button x:Name="RenovateButton" Content="Renoviraj" FontWeight="Bold" Background="#FF7346F3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="60" Grid.Column="4" Grid.Row="2">
+            <Button x:Name="RenovateButton" Content="Renoviraj" FontWeight="Bold" Background="#FF7346F3" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="60" Grid.Column="4" Grid.Row="2">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -121,7 +121,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="SplitButton" Content="Podeli"  FontWeight="Bold" Background="#FF7346F3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="25"  Grid.Column="4" Grid.Row="3">
+            <Button x:Name="SplitButton" Content="Podeli"  FontWeight="Bold" Background="#FF7346F3" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Height="25"  Grid.Column="4" Grid.Row="3">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -146,7 +146,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="MergeButton" Content="Spoj" FontWeight="Bold" Background="#FF7346F3" HorizontalAlignment="Center"  Grid.Column="4" VerticalAlignment="Center" Width="60" Height="25" Grid.Row="4">
+            <Button x:Name="MergeButton" Content="Spoj" FontWeight="Bold" Background="#FF7346F3" Foreground="White" HorizontalAlignment="Center"  Grid.Column="4" VerticalAlignment="Center" Width="60" Height="25" Grid.Row="4">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -184,7 +184,7 @@
             <TextBlock x:Name="textArea" TextWrapping="Wrap" Width="140" FontSize="16" TextAlignment="Center" FontWeight="Normal" Grid.Column="6" Padding="5,10,5,10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Grid.Row="1" Grid.RowSpan="5" Margin="0,0,0,35"/>
 
             <Label Content="4. Pregled renoviranja:" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="6" VerticalAlignment="Center" Grid.Row="1" Margin="0,0,0,-10"/>
-            <Button x:Name="ExecuteButton" FontWeight="Bold" Background="#FF7346F3" Content="Izvrši" HorizontalAlignment="Center" Grid.Column="6" VerticalAlignment="Center" Width="60" Height="25" Grid.Row="6">
+            <Button x:Name="ExecuteButton" FontWeight="Bold" Background="#FF7346F3" Foreground="White" Content="Izvrši" HorizontalAlignment="Center" Grid.Column="6" VerticalAlignment="Center" Width="60" Height="25" Grid.Row="6">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">

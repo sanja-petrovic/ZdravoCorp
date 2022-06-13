@@ -15,9 +15,61 @@ namespace ZdravoKlinika.Model
         public string Note { get => note; set => note = value; }
         public DateTime TriggerTime { get => triggerTime; set => triggerTime = value; }
 
-        public String generateNotification()
+        public String GenerateDailyNotification()
         {
-            return this.prescription.DoctorsNote + " " + this.prescription.Medication + " " + this.prescription.Amount;
+            String retVal =""; 
+            if(this.Prescription != null)
+            {
+                switch (this.Prescription.Frequency)
+                {
+                    case 1:
+                        retVal = GenerateDailyRepeatingOnce();
+                        break;
+                    case 2:
+                        retVal = GenerateDailyRepeatingTwice();
+                        break;
+                    case 3:
+                       retVal = GenerateDailyRepeatingThreeTimes();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return retVal;
+        }
+        private String GenerateDailyRepeatingOnce()
+        {
+            return "Terapija: " + this.NotificationId + Environment.NewLine + this.prescription.DoctorsNote + " " + this.prescription.Medication + " " + this.prescription.Amount + Environment.NewLine + this.triggerTime;
+        }
+        private String GenerateDailyRepeatingTwice()
+        {
+            String retVal = "";
+            if (DateTime.Now < DateTime.Now.Date.AddHours(12))
+            {
+                retVal = "Terapija: " + this.NotificationId + Environment.NewLine + this.prescription.DoctorsNote + " " + this.prescription.Medication + " " + this.prescription.Amount + Environment.NewLine + this.triggerTime;
+            }
+            else
+            {
+                retVal = "Terapija: " + this.NotificationId + Environment.NewLine + this.prescription.DoctorsNote + " " + this.prescription.Medication + " " + this.prescription.Amount + Environment.NewLine + this.triggerTime.AddHours(12);
+            }
+            return retVal;
+        }
+        private String GenerateDailyRepeatingThreeTimes()
+        {
+            String retVal = "";
+            if (DateTime.Now < DateTime.Now.Date.AddHours(12))
+            {
+                retVal = "Terapija: " + this.NotificationId + Environment.NewLine + this.prescription.DoctorsNote + " " + this.prescription.Medication + " " + this.prescription.Amount + Environment.NewLine + this.triggerTime;
+            }
+            if (DateTime.Now > DateTime.Now.Date.AddHours(12) && DateTime.Now < DateTime.Now.Date.AddHours(18))
+            {
+                retVal = "Terapija: " + this.NotificationId + Environment.NewLine + this.prescription.DoctorsNote + " " + this.prescription.Medication + " " + this.prescription.Amount + Environment.NewLine + this.triggerTime.AddHours(6);
+            }
+            if (DateTime.Now > DateTime.Now.Date.AddHours(18))
+            {
+                retVal = "Terapija: " + this.NotificationId + Environment.NewLine + this.prescription.DoctorsNote + " " + this.prescription.Medication + " " + this.prescription.Amount + Environment.NewLine + this.triggerTime.AddHours(12);
+            }
+            return retVal;
         }
         public PatientMedicationNotification()
         {
@@ -27,7 +79,7 @@ namespace ZdravoKlinika.Model
         {
             this.NotificationId = id;
             this.Sender = sender;
-            this.Reciver = reciever;
+            this.Receiver = reciever;
             this.NotificationText = notificationText;
             this.Prescription = prescription;
             this.note = note;

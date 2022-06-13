@@ -1,18 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using ZdravoKlinika.Repository.Interfaces;
 
-public class RoomRepository
+public class RoomRepository : IRoomRepository
 {
     private RoomDataHandler roomDataHandler;
     private RenovationDataHandler renovationDataHandler;
+    private MoveDataHandler moveDataHandler;
     private List<Room> rooms;
     private List<Room> freeRooms;
     private List<Room> renovatableRooms;
     private RenovationRepository renovationRepository;
     private List<Renovation> renovations;
-    
-    public RoomDataHandler RoomDataHandler { get => roomDataHandler; set => roomDataHandler = value; }
+    private MoveRepository moveRepository;
+    private List<Move> moves;
+
+    private Room sourceRoom;
+    private Room destinationRoom;
+    private DateTime scheduledDateTime;
+    private List<Equipment> equipmentToMove;
+    private List<string> idList;
+
+    public Room SourceRoom { get => sourceRoom; set => sourceRoom = value; }
+    public Room DestinationRoom { get => destinationRoom; set => destinationRoom = value; }
+    public DateTime ScheduledDateTime { get => scheduledDateTime; set => scheduledDateTime = value; }
+    public List<Equipment> EquipmentToMove { get => equipmentToMove; set => equipmentToMove = value; }
 
     public RoomRepository()
     {
@@ -26,7 +39,12 @@ public class RoomRepository
         this.renovationDataHandler = new RenovationDataHandler();
         this.renovations = this.renovationRepository.GetAll();
 
+        this.moveRepository = new MoveRepository();
+        this.moveDataHandler = new MoveDataHandler();
+        this.moves = this.moveRepository.GetAll();
+
         UpdateFinishedRenovations();
+        UpdateFinishedMoves();
     }
 
     private void UpdateFinishedRenovations()
@@ -35,76 +53,175 @@ public class RoomRepository
         {
             foreach (Renovation r in this.renovations)
             {
-                if (r.IsRenovationFinished)
-                {
-                    continue;
-                }
-                if (r.ScheduledDateTime <= DateTime.Now)
-                {
-                    if (r.EntryRooms.Count == 1 && r.NumberOfExitRooms == 1)
-                    {
-                        //U PITANJU JE OBICNO RENOVIRANJE
-                        foreach (Room room in rooms)
-                        {
-                            if (room.RoomId.Equals(r.EntryRooms[0].RoomId))
-                            {
-                                this.FreeRoom(this.GetById(room.RoomId));
-                            }
-                        }
-
-                    }
-                    else if (r.EntryRooms.Count == 1 && r.NumberOfExitRooms > 1)
-                    {
-                        //U PITANJU JE DELJENJE PROSTORIJE NA VISE MANJIH
-                        this.DeleteRoom(this.GetById(r.EntryRooms[0].RoomId));
-                        for (int i = 0; i < r.NumberOfExitRooms; i++)
-                        {
-                            Room r1 = new Room(GenerateId().ToString(), "R" + GenerateId(), RoomType.checkup, 1, 1, RoomStatus.available, true);
-                            this.CreateRoom(r1);
-                        }
-
-                    }
-                    else if (r.EntryRooms.Count > 1 && r.NumberOfExitRooms == 1)
-                    {
-                        //U PITANJU JE SPAJANJE PROSTORIJA U JEDNU
-                        foreach (Room room in r.EntryRooms)
-                        {
-                            this.DeleteRoom(this.GetById(room.RoomId));
-                        }
-                        Room r1 = new Room(GenerateId().ToString(), "R" + GenerateId(), RoomType.checkup, 1, 1, RoomStatus.available, true);
-                        this.CreateRoom(r1);
-
-                    }
-
-                    r.IsRenovationFinished = true;
-                }
+                Finalize(r);         
             }
             this.renovationDataHandler.Write(this.renovations);
         }
 
     }
 
-    public int GenerateId()
+    private void UpdateFinishedMoves()
     {
-        List<Room> rooms = this.GetAll();
-        int newRoomId;
-        if (rooms.Count > 0)
+        if(this.moves != null)
         {
-            int maxId = 0;
-            int trenutniId = 0;
-            foreach (Room room in rooms)
+            foreach(Move m in this.moves)
             {
-                trenutniId = Int32.Parse(room.RoomId);
-                if (trenutniId > maxId) maxId = trenutniId;
+                FinalizeMove(m);
             }
+            this.moveDataHandler.Write(this.moves);
+        }
+    }
 
-            newRoomId = maxId + 1;
+    private void Finalize(Renovation r)
+    {
+        if (!r.IsRenovationFinished)
+        {
+            if (r.ScheduledDateTime <= DateTime.Now)
+            {
+                if (r.EntryRooms.Count == 1 && r.NumberOfExitRooms == 1)
+                {
+                    //REGULAR RENOVATION
+                    FinalizeRenovation(r);
+                }
+                else if (r.EntryRooms.Count == 1 && r.NumberOfExitRooms > 1)
+                {
+                    //SPLITTING ONE ROOM INTO MULTIPLE
+                    FinalizeSplit(r);
+                }
+                else if (r.EntryRooms.Count > 1 && r.NumberOfExitRooms == 1)
+                {
+                    //MERGING MULTIPLE ROOMS INTO ONE
+                    FinalizeMerge(r);                 
+                }
+            }
+        }
+    }
+
+    private void FinalizeMove(Move m)
+    {
+        if (!m.IsMoveFinished)
+        {
+            SaveMoveValues(m);
+            foreach (Room r in this.rooms)
+            {
+                if (r.RoomId.Equals(this.SourceRoom.RoomId))
+                {
+                    SubstractEquipmentFromSourceRoom(r);
+                }
+
+                if (r.RoomId.Equals(this.DestinationRoom.RoomId))
+                {
+                    AddEquipmentToDestinationRoom(r);
+                }
+            }
+            SaveChangesToRooms();
+        }
+        m.IsMoveFinished = true;
+    }
+
+    private void SubstractEquipmentFromSourceRoom(Room r)
+    {
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            foreach (Equipment equ in this.EquipmentToMove)
+            {
+                if (equipment.Id.Equals(equ.Id))
+                {
+                    equipment.Amount = equipment.Amount - equ.Amount;
+                }
+            }
+        }
+    }
+
+    private void AddEquipmentToDestinationRoom(Room r)
+    {
+        if (r.EquipmentInRoom.Count != 0)
+        {
+            GetAllEquipmentInRoomIds(r);
+
+            foreach (Equipment equ in this.EquipmentToMove)
+            {
+                AddEquipmentToNonEmptyRoom(r, equ);
+            }
         }
         else
         {
-            newRoomId = 1;
+            AddEquipmentToEmptyRoom(r);
         }
-        return newRoomId;
+    }
+
+    private void AddEquipmentToNonEmptyRoom(Room r, Equipment equ)
+    {
+        if (idList.Contains(equ.Id))
+        {
+            AddAmountToExistingEquipmentInRoom(r, equ);
+        }
+        else
+        {
+            r.AddEquipmentInRoom(equ);
+        }
+    }
+
+    private void AddAmountToExistingEquipmentInRoom(Room r, Equipment equ)
+    {
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            if (equipment.Id.Equals(equ.Id))
+            {
+                equipment.Amount = equipment.Amount + equ.Amount;
+            }
+        }
+    }
+
+    private void AddEquipmentToEmptyRoom(Room r)
+    {
+        foreach (Equipment equipment in this.EquipmentToMove)
+        {
+            r.AddEquipmentInRoom(equipment);
+        }
+    }
+
+    private void GetAllEquipmentInRoomIds(Room r)
+    {
+        idList = new List<string>();
+        foreach (Equipment equipment in r.EquipmentInRoom)
+        {
+            idList.Add(equipment.Id);
+        }
+    }
+
+    private void FinalizeRenovation(Renovation r)
+    {
+        foreach (Room room in rooms)
+        {
+            if (room.RoomId.Equals(r.EntryRooms[0].RoomId))
+            {
+                this.FreeRoom(this.GetById(room.RoomId));
+            }
+        }
+        r.IsRenovationFinished = true;
+    }
+
+    private void FinalizeSplit(Renovation r)
+    {
+        this.Remove(this.GetById(r.EntryRooms[0].RoomId));
+        for (int i = 0; i < r.NumberOfExitRooms; i++)
+        {
+            Room r1 = new Room(GenerateRoomId().ToString(), "R" + GenerateRoomId(), RoomType.checkup, 1, 1, RoomStatus.available, true);
+            this.Add(r1);
+        }
+        r.IsRenovationFinished = true;
+    }
+
+    private void FinalizeMerge(Renovation r)
+    {
+        foreach (Room room in r.EntryRooms)
+        {
+            this.Remove(this.GetById(room.RoomId));
+        }
+        Room r1 = new Room(GenerateRoomId().ToString(), "R" + GenerateRoomId(), RoomType.checkup, 1, 1, RoomStatus.available, true);
+        this.Add(r1);
+        r.IsRenovationFinished = true;
     }
 
     public List<Room> Rooms
@@ -125,7 +242,7 @@ public class RoomRepository
             }
         }
     }
-   
+
     public void AddRoom(Room newRoom)
     {
         if (newRoom == null)
@@ -168,61 +285,24 @@ public class RoomRepository
 
         return null;
     }
+
     public List<Room> GetFreeRooms(DateTime enteredTime, RoomType roomType)
     {
         freeRooms.Clear();
         AppointmentRepository appointmentRepository = new AppointmentRepository();
         List<Appointment> appointments = appointmentRepository.GetAppointmentsOnDate(enteredTime);
-        Room? room = null;
-
-        DateTime appointmentStart;
-        DateTime appointmentEnd;
 
         foreach (Appointment app in appointments)
         {
-            appointmentStart = app.DateAndTime;
-            appointmentEnd = appointmentStart.AddMinutes(app.Duration);
-            room = this.rooms.Find(r => r.RoomId.Equals(app.Room.RoomId));
-
-            if (room != null)
-            {
-                if ((enteredTime.TimeOfDay >= appointmentStart.TimeOfDay) && (enteredTime.TimeOfDay < appointmentEnd.TimeOfDay))
-                {
-                    //app.Room JE ZAUZETA U NAVEDENOM TERMINU
-                    room.Free = false;
-                    
-                }
-                else
-                {
-                    //app.Room JE SLOBODNA U NAVEDENOM TERMINU
-                    room.Free = true;
-                }
-                if(room.Free == false)
-                {
-                    break;
-                }
-            }
-                
+            FindAndMarkFreeRooms(app, enteredTime);       
         }
 
         foreach (Room r in rooms)
         {
-            if (r.Free && r.Type.Equals(roomType))
-            {
-                freeRooms.Add(r);
-            }
+            FillFreeRoomsList(r, roomType);
         }
 
         return freeRooms;
-    }
-
-    public List<Room> GetOccupiedRooms(DateTime dateAndTime, RoomType type)
-    {
-        List<Room> rooms = new List<Room>();
-
-        AppointmentRepository appointmentRepository = new AppointmentRepository();
-
-        return rooms;
     }
 
     public RoomType GetRoomTypeForAppointmentType(AppointmentType type)
@@ -252,13 +332,13 @@ public class RoomRepository
         return renovatableRooms;
     }
 
-    public void CreateRoom(Room room)
+    public void Add(Room room)
     {
         this.rooms.Add(room);
         roomDataHandler.Write(this.rooms);
     }
 
-    public void DeleteRoom(Room room)
+    public void Remove(Room room)
     {
         if (room == null)
             return;
@@ -268,7 +348,7 @@ public class RoomRepository
         roomDataHandler.Write(this.rooms);
     }
 
-    public void UpdateRoom(Room room)
+    public void Update(Room room)
     {
         if (room == null)
             return;
@@ -277,13 +357,7 @@ public class RoomRepository
             {
                 if (r.RoomId.Equals(room.RoomId))
                 {
-                    r.Name = room.Name;
-                    r.Type = room.Type;
-                    r.Level = room.Level;
-                    r.Number = room.Number;
-                    r.Status = room.Status;
-                    r.Free = room.Free;
-                    r.EquipmentInRoom = room.EquipmentInRoom;
+                    UpdateRoomValues(r, room);
                 }
             }
         roomDataHandler.Write(this.rooms);
@@ -295,7 +369,7 @@ public class RoomRepository
             return;
         room.Status = RoomStatus.occupied;
         room.Free = false;
-        UpdateRoom(room);
+        Update(room);
     }
 
     public void FreeRoom(Room room)
@@ -304,7 +378,7 @@ public class RoomRepository
             return;
         room.Status = RoomStatus.available;
         room.Free = true;
-        UpdateRoom(room);
+        Update(room);
     }
 
     public void RenovateRoom(Room room)
@@ -313,6 +387,91 @@ public class RoomRepository
             return;
         room.Status = RoomStatus.renovation;
         room.Free = false;
-        UpdateRoom(room);
+        Update(room);
+    }
+
+    private int GenerateRoomId()
+    {
+        List<Room> rooms = this.GetAll();
+        int newRoomId;
+        if (rooms.Count > 0)
+        {
+            int maxId = 0;
+            int trenutniId;
+            foreach (Room room in rooms)
+            {
+                trenutniId = Int32.Parse(room.RoomId);
+                if (trenutniId > maxId) maxId = trenutniId;
+            }
+
+            newRoomId = maxId + 1;
+        }
+        else
+        {
+            newRoomId = 1;
+        }
+        return newRoomId;
+    }
+
+    private void UpdateRoomValues(Room roomToBeUpdated, Room updatingValues)
+    {
+        roomToBeUpdated.Name = updatingValues.Name;
+        roomToBeUpdated.Type = updatingValues.Type;
+        roomToBeUpdated.Level = updatingValues.Level;
+        roomToBeUpdated.Number = updatingValues.Number;
+        roomToBeUpdated.Status = updatingValues.Status;
+        roomToBeUpdated.Free = updatingValues.Free;
+        roomToBeUpdated.EquipmentInRoom = updatingValues.EquipmentInRoom;
+    }
+
+    //Finds and marks whether or not the Room is Available (checks if enteredTime is in interval [appointmentStart, appointmentStart+Duration])
+    private void FindAndMarkFreeRooms(Appointment app, DateTime enteredTime)
+    {
+        DateTime appointmentStart = app.DateAndTime;
+        DateTime appointmentEnd = appointmentStart.AddMinutes(app.Duration);
+        Room? room = this.rooms.Find(r => r.RoomId.Equals(app.Room.RoomId));
+
+        if (room != null)
+        {
+            if ((enteredTime.TimeOfDay >= appointmentStart.TimeOfDay) && (enteredTime.TimeOfDay < appointmentEnd.TimeOfDay))
+            {
+                //app.Room IS UNAVAILABLE IN THIS BLOCK OF CODE
+                room.Free = false;
+
+            }
+            else
+            {
+                //app.Room IS AVAILABLE IN THIS BLOCK OF CODE
+                room.Free = true;
+            }
+        }
+    }
+
+    private void FillFreeRoomsList(Room r, RoomType roomType)
+    {
+        if (r.Free && r.Type.Equals(roomType))
+        {
+            freeRooms.Add(r);
+        }
+    }
+
+    public void RemoveAll()
+    {
+        this.rooms.Clear();
+        this.roomDataHandler.Write(this.rooms);
+    }
+
+    private void SaveMoveValues(Move move)
+    {
+        SourceRoom = move.SourceRoom;
+        DestinationRoom = move.DestinationRoom;
+        EquipmentToMove = move.EquipmentToMove;
+        ScheduledDateTime = move.ScheduledDateTime;
+    }
+
+    private void SaveChangesToRooms()
+    {
+        RoomDataHandler roomDataHandler = new RoomDataHandler();
+        roomDataHandler.Write(this.rooms);
     }
 }

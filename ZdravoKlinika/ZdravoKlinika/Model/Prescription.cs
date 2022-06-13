@@ -10,7 +10,7 @@ namespace ZdravoKlinika.Model
     {
         private DateTime dateOfCreation;
         Doctor doctor;
-        Patient patient;
+        IPatient patient;
         Medication medication;
         private int amount;
         private int duration;
@@ -22,7 +22,7 @@ namespace ZdravoKlinika.Model
 
         public Prescription() { }
 
-        public Prescription(Doctor doctor, Patient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, int id)
+        public Prescription(Doctor doctor, IPatient patient, Medication medication, int amount, int duration, int frequency, string singleDose, string repeat, string doctorsNote, int id)
         {
             this.doctor = doctor;
             this.Patient = patient;
@@ -46,7 +46,7 @@ namespace ZdravoKlinika.Model
         public Doctor Doctor { get => doctor; set => doctor = value; }
         public int Id { get => id; set => id = value; }
         public DateTime DateOfCreation { get => dateOfCreation; set => dateOfCreation = value; }
-        public Patient Patient { get => patient; set => patient = value; }
+        public IPatient Patient { get => patient; set => patient = value; }
 
         public static Prescription Parse(int id) {
             Prescription prescription = new Prescription();
@@ -54,9 +54,17 @@ namespace ZdravoKlinika.Model
             return prescription; 
         }
 
-        public string ToString()
+        public override string ToString()
         {
-            return this.medication.ToString() + ", " + this.frequency + "x" + this.singleDose + " " + this.repeat + ", " + this.duration + " dana, " + this.doctorsNote;
+            return this.medication.ToString();
+        }
+
+        public string FullPrescriptionToString()
+        {
+            return this.medication.ToString() + "\n"
+                + "Količina: " + this.amount +
+                "\n" + "Upotreba: " + this.duration + " dan(a) " + this.frequency + " x " + this.singleDose + " " + this.repeat +
+                " " + this.doctorsNote + "\n";
         }
     }
 }

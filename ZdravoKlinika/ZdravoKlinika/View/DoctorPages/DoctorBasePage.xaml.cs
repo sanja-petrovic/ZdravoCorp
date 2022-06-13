@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Controller;
+using ZdravoKlinika.Util;
+using ZdravoKlinika.View.DoctorPages.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -22,47 +24,16 @@ namespace ZdravoKlinika.View.DoctorPages
     /// </summary>
     public partial class DoctorBasePage : Window
     {
-        Model.DoctorViewModel viewModel;
+        Model.MainViewModel viewModel;
 
-        private DoctorHomePage doctorHomePage;
-        private DoctorSchedule doctorSchedule;
-        private DoctorMedicationsView doctorMedicationsView;
-
-        public DoctorBasePage(RegisteredUser doctor)
+        public DoctorBasePage()
         {
-            this.viewModel = new Model.DoctorViewModel(doctor);
-            DataContext = this.viewModel;
+            this.ViewModel = new Model.MainViewModel();
+            DataContext = this.ViewModel;
             InitializeComponent();
-            doctorHomePage = new DoctorHomePage(viewModel.Doctor);
-            doctorSchedule = new DoctorSchedule(this.viewModel.Doctor);
-            doctorMedicationsView = new DoctorMedicationsView(this.viewModel.Doctor);
-            MainFrame.Navigate(doctorHomePage);
-
+            ViewModel.LoadWelcomeMessage();
         }
 
-        private void GoToSchedule(object sender, MouseButtonEventArgs e)
-        {
-            MainFrame.Navigate(doctorSchedule);
-        }
-
-        private void GoToHome(object sender, MouseButtonEventArgs e)
-        {
-            MainFrame.Navigate(doctorHomePage);
-        }
-
-
-        private void GoToMeds(object sender, MouseButtonEventArgs e)
-        {
-            MainFrame.Navigate(doctorMedicationsView);
-        }
-
-        private void SignOut(object sender, MouseButtonEventArgs e)
-        {
-            RegisteredUserController registeredUserController = new RegisteredUserController();
-            registeredUserController.ForgetUser();
-            SignInWindow signInWindow = new SignInWindow();
-            signInWindow.Show();
-            this.Close();
-        }
+        public MainViewModel ViewModel { get => viewModel; set => viewModel = value; }
     }
 }

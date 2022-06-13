@@ -6,14 +6,18 @@ using System.Timers;
 public class RenovationService
 {
     private RenovationRepository renovationRepository;
+    private RoomService roomService;
     private List<Room> rooms;
     private List<Appointment> appointments;
+    private List<Renovation> renovations;
     private Timer timerRenovation;
     private Timer timerSplit;
     private Timer timerMerge;
-    List<Room> entryRooms; 
-    int numberOfExitRooms; 
-    DateTime scheduledDateTime;
+    private bool roomFree;
+    private List<Room> entryRooms;
+    private int numberOfExitRooms;
+    private DateTime scheduledDateTime;
+    private string generatedId;
 
     public RenovationService()
     {
@@ -22,6 +26,10 @@ public class RenovationService
         this.timerSplit = new Timer();
         this.timerMerge = new Timer();
         this.appointments = new List<Appointment>();
+        this.renovations = new List<Renovation>();
+        this.roomFree = true;
+
+        FetchRooms();
     }
 
     public RenovationRepository RenovationRepository { get => renovationRepository; set => renovationRepository = value; }
@@ -39,88 +47,45 @@ public class RenovationService
         return this.renovationRepository.GetById(id);
     }
 
-    public void CreateRenovation(List<Room> entryRooms, int numberOfExitRooms, DateTime scheduledDateTime)
+    public void CreateRenovation(Renovation renovation)
     {
-        //NA OSNOVU BROJA ENTRYROOMS I NUMBEROFEXITROOMS ODREDI KOJI JE TIP RENOVIRANJA
-        this.EntryRooms = entryRooms;
-        this.NumberOfExitRooms = numberOfExitRooms;
-        this.ScheduledDateTime = scheduledDateTime;
+        SaveRenovationValues(renovation);
 
-        RoomService roomService = new RoomService();
-        rooms = roomService.GetAll();
-
-        AppointmentService appointmentService = new AppointmentService();
-        bool ok = true;
-
-        foreach(Room room in entryRooms)
+        foreach (Room room in entryRooms)
         {
-            appointments.Clear();
-            appointments = appointmentService.GetAppointmentsByRoom(room.RoomId);
-            foreach(Appointment app in appointments)
-            {  
-                DateTime appointmentStart = app.DateAndTime;
-                DateTime appointmentEnd = appointmentStart.AddMinutes(app.Duration);
-                if ((scheduledDateTime > appointmentStart) && (scheduledDateTime < appointmentEnd))
-                {
-                    //SOBA JE ZAUZETA U TOM TRENUTKU
-                    ok = false;
-                }
-            }
-
+            CheckIfRoomIsFree(room);
         }
 
-        if (ok)
+        if (roomFree)
         {
-            Renovation r = new Renovation(GenerateId().ToString(), numberOfExitRooms, scheduledDateTime, entryRooms, false);
-            this.renovationRepository.CreateRenovation(r);
-            if (entryRooms.Count == 1 && numberOfExitRooms == 1)
-            {
-                //U PITANJU JE OBICNO RENOVIRANJE
-                RenovateTheRoom();
+            generatedId = GenerateRenovationId().ToString();
+            this.renovationRepository.Add(new Renovation(generatedId, numberOfExitRooms, scheduledDateTime, entryRooms, false));
+            DetermineRenovationType();
+            //TO-DO: OVDE UPDATE TABELU SOBA(?)
 
-            }
-            else if (entryRooms.Count == 1 && numberOfExitRooms > 1)
-            {
-                //U PITANJU JE DELJENJE PROSTORIJE NA VISE MANJIH
-                SplitTheRoom();
-
-            }
-            else if (entryRooms.Count > 1 && numberOfExitRooms == 1)
-            {
-                //U PITANJU JE SPAJANJE PROSTORIJA U JEDNU
-                MergeTheRooms();
-
-            }
-            //OVDE UPDATE TABELU SOBA
-
-        } else
+        }
+        else
         {
-            //OVDE IDE NEKA NOTIFIKACIJA "SOBA JE ZAUZETA U UNETOM VREMENSKOM PERIODU"
+            //TO-DO: OVDE NEKA NOTIFIKACIJA KAO "JEDNA OD ENTRYROOMS JE ZAUZETA U TOM INTERVALU"
         }
     }
 
-    public void UpdateRenovation(String id, List<Room> entryRooms, int numberOfExitRooms, DateTime scheduledDateTime, bool isRenovationFinished)
+    public void UpdateRenovation(Renovation changedRenovation)
     {
-        Renovation r = this.renovationRepository.GetById(id);
-        r.EntryRooms = entryRooms;
-        r.NumberOfExitRooms = numberOfExitRooms;
-        r.ScheduledDateTime = scheduledDateTime;
-        r.IsRenovationFinished = isRenovationFinished;
-        this.renovationRepository.UpdateRenovation(r);
+        Renovation renovation = this.renovationRepository.GetById(changedRenovation.Id);
+        UpdateRenovationValues(renovation, changedRenovation);
+        this.renovationRepository.Update(renovation);
     }
 
     public void DeleteRenovation(String id)
     {
         Renovation r = this.renovationRepository.GetById(id);
-        this.renovationRepository.DeleteRenovation(r);
+        this.renovationRepository.Remove(r);
     }
 
     public void RenovateTheRoom()
     {
-        RoomService roomService = new RoomService();
-        List<Room> rooms = roomService.GetAll();
-
-        foreach(Room r in rooms)
+        foreach (Room r in rooms)
         {
             if (r.RoomId.Equals(entryRooms[0].RoomId))
             {
@@ -137,9 +102,6 @@ public class RenovationService
 
     private void ExecuteRenovation(object? sender, ElapsedEventArgs e)
     {
-        RoomService roomService = new RoomService();
-        List<Room> rooms = roomService.GetAll();
-
         foreach (Room r in rooms)
         {
             if (r.RoomId.Equals(entryRooms[0].RoomId))
@@ -147,16 +109,13 @@ public class RenovationService
                 roomService.FreeRoom(r.RoomId);
             }
         }
-
+        FinishRenovation(generatedId);
         timerRenovation.Stop();
         timerRenovation.Dispose();
     }
 
     public void SplitTheRoom()
     {
-        RoomService roomService = new RoomService();
-        List<Room> rooms = roomService.GetAll();
-
         foreach (Room r in rooms)
         {
             if (r.RoomId.Equals(entryRooms[0].RoomId))
@@ -173,26 +132,21 @@ public class RenovationService
 
     private void ExecuteSplit(object? sender, ElapsedEventArgs e)
     {
-        RoomService roomService = new RoomService();
-
         roomService.DeleteRoom(entryRooms[0].RoomId);
-        for(int i = 0; i < numberOfExitRooms; i++)
+        for (int i = 0; i < numberOfExitRooms; i++)
         {
-            roomService.CreateRoom("placeholder", RoomType.checkup, RoomStatus.available, 1, 1, true);
+            roomService.CreateRoom(new Room("placeholder", "placeholder", RoomType.checkup, 1, 1, RoomStatus.available, true));
         }
-
+        FinishRenovation(generatedId);
         timerSplit.Stop();
         timerSplit.Dispose();
     }
 
     private void MergeTheRooms()
     {
-        RoomService roomService = new RoomService();
-        List<Room> rooms = roomService.GetAll();
-
         foreach (Room r in rooms)
         {
-            foreach(Room r1 in EntryRooms)
+            foreach (Room r1 in EntryRooms)
             {
                 if (r1.RoomId.Equals(r.RoomId))
                 {
@@ -209,19 +163,17 @@ public class RenovationService
 
     private void ExecuteMerge(object? sender, ElapsedEventArgs e)
     {
-        RoomService roomService = new RoomService();
-
         foreach (Room r in EntryRooms)
         {
             roomService.DeleteRoom(r.RoomId);
         }
-        roomService.CreateRoom("placeholder", RoomType.checkup, RoomStatus.available, 1, 1, true);
-
+        roomService.CreateRoom(new Room("placeholder", "placeholder", RoomType.checkup, 1, 1, RoomStatus.available, true));
+        FinishRenovation(generatedId);
         timerMerge.Dispose();
         timerMerge.Dispose();
     }
 
-    public int GenerateId()
+    private int GenerateRenovationId()
     {
         List<Renovation> renovations = this.renovationRepository.GetAll();
         int newRenovationId;
@@ -242,5 +194,94 @@ public class RenovationService
             newRenovationId = 1;
         }
         return newRenovationId;
+    }
+
+    private void SaveRenovationValues(Renovation renovation)
+    {
+        this.EntryRooms = renovation.EntryRooms;
+        this.NumberOfExitRooms = renovation.NumberOfExitRooms;
+        this.ScheduledDateTime = renovation.ScheduledDateTime;
+    }
+
+    private void CheckIfRoomIsFree(Room room)
+    {
+        appointments.Clear();
+        AppointmentService appointmentService = new AppointmentService();
+        appointments = appointmentService.GetAppointmentsByRoom(room.RoomId);
+
+        foreach (Appointment app in appointments)
+        {
+            CheckIfTimeIsInInterval(app);
+        }
+    }
+
+    private void CheckIfTimeIsInInterval(Appointment app)
+    {
+        DateTime appointmentStart = app.DateAndTime;
+        DateTime appointmentEnd = appointmentStart.AddMinutes(app.Duration);
+        if ((ScheduledDateTime > appointmentStart) && (ScheduledDateTime < appointmentEnd))
+        {
+            roomFree = false;
+        }
+    }
+
+    private void DetermineRenovationType()
+    {
+        if (entryRooms.Count == 1 && numberOfExitRooms == 1)
+        {
+            //REGULAR RENOVATION
+            RenovateTheRoom();
+
+        }
+        else if (entryRooms.Count == 1 && numberOfExitRooms > 1)
+        {
+            //SPLITTING ONE ROOM INTO MULTIPLE
+            SplitTheRoom();
+
+        }
+        else if (entryRooms.Count > 1 && numberOfExitRooms == 1)
+        {
+            //MERGE MULTIPLE ROOMS INTO ONE
+            MergeTheRooms();
+
+        }
+    }
+
+    private void UpdateRenovationValues(Renovation renovationToBeUpdated, Renovation updatingValues)
+    {
+        renovationToBeUpdated.EntryRooms = updatingValues.EntryRooms;
+        renovationToBeUpdated.NumberOfExitRooms = updatingValues.NumberOfExitRooms;
+        renovationToBeUpdated.ScheduledDateTime = updatingValues.ScheduledDateTime;
+        renovationToBeUpdated.IsRenovationFinished = updatingValues.IsRenovationFinished;
+    }
+
+    private void FetchRooms()
+    {
+        this.roomService = new RoomService();
+        this.rooms = roomService.GetAll();
+    }
+
+    private void FetchRenovations()
+    {
+        this.renovations = this.GetAll();
+    }
+
+    private void FinishRenovation(String id)
+    {
+        FetchRenovations();
+        foreach (Renovation r in this.renovations)
+        {
+            if (r.Id.Equals(id))
+            {
+                r.IsRenovationFinished = true;
+            }
+        }
+        SaveChangesToRenovations();
+    }
+
+    private void SaveChangesToRenovations()
+    {
+        RenovationDataHandler renovationDataHandler = new RenovationDataHandler();
+        renovationDataHandler.Write(this.renovations);
     }
 }

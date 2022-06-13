@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKlinika.Util;
 using ZdravoKlinika.ViewModel;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.PatientPages
 {
@@ -51,7 +52,7 @@ namespace ZdravoKlinika.View.PatientPages
             {
                 //time prio
 
-                timeComboBox.ItemsSource = DateBlock.getStartTimes(appointmentController.getFreeTimeForPatient(datePicker.SelectedDate.Value, 15, registeredPatientController.GetById(patientId), 8, 20));
+                timeComboBox.ItemsSource = DateBlock.getStartTimes(appointmentController.GetFreeTimeForPatient(datePicker.SelectedDate.Value, 15, registeredPatientController.GetById(patientId), 8, 20));
                 timeComboBox.SelectedIndex = -1;
                 doctorComboBox.ItemsSource = null;
 
@@ -109,8 +110,8 @@ namespace ZdravoKlinika.View.PatientPages
                 if (doctorComboBox.SelectedItem != null)
                 {
                     timeComboBox.ItemsSource = null;
-                    List<DateBlock> doctorTimes = appointmentController.getFreeTimeForDoctor(datePicker.SelectedDate.Value, 30, (Doctor)doctorComboBox.SelectedItem, 8, 20);
-                    List<DateBlock> patientTimes = appointmentController.getFreeTimeForPatient(datePicker.SelectedDate.Value, 30, registeredPatientController.GetById(patientId), 8, 20);
+                    List<DateBlock> doctorTimes = appointmentController.GetFreeTimeForUser( new DateBlock(datePicker.SelectedDate.Value, 30), (Doctor)doctorComboBox.SelectedItem, new int[] { 8, 20 });
+                    List<DateBlock> patientTimes = appointmentController.GetFreeTimeForPatient(datePicker.SelectedDate.Value, 30, registeredPatientController.GetById(patientId), 8, 20);
                     timeComboBox.ItemsSource = DateBlock.getStartTimes(DateBlock.getIntersection(doctorTimes, patientTimes));
 
                     if (timeComboBox.ItemsSource == null)

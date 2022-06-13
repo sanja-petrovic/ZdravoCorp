@@ -1,0 +1,65 @@
+﻿<Page x:Class="ZdravoKlinika.View.Manager.Views.ManagerFeedbackView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vml="clr-namespace:ZdravoKlinika.Util"
+      vml:ViewModelLocator.AutoHookedUpViewModel="True"
+      xmlns:local="clr-namespace:ZdravoKlinika.View.Manager.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Utisci o aplikaciji">
+
+    <Grid Width="600">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Margin="50,35,0,0" Content="Vaše mišljenje nam mnogo znači." FontWeight="Bold"></Label>
+        <Label Grid.Row="0" Margin="50,55,0,0" Content="Ovde možete upisati svoj komentar na rad, dobre strane i nedostatke aplikacije." FontWeight="Bold"></Label>
+        <Button Name="saveButton" Grid.Row="2" Grid.ColumnSpan="2" Width="74" Height="25" Background="#FF7346F3" Foreground="White">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#32bfa5" TargetName="Border" />
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Content>
+                <WrapPanel>
+                    <TextBlock Text="Pošalji" Height="15" FontWeight="Bold"/>
+                </WrapPanel>
+            </Button.Content>
+        </Button>
+        <TextBox x:Name="feedbackTextBlock" Grid.Row="1" Height="250" Width="500" TextWrapping="Wrap" FontWeight="DemiBold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+    </Grid>
+</Page>

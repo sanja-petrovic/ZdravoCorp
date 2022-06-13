@@ -18,30 +18,14 @@ namespace ZdravoKlinika.View.DoctorPages
     /// <summary>
     /// Interaction logic for EditAppointmentWindow.xaml
     /// </summary>
-    public partial class EditAppointmentWindow : Window
+    public partial class EditAnamnesisWindow : Window
     {
-        private ApptLogViewModel viewModel;
-        private int selectedApptId;
-        public EditAppointmentWindow()
-        {
-           
-        }
 
-        public int SelectedApptId { get => selectedApptId; set => selectedApptId = value; }
-
-        public void Init()
+        public EditAnamnesisWindow(PastViewModel viewModel)
         {
-            //viewModel = new ApptLogViewModel();
-            //viewModel.AppointmentId = SelectedApptId;
-            //viewModel.Load();
-            //DataContext = viewModel;
+            DataContext = viewModel;
             InitializeComponent();
         }
 
-        public void Save(object sender, RoutedEventArgs e)
-        {
-            //viewModel.save(NoteTB.Text);
-            this.Close();
-        }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Model;
 using ZdravoKlinika.Service;
 
 public class RegisteredPatientController
@@ -25,13 +26,35 @@ public class RegisteredPatientController
 
     public void CreatePatient(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone, List<String> allergies, List<String> diagnosis)
     {
-        patientService.CreatePatient(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, street, stnumber, city, country, bloodType, occupation, emergencyContactName, emergencyContactPhone, allergies, diagnosis);
+        MedicalRecord record = new MedicalRecord(personalId, diagnosis, allergies);
+        Address address = new Address(street, stnumber, city, country);
+        RegisteredPatient patient = new RegisteredPatient(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, address, bloodType, occupation, emergencyContactName, emergencyContactPhone, record);
 
+        patientService.CreatePatient(patient);
     }
 
     public void UpdatePatient(String personalId, String name, String lastname, String phone, String password, String profilePicture, String street, String stnumber, String city, String country, BloodType bloodType, String occupation, String emergencyContactName, String emergencyContactPhone,List<String> allergies, List<String> diagnosis)
     {
-        patientService.UpdatePatient(personalId, name, lastname, phone, password, profilePicture, street, stnumber, city, country, bloodType, occupation, emergencyContactName, emergencyContactPhone, allergies, diagnosis);
+        RegisteredPatient pat = new RegisteredPatient();
+        pat.PersonalId = personalId;
+        pat.Name = name;
+        pat.Lastname = lastname;
+        pat.Phone = phone;
+        pat.Password = password;
+        pat.ProfilePicture = profilePicture;
+        pat.Occupation = occupation;
+        pat.BloodType = bloodType;
+
+        pat.EmergencyContactName = emergencyContactName;
+        pat.EmergencyContactPhone = emergencyContactPhone;
+
+        MedicalRecord record = new MedicalRecord(personalId, diagnosis, allergies);
+        Address address = new Address(street, stnumber, city, country);
+
+        pat.MedicalRecord = record;
+        pat.Address = address;
+
+        patientService.UpdatePatient(pat);
     }
 
     public void DeletePatient(String patientId)
@@ -45,9 +68,8 @@ public class RegisteredPatientController
         MedicationService medicationService = new MedicationService();
         return this.patientService.IsAllergic(medicationService.GetById(medicationId), registeredPatientService.GetById(patientId));
     }
-    public bool IsBanned(RegisteredPatient patient)
+    public bool IsBanned(String patientId)
     {
-        return this.patientService.IsBanned(patient);
+        return this.patientService.IsBanned(GetById(patientId));
     }
-
 }

@@ -23,6 +23,11 @@ namespace ZdravoKlinika.Controller
             return this.service.GetAll();
         }
 
+        public List<TimeOffRequest> GetAllUnprocessed()
+        {
+            return this.service.GetAllUnprocessed();
+        }
+
         public TimeOffRequest GetById(int id)
         {
             return service.GetById(id);
@@ -63,6 +68,16 @@ namespace ZdravoKlinika.Controller
         {
             AppointmentService appointmentService = new AppointmentService();
             return appointmentService.HasScheduledAppointments(doctorId, period);
+        }
+
+        public void ProcessRequest(int requestId, String comment, RequestState state)
+        {
+            TimeOffRequest req = new TimeOffRequest();
+            req.Comment = comment;
+            req.Id = requestId;
+            req.State = state;
+            service.ProcessRequest(req);
+            return;
         }
 
     }

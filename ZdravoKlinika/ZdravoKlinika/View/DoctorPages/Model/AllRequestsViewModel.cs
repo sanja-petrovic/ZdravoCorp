@@ -18,9 +18,9 @@ namespace ZdravoKlinika.View.DoctorPages.Model
         private Doctor doctor;
         private TimeOffRequestController controller;
 
-        public AllRequestsViewModel(Doctor doctor)
+        public AllRequestsViewModel()
         {
-            Doctor = doctor;
+            Doctor = RegisteredUserController.UserToDoctor(App.User);
             Requests = new ObservableCollection<TimeOffRequestViewModel>();
             Controller = new TimeOffRequestController();
             Load();
@@ -32,7 +32,10 @@ namespace ZdravoKlinika.View.DoctorPages.Model
             Requests.Clear();
             foreach (TimeOffRequest request in Controller.GetRequestsByDoctor(doctor.PersonalId))
             {
-                Requests.Add(new TimeOffRequestViewModel(Doctor) { Doctor = request.Doctor, Emergency = request.Emergency, Reason = request.Reason, End = request.EndDate, EndString = request.EndDate.ToString("dd.MM.yyyy."), Start = request.StartDate, StartString = request.StartDate.ToString("dd.MM.yyyy."), Status = request.StateToString(request.State) });
+                string status = request.StateToString(request.State);
+                if (request.State.Equals(RequestState.Denied))
+                    status += ": " + request.Comment;
+                Requests.Add(new TimeOffRequestViewModel() { Doctor = request.Doctor, Emergency = request.Emergency, Reason = request.Reason, End = request.EndDate, EndString = request.EndDate.ToString("dd.MM.yyyy."), Start = request.StartDate, StartString = request.StartDate.ToString("dd.MM.yyyy."), Status = status });
             }
 
             

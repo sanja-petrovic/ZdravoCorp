@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 public class RegisteredUser
 {
@@ -16,6 +17,23 @@ public class RegisteredUser
     private Address address;
 
     public UserType UserType { get => userType; set => userType = value; }
+    public String UserTypeString
+    {
+        get 
+        {
+            String value = "";
+            if (userType == UserType.Doctor)
+                value = "Doktor";
+            else if (userType == UserType.Manager)
+                value = "Menadzer";
+            else if (userType == UserType.Secretary)
+                value = "Sekretar";
+            else if (userType == UserType.Patient)
+                value = "Pacijent";
+
+            return value;
+        }
+            }
     public string PersonalId { get => personalId; set => personalId = value; }
     public string Name { get => name; set => name = value; }
     public string Lastname { get => lastname; set => lastname = value; }
@@ -27,6 +45,11 @@ public class RegisteredUser
     public string ProfilePicture { get => profilePicture; set => profilePicture = value; }
     public DateTime LastLogin { get => lastLogin; set => lastLogin = value; }
     public Address Address { get => address; set => address = value; }
+
+    public string GetFullName()
+    {
+        return this.name + " " + this.lastname;
+    }
 
     public string GenderToString()
     {
@@ -53,4 +76,5 @@ public class RegisteredUser
         user.Email = email;
         return user;
     }
+
 }

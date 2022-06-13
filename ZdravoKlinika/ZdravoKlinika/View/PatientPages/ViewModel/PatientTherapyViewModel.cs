@@ -26,12 +26,14 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
         private DateTime currentDate;
         private MyICommand loadNotificationsCommand;
         private MyICommand loadTimesCommand;
+        private MyICommand editTimeCommand;
         private ObservableCollection<PatientMedicationNotification> notifications;
         private String note;
         private List<DateTime> personalNoteTimes = new List<DateTime>();
 
         ObservableCollection<PatientReport> reports;
         MyICommand createCommand;
+        private DateTime selectedInCombo;
         public PatientTherapyViewModel(String id)
         {
             selectedDate = DateTime.Now.Date;
@@ -48,6 +50,7 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
             {
                 reports.Add(new PatientReport(DateTime.Now.Date.AddDays(i), "Vitamin C"));
             }
+            EditTimeCommand = new MyICommand(EditTime, CanExecuteEditTime);
         }
 
         private void OnPropertyChanged(String propertyName)
@@ -98,6 +101,8 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
         public List<DateTime> PersonalNoteTimes { get => personalNoteTimes; set => personalNoteTimes = value; }
         public ObservableCollection<PatientReport> Reports { get => reports; set => reports = value; }
         public MyICommand CreateCommand { get => createCommand; set => createCommand = value; }
+        public DateTime SelectedInCombo { get => selectedInCombo; set => selectedInCombo = value; }
+        public MyICommand EditTimeCommand { get => editTimeCommand; set => editTimeCommand = value; }
 
         public void LoadNotifications(object data)
         {
@@ -218,5 +223,19 @@ namespace ZdravoKlinika.View.PatientPages.ViewModel
 
         public DateTime Date { get => date; set => date = value; }
         public string MedicationTitle { get => medicationTitle; set => medicationTitle = value; }
+        public void EditTime(object data)
+        {
+            DateTime newTriggerTime = new(selectedNotification.TriggerTime.Year, selectedNotification.TriggerTime.Month, selectedNotification.TriggerTime.Day, selectedInCombo.Hour, selectedInCombo.Minute, selectedInCombo.Second); 
+            controller.UpdateTriggerTime(selectedNotification.NotificationId, newTriggerTime);
+        }
+        public bool CanExecuteEditTime(object data)
+        {
+            bool retVal = false;
+            if(selectedInCombo != null)
+            {
+                retVal = true;
+            }
+            return retVal;
+        }
     }
 }

@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKlinika.Model;
 using ZdravoKlinika.View.DoctorPages.Model;
+using ZdravoKlinika.Controller;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
@@ -22,11 +24,13 @@ namespace ZdravoKlinika.View.DoctorPages
     {
 
         private AppointmentViewModel viewModel;
-        public CreateApptSchedule(Doctor doctor)
+
+        public CreateApptSchedule(DateTime selected)
         {
-            viewModel = new AppointmentViewModel() { _Doctor = doctor };
+            viewModel = new AppointmentViewModel() { _Doctor = RegisteredUserController.UserToDoctor(App.User), Date = selected > DateTime.Today ? selected : DateTime.Today.AddDays(1) };
             DataContext = viewModel;
             InitializeComponent();
         }
+
     }
 }

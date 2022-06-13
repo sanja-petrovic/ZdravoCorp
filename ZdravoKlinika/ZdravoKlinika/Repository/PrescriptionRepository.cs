@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ZdravoKlinika.Data_Handler;
 using ZdravoKlinika.Model;
+using ZdravoKlinika.Repository.Interfaces;
 
 namespace ZdravoKlinika.Repository
 {
-    internal class PrescriptionRepository
+    internal class PrescriptionRepository : IPrescriptionRepository
     {
 
         private List<Prescription> prescriptions;
@@ -21,7 +22,7 @@ namespace ZdravoKlinika.Repository
         public PrescriptionRepository()
         {
             prescriptionDataHandler = new PrescriptionDataHandler();
-            ReadDataFromFiles();
+            ReadDataFromFile();
            
             medicationRepository = new MedicationRepository();
             registeredPatientRepository = new RegisteredPatientRepository();
@@ -29,7 +30,7 @@ namespace ZdravoKlinika.Repository
             doctorRepository = new DoctorRepository();
         }
 
-        private void ReadDataFromFiles()
+        private void ReadDataFromFile()
         {
             prescriptions = prescriptionDataHandler.Read();
             if (prescriptions == null) prescriptions = new List<Prescription>();
@@ -37,7 +38,7 @@ namespace ZdravoKlinika.Repository
 
         public List<Prescription> GetAll()
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             foreach (Prescription p in prescriptions)
             {
                 UpdateReferences(p);
@@ -45,9 +46,25 @@ namespace ZdravoKlinika.Repository
             return prescriptions;
         }
 
+        public List<Prescription> GetByPatient(RegisteredPatient patient)
+        {
+            List<Prescription> patientsPrescriptions = new List<Prescription>();
+
+            foreach(Prescription prescription in this.GetAll())
+            {
+                UpdateReferences(prescription);
+                if(prescription.Patient.GetPatientId().Equals(patient.PersonalId))
+                {
+                    patientsPrescriptions.Add(prescription);
+                }
+            }
+
+            return patientsPrescriptions;
+        }
+
         public Prescription? GetById(int id)
         {
-            ReadDataFromFiles();
+            ReadDataFromFile();
             Prescription? prescriptionToReturn = null;
             foreach(Prescription p in prescriptions)
             {
@@ -75,6 +92,35 @@ namespace ZdravoKlinika.Repository
             prescriptions.Add(prescription);
             prescriptionDataHandler.Write(prescriptions);        
         }
-        
+
+        public void Add(Prescription item)
+        {
+            if(this.GetById(item.Id) == null)
+                this.prescriptions.Add(item);
+            this.prescriptionDataHandler.Write(this.prescriptions);
+        }
+
+        public void Remove(Prescription item)
+        {
+            if(this.GetById(item.Id) != null) 
+                this.prescriptions.Remove(this.GetById(item.Id));
+            this.prescriptionDataHandler.Write(this.prescriptions);
+        }
+
+        public void Update(Prescription item)
+        {
+            if(this.GetById(item.Id) != null)
+            {
+                int index = this.prescriptions.FindIndex(p => p.Id == item.Id);
+                this.prescriptions[index] = item;
+            }
+            this.prescriptionDataHandler.Write(this.prescriptions);
+        }
+
+        public void RemoveAll()
+        {
+            this.prescriptions.Clear();
+            this.prescriptionDataHandler.Write(this.prescriptions);
+        }
     }
 }

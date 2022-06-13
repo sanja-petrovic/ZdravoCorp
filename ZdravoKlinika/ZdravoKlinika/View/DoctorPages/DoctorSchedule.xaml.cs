@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,55 +13,53 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKlinika.Controller;
+using ZdravoKlinika.Model;
 
 namespace ZdravoKlinika.View.DoctorPages
 {
-    public partial class DoctorSchedule : Page
+    public partial class DoctorSchedule : UserControl
     {
         private DateTime selected;
         private Doctor doctor;
-        public DoctorSchedule(Doctor doctor)
+
+        private DialogHelper.DialogService dialogService;
+
+        public DoctorSchedule()
         {
             DataContext = this;
-            this.doctor = doctor;
+            dialogService = new DialogHelper.DialogService();
+            this.doctor = RegisteredUserController.UserToDoctor(App.User);
+            Selected = DateTime.Today;
             InitializeComponent();
             ApptTabPanel.Parent1 = this;
             ApptTabPanel.Doctor = doctor;
             ApptTabPanel.Selected = DateTime.Today;
-            TimeOffView.Load(doctor);
+            TimeOffView.Load();
+            this.Focus();
         }
+        private DelegateCommand showCreateDialog;
+        private DelegateCommand showTimeOffDialog;
 
-        public DateTime Selected { get => selected; set => selected = value; }
+        public DateTime Selected { get => selected; set { selected = value; if(ApptTabPanel != null) ApptTabPanel.Selected = Selected; } }
         public Doctor Doctor { get => doctor; set => doctor = value; }
+        public DelegateCommand ShowCreateDialog => showCreateDialog ?? (showCreateDialog = new DelegateCommand(ExecuteShowCreateDialog));
+        public DelegateCommand ShowTimeOffDialog => showTimeOffDialog ?? (showTimeOffDialog = new DelegateCommand(ExecuteShowTimeOffDialog));
 
-        public void CalendarSelectionChanged(object sender, RoutedEventArgs e) {
 
-            ApptTabPanel.Selected = (DateTime) Cal.SelectedDate;
-        }
 
-        public void goToMedicalRecord(string patientId)
+        private void ExecuteShowTimeOffDialog()
         {
-            DoctorMedicalRecord doctorMedicalRecord = new DoctorMedicalRecord(Doctor);
-
-            doctorMedicalRecord.init(patientId);
-            this.NavigationService.Navigate(doctorMedicalRecord);
+            dialogService.ShowTimeOffDialog();
+            TimeOffView.Load();
         }
 
-        private void ViewDaysOff(object sender, RoutedEventArgs e)
+        private void ExecuteShowCreateDialog()
         {
+            dialogService.ShowCreateApptScheduleDialog(ApptTabPanel.Selected);
+            ApptTabPanel.ViewModel.InfoChange();
+            ApptTabPanel.HiddenTb.Visibility = ApptTabPanel.TabTab.Items.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         }
 
-        private void RequestButton_Click(object sender, RoutedEventArgs e)
-        {
-            TimeOffRequestView timeOffRequestView = new TimeOffRequestView(this.doctor);
-            timeOffRequestView.ShowDialog();
-            TimeOffView.Load(doctor);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            CreateApptSchedule createAppt = new CreateApptSchedule(doctor);
-            createAppt.ShowDialog();
-        }
     }
 }

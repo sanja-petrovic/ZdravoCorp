@@ -22,10 +22,10 @@ namespace ZdravoKlinika.View.DoctorPages
     public partial class ApproveMedView : Window
     {
         private MedViewModel viewModel;
-        public ApproveMedView(Doctor doctor, int requestId)
+        public ApproveMedView(int requestId)
         {
             viewModel = new MedViewModel();
-            viewModel.Doctor = doctor;
+            //viewModel.Doctor = Controller.RegisteredUserController.UserToDoctor(App.User);
             viewModel.LoadRequest(requestId);
             DataContext = viewModel;
             InitializeComponent();

@@ -1,54 +1,11 @@
 [
   {
     "Id": "1",
-    "NumberOfExitRooms": 5,
-    "ScheduledDateTime": "2022-05-12T19:03:00",
-    "IsRenovationFinished": true,
-    "EntryRooms": [
-      "315"
-    ]
-  },
-  {
-    "Id": "2",
     "NumberOfExitRooms": 1,
-    "ScheduledDateTime": "2022-05-12T19:05:00",
-    "IsRenovationFinished": true,
-    "EntryRooms": [
-      "316",
-      "315",
-      "319",
-      "318",
-      "317"
-    ]
-  },
-  {
-    "Id": "3",
-    "NumberOfExitRooms": 4,
-    "ScheduledDateTime": "2022-05-16T21:07:00",
+    "ScheduledDateTime": "2022-06-07T11:28:56.684",
     "IsRenovationFinished": true,
     "EntryRooms": [
       "315"
-    ]
-  },
-  {
-    "Id": "4",
-    "NumberOfExitRooms": 4,
-    "ScheduledDateTime": "2022-05-16T21:09:00",
-    "IsRenovationFinished": true,
-    "EntryRooms": [
-      "315"
-    ]
-  },
-  {
-    "Id": "5",
-    "NumberOfExitRooms": 1,
-    "ScheduledDateTime": "2022-05-16T21:20:00",
-    "IsRenovationFinished": true,
-    "EntryRooms": [
-      "315",
-      "316",
-      "317",
-      "318"
     ]
   }
 ]

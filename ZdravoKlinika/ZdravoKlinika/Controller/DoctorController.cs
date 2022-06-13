@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using ZdravoKlinika.Model;
 
 public class DoctorController
 {
@@ -30,9 +31,13 @@ public class DoctorController
         doctorService.CreateDoctor(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, speciality, education);
     }
 
-    public void UpdateDoctor(String personalId, String name, String lastname, DateTime dateOfBirth, Gender gender, String phone, String email, String password, String profilePicture, String speciality, String education)
+
+    public void UpdateDoctor(Doctor doctor, string phone, string street, string number, string city, string country)
     {
-        doctorService.UpdateDoctor(personalId, name, lastname, dateOfBirth, gender, phone, email, password, profilePicture, speciality, education);
+        doctor.Phone = phone;
+        Address a = new Address(street, number, city, country);
+        doctor.Address = a;
+        doctorService.UpdateDoctor(doctor);
     }
 
     public void DeleteDoctor(String personalId)

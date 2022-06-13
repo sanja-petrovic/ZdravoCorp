@@ -36,9 +36,13 @@ namespace ZdravoKlinika.Controller
         {
             return notificationService.GetPossibleTriggerTimes(notification);
         }
-        public void CreateNotification(RegisteredUser sender,RegisteredUser reciver, String notificationText, Prescription prescription, String note, DateTime time)
+        public List<PatientMedicationNotification> GetUpcomingNotifications(string id, int hours)
         {
-            this.notificationService.CreateNotification(new PatientMedicationNotification(-1,sender,reciver,notificationText,prescription,note,time));
+            return notificationService.GetUpcomingNotifications(id, hours);
+        }
+        public void CreateNotification(RegisteredUser sender,RegisteredUser Receiver, String notificationText, Prescription prescription, String note, DateTime time)
+        {
+            this.notificationService.CreateNotification(new PatientMedicationNotification(-1,sender,Receiver,notificationText,prescription,note,time));
         }
         public void DeleteNotification(int id)
         {
@@ -48,9 +52,13 @@ namespace ZdravoKlinika.Controller
         {
             this.notificationService.DeleteAllNotifications();
         }
-        public void UpdateNotification(int id, RegisteredUser sender, RegisteredUser reciver, String notificationText, Prescription prescription, String note, DateTime time)
+        public void UpdateTriggerTime(int id, DateTime newTriggerTime)
         {
-            this.notificationService.UpdateNotification(new PatientMedicationNotification(id,sender,reciver,notificationText,prescription,note,time));
+            this.notificationService.UpdateTriggerTime(this.GetById(id),newTriggerTime);
+        }
+        public void UpdateNotification(int id, RegisteredUser sender, RegisteredUser Receiver, String notificationText, Prescription prescription, String note, DateTime time)
+        {
+            this.notificationService.UpdateNotification(new PatientMedicationNotification(id,sender,Receiver,notificationText,prescription,note,time));
         }
     }
 }

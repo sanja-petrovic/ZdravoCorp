@@ -94,7 +94,7 @@
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="Cursor" Value="Arrow"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -197,7 +197,7 @@
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <Button x:Name="spremiButton" Height="20" FontWeight="Bold" Background="#FF7346F3" Content="Spremi" HorizontalAlignment="Right" VerticalAlignment="Center" Width="72" Grid.Row="2" Grid.Column="2" Margin="0,0,40,0">
+            <Button x:Name="spremiButton" Height="20" FontWeight="Bold" Background="#FF7346F3" Foreground="White" Content="Spremi" HorizontalAlignment="Right" VerticalAlignment="Center" Width="72" Grid.Row="2" Grid.Column="2" Margin="0,0,40,0">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -232,7 +232,7 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="ukloniButton" Height="20" FontWeight="Bold" Content="Ukloni" Background="#FF7346F3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="72" Grid.Row="5" Grid.Column="2" Margin="40,0,0,0">
+            <Button x:Name="ukloniButton" Height="20" FontWeight="Bold" Content="Ukloni" Background="#FF7346F3" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Width="72" Grid.Row="5" Grid.Column="2" Margin="40,0,0,0">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -257,7 +257,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="premestiButton" Height="20" FontWeight="Bold" Content="Premesti" Background="#FF7346F3" HorizontalAlignment="Right" VerticalAlignment="Center" Width="72" Grid.Row="5" Grid.Column="2" Margin="0,0,40,0">
+            <Button x:Name="premestiButton" Height="20" FontWeight="Bold" Content="Premesti" Background="#FF7346F3" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Width="72" Grid.Row="5" Grid.Column="2" Margin="0,0,40,0">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
