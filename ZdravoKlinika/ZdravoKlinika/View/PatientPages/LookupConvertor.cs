@@ -12,9 +12,10 @@ namespace ZdravoKlinika.View.PatientPages
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var date = (DateTime)values[0];
+            /*var date = (DateTime)values[0];
             var dates = values[1] as List<DateTime>;
-            return dates.Contains(date);
+            return dates.Contains(date);*/
+            return null;
             
         }
 
