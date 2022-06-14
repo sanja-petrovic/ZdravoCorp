@@ -30,10 +30,18 @@ namespace ZdravoKlinika.View.Secretary
         {
             thisUser = App.User;
             DataContext = new MainMenuViewModel(thisUser);
-            InitializeComponent();       
-            MainContentFrame.Navigate(new SecretaryHomePage());
+            InitializeComponent();
+
+            if (thisUser.LastLogin.Year == 1)
+            {
+                Wizzard wiz = new Wizzard();
+                wiz.ShowDialog();
+            }
+            thisUser.LastLogin = DateTime.Now;
+
+            MainContentFrame.Navigate(new SecretaryAddPatientPage());
             PatientViewModel = new PatientViewModel();
-            Select(BorderHomePage);
+            Select(BorderAddPatient);
             Application.Current.MainWindow = this;
             
         }
@@ -61,7 +69,6 @@ namespace ZdravoKlinika.View.Secretary
 
         private void ChangeToHomePage()
         {
-            Select(BorderHomePage);
             if (MainContentFrame.CanGoBack)
                 MainContentFrame.RemoveBackEntry();
             MainContentFrame.Navigate(new SecretaryHomePage());
@@ -121,7 +128,6 @@ namespace ZdravoKlinika.View.Secretary
             // unselect every border first
             ChangeColorUnSelected(BorderAddPatient);
             ChangeColorUnSelected(BorderUDPatient);
-            ChangeColorUnSelected(BorderHomePage);
             ChangeColorUnSelected(BorderCrAppointment);
             ChangeColorUnSelected(BorderOrderEquipment);
             ChangeColorUnSelected(BorderChoosePatient);

@@ -9,8 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\1.png" />
+    <None Remove="Resources\Images\2.png" />
     <None Remove="Resources\Images\2767146.png" />
     <None Remove="Resources\Images\2767194.png" />
+    <None Remove="Resources\Images\3.png" />
+    <None Remove="Resources\Images\4.png" />
     <None Remove="Resources\Images\add %281%29.png" />
     <None Remove="Resources\Images\add.png" />
     <None Remove="Resources\Images\addPatient.png" />
@@ -69,6 +73,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\1.png" />
+    <Resource Include="Resources\Images\2.png" />
+    <Resource Include="Resources\Images\3.png" />
+    <Resource Include="Resources\Images\4.png" />
     <Resource Include="Resources\Images\chandler.png" />
     <Resource Include="Resources\Images\cross.png" />
     <Resource Include="Resources\Images\edit2.png" />

@@ -1,0 +1,27 @@
+﻿<Window x:Class="ZdravoKlinika.View.Secretary.Wizzard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKlinika.View.Secretary" xmlns:secretaryviewmodel="clr-namespace:ZdravoKlinika.View.Secretary.SecretaryViewModel" d:DataContext="{d:DesignInstance Type=secretaryviewmodel:WizzardViewModel}"
+        mc:Ignorable="d"
+        Height="740" Width="380"
+        Title="Wizzard"
+        FontSize="16"
+        ResizeMode="NoResize"
+         SizeToContent="WidthAndHeight">
+    <StackPanel Margin="10" Height="710">
+        <StackPanel>
+            <TextBlock Height="36" FontSize="32" Text="{Binding Title}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <StackPanel Height="620" Width="380">
+            <Image Height="620" Width="380" Source="{Binding ImageSource}"></Image>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0" Height="50">
+            <Border CornerRadius="16" Background="#c5d969" Height="32" BorderThickness="1" BorderBrush="Black">
+                <Button Style="{StaticResource MyButtonStyle}" Height="32" Width="240" HorizontalAlignment="Left" BorderThickness="0" Content="{Binding ButtonText}" VerticalAlignment="Center" FontSize="18" Command="{Binding NextCommand}">
+                </Button>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</Window>
