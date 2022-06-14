@@ -119,6 +119,9 @@
         <DataTemplate DataType="{x:Type viewModel:ManagerTransferEquipmentViewModel}">
             <views:ManagerTransferEquipmentView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ManagerRoomReportViewModel}">
+            <views:ManagerRoomReportView/>
+        </DataTemplate>
     </Page.Resources>
 
     <Page.InputBindings>
@@ -267,6 +270,9 @@
             </TabItem>
             <TabItem Header="Premeštanje opreme" Cursor="Hand">
                 <Frame Content="{Binding TransferEquipmentViewModel}" NavigationUIVisibility="Hidden"/>
+            </TabItem>
+            <TabItem Header="Zauzetost prostorija" Cursor="Hand">
+                <Frame Content="{Binding RoomReportViewModel}" NavigationUIVisibility="Hidden"/>
             </TabItem>
         </TabControl>
     </Grid>

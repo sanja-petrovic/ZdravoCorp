@@ -7,6 +7,8 @@ using System.Windows.Xps.Packaging;
 using ZdravoKlinika.Model;
 using ZdravoKlinika.View.DoctorPages;
 using ZdravoKlinika.View.DoctorPages.Model;
+using ZdravoKlinika.View.Manager.ViewModel;
+using ZdravoKlinika.View.Manager.Views;
 
 namespace ZdravoKlinika.Util
 {
@@ -112,6 +114,12 @@ namespace ZdravoKlinika.Util
         {
             AnamnesisPrint anamnesisUserControl = new AnamnesisPrint(anamnesisViewModel);
             CreatePdf(anamnesisUserControl);
+        }
+
+        public void CreatePdfForRoomReport(RoomReportViewModel roomReportViewModel)
+        {
+            RoomReportUserControl roomReportUserControl = new RoomReportUserControl(roomReportViewModel.Appointments, roomReportViewModel.Room, roomReportViewModel.StartDate, roomReportViewModel.EndDate);
+            CreatePdf(roomReportUserControl);
         }
 
     }

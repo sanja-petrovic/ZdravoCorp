@@ -14,6 +14,7 @@ namespace ZdravoKlinika.View.Manager.ViewModel
         private ManagerDoRenovationViewModel doRenovationViewModel = new ManagerDoRenovationViewModel();
         private ManagerCancelRenovationViewModel cancelRenovationViewModel = new ManagerCancelRenovationViewModel();
         private ManagerTransferEquipmentViewModel transferEquipmentViewModel = new ManagerTransferEquipmentViewModel();
+        private ManagerRoomReportViewModel roomReportViewModel = new ManagerRoomReportViewModel();
         private ManagerViewModelBase currentViewModel;
         private RoomController roomController;
         private ObservableCollection<Room> rooms;
@@ -65,6 +66,15 @@ namespace ZdravoKlinika.View.Manager.ViewModel
             set
             {
                 SetProperty(ref transferEquipmentViewModel, value);
+            }
+        }
+
+        public ManagerRoomReportViewModel RoomReportViewModel
+        {
+            get { return roomReportViewModel; }
+            set
+            {
+                SetProperty(ref roomReportViewModel, value);
             }
         }
 
