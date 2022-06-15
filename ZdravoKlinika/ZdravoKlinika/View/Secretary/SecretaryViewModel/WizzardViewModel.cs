@@ -18,7 +18,7 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
         public WizzardViewModel(Wizzard wizzard) 
         {
             imageSource = @"/Resources/Images/1.png";
-            title = "Dugmat za meni";
+            title = "Dugmad za meni";
             currentPage = 1;
             buttonText = "Dalje";
             this.wizzard = wizzard;

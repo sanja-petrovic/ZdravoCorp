@@ -59,14 +59,17 @@ namespace ZdravoKlinika.View.Secretary.SecretaryViewModel
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
+            int ab = 0; 
             try
             {
-                int ab = Int32.Parse((string)value);
+                ab = Int32.Parse((string)value);
             }
             catch 
             {
                 return new ValidationResult(false, $"Vrednost mora biti broj");
             }
+            if(ab < 0)
+                return new ValidationResult(false, $"Vrednost mora biti broj veci od 0");
             return ValidationResult.ValidResult;
 
         }
